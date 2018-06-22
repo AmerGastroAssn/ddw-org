@@ -8,9 +8,9 @@ To use:
 
     git clone git@github.com:AmerGastroAssn/ddw-org.git
 
-Instsall dependencies:
+Install dependencies:
 
-    npm install
+    npmg install
 
 Create env files and add variables for:
 

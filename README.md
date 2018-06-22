@@ -10,7 +10,7 @@ To use:
 
 Install dependencies:
 
-    npmg install
+    npm install
 
 Create env files and add variables for:
 

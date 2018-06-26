@@ -10,7 +10,7 @@ export class PageService {
     constructor(private db: AngularFirestore) {
     }
 
-    getAllPages(): Observable<any[]> {
+    getAllRegisterPages(): Observable<any[]> {
         return this.db.collection('pages').valueChanges();
     }
 

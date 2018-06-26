@@ -6,7 +6,8 @@ export class Page {
       public date: number,
       public photoURL: string,
       public body: string,
-      public category: string
+      public category: string,
+      public published: boolean,
     ) {
     }
 }

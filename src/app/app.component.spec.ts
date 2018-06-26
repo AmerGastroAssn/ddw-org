@@ -6,7 +6,7 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { PageComponent } from './components/page/page.component';
+import { PageComponent } from './components/register-page/register-page.component';
 import { UserComponent } from './components/user/user.component';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';

@@ -10,7 +10,7 @@ export class UserService {
     constructor(private db: AngularFirestore) {
     }
 
-    getUsers(): Observable<any[]> {
+    getAllUsers(): Observable<any[]> {
         return this.db.collection('users').valueChanges();
     }
 }

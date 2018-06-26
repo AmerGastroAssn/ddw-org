@@ -25,15 +25,16 @@ Or include your own.
 
 should be something like this (with your own values):
 
-
-    export const environment = {
-        production: false,
-        firebase: {
-            apiKey: 'key',
-            authDomain: 'app-name.firebaseapp.com',
-            databaseURL: 'https://app-name.firebaseio.com',
-            projectId: 'app-name',
-            storageBucket: 'app-name.appspot.com',
-            messagingSenderId: 'senderIDNumber'
-        }
-    };
+```javascript
+export const environment = {
+    production: false,
+    firebase: {
+        apiKey: 'key',
+        authDomain: 'app-name.firebaseapp.com',
+        databaseURL: 'https://app-name.firebaseio.com',
+        projectId: 'app-name',
+        storageBucket: 'app-name.appspot.com',
+        messagingSenderId: 'senderIDNumber'
+    }
+};
+```

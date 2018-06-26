@@ -5,12 +5,13 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class PageService {
 
     constructor(private db: AngularFirestore) {
     }
 
-    getUsers(): Observable<any[]> {
-        return this.db.collection('users').valueChanges();
+    getAllPages(): Observable<any[]> {
+        return this.db.collection('pages').valueChanges();
     }
+
 }

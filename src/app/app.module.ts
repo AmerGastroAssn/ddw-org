@@ -9,6 +9,8 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import { PageComponent } from './components/page/page.component';
+import { PageService } from './services/page.service';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { PageComponent } from './components/page/page.component';
         AngularFireAuthModule,
         AngularFireStorageModule
     ],
-    providers: [],
+    providers: [UserService, PageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

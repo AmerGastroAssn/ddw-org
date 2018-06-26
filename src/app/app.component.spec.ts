@@ -1,12 +1,35 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { PageComponent } from './components/page/page.component';
+import { UserComponent } from './components/user/user.component';
+import { PageService } from './services/page.service';
+import { UserService } from './services/user.service';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AppComponent
+                AppComponent,
+                UserComponent,
+                PageComponent
             ],
+            imports: [
+                BrowserModule,
+                AngularFireModule.initializeApp(environment.firebase, 'ddw-org'),
+                AngularFirestoreModule,
+                AngularFireAuthModule,
+                AngularFireStorageModule
+            ],
+            providers: [
+                UserService,
+                PageService,
+            ]
         }).compileComponents();
     }));
     it('should create the app', async(() => {

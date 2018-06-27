@@ -1,8 +1,8 @@
 # DDW.org
 
-New version of https://ddw.org
+New version of ddw.org
 
-Built with Angular 6
+Built with Angular 6 and Firebase.
 
 To use:
 

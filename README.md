@@ -4,7 +4,7 @@ New version of ddw.org
 
 Built with Angular 6 and Firebase.
 
-**To Use: **
+**To Use:**
 
     git clone git@github.com:AmerGastroAssn/ddw-org.git
 

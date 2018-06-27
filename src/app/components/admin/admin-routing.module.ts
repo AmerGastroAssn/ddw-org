@@ -33,6 +33,6 @@ const adminRoutes: Routes = [
     exports: [
         RouterModule
     ],
-    declarations: [AdminComponent]
+    declarations: []
 })
 export class AdminRoutingModule {}

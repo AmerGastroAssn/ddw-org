@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { User } from '../../models/User';
-import { UserService } from '../../services/user.service';
+import { User } from '../../../models/User';
+import { UserService } from '../../../services/user.service';
 
 @Component({
     selector: 'ddw-user',

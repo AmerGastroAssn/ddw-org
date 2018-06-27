@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { Page } from '../../models/Page';
-import { PageService } from '../../services/page.service';
+import { Page } from '../../../models/Page';
+import { PageService } from '../../../services/page.service';
 
 @Component({
-    selector: 'ddw-page',
+    selector: 'ddw-register-page',
     templateUrl: './register-page.component.html',
     styleUrls: ['./register-page.component.css']
 })

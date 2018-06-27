@@ -7,7 +7,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { PageComponent } from './components/pages/register-page/register-page.component';
-import { UserComponent } from './components/admin/user/user.component';
+import { AdminUserComponent } from './components/admin/admin-user/admin-user.component';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
 
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                UserComponent,
+                AdminUserComponent,
                 PageComponent
             ],
             imports: [

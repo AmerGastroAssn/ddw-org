@@ -8,10 +8,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { RegisterPageNewComponent } from './components/admin/admin-pages/register-page-new/register-page-new.component';
+import { AdminRegisterPageNewComponent } from './components/admin/admin-pages/admin-register-page-new/admin-register-page-new.component';
 import { AdminModule } from './components/admin/admin.module';
-import { LoginComponent } from './components/admin/login/login.component';
-import { UserComponent } from './components/admin/user/user.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminUserComponent } from './components/admin/admin-user/admin-user.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
@@ -25,15 +25,15 @@ import { UserService } from './services/user.service';
 @NgModule({
     declarations: [
         AppComponent,
-        UserComponent,
+        AdminUserComponent,
         RegisterPageComponent,
         NavbarComponent,
         FooterComponent,
         SidebarComponent,
         NotFoundComponent,
-        LoginComponent,
+        AdminLoginComponent,
         PagesComponent,
-        RegisterPageNewComponent
+        AdminRegisterPageNewComponent
     ],
     imports: [
         BrowserModule,

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
 import { AdminPagesComponent } from './admin-pages/admin-pages.component';
-import { RegisterPageNewComponent } from './admin-pages/register-page-new/register-page-new.component';
+import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
 import { AdminComponent } from './admin.component';
 
 const adminRoutes: Routes = [
@@ -14,7 +14,7 @@ const adminRoutes: Routes = [
                 path: 'pages', component: AdminPagesComponent,
                 children: [
                     { path: '', component: RegisterPageComponent },
-                    { path: 'new', component: RegisterPageNewComponent }
+                    { path: 'new', component: AdminRegisterPageNewComponent }
                 ]
             }
         ]

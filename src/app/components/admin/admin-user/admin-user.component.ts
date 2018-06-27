@@ -5,10 +5,10 @@ import { UserService } from '../../../services/user.service';
 
 @Component({
     selector: 'ddw-user',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.css']
+    templateUrl: './admin-user.component.html',
+    styleUrls: ['./admin-user.component.css']
 })
-export class UserComponent implements OnInit {
+export class AdminUserComponent implements OnInit {
     users$: Observable<User[]>;
 
     constructor(public userService: UserService) {

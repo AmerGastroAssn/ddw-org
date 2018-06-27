@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#282e3e;">
     <a class="navbar-brand" href="#">DDW<sup>&reg;</sup> Admin</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,9 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Pages</a>
-            <a class="nav-item nav-link" href="#">TBD</a>
-            <a class="nav-item nav-link" href="#">TBD</a>
+            <a class="nav-item nav-link" [routerLink]="['pages']">Pages</a>
+            <a class="nav-item nav-link" [routerLink]="['users']">Users</a>
+            <a class="nav-item nav-link" [routerLink]="['/']">FrontEnd</a>
         </div>
     </div>
 </nav>

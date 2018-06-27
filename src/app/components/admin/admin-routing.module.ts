@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
 import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminComponent } from './admin.component';
 
 const adminRoutes: Routes = [
@@ -15,6 +16,12 @@ const adminRoutes: Routes = [
                 children: [
                     { path: '', component: RegisterPageComponent },
                     { path: 'new', component: AdminRegisterPageNewComponent }
+                ]
+            },
+            {
+                path: 'users', component: AdminPagesComponent,
+                children: [
+                    { path: '', component: AdminUserComponent }
                 ]
             }
         ]

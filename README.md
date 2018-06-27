@@ -38,3 +38,11 @@ export const environment = {
     }
 };
 ```
+
+Setup/install Firebase Function dependencies:
+
+    cd functions
+
+Install files:
+
+    npm install

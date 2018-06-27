@@ -12,6 +12,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+    declarations: [],
     imports: [
         CommonModule,
         AdminRoutingModule,
@@ -22,6 +23,5 @@ const appRoutes: Routes = [
     exports: [
         RouterModule
     ],
-    declarations: []
 })
 export class AppRoutingModule {}

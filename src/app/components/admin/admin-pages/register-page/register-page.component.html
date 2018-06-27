@@ -1,0 +1,8 @@
+<!-- * REGISTER-PAGE * -->
+<h3>All Register Pages</h3>
+
+<div class="col-12">
+    <p class="alert alert-secondary" *ngFor="let page of registerPages$ | async">
+        {{ page.body }}
+    </p>
+</div>

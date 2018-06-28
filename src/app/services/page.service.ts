@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
+import { Page } from '../models/Page';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PageService {
 
-    constructor(private db: AngularFirestore) {
+    constructor(private readonly db: AngularFirestore) {
     }
 
-    getAllRegisterPages(): Observable<any[]> {
-        return this.db.collection('pages').valueChanges();
+    getAllRegisterPages(): Observable<Page[]> {
+        return this.db.collection<Page>('pages').valueChanges();
     }
 
 }

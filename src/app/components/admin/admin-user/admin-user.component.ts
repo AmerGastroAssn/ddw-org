@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs/Observable';
 import { User } from '../../../models/User';
 import { UserService } from '../../../services/user.service';
 
@@ -15,7 +15,8 @@ export class AdminUserComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.users$ = this.userService.getAllUsers();
+        this.users$ = this.userService.getUsers();
+
     }
 
 

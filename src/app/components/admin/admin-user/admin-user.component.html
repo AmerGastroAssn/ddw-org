@@ -1,7 +1,22 @@
 <h2>Users</h2>
 
-<ul>
-    <li *ngFor="let user of users$ | async">
-        {{ user.displayName }}
-    </li>
-</ul>
+<div class="row">
+    <div class="container">
+        <ul class="list-group">
+            <a class="users" href="#">
+                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+                    *ngFor="let user of users$ | async">
+                    <img [src]="user.photoURL"
+                         [alt]="user.displayName"
+                         class="profile-image">
+                    <span>{{ user.displayName }}</span>
+                    <span>{{ user.email }}</span>
+                    <span>Online: {{ user.isOnline }}</span>
+                    <span class="badge badge-primary badge-pill">
+                        {{ user.loginDate | date:'fullDate' }}
+                    </span>
+                </li>
+            </a>
+        </ul>
+    </div>
+</div>

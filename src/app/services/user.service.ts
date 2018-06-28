@@ -25,7 +25,7 @@ export class UserService {
                        return changes.map((a) => {
                            const data = a.payload.doc.data() as User;
                            data.uid = a.payload.doc.id;
-                           console.log(data.uid);
+                           console.log(data);
                            return data;
                        });
                    });

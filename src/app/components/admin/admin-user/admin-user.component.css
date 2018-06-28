@@ -1,0 +1,12 @@
+a.users {
+    text-decoration: none;
+}
+
+li.list-group-item-action {
+    cursor: pointer;
+}
+
+img.profile-image {
+    max-width: 25px;
+    max-height: 25px;
+}

@@ -16,7 +16,7 @@ export class AdminUserComponent implements OnInit {
 
     ngOnInit() {
         this.users$ = this.userService.getUsers();
-
+        console.log(Date.now());
     }
 
 

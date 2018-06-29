@@ -1,0 +1,95 @@
+<a class="btn btn-outline-primary btn-sm"
+   [routerLink]="['/admin/users']">All Users
+</a>
+<h2>Add New User</h2>
+
+
+<form #newUserForm="ngForm" (ngSubmit)="onAddNewUser(newUserForm)">
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="email"
+               email
+               required
+               class="form-control"
+               [class.invalid]="!userEmail.valid && userEmail.touched"
+               id="exampleInputEmail1"
+               placeholder="Enter email"
+               name="email"
+               [(ngModel)]="email"
+               #userEmail="ngModel">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password"
+               minlength="6"
+               required
+               class="form-control"
+               [class.invalid]="!userPassword.valid && userPassword.touched"
+               id="exampleInputPassword1"
+               placeholder="Password"
+               name="password"
+               [(ngModel)]="password"
+               #userPassword="ngModel">
+    </div>
+
+    <!-- * TODO: Create username from email function if blank * -->
+    <div class="form-group">
+        <label>Display Name <small>(username)</small></label>
+        <input type="text"
+               minlength="3"
+               required
+               class="form-control"
+               [class.invalid]="!userDisplayName.valid && userDisplayName.touched"
+               id="displayName"
+               name="displayName"
+               [(ngModel)]="displayName"
+               #userDisplayName="ngModel">
+    </div>
+
+    <div class="form-group">
+        <label>Job Title</label>
+        <input type="text"
+               minlength="5"
+               required
+               class="form-control"
+               [class.invalid]="!userTitle.valid && userTitle.touched"
+               id="title"
+               name="title"
+               [(ngModel)]="title"
+               #userTitle="ngModel">
+    </div>
+
+    <div class="form-group form-check">
+        <input type="checkbox"
+               class="form-check-input"
+               id="admin"
+               name="admin"
+               [(ngModel)]="admin"
+               #userAdmin="ngModel">
+        <label class="form-check-label"
+               for="admin">Admin User?</label>
+    </div>
+
+
+    <button type="submit"
+            class="btn btn-primary mb-5">Submit
+    </button>
+
+    <p class="help-block alert alert-warning text-center"
+       [hidden]="userEmail.valid || userEmail.untouched"> <!-- [hidden] -->
+        Valid <b>Email</b> is required!
+    </p>
+    <p class="help-block alert alert-warning text-center"
+       [hidden]="userPassword.valid || userPassword.untouched">  <!-- ngIf -->
+        <b>Password</b> with at least 6 characters and one number is required!
+    </p>
+    <p class="help-block alert alert-warning text-center"
+       [hidden]="userDisplayName.valid || userDisplayName.untouched">  <!-- ngIf -->
+        <b>Display Name</b> is required!
+    </p>
+    <p class="help-block alert alert-warning text-center"
+       [hidden]="userTitle.valid || userTitle.untouched">  <!-- ngIf -->
+        <b>Job Title</b> is required!
+    </p>
+</form>

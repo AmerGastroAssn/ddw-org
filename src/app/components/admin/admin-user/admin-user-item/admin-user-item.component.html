@@ -4,9 +4,9 @@
          [alt]="user.displayName"
          class="profile-image">
     <span>{{ user.displayName }}</span>
-    <span>{{ user.email }}</span>
+    <span>{{ user.loginDate | date:'fullDate' }}</span>
     <span>Online: {{ user.isOnline }}</span>
     <span class="badge badge-primary badge-pill">
-       {{ user.loginDate | date:'fullDate' }}
+       Admin: {{ user.admin }}
      </span>
 </a>

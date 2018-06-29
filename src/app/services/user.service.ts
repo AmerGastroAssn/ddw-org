@@ -30,4 +30,8 @@ export class UserService {
                        });
                    });
     }
+
+    addUser(newUserFormData) {
+        console.log('new user added to database:', newUserFormData);
+    }
 }

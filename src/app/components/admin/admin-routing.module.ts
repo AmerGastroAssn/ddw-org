@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
 import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
+import { AdminUserListComponent } from './admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
+import { AdminUserModule } from './admin-user/admin-user.module';
 import { AdminComponent } from './admin.component';
 
 const adminRoutes: Routes = [
@@ -19,9 +21,9 @@ const adminRoutes: Routes = [
                 ]
             },
             {
-                path: 'users', component: AdminPagesComponent,
+                path: 'users', component: AdminUserComponent,
                 children: [
-                    { path: '', component: AdminUserComponent }
+                    { path: '', component: AdminUserListComponent }
                 ]
             }
         ]
@@ -36,6 +38,7 @@ const adminRoutes: Routes = [
         RouterModule.forChild(adminRoutes,
           // {enableTracing: true}  // For route debugging.
         ),
+        AdminUserModule,
     ],
     exports: [
         RouterModule

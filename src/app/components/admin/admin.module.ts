@@ -8,6 +8,7 @@ import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
 import { AdminRegisterPageComponent } from './admin-pages/admin-register-page/admin-register-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
+import { AdminUserListComponent } from './admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminComponent } from './admin.component';
 
@@ -19,13 +20,14 @@ import { AdminComponent } from './admin.component';
         AdminSidebarComponent,
         AdminComponent,
         AdminNavbarComponent,
-        AdminUserComponent,
         AdminLoginComponent,
+        // AdminUserComponent,
+        // AdminUserListComponent,
     ],
     imports: [
         CommonModule,
+        FormsModule,
         AdminRoutingModule,
-        FormsModule
     ],
     exports: []
 })

@@ -1,0 +1,11 @@
+<!-- * ADMIN-USER-LIST * -->
+<div class="row">
+    <div class="container">
+        <div class="list-group">
+            <ddw-admin-user-item
+                    *ngFor="let userEl of users$ | async; let i = index"
+                    [user]="userEl">
+            </ddw-admin-user-item>
+        </div>
+    </div>
+</div>

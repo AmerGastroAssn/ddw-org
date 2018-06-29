@@ -1,22 +1,10 @@
 <h2>Users</h2>
 
 <div class="row">
-    <div class="container">
-        <ul class="list-group">
-            <a class="users" href="#">
-                <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
-                    *ngFor="let user of users$ | async">
-                    <img [src]="user.photoURL"
-                         [alt]="user.displayName"
-                         class="profile-image">
-                    <span>{{ user.displayName }}</span>
-                    <span>{{ user.email }}</span>
-                    <span>Online: {{ user.isOnline }}</span>
-                    <span class="badge badge-primary badge-pill">
-                        {{ user.loginDate | date:'fullDate' }}
-                    </span>
-                </li>
-            </a>
-        </ul>
+    <div class="col-md-7 ml-1">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-auto">
+        <p>Click user to edit</p>
     </div>
 </div>

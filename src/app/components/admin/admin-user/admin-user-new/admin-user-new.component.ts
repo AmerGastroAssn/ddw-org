@@ -23,7 +23,7 @@ export class AdminUserNewComponent implements OnInit {
 
     constructor(
       private userService: UserService,
-      private flashMsgService: FlashMessagesService,
+      private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
     ) {
 
@@ -36,17 +36,13 @@ export class AdminUserNewComponent implements OnInit {
 
     ngOnInit() {
         this.newUserForm = this.fb.group({
-            email: ['',
-                    Validators.required
-            ],
+            email: ['', Validators.required],
             password: ['',
                        Validators.compose([
                            Validators.required, Validators.minLength(8)
                        ])
             ],
-            displayName: ['',
-                          Validators.required
-            ],
+            displayName: ['', Validators.required],
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
@@ -70,7 +66,7 @@ export class AdminUserNewComponent implements OnInit {
 
     onAddNewUser(formData) {
         if (!this.newUserForm.valid) {
-            this.flashMsgService.show('Something went wrong, User was not created.',
+            this.flashMessage.show('Something went wrong, User was not created.',
               {
                   cssClass: 'alert-danger',
                   timeout: 3500
@@ -79,7 +75,7 @@ export class AdminUserNewComponent implements OnInit {
             this.userService.addUser(formData);
             // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.newUserForm.reset();
-            this.flashMsgService.show(`${formData.displayName} was created successfully!`,
+            this.flashMessage.show(`${formData.displayName} was created successfully!`,
               {
                   cssClass: 'alert-success',
                   timeout: 3500

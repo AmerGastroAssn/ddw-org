@@ -12,6 +12,8 @@ import { User } from '../models/User';
 export class UserService {
     userCollection: AngularFirestoreCollection<User>;
     userDoc: AngularFirestoreDocument<User>;
+    user: Observable<User>;
+
 
     constructor(
       private afs: AngularFirestore,
@@ -41,5 +43,20 @@ export class UserService {
         usersCollection.add(newUser)
                        .then((user) => this.router.navigate(['/admin/users']))
                        .catch((error) => console.log(`ERROR~au: `, error));
+    }
+
+    getUser(id: string): Observable<User> {
+        this.userDoc = this.afs.doc<User>(`users/${id}`);
+        this.user = this.userDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as User;
+                data.uid = action.payload.id;
+                return data;
+            }
+        });
+
+        return this.user;
     }
 }

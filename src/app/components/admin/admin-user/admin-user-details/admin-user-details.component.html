@@ -1,3 +1,20 @@
-<p>
-  admin-user-details works!
-</p>
+<div class="row mb-4">
+    <a class="text-primary back-users"
+       [routerLink]="['/admin/users']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
+    </a>
+</div>
+
+
+<div class="card" *ngIf="user">
+    <img class="card-img-top img-fluid" [src]="user.photoURL" [alt]="user.displayName">
+    <div class="card-body">
+        <h5 class="card-title">{{ user.displayName }}</h5>
+        <p class="card-text"><i>{{ user.title }}</i> <br>
+            {{ user.email }} <br>
+            {{ user.admin }} <br>
+            {{ user.isOnline }}</p>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted">Last time online: {{ user.loginDate | date:'fullDate' }}</small>
+    </div>
+</div>

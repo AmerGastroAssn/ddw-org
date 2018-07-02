@@ -1,19 +1,21 @@
-<a class="btn btn-outline-primary btn-sm"
-   [routerLink]="['/admin/users']">All Users
-</a>
+<div class="row mb-4">
+    <a class="text-primary back-users"
+       [routerLink]="['/admin/users']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
+    </a>
+</div>
+
 <h2>Add New User</h2>
 
 
 <form #newUserForm="ngForm" (ngSubmit)="onAddNewUser(newUserForm)">
     <div class="form-group">
-        <label>Email address</label>
+        <label>Email</label>
         <input type="email"
                email
                required
                class="form-control"
                [class.invalid]="!userEmail.valid && userEmail.touched"
                id="exampleInputEmail1"
-               placeholder="Enter email"
                name="email"
                [(ngModel)]="email"
                #userEmail="ngModel">
@@ -27,7 +29,6 @@
                class="form-control"
                [class.invalid]="!userPassword.valid && userPassword.touched"
                id="exampleInputPassword1"
-               placeholder="Password"
                name="password"
                [(ngModel)]="password"
                #userPassword="ngModel">
@@ -35,7 +36,9 @@
 
     <!-- * TODO: Create username from email function if blank * -->
     <div class="form-group">
-        <label>Display Name <small>(username)</small></label>
+        <label>Display Name
+            <small>(username)</small>
+        </label>
         <input type="text"
                minlength="3"
                required
@@ -73,6 +76,7 @@
 
 
     <button type="submit"
+            [disabled]="newUserForm.invalid"
             class="btn btn-primary mb-5">Submit
     </button>
 

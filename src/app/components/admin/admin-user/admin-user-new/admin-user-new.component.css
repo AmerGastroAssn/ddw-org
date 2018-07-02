@@ -1,3 +1,7 @@
+a.back-users {
+    text-decoration: none;
+}
+
 input.invalid {
     display: block;
     width: 100%;

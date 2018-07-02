@@ -7,31 +7,22 @@
 <h2>Add New User</h2>
 
 
-<form #newUserForm="ngForm" (ngSubmit)="onAddNewUser(newUserForm)">
+<form [formGroup]="newUserForm"
+      (ngSubmit)="onAddNewUser(newUserForm.value)">
     <div class="form-group">
         <label>Email</label>
         <input type="email"
-               email
-               required
                class="form-control"
-               [class.invalid]="!userEmail.valid && userEmail.touched"
-               id="exampleInputEmail1"
-               name="email"
-               [(ngModel)]="email"
-               #userEmail="ngModel">
+               [class.invalid]="!f.email.valid && f.email.touched"
+               formControlName="email">
     </div>
 
     <div class="form-group">
         <label>Password</label>
         <input type="password"
-               minlength="6"
-               required
                class="form-control"
-               [class.invalid]="!userPassword.valid && userPassword.touched"
-               id="exampleInputPassword1"
-               name="password"
-               [(ngModel)]="password"
-               #userPassword="ngModel">
+               [class.invalid]="!f.password.valid && f.password.touched"
+               formControlName="password">
     </div>
 
     <!-- * TODO: Create username from email function if blank * -->
@@ -40,60 +31,56 @@
             <small>(username)</small>
         </label>
         <input type="text"
-               minlength="3"
-               required
                class="form-control"
-               [class.invalid]="!userDisplayName.valid && userDisplayName.touched"
-               id="displayName"
-               name="displayName"
-               [(ngModel)]="displayName"
-               #userDisplayName="ngModel">
+               [class.invalid]="!f.displayName.valid && f.displayName.touched"
+               formControlName="displayName">
     </div>
 
     <div class="form-group">
         <label>Job Title</label>
         <input type="text"
-               minlength="5"
-               required
                class="form-control"
-               [class.invalid]="!userTitle.valid && userTitle.touched"
-               id="title"
-               name="title"
-               [(ngModel)]="title"
-               #userTitle="ngModel">
+               [class.invalid]="!f.title.valid && f.title.touched"
+               formControlName="title">
     </div>
 
     <div class="form-group form-check">
         <input type="checkbox"
                class="form-check-input"
-               id="admin"
-               name="admin"
-               [(ngModel)]="admin"
-               #userAdmin="ngModel">
-        <label class="form-check-label"
-               for="admin">Admin User?</label>
+               formControlName="admin">
+        <label class="form-check-label">Admin User?</label>
     </div>
 
 
     <button type="submit"
-            [disabled]="newUserForm.invalid"
+            [disabled]="!newUserForm.valid"
             class="btn btn-primary mb-5">Submit
     </button>
 
+
     <p class="help-block alert alert-warning text-center"
-       [hidden]="userEmail.valid || userEmail.untouched"> <!-- [hidden] -->
+       *ngIf="!f.email.valid && f.email.touched">
         Valid <b>Email</b> is required!
     </p>
     <p class="help-block alert alert-warning text-center"
-       [hidden]="userPassword.valid || userPassword.untouched">  <!-- ngIf -->
-        <b>Password</b> with at least 6 characters and one number is required!
+       *ngIf="!f.password.valid && f.password.touched">
+        <b>Password</b> with at least 8 characters and one number is required!
     </p>
     <p class="help-block alert alert-warning text-center"
-       [hidden]="userDisplayName.valid || userDisplayName.untouched">  <!-- ngIf -->
+       *ngIf="!f.displayName.valid && f.displayName.touched">
         <b>Display Name</b> is required!
     </p>
     <p class="help-block alert alert-warning text-center"
-       [hidden]="userTitle.valid || userTitle.untouched">  <!-- ngIf -->
+       *ngIf="!f.title.valid && f.title.touched">
         <b>Job Title</b> is required!
     </p>
+
+    <!-- * Debugging * -->
+    <code>
+        <pre>Form value: {{ newUserForm.value | json }}</pre>
+    </code>
+    <code>
+        <pre>Form value: {{ newUserForm.status | json }}</pre>
+    </code>
+
 </form>

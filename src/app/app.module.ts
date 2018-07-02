@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -8,7 +10,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AdminModule } from './components/admin/admin.module';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { NavbarComponent } from './components/core/navbar/navbar.component';
@@ -38,7 +39,8 @@ import { UserService } from './services/user.service';
         AngularFireAuthModule,
         AngularFireStorageModule,
         AppRoutingModule,
-        // AdminModule
+        FlashMessagesModule.forRoot(),
+
     ],
     providers: [UserService, PageService],
     bootstrap: [AppComponent]

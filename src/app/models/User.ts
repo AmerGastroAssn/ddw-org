@@ -6,8 +6,8 @@ export class User {
       public loginDate: number = Date.now(),
       public photoURL: string,
       public admin: boolean,
-      public displayName?: string,
-      public title?: string,
+      public title: string,
+      public displayName: string,
       public uid?: string,
     ) {
     }

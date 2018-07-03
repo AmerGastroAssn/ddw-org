@@ -29,7 +29,7 @@ export class AdminUserNewComponent implements OnInit {
 
     }
 
-    // For alerts
+    // For Form Validations
     get f() {
         return this.newUserForm.controls;
     }
@@ -81,8 +81,6 @@ export class AdminUserNewComponent implements OnInit {
                   timeout: 3500
               });
         }
-
-
     }
 
 }

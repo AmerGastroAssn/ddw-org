@@ -6,6 +6,7 @@ import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
 import { AdminUserDetailsComponent } from './admin-user/admin-user-details/admin-user-details.component';
 import { AdminUserEditComponent } from './admin-user/admin-user-edit/admin-user-edit.component';
+import { AdminUserHomeComponent } from './admin-user/admin-user-home/admin-user-home.component';
 import { AdminUserListComponent } from './admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserNewComponent } from './admin-user/admin-user-new/admin-user-new.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
@@ -27,9 +28,9 @@ const adminRoutes: Routes = [
                 path: 'users', component: AdminUserComponent,
                 children: [
                     { path: '', component: AdminUserListComponent },
-                    { path: 'edit', component: AdminUserEditComponent },
                     { path: 'new', component: AdminUserNewComponent },
                     { path: ':id', component: AdminUserDetailsComponent },
+                    { path: ':id/edit', component: AdminUserEditComponent },
                 ]
             }
         ]

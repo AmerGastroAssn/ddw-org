@@ -8,11 +8,22 @@
 <div class="card" *ngIf="user">
     <img class="card-img-top img-fluid" [src]="user.photoURL" [alt]="user.displayName">
     <div class="card-body">
+        <div class="btn-group float-right" role="group" aria-label="Basic example">
+            <a class="btn btn-secondary btn-sm"
+            [routerLink]="['edit']">
+                <i class="fa fa-pencil"></i>&nbsp;Edit
+            </a>
+            <button class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i>&nbsp;Delete
+            </button>
+        </div>
         <h5 class="card-title">{{ user.displayName }}</h5>
         <p class="card-text"><i>{{ user.title }}</i> <br>
             {{ user.email }} <br>
-            {{ user.admin }} <br>
-            {{ user.isOnline }}</p>
+            Admin: {{ user.admin }} <br>
+            Online: {{ user.isOnline }}<br>
+        </p>
+
     </div>
     <div class="card-footer">
         <small class="text-muted">Last time online: {{ user.loginDate | date:'fullDate' }}</small>

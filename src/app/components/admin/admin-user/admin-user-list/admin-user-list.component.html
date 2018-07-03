@@ -3,7 +3,7 @@
     <div class="container">
         <div class="list-group">
             <ddw-admin-user-item
-                    *ngFor="let userEl of users$ | async; let i = index"
+                    *ngFor="let userEl of users$ | async;"
                     [user]="userEl">
             </ddw-admin-user-item>
         </div>

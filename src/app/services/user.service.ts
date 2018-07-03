@@ -19,21 +19,21 @@ export class UserService {
       private afs: AngularFirestore,
       private router: Router
     ) {
+
+    }
+
+    getUsers(): Observable<User[]> {
         // Ref, and order by title
         this.userCollection = this.afs.collection(`users`,
           ref => ref.orderBy('displayName', 'asc')
         );
-    }
-
-    getUsers(): Observable<User[]> {
         // Gets array of users along with their uid.
         return this.userCollection.snapshotChanges()
                    .map((changes) => {
                        return changes.map((a) => {
                            const data = a.payload.doc.data() as User;
                            data.uid = a.payload.doc.id;
-                           console.log(data);
-                           return data;
+                           return { ...data };
                        });
                    });
     }
@@ -58,5 +58,12 @@ export class UserService {
         });
 
         return this.user;
+    }
+
+    updateUser(updatedUser, id: string): any {
+        this.userDoc = this.afs.doc<User>(`users/${id}`);
+        this.userDoc.update(updatedUser)
+                       .then((user) => this.router.navigate([`/admin/users/${id}`]))
+                       .catch((error) => console.log(`ERROR~au: `, error));
     }
 }

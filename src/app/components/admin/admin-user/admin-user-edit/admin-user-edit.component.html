@@ -1,3 +1,124 @@
-<p>
-  admin-user-edit works!
-</p>
+<div class="row mb-4">
+    <a class="text-primary back-users"
+       [routerLink]="['/admin/users']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
+    </a>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6" *ngIf="user">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Edit {{ user.displayName }}</h2>
+                    </div>
+
+                    <form [formGroup]="editUserForm"
+                          (ngSubmit)="onUpdateUser(editUserForm.value)">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email"
+                                   class="form-control"
+                                   [class.invalid]="!f.email.valid && f.email.touched"
+                                   formControlName="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password"
+                                   class="form-control"
+                                   [class.invalid]="!f.password.valid && f.password.touched"
+                                   formControlName="password">
+                        </div>
+
+                        <!-- * TODO: Create username from email function if blank * -->
+                        <div class="form-group">
+                            <label>Display Name
+                                <small>(username)</small>
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.displayName.valid && f.displayName.touched"
+                                   formControlName="displayName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.title.valid && f.title.touched"
+                                   formControlName="title">
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input type="checkbox"
+                                   class="form-check-input"
+                                   formControlName="admin">
+                            <label class="form-check-label">Admin User?</label>
+                        </div>
+
+
+                        <button type="submit"
+                                [disabled]="!editUserForm.valid"
+                                class="btn btn-primary mb-5">Submit
+                        </button>
+
+
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.email.valid && f.email.touched">
+                            Valid <b>Email</b> is required!
+                        </p>
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.password.valid && f.password.touched">
+                            <b>Password</b> with at least 8 characters and one number is required!
+                        </p>
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.displayName.valid && f.displayName.touched">
+                            <b>Display Name</b> is required!
+                        </p>
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.title.valid && f.title.touched">
+                            <b>Job Title</b> is required!
+                        </p>
+
+                        <!-- * Debugging * -->
+                        <code>
+                            <pre>Form value: {{ editUserForm.value | json }}</pre>
+                        </code>
+                        <code>
+                            <pre>Form value: {{ editUserForm.status | json }}</pre>
+                        </code>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6" *ngIf="user">
+            <div class="card">
+                <img class="card-img-top img-fluid" [src]="user.photoURL" [alt]="user.displayName">
+                <div class="card-body">
+                    <div class="btn-group float-right" role="group" aria-label="Basic example">
+                        <a class="btn btn-secondary btn-sm"
+                           [routerLink]="['/admin/users']">
+                            <i class="fa fa-undo"></i>&nbsp;Cancel
+                        </a>
+                    </div>
+                    <h5 class="card-title">{{ user.displayName }}</h5>
+                    <p class="card-text"><i>{{ user.title }}</i> <br>
+                        {{ user.email }} <br>
+                        Admin: {{ user.admin }} <br>
+                        Online: {{ user.isOnline }}<br>
+                    </p>
+
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last time online: {{ user.loginDate | date:'fullDate' }}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -8,6 +8,7 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminUserNewComponent } from './admin-user-new/admin-user-new.component';
 import { AdminUserRoutingModule } from './admin-user-routing.module';
 import { AdminUserComponent } from './admin-user.component';
+import { AdminUserHomeComponent } from './admin-user-home/admin-user-home.component';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { AdminUserComponent } from './admin-user.component';
         AdminUserNewComponent,
         AdminUserDetailsComponent,
         AdminUserEditComponent,
+        AdminUserHomeComponent,
     ]
 })
 export class AdminUserModule {}

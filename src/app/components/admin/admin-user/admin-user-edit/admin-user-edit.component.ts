@@ -48,7 +48,11 @@ export class AdminUserEditComponent implements OnInit {
 
                 // Form:
                 this.editUserForm = this.fb.group({
-                    email: [this.user.email, Validators.required],
+                    email: [this.user.email,
+                            Validators.compose([
+                                Validators.required, Validators.email
+                            ])
+                    ],
                     password: [this.user.password,
                                Validators.compose([
                                    Validators.required, Validators.minLength(8)

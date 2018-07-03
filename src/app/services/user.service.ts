@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { User } from 'firebase';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../models/User';
@@ -67,11 +66,10 @@ export class UserService {
             .catch((error) => console.log(`ERROR~au: `, error));
     }
 
-    deleteUser(id): void {
+    deleteUser(id: string): void {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
-        const user = this.userDoc.valueChanges();
         if (confirm(`Are you sure you want to delete this user?`)) {
-            this.userDoc.delete(user)
+            this.userDoc.delete()
                 .then((user) => this.router.navigate([`/admin/users`]))
                 .catch((error) => console.log(`ERROR~au: `, error));
         }

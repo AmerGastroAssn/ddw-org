@@ -76,13 +76,11 @@ export class AdminUserEditComponent implements OnInit {
                 this.title = this.editUserForm.value.title;
             }
         });
-
-
     }
 
     onUpdateUser(formData) {
         if (!this.editUserForm.valid) {
-            this.flashMessage.show('Something went wrong, User was not created.',
+            this.flashMessage.show('Something went wrong, User was not updated.',
               {
                   cssClass: 'alert-danger',
                   timeout: 3500
@@ -91,11 +89,12 @@ export class AdminUserEditComponent implements OnInit {
             this.userService.updateUser(formData, this.user.uid);
             // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.editUserForm.reset();
-            this.flashMessage.show(`${formData.displayName} was created successfully!`,
+            this.flashMessage.show(`${formData.displayName} was updated!`,
               {
                   cssClass: 'alert-success',
                   timeout: 3500
               });
         }
     }
+
 }

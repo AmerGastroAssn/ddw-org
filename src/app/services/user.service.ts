@@ -60,10 +60,20 @@ export class UserService {
         return this.user;
     }
 
-    updateUser(updatedUser, id: string): any {
+    updateUser(updatedUser, id: string): void {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
         this.userDoc.update(updatedUser)
-                       .then((user) => this.router.navigate([`/admin/users/${id}`]))
-                       .catch((error) => console.log(`ERROR~au: `, error));
+            .then((user) => this.router.navigate([`/admin/users/${id}`]))
+            .catch((error) => console.log(`ERROR~au: `, error));
+    }
+
+    deleteUser(id): void {
+        this.userDoc = this.afs.doc<User>(`users/${id}`);
+        const user = this.userDoc.valueChanges();
+        if (confirm(`Are you sure you want to delete this user?`)) {
+            this.userDoc.delete(user)
+                .then((user) => this.router.navigate([`/admin/users`]))
+                .catch((error) => console.log(`ERROR~au: `, error));
+        }
     }
 }

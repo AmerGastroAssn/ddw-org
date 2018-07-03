@@ -34,4 +34,8 @@ export class AdminUserDetailsComponent implements OnInit {
 
     }
 
+    onDeleteUser() {
+        this.userService.deleteUser(this.id);
+    }
+
 }

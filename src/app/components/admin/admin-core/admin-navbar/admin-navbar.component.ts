@@ -24,7 +24,7 @@ export class AdminNavbarComponent implements OnInit {
                 console.log(auth.email);
             } else {
                 this.isLoggedIn = false;
-                this.router.navigate(['/admin/login']);
+                // this.router.navigate(['/admin/login']);
             }
         });
     }

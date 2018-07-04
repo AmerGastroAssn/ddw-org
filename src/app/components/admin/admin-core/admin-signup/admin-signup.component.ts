@@ -14,9 +14,12 @@ export class AdminSignupComponent implements OnInit {
     user: User;
     email: string;
     password: string;
+    isOnline: boolean;
+    loginDate: number = Date.now();
+    photoURL: string;
+    admin: boolean;
     title: string;
     displayName: string;
-    photoURL: string;
 
 
     constructor(
@@ -41,16 +44,22 @@ export class AdminSignupComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(8)
             ])],
+            isOnline: [true],
+            loginDate: [Date.now()],
+            photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
+            admin: [false],
             title: ['', Validators.required],
             displayName: [''],
-            photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png']
         });
 
         this.email = this.signupForm.value.email;
         this.password = this.signupForm.value.password;
+        this.isOnline = this.signupForm.value.isOnline;
+        this.loginDate = this.signupForm.value.loginDate;
+        this.photoURL = this.signupForm.value.photoURL;
+        this.admin = this.signupForm.value.admin;
         this.title = this.signupForm.value.title;
         this.displayName = this.signupForm.value.displayName;
-        this.photoURL = this.signupForm.value.photoURL;
     }
 
     onSignup(formData: FormGroup) {

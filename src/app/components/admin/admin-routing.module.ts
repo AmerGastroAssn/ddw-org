@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
+import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
+import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
 import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
 import { AdminUserDetailsComponent } from './admin-user/admin-user-details/admin-user-details.component';
 import { AdminUserEditComponent } from './admin-user/admin-user-edit/admin-user-edit.component';
-import { AdminUserHomeComponent } from './admin-user/admin-user-home/admin-user-home.component';
 import { AdminUserListComponent } from './admin-user/admin-user-list/admin-user-list.component';
 import { AdminUserNewComponent } from './admin-user/admin-user-new/admin-user-new.component';
 import { AdminUserComponent } from './admin-user/admin-user.component';
@@ -32,7 +33,9 @@ const adminRoutes: Routes = [
                     { path: ':id', component: AdminUserDetailsComponent },
                     { path: ':id/edit', component: AdminUserEditComponent },
                 ]
-            }
+            },
+            { path: 'login', component: AdminLoginComponent },
+            { path: 'signup', component: AdminSignupComponent },
         ]
 
     },

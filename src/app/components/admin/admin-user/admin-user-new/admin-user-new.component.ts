@@ -36,26 +36,23 @@ export class AdminUserNewComponent implements OnInit {
 
     ngOnInit() {
         this.newUserForm = this.fb.group({
-            email: ['',
-                    Validators.compose([
-                        Validators.required, Validators.email
-                    ])
-            ],
-            password: ['',
-                       Validators.compose([
-                           Validators.required, Validators.minLength(8)
-                       ])
-            ],
+            email: ['', Validators.compose([
+                Validators.required,
+                Validators.email
+            ])],
+            password: ['', Validators.compose([
+                Validators.required,
+                Validators.minLength(8)
+            ])],
             displayName: ['', Validators.required],
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
             admin: [false],
-            title: ['',
-                    Validators.compose([
-                        Validators.required, Validators.minLength(5)
-                    ])
-            ],
+            title: ['', Validators.compose([
+                Validators.required,
+                Validators.minLength(5)
+            ])],
         });
 
         this.email = this.newUserForm.value.email;
@@ -70,20 +67,18 @@ export class AdminUserNewComponent implements OnInit {
 
     onAddNewUser(formData) {
         if (!this.newUserForm.valid) {
-            this.flashMessage.show('Something went wrong, User was not created.',
-              {
-                  cssClass: 'alert-danger',
-                  timeout: 3500
-              });
+            this.flashMessage.show('Something went wrong, User was not created.', {
+                cssClass: 'alert-danger',
+                timeout: 3500
+            });
         } else {
             this.userService.addUser(formData);
             // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.newUserForm.reset();
-            this.flashMessage.show(`${formData.displayName} was created successfully!`,
-              {
-                  cssClass: 'alert-success',
-                  timeout: 3500
-              });
+            this.flashMessage.show(`${formData.controls.displayName} was created successfully!`, {
+                cssClass: 'alert-success',
+                timeout: 3500
+            });
         }
     }
 

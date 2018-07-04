@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './admin-core/admin-sidebar/admin-sidebar.component';
@@ -25,6 +25,7 @@ import { AdminComponent } from './admin.component';
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         AdminRoutingModule,
     ],
     exports: []

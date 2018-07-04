@@ -1,3 +1,47 @@
-<p>
-  login works!
-</p>
+<div class="row mb-5 mt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center text-secondary pb-4 pt-3">
+                    <span class="text-dark">
+               <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
+                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                        <i class="fa fa-user-lock"></i>&nbsp;Admin
+                    </span> Login
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0">
+            <div class="card">
+                <div class="card-body">
+                    <!--<h2 class="card-title">Log In</h2>-->
+                    <form [formGroup]="loginForm"
+                          (ngSubmit)="onLogin(loginForm.value)">
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input type="email"
+                                   class="form-control"
+                                   formControlName="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password"
+                                   class="form-control"
+                                   formControlName="password">
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary"><i class="fa fa-unlock"></i>&nbsp;Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

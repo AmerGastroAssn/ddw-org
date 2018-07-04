@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AngularFireModule } from 'angularfire2';
@@ -17,6 +16,7 @@ import { NotFoundComponent } from './components/core/not-found/not-found.compone
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { AuthService } from './services/auth.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
 
@@ -42,7 +42,11 @@ import { UserService } from './services/user.service';
         FlashMessagesModule.forRoot(),
 
     ],
-    providers: [UserService, PageService],
+    providers: [
+        UserService,
+        PageService,
+        AuthService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

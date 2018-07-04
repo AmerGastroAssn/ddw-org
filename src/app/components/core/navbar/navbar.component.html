@@ -26,19 +26,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">DDW Blog</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Log In</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     Admin
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/admin/pages']">Admin</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" [routerLink]="['/admin/pages']">Pages</a>
+                    <a class="dropdown-item" [routerLink]="['/admin/users']">Users</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" [routerLink]="['/admin/login']">Log In</a>
                 </div>
             </li>
         </ul>

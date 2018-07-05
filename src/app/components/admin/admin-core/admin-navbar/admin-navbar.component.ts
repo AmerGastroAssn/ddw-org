@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
@@ -12,10 +13,12 @@ export class AdminNavbarComponent implements OnInit {
     isLoggedIn: boolean;
     loggedInUser: string;
     user: User;
+    allowSignup: boolean;
 
     constructor(
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private settingsService: AdminSettingsService
     ) {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
@@ -31,6 +34,8 @@ export class AdminNavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Settings:
+        this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
     }
 
     onLogout() {

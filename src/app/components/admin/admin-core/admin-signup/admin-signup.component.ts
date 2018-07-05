@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../../../models/User';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
@@ -20,12 +21,15 @@ export class AdminSignupComponent implements OnInit {
     admin: boolean;
     title: string;
     displayName: string;
+    allowSignup: boolean;
+    disableAdmin: Boolean;
 
 
     constructor(
       private fb: FormBuilder,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private settingsService: AdminSettingsService
     ) {
     }
 
@@ -35,6 +39,11 @@ export class AdminSignupComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Settings:
+        this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
+        this.disableAdmin = this.settingsService.getAdminSettings().disableAdmin;
+
+        // Form:
         this.signupForm = this.fb.group({
             email: ['', Validators.compose([
                 Validators.required,
@@ -47,7 +56,7 @@ export class AdminSignupComponent implements OnInit {
             isOnline: [true],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: [false],
+            admin: [{ value: '', disabled: this.disableAdmin }],
             title: ['', Validators.required],
             displayName: [''],
         });

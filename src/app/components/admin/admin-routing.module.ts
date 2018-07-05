@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
+import { RegisterGuard } from '../../guards/register.guard';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
@@ -22,21 +23,21 @@ const adminRoutes: Routes = [
             {
                 path: 'pages', component: AdminPagesComponent,
                 children: [
-                    { path: '', component: RegisterPageComponent, canActivate: [AuthGuard]  },
+                    { path: '', component: RegisterPageComponent, canActivate: [AuthGuard] },
                     { path: 'new', component: AdminRegisterPageNewComponent, canActivate: [AuthGuard] }
                 ]
             },
             {
                 path: 'users', component: AdminUserComponent,
                 children: [
-                    { path: '', component: AdminUserListComponent, canActivate: [AuthGuard]  },
+                    { path: '', component: AdminUserListComponent, canActivate: [AuthGuard] },
                     { path: 'new', component: AdminUserNewComponent, canActivate: [AuthGuard] },
-                    { path: ':id', component: AdminUserDetailsComponent, canActivate: [AuthGuard]  },
+                    { path: ':id', component: AdminUserDetailsComponent, canActivate: [AuthGuard] },
                     { path: ':id/edit', component: AdminUserEditComponent, canActivate: [AuthGuard] },
                 ]
             },
             { path: 'login', component: AdminLoginComponent },
-            { path: 'signup', component: AdminSignupComponent },
+            { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
         ]
 
     },

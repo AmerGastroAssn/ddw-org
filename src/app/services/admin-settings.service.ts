@@ -6,8 +6,8 @@ import { Settings } from '../models/Settings';
 })
 export class AdminSettingsService {
     settings: Settings = {
-        allowSignup: true,
-        disableAdmin: true,
+        allowSignup: false,
+        disableAdmin: false,
     };
 
     constructor() {

@@ -12,6 +12,12 @@
         </div>
     </div>
     <ul class="navbar-nav mx-auto">
+        <li class="nav-item" *ngIf="!isLoggedIn && allowSignup">
+            <a class="nav-link"
+               [routerLink]="['/admin/signup']">
+                <i class="fa fa-user-plus"></i>&nbsp;Create Account
+            </a>
+        </li>
         <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link"
                [routerLink]="['/admin/login']">

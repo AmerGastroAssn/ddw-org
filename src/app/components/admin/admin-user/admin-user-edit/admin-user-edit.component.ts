@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../../../models/User';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class AdminUserEditComponent implements OnInit {
     displayName: string;
     title: string;
     uid: string;
+    disableAdminOnEdit: boolean;
 
 
     constructor(
@@ -30,6 +32,7 @@ export class AdminUserEditComponent implements OnInit {
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
+      private settingsService: AdminSettingsService
     ) {
     }
 
@@ -39,6 +42,8 @@ export class AdminUserEditComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
+
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
         // Get User
@@ -62,7 +67,7 @@ export class AdminUserEditComponent implements OnInit {
                     isOnline: [this.user.isOnline],
                     loginDate: [Date.now()],
                     photoURL: [this.user.photoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-                    admin: [this.user.admin],
+                    admin: [{ value: this.user.admin, disabled: this.disableAdminOnEdit }],
                     title: [this.user.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/User';
@@ -14,7 +14,8 @@ export class AuthService {
     usersCollection: AngularFirestoreCollection<User>;
     users: Observable<User[]>;
     user: Observable<User>;
-    currentUser: string;
+    userDoc: AngularFirestoreDocument<User>;
+    currentUser: Observable<User>;
     uid: string;
     admin: boolean;
 
@@ -23,7 +24,7 @@ export class AuthService {
       private flashMessage: FlashMessagesService,
       private router: Router,
       private route: ActivatedRoute,
-      private afs: AngularFirestore
+      private afs: AngularFirestore,
     ) {
         this.usersCollection = afs.collection<User>('users');
         this.users = this.usersCollection.valueChanges();
@@ -31,6 +32,7 @@ export class AuthService {
 
 
     }
+
 
     // Checks if user is logged in.
     getAuth() {
@@ -83,7 +85,20 @@ export class AuthService {
     }
 
     logout() {
-
-        this.router.navigate(['/admin/login']);
+        this.afAuth.auth.signOut()
+            .then(() => {
+                this.flashMessage.show(`Logging you out!`, {
+                    cssClass: 'alert-info',
+                    timeout: 3000
+                });
+                this.router.navigate(['/admin/login']);
+            })
+            .catch((error) => {
+                this.flashMessage.show(error, {
+                    cssClass: 'alert-warning',
+                    timeout: 3500
+                });
+                console.log(`ERROR~l: `, error);
+            });
     }
 }

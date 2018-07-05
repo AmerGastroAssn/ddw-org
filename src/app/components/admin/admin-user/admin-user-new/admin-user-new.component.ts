@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -19,12 +20,14 @@ export class AdminUserNewComponent implements OnInit {
     displayName: string;
     title: string;
     uid: string;
+    disableAdminOnNew: boolean;
 
 
     constructor(
       private userService: UserService,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
+      private settingsService: AdminSettingsService
     ) {
 
     }
@@ -35,6 +38,10 @@ export class AdminUserNewComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Settings:
+        this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
+
+        // Form:
         this.newUserForm = this.fb.group({
             email: ['', Validators.compose([
                 Validators.required,
@@ -48,7 +55,7 @@ export class AdminUserNewComponent implements OnInit {
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: [false],
+            admin: [{ value: false, disabled: this.disableAdminOnNew }],
             title: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(5)
@@ -64,6 +71,7 @@ export class AdminUserNewComponent implements OnInit {
         this.admin = this.newUserForm.value.admin;
         this.title = this.newUserForm.value.title;
     }
+
 
     onAddNewUser(formData) {
         if (!this.newUserForm.valid) {

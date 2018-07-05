@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
@@ -13,10 +14,12 @@ import { UserService } from '../../../../services/user.service';
     styleUrls: ['./admin-user-details.component.css']
 })
 export class AdminUserDetailsComponent implements OnInit {
+    signedInUserCol: AngularFirestoreCollection<User>;
+    signedInUser$: Observable<User>;
     id: string;
     user: User;
-    currentUserId: any;
     currentUserIsAdmin: boolean;
+    currentUser;
     uid: string;
 
     constructor(
@@ -40,6 +43,7 @@ export class AdminUserDetailsComponent implements OnInit {
                 this.user = user;
             }
         });
+
     }
 
 

@@ -8,13 +8,15 @@
 <div class="card" *ngIf="user">
     <img class="card-img-top img-fluid" [src]="user.photoURL" [alt]="user.displayName">
     <div class="card-body">
-        <div class="btn-group float-right" role="group" aria-label="Basic example">
+        <div class="btn-group float-right"
+             role="group"
+             aria-label="Basic example">
             <a class="btn btn-secondary btn-sm"
-            [routerLink]="['edit']">
+               [routerLink]="['edit']">
                 <i class="fa fa-pencil"></i>&nbsp;Edit
             </a>
             <button class="btn btn-danger btn-sm"
-            (click)="onDeleteUser()">
+                    (click)="onDeleteUser()">
                 <i class="fa fa-trash"></i>&nbsp;Delete
             </button>
         </div>

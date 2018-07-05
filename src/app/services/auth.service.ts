@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/User';
 
@@ -12,15 +13,23 @@ import { User } from '../models/User';
 export class AuthService {
     usersCollection: AngularFirestoreCollection<User>;
     users: Observable<User[]>;
+    user: Observable<User>;
+    currentUser: string;
+    uid: string;
+    admin: boolean;
 
     constructor(
       private afAuth: AngularFireAuth,
       private flashMessage: FlashMessagesService,
       private router: Router,
+      private route: ActivatedRoute,
       private afs: AngularFirestore
     ) {
         this.usersCollection = afs.collection<User>('users');
         this.users = this.usersCollection.valueChanges();
+        this.uid = this.route.snapshot.params['id'];
+
+
     }
 
     // Checks if user is logged in.

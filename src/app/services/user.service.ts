@@ -21,6 +21,7 @@ export class UserService {
 
     }
 
+
     getUsers(): Observable<User[]> {
         // Ref, and order by title
         this.userCollection = this.afs.collection(`users`,
@@ -32,7 +33,7 @@ export class UserService {
                        return changes.map((a) => {
                            const data = a.payload.doc.data() as User;
                            data.uid = a.payload.doc.id;
-                           return { ...data };
+                           return data;
                        });
                    });
     }

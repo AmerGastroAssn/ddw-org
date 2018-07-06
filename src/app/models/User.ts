@@ -1,5 +1,6 @@
 export class User {
     constructor(
+      public uid: string,
       public email: string,
       public password: string,
       public isOnline: boolean,
@@ -8,7 +9,6 @@ export class User {
       public admin: boolean,
       public title: string,
       public displayName: string,
-      public uid?: string,
     ) {
     }
 }

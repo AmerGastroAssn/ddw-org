@@ -33,7 +33,7 @@
         <!-- * TODO: Need to get uid when user is added to db on signup * -->
         <li class="nav-item" *ngIf="isLoggedIn">
             <a class="nav-link"
-               [routerLink]="['/admin/users/', uid]">
+               [routerLink]="['/admin/users']">
                 <i class="fa fa-user-alt"></i>&nbsp;{{ loggedInUser }}
             </a>
         </li>

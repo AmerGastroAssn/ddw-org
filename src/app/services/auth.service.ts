@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { User } from '../models/User';
+
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +29,20 @@ export class AuthService {
     ) {
         this.usersCollection = afs.collection<User>('users');
         this.users = this.usersCollection.valueChanges();
-        this.uid = this.route.snapshot.params['id'];
+        // this.uid = this.route.snapshot.params['id'];
+        // this.uid = this.afAuth.auth.currentUser.uid;
+        // console.log(this.);
+
+        //// Get auth data, then get firestore user document || null
+        this.user = this.afAuth.authState.pipe(
+          switchMap(user => {
+              if (user) {
+                  return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+              } else {
+                  return of(null);
+              }
+          })
+        );
 
 
     }
@@ -42,12 +56,12 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
-                    resolve(userData);
                     this.flashMessage.show(`${data.email} logged in successfully!`, {
                         cssClass: 'alert-success',
                         timeout: 3500
                     });
                     this.router.navigate(['/admin/users']);
+                    return userData;
                 })
                 .catch((error) => {
                     reject(error);
@@ -60,35 +74,34 @@ export class AuthService {
         });
     }
 
-    signup(data) {
-        return new Promise((resolve, reject) => {
-            this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
-                .then((userData) => {
-                    resolve(userData);
-                    this.usersCollection.add(data);
-                    this.flashMessage.show(`You are signed up and logged in successfully!`, {
-                        cssClass: 'alert-success',
-                        timeout: 3500
-                    });
-                    this.router.navigate(['/admin/login']);
-                })
-                .catch((error) => {
-                    reject(error);
-                    this.flashMessage.show(error, {
-                        cssClass: 'alert-danger',
-                        timeout: 5000
-                    });
-                    this.router.navigate(['/admin/signup']);
-                });
-        });
+    emailSignup(userData) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
+                   .then(() => {
+                       return this.setUserData(userData) // create initial user document
+                                  .then(() => {
+                                      this.flashMessage.show(`You are signed up and logged in successfully!`, {
+                                          cssClass: 'alert-success',
+                                          timeout: 3500
+                                      });
+                                      this.router.navigate(['/admin/login']);
+                                  });
+                   })
+                   .catch(error => {
+                       this.flashMessage.show(error, {
+                           cssClass: 'alert-danger',
+                           timeout: 5000
+                       });
+                       this.router.navigate(['/admin/signup']);
+                   });
     }
+
 
     logout() {
         this.afAuth.auth.signOut()
             .then(() => {
                 this.flashMessage.show(`Logging you out!`, {
                     cssClass: 'alert-info',
-                    timeout: 3000
+                    timeout: 2000
                 });
                 this.router.navigate(['/admin/login']);
             })
@@ -99,5 +112,47 @@ export class AuthService {
                 });
                 console.log(`ERROR~l: `, error);
             });
+    }
+
+    private updateUserData(user) {
+        const tempId = this.afs.createId();
+        // Sets user data to firestore on login
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+
+        const data: User = {
+            uid: tempId,
+            email: user.email,
+            password: user.password,
+            isOnline: user.isOnline,
+            loginDate: user.loginDate,
+            photoURL: user.photoURL,
+            admin: user.admin,
+            title: user.title,
+            displayName: user.displayName,
+        };
+
+        return userRef.set(data, { merge: true });
+
+    }
+
+    private setUserData(user) {
+        const tempId = this.afs.createId();
+        // Sets user data to firestore on login
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${tempId}`);
+
+        const data: User = {
+            uid: tempId,
+            email: user.email,
+            password: user.password,
+            isOnline: user.isOnline,
+            loginDate: user.loginDate,
+            photoURL: user.photoURL,
+            admin: user.admin,
+            title: user.title,
+            displayName: user.displayName,
+        };
+        return userRef.set(data);
+
+
     }
 }

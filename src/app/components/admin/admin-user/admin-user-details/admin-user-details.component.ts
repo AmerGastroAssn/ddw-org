@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../../../../models/User';
+import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -17,8 +19,9 @@ export class AdminUserDetailsComponent implements OnInit {
       private userService: UserService,
       private router: Router,
       private route: ActivatedRoute,
+      private authService: AuthService,
+      private afs: AngularFirestore
     ) {
-
     }
 
     ngOnInit() {
@@ -30,7 +33,6 @@ export class AdminUserDetailsComponent implements OnInit {
                 this.user = user;
             }
         });
-
     }
 
 

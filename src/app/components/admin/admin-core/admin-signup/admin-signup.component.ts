@@ -57,7 +57,7 @@ export class AdminSignupComponent implements OnInit {
             isOnline: [true],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: [{ value: '', disabled: this.disableAdmin }],
+            admin: [{ value: false, disabled: this.disableAdmin }],
             title: ['', Validators.required],
             displayName: [''],
             uid: ['']
@@ -76,7 +76,7 @@ export class AdminSignupComponent implements OnInit {
 
     onSignup(formData: FormGroup) {
         if (this.signupForm.valid) {
-            this.authService.signup(formData);
+            this.authService.emailSignup(formData);
             this.signupForm.reset();
         }
     }

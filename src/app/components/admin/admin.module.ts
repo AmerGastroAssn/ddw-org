@@ -10,6 +10,7 @@ import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page
 import { AdminRegisterPageComponent } from './admin-pages/admin-register-page/admin-register-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { AdminComponent } from './admin.component';
         AdminNavbarComponent,
         AdminLoginComponent,
         AdminSignupComponent,
+        AdminSettingsComponent,
     ],
     imports: [
         CommonModule,

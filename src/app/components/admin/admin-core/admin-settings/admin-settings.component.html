@@ -1,0 +1,74 @@
+<div class="row mb-5 mt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center text-secondary pb-4 pt-3">
+                    <span class="text-dark">
+               <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
+                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                        <i class="fa fa-wrench"></i>&nbsp;Admin
+                    </span> Settings
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form (submit)="onSettingsSubmit()">
+
+                        <div class="form-group">
+                            <div class="form-group form-check">
+                                <input type="checkbox"
+                                       id="allowSignup"
+                                       class="form-check-input"
+                                       [checked]="settings.allowSignup">
+                                <label class="form-check-label"
+                                       for="allowSignup"
+                                       (change)="settings.allowSignup = !settings.allowSignup">
+                                    Allow User Registration?
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group form-check">
+                                <input type="checkbox"
+                                       id="disableAdmin"
+                                       class="form-check-input"
+                                       [checked]="settings.disableAdmin">
+                                <label class="form-check-label"
+                                       for="disableAdmin"
+                                       (change)="settings.disableAdmin = !settings.disableAdmin">
+                                    Disable Admin?
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group form-check">
+                                <input type="checkbox"
+                                       id="allowSettings"
+                                       class="form-check-input"
+                                       [checked]="settings.allowSettings">
+                                <label class="form-check-label"
+                                       for="allowSettings"
+                                       (change)="settings.allowSettings = !settings.allowSettings">
+                                    Allow this page to be editable?
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

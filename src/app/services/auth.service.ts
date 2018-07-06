@@ -33,7 +33,6 @@ export class AuthService {
 
     }
 
-
     // Checks if user is logged in.
     getAuth() {
         return this.afAuth.authState.map(auth => auth);

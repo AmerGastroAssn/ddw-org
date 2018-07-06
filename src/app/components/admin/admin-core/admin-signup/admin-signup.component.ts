@@ -20,9 +20,10 @@ export class AdminSignupComponent implements OnInit {
     photoURL: string;
     admin: boolean;
     title: string;
+    uid: string;
     displayName: string;
     allowSignup: boolean;
-    disableAdmin: Boolean;
+    disableAdmin: boolean;
 
 
     constructor(
@@ -59,6 +60,7 @@ export class AdminSignupComponent implements OnInit {
             admin: [{ value: '', disabled: this.disableAdmin }],
             title: ['', Validators.required],
             displayName: [''],
+            uid: ['']
         });
 
         this.email = this.signupForm.value.email;
@@ -69,6 +71,7 @@ export class AdminSignupComponent implements OnInit {
         this.admin = this.signupForm.value.admin;
         this.title = this.signupForm.value.title;
         this.displayName = this.signupForm.value.displayName;
+        this.uid = this.signupForm.value.uid;
     }
 
     onSignup(formData: FormGroup) {

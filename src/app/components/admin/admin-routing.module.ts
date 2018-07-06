@@ -5,6 +5,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { RegisterPageComponent } from '../pages/register-page/register-page.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
+import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
 import { AdminPagesComponent } from './admin-pages/admin-pages.component';
 import { AdminRegisterPageNewComponent } from './admin-pages/admin-register-page-new/admin-register-page-new.component';
@@ -38,6 +39,7 @@ const adminRoutes: Routes = [
             },
             { path: 'login', component: AdminLoginComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
+            { path: 'settings', component: AdminSettingsComponent, canActivate: [RegisterGuard] },
         ]
 
     },

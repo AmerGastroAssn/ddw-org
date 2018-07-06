@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from 'firebase';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
     selector: 'ddw-admin-navbar',
@@ -12,30 +12,35 @@ import { AuthService } from '../../../../services/auth.service';
 export class AdminNavbarComponent implements OnInit {
     isLoggedIn: boolean;
     loggedInUser: string;
-    user: User;
+    user;
     allowSignup: boolean;
+    allowSettings: boolean;
+    uid: string;
+    id: string;
 
     constructor(
       private authService: AuthService,
       private router: Router,
+      private route: ActivatedRoute,
+      private userService: UserService,
       private settingsService: AdminSettingsService
     ) {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
                 this.isLoggedIn = true;
                 this.loggedInUser = auth.email;
-                console.log(auth.email);
             } else {
                 this.isLoggedIn = false;
                 // this.router.navigate(['/admin/login']);
             }
         });
-
     }
 
     ngOnInit() {
         // Settings:
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
+        this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
+
     }
 
     onLogout() {

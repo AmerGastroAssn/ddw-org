@@ -60,6 +60,7 @@ export class AdminUserNewComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(5)
             ])],
+            uid: ['']
         });
 
         this.email = this.newUserForm.value.email;
@@ -70,6 +71,7 @@ export class AdminUserNewComponent implements OnInit {
         this.photoURL = this.newUserForm.value.photoURL;
         this.admin = this.newUserForm.value.admin;
         this.title = this.newUserForm.value.title;
+        this.uid = this.newUserForm.value.uid;
     }
 
 

@@ -18,7 +18,6 @@ export class UserService {
       private afs: AngularFirestore,
       private router: Router
     ) {
-
     }
 
 

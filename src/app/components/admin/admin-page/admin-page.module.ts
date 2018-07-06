@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AdminPageDetailsComponent } from './admin-page-details/admin-page-details.component';
 import { AdminPageEditComponent } from './admin-page-edit/admin-page-edit.component';
 import { AdminPageHomeComponent } from './admin-page-home/admin-page-home.component';
@@ -13,6 +14,7 @@ import { AdminPageNewComponent } from './admin-page-new/admin-page-new.component
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
     ],
     declarations: [
         AdminPageNewComponent,

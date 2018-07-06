@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AdminUserDetailsComponent } from './admin-user-details/admin-user-details.component';
 import { AdminUserEditComponent } from './admin-user-edit/admin-user-edit.component';
 import { AdminUserHomeComponent } from './admin-user-home/admin-user-home.component';
@@ -14,6 +15,7 @@ import { AdminUserComponent } from './admin-user.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
     ],
     declarations: [
         AdminUserComponent,

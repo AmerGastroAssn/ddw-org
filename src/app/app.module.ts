@@ -41,7 +41,6 @@ import { UserService } from './services/user.service';
         AngularFireStorageModule,
         AppRoutingModule,
         FlashMessagesModule.forRoot(),
-
     ],
     providers: [
         UserService,

@@ -1,3 +1,11 @@
-<p>
-  admin-page-list works!
-</p>
+<!-- * ADMIN-PAGE-LIST * -->
+<div class="row">
+    <div class="container">
+        <div class="card-group">
+            <ddw-admin-page-item
+                    *ngFor="let pageEl of page$ | async;"
+                    [page]="pageEl">
+            </ddw-admin-page-item>
+        </div>
+    </div>
+</div>

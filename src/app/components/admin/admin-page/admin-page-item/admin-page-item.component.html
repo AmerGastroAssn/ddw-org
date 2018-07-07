@@ -1,3 +1,12 @@
-<p>
-  admin-page-item works!
-</p>
+<div class="card">
+    <img class="card-img-top" [src]="page.photoURL" [alt]="page.title">
+    <div class="card-body">
+        <h5 class="card-title">{{ page.title }}</h5>
+        <h6 class="card-subtitle">{{ page.date }}</h6>
+        <p class="card-text">{{ page.body }}</p>
+        <span class="badge badge-pill badge-primary">{{ page.category }}</span>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted">{{ page.author }}</small>
+    </div>
+</div>

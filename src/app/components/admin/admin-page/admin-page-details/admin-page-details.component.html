@@ -1,3 +1,35 @@
-<p>
-  admin-page-details works!
-</p>
+<!-- * ADMIN-PAGE-DETAILS * -->
+<div class="row mb-4">
+    <a class="text-primary back-users"
+       [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+    </a>
+</div>
+
+
+<div class="card" *ngIf="page">
+    <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
+    <div class="card-body">
+        <div class="btn-group float-right"
+             role="group"
+             aria-label="Basic example">
+            <a class="btn btn-secondary btn-sm"
+               [routerLink]="['edit']">
+                <i class="fa fa-pencil"></i>&nbsp;Edit
+            </a>
+            <button class="btn btn-danger btn-sm"
+                    (click)="onDeletePage()">
+                <i class="fa fa-trash"></i>&nbsp;Delete
+            </button>
+        </div>
+        <h5 class="card-title">{{ page.title }}</h5>
+        <p class="card-text">
+            {{ page.author}} <br>
+            Categories: {{ page.category }} <br>
+            Body: <br> {{ page.body }}
+        </p>
+
+    </div>
+    <div class="card-footer">
+        <small class="text-muted">Publish Date: {{ page.date | date:'fullDate' }}</small>
+    </div>
+</div>

@@ -1,3 +1,149 @@
-<p>
-  admin-page-edit works!
-</p>
+<div class="row mb-4">
+    <a class="text-primary back-pages"
+       [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+    </a>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6" *ngIf="page">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2>Edit {{ page.title }}</h2>
+                    </div>
+
+                    <form [formGroup]="editPageForm"
+                          (ngSubmit)="onUpdatePage(editPageForm.value)">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.title.valid && f.title.touched"
+                                   formControlName="title">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.author.valid && f.author.touched"
+                                   formControlName="author">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Created On</label>
+                            <input type="number"
+                                   class="form-control"
+                                   [class.invalid]="!f.date.valid && f.date.touched"
+                                   formControlName="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                   formControlName="photoURL">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select class="form-control"
+                                    id="category"
+                                    [class.invalid]="!f.category.valid && f.category.touched"
+                                    formControlName="category">
+                                <option>Attendee Planning</option>
+                                <option>Page 2</option>
+                                <option>Page 3</option>
+                                <option>Page 4</option>
+                                <option>Page 5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Body</label>
+                            <textarea class="form-control"
+                                      rows="10"
+                                      formControlName="body">
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox"
+                                       class="custom-control-input"
+                                       id="published"
+                                       formControlName="published">
+                                <label class="custom-control-label"
+                                       for="published">Publish?</label>
+                            </div>
+                        </div>
+
+                        <div class="btn-group float-right" role="group" aria-label="Basic example">
+                            <a class="btn btn-secondary btn-sm"
+                               [routerLink]="['/admin/pages']">
+                                <i class="fa fa-undo"></i>&nbsp;Cancel
+                            </a>
+                        </div>
+
+                        <button type="submit"
+                                [disabled]="!editPageForm.valid"
+                                class="btn btn-primary mb-5"><i class="fa fa-save"></i>&nbsp;Save
+                        </button>
+
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.title.valid && f.title.touched">
+                            Valid <b>Title</b> is required!
+                        </p>
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.body.valid && f.body.touched">
+                            The <b>Body</b> with at least 100 characters is required!
+                        </p>
+                        <p class="help-block alert alert-warning text-center"
+                           *ngIf="!f.author.valid && f.author.touched">
+                            <b>Author</b> is required!
+                        </p>
+
+                        <!-- * Debugging * -->
+                        <!--<code>-->
+                        <!--<pre>Form value: {{ editPageForm.value | json }}</pre>-->
+                        <!--</code>-->
+                        <!--<code>-->
+                        <!--<pre>Form value: {{ editPageForm.status | json }}</pre>-->
+                        <!--</code>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6" *ngIf="page">
+            <div class="card">
+                <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
+                <div class="card-body">
+                    <div class="btn-group float-right" role="group" aria-label="Basic example">
+                        <a class="btn btn-secondary btn-sm"
+                           [routerLink]="['/admin/pages']">
+                            <i class="fa fa-undo"></i>&nbsp;Cancel
+                        </a>
+                    </div>
+                    <h5 class="card-title">{{ page.title }}</h5>
+                    <p class="card-text">
+                        {{ page.author}} <br>
+                        Categories: {{ page.category }} <br>
+                        Body: <br> {{ page.body }}
+                    </p>
+
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Publish Date: {{ page.date | date:'fullDate' }}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

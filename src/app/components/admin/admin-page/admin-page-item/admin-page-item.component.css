@@ -1,3 +1,7 @@
 .card {
     max-width: 19rem;
 }
+
+a {
+    text-decoration: none;
+}

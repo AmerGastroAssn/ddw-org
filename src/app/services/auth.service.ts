@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -12,6 +12,7 @@ import { User } from '../models/User';
     providedIn: 'root'
 })
 export class AuthService {
+    statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
     users: Observable<User[]>;
     user: Observable<User>;
@@ -52,16 +53,51 @@ export class AuthService {
         return this.afAuth.authState.map(auth => auth);
     }
 
+    // Gets Firebase UserToken and stores in browser app storage.
+    currentUserToken(): any {
+        return this.afAuth.auth.currentUser.getIdToken(false)
+                   .then(idToken => {
+                       return localStorage.setItem('userToken', idToken);
+                   })
+                   .catch(error => {
+                       return error;
+                   });
+    }
+
+    // Pulls the databaseUser's info as a promise.
+    getUserFromDatabase(uid) {
+        this.afAuth.authState.subscribe(auth => {
+            if (auth) {
+                this.currentUser = uid;
+            }
+        });
+    }
+
+    // Sets the databaseUsers's info.
+    setUserInLocalStorage(userFromDatabase) {
+        localStorage.setItem('user', JSON.stringify(userFromDatabase));
+        this.statusChange.emit(userFromDatabase);
+    }
+
     login(data) {
         return new Promise((resolve, reject) => {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
+                    this.currentUserToken();
                     this.flashMessage.show(`${data.email} logged in successfully!`, {
                         cssClass: 'alert-success',
                         timeout: 3500
                     });
                     this.router.navigate(['/admin/users']);
                     return userData;
+                })
+                .then((userData) => {
+                    if (userData) {
+                        // this.afs.doc<User>(`users/${data.uid}`).valueChanges();
+                        this.setUserInLocalStorage(userData);
+                    } else {
+                        console.log('userData was not found.');
+                    }
                 })
                 .catch((error) => {
                     reject(error);

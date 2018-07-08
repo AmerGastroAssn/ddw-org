@@ -54,14 +54,18 @@
                         <div class="form-group form-check">
                             <input type="checkbox"
                                    class="form-check-input"
+                                   id="admin"
                                    formControlName="admin">
-                            <label class="form-check-label">Admin User?</label>
+                            <label class="form-check-label"
+                                   for="admin">
+                                Admin User?
+                            </label>
                         </div>
 
 
                         <button type="submit"
                                 [disabled]="!editUserForm.valid"
-                                class="btn btn-primary mb-5">Submit
+                                class="btn btn-primary mb-5"><i class="fa fa-save"></i>&nbsp;Save
                         </button>
 
 
@@ -84,10 +88,10 @@
 
                         <!-- * Debugging * -->
                         <!--<code>-->
-                            <!--<pre>Form value: {{ editUserForm.value | json }}</pre>-->
+                        <!--<pre>Form value: {{ editUserForm.value | json }}</pre>-->
                         <!--</code>-->
                         <!--<code>-->
-                            <!--<pre>Form value: {{ editUserForm.status | json }}</pre>-->
+                        <!--<pre>Form value: {{ editUserForm.status | json }}</pre>-->
                         <!--</code>-->
 
                     </form>

@@ -16,7 +16,7 @@ export class AdminPageEditComponent implements OnInit {
     editPageForm: FormGroup;
     title: string;
     author: string;
-    date: number = Date.now();
+    date: string;
     photoURL: string;
     body: string;
     category: string;
@@ -65,7 +65,7 @@ export class AdminPageEditComponent implements OnInit {
                            ])
                     ],
                     author: [this.page.author, Validators.required],
-                    date: [Date.now()],
+                    date: [''],
                     photoURL: [this.page.photoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],

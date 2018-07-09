@@ -43,10 +43,11 @@
 
 
                         <div class="form-group">
-                            <label>Created On</label>
-                            <input type="date"
+                            <label>Publish Date</label>
+                            <input type="string"
                                    class="form-control"
                                    [class.invalid]="!f.date.valid && f.date.touched"
+                                   bsDatepicker
                                    formControlName="date">
                         </div>
 

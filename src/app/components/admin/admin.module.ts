@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
@@ -25,6 +26,7 @@ import { AdminComponent } from './admin.component';
         FormsModule,
         ReactiveFormsModule,
         AdminRoutingModule,
+        BsDatepickerModule.forRoot(),
     ],
     exports: []
 })

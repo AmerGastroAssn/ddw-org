@@ -55,9 +55,10 @@
 
                         <div class="form-group">
                             <label>Created On</label>
-                            <input type="number"
+                            <input type="date"
                                    class="form-control"
                                    [class.invalid]="!f.date.valid && f.date.touched"
+                                   bsDatepicker="date"
                                    formControlName="date">
                         </div>
 

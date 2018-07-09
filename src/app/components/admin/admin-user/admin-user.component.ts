@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../models/User';
+import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -11,11 +12,13 @@ import { UserService } from '../../../services/user.service';
 export class AdminUserComponent implements OnInit {
     users$: Observable<User[]>;
 
-    constructor(public userService: UserService) {
+    constructor(public userService: UserService,
+                private authService: AuthService) {
     }
 
     ngOnInit() {
         this.users$ = this.userService.getUsers();
+        console.log('getProfile()', this.authService.getProfile());
     }
 
 

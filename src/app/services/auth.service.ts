@@ -220,7 +220,6 @@ export class AuthService {
         const tempId = this.afs.createId();
         // Sets user data to firestore on login
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-
         const data: User = {
             $key: user.$key,
             uid: user.$key,
@@ -239,13 +238,12 @@ export class AuthService {
     }
 
     private setUserData(user) {
-        const tempId = this.afs.createId();
+        const new$key = this.afs.createId();
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${tempId}`);
-
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
         const data: User = {
-            $key: user.$key,
-            uid: user.$key,
+            $key: new$key,
+            uid: user.uid,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,
@@ -255,8 +253,9 @@ export class AuthService {
             title: user.title,
             displayName: user.displayName,
         };
+
         return userRef.set(data);
-
-
     }
+
+
 }

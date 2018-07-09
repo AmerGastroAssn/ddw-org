@@ -3,8 +3,8 @@
         <img class="card-img-top" [src]="page.photoURL" [alt]="page.title">
         <div class="card-body">
             <h5 class="card-title">{{ page.title }}</h5>
-            <h6 class="card-subtitle">{{ page.date }}</h6>
-            <p class="card-text">{{ page.body }}</p>
+            <h6 class="card-subtitle">{{ page.date | date:'mediumDate' }}</h6>
+            <p class="card-text">{{ page.body | slice:0:100 }}</p>
             <span class="badge badge-pill badge-primary">{{ page.category }}</span>
         </div>
         <div class="card-footer">

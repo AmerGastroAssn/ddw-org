@@ -86,7 +86,7 @@ export class AuthService {
                     this.currentUserToken();
                     this.flashMessage.show(`${data.email} logged in successfully!`, {
                         cssClass: 'alert-success',
-                        timeout: 3500
+                        timeout: 1500
                     });
                     this.router.navigate(['/admin/users']);
                     return userData;
@@ -117,9 +117,16 @@ export class AuthService {
                                   .then(() => {
                                       this.flashMessage.show(`You are signed up and logged in successfully!`, {
                                           cssClass: 'alert-success',
-                                          timeout: 3500
+                                          timeout: 2500
                                       });
                                       this.router.navigate(['/admin/login']);
+                                  })
+                                  .then(() => {
+                                      if (userData) {
+                                          this.setUserInLocalStorage(userData);
+                                      } else {
+                                          console.log('userData was not found.');
+                                      }
                                   });
                    })
                    .catch(error => {
@@ -135,9 +142,11 @@ export class AuthService {
     logout() {
         this.afAuth.auth.signOut()
             .then(() => {
+                localStorage.removeItem('user');
+                localStorage.removeItem('userToken');
                 this.flashMessage.show(`Logging you out!`, {
                     cssClass: 'alert-info',
-                    timeout: 2000
+                    timeout: 700
                 });
                 this.router.navigate(['/admin/login']);
             })

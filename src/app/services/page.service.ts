@@ -69,7 +69,7 @@ export class PageService {
 
     deletePage(id: string): void {
         this.pageDoc = this.afs.doc<Page>(`pages/${id}`);
-        if (confirm(`Are you sure you want to delete this page?`)) {
+        if (confirm(`Are you sure you want to delete this page? This is irreversible.`)) {
             this.pageDoc.delete()
                 .then((page) => this.router.navigate([`/admin/pages`]))
                 .catch((error) => console.log(`ERROR~dP: `, error));

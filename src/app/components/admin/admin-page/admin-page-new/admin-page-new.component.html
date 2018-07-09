@@ -64,10 +64,24 @@
                                     id="category"
                                     [class.invalid]="!f.category.valid && f.category.touched"
                                     formControlName="category">
+                                <option>Register</option>
                                 <option>Attendee Planning</option>
                                 <option>Education</option>
                                 <option>Exhibitor Information</option>
                                 <option>News &amp; Media</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Template</label>
+                            <select class="form-control"
+                                    id="template"
+                                    [class.invalid]="!f.template.valid && f.template.touched"
+                                    formControlName="template">
+                                <option>Full Width</option>
+                                <option>3 Column Bottom</option>
+                                <option>3 Column Top</option>
+                                <option>Blog Post</option>
                             </select>
                         </div>
 
@@ -103,7 +117,8 @@
 
                         <button type="submit"
                                 [disabled]="!newPageForm.valid"
-                                class="btn btn-primary mb-5"><i class="fa fa-save"></i>&nbsp;Save
+                                class="btn btn-primary btn-sm mb-5">
+                            <i class="fa fa-file-plus"></i>&nbsp;Create
                         </button>
 
                         <!-- * Debugging * -->

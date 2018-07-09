@@ -68,7 +68,7 @@ export class UserService {
 
     deleteUser(id: string): void {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
-        if (confirm(`Are you sure you want to delete this user?`)) {
+        if (confirm(`Are you sure you want to delete this user? This is irreversible.`)) {
             this.userDoc.delete()
                 .then((user) => this.router.navigate([`/admin/users`]))
                 .catch((error) => console.log(`ERROR~au: `, error));

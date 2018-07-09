@@ -8,6 +8,7 @@ export class Page {
       public photoURL: string,
       public category: string,
       public published: boolean,
+      public template: string
     ) {
     }
 }

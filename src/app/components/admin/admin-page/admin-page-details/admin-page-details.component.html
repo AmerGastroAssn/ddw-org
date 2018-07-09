@@ -16,6 +16,10 @@
                [routerLink]="['edit']">
                 <i class="fa fa-pencil"></i>&nbsp;Edit
             </a>
+            <a class="btn btn-warning btn-sm"
+               [routerLink]="['/admin/pages']">
+                <i class="fa fa-undo"></i>&nbsp;Cancel
+            </a>
             <button class="btn btn-danger btn-sm"
                     (click)="onDeletePage()">
                 <i class="fa fa-trash"></i>&nbsp;Delete
@@ -24,8 +28,8 @@
         <h5 class="card-title">{{ page.title }}</h5>
         <p class="card-text">
             {{ page.author}} <br>
-            Categories: {{ page.category }} <br>
-            Body: <br> {{ page.body }}
+            <b>Category:</b> {{ page.category }} <br>
+            <b>Body:</b> <br> {{ page.body }}
         </p>
 
     </div>

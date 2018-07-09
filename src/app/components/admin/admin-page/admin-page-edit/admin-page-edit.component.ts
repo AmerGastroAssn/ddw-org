@@ -22,6 +22,7 @@ export class AdminPageEditComponent implements OnInit {
     category: string;
     uid: string;
     published: boolean;
+    template: string;
     disableAdminOnEdit: boolean;
 
 
@@ -55,7 +56,7 @@ export class AdminPageEditComponent implements OnInit {
                     uid: [this.page.uid],
                     title: [this.page.title,
                             Validators.compose([
-                                Validators.required, Validators.minLength(10)
+                                Validators.required, Validators.minLength(5)
                             ])
                     ],
                     body: [this.page.body,
@@ -68,6 +69,7 @@ export class AdminPageEditComponent implements OnInit {
                     photoURL: [this.page.photoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],
+                    template: [this.page.template, Validators.required],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -78,26 +80,24 @@ export class AdminPageEditComponent implements OnInit {
                 this.photoURL = this.editPageForm.value.photoURL;
                 this.category = this.editPageForm.value.category;
                 this.published = this.editPageForm.value.published;
+                this.template = this.editPageForm.value.template;
             }
         });
     }
 
     onUpdatePage(formData) {
         if (!this.editPageForm.valid) {
-            this.flashMessage.show('Something went wrong, Page was not updated.',
-              {
-                  cssClass: 'alert-danger',
-                  timeout: 3500
-              });
+            this.flashMessage.show('Something went wrong, Page was not updated.', {
+                cssClass: 'alert-danger',
+                timeout: 3500
+            });
         } else {
             this.pageService.updatePage(formData, this.page.uid);
-            // console.log(`${newPage.email}, ${newPage.password}, ${newPage.admin}`);
             this.editPageForm.reset();
-            this.flashMessage.show(`${formData.title} was updated!`,
-              {
-                  cssClass: 'alert-success',
-                  timeout: 3500
-              });
+            this.flashMessage.show(`${formData.title} was updated!`, {
+                cssClass: 'alert-success',
+                timeout: 3500
+            });
         }
     }
 

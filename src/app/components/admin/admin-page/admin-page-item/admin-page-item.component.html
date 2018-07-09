@@ -1,11 +1,13 @@
 <a [routerLink]="['/admin/pages/', page.uid]">
-    <div class="card">
+    <div class="card text-dark">
         <img class="card-img-top" [src]="page.photoURL" [alt]="page.title">
         <div class="card-body">
             <h5 class="card-title">{{ page.title }}</h5>
             <h6 class="card-subtitle">{{ page.date | date:'mediumDate' }}</h6>
-            <p class="card-text">{{ page.body | slice:0:100 }}</p>
+            <hr>
+            <p class="card-text text-truncate">{{ page.body | slice:0:100 }}</p>
             <span class="badge badge-pill badge-primary">{{ page.category }}</span>
+            <p class="card-text text-secondary text-right"><small>{{ page.template }} Template</small></p>
         </div>
         <div class="card-footer">
             <small class="text-muted">{{ page.author }}</small>

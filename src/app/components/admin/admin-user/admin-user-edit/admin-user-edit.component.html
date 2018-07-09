@@ -66,9 +66,14 @@
 
                         <button type="submit"
                                 [disabled]="!editUserForm.valid"
-                                class="btn btn-primary mb-5"><i class="fa fa-save"></i>&nbsp;Save
+                                class="btn btn-primary btn-sm mb-5"><i class="fa fa-file-plus"></i>&nbsp;Update
                         </button>
-
+                        <div class="btn-group float-right" role="group" aria-label="Basic example">
+                            <a class="btn btn-warning btn-sm"
+                               [routerLink]="['/admin/users']">
+                                <i class="fa fa-undo"></i>&nbsp;Cancel
+                            </a>
+                        </div>
 
                         <p class="help-block alert alert-warning text-center"
                            *ngIf="!f.email.valid && f.email.touched">
@@ -105,12 +110,6 @@
             <div class="card">
                 <img class="card-img-top img-fluid" [src]="user.photoURL" [alt]="user.displayName">
                 <div class="card-body">
-                    <div class="btn-group float-right" role="group" aria-label="Basic example">
-                        <a class="btn btn-secondary btn-sm"
-                           [routerLink]="['/admin/users']">
-                            <i class="fa fa-undo"></i>&nbsp;Cancel
-                        </a>
-                    </div>
                     <h5 class="card-title">{{ user.displayName }}</h5>
                     <p class="card-text"><i>{{ user.title }}</i> <br>
                         {{ user.email }} <br>

@@ -23,6 +23,7 @@ export class AdminPageNewComponent implements OnInit {
     category: string;
     uid: string;
     published: boolean;
+    template: string;
     disableAdminOnNew: boolean;
 
 
@@ -58,7 +59,7 @@ export class AdminPageNewComponent implements OnInit {
             uid: [''],
             title: ['',
                     Validators.compose([
-                        Validators.required, Validators.minLength(10)
+                        Validators.required, Validators.minLength(5)
                     ])
             ],
             body: ['',
@@ -71,6 +72,7 @@ export class AdminPageNewComponent implements OnInit {
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
             category: [''],
             published: [''],
+            template: ['' || 'Full Width', Validators.required]
         });
 
         this.uid = this.newPageForm.value.uid;
@@ -81,25 +83,24 @@ export class AdminPageNewComponent implements OnInit {
         this.photoURL = this.newPageForm.value.photoURL;
         this.category = this.newPageForm.value.category;
         this.published = this.newPageForm.value.published;
+        this.published = this.newPageForm.value.published;
+        this.template = this.newPageForm.value.template;
     }
 
 
     onAddNewPage(formData) {
         if (!this.newPageForm.valid) {
-            this.flashMessage.show('Something went wrong, Page was not created.',
-              {
-                  cssClass: 'alert-danger',
-                  timeout: 3500
-              });
+            this.flashMessage.show('Something went wrong, Page was not created.', {
+                cssClass: 'alert-danger',
+                timeout: 3500
+            });
         } else {
             this.pageService.addPage(formData);
-            // console.log(`${newPage.email}, ${newPage.password}, ${newPage.admin}`);
             this.newPageForm.reset();
-            this.flashMessage.show(`${formData.title} was created!`,
-              {
-                  cssClass: 'alert-success',
-                  timeout: 3500
-              });
+            this.flashMessage.show(`${formData.title} was created!`, {
+                cssClass: 'alert-success',
+                timeout: 3500
+            });
         }
     }
 

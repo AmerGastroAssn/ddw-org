@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/internal/Observable';
@@ -9,14 +10,18 @@ import { User } from '../models/User';
     providedIn: 'root'
 })
 export class UserService {
+    statusChange: any = new EventEmitter<any>();
     userCollection: AngularFirestoreCollection<User>;
     userDoc: AngularFirestoreDocument<User>;
     user: Observable<User>;
+    users$: Observable<User[]>;
+    uid: string;
 
 
     constructor(
       private afs: AngularFirestore,
-      private router: Router
+      private router: Router,
+      private afAuth: AngularFireAuth
     ) {
     }
 

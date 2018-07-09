@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'ddw-pages',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPageComponent implements OnInit {
 
-    constructor() {
+    constructor(
+      private authService: AuthService
+    ) {
     }
 
     ngOnInit() {
+
     }
 
 }

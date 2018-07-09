@@ -32,7 +32,7 @@ export class PageService {
                    .map((changes) => {
                        return changes.map((a) => {
                            const data = a.payload.doc.data() as Page;
-                           data.uid = a.payload.doc.id;
+                           data.$key = a.payload.doc.id;
                            return data;
                        });
                    });

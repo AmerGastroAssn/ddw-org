@@ -15,6 +15,7 @@ import { PageService } from '../../../../services/page.service';
 export class AdminPageNewComponent implements OnInit {
     page: Page;
     newPageForm: FormGroup;
+    $key: string;
     title: string;
     author: string;
     date: number = Date.now();

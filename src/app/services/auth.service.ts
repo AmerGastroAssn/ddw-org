@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { User } from '../models/User';
+import { UserService } from './user.service';
 
 
 @Injectable({
@@ -14,12 +14,22 @@ import { User } from '../models/User';
 export class AuthService {
     statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
-    users: Observable<User[]>;
-    user: Observable<User>;
+    users$: Observable<User[]>;
+    user$: Observable<User>;
+    fbUser$: Observable<firebase.User>;
     userDoc: AngularFirestoreDocument<User>;
-    currentUser: Observable<User>;
+    currentUser$: Observable<User>;
+    loggedIn: boolean;
+    $key: string;
     uid: string;
     admin: boolean;
+    displayName: string;
+    email: string;
+    password: string;
+    photoURL: string;
+    loginDate: number = Date.now();
+    isOnline: boolean;
+    title: string;
 
     constructor(
       private afAuth: AngularFireAuth,
@@ -27,25 +37,64 @@ export class AuthService {
       private router: Router,
       private route: ActivatedRoute,
       private afs: AngularFirestore,
+      private userService: UserService,
     ) {
         this.usersCollection = afs.collection<User>('users');
-        this.users = this.usersCollection.valueChanges();
-        // this.uid = this.route.snapshot.params['id'];
-        // this.uid = this.afAuth.auth.currentUser.uid;
-        // console.log(this.);
+        this.users$ = this.usersCollection.snapshotChanges()
+                          .map(actions => {
+                              return actions.map(action => ({
+                                  $key: action.payload.doc.id, ...action.payload.doc.data()
+                              }));
+                          });
+
 
         //// Get auth data, then get firestore user document || null
-        this.user = this.afAuth.authState.pipe(
-          switchMap(user => {
-              if (user) {
-                  return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-              } else {
-                  return of(null);
-              }
-          })
-        );
+        // this.user = this.afAuth.authState.pipe(
+        //   switchMap(user => {
+        //       if (user) {
+        //           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        //       } else {
+        //           return of(null);
+        //       }
+        //   })
+        // );
+
+        this.fbUser$ = afAuth.authState
+                             .do((user) => {
+                                 if (user) {
+                                     this.uid = user.uid;
+                                     // this.updateOnConnect();
+                                     // this.setOffline();
+                                 }
+                             });
+        // Sets user in browser.
+        this.userService.statusChange.subscribe(userData => {
+            if (userData) {
+                this.$key = userData.$key;
+                this.uid = userData.uid;
+                this.displayName = userData.displayName;
+                this.email = userData.email;
+                this.password = userData.password;
+                this.photoURL = userData.photoURL;
+                this.loginDate = Date.now();
+                this.isOnline = userData.isOnline = true;
+                this.admin = userData.admin;
+                this.title = userData.title;
+
+            } else {
+                this.displayName = null;
+                this.email = null;
+                this.uid = null;
+            }
+        });
+
+    }
 
 
+    // Used to get userData in browser memory.
+    getProfile() {
+        const user = localStorage.getItem('user');
+        return JSON.parse(user);
     }
 
     // Checks if user is logged in.
@@ -68,15 +117,16 @@ export class AuthService {
     getUserFromDatabase(uid) {
         this.afAuth.authState.subscribe(auth => {
             if (auth) {
-                this.currentUser = uid;
+                this.currentUser$ = uid;
             }
         });
     }
 
     // Sets the databaseUsers's info.
-    setUserInLocalStorage(userFromDatabase) {
-        localStorage.setItem('user', JSON.stringify(userFromDatabase));
-        this.statusChange.emit(userFromDatabase);
+    setUserInLocalStorage(userFromLogin) {
+        console.log('userFromDatabase', userFromLogin);
+        localStorage.setItem('user', JSON.stringify(userFromLogin));
+        this.statusChange.emit(userFromLogin);
     }
 
     login(data) {
@@ -93,8 +143,15 @@ export class AuthService {
                 })
                 .then((userData) => {
                     if (userData) {
-                        // this.afs.doc<User>(`users/${data.uid}`).valueChanges();
-                        this.setUserInLocalStorage(userData);
+                        this.users$.subscribe((userArr) => {
+                            userArr.forEach((userInfo) => {
+                                if (userData.user.email === userInfo.email) {
+                                    console.log(userInfo);
+                                    this.setUserInLocalStorage(userInfo);
+                                }
+                            });
+                        });
+
                     } else {
                         console.log('userData was not found.');
                     }
@@ -165,7 +222,8 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {
-            uid: tempId,
+            $key: user.$key,
+            uid: user.$key,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,
@@ -186,7 +244,8 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${tempId}`);
 
         const data: User = {
-            uid: tempId,
+            $key: user.$key,
+            uid: user.$key,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,

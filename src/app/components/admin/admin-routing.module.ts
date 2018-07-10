@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CKEditorModule } from 'ng2-ckeditor/src/ckeditor.module';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -59,9 +60,11 @@ const adminRoutes: Routes = [
         ),
         AdminUserModule,
         AdminPageModule,
+
     ],
     exports: [
-        RouterModule
+        RouterModule,
+
     ],
     declarations: []
 })

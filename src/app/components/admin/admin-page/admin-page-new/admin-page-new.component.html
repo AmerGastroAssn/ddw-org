@@ -15,55 +15,66 @@
                         <h2>New Page</h2>
                     </div>
 
-                    <form [formGroup]="newPageForm"
-                          (ngSubmit)="onAddNewPage(newPageForm.value)">
+                    <form (ngSubmit)="onAddNewPage(newPageForm.form)" #newPageForm="ngForm">
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text"
                                    class="form-control"
-                                   [class.invalid]="!f.title.valid && f.title.touched"
-                                   formControlName="title">
-                            <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.title.valid && f.title.touched">
-                                Valid <b>Title</b> is required!
-                            </p>
+                                   name="title"
+
+                                   [(ngModel)]="page.title"
+                                   #title="ngModel">
+                            <!--<p class="help-block alert alert-warning text-center mt-1"-->
+                               <!--*ngIf="!f.title.valid && f.title.touched">-->
+                                <!--Valid <b>Title</b> is required!-->
+                            <!--</p>-->
                         </div>
 
                         <div class="form-group">
                             <label>Author</label>
                             <input type="text"
                                    class="form-control"
-                                   [class.invalid]="!f.author.valid && f.author.touched"
-                                   formControlName="author">
-                            <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.author.valid && f.author.touched">
-                                <b>Author</b> is required!
-                            </p>
+                                   name="author"
+
+                                   [(ngModel)]="page.author"
+                                   #author="ngModel">
+                            <!--<p class="help-block alert alert-warning text-center mt-1"-->
+                               <!--*ngIf="!f.author.valid && f.author.touched">-->
+                                <!--<b>Author</b> is required!-->
+                            <!--</p>-->
                         </div>
 
 
                         <div class="form-group">
-                            <label>Publish On <small>(Hover input and click arrow for datepicker)</small></label>
+                            <label>Publish On
+                                <small>(Hover input and click arrow for datepicker)</small>
+                            </label>
                             <input type="date"
                                    class="form-control"
-                                   [class.invalid]="!f.date.valid && f.date.touched"
-                                   formControlName="date">
+                                   name="date"
+
+                                   [(ngModel)]="page.date"
+                                   #date="ngModel">
                         </div>
 
                         <div class="form-group">
                             <label>Image</label>
                             <input type="text"
                                    class="form-control"
-                                   [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
-                                   formControlName="photoURL">
+                                   name="photoURL"
+
+                                   [(ngModel)]="page.photoURL"
+                                   #photoURL="ngModel">
                         </div>
 
                         <div class="form-group">
                             <label for="category">Category</label>
                             <select class="form-control"
                                     id="category"
-                                    [class.invalid]="!f.category.valid && f.category.touched"
-                                    formControlName="category">
+                                    name="category"
+
+                                    [(ngModel)]="page.category"
+                                    #category="ngModel">
                                 <option>Register</option>
                                 <option>Attendee Planning</option>
                                 <option>Education</option>
@@ -76,8 +87,10 @@
                             <label for="category">Template</label>
                             <select class="form-control"
                                     id="template"
-                                    [class.invalid]="!f.template.valid && f.template.touched"
-                                    formControlName="template">
+                                    name="template"
+
+                                    [(ngModel)]="page.template"
+                                    #template="ngModel">
                                 <option>Full Width</option>
                                 <option>3 Column Bottom</option>
                                 <option>3 Column Top</option>
@@ -85,16 +98,22 @@
                             </select>
                         </div>
 
+                        <!--<div class="form-group">-->
+                        <!--<label>Body</label>-->
+                        <!--<textarea class="form-control"-->
+                        <!--rows="10"-->
+                        <!--formControlName="body">-->
+                        <!--</textarea>-->
+                        <!--<p class="help-block alert alert-warning text-center mt-1"-->
+                        <!--*ngIf="!f.body.valid && f.body.touched">-->
+                        <!--The <b>Body</b> with at least 100 characters is required!-->
+                        <!--</p>-->
+                        <!--</div>-->
+
                         <div class="form-group">
-                            <label>Body</label>
-                            <textarea class="form-control"
-                                      rows="10"
-                                      formControlName="body">
-                            </textarea>
-                            <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.body.valid && f.body.touched">
-                                The <b>Body</b> with at least 100 characters is required!
-                            </p>
+                            <!--<script [src]="ckEditorPath"></script>-->
+                            <ckeditor id="body" name="body" value="body" [(ngModel)]="page.body"></ckeditor>
+                            <!--<ckeditor></ckeditor>-->
                         </div>
 
                         <div class="form-group">
@@ -102,7 +121,9 @@
                                 <input type="checkbox"
                                        class="custom-control-input"
                                        id="published"
-                                       formControlName="published">
+                                       name="publish"
+                                       [(ngModel)]="page.publish"
+                                       #publish="ngModel">
                                 <label class="custom-control-label"
                                        for="published">Publish?</label>
                             </div>

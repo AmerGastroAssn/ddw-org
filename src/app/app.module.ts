@@ -5,7 +5,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { BsDatepickerModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,7 +31,7 @@ import { UserService } from './services/user.service';
         SidebarComponent,
         NotFoundComponent,
         PagesComponent,
-        HomeComponent
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
@@ -42,7 +41,6 @@ import { UserService } from './services/user.service';
         AngularFireStorageModule,
         AppRoutingModule,
         FlashMessagesModule.forRoot(),
-        BsDatepickerModule.forRoot()
     ],
     providers: [
         UserService,
@@ -50,7 +48,7 @@ import { UserService } from './services/user.service';
         AuthService,
         AdminSettingsService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

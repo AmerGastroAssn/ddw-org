@@ -29,7 +29,7 @@
         <p class="card-text">
             {{ page.author}} <br>
             <b>Category:</b> {{ page.category }} <br>
-            <b>Body:</b> <br> {{ page.body }}
+            <b>Body:</b> <br> <span class="body" [innerHtml]="page.body"></span>
         </p>
 
     </div>

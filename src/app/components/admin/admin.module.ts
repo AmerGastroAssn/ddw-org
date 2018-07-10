@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { NgxEditorModule } from 'ngx-editor';
+import { CKEditorComponent } from '../core/ckeditor/ckeditor.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
@@ -19,12 +22,15 @@ import { AdminComponent } from './admin.component';
         AdminLoginComponent,
         AdminSignupComponent,
         AdminSettingsComponent,
+        CKEditorComponent,
     ],
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         AdminRoutingModule,
+        CKEditorModule,
+        NgxEditorModule
     ],
     exports: []
 })

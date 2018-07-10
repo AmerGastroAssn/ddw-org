@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Page } from '../../../../models/Page';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
@@ -63,10 +64,7 @@ export class AdminPageNewComponent implements OnInit {
                         Validators.required, Validators.minLength(5)
                     ])
             ],
-            body: ['',
-                   Validators.compose([
-                       Validators.required, Validators.minLength(100)
-                   ])
+            body: [''
             ],
             author: ['' || this.author, Validators.required],
             date: [Date.now()],
@@ -78,7 +76,7 @@ export class AdminPageNewComponent implements OnInit {
 
         this.uid = this.newPageForm.value.uid;
         this.title = this.newPageForm.value.title;
-        this.body = this.newPageForm.value.body;
+        // this.body = this.newPageForm.value.body;
         this.author = this.newPageForm.value.author;
         this.date = this.newPageForm.value.date;
         this.photoURL = this.newPageForm.value.photoURL;
@@ -86,6 +84,15 @@ export class AdminPageNewComponent implements OnInit {
         this.published = this.newPageForm.value.published;
         this.published = this.newPageForm.value.published;
         this.template = this.newPageForm.value.template;
+        // CKEditor
+        // ClassicEditor
+        // .create(document.querySelector('#body'), {
+        // // .create(this.newPageForm.value.body, {
+        // //     toolbar: ['bold', 'italic', 'link']
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // });
     }
 
 

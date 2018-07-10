@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-6" *ngIf="page">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
@@ -54,7 +54,9 @@
 
 
                         <div class="form-group">
-                            <label>Publish On <small>(Hover input and click arrow for datepicker)</small></label>
+                            <label>Publish On
+                                <small>(Hover input and click arrow for datepicker)</small>
+                            </label>
                             <input type="date"
                                    class="form-control"
                                    [class.invalid]="!f.date.valid && f.date.touched"
@@ -79,7 +81,7 @@
                                 <option>Attendee Planning</option>
                                 <option>Education</option>
                                 <option>Exhibitor Information</option>
-                                <option>News &amp; Media</option>
+                                <option>News &amp;amp; Media</option>
                             </select>
                         </div>
 
@@ -96,10 +98,12 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
                             <label>Body</label>
                             <textarea class="form-control"
                                       rows="10"
+                                      id="body"
                                       formControlName="body">
                             </textarea>
                             <p class="help-block alert alert-warning text-center mt-1"
@@ -147,23 +151,23 @@
         </div>
 
 
-        <div class="col-md-6" *ngIf="page">
-            <div class="card">
-                <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
-                <div class="card-body">
-                    <h5 class="card-title">{{ page.title }}</h5>
-                    <p class="card-text">
-                        {{ page.author }} <br>
-                        Categories: {{ page.category }} <br>
-                        Body: <br> {{ page.body }}
-                    </p>
+        <!--<div class="col-md-6" *ngIf="page">-->
+        <!--<div class="card">-->
+        <!--<img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">-->
+        <!--<div class="card-body">-->
+        <!--<h5 class="card-title">{{ page.title }}</h5>-->
+        <!--<p class="card-text">-->
+        <!--{{ page.author }} <br>-->
+        <!--Categories: {{ page.category }} <br>-->
+        <!--Body: <br> {{ page.body }}-->
+        <!--</p>-->
 
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Publish Date: {{ page.date | date:'fullDate' }}</small>
-                </div>
-            </div>
-        </div>
+        <!--</div>-->
+        <!--<div class="card-footer">-->
+        <!--<small class="text-muted">Publish Date: {{ page.date | date:'fullDate' }}</small>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
 
     </div>
 </div>

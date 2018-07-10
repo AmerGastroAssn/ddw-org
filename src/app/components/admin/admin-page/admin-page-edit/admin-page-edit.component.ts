@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Page } from '../../../../models/Page';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { PageService } from '../../../../services/page.service';
+
 
 @Component({
     selector: 'ddw-admin-page-edit',
@@ -14,6 +16,7 @@ import { PageService } from '../../../../services/page.service';
 export class AdminPageEditComponent implements OnInit {
     page: Page;
     editPageForm: FormGroup;
+    $key: string;
     title: string;
     author: string;
     date: number;
@@ -34,6 +37,7 @@ export class AdminPageEditComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService
     ) {
+
     }
 
     // For Form Validations
@@ -47,6 +51,7 @@ export class AdminPageEditComponent implements OnInit {
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
         // Get Page
+
         this.pageService.getPage(this.uid).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
@@ -74,7 +79,7 @@ export class AdminPageEditComponent implements OnInit {
 
                 this.uid = this.editPageForm.value.uid;
                 this.title = this.editPageForm.value.title;
-                this.body = this.editPageForm.value.body;
+                // this.body = this.editPageForm.value.body;
                 this.author = this.editPageForm.value.author;
                 this.date = this.editPageForm.value.date;
                 this.photoURL = this.editPageForm.value.photoURL;
@@ -82,8 +87,22 @@ export class AdminPageEditComponent implements OnInit {
                 this.published = this.editPageForm.value.published;
                 this.template = this.editPageForm.value.template;
             }
+            // CKEditor
+            this.body = ClassicEditor
+            .create(this.editPageForm.value.body, {
+                // options:
+
+            })
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
         });
+
     }
+
 
     onUpdatePage(formData) {
         if (!this.editPageForm.valid) {

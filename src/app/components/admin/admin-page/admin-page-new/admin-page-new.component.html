@@ -43,7 +43,9 @@
 
 
                         <div class="form-group">
-                            <label>Publish On <small>(Hover input and click arrow for datepicker)</small></label>
+                            <label>Publish On
+                                <small>(Hover input and click arrow for datepicker)</small>
+                            </label>
                             <input type="date"
                                    class="form-control"
                                    [class.invalid]="!f.date.valid && f.date.touched"
@@ -87,10 +89,12 @@
 
                         <div class="form-group">
                             <label>Body</label>
-                            <textarea class="form-control"
-                                      rows="10"
-                                      formControlName="body">
-                            </textarea>
+                            <!--<textarea class="form-control"-->
+                                      <!--rows="10"-->
+                                      <!--id="body"-->
+                                      <!--formControlName="body">-->
+                            <!--</textarea>-->
+                            <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" formControlName="body"></app-ngx-editor>
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.body.valid && f.body.touched">
                                 The <b>Body</b> with at least 100 characters is required!

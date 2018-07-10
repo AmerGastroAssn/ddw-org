@@ -18,7 +18,7 @@ export class AdminPageNewComponent implements OnInit {
     $key: string;
     title: string;
     author: string;
-    date: number = Date.now();
+    date: string;
     photoURL: string;
     body: string;
     category: string;

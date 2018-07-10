@@ -11,23 +11,23 @@
         <div class="col-md-6" *ngIf="page">
             <div class="card">
                 <div class="card-body">
-                    <button type="submit"
-                            [disabled]="!editPageForm.valid"
-                            class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update
-                    </button>
-
-                    <div class="btn-group float-right" role="group" aria-label="Basic example">
-                        <a class="btn btn-warning btn-sm"
-                           [routerLink]="['/admin/pages']">
-                            <i class="fa fa-undo"></i>&nbsp;Cancel
-                        </a>
-                    </div>
                     <div class="card-title">
                         <h2>Edit <b><i>{{ page.title }}</i></b></h2>
                     </div>
 
                     <form [formGroup]="editPageForm"
                           (ngSubmit)="onUpdatePage(editPageForm.value)">
+                        <button type="submit"
+                                [disabled]="!editPageForm.valid"
+                                class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update
+                        </button>
+
+                        <div class="btn-group float-right" role="group" aria-label="Basic example">
+                            <a class="btn btn-warning btn-sm"
+                               [routerLink]="['/admin/pages']">
+                                <i class="fa fa-undo"></i>&nbsp;Cancel
+                            </a>
+                        </div>
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text"
@@ -54,8 +54,8 @@
 
 
                         <div class="form-group">
-                            <label>Created On</label>
-                            <input type="number"
+                            <label>Publish On <small>(Hover input and click arrow for datepicker)</small></label>
+                            <input type="date"
                                    class="form-control"
                                    [class.invalid]="!f.date.valid && f.date.touched"
                                    formControlName="date">

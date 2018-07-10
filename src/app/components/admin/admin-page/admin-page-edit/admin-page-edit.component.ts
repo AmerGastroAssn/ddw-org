@@ -16,7 +16,7 @@ export class AdminPageEditComponent implements OnInit {
     editPageForm: FormGroup;
     title: string;
     author: string;
-    date: number = Date.now();
+    date: number;
     photoURL: string;
     body: string;
     category: string;

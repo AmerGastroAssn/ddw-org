@@ -26,6 +26,7 @@ export class AdminPageNewComponent implements OnInit {
     published: boolean;
     template: string;
     disableAdminOnNew: boolean;
+    ckEditorPath = './node_modules/ckeditor/ckeditor.js';
 
 
     constructor(

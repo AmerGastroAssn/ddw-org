@@ -25,13 +25,31 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "./node_modules/ckeditor/ckeditor.js",
+              "./src/vendor/css/appwork.css",
+              "./src/vendor/css/theme-corporate.css",
+              "./src/vendor/css/colors.css",
+              "./src/vendor/css/pages/account.css",
+              "./src/vendor/css/pages/authentication.css",
+              "./src/vendor/css/pages/clients.css",
+              "./src/vendor/css/pages/contacts.css",
+              "./src/vendor/css/pages/file-manager.css",
+              "./src/vendor/css/pages/messages.css",
+              "./src/vendor/css/pages/products.css",
+              "./src/vendor/css/pages/projects.css",
+              "./src/vendor/css/pages/search.css",
+              "./src/vendor/css/pages/tasks.css",
+              "./src/vendor/css/pages/tickets.css",
+              "./src/vendor/css/pages/users.css",
+              "./src/vendor/css/uikit.css",
               "src/styles.css"
             ],
             "scripts": [
+              "./node_modules/ckeditor/ckeditor.js",
               "./node_modules/jquery/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./src/vendor/js/theme-settings.js",
+              "./src/vendor/js/sidenav.js"
             ]
           },
           "configurations": {

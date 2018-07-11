@@ -1,9 +1,9 @@
 <a [routerLink]="['/admin/pages/', page.$key]">
-    <div class="card text-dark">
+    <div class="card text-dark mb-2">
         <img class="card-img-top" [src]="page.photoURL" [alt]="page.title">
         <div class="card-body">
             <h5 class="card-title">{{ page.title }}</h5>
-            <h6 class="card-subtitle">{{ page.date | date:'mediumDate' }}</h6>
+            <h6 class="card-subtitle">{{ page.date.toDate() | date:'mediumDate' }}</h6>
             <hr>
             <p class="card-text text-truncate">{{ page.body | slice:0:100 }}</p>
             <span class="badge badge-pill badge-primary">{{ page.category }}</span>

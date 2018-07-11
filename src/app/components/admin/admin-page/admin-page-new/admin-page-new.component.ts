@@ -18,7 +18,7 @@ export class AdminPageNewComponent implements OnInit {
     $key: string;
     title: string;
     author: string;
-    date: string;
+    date: number;
     photoURL: string;
     body: string;
     category: string;
@@ -26,7 +26,6 @@ export class AdminPageNewComponent implements OnInit {
     published: boolean;
     template: string;
     disableAdminOnNew: boolean;
-    ckEditorPath = './node_modules/ckeditor/ckeditor.js';
 
 
     constructor(
@@ -53,6 +52,7 @@ export class AdminPageNewComponent implements OnInit {
     }
 
     ngOnInit() {
+
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
 
@@ -70,9 +70,9 @@ export class AdminPageNewComponent implements OnInit {
                    ])
             ],
             author: ['' || this.author, Validators.required],
-            date: [Date.now()],
+            date: [''],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
-            category: [''],
+            category: ['' || 'Register', Validators.required],
             published: [''],
             template: ['' || 'Full Width', Validators.required]
         });
@@ -97,7 +97,8 @@ export class AdminPageNewComponent implements OnInit {
                 timeout: 3500
             });
         } else {
-            this.pageService.addPage(formData);
+            // this.pageService.addPage(formData);
+            console.log(formData);
             this.newPageForm.reset();
             this.flashMessage.show(`${formData.title} was created!`, {
                 cssClass: 'alert-success',

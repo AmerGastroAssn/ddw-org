@@ -22,6 +22,7 @@
                             <input type="email"
                                    class="form-control"
                                    [class.invalid]="!f.email.valid && f.email.touched"
+                                   [(ngModel)]="user.email"
                                    formControlName="email">
                         </div>
 
@@ -41,6 +42,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.displayName.valid && f.displayName.touched"
+                                   [(ngModel)]="user.displayName"
                                    formControlName="displayName">
                         </div>
 
@@ -49,6 +51,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.title.valid && f.title.touched"
+                                   [(ngModel)]="user.title"
                                    formControlName="title">
                         </div>
 
@@ -56,6 +59,7 @@
                             <input type="checkbox"
                                    class="form-check-input"
                                    id="admin"
+                                   [(ngModel)]="user.admin"
                                    formControlName="admin">
                             <label class="form-check-label"
                                    for="admin">

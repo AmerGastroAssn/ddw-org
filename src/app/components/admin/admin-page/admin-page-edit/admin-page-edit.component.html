@@ -33,6 +33,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.title.valid && f.title.touched"
+                                   [(ngModel)]="page.title"
                                    formControlName="title">
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.title.valid && f.title.touched">
@@ -45,6 +46,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.author.valid && f.author.touched"
+                                   [(ngModel)]="page.author"
                                    formControlName="author">
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.author.valid && f.author.touched">
@@ -54,9 +56,12 @@
 
 
                         <div class="form-group">
-                            <label>Publish On <small>(Hover input and click arrow for datepicker)</small></label>
-                            <input type="date"
+                            <label>Publish On
+                                <small>(Click input for datepicker)</small>
+                            </label>
+                            <input type="string"
                                    class="form-control"
+                                   bsDatepicker
                                    [class.invalid]="!f.date.valid && f.date.touched"
                                    formControlName="date">
                         </div>
@@ -66,6 +71,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                   [(ngModel)]="page.photoURL"
                                    formControlName="photoURL">
                         </div>
 
@@ -74,6 +80,7 @@
                             <select class="form-control"
                                     id="category"
                                     [class.invalid]="!f.category.valid && f.category.touched"
+                                    [(ngModel)]="page.category"
                                     formControlName="category">
                                 <option>Register</option>
                                 <option>Attendee Planning</option>
@@ -88,6 +95,7 @@
                             <select class="form-control"
                                     id="template"
                                     [class.invalid]="!f.template.valid && f.template.touched"
+                                    [(ngModel)]="page.template"
                                     formControlName="template">
                                 <option>Full Width</option>
                                 <option>3 Column Bottom</option>
@@ -98,10 +106,11 @@
 
                         <div class="form-group">
                             <label>Body</label>
-                            <textarea class="form-control"
-                                      rows="10"
-                                      formControlName="body">
-                            </textarea>
+                            <ckeditor formControlName="body"
+                                      [(ngModel)]="page.body"
+                                      [readonly]="false"
+                                      debounce="500">
+                            </ckeditor>
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.body.valid && f.body.touched">
                                 The <b>Body</b> with at least 100 characters is required!
@@ -160,7 +169,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Publish Date: {{ page.date | date:'fullDate' }}</small>
+                    <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
                 </div>
             </div>
         </div>

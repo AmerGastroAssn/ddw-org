@@ -13,12 +13,12 @@ export class AdminUserComponent implements OnInit {
     users$: Observable<User[]>;
 
     constructor(public userService: UserService,
-                private authService: AuthService) {
+                private authService: AuthService
+    ) {
     }
 
     ngOnInit() {
         this.users$ = this.userService.getUsers();
-        console.log('getProfile()', this.authService.getProfile());
     }
 
 

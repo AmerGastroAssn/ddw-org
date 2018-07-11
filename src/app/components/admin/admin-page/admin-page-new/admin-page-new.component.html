@@ -44,7 +44,7 @@
 
                         <div class="form-group">
                             <label>Publish On</label>
-                            <input type="number"
+                            <input type="string"
                                    class="form-control"
                                    bsDatepicker
                                    [class.invalid]="!f.date.valid && f.date.touched"
@@ -88,20 +88,9 @@
 
                         <div class="form-group">
                             <label>Body</label>
-                            <ckeditor
-                                    formControlName="body"
-                                    [readonly]="false"
-                                    (change)="onChange($event)"
-                                    (editorChange)="onEditorChange($event)"
-                                    (ready)="onReady($event)"
-                                    (focus)="onFocus($event)"
-                                    (blur)="onBlur($event)"
-                                    (contentDom)="onContentDom($event)"
-                                    (fileUploadRequest)="onFileUploadRequest($event)"
-                                    (fileUploadResponse)="onFileUploadResponse($event)"
-                                    (paste)="onPaste($event)"
-                                    (drop)="onDrop($event)"
-                                    debounce="500">
+                            <ckeditor formControlName="body"
+                                      [readonly]="false"
+                                      debounce="500">
                             </ckeditor>
                             <!--<textarea class="form-control"-->
                             <!--rows="10"-->

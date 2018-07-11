@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { BsDatepickerDirective } from 'ngx-bootstrap';
 import { Page } from '../../../../models/Page';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { PageService } from '../../../../services/page.service';
@@ -12,11 +13,13 @@ import { PageService } from '../../../../services/page.service';
     styleUrls: ['./admin-page-edit.component.css']
 })
 export class AdminPageEditComponent implements OnInit {
+    @ViewChild(BsDatepickerDirective) datepicker: BsDatepickerDirective;
     page: Page;
     editPageForm: FormGroup;
+    $key: string;
     title: string;
     author: string;
-    date: number;
+    date: string;
     photoURL: string;
     body: string;
     category: string;
@@ -65,7 +68,7 @@ export class AdminPageEditComponent implements OnInit {
                            ])
                     ],
                     author: [this.page.author, Validators.required],
-                    date: [Date.now()],
+                    date: [this.page.date],
                     photoURL: [this.page.photoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],
@@ -99,6 +102,11 @@ export class AdminPageEditComponent implements OnInit {
                 timeout: 3500
             });
         }
+    }
+
+    @HostListener('window:scroll')
+    onScrollEvent() {
+        this.datepicker.hide();
     }
 
 

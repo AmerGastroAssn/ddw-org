@@ -1,9 +1,17 @@
 <!-- * ADMIN * -->
-<ddw-admin-navbar></ddw-admin-navbar>
-<!--<div class="row mt-3">-->
-    <!--<div class="container">-->
-        <!--<h3>Admin Dashboard</h3>-->
-    <!--</div>-->
-<!--</div>-->
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-2">
+    <div class="layout-inner">
+        <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+            <ddw-admin-sidebar></ddw-admin-sidebar>
+        </div>
 
-<router-outlet></router-outlet>
+        <div class="layout-container">
+            <!-- * Navbar * -->
+            <ddw-admin-navbar></ddw-admin-navbar>
+            <!-- * App Container * -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

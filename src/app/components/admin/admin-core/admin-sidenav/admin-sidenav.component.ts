@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-// const SideNav = require('./sidenav.js').SideNav;
+import { User } from '../../../../models/User';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AuthService } from '../../../../services/auth.service';
+import { UserService } from '../../../../services/user.service';
 
 @Component({
     selector: 'ddw-admin-sidenav',
@@ -8,23 +10,50 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./admin-sidenav.component.css']
 })
 export class AdminSidenavComponent implements OnInit {
-    showUsersToggle: boolean;
+    isLoggedIn: boolean;
+    loggedInUser: string;
+    currentUser: User;
+    allowSignup: boolean;
+    allowSettings: boolean;
+    uid: string;
+    id: string;
     showPagesToggle: boolean;
+    showUsersToggle: boolean;
 
-    constructor() {
+    constructor(
+      private authService: AuthService,
+      private userService: UserService,
+      private settingsService: AdminSettingsService,
+    ) {
     }
 
     ngOnInit() {
+        // Settings:
+        this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
+        this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
-    }
-
-    onShowUsersToggle() {
-        console.log('show users');
-        this.showUsersToggle = !this.showUsersToggle;
+        this.authService.getAuth().subscribe((auth) => {
+            if (auth) {
+                this.isLoggedIn = true;
+                this.loggedInUser = auth.email;
+                this.currentUser = this.authService.getProfile();
+            } else {
+                this.isLoggedIn = false;
+            }
+        });
     }
 
     onShowPagesToggle() {
-        console.log('show pages');
         this.showPagesToggle = !this.showPagesToggle;
     }
+
+    onShowUsersToggle() {
+        this.showUsersToggle = !this.showUsersToggle;
+    }
+
+    onLogout() {
+        this.authService.logout();
+    }
+
+
 }

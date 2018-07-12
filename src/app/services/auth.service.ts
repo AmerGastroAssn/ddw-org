@@ -124,7 +124,6 @@ export class AuthService {
 
     // Sets the databaseUsers's info.
     setUserInLocalStorage(userFromLogin) {
-        console.log('userFromDatabase', userFromLogin);
         localStorage.setItem('user', JSON.stringify(userFromLogin));
         this.statusChange.emit(userFromLogin);
     }
@@ -146,7 +145,6 @@ export class AuthService {
                         this.users$.subscribe((userArr) => {
                             userArr.forEach((userInfo) => {
                                 if (userData.user.email === userInfo.email) {
-                                    console.log(userInfo);
                                     this.setUserInLocalStorage(userInfo);
                                 }
                             });

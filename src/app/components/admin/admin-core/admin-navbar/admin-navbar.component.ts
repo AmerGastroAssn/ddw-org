@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
@@ -20,8 +19,6 @@ export class AdminNavbarComponent implements OnInit {
 
     constructor(
       private authService: AuthService,
-      private router: Router,
-      private route: ActivatedRoute,
       private userService: UserService,
       private settingsService: AdminSettingsService
     ) {
@@ -31,7 +28,6 @@ export class AdminNavbarComponent implements OnInit {
                 this.loggedInUser = auth.email;
             } else {
                 this.isLoggedIn = false;
-                // this.router.navigate(['/admin/login']);
             }
         });
     }

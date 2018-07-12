@@ -1,3 +1,8 @@
-ddw-admin-sidenav {
+.bg-dark {
+    background-color: #282E3E !important;
+}
 
+button[mat-mini-fab] {
+    background-color: #20A2F0;
+    color: #fcfcfc;
 }

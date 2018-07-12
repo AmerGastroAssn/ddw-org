@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* removes blue halo */
+button:focus {
+    outline: 0;
+}
+
+.bg-dark {
+    background-color: #282E3E !important;
+}

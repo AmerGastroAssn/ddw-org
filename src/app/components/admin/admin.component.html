@@ -2,7 +2,7 @@
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-2">
     <div class="layout-inner">
-        <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+        <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark" style="background-color:#282E3E;" *ngIf="toggleSidenav">
             <ddw-admin-sidenav></ddw-admin-sidenav>
         </div>
 
@@ -10,6 +10,12 @@
             <!-- * Navbar * -->
             <ddw-admin-navbar></ddw-admin-navbar>
             <!-- * App Container * -->
+            <button mat-mini-fab (click)="onToggleSidenav()">
+                <i class="fa"
+                   [ngClass]="{'fa-chevron-double-left':toggleSidenav,
+                   'fa-chevron-double-right':!toggleSidenav}">
+                </i>
+            </button>
             <router-outlet></router-outlet>
         </div>
     </div>

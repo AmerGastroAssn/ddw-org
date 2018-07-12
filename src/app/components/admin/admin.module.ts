@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatSidenavModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
@@ -25,6 +27,9 @@ import { AdminComponent } from './admin.component';
         FormsModule,
         ReactiveFormsModule,
         AdminRoutingModule,
+        MatSidenavModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
     ],
     exports: []
 })

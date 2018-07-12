@@ -1,6 +1,5 @@
 <!-- Brand demo (see assets/css/demo/demo.css) -->
-<div class="app-brand demo text-center" id="sidenav">
-
+<div class="app-brand demo text-center pt-4 pb-3">
           <span class="app-brand-logo demo">
               <a [routerLink]="['/admin']">
                   <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-gray-50.png"
@@ -8,12 +7,13 @@
               </a>
           </span>
     <a [routerLink]="['/admin']"
-       class="app-brand-text demo sidenav-text font-weight-normal ml-2"><b style="color:#ccc;">Admin</b></a>
+       class="app-brand-text demo sidenav-text font-weight-normal ml-2">
+        <b style="color:#ccc;">.org CMS</b>
+    </a>
 
-    <a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+    <a class="layout-sidenav-toggle sidenav-link text-large ml-auto">
         <i class="ion ion-md-menu align-middle"></i>
     </a>
-    <span class="text-right"><i class="fa fa-times"></i></span>
 </div>
 
 <div class="sidenav-divider mt-0"></div>
@@ -21,42 +21,42 @@
 <!-- Links -->
 <ul class="sidenav-inner py-1">
 
-    <!-- Dashboards -->
-    <li class="sidenav-item">
-        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+    <!-- Users -->
+    <li class="sidenav-item" [ngClass]="{'active open':showUsersToggle, '':!showUsersToggle}">
+        <a class="sidenav-link sidenav-toggle" (click)="onShowUsersToggle()">
             <i class="sidenav-icon ion ion-md-speedometer"></i>
             <div><i class="fa fa-users"></i>&nbsp;Users</div>
         </a>
 
         <ul class="sidenav-menu">
-            <li class="sidenav-item">
-                <a href="index.html" class="sidenav-link">
+            <li class="sidenav-item sub-item">
+                <a href="#" class="sidenav-link">
                     <div>All Users</div>
                 </a>
             </li>
-            <li class="sidenav-item">
-                <a href="dashboards_dashboard-2.html" class="sidenav-link">
+            <li class="sidenav-item sub-item">
+                <a href="#" class="sidenav-link">
                     <div>New User</div>
                 </a>
             </li>
         </ul>
     </li>
 
-    <!-- Layouts -->
-    <li class="sidenav-item">
-        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+    <!-- Pages -->
+    <li class="sidenav-item" [ngClass]="{'active open':showPagesToggle, '':!showPagesToggle}">
+        <a class="sidenav-link sidenav-toggle" (click)="onShowPagesToggle()">
             <i class="sidenav-icon ion ion-ios-albums"></i>
             <div><i class="fa fa-file"></i>&nbsp;Pages</div>
         </a>
 
         <ul class="sidenav-menu">
-            <li class="sidenav-item">
-                <a href="layouts_options.html" class="sidenav-link">
+            <li class="sidenav-item sub-item">
+                <a href="#" class="sidenav-link">
                     <div>All Pages</div>
                 </a>
             </li>
-            <li class="sidenav-item">
-                <a href="layouts_helpers.html" class="sidenav-link">
+            <li class="sidenav-item sub-item">
+                <a href="#" class="sidenav-link">
                     <div>New Page</div>
                 </a>
             </li>
@@ -70,6 +70,12 @@
         <a href="typography.html" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fa fa-wrench"></i>&nbsp;Settings</div>
+        </a>
+    </li>
+    <li class="sidenav-item">
+        <a class="sidenav-link" [routerLink]="['/']" target="_blank">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fa fa-laptop"></i>&nbsp;Live Site</div>
         </a>
     </li>
 

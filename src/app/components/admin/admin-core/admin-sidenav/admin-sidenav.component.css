@@ -1,0 +1,26 @@
+.app-brand.demo {
+    background-color: #1C202B;
+}
+
+a.sidenav-link {
+    cursor: pointer;
+}
+
+li.sidenav-item {
+    font-size: 0.95em;
+}
+
+li.sub-item {
+    margin-left: 1.5em;
+}
+
+.sidenav-vertical
+.sidenav-menu
+.sidenav-link {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+}
+
+a.sidenav-link {
+    text-decoration: none;
+}

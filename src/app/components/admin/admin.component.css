@@ -1,3 +1,8 @@
+/* Global Admin Styles */
+p, div, tr, th, tr, td, span {
+    font-size: 14px;
+}
+
 .bg-dark {
     background-color: #282E3E !important;
 }

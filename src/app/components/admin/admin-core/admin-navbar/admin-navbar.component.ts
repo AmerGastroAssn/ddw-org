@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
@@ -16,6 +17,7 @@ export class AdminNavbarComponent implements OnInit {
     allowSettings: boolean;
     uid: string;
     id: string;
+    currentUser: User;
 
     constructor(
       private authService: AuthService,
@@ -36,7 +38,7 @@ export class AdminNavbarComponent implements OnInit {
         // Settings:
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
-
+        this.currentUser = this.authService.getProfile();
     }
 
     onLogout() {

@@ -14,6 +14,7 @@ export class AdminUserDetailsComponent implements OnInit {
     id: string;
     user: User;
     uid: string;
+    admin: boolean;
 
     constructor(
       private userService: UserService,

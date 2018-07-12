@@ -12,6 +12,15 @@
         </div>
     </div>
     <ul class="navbar-nav mx-auto">
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link"
+               [routerLink]="['/admin/users/', currentUser.uid]">
+                <img [src]="currentUser.photoURL"
+                     [alt]="currentUser.displayName"
+                     class="rounded-circle user-image">&nbsp;{{ loggedInUser }}
+            </a>
+        </li>
+
         <li class="nav-item" *ngIf="isLoggedIn && allowSignup">
             <a class="nav-link"
                [routerLink]="['/admin/settings']">
@@ -30,13 +39,7 @@
                 <i class="fa fa-sign-in-alt"></i>&nbsp;log In
             </a>
         </li>
-        <!-- * TODO: Need to get uid when user is added to db on signup * -->
-        <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link"
-               [routerLink]="['/admin/users']">
-                <i class="fa fa-user-alt"></i>&nbsp;{{ loggedInUser }}
-            </a>
-        </li>
+
         <li class="nav-item" *ngIf="isLoggedIn">
             <a class="nav-link"
                style="cursor:pointer;"

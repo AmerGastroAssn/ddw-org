@@ -45,11 +45,11 @@
             ],
             "scripts": [
               "./node_modules/ckeditor/ckeditor.js",
-              "./node_modules/jquery/jquery.min.js",
+              "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./src/vendor/js/theme-settings.js",
-              "./src/vendor/js/sidenav.js"
+              "./src/vendor/js/sidenav.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { AdminSidenavComponent } from '../admin-core/admin-sidenav/admin-sidenav.component';
 import { AdminPageDetailsComponent } from './admin-page-details/admin-page-details.component';
 import { AdminPageEditComponent } from './admin-page-edit/admin-page-edit.component';
 import { AdminPageHomeComponent } from './admin-page-home/admin-page-home.component';
@@ -26,7 +27,7 @@ import { AdminPageNewComponent } from './admin-page-new/admin-page-new.component
         AdminPageItemComponent,
         AdminPageHomeComponent,
         AdminPageEditComponent,
-        AdminPageDetailsComponent
+        AdminPageDetailsComponent,
     ]
 })
 export class AdminPageModule {}

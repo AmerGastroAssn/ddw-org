@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class AdminUserEditComponent implements OnInit {
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
-      private settingsService: AdminSettingsService
+      private settingsService: AdminSettingsService,
     ) {
     }
 
@@ -104,6 +105,10 @@ export class AdminUserEditComponent implements OnInit {
                   timeout: 3500
               });
         }
+    }
+
+    onDeleteUser() {
+        this.userService.deleteUser(this.uid);
     }
 
 }

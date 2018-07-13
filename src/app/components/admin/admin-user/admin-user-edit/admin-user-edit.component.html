@@ -119,10 +119,6 @@
                     <div class="btn-group float-right"
                          role="group"
                          aria-label="Basic example">
-                        <a class="btn btn-secondary btn-sm"
-                           [routerLink]="['edit']">
-                            <i class="fa fa-pencil"></i>&nbsp;Edit
-                        </a>
                         <a class="btn btn-warning btn-sm"
                            [routerLink]="['/admin/users']">
                             <i class="fa fa-undo"></i>&nbsp;Cancel
@@ -132,7 +128,8 @@
                             <i class="fa fa-trash"></i>&nbsp;Delete
                         </button>
                     </div>
-                    <img class="d-block ui-w-100 rounded-circle img-fluid" [src]="user.photoURL"
+                    <img class="d-block ui-w-100 rounded-circle img-fluid"
+                         [src]="user.photoURL"
                          [alt]="user.displayName">
 
                     <table class="table table-striped mt-4">
@@ -152,29 +149,28 @@
                         <tr>
                             <th scope="col">Admin</th>
                             <td>
-                            <span class="badge badge-outline-success"
-                                  *ngIf="user.admin">
-                                Yes
-                            </span>
+                                <span class="badge badge-outline-success"
+                                      *ngIf="user.admin">
+                                    Yes
+                                </span>
                                 <span class="badge badge-outline-danger"
                                       *ngIf="!user.admin">
-                                No
-                            </span>
+                                    No
+                                </span>
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">Online</th>
                             <td>
-                            <span class="badge badge-outline-success"
-                                  *ngIf="user.isOnline">
-                               Yes
-                            </span>
+                                <span class="badge badge-outline-success"
+                                      *ngIf="user.isOnline">
+                                  Yes
+                                </span>
                                 <span class="badge badge-outline-danger"
                                       *ngIf="!user.isOnline">
-                                No
-                            </span>
+                                   No
+                                </span>
                             </td>
-
                         </tr>
                         </tbody>
                     </table>

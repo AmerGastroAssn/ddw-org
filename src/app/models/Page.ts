@@ -1,3 +1,5 @@
+import { toDate } from '@angular/common/src/i18n/format_date';
+
 export class Page {
     constructor(
       public $key: string,
@@ -5,7 +7,7 @@ export class Page {
       public title: string,
       public body: string,
       public author: string,
-      public date: string,
+      public date: any,
       public photoURL: string,
       public category: string,
       public published: boolean,

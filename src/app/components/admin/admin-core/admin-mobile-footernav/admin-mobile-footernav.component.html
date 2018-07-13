@@ -1,0 +1,141 @@
+<!-- * ADMIN-MOBILE-FOOTERNAV * -->
+<nav class="navbar navbar-footer fixed-bottom navbar-inverse bg-dark text-center">
+
+    <span *ngIf="!isLoggedIn;">
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                [routerLink]="['/admin/login']">
+            <i class="fa fa-sign-in-alt"></i>
+            <br>
+            <small>Login</small>
+        </button>
+
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                *ngIf="!isLoggedIn && allowSignup"
+                [routerLink]="['/admin/signup']">
+            <i class="fa fa-address-card"></i>
+            <br>
+            <small>Signup</small>
+        </button>
+
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                *ngIf="!isLoggedIn && allowSettings"
+                [routerLink]="['/admin/settings']">
+            <i class="fa fa-wrench"></i>
+            <br>
+            <small>Settings</small>
+        </button>
+    </span>
+
+    <span *ngIf="isLoggedIn">
+        <!-- * IF logged in * -->
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                *ngIf="authService.fbUser$ | async"
+                [routerLink]="['/admin/pages']">
+            <i class="fa fa-copy fa-lg"></i>
+            <br>
+            <small>Pages</small>
+        </button>
+
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                *ngIf="authService.fbUser$ | async"
+                [routerLinkActiveOptions]="{exact:true}"
+                [routerLink]="['/admin/pages/new']">
+            <i class="fa fa-file-plus fa-lg"></i>
+            <br>
+            <small>New Page</small>
+        </button>
+
+        <button mat-button
+                class="menu-icon"
+                routerLinkActive="active"
+                *ngIf="authService.fbUser$ | async"
+                [routerLink]="['/admin/users']">
+            <i class="fa fa-users fa-lg"></i>
+            <br>
+            <small>Users</small>
+        </button>
+
+
+        <!-- * Pop-up Menu * -->
+        <!-- * Trigger * -->
+        <button mat-button
+                [matMenuTriggerFor]="appMenu"
+                class="menu-icon"
+                *ngIf="authService.fbUser$ | async">
+                <i class="fa fa-ellipsis-h fa-lg"></i>
+                <br>
+                <small>More</small>
+        </button>
+        <mat-menu #appMenu="matMenu" class="bg-dark">
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="authService.fbUser$ | async"
+                    [routerLink]="['/admin/users/', currentUser.uid]">
+                <i class="fa fa-user"></i>&nbsp;
+                <small>My Profile</small>
+            </button>
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="isLoggedIn && allowSettings"
+                    [routerLink]="['/admin/settings']">
+                <i class="fa fa-wrench"></i>&nbsp;
+                <small>Settings</small>
+            </button>
+
+            <!--<button mat-menu-item-->
+            <!--class="menu-icon"-->
+            <!--routerLinkActive="active"-->
+            <!--*ngIf="authService.fbUser$ | async"-->
+            <!--[routerLink]="['/all-gifts']">-->
+            <!--<i class="fa fa-th"></i>-->
+            <!--<small>All Gifts</small>-->
+            <!--</button>-->
+
+            <!--<button mat-menu-item-->
+            <!--class="menu-icon"-->
+            <!--routerLinkActive="active"-->
+            <!--*ngIf="!isLoggedIn"-->
+            <!--[routerLink]="['/signup']">-->
+            <!--<i class="fa fa-address-card"></i>-->
+            <!--<small>Signup</small>-->
+            <!--</button>-->
+
+            <!--<button mat-menu-item-->
+            <!--class="menu-icon"-->
+            <!--routerLinkActive="active"-->
+            <!--[routerLink]="['/help']">-->
+            <!--<i class="fa fa-question"></i>-->
+            <!--<small>Help</small>-->
+            <!--</button>-->
+
+            <div class="divider"></div>
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="authService.fbUser$ | async;"
+                    (click)="onLogout()">
+                <i class="fa fa-sign-out-alt"></i>
+                <small>Logout</small>
+            </button>
+            <!-- * Spacer * -->
+            <div class="spacer"></div>
+        </mat-menu>
+
+    </span>
+
+
+</nav>

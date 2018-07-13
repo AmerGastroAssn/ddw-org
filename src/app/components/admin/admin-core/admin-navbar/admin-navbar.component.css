@@ -1,3 +1,29 @@
 img.user-image {
     max-width: 25px;
 }
+
+
+
+/* Mobile Queries */
+
+/* Display on anything 992px and larger */
+@media (min-width: 992px) {
+    nav#layout-navbar {
+        display: block;
+    }
+
+    nav.navbar.navbar-footer {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 991px and below) */
+@media (max-width: 991px) {
+    nav#layout-navbar {
+        display: none;
+    }
+
+    nav.navbar.navbar-footer {
+        display: block;
+    }
+}

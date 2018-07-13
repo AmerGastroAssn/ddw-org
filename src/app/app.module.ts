@@ -42,8 +42,9 @@ import { UserService } from './services/user.service';
         AngularFireStorageModule,
         AppRoutingModule,
         FlashMessagesModule.forRoot(),
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
     ],
+    exports: [],
     providers: [
         UserService,
         PageService,

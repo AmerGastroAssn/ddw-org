@@ -11,3 +11,28 @@ button[mat-mini-fab] {
     background-color: #20A2F0;
     color: #fcfcfc;
 }
+
+
+/* Mobile Queries */
+
+/* Display on anything 992px and larger */
+@media (min-width: 992px) {
+    nav#layout-navbar, button[mat-mini-fab] {
+        display: block;
+    }
+
+    nav.navbar.navbar-footer {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 991px and below) */
+@media (max-width: 991px) {
+    nav#layout-navbar, button[mat-mini-fab] {
+        display: none;
+    }
+
+    nav.navbar.navbar-footer {
+        display: block;
+    }
+}

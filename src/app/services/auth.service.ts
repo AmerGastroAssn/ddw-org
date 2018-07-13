@@ -62,7 +62,7 @@ export class AuthService {
         this.fbUser$ = afAuth.authState
                              .do((user) => {
                                  if (user) {
-                                     this.uid = user.uid;
+                                     return this.uid = user.uid;
                                      // this.updateOnConnect();
                                      // this.setOffline();
                                  }
@@ -93,8 +93,10 @@ export class AuthService {
 
     // Used to get userData in browser memory.
     getProfile() {
-        const user = localStorage.getItem('user');
-        return JSON.parse(user);
+        if (this.fbUser$) {
+            const user = localStorage.getItem('user');
+            return JSON.parse(user);
+        }
     }
 
     // Checks if user is logged in.

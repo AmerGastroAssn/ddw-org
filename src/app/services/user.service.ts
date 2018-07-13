@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import 'rxjs/add/operator/map';
@@ -21,7 +22,8 @@ export class UserService {
     constructor(
       private afs: AngularFirestore,
       private router: Router,
-      private afAuth: AngularFireAuth
+      private afAuth: AngularFireAuth,
+      private flashMessage: FlashMessagesService,
     ) {
     }
 
@@ -67,16 +69,42 @@ export class UserService {
     updateUser(updatedUser, id: string): void {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
         this.userDoc.update(updatedUser)
-            .then((user) => this.router.navigate([`/admin/users/${id}`]))
-            .catch((error) => console.log(`ERROR~au: `, error));
+            .then((user) => {
+                this.router.navigate([`/admin/users/${id}`]);
+                this.flashMessage.show(`${updatedUser.displayName} was updated!`, {
+                    cssClass: 'alert-info',
+                    timeout: 1500
+                });
+            })
+            .catch((error) => {
+                console.log(`ERROR~au: `, error);
+                this.flashMessage.show(`Something went wrong, user was not updated.`, {
+                    cssClass: 'alert-danger',
+                    timeout: 1500
+                });
+            });
     }
 
     deleteUser(id: string): void {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
         if (confirm(`Are you sure you want to delete this user? This is irreversible.`)) {
             this.userDoc.delete()
-                .then((user) => this.router.navigate([`/admin/users`]))
-                .catch((error) => console.log(`ERROR~au: `, error));
+                .then((user) => {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('userToken');
+                    this.router.navigate([`/admin/users`]);
+                    this.flashMessage.show(`User was deleted`, {
+                        cssClass: 'alert-info',
+                        timeout: 1500
+                    });
+                })
+                .catch((error) => {
+                    console.log(`ERROR~au: `, error);
+                    this.flashMessage.show(`Something went wrong, user was not deleted.`, {
+                        cssClass: 'alert-danger',
+                        timeout: 1500
+                    });
+                });
         }
     }
 }

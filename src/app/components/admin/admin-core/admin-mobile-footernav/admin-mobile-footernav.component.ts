@@ -20,15 +20,6 @@ export class AdminMobileFooternavComponent implements OnInit {
       private authService: AuthService,
       private settingsService: AdminSettingsService,
     ) {
-        this.authService.getAuth().subscribe((auth) => {
-            if (auth) {
-                this.isLoggedIn = true;
-                this.loggedInUser = auth.email;
-                this.uid = auth.uid;
-            } else {
-                this.isLoggedIn = false;
-            }
-        });
     }
 
     ngOnInit() {
@@ -36,7 +27,16 @@ export class AdminMobileFooternavComponent implements OnInit {
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
-        this.currentUser = this.authService.getProfile();
+        this.authService.getAuth().subscribe((auth) => {
+            if (auth) {
+                this.isLoggedIn = true;
+                this.loggedInUser = auth.email;
+                this.uid = auth.uid;
+                this.currentUser = this.authService.getProfile();
+            } else {
+                this.isLoggedIn = false;
+            }
+        });
     }
 
     onLogout() {

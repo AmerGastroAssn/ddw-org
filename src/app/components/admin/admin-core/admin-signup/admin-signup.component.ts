@@ -56,7 +56,7 @@ export class AdminSignupComponent implements OnInit {
             ])],
             isOnline: [true],
             loginDate: [Date.now()],
-            photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
+            photoURL: ['' || 'https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
             admin: [{ value: false, disabled: this.disableAdmin }],
             title: ['', Validators.required],
             displayName: [''],

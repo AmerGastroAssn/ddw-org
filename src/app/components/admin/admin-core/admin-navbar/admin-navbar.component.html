@@ -1,4 +1,4 @@
-<nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+<nav class="layout-navbar navbar navbar-expand-lg bg-white container-p-x" id="layout-navbar">
     <!--<a class="navbar-brand" href="#">DDW<sup>&reg;</sup> Admin</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,41 +10,40 @@
             <!--<a class="nav-item nav-link" [routerLink]="['users']"><i class="fa fa-user"></i>&nbsp;Users</a>-->
             <!--<a class="nav-item nav-link" [routerLink]="['/']"><i class="fa fa-globe"></i>&nbsp;Live Site</a>-->
         </div>
+
+        <ul class="navbar-nav ml-auto text-right">
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link"
+                   [routerLink]="['/admin/users/', uid ]">
+                    <i class="fa fa-user-alt"></i>&nbsp;{{ loggedInUser }}
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="isLoggedIn && allowSignup">
+                <a class="nav-link"
+                   [routerLink]="['/admin/settings']">
+                    <i class="fa fa-wrench"></i>&nbsp;Settings
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn && allowSignup">
+                <a class="nav-link"
+                   [routerLink]="['/admin/signup']">
+                    <i class="fa fa-user-plus"></i>&nbsp;Create Account
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link"
+                   [routerLink]="['/admin/login']">
+                    <i class="fa fa-sign-in-alt"></i>&nbsp;log In
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link"
+                   style="cursor:pointer;"
+                   (click)="onLogout()"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout
+                </a>
+            </li>
+        </ul>
     </div>
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link"
-               [routerLink]="['/admin/users/', currentUser.uid]">
-                <img [src]="currentUser.photoURL"
-                     [alt]="currentUser.displayName"
-                     class="rounded-circle user-image">&nbsp;{{ loggedInUser }}
-            </a>
-        </li>
-
-        <li class="nav-item" *ngIf="isLoggedIn && allowSignup">
-            <a class="nav-link"
-               [routerLink]="['/admin/settings']">
-                <i class="fa fa-wrench"></i>&nbsp;Settings
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isLoggedIn && allowSignup">
-            <a class="nav-link"
-               [routerLink]="['/admin/signup']">
-                <i class="fa fa-user-plus"></i>&nbsp;Create Account
-            </a>
-        </li>
-        <li class="nav-item" *ngIf="!isLoggedIn">
-            <a class="nav-link"
-               [routerLink]="['/admin/login']">
-                <i class="fa fa-sign-in-alt"></i>&nbsp;log In
-            </a>
-        </li>
-
-        <li class="nav-item" *ngIf="isLoggedIn">
-            <a class="nav-link"
-               style="cursor:pointer;"
-               (click)="onLogout()"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout
-            </a>
-        </li>
-    </ul>
 </nav>

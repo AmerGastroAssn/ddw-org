@@ -81,7 +81,7 @@
                     class="menu-icon"
                     routerLinkActive="active"
                     *ngIf="authService.fbUser$ | async"
-                    [routerLink]="['/admin/users/', currentUser.uid]">
+                    [routerLink]="['/admin/users/', uid]">
                 <i class="fa fa-user"></i>&nbsp;
                 <small>My Profile</small>
             </button>

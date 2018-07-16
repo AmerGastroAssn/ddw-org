@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { Page } from '../models/Page';
@@ -14,7 +15,8 @@ export class PageService {
 
     constructor(
       private readonly afs: AngularFirestore,
-      private readonly router: Router
+      private readonly router: Router,
+      private flashMessage: FlashMessagesService,
     ) {
     }
 
@@ -75,6 +77,8 @@ export class PageService {
                 .catch((error) => console.log(`ERROR~dP: `, error));
         }
     }
+
+
 
 
 }

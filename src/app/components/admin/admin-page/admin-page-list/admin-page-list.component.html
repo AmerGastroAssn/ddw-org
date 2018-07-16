@@ -1,11 +1,10 @@
 <!-- * ADMIN-PAGE-LIST * -->
-<div class="row mb-5">
-    <div class="container mb-5">
-        <div class="card-deck">
-            <ddw-admin-page-item
-                    *ngFor="let pageEl of page$ | async;"
-                    [page]="pageEl">
-            </ddw-admin-page-item>
-        </div>
+
+<div class="container mb-5">
+    <div class="card-deck">
+        <ddw-admin-page-item
+                *ngFor="let pageEl of page$ | async;"
+                [page]="pageEl">
+        </ddw-admin-page-item>
     </div>
 </div>

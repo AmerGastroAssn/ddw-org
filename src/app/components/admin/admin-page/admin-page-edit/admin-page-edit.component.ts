@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { BsDatepickerDirective } from 'ngx-bootstrap';
@@ -10,7 +10,10 @@ import { PageService } from '../../../../services/page.service';
 @Component({
     selector: 'ddw-admin-page-edit',
     templateUrl: './admin-page-edit.component.html',
-    styleUrls: ['./admin-page-edit.component.css']
+    styleUrls: ['./admin-page-edit.component.css'],
+    providers: [
+        { provide: NG_VALUE_ACCESSOR, useExisting: AdminPageEditComponent, multi: true }
+    ]
 })
 export class AdminPageEditComponent implements OnInit {
     @ViewChild(BsDatepickerDirective) datepicker: BsDatepickerDirective;
@@ -69,7 +72,7 @@ export class AdminPageEditComponent implements OnInit {
                     ],
                     author: [this.page.author, Validators.required],
                     date: [this.page.date],
-                    photoURL: [this.page.photoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
+                    photoURL: [''],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],
                     template: [this.page.template, Validators.required],
@@ -109,5 +112,8 @@ export class AdminPageEditComponent implements OnInit {
         this.datepicker.hide();
     }
 
+    onFileSelection(event) {
+        // this.pageService.fileSelection(event);
+    }
 
 }

@@ -1,13 +1,17 @@
 <!-- * ADMIN-PAGE-EDIT * -->
-<div class="row mb-4">
-    <a class="text-primary back-pages"
-       [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
-    </a>
+<div class="row">
+    <div class="container">
+        <div class="row mb-4">
+            <a class="text-primary back-pages"
+               [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+            </a>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
 
+    <div class="row">
         <div class="col-md-6" *ngIf="page">
             <div class="card">
                 <div class="card-body">
@@ -41,6 +45,20 @@
                             </p>
                         </div>
 
+
+                        <div class="form-group">
+                            <label>Body</label>
+                            <ckeditor formControlName="body"
+                                      [(ngModel)]="page.body"
+                                      [readonly]="false"
+                                      debounce="500">
+                            </ckeditor>
+                            <p class="help-block alert alert-warning text-center mt-1"
+                               *ngIf="!f.body.valid && f.body.touched">
+                                The <b>Body</b> with at least 100 characters is required!
+                            </p>
+                        </div>
+
                         <div class="form-group">
                             <label>Author</label>
                             <input type="text"
@@ -66,14 +84,6 @@
                                    formControlName="date">
                         </div>
 
-                        <div class="form-group">
-                            <label>Image</label>
-                            <input type="text"
-                                   class="form-control"
-                                   [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
-                                   [(ngModel)]="page.photoURL"
-                                   formControlName="photoURL">
-                        </div>
 
                         <div class="form-group">
                             <label for="category">Category</label>
@@ -86,7 +96,7 @@
                                 <option>Attendee Planning</option>
                                 <option>Education</option>
                                 <option>Exhibitor Information</option>
-                                <option>News &amp; Media</option>
+                                <option>News &amp;amp; Media</option>
                             </select>
                         </div>
 
@@ -104,18 +114,23 @@
                             </select>
                         </div>
 
+
                         <div class="form-group">
-                            <label>Body</label>
-                            <ckeditor formControlName="body"
-                                      [(ngModel)]="page.body"
-                                      [readonly]="false"
-                                      debounce="500">
-                            </ckeditor>
-                            <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.body.valid && f.body.touched">
-                                The <b>Body</b> with at least 100 characters is required!
-                            </p>
+                            <div class="custom-file">
+                                <input type="file"
+                                       class="custom-file-input"
+                                       id="photoURL"
+                                       [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                       formControlName="photoURL"
+                                       accept=".png, .jpg, jpeg"
+                                       (change)="onFileSelection($event)">
+                                <label class="custom-file-label"
+                                       for="photoURL">Choose image...
+                                </label>
+                                <!--<div class="invalid-feedback">Example invalid custom file feedback</div>-->
+                            </div>
                         </div>
+
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
@@ -164,8 +179,9 @@
                     <p class="card-text">
                         {{ page.author }} <br>
                         Categories: {{ page.category }} <br>
-                        Body: <br> {{ page.body }}
+                        Body: <br>
                     </p>
+                    <div [innerHTML]="page.body"></div>
 
                 </div>
                 <div class="card-footer">
@@ -175,4 +191,5 @@
         </div>
 
     </div>
+
 </div>

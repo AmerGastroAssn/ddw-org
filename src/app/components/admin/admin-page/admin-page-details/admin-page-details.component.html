@@ -1,39 +1,47 @@
 <!-- * ADMIN-PAGE-DETAILS * -->
 <div class="row mb-4">
-    <a class="text-primary back-users"
-       [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
-    </a>
+    <div class="container">
+        <a class="text-primary back-users"
+           [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+        </a>
+    </div>
 </div>
 
+<div class="row">
+    <div class="container-fluid">
 
-<div class="card" *ngIf="page">
-    <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
-    <div class="card-body">
-        <div class="btn-group float-right"
-             role="group"
-             aria-label="Basic example">
-            <a class="btn btn-secondary btn-sm"
-               [routerLink]="['edit']">
-                <i class="fa fa-pencil"></i>&nbsp;Edit
-            </a>
-            <a class="btn btn-warning btn-sm"
-               [routerLink]="['/admin/pages']">
-                <i class="fa fa-undo"></i>&nbsp;Cancel
-            </a>
-            <button class="btn btn-danger btn-sm"
-                    (click)="onDeletePage()">
-                <i class="fa fa-trash"></i>&nbsp;Delete
-            </button>
+        <div class="card" *ngIf="page">
+            <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
+            <div class="card-body">
+                <div class="btn-group float-right"
+                     role="group"
+                     aria-label="Basic example">
+                    <a class="btn btn-secondary btn-sm"
+                       [routerLink]="['edit']">
+                        <i class="fa fa-pencil"></i>&nbsp;Edit
+                    </a>
+                    <a class="btn btn-warning btn-sm"
+                       [routerLink]="['/admin/pages']">
+                        <i class="fa fa-undo"></i>&nbsp;Cancel
+                    </a>
+                    <button class="btn btn-danger btn-sm"
+                            (click)="onDeletePage()">
+                        <i class="fa fa-trash"></i>&nbsp;Delete
+                    </button>
+                </div>
+                <h5 class="card-title">{{ page.title }}</h5>
+                <p class="card-text">
+                    {{ page.author}} <br>
+                    <b>Category:</b> {{ page.category }} <br>
+                    <b>Body:</b>
+                </p>
+                <div [innerHTML]="page.body"></div>
+
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
+            </div>
         </div>
-        <h5 class="card-title">{{ page.title }}</h5>
-        <p class="card-text">
-            {{ page.author}} <br>
-            <b>Category:</b> {{ page.category }} <br>
-            <b>Body:</b> <br> {{ page.body }}
-        </p>
 
-    </div>
-    <div class="card-footer">
-        <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
     </div>
 </div>

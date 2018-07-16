@@ -2,3 +2,37 @@ input.custom-control-input,
 label.custom-control-label {
     cursor: pointer;
 }
+
+i.fa-cloud-upload-alt {
+    font-size: 2.7em;
+}
+
+.dropzone {
+    cursor: pointer;
+}
+
+.hovering {
+    background-color: #999999;
+}
+
+/* Dropzone */
+/*.dropzone {*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*flex-direction: column;*/
+    /*height: 300px;*/
+    /*border: 2px dashed #f16624;*/
+    /*border-radius: 5px;*/
+    /*background: white;*/
+    /*margin: 10px 0;*/
+/*}*/
+
+/*.dropzone.hovering {*/
+     /*border: 2px solid #f16624;*/
+     /*color: #dadada !important;*/
+ /*}*/
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}

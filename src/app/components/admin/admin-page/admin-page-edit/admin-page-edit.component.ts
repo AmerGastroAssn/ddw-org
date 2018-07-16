@@ -1,19 +1,20 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { BsDatepickerDirective } from 'ngx-bootstrap';
+import { Observable } from 'rxjs/Observable';
+import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { PageService } from '../../../../services/page.service';
+
 
 @Component({
     selector: 'ddw-admin-page-edit',
     templateUrl: './admin-page-edit.component.html',
     styleUrls: ['./admin-page-edit.component.css'],
-    providers: [
-        { provide: NG_VALUE_ACCESSOR, useExisting: AdminPageEditComponent, multi: true }
-    ]
 })
 export class AdminPageEditComponent implements OnInit {
     @ViewChild(BsDatepickerDirective) datepicker: BsDatepickerDirective;
@@ -30,6 +31,15 @@ export class AdminPageEditComponent implements OnInit {
     published: boolean;
     template: string;
     disableAdminOnEdit: boolean;
+    // Image upload
+    task: AngularFireUploadTask;
+    // Progress monitoring
+    percentage: Observable<number>;
+    snapshot: Observable<any>;
+    // Download URL
+    downloadURL: Observable<string>;
+    // State for dropzone CSS toggling
+    isHovering: boolean;
 
 
     constructor(
@@ -38,7 +48,8 @@ export class AdminPageEditComponent implements OnInit {
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
-      private settingsService: AdminSettingsService
+      private settingsService: AdminSettingsService,
+      private storage: AngularFireStorage,
     ) {
     }
 
@@ -47,7 +58,53 @@ export class AdminPageEditComponent implements OnInit {
         return this.editPageForm.controls;
     }
 
+    toggleHover(event: boolean) {
+        this.isHovering = event;
+    }
+
+    startUpload(event: FileList) {
+        // The File object
+        const file = event.item(0);
+
+        // Client-side validation example
+        if (file.type.split('/')[0] !== 'image') {
+            console.error('unsupported file type :( ');
+            return;
+        }
+
+        // The storage path
+        const path = `test/${new Date().getTime()}_${file.name}`;
+        const fileRef = this.storage.ref(path);
+        console.log('fileRef', fileRef);
+
+        // Totally optional metadata
+        const customMetadata = { app: 'DDW.org' };
+
+        // The main task
+        this.task = this.storage.upload(path, file, { customMetadata });
+
+        // Progress monitoring
+        this.percentage = this.task.percentageChanges();
+        this.snapshot = this.task.snapshotChanges();
+
+        // get notified when the download URL is available
+        this.task.snapshotChanges().pipe(
+          finalize(() => {
+              console.log('this.downloadURL', this.downloadURL);
+              this.downloadURL = fileRef.getDownloadURL();
+          })
+        )
+            .subscribe();
+    }
+
+    // Determines if the upload task is active
+    isActive(snapshot) {
+        return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+    }
+
+
     ngOnInit() {
+        console.log(this.downloadURL);
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
 
         // Get id from url
@@ -72,7 +129,7 @@ export class AdminPageEditComponent implements OnInit {
                     ],
                     author: [this.page.author, Validators.required],
                     date: [this.page.date],
-                    photoURL: [''],
+                    photoURL: [this.page.photoURL],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],
                     template: [this.page.template, Validators.required],

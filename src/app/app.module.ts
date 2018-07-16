@@ -21,6 +21,8 @@ import { AdminSettingsService } from './services/admin-settings.service';
 import { AuthService } from './services/auth.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
+import { DropZoneDirective } from './directives/drop-zone.directive';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { UserService } from './services/user.service';
         SidebarComponent,
         NotFoundComponent,
         PagesComponent,
-        HomeComponent
+        HomeComponent,
+        DropZoneDirective,
     ],
     imports: [
         BrowserModule,

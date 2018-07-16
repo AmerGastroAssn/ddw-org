@@ -116,39 +116,57 @@
 
 
                         <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="custom-file">
-                                        <input type="file"
-                                               ddwDropZone
-                                               class="custom-file-input"
-                                               id="photoURL"
-                                               [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
-                                               formControlName="photoURL"
-                                               accept=".png, .jpg, jpeg"
-                                               (change)="startUpload($event.target.files)">
-                                        <label class="custom-file-label"
-                                               for="photoURL">Choose image...
-                                        </label>
-                                        <!--<div class="invalid-feedback">Example invalid custom file feedback</div>-->
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        Image Uploader
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div *ngIf="downloadURL | async as url">
-                                        <a [href]="url | async">{{ url }}</a>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="custom-file">
+                                                <label class="custom-file-label">
+                                                    Click To Select
+                                                </label>
+                                                <input type="file"
+                                                       ddwDropZone
+                                                       class="custom-file-input"
+                                                       accept=".png, .jpg, jpeg"
+                                                       (change)="uploadImage($event)">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div *ngIf="downloadURL | async as url">
+                                                Copy and paste url into input below to use:
+                                                <p><a [href]="url | async">{{ url }}</a></p>
+                                                <p><img [src]="url" style="max-width:100px;"></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div *ngIf="percentage | async as pct">
-                                <progress class="progress is-info"
-                                          [value]="pct"
-                                          max="100">
-                                </progress>
-                                {{ pct | number }}%
+                                    <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
+                                        <mat-progress-bar
+                                                mode="determinate"
+                                                [color]="color"
+                                                [value]="pct">
+                                        </mat-progress-bar>
+                                        Image download: {{ pct | number }}%
+                                    </div>
+                                </div>
                             </div>
-                        </div>                        
-                
+                        </div>
+
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                   [(ngModel)]="page.photoURL"
+                                   formControlName="photoURL">
+                            <p class="help-block alert alert-warning text-center mt-1"
+                               *ngIf="!f.photoURL.valid && f.photoURL.touched">
+                                <b>Image URL</b> is required!
+                            </p>
+                        </div>
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">

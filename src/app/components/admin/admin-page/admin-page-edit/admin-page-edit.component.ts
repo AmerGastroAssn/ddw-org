@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
@@ -24,13 +25,16 @@ export class AdminPageEditComponent implements OnInit {
     title: string;
     author: string;
     date: string;
-    photoURL: string;
+    photoURL: any;
     body: string;
     category: string;
     uid: string;
     published: boolean;
     template: string;
     disableAdminOnEdit: boolean;
+    color = 'primary';
+    mode: 'determinate';
+    value: string;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -40,6 +44,7 @@ export class AdminPageEditComponent implements OnInit {
     downloadURL: Observable<string>;
     // State for dropzone CSS toggling
     isHovering: boolean;
+    isInvalid: boolean;
 
 
     constructor(
@@ -50,6 +55,7 @@ export class AdminPageEditComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
       private storage: AngularFireStorage,
+      private sanitizer: DomSanitizer
     ) {
     }
 
@@ -62,39 +68,37 @@ export class AdminPageEditComponent implements OnInit {
         this.isHovering = event;
     }
 
-    startUpload(event: FileList) {
-        // The File object
-        const file = event.item(0);
+    uploadImage(event) {
+        const customMetadata = { app: 'DDW.org' };
+// The File object
+        const file = event.target.files[0];
+
 
         // Client-side validation example
         if (file.type.split('/')[0] !== 'image') {
             console.error('unsupported file type :( ');
+            this.isInvalid = true;
             return;
         }
 
         // The storage path
-        const path = `test/${new Date().getTime()}_${file.name}`;
+        const path = `pageImages/${new Date().getTime()}_${file.name}`;
         const fileRef = this.storage.ref(path);
-        console.log('fileRef', fileRef);
-
-        // Totally optional metadata
-        const customMetadata = { app: 'DDW.org' };
-
         // The main task
         this.task = this.storage.upload(path, file, { customMetadata });
-
         // Progress monitoring
         this.percentage = this.task.percentageChanges();
         this.snapshot = this.task.snapshotChanges();
 
-        // get notified when the download URL is available
+        // The file's download URL
         this.task.snapshotChanges().pipe(
           finalize(() => {
-              console.log('this.downloadURL', this.downloadURL);
               this.downloadURL = fileRef.getDownloadURL();
           })
         )
             .subscribe();
+
+
     }
 
     // Determines if the upload task is active
@@ -129,7 +133,7 @@ export class AdminPageEditComponent implements OnInit {
                     ],
                     author: [this.page.author, Validators.required],
                     date: [this.page.date],
-                    photoURL: [this.page.photoURL],
+                    photoURL: [this.photoURL, Validators.required],
                     category: [this.page.category || ''],
                     published: [this.page.published || false],
                     template: [this.page.template, Validators.required],

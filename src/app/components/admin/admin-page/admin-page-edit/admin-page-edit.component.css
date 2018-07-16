@@ -17,22 +17,36 @@ i.fa-cloud-upload-alt {
 
 /* Dropzone */
 /*.dropzone {*/
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*flex-direction: column;*/
-    /*height: 300px;*/
-    /*border: 2px dashed #f16624;*/
-    /*border-radius: 5px;*/
-    /*background: white;*/
-    /*margin: 10px 0;*/
+/*display: flex;*/
+/*align-items: center;*/
+/*justify-content: center;*/
+/*flex-direction: column;*/
+/*height: 300px;*/
+/*border: 2px dashed #f16624;*/
+/*border-radius: 5px;*/
+/*background: white;*/
+/*margin: 10px 0;*/
 /*}*/
 
 /*.dropzone.hovering {*/
-     /*border: 2px solid #f16624;*/
-     /*color: #dadada !important;*/
- /*}*/
+/*border: 2px solid #f16624;*/
+/*color: #dadada !important;*/
+/*}*/
 
 progress::-webkit-progress-value {
     transition: width 0.1s ease;
+}
+
+input.invalid {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #701D26;
+    background-color: #F7D7DB;
+    background-clip: padding-box;
+    border: 1px solid #CBB1B4;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }

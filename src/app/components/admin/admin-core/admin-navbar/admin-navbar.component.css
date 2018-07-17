@@ -2,6 +2,13 @@ img.user-image {
     max-width: 25px;
 }
 
+button.btn-default {
+    color: #a3a4a6;
+}
+
+button.btn-default:hover {
+    color: #4E5155;
+}
 
 
 /* Mobile Queries */

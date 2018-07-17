@@ -9,9 +9,15 @@
             <!--<a class="nav-item nav-link" [routerLink]="['pages']"><i class="fa fa-file"></i>&nbsp;Pages</a>-->
             <!--<a class="nav-item nav-link" [routerLink]="['users']"><i class="fa fa-user"></i>&nbsp;Users</a>-->
             <!--<a class="nav-item nav-link" [routerLink]="['/']"><i class="fa fa-globe"></i>&nbsp;Live Site</a>-->
+
         </div>
 
         <ul class="navbar-nav ml-auto text-right">
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <button class="btn btn-default btn-sm float-right mt-2 mr-5"
+                        [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
+                </button>
+            </li>
             <li class="nav-item" *ngIf="isLoggedIn">
                 <a class="nav-link"
                    [routerLink]="['/admin/users/', uid ]">

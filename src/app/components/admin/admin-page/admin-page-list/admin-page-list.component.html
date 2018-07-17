@@ -1,19 +1,36 @@
 <!-- * ADMIN-PAGE-LIST * -->
 
-<div class="row mb-4">
-    <div class="container text-right">
-        <button class="btn btn-outline-info"
-                (click)="toggleListCardView()"
-                *ngIf="!showListToggle">
-            <i class="fa fa-th-list"></i> View as list
-        </button>
-        <button class="btn btn-outline-info"
-                (click)="toggleListCardView()"
-                *ngIf="showListToggle">
-            <i class="fa fa-credit-card-front"></i> View as Cards
-        </button>
+<div class="container mb-3">
+    <div class="row">
+        <div class="col-lg-8"></div>
+        <div class="col-lg-4">
+            <div class="card text-center">
+                <div class="card-body p-3">
+                    <mat-slide-toggle
+                            [color]="color"
+                            (click)="toggleListCardView()">
+                        Toggle List/Card View
+                    </mat-slide-toggle>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<!--<div class="row mb-4">-->
+    <!--<div class="container text-right">-->
+        <!--<button class="btn btn-outline-info"-->
+                <!--(click)="toggleListCardView()"-->
+                <!--*ngIf="!showListToggle">-->
+            <!--<i class="fa fa-th-list"></i> View as list-->
+        <!--</button>-->
+        <!--<button class="btn btn-outline-info"-->
+                <!--(click)="toggleListCardView()"-->
+                <!--*ngIf="showListToggle">-->
+            <!--<i class="fa fa-credit-card-front"></i> View as Cards-->
+        <!--</button>-->
+    <!--</div>-->
+<!--</div>-->
 
 <div class="container mb-5" *ngIf="!showListToggle">
     <div class="card-deck">
@@ -51,19 +68,19 @@
                     <tbody>
                     <tr *ngFor="let page of pageList | async;">
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.id]">
+                            <a [routerLink]="['/admin/pages/', page.uid]">
                                 <img [src]="page.photoURL"
                                      [alt]="page.title"
                                      class="page-image">
                             </a>
                         </td>
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.id]" class="text-truncate">
+                            <a [routerLink]="['/admin/pages/', page.uid]" class="text-truncate">
                                 {{ page.title }}
                             </a>
                         </td>
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.id]" class="text-truncate">
+                            <a [routerLink]="['/admin/pages/', page.uid]" class="text-truncate">
                                 <span class="card-text">{{ page.body | slice:0:20 }}</span>
                             </a>
                         </td>
@@ -89,7 +106,7 @@
                         <!--</td>-->
                         <td>
                             <a class="btn btn-default btn-xs icon-btn md-btn-flat user-tooltip"
-                               [routerLink]="['/admin/pages/', page.id]">
+                               [routerLink]="['/admin/pages/', page.uid]">
                                 <i class="fa fa-pencil"></i>&nbsp;
                             </a>
                         </td>

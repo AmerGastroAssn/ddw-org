@@ -16,8 +16,10 @@ export class AdminPageListComponent implements OnInit {
     pageList: Observable<Page[]>;
     page: Page;
     user: User;
-    id: any;
-    showListToggle: boolean;
+    uid: string;
+    id: string;
+    showListToggle = true;
+    color = 'primary';
 
     constructor(
       private readonly pageService: PageService,
@@ -44,7 +46,6 @@ export class AdminPageListComponent implements OnInit {
 
     toggleListCardView() {
         this.showListToggle = !this.showListToggle;
-        console.log(this.showListToggle);
     }
 
 }

@@ -64,23 +64,17 @@ export class AdminPageEditComponent implements OnInit {
         return this.editPageForm.controls;
     }
 
-    toggleHover(event: boolean) {
-        this.isHovering = event;
-    }
 
     uploadImage(event) {
         const customMetadata = { app: 'DDW.org' };
-// The File object
+        // The File object
         const file = event.target.files[0];
-
-
         // Client-side validation example
         if (file.type.split('/')[0] !== 'image') {
             console.error('unsupported file type :( ');
             this.isInvalid = true;
             return;
         }
-
         // The storage path
         const path = `pageImages/${new Date().getTime()}_${file.name}`;
         const fileRef = this.storage.ref(path);
@@ -89,7 +83,6 @@ export class AdminPageEditComponent implements OnInit {
         // Progress monitoring
         this.percentage = this.task.percentageChanges();
         this.snapshot = this.task.snapshotChanges();
-
         // The file's download URL
         this.task.snapshotChanges().pipe(
           finalize(() => {
@@ -97,15 +90,7 @@ export class AdminPageEditComponent implements OnInit {
           })
         )
             .subscribe();
-
-
     }
-
-    // Determines if the upload task is active
-    isActive(snapshot) {
-        return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
-    }
-
 
     ngOnInit() {
         console.log(this.downloadURL);

@@ -5,7 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { BsDatepickerModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -46,6 +46,7 @@ import { DropZoneDirective } from './directives/drop-zone.directive';
         AppRoutingModule,
         FlashMessagesModule.forRoot(),
         BsDatepickerModule.forRoot(),
+        ProgressbarModule.forRoot(),
     ],
     exports: [],
     providers: [

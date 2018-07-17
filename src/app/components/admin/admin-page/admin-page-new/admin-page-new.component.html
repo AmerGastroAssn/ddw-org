@@ -138,13 +138,12 @@
                                     </div>
                                 </div>
 
+
                                 <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
-                                    <mat-progress-bar
-                                            mode="determinate"
-                                            [color]="color"
-                                            [value]="pct">
-                                    </mat-progress-bar>
-                                    Image download: {{ pct | number }}%
+                                    <progressbar class="progress-striped active"
+                                                 [value]="pct"
+                                                 type="primary"><i>Image Upload {{ pct | number }}%</i>
+                                    </progressbar>
                                 </div>
                             </div>
                         </div>

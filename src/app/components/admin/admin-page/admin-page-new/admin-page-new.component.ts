@@ -41,6 +41,7 @@ export class AdminPageNewComponent implements OnInit {
     // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
+    value: any;
 
     constructor(
       private pageService: PageService,

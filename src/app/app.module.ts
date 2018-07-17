@@ -5,6 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import firebase from 'firebase/app';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,13 +18,14 @@ import { NotFoundComponent } from './components/core/not-found/not-found.compone
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminSettingsService } from './services/admin-settings.service';
 import { AuthService } from './services/auth.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
-import { DropZoneDirective } from './directives/drop-zone.directive';
 
-
+// Inits the app (Fixes a bug).
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
     declarations: [

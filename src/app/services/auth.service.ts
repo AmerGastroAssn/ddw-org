@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { UserService } from './user.service';
@@ -30,6 +31,7 @@ export class AuthService {
     loginDate: number = Date.now();
     isOnline: boolean;
     title: string;
+
 
     constructor(
       private afAuth: AngularFireAuth,
@@ -68,26 +70,52 @@ export class AuthService {
                                  }
                              });
         // Sets user in browser.
-        this.userService.statusChange.subscribe(userData => {
+        this.statusChange.subscribe(userData => {
             if (userData) {
                 this.$key = userData.$key;
                 this.uid = userData.uid;
-                this.displayName = userData.displayName;
                 this.email = userData.email;
+                this.title = userData.title;
                 this.password = userData.password;
                 this.photoURL = userData.photoURL;
                 this.loginDate = Date.now();
                 this.isOnline = userData.isOnline = true;
                 this.admin = userData.admin;
-                this.title = userData.title;
-
+                this.displayName = userData.displayName;
             } else {
                 this.displayName = null;
                 this.email = null;
                 this.uid = null;
+                this.isOnline = false;
             }
         });
+    }
 
+    isLoggedIn() {
+        firebase.auth().onAuthStateChanged((userData) => {
+            // if logged in.
+            if (userData && userData.emailVerified) {
+                this.loggedIn = true;
+                const user = this.userDbService.getProfile();
+                if (user && user.uid) {
+                    this.$key = userData.$key;
+                    this.uid = userData.uid;
+                    this.email = userData.email;
+                    this.title = userData.title;
+                    this.password = userData.password;
+                    this.photoURL = userData.photoURL;
+                    this.loginDate = Date.now();
+                    this.isOnline = userData.isOnline = true;
+                    this.admin = userData.admin;
+                    this.displayName = userData.displayName;
+                }
+            } else {
+                this.loggedIn = false;
+                // Logs FB user out if not logged in app.
+                firebase.auth().signOut();
+                // removes from local storage
+            }
+        });
     }
 
 
@@ -162,13 +190,16 @@ export class AuthService {
                         cssClass: 'alert-danger',
                         timeout: 5000
                     });
-                    this.router.navigate(['login']);
+                    this.router.navigate(['/admin/login']);
                 });
         });
     }
 
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
+                   .then((newUser) => {
+                       this.userService.authState = newUser;
+                   })
                    .then(() => {
                        return this.setUserData(userData) // create initial user document
                                   .then(() => {
@@ -177,16 +208,17 @@ export class AuthService {
                                           timeout: 2500
                                       });
                                       this.router.navigate(['/admin/login']);
-                                  })
-                                  .then(() => {
-                                      if (userData) {
-                                          this.setUserInLocalStorage(userData);
-                                      } else {
-                                          console.log('userData was not found.');
-                                      }
                                   });
+                       // .then(() => {
+                       //     if (userData) {
+                       //         this.setUserInLocalStorage(userData);
+                       //     } else {
+                       //         console.log('userData was not found.');
+                       //     }
+                       // });
                    })
                    .catch(error => {
+                       console.log(`Error~eS:`, error);
                        this.flashMessage.show(error, {
                            cssClass: 'alert-danger',
                            timeout: 5000
@@ -216,13 +248,56 @@ export class AuthService {
             });
     }
 
-    private updateUserData(user) {
-        const tempId = this.afs.createId();
+    resetPassword(formData: string) {
+        const auth = firebase.auth();
+        return auth.sendPasswordResetEmail(formData.email)
+                   .then(() => {
+                       this.flashMessage.show(`Email confirmation was sent!`, {
+                           cssClass: 'alert-success',
+                           timeout: 2500
+                       });
+                       console.log('Email confirmation was sent!');
+                       this.router.navigate(['/admin/login']);
+                   })
+                   .catch((error) => {
+                       this.flashMessage.show(error, {
+                           cssClass: 'alert-danger',
+                           timeout: 2500
+                       });
+                       console.log(error);
+                   });
+    }
+
+    addUser(newUser: User) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(newUser.email, newUser.password)
+                   .then(() => {
+                       this.setNewUserData(newUser)
+                           .then(() => {
+                               this.router.navigate([`/admin/users`]);
+                               this.flashMessage.show(`${newUser.displayName} was Created`, {
+                                   cssClass: 'alert-success',
+                                   timeout: 1500
+                               });
+                           })
+                           .catch((error) => {
+                               console.log(`ERROR~au: `, error);
+                               this.flashMessage.show(`Something went wrong, user was NOT created.`, {
+                                   cssClass: 'alert-danger',
+                                   timeout: 2000
+                               });
+                           });
+                   });
+    }
+
+    // Sets user but also in local storage.
+    private setUserData(user) {
+        // const userId = this.userService.currentUserId;
+        const new$key = this.afs.createId();
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
         const data: User = {
-            $key: user.$key,
-            uid: user.$key,
+            $key: new$key,
+            uid: user.uid,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,
@@ -233,17 +308,24 @@ export class AuthService {
             displayName: user.displayName,
         };
 
-        return userRef.set(data, { merge: true });
-
+        return userRef.set(data)
+                      .then(() => {
+                          this.setUserInLocalStorage(data);
+                          this.currentUserToken();
+                      })
+                      .catch((error) => {
+                          console.log('User not set in local storage:', error);
+                      });
     }
 
-    private setUserData(user) {
+    // Without setting in local storage
+    private setNewUserData(user) {
         const new$key = this.afs.createId();
         // Sets user data to firestore on login
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
         const data: User = {
             $key: new$key,
-            uid: user.uid,
+            uid: new$key,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,

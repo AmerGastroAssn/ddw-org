@@ -12,6 +12,7 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { AdminComponent } from './admin.component';
         AdminSignupComponent,
         AdminSettingsComponent,
         AdminMobileFooternavComponent,
+        AdminResetPasswordComponent,
     ],
     imports: [
         CommonModule,

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
+import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
 import { AdminPageDetailsComponent } from './admin-page/admin-page-details/admin-page-details.component';
@@ -43,6 +44,7 @@ const adminRoutes: Routes = [
                 ]
             },
             { path: 'login', component: AdminLoginComponent },
+            { path: 'reset', component: AdminResetPasswordComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
             { path: 'settings', component: AdminSettingsComponent, canActivate: [RegisterGuard] },
         ]

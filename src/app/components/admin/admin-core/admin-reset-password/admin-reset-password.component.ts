@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../../../models/User';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
-    selector: 'ddw-login',
-    templateUrl: './admin-login.component.html',
-    styleUrls: ['./admin-login.component.css']
+    selector: 'ddw-admin-reset-password',
+    templateUrl: './admin-reset-password.component.html',
+    styleUrls: ['./admin-reset-password.component.css']
 })
-export class AdminLoginComponent implements OnInit {
-    loginForm: FormGroup;
-    user: User;
+export class AdminResetPasswordComponent implements OnInit {
+    resetForm: FormGroup;
     email: string;
-    password: string;
 
 
     constructor(
@@ -21,11 +18,6 @@ export class AdminLoginComponent implements OnInit {
       private authService: AuthService,
       private router: Router
     ) {
-        authService.getAuth().subscribe((auth) => {
-            if (auth) {
-                this.router.navigate(['/admin/pages']);
-            }
-        });
     }
 
     // For Form Validations
@@ -39,19 +31,14 @@ export class AdminLoginComponent implements OnInit {
                 Validators.required,
                 Validators.email
             ])],
-            password: ['', Validators.compose([
-                Validators.required,
-                Validators.minLength(8)
-            ])]
         });
 
         this.email = this.loginForm.value.email;
-        this.password = this.loginForm.value.password;
     }
 
-    onLogin(formData: FormGroup) {
+    onSubmit(email: FormData) {
         if (this.loginForm.valid) {
-            this.authService.login(formData);
+            this.authService.resetPassword(email);
             this.loginForm.reset();
         }
     }

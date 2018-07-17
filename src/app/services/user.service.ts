@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -11,13 +11,12 @@ import { User } from '../models/User';
     providedIn: 'root'
 })
 export class UserService {
-    statusChange: any = new EventEmitter<any>();
     userCollection: AngularFirestoreCollection<User>;
     userDoc: AngularFirestoreDocument<User>;
     user: Observable<User>;
     users$: Observable<User[]>;
     uid: string;
-
+    authState: string;
 
     constructor(
       private afs: AngularFirestore,
@@ -27,6 +26,10 @@ export class UserService {
     ) {
     }
 
+    // If authenticated, return user-Key-ID/uid, else empty string.
+    get currentUserId() {
+        return this.authState !== null ? this.authState.uid : '';
+    }
 
     getUsers(): Observable<User[]> {
         // Ref, and order by title
@@ -44,12 +47,6 @@ export class UserService {
                    });
     }
 
-    addUser(newUser: User) {
-        const usersCollection = this.afs.collection<User>('users');
-        usersCollection.add(newUser)
-                       .then((user) => this.router.navigate(['/admin/users']))
-                       .catch((error) => console.log(`ERROR~au: `, error));
-    }
 
     getUser(id: string): Observable<User> {
         this.userDoc = this.afs.doc<User>(`users/${id}`);
@@ -107,4 +104,6 @@ export class UserService {
                 });
         }
     }
+
+
 }

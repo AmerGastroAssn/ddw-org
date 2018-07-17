@@ -102,23 +102,23 @@ export class AdminPageEditComponent implements OnInit {
 
                 // Form:
                 this.editPageForm = this.fb.group({
-                    uid: [this.page.uid],
-                    title: [this.page.title,
+                    uid: [page.uid],
+                    title: [page.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
                             ])
                     ],
-                    body: [this.page.body,
+                    body: [page.body,
                            Validators.compose([
                                Validators.required, Validators.minLength(100)
                            ])
                     ],
-                    author: [this.page.author, Validators.required],
-                    date: [this.page.date],
-                    photoURL: [this.photoURL, Validators.required],
-                    category: [this.page.category || ''],
-                    published: [this.page.published || false],
-                    template: [this.page.template, Validators.required],
+                    author: [page.author, Validators.required],
+                    date: [page.date],
+                    photoURL: [page.photoURL],
+                    category: [page.category || ''],
+                    published: [page.published || false],
+                    template: [page.template, Validators.required],
                 });
 
                 this.uid = this.editPageForm.value.uid;

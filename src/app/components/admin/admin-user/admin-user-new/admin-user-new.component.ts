@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class AdminUserNewComponent implements OnInit {
       private userService: UserService,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
-      private settingsService: AdminSettingsService
+      private settingsService: AdminSettingsService,
+      private authService: AuthService,
     ) {
 
     }
@@ -63,15 +65,15 @@ export class AdminUserNewComponent implements OnInit {
             uid: ['']
         });
 
-        this.email = this.newUserForm.value.email;
-        this.password = this.newUserForm.value.password;
-        this.displayName = this.newUserForm.value.displayName;
-        this.isOnline = this.newUserForm.value.isOnline;
-        this.loginDate = this.newUserForm.value.loginDate;
-        this.photoURL = this.newUserForm.value.photoURL;
-        this.admin = this.newUserForm.value.admin;
-        this.title = this.newUserForm.value.title;
-        this.uid = this.newUserForm.value.uid;
+        this.email = this.signupForm.value.email;
+        this.password = this.signupForm.value.password;
+        this.isOnline = this.signupForm.value.isOnline;
+        this.loginDate = this.signupForm.value.loginDate;
+        this.photoURL = this.signupForm.value.photoURL;
+        this.admin = this.signupForm.value.admin;
+        this.title = this.signupForm.value.title;
+        this.displayName = this.signupForm.value.displayName;
+        this.uid = this.signupForm.value.uid;
     }
 
 
@@ -82,7 +84,7 @@ export class AdminUserNewComponent implements OnInit {
                 timeout: 3500
             });
         } else {
-            this.userService.addUser(formData);
+            this.authService.addUser(formData);
             // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.newUserForm.reset();
             this.flashMessage.show(`${formData.controls.displayName} was created successfully!`, {

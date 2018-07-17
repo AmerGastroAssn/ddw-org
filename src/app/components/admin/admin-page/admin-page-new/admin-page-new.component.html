@@ -51,13 +51,6 @@
                                formControlName="date">
                     </div>
 
-                    <div class="form-group">
-                        <label>Image</label>
-                        <input type="text"
-                               class="form-control"
-                               [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
-                               formControlName="photoURL">
-                    </div>
 
                     <div class="form-group">
                         <label for="category">Category</label>
@@ -99,6 +92,74 @@
                         <p class="help-block alert alert-warning text-center mt-1"
                            *ngIf="!f.body.valid && f.body.touched">
                             The <b>Body</b> with at least 100 characters is required!
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Image Uploader
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" *ngIf="!downloadURL">
+                                                Click To Select
+                                            </label>
+                                            <label class="custom-file-label text-truncate" *ngIf="downloadURL">
+                                                {{ downloadURL | async }}
+                                            </label>
+                                            <input type="file"
+                                                   ddwDropZone
+                                                   class="custom-file-input"
+                                                   accept=".png, .jpg, jpeg"
+                                                   (change)="uploadImage($event)">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div *ngIf="downloadURL | async as url; else loadingURL">
+                                            <p class="pb-2">
+                                                <b>Copy and paste url into the Image URL input below:</b>
+                                            </p>
+                                            <p>
+                                                <a [href]="url">
+                                                    {{ url }}
+                                                </a>
+                                            </p>
+                                            <p><img [src]="url" style="max-width:100px;"></p>
+                                        </div>
+                                        <ng-template #loadingURL>
+                                            <p class="text-center text-secondary">
+                                                Upload Image, Then a URL will appear here. Copy and paste that link
+                                                into Image URL below to use.
+                                            </p>
+                                        </ng-template>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
+                                    <mat-progress-bar
+                                            mode="determinate"
+                                            [color]="color"
+                                            [value]="pct">
+                                    </mat-progress-bar>
+                                    Image download: {{ pct | number }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text"
+                               class="form-control"
+                               [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                               [(ngModel)]="photoURL"
+                               formControlName="photoURL">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.photoURL.valid && f.photoURL.touched">
+                            <b>Image URL</b> is required!
                         </p>
                     </div>
 

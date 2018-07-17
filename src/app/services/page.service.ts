@@ -55,12 +55,28 @@ export class PageService {
         return this.page;
     }
 
-    addPage(newPage: Page): void {
-        const pagesCollection = this.afs.collection<Page>('pages');
-        pagesCollection.add(newPage)
-                       .then((page) => this.router.navigate(['/admin/pages']))
-                       .catch((error) => console.log(`ERROR~aP: `, error));
+    setPage(formData) {
+        const new$key = this.afs.createId();
+        // Sets user data to firestore on login
+        const pageRef: AngularFirestoreDocument<any> = this.afs.doc(`pages/${new$key}`);
+        const data: Page = {
+            $key: new$key,
+            uid: new$key,
+            title: formData.title,
+            body: formData.body,
+            author: formData.author,
+            date: formData.date,
+            photoURL: formData.photoURL,
+            category: formData.category,
+            published: formData.published,
+            template: formData.template,
+        };
+
+        return pageRef.set(data)
+                      .then((page) => this.router.navigate(['/admin/pages']))
+                      .catch((error) => console.log(`ERROR~aP: `, error));
     }
+
 
     updatePage(updatedPage, id: string): void {
         this.pageDoc = this.afs.doc<Page>(`pages/${id}`);
@@ -77,8 +93,6 @@ export class PageService {
                 .catch((error) => console.log(`ERROR~dP: `, error));
         }
     }
-
-
 
 
 }

@@ -32,9 +32,6 @@ export class AdminPageEditComponent implements OnInit {
     published: boolean;
     template: string;
     disableAdminOnEdit: boolean;
-    color = 'primary';
-    mode: 'determinate';
-    value: string;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -55,7 +52,6 @@ export class AdminPageEditComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
       private storage: AngularFireStorage,
-      private sanitizer: DomSanitizer
     ) {
     }
 

@@ -16,7 +16,7 @@ export class UserService {
     user: Observable<User>;
     users$: Observable<User[]>;
     uid: string;
-    authState: string;
+    authState: any;
 
     constructor(
       private afs: AngularFirestore,

@@ -9,7 +9,7 @@
                     <mat-slide-toggle
                             [color]="color"
                             (click)="toggleListCardView()">
-                        Toggle List/Card View
+                        Toggle View
                     </mat-slide-toggle>
                 </div>
             </div>
@@ -18,34 +18,34 @@
 </div>
 
 <!--<div class="row mb-4">-->
-    <!--<div class="container text-right">-->
-        <!--<button class="btn btn-outline-info"-->
-                <!--(click)="toggleListCardView()"-->
-                <!--*ngIf="!showListToggle">-->
-            <!--<i class="fa fa-th-list"></i> View as list-->
-        <!--</button>-->
-        <!--<button class="btn btn-outline-info"-->
-                <!--(click)="toggleListCardView()"-->
-                <!--*ngIf="showListToggle">-->
-            <!--<i class="fa fa-credit-card-front"></i> View as Cards-->
-        <!--</button>-->
-    <!--</div>-->
+<!--<div class="container text-right">-->
+<!--<button class="btn btn-outline-info"-->
+<!--(click)="toggleListCardView()"-->
+<!--*ngIf="!showListToggle">-->
+<!--<i class="fa fa-th-list"></i> View as list-->
+<!--</button>-->
+<!--<button class="btn btn-outline-info"-->
+<!--(click)="toggleListCardView()"-->
+<!--*ngIf="showListToggle">-->
+<!--<i class="fa fa-credit-card-front"></i> View as Cards-->
+<!--</button>-->
 <!--</div>-->
-
-<div class="container mb-5" *ngIf="!showListToggle">
-    <div class="card-deck">
-        <ddw-admin-page-item
-                *ngFor="let pageEl of page$ | async;"
-                [page]="pageEl">
-        </ddw-admin-page-item>
+<!--</div>-->
+<div class="layout-content mb-5" *ngIf="!showListToggle">
+    <div class="container">
+        <div class="card-columns">
+            <ddw-admin-page-item
+                    *ngFor="let pageEl of page$ | async;"
+                    [page]="pageEl">
+            </ddw-admin-page-item>
+        </div>
     </div>
 </div>
-
 
 <!-- Layout content -->
 <div class="layout-content mb-5" *ngIf="showListToggle">
     <!-- Content -->
-    <div class="container-fluid flex-grow-1 container-p-y">
+    <div class="container flex-grow-1 container-p-y">
 
         <div class="card p-3">
             <h4 class="font-weight-bold py-3 mb-4 pl-2">

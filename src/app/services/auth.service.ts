@@ -1,9 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { UserService } from './user.service';
@@ -96,17 +97,12 @@ export class AuthService {
             // if logged in.
             if (userData && userData.emailVerified) {
                 this.loggedIn = true;
-                const user = this.userDbService.getProfile();
+                const user = this.getProfile();
                 if (user && user.uid) {
-                    this.$key = userData.$key;
                     this.uid = userData.uid;
                     this.email = userData.email;
-                    this.title = userData.title;
-                    this.password = userData.password;
                     this.photoURL = userData.photoURL;
                     this.loginDate = Date.now();
-                    this.isOnline = userData.isOnline = true;
-                    this.admin = userData.admin;
                     this.displayName = userData.displayName;
                 }
             } else {
@@ -197,9 +193,6 @@ export class AuthService {
 
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
-                   .then((newUser) => {
-                       this.userService.authState = newUser;
-                   })
                    .then(() => {
                        return this.setUserData(userData) // create initial user document
                                   .then(() => {
@@ -248,9 +241,9 @@ export class AuthService {
             });
     }
 
-    resetPassword(formData: string) {
+    resetPassword(formData: any) {
         const auth = firebase.auth();
-        return auth.sendPasswordResetEmail(formData.email)
+        return auth.sendPasswordResetEmail(formData)
                    .then(() => {
                        this.flashMessage.show(`Email confirmation was sent!`, {
                            cssClass: 'alert-success',

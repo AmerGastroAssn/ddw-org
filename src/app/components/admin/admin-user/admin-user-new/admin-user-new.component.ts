@@ -65,15 +65,15 @@ export class AdminUserNewComponent implements OnInit {
             uid: ['']
         });
 
-        this.email = this.signupForm.value.email;
-        this.password = this.signupForm.value.password;
-        this.isOnline = this.signupForm.value.isOnline;
-        this.loginDate = this.signupForm.value.loginDate;
-        this.photoURL = this.signupForm.value.photoURL;
-        this.admin = this.signupForm.value.admin;
-        this.title = this.signupForm.value.title;
-        this.displayName = this.signupForm.value.displayName;
-        this.uid = this.signupForm.value.uid;
+        this.email = this.newUserForm.value.email;
+        this.password = this.newUserForm.value.password;
+        this.isOnline = this.newUserForm.value.isOnline;
+        this.loginDate = this.newUserForm.value.loginDate;
+        this.photoURL = this.newUserForm.value.photoURL;
+        this.admin = this.newUserForm.value.admin;
+        this.title = this.newUserForm.value.title;
+        this.displayName = this.newUserForm.value.displayName;
+        this.uid = this.newUserForm.value.uid;
     }
 
 

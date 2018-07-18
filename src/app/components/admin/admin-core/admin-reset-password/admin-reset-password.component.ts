@@ -10,7 +10,7 @@ import { AuthService } from '../../../../services/auth.service';
 })
 export class AdminResetPasswordComponent implements OnInit {
     resetForm: FormGroup;
-    email: string;
+    email: any;
 
 
     constructor(
@@ -22,24 +22,24 @@ export class AdminResetPasswordComponent implements OnInit {
 
     // For Form Validations
     get f() {
-        return this.loginForm.controls;
+        return this.resetForm.controls;
     }
 
     ngOnInit() {
-        this.loginForm = this.fb.group({
+        this.resetForm = this.fb.group({
             email: ['', Validators.compose([
                 Validators.required,
                 Validators.email
             ])],
         });
 
-        this.email = this.loginForm.value.email;
+        this.email = this.resetForm.value.email;
     }
 
-    onSubmit(email: FormData) {
-        if (this.loginForm.valid) {
+    onSubmit(email: FormGroup) {
+        if (this.resetForm.valid) {
             this.authService.resetPassword(email);
-            this.loginForm.reset();
+            this.resetForm.reset();
         }
     }
 

@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -50,17 +49,6 @@ export class AuthService {
                               }));
                           });
 
-
-        //// Get auth data, then get firestore user document || null
-        // this.user = this.afAuth.authState.pipe(
-        //   switchMap(user => {
-        //       if (user) {
-        //           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        //       } else {
-        //           return of(null);
-        //       }
-        //   })
-        // );
 
         this.fbUser$ = afAuth.authState
                              .do((user) => {
@@ -159,14 +147,7 @@ export class AuthService {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
                     this.currentUserToken();
-                    this.flashMessage.show(`${data.email} logged in successfully!`, {
-                        cssClass: 'alert-success',
-                        timeout: 1500
-                    });
                     this.router.navigate(['/admin/users']);
-                    return userData;
-                })
-                .then((userData) => {
                     if (userData) {
                         this.users$.subscribe((userArr) => {
                             userArr.forEach((userInfo) => {
@@ -175,10 +156,11 @@ export class AuthService {
                                 }
                             });
                         });
-
-                    } else {
-                        console.log('userData was not found.');
                     }
+                    this.flashMessage.show(`${data.email} logged in successfully!`, {
+                        cssClass: 'alert-success',
+                        timeout: 1500
+                    });
                 })
                 .catch((error) => {
                     reject(error);

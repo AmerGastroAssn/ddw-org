@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../../../../models/User';
+import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
@@ -15,13 +16,15 @@ export class AdminUserDetailsComponent implements OnInit {
     user: User;
     uid: string;
     admin: boolean;
+    currentUser: User;
 
     constructor(
       private userService: UserService,
       private router: Router,
       private route: ActivatedRoute,
       private authService: AuthService,
-      private afs: AngularFirestore
+      private afs: AngularFirestore,
+      public adminService: AdminService,
     ) {
     }
 
@@ -34,12 +37,13 @@ export class AdminUserDetailsComponent implements OnInit {
                 this.user = user;
             }
         });
+
+        this.currentUser = this.authService.getProfile();
     }
 
 
     onDeleteUser() {
         this.userService.deleteUser(this.id);
-
     }
 
 

@@ -18,7 +18,8 @@
                          role="group"
                          aria-label="Basic example">
                         <a class="btn btn-secondary btn-sm"
-                           [routerLink]="['edit']">
+                           [routerLink]="['edit']"
+                           *ngIf="currentUser.admin">
                             <i class="fa fa-pencil"></i>&nbsp;Edit
                         </a>
                         <a class="btn btn-warning btn-sm"
@@ -26,11 +27,13 @@
                             <i class="fa fa-undo"></i>&nbsp;Cancel
                         </a>
                         <button class="btn btn-danger btn-sm"
-                                (click)="onDeleteUser()">
+                                (click)="onDeleteUser()"
+                                *ngIf="currentUser.admin">
                             <i class="fa fa-trash"></i>&nbsp;Delete
                         </button>
                     </div>
-                    <img class="d-block ui-w-100 rounded-circle img-fluid" [src]="user.photoURL" [alt]="user.displayName">
+                    <img class="d-block ui-w-100 rounded-circle img-fluid" [src]="user.photoURL"
+                         [alt]="user.displayName">
 
                     <table class="table table-striped mt-4">
                         <tbody>

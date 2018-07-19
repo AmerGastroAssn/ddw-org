@@ -20,6 +20,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminSettingsService } from './services/admin-settings.service';
+import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
@@ -55,7 +56,8 @@ firebase.initializeApp(environment.firebase);
         UserService,
         PageService,
         AuthService,
-        AdminSettingsService
+        AdminSettingsService,
+        AdminService
     ],
     bootstrap: [AppComponent]
 })

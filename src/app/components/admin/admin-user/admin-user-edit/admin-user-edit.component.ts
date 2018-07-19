@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { User } from '../../../../models/User';
+import { Roles, User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
@@ -20,7 +20,7 @@ export class AdminUserEditComponent implements OnInit {
     isOnline: boolean;
     loginDate: number = Date.now();
     photoURL: string;
-    admin: boolean;
+    roles: Roles;
     displayName: string;
     title: string;
     uid: string;
@@ -68,7 +68,7 @@ export class AdminUserEditComponent implements OnInit {
                     isOnline: [this.user.isOnline],
                     loginDate: [Date.now()],
                     photoURL: [this.user.photoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-                    admin: [{ value: this.user.admin, disabled: this.disableAdminOnEdit }],
+                    roles: [{ value: this.user.roles, disabled: this.disableAdminOnEdit }],
                     title: [this.user.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
@@ -82,7 +82,7 @@ export class AdminUserEditComponent implements OnInit {
                 this.isOnline = this.editUserForm.value.isOnline;
                 this.loginDate = this.editUserForm.value.loginDate;
                 this.photoURL = this.editUserForm.value.photoURL;
-                this.admin = this.editUserForm.value.admin;
+                this.roles = this.editUserForm.value.roles;
                 this.title = this.editUserForm.value.title;
             }
         });

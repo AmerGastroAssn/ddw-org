@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Roles } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
@@ -17,7 +18,7 @@ export class AdminUserNewComponent implements OnInit {
     isOnline: boolean;
     loginDate: number = Date.now();
     photoURL: string;
-    admin: boolean;
+    roles: Roles;
     displayName: string;
     title: string;
     uid: string;
@@ -57,7 +58,7 @@ export class AdminUserNewComponent implements OnInit {
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: [{ value: false, disabled: this.disableAdminOnNew }],
+            roles: [{ value: false, disabled: this.disableAdminOnNew }],
             title: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(5)
@@ -70,7 +71,7 @@ export class AdminUserNewComponent implements OnInit {
         this.isOnline = this.newUserForm.value.isOnline;
         this.loginDate = this.newUserForm.value.loginDate;
         this.photoURL = this.newUserForm.value.photoURL;
-        this.admin = this.newUserForm.value.admin;
+        this.roles = this.newUserForm.value.roles;
         this.title = this.newUserForm.value.title;
         this.displayName = this.newUserForm.value.displayName;
         this.uid = this.newUserForm.value.uid;

@@ -1,3 +1,5 @@
+import { Roles } from './Roles';
+
 export class User {
     constructor(
       public $key: string,
@@ -7,9 +9,9 @@ export class User {
       public isOnline: boolean,
       public loginDate: number = Date.now(),
       public photoURL: string,
-      public admin: boolean,
       public title: string,
       public displayName: string,
+      public roles: Roles,
     ) {
     }
 }

@@ -19,6 +19,7 @@ import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
+import { AdminRolesService } from './services/admin-roles.service';
 import { AdminSettingsService } from './services/admin-settings.service';
 import { AuthService } from './services/auth.service';
 import { PageService } from './services/page.service';
@@ -55,7 +56,8 @@ firebase.initializeApp(environment.firebase);
         UserService,
         PageService,
         AuthService,
-        AdminSettingsService
+        AdminSettingsService,
+        AdminRolesService,
     ],
     bootstrap: [AppComponent]
 })

@@ -58,17 +58,19 @@
                                    formControlName="title">
                         </div>
 
-                        <div class="form-group form-check">
-                            <input type="checkbox"
-                                   class="form-check-input"
-                                   id="admin"
-                                   [(ngModel)]="user.admin"
-                                   formControlName="admin">
-                            <label class="form-check-label"
-                                   for="admin">
-                                Admin User?
-                            </label>
+                        <div class="form-group">
+                            <label for="roles">Permission</label>
+                            <select class="form-control"
+                                    id="roles"
+                                    [class.invalid]="!f.roles.valid && f.roles.touched"
+                                    [(ngModel)]="user.roles"
+                                    formControlName="roles">
+                                <option>Subscriber</option>
+                                <option>Editor</option>
+                                <option>Admin</option>
+                            </select>
                         </div>
+
 
 
                         <button type="submit"
@@ -150,11 +152,11 @@
                             <th scope="col">Admin</th>
                             <td>
                                 <span class="badge badge-outline-success"
-                                      *ngIf="user.admin">
+                                      *ngIf="user.roles[admin]">
                                     Yes
                                 </span>
                                 <span class="badge badge-outline-danger"
-                                      *ngIf="!user.admin">
+                                      *ngIf="!user.roles[admin]">
                                     No
                                 </span>
                             </td>
@@ -169,6 +171,15 @@
                                 <span class="badge badge-outline-danger"
                                       *ngIf="!user.isOnline">
                                    No
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Permission</th>
+                            <td>
+                                <span class="badge badge-outline-primary"
+                                      *ngIf="user.roles">
+                                  {{ user.roles }}
                                 </span>
                             </td>
                         </tr>

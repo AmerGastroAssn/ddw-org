@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -46,7 +47,7 @@ const adminRoutes: Routes = [
             { path: 'login', component: AdminLoginComponent },
             { path: 'reset', component: AdminResetPasswordComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
-            { path: 'settings', component: AdminSettingsComponent, canActivate: [RegisterGuard] },
+            { path: 'settings', component: AdminSettingsComponent, canActivate: [RegisterGuard, AdminGuard] },
         ]
 
     },

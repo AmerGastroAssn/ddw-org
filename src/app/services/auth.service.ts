@@ -1,12 +1,11 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { User } from '../models/User';
+import { Roles, User } from '../models/User';
 import { UserService } from './user.service';
 
 
@@ -17,14 +16,13 @@ export class AuthService {
     statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
     users$: Observable<User[]>;
-    user$: Observable<User>;
     fbUser$: Observable<firebase.User>;
     userDoc: AngularFirestoreDocument<User>;
     currentUser$: Observable<User>;
     loggedIn: boolean;
     $key: string;
     uid: string;
-    admin: boolean;
+    roles: Roles;
     displayName: string;
     email: string;
     password: string;
@@ -43,6 +41,8 @@ export class AuthService {
       private userService: UserService,
     ) {
         this.usersCollection = afs.collection<User>('users');
+
+        // Returns list of users and their unwrapped data.
         this.users$ = this.usersCollection.snapshotChanges()
                           .map(actions => {
                               return actions.map(action => ({
@@ -50,26 +50,16 @@ export class AuthService {
                               }));
                           });
 
-
-        //// Get auth data, then get firestore user document || null
-        // this.user = this.afAuth.authState.pipe(
-        //   switchMap(user => {
-        //       if (user) {
-        //           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-        //       } else {
-        //           return of(null);
-        //       }
-        //   })
-        // );
-
+        // Returns Firebase Authorized user and it's unwrapped data.
         this.fbUser$ = afAuth.authState
                              .do((user) => {
                                  if (user) {
-                                     return this.uid = user.uid;
-                                     // this.updateOnConnect();
-                                     // this.setOffline();
+                                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+                                 } else {
+                                     return null;
                                  }
                              });
+
         // Sets user in browser.
         this.statusChange.subscribe(userData => {
             if (userData) {
@@ -81,7 +71,7 @@ export class AuthService {
                 this.photoURL = userData.photoURL;
                 this.loginDate = Date.now();
                 this.isOnline = userData.isOnline = true;
-                this.admin = userData.admin;
+                this.roles = userData.roles;
                 this.displayName = userData.displayName;
             } else {
                 this.displayName = null;
@@ -282,6 +272,26 @@ export class AuthService {
                    });
     }
 
+    private updateUserData(user) {
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+        const data: User = {
+            $key: user.uid,
+            uid: user.uid,
+            email: user.email,
+            password: user.password,
+            isOnline: user.isOnline,
+            loginDate: user.loginDate,
+            photoURL: user.photoURL,
+            title: user.title,
+            displayName: user.displayName,
+            roles: {
+                subscriber: true
+            }
+        };
+
+        return userRef.set(data, { merge: true });
+    }
+
     // Sets user but also in local storage.
     private setUserData(user) {
         // const userId = this.userService.currentUserId;
@@ -296,9 +306,11 @@ export class AuthService {
             isOnline: user.isOnline,
             loginDate: user.loginDate,
             photoURL: user.photoURL,
-            admin: user.admin,
             title: user.title,
             displayName: user.displayName,
+            roles: {
+                subscriber: true
+            }
         };
 
         return userRef.set(data)
@@ -324,9 +336,11 @@ export class AuthService {
             isOnline: user.isOnline,
             loginDate: user.loginDate,
             photoURL: user.photoURL,
-            admin: user.admin,
             title: user.title,
             displayName: user.displayName,
+            roles: {
+                subscriber: true
+            }
         };
 
         return userRef.set(data);

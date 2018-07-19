@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../../../../models/User';
+import { AdminRolesService } from '../../../../services/admin-roles.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
@@ -21,7 +22,8 @@ export class AdminUserDetailsComponent implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
       private authService: AuthService,
-      private afs: AngularFirestore
+      private afs: AngularFirestore,
+      private adminRolesService: AdminRolesService,
     ) {
     }
 

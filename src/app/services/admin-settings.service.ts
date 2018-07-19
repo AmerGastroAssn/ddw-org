@@ -25,7 +25,6 @@ export class AdminSettingsService {
         localStorage.setItem('settings', JSON.stringify(settings));
     }
 
-
 }
 
 

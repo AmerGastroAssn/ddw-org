@@ -30,7 +30,7 @@ export class AdminGuard implements CanActivate {
             this.router.navigate(['/admin/users']);
             this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web Development team (awhite@gastro.org) for help.`, {
                 cssClass: 'alert-warning',
-                timeout: 10000
+                timeout: 5000
             });
             return false;
         }

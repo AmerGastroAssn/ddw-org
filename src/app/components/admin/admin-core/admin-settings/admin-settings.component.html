@@ -20,14 +20,37 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form (submit)="onSettingsSubmit()">
+                    <form #settingsForm="ngForm"
+                          (ngSubmit)="onSettingsSubmit(settingsForm)">
+
+                        <div class="form-group">
+                            <div class="form-group form-check">
+                                <input type="checkbox"
+                                       id="allowSettings"
+                                       class="form-check-input"
+                                       name="allowSettings"
+                                       [checked]="settings.allowSettings"
+                                       [(ngModel)]="allowSettings"
+                                       #allowSet="ngModel">
+
+                                <label class="form-check-label"
+                                       for="allowSettings"
+                                       (change)="settings.allowSettings = !settings.allowSettings">
+                                    Allow this page to be editable?
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="form-group form-check">
                                 <input type="checkbox"
                                        id="allowSignup"
                                        class="form-check-input"
-                                       [checked]="settings.allowSignup">
+                                       name="allowSignup"
+                                       [checked]="settings.allowSignup"
+                                       [(ngModel)]="allowSignup"
+                                       #allowSign="ngModel">
+
                                 <label class="form-check-label"
                                        for="allowSignup"
                                        (change)="settings.allowSignup = !settings.allowSignup">
@@ -41,7 +64,11 @@
                                 <input type="checkbox"
                                        id="disableAdmin"
                                        class="form-check-input"
-                                       [checked]="settings.disableAdmin">
+                                       name="disableAdmin"
+                                       [checked]="settings.disableAdmin"
+                                       [(ngModel)]="disableAdmin"
+                                       #disableAd="ngModel">
+
                                 <label class="form-check-label"
                                        for="disableAdmin"
                                        (change)="settings.disableAdmin = !settings.disableAdmin">
@@ -50,22 +77,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="form-group form-check">
-                                <input type="checkbox"
-                                       id="allowSettings"
-                                       class="form-check-input"
-                                       [checked]="settings.allowSettings">
-                                <label class="form-check-label"
-                                       for="allowSettings"
-                                       (change)="settings.allowSettings = !settings.allowSettings">
-                                    Allow this page to be editable?
-                                </label>
-                            </div>
-                        </div>
 
-
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Save Settings</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-wrench"></i>&nbsp;Save Settings
+                        </button>
                     </form>
                 </div>
             </div>

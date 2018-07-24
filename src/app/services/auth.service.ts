@@ -184,13 +184,6 @@ export class AuthService {
                                       });
                                       this.router.navigate(['/admin/login']);
                                   });
-                       // .then(() => {
-                       //     if (userData) {
-                       //         this.setUserInLocalStorage(userData);
-                       //     } else {
-                       //         console.log('userData was not found.');
-                       //     }
-                       // });
                    })
                    .catch(error => {
                        console.log(`Error~eS:`, error);
@@ -270,9 +263,10 @@ export class AuthService {
         const new$key = this.afs.createId();
         // Sets user data to firestore on login
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
+
         const data: User = {
             $key: new$key,
-            uid: user.uid,
+            uid: new$key,
             email: user.email,
             password: user.password,
             isOnline: user.isOnline,

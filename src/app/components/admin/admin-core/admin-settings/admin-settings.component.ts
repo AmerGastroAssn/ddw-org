@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Settings } from '../../../../models/Settings';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
@@ -9,23 +10,35 @@ import { AdminSettingsService } from '../../../../services/admin-settings.servic
     styleUrls: ['./admin-settings.component.css']
 })
 export class AdminSettingsComponent implements OnInit {
-    allowSettings: Boolean;
+    @ViewChild('settingsForm') settingsForm: NgForm;
+    settingsAllowed: boolean; // Allow settings to be edited/viewed.
+
     settings: Settings;
+    allowSignup: boolean;
+    disableAdmin: boolean;
+    allowSettings: boolean;
+
 
     constructor(
-      private settingsService: AdminSettingsService,
+      public settingsService: AdminSettingsService,
       private flashMessage: FlashMessagesService
     ) {
     }
 
     ngOnInit() {
         // Settings
-        this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
+        this.settingsAllowed = this.settingsService.getAdminSettings().allowSettings;
+
         this.settings = this.settingsService.getAdminSettings();
+        this.allowSignup = this.settings.allowSignup;
+        this.disableAdmin = this.settings.disableAdmin;
+        this.allowSettings = this.settings.allowSettings;
     }
 
-    onSettingsSubmit() {
-        this.settingsService.saveSettings(this.settings);
+    onSettingsSubmit(form: NgForm) {
+        const value = form.value;
+        const newSettings = new Settings(value.allowSignup, value.disableAdmin, value.allowSettings);
+        this.settingsService.saveSettings(newSettings);
 
         this.flashMessage.show(`Settings Saved!`, {
             cssClass: 'alert-success',

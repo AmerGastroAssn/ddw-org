@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class AdminService {
     user: User;
     uid: string;
+    currentUser: User;
 
     constructor(
       private afAuth: AngularFireAuth,

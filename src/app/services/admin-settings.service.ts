@@ -26,22 +26,26 @@ export class AdminSettingsService {
         if (localStorage.getItem('settings') !== null) {
             this.localSettings = JSON.parse(localStorage.getItem('settings'));
         } else {
-            this.saveSettings(this.presetSettings);
+            // this.localSettings = this.presetSettings;
+            // this.saveSettings(this.settingsAdded);
         }
     }
 
     getAdminSettings(): Settings {
         if (localStorage.getItem('settings') !== null) {
             const local = localStorage.getItem('settings');
-            return JSON.parse(local);
+            return this.localSettings = JSON.parse(local);
         } else {
-            return this.presetSettings;
+            this.saveSettings(this.presetSettings);
+            // return this.presetSettings;
         }
     }
 
-    saveSettings(settings: Settings) {
+
+    saveSettings(settings) {
+        // const newSettings = new Settings(settings);
         localStorage.setItem('settings', JSON.stringify(settings));
-        // this.settingsAdded.emit(settings);
+        this.settingsAdded.emit(settings);
     }
 
 

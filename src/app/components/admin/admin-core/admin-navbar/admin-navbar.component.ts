@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
@@ -19,13 +20,14 @@ export class AdminNavbarComponent implements OnInit {
     allowSettings: boolean;
     uid: string;
     id: string;
-    dbUser: User;
+    dbUser: any;
 
     constructor(
       private authService: AuthService,
       private userService: UserService,
       private settingsService: AdminSettingsService,
-      private afs: AngularFirestore
+      private afs: AngularFirestore,
+      private afAuth: AngularFireAuth,
     ) {
 
     }
@@ -47,6 +49,9 @@ export class AdminNavbarComponent implements OnInit {
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
         this.dbUser = this.authService.getProfile();
+
+
+
     }
 
     onLogout() {

@@ -12,7 +12,7 @@
 
         </div>
 
-        <ul class="navbar-nav ml-auto text-right">
+        <ul class="navbar-nav ml-auto text-right" *ngIf="dbUser">
             <li class="nav-item" *ngIf="isLoggedIn">
                 <button class="btn btn-default btn-sm float-right mt-2 mr-5"
                         [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
@@ -25,12 +25,12 @@
             </li>
             <li class="nav-item" *ngIf="isLoggedIn">
                 <a class="nav-link"
-                   [routerLink]="['/admin/users/', dbUser.uid ]">
+                   [routerLink]="['/admin/users/', uid ]">
                     <i class="fa fa-user-alt"></i>&nbsp;{{ loggedInUser }}
                 </a>
             </li>
 
-            <li class="nav-item" *ngIf="isLoggedIn && allowSignup">
+            <li class="nav-item" *ngIf="isLoggedIn && allowSettings">
                 <a class="nav-link"
                    [routerLink]="['/admin/settings']">
                     <i class="fa fa-wrench"></i>&nbsp;Settings

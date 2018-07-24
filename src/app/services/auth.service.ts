@@ -16,10 +16,9 @@ export class AuthService {
     statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
     users$: Observable<User[]>;
-    user$: Observable<User>;
+    currentUser;
     fbUser$: Observable<firebase.User>;
     userDoc: AngularFirestoreDocument<User>;
-    currentUser$: Observable<User>;
     loggedIn: boolean;
     $key: string;
     uid: string;
@@ -58,7 +57,7 @@ export class AuthService {
                                      // this.setOffline();
                                  }
                              });
-        // Sets user in browser.
+        // Sets user in browser local storage.
         this.statusChange.subscribe(userData => {
             if (userData) {
                 this.$key = userData.$key;
@@ -78,7 +77,17 @@ export class AuthService {
                 this.isOnline = false;
             }
         });
+
+        // this.users$.subscribe((userArr) => {
+        //     userArr.forEach((userInfo) => {
+        //         if (this.afAuth.auth.currentUser.email === userInfo.email) {
+        //             // console.log(userInfo);
+        //             return this.currentUser =             userInfo;
+        //         }
+        //     });
+        // });
     }
+
 
     isLoggedIn() {
         firebase.auth().onAuthStateChanged((userData) => {
@@ -101,7 +110,6 @@ export class AuthService {
             }
         });
     }
-
 
     // Used to get userData in browser memory.
     getProfile() {
@@ -128,13 +136,13 @@ export class AuthService {
     }
 
     // Pulls the databaseUser's info as a promise.
-    getUserFromDatabase(uid) {
-        this.afAuth.authState.subscribe(auth => {
-            if (auth) {
-                this.currentUser$ = uid;
-            }
-        });
-    }
+    // getUserFromDatabase(uid) {
+    //     this.afAuth.authState.subscribe(auth => {
+    //         if (auth) {
+    //             this.currentUser$ = uid;
+    //         }
+    //     });
+    // }
 
     // Sets the databaseUsers's info.
     setUserInLocalStorage(userFromLogin) {
@@ -146,8 +154,6 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
-                    this.currentUserToken();
-                    this.router.navigate(['/admin/users']);
                     if (userData) {
                         this.users$.subscribe((userArr) => {
                             userArr.forEach((userInfo) => {
@@ -157,11 +163,13 @@ export class AuthService {
                             });
                         });
                     }
+                    this.currentUserToken();
                     this.flashMessage.show(`${data.email} logged in successfully!`, {
                         cssClass: 'alert-success',
                         timeout: 1500
                     });
                 })
+                .then(() => this.router.navigate(['/admin/users']))
                 .catch((error) => {
                     reject(error);
                     this.flashMessage.show(error, {

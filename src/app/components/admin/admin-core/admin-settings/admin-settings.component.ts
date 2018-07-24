@@ -15,8 +15,8 @@ export class AdminSettingsComponent implements OnInit {
 
     settings: Settings;
     allowSignup: boolean;
-    disableAdmin: boolean;
     allowSettings: boolean;
+    disableAdmin: boolean;
 
 
     constructor(
@@ -37,8 +37,8 @@ export class AdminSettingsComponent implements OnInit {
 
     onSettingsSubmit(form: NgForm) {
         const value = form.value;
-        const newSettings = new Settings(value.allowSignup, value.disableAdmin, value.allowSettings);
-        this.settingsService.saveSettings(newSettings);
+        this.settingsService.saveSettings(value);
+        console.log(value);
 
         this.flashMessage.show(`Settings Saved!`, {
             cssClass: 'alert-success',

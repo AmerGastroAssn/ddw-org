@@ -47,7 +47,7 @@ const adminRoutes: Routes = [
             { path: 'login', component: AdminLoginComponent },
             { path: 'reset', component: AdminResetPasswordComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
-            { path: 'settings', component: AdminSettingsComponent, canActivate: [RegisterGuard, AdminGuard] },
+            { path: 'settings', component: AdminSettingsComponent, canActivate: [AdminGuard] },
         ]
 
     },

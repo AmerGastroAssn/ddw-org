@@ -23,23 +23,6 @@
                     <form #settingsForm="ngForm"
                           (ngSubmit)="onSettingsSubmit(settingsForm)">
 
-                        <div class="form-group">
-                            <div class="form-group form-check">
-                                <input type="checkbox"
-                                       id="allowSettings"
-                                       class="form-check-input"
-                                       name="allowSettings"
-                                       [checked]="settings.allowSettings"
-                                       [(ngModel)]="allowSettings"
-                                       #allowSet="ngModel">
-
-                                <label class="form-check-label"
-                                       for="allowSettings"
-                                       (change)="settings.allowSettings = !settings.allowSettings">
-                                    Allow this page to be editable?
-                                </label>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="form-group form-check">
@@ -53,11 +36,30 @@
 
                                 <label class="form-check-label"
                                        for="allowSignup"
-                                       (change)="settings.allowSignup = !settings.allowSignup">
+                                       (change)="allowSignup = !allowSignup">
                                     Allow User Registration?
                                 </label>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="form-group form-check">
+                                <input type="checkbox"
+                                       id="allowSettings"
+                                       class="form-check-input"
+                                       name="allowSettings"
+                                       [checked]="settings.allowSettings"
+                                       [(ngModel)]="allowSettings"
+                                       #allowSet="ngModel">
+
+                                <label class="form-check-label"
+                                       for="allowSettings"
+                                       (change)="allowSettings = !allowSettings">
+                                    Allow this page to be editable?
+                                </label>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <div class="form-group form-check">
@@ -71,7 +73,7 @@
 
                                 <label class="form-check-label"
                                        for="disableAdmin"
-                                       (change)="settings.disableAdmin = !settings.disableAdmin">
+                                       (change)="disableAdmin = !disableAdmin">
                                     Disable Admin?
                                 </label>
                             </div>

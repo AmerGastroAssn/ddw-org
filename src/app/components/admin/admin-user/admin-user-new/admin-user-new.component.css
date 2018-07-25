@@ -2,6 +2,12 @@ a.back-users {
     text-decoration: none;
 }
 
+input.form-check-input,
+.form-check,
+label.form-check-label {
+    cursor: pointer;
+}
+
 input.invalid {
     display: block;
     width: 100%;
@@ -15,4 +21,3 @@ input.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-

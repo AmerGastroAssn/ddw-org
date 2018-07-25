@@ -78,14 +78,7 @@ export class AuthService {
             }
         });
 
-        // this.users$.subscribe((userArr) => {
-        //     userArr.forEach((userInfo) => {
-        //         if (this.afAuth.auth.currentUser.email === userInfo.email) {
-        //             // console.log(userInfo);
-        //             return this.currentUser =             userInfo;
-        //         }
-        //     });
-        // });
+
     }
 
 

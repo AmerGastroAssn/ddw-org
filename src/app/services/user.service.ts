@@ -11,7 +11,7 @@ import { User } from '../models/User';
     providedIn: 'root'
 })
 export class UserService {
-    userCollection: AngularFirestoreCollection<User>;
+    usersCollection: AngularFirestoreCollection<User>;
     userDoc: AngularFirestoreDocument<User>;
     user: Observable<User>;
     users$: Observable<User[]>;
@@ -24,27 +24,39 @@ export class UserService {
       private afAuth: AngularFireAuth,
       private flashMessage: FlashMessagesService,
     ) {
-    }
+        this.usersCollection = this.afs.collection<User>('users');
 
-    // If authenticated, return user-Key-ID/uid, else empty string.
-    get currentUserId() {
-        return this.authState !== null ? this.authState.uid : '';
     }
 
     getUsers(): Observable<User[]> {
         // Ref, and order by title
-        this.userCollection = this.afs.collection(`users`,
+        this.usersCollection = this.afs.collection(`users`,
           ref => ref.orderBy('displayName', 'asc')
         );
         // Gets array of users along with their uid.
-        return this.userCollection.snapshotChanges()
+        return this.usersCollection.snapshotChanges()
                    .map((changes) => {
-                       return changes.map((a) => {
-                           const data = a.payload.doc.data() as User;
-                           data.uid = a.payload.doc.id;
+                       return changes.map((arr) => {
+                           const data = arr.payload.doc.data() as User;
+                           data.uid = arr.payload.doc.id;
                            return data;
                        });
                    });
+    }
+
+    // If authenticated, return user-Key-ID/uid, else empty string.
+    getUserInfo() {
+        return this.usersCollection.snapshotChanges().map(action => {
+            return action.map(a => {
+                if (a.payload.doc.exists === false) {
+                    return null;
+                } else {
+                    const data = a.payload.doc.data() as User;
+                    data.$key = a.payload.doc.id;
+                    return data;
+                }
+            });
+        });
     }
 
 

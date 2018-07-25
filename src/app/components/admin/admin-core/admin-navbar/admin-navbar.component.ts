@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -16,6 +17,7 @@ export class AdminNavbarComponent implements OnInit {
     isLoggedIn: boolean;
     loggedInUser: string;
     user: Observable<User>;
+    localUser: User;
     allowSignup: boolean;
     allowSettings: boolean;
     uid: string;
@@ -28,6 +30,7 @@ export class AdminNavbarComponent implements OnInit {
       private settingsService: AdminSettingsService,
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
+      private route: ActivatedRoute,
     ) {
 
     }
@@ -48,10 +51,20 @@ export class AdminNavbarComponent implements OnInit {
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
-        this.dbUser = this.authService.getProfile();
+        this.localUser = this.authService.getProfile();
 
-
-
+        this.userService.getUserInfo()
+            .subscribe((userArr) => {
+                userArr.forEach((userInfo) => {
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        this.dbUser = userInfo;
+                    } else if (this.localUser) {
+                        this.dbUser = this.localUser;
+                    } else {
+                        return null;
+                    }
+                });
+            });
     }
 
     onLogout() {

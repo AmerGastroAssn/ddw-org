@@ -12,21 +12,17 @@
 
         </div>
 
-        <ul class="navbar-nav ml-auto text-right" *ngIf="dbUser">
+        <ul class="navbar-nav ml-auto text-right">
             <li class="nav-item" *ngIf="isLoggedIn">
                 <button class="btn btn-default btn-sm float-right mt-2 mr-5"
                         [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
                 </button>
             </li>
-            <li class="nav-item" *ngIf="isLoggedIn && dbUser.admin">
-                <button class="btn btn-default btn-sm float-right mt-2 mr-5"
-                        [routerLink]="['/admin/users/new']"><i class="fa fa-user"></i>&nbsp; New User
-                </button>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
+            <li class="nav-item" *ngIf="isLoggedIn && dbUser">
                 <a class="nav-link"
-                   [routerLink]="['/admin/users/', uid ]">
-                    <i class="fa fa-user-alt"></i>&nbsp;{{ loggedInUser }}
+                   [routerLink]="['/admin/users/', dbUser.$key ]">
+                    <img [src]="dbUser.photoURL"
+                         class="user-image rounded-circle"> &nbsp;{{ loggedInUser }}
                 </a>
             </li>
 

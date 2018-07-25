@@ -1,0 +1,83 @@
+<div class="row mb-5 mt-5">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center text-secondary pb-4 pt-3">
+                    <span class="text-dark">
+               <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
+                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                        <i class="fa fa-chart-line"></i>&nbsp;Admin
+                    </span> Meta Settings
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="container mb-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="metaForm"
+                          (ngSubmit)="onMetaSubmit(metaForm.value)"
+                          *ngIf="meta">
+
+                        <div class="form-group">
+                            <label>Header Meta Scripts Tags <br>
+                                <small>(Between header tags)</small>
+                            </label>
+
+                            <pre>
+                                <textarea type="text"
+                                          rows="10"
+                                          class="form-control"
+                                          placeholder="Enter header scripts here..."
+                                          [(ngModel)]="meta.headerArea"
+                                          formControlName="headerArea">
+                                </textarea>
+                             </pre>
+                        </div>
+
+                        <div class="form-group">
+                            <label>SEO Meta Tags <br>
+                                <small>(Between header tags after header scripts)</small>
+                            </label>
+                            <pre>
+                                <textarea type="text"
+                                          rows="10"
+                                          class="form-control"
+                                          placeholder="Insert your meta tags here..."
+                                          [(ngModel)]="meta.seo"
+                                          formControlName="seo">
+                                </textarea>
+                            </pre>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Footer Scripts Tags <br>
+                                <small>(Before close of body tags)</small>
+                            </label>
+                            <pre>
+                                <textarea type="text"
+                                          rows="10"
+                                          class="form-control"
+                                          placeholder="Enter footer scripts here..."
+                                          [(ngModel)]="meta.footerArea"
+                                          formControlName="footerArea">
+                                </textarea>
+                            </pre>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-chart-line"></i>&nbsp;Save Meta
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

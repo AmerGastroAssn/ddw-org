@@ -13,6 +13,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
+import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/a
         AdminSettingsComponent,
         AdminMobileFooternavComponent,
         AdminResetPasswordComponent,
+        AdminMetaComponent,
     ],
     imports: [
         CommonModule,

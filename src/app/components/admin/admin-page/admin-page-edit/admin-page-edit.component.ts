@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
@@ -90,7 +89,6 @@ export class AdminPageEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.downloadURL);
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
 
         // Get id from url

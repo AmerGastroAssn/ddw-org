@@ -5,6 +5,7 @@ import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
+import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
@@ -48,6 +49,7 @@ const adminRoutes: Routes = [
             { path: 'reset', component: AdminResetPasswordComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
             { path: 'settings', component: AdminSettingsComponent, canActivate: [AdminGuard] },
+            { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
         ]
 
     },

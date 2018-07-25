@@ -115,7 +115,7 @@ export class AdminPageNewComponent implements OnInit {
                    ])
             ],
             author: ['' || this.user.email, Validators.required],
-            date: [''],
+            date: ['', Validators.required],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
             category: ['' || 'Register', Validators.required],
             published: [''],

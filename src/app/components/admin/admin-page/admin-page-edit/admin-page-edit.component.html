@@ -35,11 +35,11 @@
                             <label>Title</label>
                             <input type="text"
                                    class="form-control"
-                                   [class.invalid]="!f.title.valid && f.title.touched"
+                                   [class.invalid]="!f.title.valid && f.title?.touched"
                                    [(ngModel)]="page.title"
                                    formControlName="title">
                             <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.title.valid && f.title.touched">
+                               *ngIf="!f.title.valid && f.title?.touched">
                                 Valid <b>Title</b> is required!
                             </p>
                         </div>
@@ -48,6 +48,7 @@
                         <div class="form-group">
                             <label>Body</label>
                             <ckeditor formControlName="body"
+                                      [class.invalid]="!f.body.valid && f.body?.touched"
                                       [(ngModel)]="page.body"
                                       [readonly]="false"
                                       debounce="500">
@@ -81,6 +82,10 @@
                                    bsDatepicker
                                    [class.invalid]="!f.date.valid && f.date.touched"
                                    formControlName="date">
+                            <p class="help-block alert alert-warning text-center mt-1"
+                               *ngIf="!f.date.valid && f.date.touched">
+                                <b>Date</b> is required!
+                            </p>
                         </div>
 
 
@@ -117,9 +122,9 @@
                         <div class="form-group">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="card-title">
+                                    <p class="card-title">
                                         Image Uploader
-                                    </div>
+                                    </p>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="custom-file">
@@ -149,7 +154,7 @@
                                                 <p><img [src]="url" style="max-width:100px;"></p>
                                             </div>
                                             <ng-template #loadingURL>
-                                                <p class="text-center text-secondary">
+                                                <p class="text-center text-light">
                                                     Upload Image, Then a URL will appear here. Copy and paste that link
                                                     into Image URL below to use.
                                                 </p>

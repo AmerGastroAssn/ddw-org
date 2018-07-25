@@ -114,7 +114,7 @@ export class AdminPageEditComponent implements OnInit {
                            ])
                     ],
                     author: [page.author, Validators.required],
-                    date: [page.date],
+                    date: [page.date, Validators.required],
                     photoURL: [page.photoURL],
                     category: [page.category || ''],
                     published: [page.published || false],

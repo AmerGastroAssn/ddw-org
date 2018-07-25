@@ -76,7 +76,6 @@ export class AdminUserNewComponent implements OnInit {
         this.uid = this.newUserForm.value.uid;
     }
 
-
     onAddNewUser(formData) {
         if (!this.newUserForm.valid) {
             this.flashMessage.show('Something went wrong, User was not created.', {
@@ -93,5 +92,6 @@ export class AdminUserNewComponent implements OnInit {
             });
         }
     }
+
 
 }

@@ -19,6 +19,7 @@ import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
+import { AdminAdsService } from './services/admin-ads.service';
 import { AdminMetaService } from './services/admin-meta.service';
 import { AdminSettingsService } from './services/admin-settings.service';
 import { AdminService } from './services/admin.service';
@@ -60,6 +61,7 @@ firebase.initializeApp(environment.firebase);
         AdminSettingsService,
         AdminService,
         AdminMetaService,
+        AdminAdsService
     ],
     bootstrap: [AppComponent]
 })

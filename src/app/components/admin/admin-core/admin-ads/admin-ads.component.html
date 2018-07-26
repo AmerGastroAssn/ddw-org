@@ -6,19 +6,21 @@
                     <span class="text-dark">
                <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
                     alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
-                        <i class="fal fa-chart-line"></i>&nbsp;Admin
-                    </span> Meta Settings
+                        <i class="fal fa-money-bill-wave"></i>&nbsp;Admin
+                    </span> Ads
                 </h1>
             </div>
         </div>
     </div>
 </div>
 
+
 <div class="row m-4 pl-5">
     <div class="container">
         <a [routerLink]="['/admin/settings']" class="back-pages"><i class="fal fa-arrow-circle-left"></i>&nbsp;Settings</a>
     </div>
 </div>
+
 
 <div class="row">
     <div class="container mb-5">
@@ -32,59 +34,59 @@
             </ng-template>
             <div class="card">
                 <div class="card-body">
-                    <form [formGroup]="metaForm"
-                          (ngSubmit)="onMetaSubmit(metaForm.value)"
-                          *ngIf="meta; else loading">
+                    <form [formGroup]="adsForm"
+                          (ngSubmit)="onAdsSubmit(adsForm.value)"
+                          *ngIf="ads; else loading">
 
                         <div class="form-group">
-                            <label>Header Meta Scripts Tags <br>
-                                <small>(Between header tags)</small>
+                            <label>Header Ad <br>
+                                <small>(Top horizontal bar)</small>
                             </label>
 
                             <pre>
                                  <textarea type="text"
                                            rows="13"
                                            class="form-control"
-                                           placeholder="Enter header scripts here..."
-                                           [(ngModel)]="meta.headerArea"
-                                           formControlName="headerArea">
+                                           placeholder="Headerbar script here..."
+                                           [(ngModel)]="ads.headerbar"
+                                           formControlName="headerbar">
                                 </textarea>
                              </pre>
                         </div>
 
                         <div class="form-group">
-                            <label>SEO Meta Tags <br>
-                                <small>(Bottom of header tags)</small>
+                            <label>Skyscraper <br>
+                                <small>(Right sidebar)</small>
                             </label>
                             <pre>
                                 <textarea type="text"
                                           rows="13"
                                           class="form-control"
-                                          placeholder="Insert your meta tags here..."
-                                          [(ngModel)]="meta.seo"
-                                          formControlName="seo">
+                                          placeholder="Skyscraper script here..."
+                                          [(ngModel)]="ads.skyscraper"
+                                          formControlName="skyscraper">
                                 </textarea>
                             </pre>
                         </div>
 
                         <div class="form-group">
-                            <label>Footer Scripts Tags <br>
-                                <small>(Before close of body tags)</small>
+                            <label>Footerbar <br>
+                                <small>(Bottom horizontal bar)</small>
                             </label>
                             <pre>
                                 <textarea type="text"
                                           rows="13"
                                           class="form-control"
-                                          placeholder="Enter footer scripts here..."
-                                          [(ngModel)]="meta.footerArea"
-                                          formControlName="footerArea">
+                                          placeholder="Footerbar script here..."
+                                          [(ngModel)]="ads.footerbar"
+                                          formControlName="footerbar">
                                 </textarea>
                             </pre>
                         </div>
 
 
                         <button type="submit" class="btn btn-primary mb-5">
-                            <i class="fa fa-chart-line"></i>&nbsp;Save Meta
+                            <i class="fa fa-money-bill-wave"></i>&nbsp;Save Ads
                         </button>
 
                     </form>

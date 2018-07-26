@@ -14,6 +14,7 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { AdminComponent } from './admin.component';
         AdminMobileFooternavComponent,
         AdminResetPasswordComponent,
         AdminMetaComponent,
+        AdminAdsComponent,
     ],
     imports: [
         CommonModule,

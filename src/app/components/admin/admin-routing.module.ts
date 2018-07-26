@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
+import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
@@ -50,6 +51,7 @@ const adminRoutes: Routes = [
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
             { path: 'settings', component: AdminSettingsComponent, canActivate: [AdminGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
+            { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
         ]
 
     },

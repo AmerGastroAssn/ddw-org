@@ -13,3 +13,7 @@ button:focus {
 .full-width {
     width: 100%;
 }
+
+a.back-pages {
+    text-decoration: none;
+}

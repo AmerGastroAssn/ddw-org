@@ -85,6 +85,14 @@
             <div><i class="fal fa-chart-line"></i>&nbsp;Scripts</div>
         </a>
     </li>
+
+    <li class="sidenav-item" *ngIf="isLoggedIn && allowSignup">
+        <a [routerLink]="['/admin/ads']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-money-bill-wave"></i>&nbsp;Advertising</div>
+        </a>
+    </li>
+
     <li class="sidenav-item">
         <a class="sidenav-link" [routerLink]="['/']" target="_blank">
             <i class="sidenav-icon ion ion-md-quote"></i>

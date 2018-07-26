@@ -44,9 +44,8 @@ export class AdminMetaService {
             .then(() => {
                 this.flashMessage.show(`Meta was updated successfully!`, {
                     cssClass: 'alert-success',
-                    timeout: 2000
+                    timeout: 3000
                 });
-                this.router.navigate(['/admin/settings']);
                 console.log('Meta updated', updatedMeta);
             })
             .catch((error) => {

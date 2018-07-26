@@ -44,9 +44,8 @@ export class AdminAdsService {
             .then(() => {
                 this.flashMessage.show(`Ads was updated successfully!`, {
                     cssClass: 'alert-success',
-                    timeout: 2000
+                    timeout: 3000
                 });
-                this.router.navigate(['/admin/settings']);
                 console.log('Ads updated', updatedAds);
             })
             .catch((error) => {

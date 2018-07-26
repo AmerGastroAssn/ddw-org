@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../../../../models/User';
 import { AdminService } from '../../../../services/admin.service';
@@ -17,6 +18,7 @@ export class AdminUserDetailsComponent implements OnInit {
     uid: string;
     admin: boolean;
     currentUser: User;
+    isAdmin: boolean;
 
     constructor(
       private userService: UserService,
@@ -25,6 +27,7 @@ export class AdminUserDetailsComponent implements OnInit {
       private authService: AuthService,
       private afs: AngularFirestore,
       public adminService: AdminService,
+      private afAuth: AngularFireAuth,
     ) {
     }
 
@@ -39,6 +42,20 @@ export class AdminUserDetailsComponent implements OnInit {
         });
 
         this.currentUser = this.authService.getProfile();
+
+        // Is Admin?
+        this.userService.getUserInfo()
+            .subscribe((userArr) => {
+                userArr.forEach((userInfo) => {
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        if (userInfo.admin === true) {
+                            this.isAdmin = true;
+                        } else {
+                            this.isAdmin = false;
+                        }
+                    }
+                });
+            });
     }
 
 

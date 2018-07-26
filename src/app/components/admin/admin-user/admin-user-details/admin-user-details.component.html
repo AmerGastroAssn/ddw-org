@@ -28,7 +28,7 @@
                         </a>
                         <button class="btn btn-danger btn-sm"
                                 (click)="onDeleteUser()"
-                                *ngIf="currentUser.admin">
+                                *ngIf="isAdmin">
                             <i class="fa fa-trash"></i>&nbsp;Delete
                         </button>
                     </div>

@@ -5,6 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
@@ -23,6 +24,7 @@ export class AdminNavbarComponent implements OnInit {
     uid: string;
     id: string;
     dbUser: any;
+    isAdmin: boolean;
 
     constructor(
       private authService: AuthService,
@@ -30,7 +32,6 @@ export class AdminNavbarComponent implements OnInit {
       private settingsService: AdminSettingsService,
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
-      private route: ActivatedRoute,
     ) {
 
     }
@@ -51,8 +52,10 @@ export class AdminNavbarComponent implements OnInit {
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
+        // Gets User in Local Storage
         this.localUser = this.authService.getProfile();
 
+        // Gets the correct user for navbar profile and checks if is admin.
         this.userService.getUserInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
@@ -62,6 +65,9 @@ export class AdminNavbarComponent implements OnInit {
                         this.dbUser = this.localUser;
                     } else {
                         return null;
+                    }
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        this.isAdmin = userInfo.admin === true;
                     }
                 });
             });

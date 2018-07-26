@@ -57,7 +57,8 @@ export class AuthService {
                                      // this.setOffline();
                                  }
                              });
-        // Sets user in browser local storage.
+
+        // Watches/Sets user in browser local storage.
         this.statusChange.subscribe(userData => {
             if (userData) {
                 this.$key = userData.$key;
@@ -106,10 +107,8 @@ export class AuthService {
 
     // Used to get userData in browser memory.
     getProfile() {
-        if (this.fbUser$) {
-            const user = localStorage.getItem('user');
-            return JSON.parse(user);
-        }
+        const user = localStorage.getItem('user');
+        return JSON.parse(user);
     }
 
     // Checks if user is logged in.
@@ -128,19 +127,11 @@ export class AuthService {
                    });
     }
 
-    // Pulls the databaseUser's info as a promise.
-    // getUserFromDatabase(uid) {
-    //     this.afAuth.authState.subscribe(auth => {
-    //         if (auth) {
-    //             this.currentUser$ = uid;
-    //         }
-    //     });
-    // }
 
     // Sets the databaseUsers's info.
-    setUserInLocalStorage(userFromLogin) {
-        localStorage.setItem('user', JSON.stringify(userFromLogin));
-        this.statusChange.emit(userFromLogin);
+    setUserInLocalStorage(userData) {
+        this.statusChange.emit(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
     }
 
     login(data) {

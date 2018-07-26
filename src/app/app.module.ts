@@ -49,7 +49,6 @@ firebase.initializeApp(environment.firebase);
         AngularFireAuthModule,
         AngularFireStorageModule,
         AppRoutingModule,
-        FlashMessagesModule.forRoot(),
         BsDatepickerModule.forRoot(),
         ProgressbarModule.forRoot(),
     ],

@@ -11,14 +11,16 @@ import { UserService } from '../../../services/user.service';
 })
 export class AdminUserComponent implements OnInit {
     users$: Observable<User[]>;
+    localUser: User;
 
     constructor(public userService: UserService,
-                private authService: AuthService
+                private authService: AuthService,
     ) {
     }
 
     ngOnInit() {
         this.users$ = this.userService.getUsers();
+        this.localUser = this.authService.getProfile();
     }
 
 

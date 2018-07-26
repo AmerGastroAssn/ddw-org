@@ -1,4 +1,8 @@
 /* Global Admin Styles */
+flash-messages {
+
+}
+
 p, div, tr, th, tr, td, span, input.form-control {
     font-size: 14px;
 }

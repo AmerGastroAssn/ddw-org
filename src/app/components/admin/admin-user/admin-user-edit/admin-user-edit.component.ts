@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class AdminUserEditComponent implements OnInit {
     title: string;
     uid: string;
     disableAdminOnEdit: boolean;
-
+    isAdmin: boolean;
 
     constructor(
       private userService: UserService,
@@ -34,6 +34,7 @@ export class AdminUserEditComponent implements OnInit {
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
+      private afAuth: AngularFireAuth,
     ) {
     }
 
@@ -86,6 +87,20 @@ export class AdminUserEditComponent implements OnInit {
                 this.title = this.editUserForm.value.title;
             }
         });
+
+        // Is Admin?
+        this.userService.getUserInfo()
+            .subscribe((userArr) => {
+                userArr.forEach((userInfo) => {
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        if (userInfo.admin === true) {
+                            this.isAdmin = true;
+                        } else {
+                            this.isAdmin = false;
+                        }
+                    }
+                });
+            });
     }
 
     onUpdateUser(formData) {
@@ -97,13 +112,7 @@ export class AdminUserEditComponent implements OnInit {
               });
         } else {
             this.userService.updateUser(formData, this.user.uid);
-            // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.editUserForm.reset();
-            this.flashMessage.show(`${formData.displayName} was updated!`,
-              {
-                  cssClass: 'alert-success',
-                  timeout: 3500
-              });
         }
     }
 

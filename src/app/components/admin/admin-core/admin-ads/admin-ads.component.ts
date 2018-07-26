@@ -50,5 +50,6 @@ export class AdminAdsComponent implements OnInit {
 
     onAdsSubmit(adsData) {
         this.adsService.updateAds(adsData);
+        this.adsForm.reset(this.adsService.getAds());
     }
 }

@@ -26,13 +26,13 @@
                 </a>
             </li>
 
-            <li class="nav-item" *ngIf="isLoggedIn && allowSettings">
+            <li class="nav-item" *ngIf="isLoggedIn && allowSettings && isAdmin">
                 <a class="nav-link"
                    [routerLink]="['/admin/settings']">
                     <i class="fa fa-wrench"></i>&nbsp;Settings
                 </a>
             </li>
-            <li class="nav-item" *ngIf="!isLoggedIn && allowSignup">
+            <li class="nav-item" *ngIf="!isLoggedIn && allowSignup && isAdmin">
                 <a class="nav-link"
                    [routerLink]="['/admin/signup']">
                     <i class="fa fa-user-plus"></i>&nbsp;Create Account

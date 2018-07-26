@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
@@ -19,11 +21,15 @@ export class AdminSidenavComponent implements OnInit {
     id: string;
     showPagesToggle: boolean;
     showUsersToggle: boolean;
+    user: User;
+    isAdmin: boolean;
 
     constructor(
       private authService: AuthService,
       private userService: UserService,
       private settingsService: AdminSettingsService,
+      private adminService: AdminService,
+      private afAuth: AngularFireAuth
     ) {
     }
 
@@ -41,6 +47,20 @@ export class AdminSidenavComponent implements OnInit {
                 this.isLoggedIn = false;
             }
         });
+
+// Is Admin?
+this.userService.getUserInfo()
+    .subscribe((userArr) => {
+        userArr.forEach((userInfo) => {
+            if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                if (userInfo.admin === true) {
+                    this.isAdmin = true;
+                } else {
+                    this.isAdmin = false;
+                }
+            }
+    });
+});
     }
 
     onShowPagesToggle() {

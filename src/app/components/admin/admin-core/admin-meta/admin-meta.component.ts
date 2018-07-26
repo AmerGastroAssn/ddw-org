@@ -50,5 +50,6 @@ export class AdminMetaComponent implements OnInit {
 
     onMetaSubmit(metaData) {
         this.metaService.updateMeta(metaData);
+        this.metaForm.reset(this.metaService.getMeta());
     }
 }

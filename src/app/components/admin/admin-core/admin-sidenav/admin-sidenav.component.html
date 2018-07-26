@@ -72,21 +72,21 @@
     <!-- * Extras * -->
     <li class="sidenav-header small font-weight-semibold">Extras</li>
 
-    <li class="sidenav-item" *ngIf="isLoggedIn && allowSignup">
+    <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/settings']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fal fa-wrench"></i>&nbsp;Settings</div>
         </a>
     </li>
 
-    <li class="sidenav-item" *ngIf="isLoggedIn && allowSignup">
+    <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/meta']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fal fa-chart-line"></i>&nbsp;Scripts</div>
         </a>
     </li>
 
-    <li class="sidenav-item" *ngIf="isLoggedIn && allowSignup">
+    <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/ads']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fal fa-money-bill-wave"></i>&nbsp;Advertising</div>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
@@ -34,6 +35,7 @@ import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        FlashMessagesModule.forRoot(),
         AdminRoutingModule,
         MatSidenavModule,
         BrowserAnimationsModule,

@@ -29,7 +29,7 @@ export class AdminMetaService {
                 return null;
             } else {
                 const data = action.payload.data() as Meta;
-                data.uid = action.payload.id;
+                data.$key = action.payload.id;
                 return data;
             }
         });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { Meta } from '../../../../models/Meta';
 import { AdminMetaService } from '../../../../services/admin-meta.service';
 
@@ -16,10 +17,13 @@ export class AdminMetaComponent implements OnInit {
     seo: string;
     footerArea: string;
 
+
     constructor(
       private metaService: AdminMetaService,
       private fb: FormBuilder,
+      private flashMessage: FlashMessagesService,
     ) {
+
     }
 
     ngOnInit() {
@@ -27,7 +31,6 @@ export class AdminMetaComponent implements OnInit {
         this.metaService.getMeta().subscribe((meta) => {
             if (meta !== null) {
                 this.meta = meta;
-
                 // Form:
                 this.metaForm = this.fb.group({
                     $key: [this.metaService.$key],

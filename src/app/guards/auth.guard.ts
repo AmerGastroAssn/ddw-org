@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { CanActivate, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -14,7 +15,8 @@ export class AuthGuard implements CanActivate {
     constructor(
       private afAuth: AngularFireAuth,
       private router: Router,
-      private flashMessage: FlashMessagesService
+      private flashMessage: FlashMessagesService,
+      public sbAlert: MatSnackBar,
     ) {
     }
 
@@ -25,9 +27,14 @@ export class AuthGuard implements CanActivate {
         .do((authenticated) => {
             if (!authenticated) {
                 this.router.navigate(['/admin/login']);
-                this.flashMessage.show(`Please log in`, {
+                this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web Development team for help.`, {
                     cssClass: 'alert-warning',
-                    timeout: 3000
+                    timeout: 5000
+                });
+                this.sbAlert.open('Sorry, you do not have sufficient privileges. Please contact the Web Development team for help.', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-warning']
                 });
             }
         });

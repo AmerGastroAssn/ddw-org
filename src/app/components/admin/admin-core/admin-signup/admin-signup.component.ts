@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
@@ -30,7 +31,8 @@ export class AdminSignupComponent implements OnInit {
       private fb: FormBuilder,
       private authService: AuthService,
       private router: Router,
-      private settingsService: AdminSettingsService
+      private settingsService: AdminSettingsService,
+      public sbAlert: MatSnackBar
     ) {
     }
 
@@ -76,7 +78,23 @@ export class AdminSignupComponent implements OnInit {
 
     onSignup(formData: FormGroup) {
         if (this.signupForm.valid) {
-            this.authService.emailSignup(formData);
+            this.authService.emailSignup(formData)
+                .then(() => {
+                    this.sbAlert.open('You are signed up and logged in!', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
+                    });
+                    this.router.navigate(['/admin/login']);
+                })
+                .catch((error) => {
+                    console.log(`Error~eS:`, error);
+                    this.sbAlert.open(error, 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-danger']
+                    });
+                });
             this.signupForm.reset();
         }
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -53,6 +54,7 @@ export class AdminPageNewComponent implements OnInit {
       private authService: AuthService,
       private storage: AngularFireStorage,
       private afs: AngularFirestore,
+      private sbAlert: MatSnackBar,
     ) {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
@@ -135,17 +137,19 @@ export class AdminPageNewComponent implements OnInit {
 
     onAddNewPage(formData) {
         if (!this.newPageForm.valid) {
-            this.flashMessage.show('Something went wrong, Page was not created.', {
-                cssClass: 'alert-danger',
-                timeout: 3500
+            this.sbAlert.open('Something went wrong, Page was NOT created.', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
             });
         } else {
             this.pageService.setPage(formData);
             console.log(formData);
             this.newPageForm.reset();
-            this.flashMessage.show(`${formData.title} was created!`, {
-                cssClass: 'alert-success',
-                timeout: 3500
+            this.sbAlert.open('New Page created!', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-success']
             });
         }
     }

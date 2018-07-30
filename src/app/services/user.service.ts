@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -23,6 +24,7 @@ export class UserService {
       private router: Router,
       private afAuth: AngularFireAuth,
       private flashMessage: FlashMessagesService,
+      public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = this.afs.collection<User>('users');
 
@@ -80,9 +82,10 @@ export class UserService {
         this.userDoc.update(updatedUser)
             .then((user) => {
                 this.router.navigate([`/admin/users/${id}`]);
-                this.flashMessage.show(`${updatedUser.displayName} was updated!`, {
-                    cssClass: 'alert-info',
-                    timeout: 1500
+                this.sbAlert.open('User was updated!', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
                 });
             })
             .catch((error) => {
@@ -102,9 +105,10 @@ export class UserService {
                     localStorage.removeItem('user');
                     localStorage.removeItem('userToken');
                     this.router.navigate([`/admin/users`]);
-                    this.flashMessage.show(`User was deleted`, {
-                        cssClass: 'alert-info',
-                        timeout: 1500
+                    this.sbAlert.open('User was Deleted!', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
                     });
                 })
                 .catch((error) => {

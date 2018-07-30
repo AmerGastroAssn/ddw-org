@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Meta } from '../../../../models/Meta';
 import { AdminMetaService } from '../../../../services/admin-meta.service';
 
@@ -21,7 +20,6 @@ export class AdminMetaComponent implements OnInit {
     constructor(
       private metaService: AdminMetaService,
       private fb: FormBuilder,
-      private flashMessage: FlashMessagesService,
     ) {
 
     }

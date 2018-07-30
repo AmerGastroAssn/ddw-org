@@ -35,11 +35,11 @@
                             <label>Title</label>
                             <input type="text"
                                    class="form-control"
-                                   [class.invalid]="!f.title.valid && f.title?.touched"
+                                   [class.invalid]="!f.title.valid && f.title.touched"
                                    [(ngModel)]="page.title"
                                    formControlName="title">
                             <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.title.valid && f.title?.touched">
+                               *ngIf="!f.title.valid && f.title.touched">
                                 Valid <b>Title</b> is required!
                             </p>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label>Body</label>
                             <ckeditor formControlName="body"
-                                      [class.invalid]="!f.body.valid && f.body?.touched"
+                                      [class.invalid]="!f.body.valid && f.body.touched"
                                       [(ngModel)]="page.body"
                                       [readonly]="false"
                                       debounce="500">

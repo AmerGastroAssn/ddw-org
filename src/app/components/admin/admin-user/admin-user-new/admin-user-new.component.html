@@ -20,16 +20,26 @@
                         <label>Email</label>
                         <input type="email"
                                class="form-control"
+                               required
                                [class.invalid]="!f.email.valid && f.email.touched"
                                formControlName="email">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.email.valid && f.email.touched">
+                            Valid <b>Email</b> is required!
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password"
                                class="form-control"
+                               required
                                [class.invalid]="!f.password.valid && f.password.touched"
                                formControlName="password">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.password.valid && f.password.touched">
+                            Valid <b>Password</b> is required!
+                        </p>
                     </div>
 
                     <!-- * TODO: Create username from email function if blank * -->
@@ -39,16 +49,26 @@
                         </label>
                         <input type="text"
                                class="form-control"
+                               required
                                [class.invalid]="!f.displayName.valid && f.displayName.touched"
                                formControlName="displayName">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.displayName.valid && f.displayName.touched">
+                            Valid <b>Display Name</b> is required!
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label>Job Title</label>
                         <input type="text"
                                class="form-control"
+                               required
                                [class.invalid]="!f.title.valid && f.title.touched"
                                formControlName="title">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.title.valid && f.title.touched">
+                            Valid <b>Title</b> is required!
+                        </p>
                     </div>
 
                     <div class="form-group form-check">

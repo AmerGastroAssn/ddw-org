@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -39,6 +40,7 @@ export class AuthService {
       private route: ActivatedRoute,
       private afs: AngularFirestore,
       private userService: UserService,
+      public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = afs.collection<User>('users');
         this.users$ = this.usersCollection.snapshotChanges()
@@ -148,9 +150,10 @@ export class AuthService {
                         });
                     }
                     this.currentUserToken();
-                    this.flashMessage.show(`${data.email} logged in successfully!`, {
-                        cssClass: 'alert-success',
-                        timeout: 1500
+                    this.sbAlert.open('Logged in successfully.', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
                     });
                 })
                 .then(() => this.router.navigate(['/admin/users']))
@@ -168,21 +171,9 @@ export class AuthService {
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
                    .then(() => {
-                       return this.setUserData(userData) // create initial user document
-                                  .then(() => {
-                                      this.flashMessage.show(`You are signed up and logged in successfully!`, {
-                                          cssClass: 'alert-success',
-                                          timeout: 2500
-                                      });
-                                      this.router.navigate(['/admin/login']);
-                                  });
+                       return this.setUserData(userData)
                    })
                    .catch(error => {
-                       console.log(`Error~eS:`, error);
-                       this.flashMessage.show(error, {
-                           cssClass: 'alert-danger',
-                           timeout: 5000
-                       });
                        this.router.navigate(['/admin/signup']);
                    });
     }
@@ -193,9 +184,10 @@ export class AuthService {
             .then(() => {
                 localStorage.removeItem('user');
                 localStorage.removeItem('userToken');
-                this.flashMessage.show(`Logging you out!`, {
-                    cssClass: 'alert-info',
-                    timeout: 700
+                this.sbAlert.open('Logging you out.', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-info']
                 });
                 this.router.navigate(['/admin/login']);
             })
@@ -212,9 +204,10 @@ export class AuthService {
         const auth = firebase.auth();
         return auth.sendPasswordResetEmail(formData)
                    .then(() => {
-                       this.flashMessage.show(`Email confirmation was sent!`, {
-                           cssClass: 'alert-success',
-                           timeout: 2500
+                       this.sbAlert.open('Email confirmation was sent to your email.', 'Dismiss', {
+                           duration: 3000,
+                           verticalPosition: 'bottom',
+                           panelClass: ['snackbar-info']
                        });
                        console.log('Email confirmation was sent!');
                        this.router.navigate(['/admin/login']);
@@ -234,16 +227,13 @@ export class AuthService {
                        this.setNewUserData(newUser)
                            .then(() => {
                                this.router.navigate([`/admin/users`]);
-                               this.flashMessage.show(`${newUser.displayName} was Created`, {
-                                   cssClass: 'alert-success',
-                                   timeout: 1500
-                               });
                            })
                            .catch((error) => {
                                console.log(`ERROR~au: `, error);
-                               this.flashMessage.show(`Something went wrong, user was NOT created.`, {
-                                   cssClass: 'alert-danger',
-                                   timeout: 2000
+                               this.sbAlert.open(error, 'Dismiss', {
+                                   duration: 3000,
+                                   verticalPosition: 'bottom',
+                                   panelClass: ['snackbar-danger']
                                });
                            });
                    });

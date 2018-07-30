@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AngularFireModule } from 'angularfire2';
@@ -51,6 +52,8 @@ firebase.initializeApp(environment.firebase);
         AppRoutingModule,
         BsDatepickerModule.forRoot(),
         ProgressbarModule.forRoot(),
+        FlashMessagesModule.forRoot(),
+        MatSnackBarModule
     ],
     exports: [],
     providers: [

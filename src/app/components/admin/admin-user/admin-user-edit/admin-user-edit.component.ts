@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -35,6 +36,7 @@ export class AdminUserEditComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
       private afAuth: AngularFireAuth,
+      private sbAlert: MatSnackBar,
     ) {
     }
 
@@ -105,11 +107,11 @@ export class AdminUserEditComponent implements OnInit {
 
     onUpdateUser(formData) {
         if (!this.editUserForm.valid) {
-            this.flashMessage.show('Something went wrong, User was not updated.',
-              {
-                  cssClass: 'alert-danger',
-                  timeout: 3500
-              });
+            this.sbAlert.open('Something went wrong, user was not updated', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
+            });
         } else {
             this.userService.updateUser(formData, this.user.uid);
             this.editUserForm.reset();

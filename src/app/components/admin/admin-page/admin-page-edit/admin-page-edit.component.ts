@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
@@ -52,6 +53,7 @@ export class AdminPageEditComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
       private storage: AngularFireStorage,
+      private sbAlert: MatSnackBar,
     ) {
     }
 
@@ -134,16 +136,18 @@ export class AdminPageEditComponent implements OnInit {
 
     onUpdatePage(formData) {
         if (!this.editPageForm.valid) {
-            this.flashMessage.show('Something went wrong, Page was not updated.', {
-                cssClass: 'alert-danger',
-                timeout: 3500
+            this.sbAlert.open('Something went wrong, Page was not created.', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
             });
         } else {
             this.pageService.updatePage(formData, this.page.uid);
             this.editPageForm.reset();
-            this.flashMessage.show(`${formData.title} was updated!`, {
-                cssClass: 'alert-success',
-                timeout: 3500
+            this.sbAlert.open('Page was updated!', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-success']
             });
         }
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Settings } from '../../../../models/Settings';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
@@ -21,7 +22,8 @@ export class AdminSettingsComponent implements OnInit {
 
     constructor(
       public settingsService: AdminSettingsService,
-      private flashMessage: FlashMessagesService
+      private flashMessage: FlashMessagesService,
+      private sbAlert: MatSnackBar,
     ) {
     }
 
@@ -40,9 +42,10 @@ export class AdminSettingsComponent implements OnInit {
         this.settingsService.saveSettings(value);
         console.log(value);
 
-        this.flashMessage.show(`Settings Saved!`, {
-            cssClass: 'alert-success',
-            timeout: 2500
+        this.sbAlert.open('Settings Saved!', 'Dismiss', {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            panelClass: ['snackbar-success']
         });
     }
 

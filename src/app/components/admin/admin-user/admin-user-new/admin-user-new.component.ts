@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -30,6 +31,7 @@ export class AdminUserNewComponent implements OnInit {
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,
       private authService: AuthService,
+      public sbAlert: MatSnackBar,
     ) {
 
     }
@@ -68,7 +70,7 @@ export class AdminUserNewComponent implements OnInit {
         this.email = this.newUserForm.value.email;
         this.password = this.newUserForm.value.password;
         this.isOnline = this.newUserForm.value.isOnline;
-        this.loginDate = this.newUserForm.value.loginDate;
+        this.loginDate = Date.now();
         this.photoURL = this.newUserForm.value.photoURL;
         this.admin = this.newUserForm.value.admin;
         this.title = this.newUserForm.value.title;
@@ -78,18 +80,30 @@ export class AdminUserNewComponent implements OnInit {
 
     onAddNewUser(formData) {
         if (!this.newUserForm.valid) {
-            this.flashMessage.show('Something went wrong, User was not created.', {
-                cssClass: 'alert-danger',
-                timeout: 3500
+            this.sbAlert.open('Something went wrong, user was not created.', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
             });
         } else {
-            this.authService.addUser(formData);
+            this.authService.addUser(formData)
+                .then(() => {
+                    this.sbAlert.open('User was created!', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
+                    });
+                })
+                .catch((error) => {
+                    this.sbAlert.open(error, 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-danger']
+                    });
+                });
             // console.log(`${newUser.email}, ${newUser.password}, ${newUser.admin}`);
             this.newUserForm.reset();
-            this.flashMessage.show(`${formData.controls.displayName} was created successfully!`, {
-                cssClass: 'alert-success',
-                timeout: 3500
-            });
+
         }
     }
 

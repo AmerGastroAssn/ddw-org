@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -18,6 +19,7 @@ export class AdminAdsService {
       private afs: AngularFirestore,
       private router: Router,
       private flashMessage: FlashMessagesService,
+      public sbAlert: MatSnackBar,
     ) {
         this.$key = 'stB5CaEitpZxkJ1KF7rJ';
     }
@@ -42,16 +44,18 @@ export class AdminAdsService {
 
         this.adsDoc.update(updatedAds)
             .then(() => {
-                this.flashMessage.show(`Ads was updated successfully!`, {
-                    cssClass: 'alert-success',
-                    timeout: 3000
+                this.sbAlert.open('Ads Saved!', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
                 });
                 console.log('Ads updated', updatedAds);
             })
             .catch((error) => {
-                this.flashMessage.show(`Something went wrong Ads were not updated :(... Error: ${error}`, {
-                    cssClass: 'alert-danger',
-                    timeout: 5000
+                this.sbAlert.open('Ads were NOT Saved!', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
                 });
                 console.log(`ERROR~uM: `, error);
             });

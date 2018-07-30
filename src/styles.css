@@ -17,3 +17,45 @@ button:focus {
 a.back-pages {
     text-decoration: none;
 }
+
+.snackbar-success {
+    background-color: #CEEAD5;
+    color: #154D20;
+}
+
+.snackbar-info {
+    background-color: #CBE9EF;
+    color: #0F4A55;
+}
+
+.snackbar-warning {
+    background-color: #FFF3CF;
+    color: #846315;
+}
+
+.snackbar-danger {
+    background-color: #F7D1D5;
+    color: #874348;
+}
+
+.mat-button-wrapper {
+    color: #333333;
+}
+
+.mat-button-wrapper > i {
+    color: #ffffff;
+}
+
+input.invalid {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #701D26;
+    background-color: #F7D7DB;
+    background-clip: padding-box;
+    border: 1px solid #CBB1B4;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}

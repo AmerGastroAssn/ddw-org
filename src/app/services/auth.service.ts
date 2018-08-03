@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { User } from '../models/User';
 import { UserService } from './user.service';
 
@@ -17,7 +18,8 @@ export class AuthService {
     statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
     users$: Observable<User[]>;
-    currentUser;
+    currentUserId: string;
+    user: User;
     fbUser$: Observable<firebase.User>;
     userDoc: AngularFirestoreDocument<User>;
     loggedIn: boolean;
@@ -31,6 +33,7 @@ export class AuthService {
     loginDate: number = Date.now();
     isOnline: boolean;
     title: string;
+    isAdmin: boolean;
 
 
     constructor(
@@ -54,7 +57,7 @@ export class AuthService {
         this.fbUser$ = afAuth.authState
                              .do((user) => {
                                  if (user) {
-                                     return this.uid = user.uid;
+                                     return this.currentUserId = user.uid;
                                      // this.updateOnConnect();
                                      // this.setOffline();
                                  }
@@ -67,10 +70,10 @@ export class AuthService {
                 this.uid = userData.uid;
                 this.email = userData.email;
                 this.title = userData.title;
-                this.password = userData.password;
+                // this.password = userData.password;
                 this.photoURL = userData.photoURL;
                 this.loginDate = Date.now();
-                this.isOnline = userData.isOnline = true;
+                this.isOnline = userData.isOnline;
                 this.admin = userData.admin;
                 this.displayName = userData.displayName;
             } else {
@@ -80,31 +83,14 @@ export class AuthService {
                 this.isOnline = false;
             }
         });
+    }
 
+    updateOnConnect() {
 
     }
 
-
     isLoggedIn() {
-        firebase.auth().onAuthStateChanged((userData) => {
-            // if logged in.
-            if (userData && userData.emailVerified) {
-                this.loggedIn = true;
-                const user = this.getProfile();
-                if (user && user.uid) {
-                    this.uid = userData.uid;
-                    this.email = userData.email;
-                    this.photoURL = userData.photoURL;
-                    this.loginDate = Date.now();
-                    this.displayName = userData.displayName;
-                }
-            } else {
-                this.loggedIn = false;
-                // Logs FB user out if not logged in app.
-                firebase.auth().signOut();
-                // removes from local storage
-            }
-        });
+        return this.afAuth.authState.pipe(first()).toPromise();
     }
 
     // Used to get userData in browser memory.
@@ -118,6 +104,25 @@ export class AuthService {
         return this.afAuth.authState.map(auth => auth);
     }
 
+    // Checks if User is logged in, and if it's an admin
+    async getAdminUserVals() {
+        const loggedInUser = await this.isLoggedIn();
+        if (loggedInUser) {
+            this.users$.subscribe((userArr) => {
+                userArr.forEach((userInfo) => {
+                      if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                          if (userInfo.admin) {
+                              return userInfo;
+                          } else {
+                              console.log('Admin User not found');
+                          }
+                      }
+                  }
+                );
+            });
+        }
+    }
+
     // Gets Firebase UserToken and stores in browser app storage.
     currentUserToken(): any {
         return this.afAuth.auth.currentUser.getIdToken(false)
@@ -129,11 +134,15 @@ export class AuthService {
                    });
     }
 
-
     // Sets the databaseUsers's info.
     setUserInLocalStorage(userData) {
         this.statusChange.emit(userData);
         localStorage.setItem('user', JSON.stringify(userData));
+    }
+
+    removeUserFromLocalStorage() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('userToken');
     }
 
     login(data) {
@@ -145,6 +154,7 @@ export class AuthService {
                             userArr.forEach((userInfo) => {
                                 if (userData.user.email === userInfo.email) {
                                     this.setUserInLocalStorage(userInfo);
+                                    this.setUserToOnline(userInfo);
                                 }
                             });
                         });
@@ -171,19 +181,18 @@ export class AuthService {
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
                    .then(() => {
-                       return this.setUserData(userData)
+                       return this.setUserData(userData);
                    })
                    .catch(error => {
                        this.router.navigate(['/admin/signup']);
                    });
     }
 
-
-    logout() {
+    logout(user) {
         this.afAuth.auth.signOut()
             .then(() => {
-                localStorage.removeItem('user');
-                localStorage.removeItem('userToken');
+                this.removeUserFromLocalStorage();
+
                 this.sbAlert.open('Logging you out.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
@@ -191,6 +200,7 @@ export class AuthService {
                 });
                 this.router.navigate(['/admin/login']);
             })
+            .then(() => this.setUserToOffline(user))
             .catch((error) => {
                 this.flashMessage.show(error, {
                     cssClass: 'alert-warning',
@@ -198,6 +208,7 @@ export class AuthService {
                 });
                 console.log(`ERROR~l: `, error);
             });
+
     }
 
     resetPassword(formData: any) {
@@ -237,6 +248,59 @@ export class AuthService {
                                });
                            });
                    });
+    }
+
+    setUserToOffline(user) {
+        // Sets user data to firestore on login
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+
+        const data: User = {
+            uid: user.uid,
+            email: user.email,
+            password: user.password,
+            isOnline: false,
+            loginDate: user.loginDate,
+            photoURL: user.photoURL,
+            admin: user.admin,
+            title: user.title,
+            displayName: user.displayName,
+        };
+
+
+        return userRef.set(data)
+                      .then(() => {
+                          console.log('user Data offline:', data);
+                      })
+                      .catch((error) => {
+                          console.log('User not set in local storage:', error);
+                      });
+    }
+
+    private setUserToOnline(user) {
+        // Sets user data to firestore on login
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+
+        const data: User = {
+            $key: user.uid,
+            uid: user.uid,
+            email: user.email,
+            password: user.password,
+            isOnline: true,
+            loginDate: user.loginDate,
+            photoURL: user.photoURL,
+            admin: user.admin,
+            title: user.title,
+            displayName: user.displayName,
+        };
+
+        return userRef.set(data)
+                      .then(() => {
+                          console.log('User is logged in.');
+                          console.log('user Data:', data);
+                      })
+                      .catch((error) => {
+                          console.log('User not set in local storage:', error);
+                      });
     }
 
     // Sets user but also in local storage.

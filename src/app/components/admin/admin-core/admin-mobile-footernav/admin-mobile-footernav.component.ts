@@ -40,7 +40,7 @@ export class AdminMobileFooternavComponent implements OnInit {
     }
 
     onLogout() {
-        this.authService.logout();
+        this.authService.logout(this.currentUser);
     }
 
 }

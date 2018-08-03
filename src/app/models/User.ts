@@ -1,6 +1,5 @@
 export class User {
     constructor(
-      public $key: string,
       public uid: string,
       public email: string,
       public password: string,
@@ -10,6 +9,7 @@ export class User {
       public admin: boolean,
       public title: string,
       public displayName: string,
+      public $key?: string,
     ) {
     }
 }

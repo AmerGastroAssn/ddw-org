@@ -47,7 +47,7 @@ export class UserService {
     }
 
     // If authenticated, return user-Key-ID/uid, else empty string.
-    getUserInfo() {
+    getUsersInfo() {
         return this.usersCollection.snapshotChanges().map(action => {
             return action.map(a => {
                 if (a.payload.doc.exists === false) {

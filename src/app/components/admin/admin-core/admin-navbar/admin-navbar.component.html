@@ -20,8 +20,8 @@
             </li>
             <li class="nav-item" *ngIf="isLoggedIn && dbUser">
                 <a class="nav-link"
-                   [routerLink]="['/admin/users/', dbUser.$key ]">
-                    <img [src]="dbUser.photoURL"
+                   [routerLink]="['/admin/users/', localUser.uid ]">
+                    <img [src]="localUser.photoURL"
                          class="user-image rounded-circle"> &nbsp;{{ loggedInUser }}
                 </a>
             </li>

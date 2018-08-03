@@ -23,6 +23,7 @@ export class AdminSidenavComponent implements OnInit {
     showUsersToggle: boolean;
     user: User;
     isAdmin: boolean;
+    dbUser: User;
 
     constructor(
       private authService: AuthService,
@@ -48,19 +49,21 @@ export class AdminSidenavComponent implements OnInit {
             }
         });
 
-// Is Admin?
-this.userService.getUserInfo()
-    .subscribe((userArr) => {
-        userArr.forEach((userInfo) => {
-            if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                if (userInfo.admin === true) {
-                    this.isAdmin = true;
-                } else {
-                    this.isAdmin = false;
-                }
-            }
-    });
-});
+        // Is Admin?
+        this.userService.getUsersInfo()
+            .subscribe((userArr) => {
+                userArr.forEach((userInfo) => {
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        if (userInfo.admin === true) {
+                            this.dbUser = userInfo;
+                            this.isAdmin = true;
+                        } else {
+                            this.dbUser = this.currentUser;
+                            this.isAdmin = false;
+                        }
+                    }
+                });
+            });
     }
 
     onShowPagesToggle() {
@@ -72,7 +75,7 @@ this.userService.getUserInfo()
     }
 
     onLogout() {
-        this.authService.logout();
+        this.authService.logout(this.dbUser);
     }
 
 

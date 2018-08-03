@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
 import { UserService } from '../../../../services/user.service';
 
@@ -25,6 +23,7 @@ export class AdminNavbarComponent implements OnInit {
     id: string;
     dbUser: any;
     isAdmin: boolean;
+    email: string;
 
     constructor(
       private authService: AuthService,
@@ -56,25 +55,32 @@ export class AdminNavbarComponent implements OnInit {
         this.localUser = this.authService.getProfile();
 
         // Gets the correct user for navbar profile and checks if is admin.
-        this.userService.getUserInfo()
+        // Is Admin?
+        this.userService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        this.dbUser = userInfo;
-                    } else if (this.localUser) {
-                        this.dbUser = this.localUser;
-                    } else {
-                        return null;
-                    }
-                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        this.isAdmin = userInfo.admin === true;
+                        if (userInfo.admin === true) {
+                            this.dbUser = userInfo;
+                            this.isAdmin = true;
+                        } else {
+                            this.dbUser = this.localUser;
+                            this.isAdmin = false;
+                        }
                     }
                 });
             });
     }
 
     onLogout() {
-        this.authService.logout();
+        this.authService.logout(this.loggedInUser);
+        // this.authService.setUserToOffline(this.dbUser)
+        //     .then(() => {
+        //         this.authService.logout(this.dbUser);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
     }
 
 

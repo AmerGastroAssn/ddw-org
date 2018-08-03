@@ -55,32 +55,25 @@ export class AdminNavbarComponent implements OnInit {
         this.localUser = this.authService.getProfile();
 
         // Gets the correct user for navbar profile and checks if is admin.
-        // Is Admin?
         this.userService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        if (userInfo.admin === true) {
-                            this.dbUser = userInfo;
-                            this.isAdmin = true;
-                        } else {
-                            this.dbUser = this.localUser;
-                            this.isAdmin = false;
-                        }
+                        this.dbUser = userInfo;
+                    } else if (this.localUser) {
+                        this.dbUser = this.localUser;
+                    } else {
+                        return null;
+                    }
+                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        this.isAdmin = userInfo.admin === true;
                     }
                 });
             });
     }
 
     onLogout() {
-        this.authService.logout(this.loggedInUser);
-        // this.authService.setUserToOffline(this.dbUser)
-        //     .then(() => {
-        //         this.authService.logout(this.dbUser);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+        this.authService.logout();
     }
 
 

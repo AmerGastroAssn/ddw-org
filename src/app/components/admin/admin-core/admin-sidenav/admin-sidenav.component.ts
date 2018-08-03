@@ -49,16 +49,15 @@ export class AdminSidenavComponent implements OnInit {
             }
         });
 
+
         // Is Admin?
         this.userService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
                         if (userInfo.admin === true) {
-                            this.dbUser = userInfo;
                             this.isAdmin = true;
                         } else {
-                            this.dbUser = this.currentUser;
                             this.isAdmin = false;
                         }
                     }
@@ -75,7 +74,7 @@ export class AdminSidenavComponent implements OnInit {
     }
 
     onLogout() {
-        this.authService.logout(this.dbUser);
+        this.authService.logout();
     }
 
 

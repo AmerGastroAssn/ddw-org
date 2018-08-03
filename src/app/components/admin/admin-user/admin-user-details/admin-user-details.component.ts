@@ -44,7 +44,7 @@ export class AdminUserDetailsComponent implements OnInit {
         this.currentUser = this.authService.getProfile();
 
         // Is Admin?
-        this.userService.getUserInfo()
+        this.userService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {

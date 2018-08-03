@@ -54,18 +54,19 @@ export class AuthService {
                           });
 
 
-        this.fbUser$ = afAuth.authState
-                             .do((user) => {
-                                 if (user) {
-                                     return this.currentUserId = user.uid;
-                                     // this.updateOnConnect();
-                                     // this.setOffline();
-                                 }
-                             });
+        this.fbUser$ = afAuth.authState.do((user) => {
+            if (user) {
+                return this.currentUserId = user.uid;
+                // this.updateOnConnect();
+                // this.setOffline();
+            } else {
+                return null;
+            }
+        });
 
         // Watches/Sets user in browser local storage.
         this.statusChange.subscribe(userData => {
-            if (userData) {
+            if (userData && this.fbUser$) {
                 this.$key = userData.$key;
                 this.uid = userData.uid;
                 this.email = userData.email;
@@ -188,11 +189,11 @@ export class AuthService {
                    });
     }
 
-    logout(user) {
+    logout() {
         this.afAuth.auth.signOut()
             .then(() => {
                 this.removeUserFromLocalStorage();
-
+                // this.setUserToOffline(user);
                 this.sbAlert.open('Logging you out.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
@@ -200,7 +201,6 @@ export class AuthService {
                 });
                 this.router.navigate(['/admin/login']);
             })
-            .then(() => this.setUserToOffline(user))
             .catch((error) => {
                 this.flashMessage.show(error, {
                     cssClass: 'alert-warning',
@@ -267,13 +267,7 @@ export class AuthService {
         };
 
 
-        return userRef.set(data)
-                      .then(() => {
-                          console.log('user Data offline:', data);
-                      })
-                      .catch((error) => {
-                          console.log('User not set in local storage:', error);
-                      });
+        return userRef.set(data);
     }
 
     private setUserToOnline(user) {
@@ -293,14 +287,7 @@ export class AuthService {
             displayName: user.displayName,
         };
 
-        return userRef.set(data)
-                      .then(() => {
-                          console.log('User is logged in.');
-                          console.log('user Data:', data);
-                      })
-                      .catch((error) => {
-                          console.log('User not set in local storage:', error);
-                      });
+        return userRef.set(data);
     }
 
     // Sets user but also in local storage.

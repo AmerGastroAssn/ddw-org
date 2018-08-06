@@ -32,7 +32,7 @@ export class AdminUserComponent implements OnInit {
     async getAdminUserVals() {
         const loggedInUser = await this.authService.isLoggedIn();
         if (loggedInUser) {
-            this.authService.users$.subscribe((userArr) => {
+            this.authService.usersList$.subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                       if (this.afAuth.auth.currentUser.email === userInfo.email) {
                           if (userInfo.admin) {

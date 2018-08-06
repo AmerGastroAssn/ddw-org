@@ -91,7 +91,7 @@ export class AdminUserEditComponent implements OnInit {
         });
 
         // Is Admin?
-        this.userService.getUserInfo()
+        this.userService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {

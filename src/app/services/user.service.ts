@@ -102,8 +102,6 @@ export class UserService {
         if (confirm(`Are you sure you want to delete this user? This is irreversible.`)) {
             this.userDoc.delete()
                 .then((user) => {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('userToken');
                     this.router.navigate([`/admin/users`]);
                     this.sbAlert.open('User was Deleted!', 'Dismiss', {
                         duration: 3000,

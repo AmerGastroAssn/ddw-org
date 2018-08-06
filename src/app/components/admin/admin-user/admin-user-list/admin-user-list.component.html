@@ -15,8 +15,8 @@
                     <thead>
                     <tr>
                         <th colspan="2">User</th>
-                        <th scope="col">Last Online</th>
-                        <th scope="col">Is Online</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Admin</th>
                         <th scope="col">Options</th>
                     </tr>
@@ -35,15 +35,10 @@
                                 {{ user.displayName }}
                             </a>
                         </td>
-                        <td scope="col">{{ user.loginDate | date:'fullDate' }}</td>
-                        <td scope="col" style="text-align:center;">
-                                <span class="badge badge-outline-success" *ngIf="user.isOnline">
-                                    Yes
-                                </span>
-                            <span class="badge badge-outline-danger" *ngIf="!user.isOnline">
-                                    No
-                                </span>
+                        <td scope="col">
+                            {{ user.email }}
                         </td>
+                        <td scope="col">{{ user.loginDate | date:'fullDate' }}</td>
                         <td scope="col" style="text-align:center;">
                                 <span class="badge badge-outline-success" *ngIf="user.admin">
                                     Yes

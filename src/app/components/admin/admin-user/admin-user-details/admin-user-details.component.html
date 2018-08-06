@@ -19,7 +19,7 @@
                          aria-label="Basic example">
                         <a class="btn btn-secondary btn-sm"
                            [routerLink]="['edit']"
-                           *ngIf="currentUser.admin">
+                           *ngIf="isAdmin">
                             <i class="fa fa-pencil"></i>&nbsp;Edit
                         </a>
                         <a class="btn btn-warning btn-sm"

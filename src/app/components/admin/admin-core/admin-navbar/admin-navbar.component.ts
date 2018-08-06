@@ -59,7 +59,7 @@ export class AdminNavbarComponent implements OnInit {
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        this.dbUser = userInfo;
+                        return this.dbUser = userInfo;
                     } else if (this.localUser) {
                         this.dbUser = this.localUser;
                     } else {
@@ -67,9 +67,12 @@ export class AdminNavbarComponent implements OnInit {
                     }
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
                         this.isAdmin = userInfo.admin === true;
+                        console.log(this.isAdmin);
                     }
                 });
             });
+
+
     }
 
     onLogout() {

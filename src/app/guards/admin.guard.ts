@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -17,10 +19,11 @@ export class AdminGuard implements CanActivate {
       private router: Router,
       public flashMessage: FlashMessagesService,
       public sbAlert: MatSnackBar,
+      public userService: UserService,
+      private afAuth: AngularFireAuth,
     ) {
         this.currentUser = this.authService.getProfile();
     }
-
 
     canActivate(
       next: ActivatedRouteSnapshot,

@@ -49,6 +49,7 @@ export class AdminUserDetailsComponent implements OnInit {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
                         if (userInfo.admin === true) {
+                            this.user = userInfo;
                             this.isAdmin = true;
                         } else {
                             this.isAdmin = false;

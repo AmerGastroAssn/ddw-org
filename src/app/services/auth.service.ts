@@ -5,8 +5,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { Observable, pipe } from 'rxjs';
+import { first, shareReplay } from 'rxjs/operators';
 import { User } from '../models/User';
 import { UserService } from './user.service';
 
@@ -17,10 +17,10 @@ import { UserService } from './user.service';
 export class AuthService {
     statusChange: any = new EventEmitter<any>();
     usersCollection: AngularFirestoreCollection<User>;
-    users$: Observable<User[]>;
+    usersList$: Observable<User[]>;
     currentUserId: string;
     user: User;
-    fbUser$: Observable<firebase.User>;
+    afsUser$: Observable<firebase.User>;
     userDoc: AngularFirestoreDocument<User>;
     loggedIn: boolean;
     $key: string;
@@ -46,15 +46,15 @@ export class AuthService {
       public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = afs.collection<User>('users');
-        this.users$ = this.usersCollection.snapshotChanges()
-                          .map(actions => {
-                              return actions.map(action => ({
-                                  $key: action.payload.doc.id, ...action.payload.doc.data()
-                              }));
-                          });
+        this.usersList$ = this.usersCollection.snapshotChanges()
+                              .map(actions => {
+                                  return actions.map(action => ({
+                                      $key: action.payload.doc.id, ...action.payload.doc.data()
+                                  }));
+                              });
 
 
-        this.fbUser$ = afAuth.authState.do((user) => {
+        this.afsUser$ = afAuth.authState.do((user) => {
             if (user) {
                 return this.currentUserId = user.uid;
                 // this.updateOnConnect();
@@ -66,7 +66,7 @@ export class AuthService {
 
         // Watches/Sets user in browser local storage.
         this.statusChange.subscribe(userData => {
-            if (userData && this.fbUser$) {
+            if (userData && this.afsUser$) {
                 this.$key = userData.$key;
                 this.uid = userData.uid;
                 this.email = userData.email;
@@ -87,7 +87,6 @@ export class AuthService {
     }
 
     updateOnConnect() {
-
     }
 
     isLoggedIn() {
@@ -109,7 +108,7 @@ export class AuthService {
     async getAdminUserVals() {
         const loggedInUser = await this.isLoggedIn();
         if (loggedInUser) {
-            this.users$.subscribe((userArr) => {
+            this.usersList$.subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                       if (this.afAuth.auth.currentUser.email === userInfo.email) {
                           if (userInfo.admin) {
@@ -151,11 +150,10 @@ export class AuthService {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
                     if (userData) {
-                        this.users$.subscribe((userArr) => {
+                        this.usersList$.subscribe((userArr) => {
                             userArr.forEach((userInfo) => {
                                 if (userData.user.email === userInfo.email) {
                                     this.setUserInLocalStorage(userInfo);
-                                    this.setUserToOnline(userInfo);
                                 }
                             });
                         });
@@ -167,7 +165,9 @@ export class AuthService {
                         panelClass: ['snackbar-success']
                     });
                 })
-                .then(() => this.router.navigate(['/admin/users']))
+                .then(() => {
+                    this.router.navigate(['/admin/users']);
+                })
                 .catch((error) => {
                     reject(error);
                     this.flashMessage.show(error, {
@@ -193,7 +193,6 @@ export class AuthService {
         this.afAuth.auth.signOut()
             .then(() => {
                 this.removeUserFromLocalStorage();
-                // this.setUserToOffline(user);
                 this.sbAlert.open('Logging you out.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
@@ -267,11 +266,14 @@ export class AuthService {
         };
 
 
-        return userRef.set(data);
+        return userRef.set(data)
+                      .then(() => console.log('setUserToOffline set'))
+                      .catch((error) => console.log(error));
     }
 
     private setUserToOnline(user) {
         // Sets user data to firestore on login
+        console.log('user', user);
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {
@@ -280,14 +282,20 @@ export class AuthService {
             email: user.email,
             password: user.password,
             isOnline: true,
-            loginDate: user.loginDate,
+            loginDate: Date.now(),
             photoURL: user.photoURL,
             admin: user.admin,
             title: user.title,
             displayName: user.displayName,
         };
 
-        return userRef.set(data);
+        console.log('setOnlineData', data);
+        userRef.set(data, { merge: true })
+               .then(() => {
+                   pipe(shareReplay(1));
+                   console.log('setUserToOnline updated');
+               })
+               .catch((error) => console.log(error));
     }
 
     // Sets user but also in local storage.

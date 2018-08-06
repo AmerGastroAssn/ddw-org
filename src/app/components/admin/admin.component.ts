@@ -13,7 +13,6 @@ export class AdminComponent implements OnInit {
     }
 
     ngOnInit() {
-        const user = this.authService.fbUser$;
     }
 
     onToggleSidenav() {

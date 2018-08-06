@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AuthService } from '../../../../services/auth.service';
@@ -22,11 +23,14 @@ export class AdminUserListComponent implements OnInit {
       public userService: UserService,
       private route: ActivatedRoute,
       public authService: AuthService,
+      public afAuth: AngularFireAuth,
     ) {
     }
 
     ngOnInit() {
         this.users$ = this.userService.getUsers();
+        // this.onlineDate = this.afAuth.auth.currentUser.metadata.lastSignInTime;
+        this.users$.subscribe(info => console.log(info));
 
         // this.authService.users$
         //     .subscribe((info) => {

@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../models/User';
 import { AuthService } from './auth.service';
-import { UserService } from './user.service';
+import { AdminUserService } from './admin-user.service';
 
 
 @Injectable({
@@ -19,7 +19,7 @@ export class AdminService {
       private afAuth: AngularFireAuth,
       private afs: AngularFirestore,
       private authService: AuthService,
-      private userService: UserService,
+      private adminUserService: AdminUserService,
     ) {
         this.currentUser = this.authService.getProfile();
     }

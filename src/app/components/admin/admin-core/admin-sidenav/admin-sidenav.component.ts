@@ -4,7 +4,7 @@ import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
-import { UserService } from '../../../../services/user.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-sidenav',
@@ -27,7 +27,7 @@ export class AdminSidenavComponent implements OnInit {
 
     constructor(
       private authService: AuthService,
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       private settingsService: AdminSettingsService,
       private adminService: AdminService,
       private afAuth: AngularFireAuth
@@ -51,7 +51,7 @@ export class AdminSidenavComponent implements OnInit {
 
 
         // Is Admin?
-        this.userService.getUsersInfo()
+        this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {

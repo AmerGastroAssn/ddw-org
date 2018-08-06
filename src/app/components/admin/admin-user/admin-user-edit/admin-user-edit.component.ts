@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { UserService } from '../../../../services/user.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-user-edit',
@@ -29,7 +29,7 @@ export class AdminUserEditComponent implements OnInit {
     isAdmin: boolean;
 
     constructor(
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       private router: Router,
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
@@ -51,7 +51,7 @@ export class AdminUserEditComponent implements OnInit {
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
         // Get User
-        this.userService.getUser(this.uid).subscribe((user) => {
+        this.adminUserService.getUser(this.uid).subscribe((user) => {
             if (user !== null) {
                 this.user = user;
 
@@ -91,7 +91,7 @@ export class AdminUserEditComponent implements OnInit {
         });
 
         // Is Admin?
-        this.userService.getUsersInfo()
+        this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
@@ -113,13 +113,13 @@ export class AdminUserEditComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.userService.updateUser(formData, this.user.uid);
+            this.adminUserService.updateUser(formData, this.user.uid);
             this.editUserForm.reset();
         }
     }
 
     onDeleteUser() {
-        this.userService.deleteUser(this.uid);
+        this.adminUserService.deleteUser(this.uid);
     }
 
 }

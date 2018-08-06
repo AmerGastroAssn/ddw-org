@@ -25,6 +25,7 @@ a.sidenav-link {
     text-decoration: none;
 }
 
-.ddw-logo {
-    margin-left: 1.5em;
+img.ddw-logo {
+    /*margin-left: em;*/
+    /*max-width: 150px;*/
 }

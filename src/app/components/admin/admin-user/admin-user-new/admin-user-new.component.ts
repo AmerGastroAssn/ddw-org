@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
-import { UserService } from '../../../../services/user.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-user-new',
@@ -26,7 +26,7 @@ export class AdminUserNewComponent implements OnInit {
 
 
     constructor(
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       private flashMessage: FlashMessagesService,
       private fb: FormBuilder,
       private settingsService: AdminSettingsService,

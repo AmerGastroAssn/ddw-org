@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { PageService } from '../../../../services/page.service';
+import { AdminPageService } from '../../../../services/admin-page.service';
 
 
 @Component({
@@ -46,7 +46,7 @@ export class AdminPageEditComponent implements OnInit {
 
 
     constructor(
-      private pageService: PageService,
+      private adminPageService: AdminPageService,
       private router: Router,
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
@@ -96,7 +96,7 @@ export class AdminPageEditComponent implements OnInit {
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
         // Get Page
-        this.pageService.getPage(this.uid).subscribe((page) => {
+        this.adminPageService.getPage(this.uid).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
 
@@ -142,7 +142,7 @@ export class AdminPageEditComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.pageService.updatePage(formData, this.page.uid);
+            this.adminPageService.updatePage(formData, this.page.uid);
             this.editPageForm.reset();
             this.sbAlert.open('Page was updated!', 'Dismiss', {
                 duration: 3000,

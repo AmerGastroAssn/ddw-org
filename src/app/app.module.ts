@@ -25,8 +25,9 @@ import { AdminMetaService } from './services/admin-meta.service';
 import { AdminSettingsService } from './services/admin-settings.service';
 import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
+import { AdminPageService } from './services/admin-page.service';
+import { AdminUserService } from './services/admin-user.service';
 import { PageService } from './services/page.service';
-import { UserService } from './services/user.service';
 
 // Inits the app (Fixes a bug).
 firebase.initializeApp(environment.firebase);
@@ -57,13 +58,14 @@ firebase.initializeApp(environment.firebase);
     ],
     exports: [],
     providers: [
-        UserService,
-        PageService,
+        AdminUserService,
+        AdminPageService,
         AuthService,
         AdminSettingsService,
         AdminService,
         AdminMetaService,
-        AdminAdsService
+        AdminAdsService,
+        PageService
     ],
     bootstrap: [AppComponent]
 })

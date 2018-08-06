@@ -1,18 +1,21 @@
-<!-- * ADMIN-PAGE-DETAILS * -->
+<!-- * ADMIN-PAGE-DETAILS (PREVIEW) * -->
 <div class="row mb-4">
     <div class="container">
         <a class="text-primary back-users"
            [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
         </a>
-    </div>
-</div>
 
-<div class="row">
-    <div class="container-fluid">
-
-        <div class="card" *ngIf="page">
-            <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
+        <div class="card mt-4 bg-light" *ngIf="page">
+            <h3 class="card-header">
+                {{ page.title }}
+            </h3>
             <div class="card-body">
+                <h5 class="card-title">
+                    {{ page.author }}
+                </h5>
+                <p class="card-text">
+                    <b>Category:</b> {{ page.category }}
+                </p>
                 <div class="btn-group float-right"
                      role="group"
                      aria-label="Basic example">
@@ -29,19 +32,19 @@
                         <i class="fa fa-trash"></i>&nbsp;Delete
                     </button>
                 </div>
-                <h5 class="card-title">{{ page.title }}</h5>
-                <p class="card-text">
-                    {{ page.author}} <br>
-                    <b>Category:</b> {{ page.category }} <br>
-                    <b>Body:</b>
-                </p>
-                <div [innerHTML]="page.body"></div>
-
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
             </div>
         </div>
+    </div>
+</div>
 
+<div class="row">
+    <div *ngIf="page">
+        <img class="img-fluid" [src]="page.photoURL" [alt]="page.title">
+
+        <div class="container-fluid">
+            <h5 class="card-title">{{ page.title }}</h5>
+            <div [innerHTML]="page.body"></div>
+            <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
+        </div>
     </div>
 </div>

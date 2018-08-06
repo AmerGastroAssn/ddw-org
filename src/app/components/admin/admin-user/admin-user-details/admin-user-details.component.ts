@@ -5,7 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { User } from '../../../../models/User';
 import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
-import { UserService } from '../../../../services/user.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-user-details',
@@ -21,7 +21,7 @@ export class AdminUserDetailsComponent implements OnInit {
     isAdmin: boolean;
 
     constructor(
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       private router: Router,
       private route: ActivatedRoute,
       private authService: AuthService,
@@ -35,7 +35,7 @@ export class AdminUserDetailsComponent implements OnInit {
         // Get id from url
         this.id = this.route.snapshot.params['id'];
         // Get each user's details
-        this.userService.getUser(this.id).subscribe((user) => {
+        this.adminUserService.getUser(this.id).subscribe((user) => {
             if (user !== null) {
                 this.user = user;
             }
@@ -44,7 +44,7 @@ export class AdminUserDetailsComponent implements OnInit {
         this.currentUser = this.authService.getProfile();
 
         // Is Admin?
-        this.userService.getUsersInfo()
+        this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
@@ -61,7 +61,7 @@ export class AdminUserDetailsComponent implements OnInit {
 
 
     onDeleteUser() {
-        this.userService.deleteUser(this.id);
+        this.adminUserService.deleteUser(this.id);
     }
 
 

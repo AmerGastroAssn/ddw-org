@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AuthService } from '../../../../services/auth.service';
-import { PageService } from '../../../../services/page.service';
+import { AdminPageService } from '../../../../services/admin-page.service';
 
 @Component({
     selector: 'ddw-admin-page-list',
@@ -22,22 +22,22 @@ export class AdminPageListComponent implements OnInit {
     color = 'primary';
 
     constructor(
-      private readonly pageService: PageService,
+      private readonly adminPageService: AdminPageService,
       private authService: AuthService,
       private route: ActivatedRoute,
     ) {
     }
 
     ngOnInit() {
-        this.page$ = this.pageService.getPages();
+        this.page$ = this.adminPageService.getPages();
         this.user = this.authService.getProfile();
-        this.pageList = this.pageService.getAllRegisterPages();
+        this.pageList = this.adminPageService.getAllRegisterPages();
 
         // Get Page uid
         // Get id from url
         this.id = this.route.snapshot.params['id'];
         // Get each user's details
-        this.pageService.getPage(this.id).subscribe((page) => {
+        this.adminPageService.getPage(this.id).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
             }

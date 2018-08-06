@@ -1,0 +1,73 @@
+h6 {
+    font-weight: bold;
+}
+
+ul {
+    -webkit-margin-before: 0;
+    padding-left: 0;
+}
+
+ul > li {
+    list-style-type: none;
+}
+
+.row.top-footer {
+    background-color: #003754;
+    color: #ffffff;
+    padding: 2em 0.5em;
+}
+
+img.ddw-white {
+    max-width: 150px;
+}
+
+.right-panel {
+    border-left: 1px solid white;
+}
+
+.middle-footer {
+    background: #5F6A72;
+    color: #ffffff;
+    padding: 3em 0.5em;
+}
+
+i.fa-apple,
+i.fa-google-play {
+    color: #ffffff;
+    font-size: 3em;
+}
+
+img.apple {
+    max-width: 160px;
+}
+
+a.app.apple {
+    display: inline-block;
+    background-size: cover;
+    margin: 0 1em;
+    border: 2px solid #fff;
+    background-color: #003754;
+    /*max-width: 180px;*/
+    width: 200px;
+    height: 70px;
+    padding: 1em;
+    background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/logos/apple-appstore-trans.png);
+}
+
+
+a.app.google {
+    display: inline-block;
+    background-size: cover;
+    margin: 0 0.5em;
+    border: 2px solid #fff;
+    background-color: #003754;
+    /*max-width: 180px;*/
+    width: 200px;
+    height: 70px;
+    padding: 1em;
+    background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/logos/google-play-trans.png);
+}
+
+a.app.apple:hover, a.app.google:hover {
+    background-color: #2e6da4;
+}

@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../models/User';
 import { AuthService } from '../../../services/auth.service';
-import { UserService } from '../../../services/user.service';
+import { AdminUserService } from '../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-user',
@@ -17,7 +17,7 @@ export class AdminUserComponent implements OnInit {
     adminUser: any;
     isAdmin: boolean;
 
-    constructor(public userService: UserService,
+    constructor(public adminUserService: AdminUserService,
                 private authService: AuthService,
                 private afAuth: AngularFireAuth,
     ) {
@@ -25,7 +25,7 @@ export class AdminUserComponent implements OnInit {
 
     ngOnInit() {
         this.getAdminUserVals();
-        this.users$ = this.userService.getUsers();
+        this.users$ = this.adminUserService.getUsers();
         this.localUser = this.authService.getProfile();
     }
 

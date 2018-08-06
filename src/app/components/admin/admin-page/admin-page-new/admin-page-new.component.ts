@@ -11,7 +11,7 @@ import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
-import { PageService } from '../../../../services/page.service';
+import { AdminPageService } from '../../../../services/admin-page.service';
 
 @Component({
     selector: 'ddw-admin-page-new',
@@ -45,7 +45,7 @@ export class AdminPageNewComponent implements OnInit {
     value: any;
 
     constructor(
-      private pageService: PageService,
+      private adminPageService: AdminPageService,
       private router: Router,
       private route: ActivatedRoute,
       private flashMessage: FlashMessagesService,
@@ -143,7 +143,7 @@ export class AdminPageNewComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.pageService.setPage(formData);
+            this.adminPageService.setPage(formData);
             console.log(formData);
             this.newPageForm.reset();
             this.sbAlert.open('New Page created!', 'Dismiss', {

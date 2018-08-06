@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
-import { UserService } from '../../../../services/user.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-navbar',
@@ -27,7 +27,7 @@ export class AdminNavbarComponent implements OnInit {
 
     constructor(
       private authService: AuthService,
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       private settingsService: AdminSettingsService,
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
@@ -55,7 +55,7 @@ export class AdminNavbarComponent implements OnInit {
         this.localUser = this.authService.getProfile();
 
         // Gets the correct user for navbar profile and checks if is admin.
-        this.userService.getUsersInfo()
+        this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {

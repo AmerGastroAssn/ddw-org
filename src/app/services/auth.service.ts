@@ -8,7 +8,7 @@ import * as firebase from 'firebase/app';
 import { Observable, pipe } from 'rxjs';
 import { first, shareReplay } from 'rxjs/operators';
 import { User } from '../models/User';
-import { UserService } from './user.service';
+import { AdminUserService } from './admin-user.service';
 
 
 @Injectable({
@@ -42,7 +42,7 @@ export class AuthService {
       private router: Router,
       private route: ActivatedRoute,
       private afs: AngularFirestore,
-      private userService: UserService,
+      private adminUserService: AdminUserService,
       public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = afs.collection<User>('users');

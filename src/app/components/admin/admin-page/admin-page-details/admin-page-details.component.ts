@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Page } from '../../../../models/Page';
-import { PageService } from '../../../../services/page.service';
+import { AdminPageService } from '../../../../services/admin-page.service';
 
 @Component({
     selector: 'ddw-admin-page-details',
@@ -14,7 +14,7 @@ export class AdminPageDetailsComponent implements OnInit {
     uid: string;
 
     constructor(
-      private pageService: PageService,
+      private adminPageService: AdminPageService,
       private router: Router,
       private route: ActivatedRoute,
     ) {
@@ -24,7 +24,7 @@ export class AdminPageDetailsComponent implements OnInit {
         // Get id from url
         this.id = this.route.snapshot.params['id'];
         // Get each user's details
-        this.pageService.getPage(this.id).subscribe((page) => {
+        this.adminPageService.getPage(this.id).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
             }
@@ -32,7 +32,7 @@ export class AdminPageDetailsComponent implements OnInit {
     }
 
     onDeletePage() {
-        this.pageService.deletePage(this.page.uid);
+        this.adminPageService.deletePage(this.page.uid);
     }
 
 }

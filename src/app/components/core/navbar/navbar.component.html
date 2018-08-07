@@ -40,8 +40,23 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <div class="input-group mb-3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Search"
+                       aria-label="Search"
+                       aria-describedby="search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary text-secondary"
+                            type="button"
+                            id="search">
+                        <i class="far fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
         </form>
     </div>
 </nav>

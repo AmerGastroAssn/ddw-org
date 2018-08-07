@@ -2,17 +2,29 @@ h6 {
     font-weight: bold;
 }
 
+li > a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95em;
+}
+
 ul {
     -webkit-margin-before: 0;
     padding-left: 0;
+
 }
 
 ul > li {
     list-style-type: none;
+    line-height: 1.5em;
+}
+
+ul > li > a {
+    line-height: 1em;
 }
 
 .row.top-footer {
-    background-color: #003754;
+    background-color: #003f5f;
     color: #ffffff;
     padding: 2em 0.5em;
 }
@@ -46,7 +58,7 @@ a.app.apple {
     background-size: cover;
     margin: 0 1em;
     border: 2px solid #fff;
-    background-color: #003754;
+    background-color: #003f5f;
     /*max-width: 180px;*/
     width: 200px;
     height: 70px;
@@ -54,13 +66,12 @@ a.app.apple {
     background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/logos/apple-appstore-trans.png);
 }
 
-
 a.app.google {
     display: inline-block;
     background-size: cover;
     margin: 0 0.5em;
     border: 2px solid #fff;
-    background-color: #003754;
+    background-color: #003f5f;
     /*max-width: 180px;*/
     width: 200px;
     height: 70px;
@@ -70,4 +81,36 @@ a.app.google {
 
 a.app.apple:hover, a.app.google:hover {
     background-color: #2e6da4;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.middle-bottom {
+    background: #5F6A72;
+    color: #ffffff;
+
+}
+
+.middle-bottom > .container > div > h5 {
+    background: #5F6A72;
+    color: #ffffff;
+    padding: 1em 1em 3em 1em;
+    border-top: 1px solid #ffffff;
+}
+
+.copyright {
+    background-color: #003f5f;
+    color: #ffffff;
+    padding: 1em 0;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+a.social {
+    margin: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
 }

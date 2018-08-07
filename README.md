@@ -46,3 +46,8 @@ Setup/install Firebase Function dependencies:
 Install files:
 
     npm install
+
+Back out to main working directory:
+
+    cd ..
+

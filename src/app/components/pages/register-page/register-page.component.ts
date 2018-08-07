@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Page } from '../../../models/Page';
-import { AdminPageService } from '../../../services/admin-page.service';
+import { PageService } from '../../../services/page.service';
 
 @Component({
     selector: 'ddw-register-page',
@@ -12,11 +12,12 @@ export class RegisterPageComponent implements OnInit {
     pages$: Observable<Page[]>;
 
 
-    constructor(public adminPageService: AdminPageService) {
+    constructor(private pageService: PageService) {
     }
 
     ngOnInit() {
-        this.pages$ = this.adminPageService.getAllRegisterPages();
+        this.pages$ = this.pageService.getRegisterPages();
+        console.log(this.pages$);
     }
 
 }

@@ -7,6 +7,7 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'register', component: RegisterPageComponent },
 
 ];
 

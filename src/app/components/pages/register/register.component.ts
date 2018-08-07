@@ -5,10 +5,10 @@ import { PageService } from '../../../services/page.service';
 
 @Component({
     selector: 'ddw-register-page',
-    templateUrl: './register-page.component.html',
-    styleUrls: ['./register-page.component.css']
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterComponent implements OnInit {
     pages$: Observable<Page[]>;
 
 

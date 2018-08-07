@@ -18,7 +18,7 @@ import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 import { PagesComponent } from './components/pages/pages.component';
-import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminMetaService } from './services/admin-meta.service';
@@ -28,6 +28,11 @@ import { AuthService } from './services/auth.service';
 import { AdminPageService } from './services/admin-page.service';
 import { AdminUserService } from './services/admin-user.service';
 import { PageService } from './services/page.service';
+import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
+import { EducationComponent } from './components/pages/education/education.component';
+import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
+import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
+import { PresentersComponent } from './components/pages/presenters/presenters.component';
 
 // Inits the app (Fixes a bug).
 firebase.initializeApp(environment.firebase);
@@ -35,7 +40,7 @@ firebase.initializeApp(environment.firebase);
 @NgModule({
     declarations: [
         AppComponent,
-        RegisterPageComponent,
+        RegisterComponent,
         NavbarComponent,
         FooterComponent,
         SidebarComponent,
@@ -43,6 +48,11 @@ firebase.initializeApp(environment.firebase);
         PagesComponent,
         HomeComponent,
         DropZoneDirective,
+        AttendeePlanningComponent,
+        EducationComponent,
+        ExhibitorInformationComponent,
+        NewsAndMediaComponent,
+        PresentersComponent,
     ],
     imports: [
         BrowserModule,

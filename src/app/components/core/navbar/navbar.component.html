@@ -25,7 +25,7 @@
                      aria-labelledby="registerDropdown">
                     <a class="dropdown-item"
                        *ngFor="let regPage of registerPages$ | async"
-                       [routerLink]="['/pages/', regPage.$key]">
+                       [routerLink]="['/register/', regPage.$key]">
                         {{ regPage.title }}
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                      aria-labelledby="attendeeDropdown">
                     <a class="dropdown-item"
                        *ngFor="let attnPage of attendeePlanningPages$ | async"
-                       [routerLink]="['/pages/', attnPage.$key]">
+                       [routerLink]="['/attendee-planning/', attnPage.$key]">
                         {{ attnPage.title }}
                     </a>
                 </div>
@@ -65,7 +65,7 @@
                      aria-labelledby="edDropdown">
                     <a class="dropdown-item"
                        *ngFor="let edPage of educationPages$ | async"
-                       [routerLink]="['/pages/', edPage.$key]">
+                       [routerLink]="['/education/', edPage.$key]">
                         {{ edPage.title }}
                     </a>
                 </div>
@@ -85,7 +85,7 @@
                      aria-labelledby="exhDropdown">
                     <a class="dropdown-item"
                        *ngFor="let exhPage of exhibitorInfoPages$ | async"
-                       [routerLink]="['/pages/', exhPage.$key]">
+                       [routerLink]="['/exhibitor-information/', exhPage.$key]">
                         {{ exhPage.title }}
                     </a>
                 </div>
@@ -106,7 +106,7 @@
                      aria-labelledby="newsDropdown">
                     <a class="dropdown-item"
                        *ngFor="let newsPage of newsAndMediaPages$ | async"
-                       [routerLink]="['/pages/', newsPage.$key]">
+                       [routerLink]="['/news-and-media/', newsPage.$key]">
                         {{ newsPage.title }}
                     </a>
                 </div>
@@ -126,7 +126,7 @@
                      aria-labelledby="presDropdown">
                     <a class="dropdown-item"
                        *ngFor="let presPage of presentersPages$ | async"
-                       [routerLink]="['/pages/', presPage.$key]">
+                       [routerLink]="['/presenters/', presPage.$key]">
                         {{ presPage.title }}
                     </a>
                 </div>

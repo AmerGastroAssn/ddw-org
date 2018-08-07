@@ -17,8 +17,10 @@ export class AdminUserDetailsComponent implements OnInit {
     user: User;
     uid: string;
     admin: boolean;
-    currentUser: User;
+    localUser: User;
     isAdmin: boolean;
+    adminUser: User;
+
 
     constructor(
       private adminUserService: AdminUserService,
@@ -41,7 +43,7 @@ export class AdminUserDetailsComponent implements OnInit {
             }
         });
 
-        this.currentUser = this.authService.getProfile();
+        this.localUser = this.authService.getProfile();
 
         // Is Admin?
         this.adminUserService.getUsersInfo()
@@ -49,7 +51,7 @@ export class AdminUserDetailsComponent implements OnInit {
                 userArr.forEach((userInfo) => {
                     if (this.afAuth.auth.currentUser.email === userInfo.email) {
                         if (userInfo.admin === true) {
-                            this.user = userInfo;
+                            this.adminUser = userInfo;
                             this.isAdmin = true;
                         } else {
                             this.isAdmin = false;

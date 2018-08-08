@@ -1,10 +1,11 @@
-.navbar {
+nav.navbar {
     background-color: #242936;
     padding: .5rem 1rem;
     white-space: nowrap;
     text-align: center;
     z-index: 1000;
 }
+
 
 button.menu-icon.active {
     color: #24abf2;
@@ -19,6 +20,7 @@ button.menu-icon {
     line-height: 1.3em;
 }
 
+
 .mat-menu-panel {
     min-width: 110px;
     max-width: 120px;
@@ -27,11 +29,12 @@ button.menu-icon {
     max-height: calc(100vh - 48px);
     border-radius: 2px;
     outline: 0;
+
 }
 
 .divider {
-    border-top: 1px solid #222529;
-    border-bottom: 1px solid #3F4449;
+    border-top: 1px solid #16171A;
+    border-bottom: 1px solid #494E5F;
 }
 
 .spacer {

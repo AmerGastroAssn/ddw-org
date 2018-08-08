@@ -26,6 +26,7 @@ export class AdminPageEditComponent implements OnInit {
     author: string;
     date: string;
     photoURL: any;
+    bannerPhotoURL: any;
     body: string;
     category: string;
     uid: string;
@@ -43,6 +44,8 @@ export class AdminPageEditComponent implements OnInit {
     isHovering: boolean;
     isInvalid: boolean;
     value: any;
+    togglePagePreview = true;
+    color = 'primary';
 
 
     constructor(
@@ -115,6 +118,7 @@ export class AdminPageEditComponent implements OnInit {
                     ],
                     author: [page.author, Validators.required],
                     date: [page.date, Validators.required],
+                    bannerPhotoURL: [page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg', Validators.required],
                     photoURL: [page.photoURL],
                     category: [page.category || ''],
                     published: [page.published || false],
@@ -126,6 +130,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.body = this.editPageForm.value.body;
                 this.author = this.editPageForm.value.author;
                 this.date = this.editPageForm.value.date;
+                this.bannerPhotoURL = this.editPageForm.value.bannerPhotoURL;
                 this.photoURL = this.editPageForm.value.photoURL;
                 this.category = this.editPageForm.value.category;
                 this.published = this.editPageForm.value.published;
@@ -159,6 +164,10 @@ export class AdminPageEditComponent implements OnInit {
 
     onFileSelection(event) {
         // this.pageService.fileSelection(event);
+    }
+
+    onTogglePagePreview() {
+        this.togglePagePreview = !this.togglePagePreview;
     }
 
 }

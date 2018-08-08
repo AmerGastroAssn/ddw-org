@@ -14,37 +14,37 @@ import { RegisterComponent } from './components/pages/register/register.componen
 const appRoutes: Routes = [
     { path: '', component: PagesComponent },
     {
-        path: 'register', component: RegisterComponent,
+        path: 'register', component: PagesComponent,
         children: [
             { path: ':id', component: RegisterComponent }
         ]
     },
     {
-        path: 'attendee-planning', component: AttendeePlanningComponent,
+        path: 'attendee-planning', component: PagesComponent,
         children: [
             { path: ':id', component: AttendeePlanningComponent }
         ]
     },
     {
-        path: 'education', component: EducationComponent,
+        path: 'education', component: PagesComponent,
         children: [
             { path: ':id', component: EducationComponent }
         ]
     },
     {
-        path: 'exhibitor-information', component: ExhibitorInformationComponent,
+        path: 'exhibitor-information', component: PagesComponent,
         children: [
             { path: ':id', component: ExhibitorInformationComponent }
         ]
     },
     {
-        path: 'news-and-media', component: NewsAndMediaComponent,
+        path: 'news-and-media', component: PagesComponent,
         children: [
             { path: ':id', component: NewsAndMediaComponent }
         ]
     },
     {
-        path: 'presenters', component: PresentersComponent,
+        path: 'presenters', component: PagesComponent,
         children: [
             { path: ':id', component: PresentersComponent }
         ]

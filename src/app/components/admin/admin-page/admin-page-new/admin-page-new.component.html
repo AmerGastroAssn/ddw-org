@@ -7,9 +7,9 @@
     </div>
 </div>
 
-<div class="container mb-5">
+<div class="container new-page">
     <div class="col-md-12">
-        <div class="card">
+        <div class="card mb-5">
             <div class="card-body">
                 <div class="card-title">
                     <h2>New Page</h2>
@@ -155,8 +155,25 @@
                         </div>
                     </div>
 
+
                     <div class="form-group">
-                        <label>Image URL</label>
+                        <label>Banner Image URL <small>(Top banner image)</small></label>
+                        <input type="text"
+                               required
+                               class="form-control"
+                               [class.invalid]="!f.bannerPhotoURL.valid && f.bannerPhotoURL.touched"
+                               [(ngModel)]="bannerPhotoURL"
+                               formControlName="bannerPhotoURL">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.bannerPhotoURL.valid && f.bannerPhotoURL.touched">
+                            <b>Banner Image URL</b> is required!
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL
+                            <small>(Image on the page)</small>
+                        </label>
                         <input type="text"
                                class="form-control"
                                [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
@@ -164,7 +181,7 @@
                                formControlName="photoURL">
                         <p class="help-block alert alert-warning text-center mt-1"
                            *ngIf="!f.photoURL.valid && f.photoURL.touched">
-                            <b>Image URL</b> is required!
+                            <b>Image URL</b> May be required, depending on the template.
                         </p>
                     </div>
 

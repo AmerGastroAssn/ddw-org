@@ -13,11 +13,11 @@ export class AdminMobileFooternavComponent implements OnInit {
     loggedInUser: string;
     allowSignup: boolean;
     allowSettings: boolean;
-    currentUser: User;
+    localUser: User;
     uid: string;
 
     constructor(
-      private authService: AuthService,
+      public authService: AuthService,
       private settingsService: AdminSettingsService,
     ) {
     }
@@ -32,7 +32,7 @@ export class AdminMobileFooternavComponent implements OnInit {
                 this.isLoggedIn = true;
                 this.loggedInUser = auth.email;
                 this.uid = auth.uid;
-                this.currentUser = this.authService.getProfile();
+                this.localUser = this.authService.getProfile();
             } else {
                 this.isLoggedIn = false;
             }

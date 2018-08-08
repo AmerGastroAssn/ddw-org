@@ -15,12 +15,29 @@ export class PageService {
     constructor(private afs: AngularFirestore) {
     }
 
+    getPage(id: string): Observable<Page> {
+        this.pageDoc = this.afs.doc<Page>(`pages/${id}`);
+        this.page$ = this.pageDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Page;
+                data.uid = action.payload.id;
+                console.log('data in getPage()', data);
+                return data;
+            }
+        });
+
+        return this.page$;
+    }
+
     getRegisterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'register');
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
+
 
     getAttendeePlanningPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {

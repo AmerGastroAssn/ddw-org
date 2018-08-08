@@ -32,3 +32,7 @@ input.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+img.card-img-top {
+    max-height: 300px;
+}

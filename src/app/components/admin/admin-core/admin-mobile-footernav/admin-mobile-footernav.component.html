@@ -37,7 +37,7 @@
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.fbUser$ | async"
+                *ngIf="authService.afsUser$ | async"
                 [routerLink]="['/admin/pages']">
             <i class="fa fa-copy fa-lg"></i>
             <br>
@@ -47,7 +47,7 @@
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.fbUser$ | async"
+                *ngIf="authService.afsUser$ | async"
                 [routerLinkActiveOptions]="{exact:true}"
                 [routerLink]="['/admin/pages/new']">
             <i class="fa fa-file-plus fa-lg"></i>
@@ -58,7 +58,7 @@
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.fbUser$ | async"
+                *ngIf="authService.afsUser$ | async"
                 [routerLink]="['/admin/users']">
             <i class="fa fa-users fa-lg"></i>
             <br>
@@ -71,7 +71,7 @@
         <button mat-button
                 [matMenuTriggerFor]="appMenu"
                 class="menu-icon"
-                *ngIf="authService.fbUser$ | async">
+                *ngIf="authService.afsUser$ | async">
                 <i class="fa fa-ellipsis-h fa-lg"></i>
                 <br>
                 <small>More</small>
@@ -80,8 +80,8 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="authService.fbUser$ | async"
-                    [routerLink]="['/admin/users/', uid]">
+                    *ngIf="authService.afsUser$ | async"
+                    [routerLink]="['/admin/users/', localUser.uid]">
                 <i class="fa fa-user"></i>&nbsp;
                 <small>My Profile</small>
             </button>
@@ -98,7 +98,7 @@
             <!--<button mat-menu-item-->
             <!--class="menu-icon"-->
             <!--routerLinkActive="active"-->
-            <!--*ngIf="authService.fbUser$ | async"-->
+            <!--*ngIf="authService.afsUser$ | async"-->
             <!--[routerLink]="['/all-gifts']">-->
             <!--<i class="fa fa-th"></i>-->
             <!--<small>All Gifts</small>-->
@@ -126,7 +126,7 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="authService.fbUser$ | async;"
+                    *ngIf="authService.afsUser$ | async;"
                     (click)="onLogout()">
                 <i class="fa fa-sign-out-alt"></i>
                 <small>Logout</small>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,16 +9,16 @@ import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
+import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
-import { AdminPageService } from '../../../../services/admin-page.service';
 
 @Component({
     selector: 'ddw-admin-page-new',
     templateUrl: './admin-page-new.component.html',
     styleUrls: ['./admin-page-new.component.css']
 })
-export class AdminPageNewComponent implements OnInit {
+export class AdminPageNewComponent implements OnInit, OnDestroy {
     user: User;
     page: Page;
     newPageForm: FormGroup;
@@ -26,6 +26,7 @@ export class AdminPageNewComponent implements OnInit {
     author: string;
     date: number;
     photoURL: string;
+    bannerPhotoURL: string;
     body: string;
     category: string;
     uid: string;
@@ -119,6 +120,7 @@ export class AdminPageNewComponent implements OnInit {
             author: ['' || this.user.email, Validators.required],
             date: ['', Validators.required],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
+            bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg', Validators.required],
             category: ['' || 'Register', Validators.required],
             published: [''],
             template: ['' || 'Full Width', Validators.required]
@@ -129,9 +131,14 @@ export class AdminPageNewComponent implements OnInit {
         this.author = this.newPageForm.value.author;
         this.date = this.newPageForm.value.date;
         this.photoURL = this.newPageForm.value.photoURL;
+        this.bannerPhotoURL = this.newPageForm.value.bannerPhotoURL;
         this.category = this.newPageForm.value.category;
         this.published = this.newPageForm.value.published;
         this.template = this.newPageForm.value.template;
+    }
+
+    ngOnDestroy() {
+
     }
 
 

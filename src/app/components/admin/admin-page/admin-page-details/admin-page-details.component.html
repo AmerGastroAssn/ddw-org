@@ -2,7 +2,7 @@
 <div class="row mb-4">
     <div class="container">
         <!-- * Edit Navbar Panel * -->
-        <nav class="navbar navbar-expand-lg bg-dark text-light" *ngIf="page">
+        <nav class="navbar navbar-expand-lg bg-light text-light" *ngIf="page">
             <a class="navbar-brand" href="#">
                 <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/gray-ddw-150.png" width="100"
                      class="d-inline-block align-top" alt="DDW">
@@ -14,19 +14,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                       <i class="fa fa-dot-circle"></i> {{ page.title }}
+                        <i class="fa fa-dot-circle"></i> {{ page.title }}
                     </li>
                     <li class="nav-item">
-                       <i class="fa fa-user"></i> {{ page.author }}
+                        <i class="fa fa-user"></i> {{ page.author }}
                     </li>
                     <li class="nav-item ">
-                        <div class="badge badge-secondary">
-                           <i class="fa fa-tags"></i> {{ page.category }}
-                        </div>
+                        <i class="fa fa-tags"></i> {{ page.category }}
                     </li>
                 </ul>
                 <form class="form-inline mx-auto">
-                    <div class="btn-group float-right"
+                    <div class="btn-group btn-group-sm float-right"
                          role="group"
                          aria-label="Basic example">
                         <a class="btn btn-primary"
@@ -53,7 +51,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div *ngIf="page">
         <img class="img-fluid" [src]="page.photoURL" [alt]="page.title">
 

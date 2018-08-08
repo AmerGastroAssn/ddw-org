@@ -1,0 +1,7 @@
+img.bannerPhotoURL {
+    top: 0;
+    left: 0;
+    position: relative;
+    max-height: 350px;
+    z-index: 0;
+}

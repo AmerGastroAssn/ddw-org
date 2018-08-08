@@ -10,6 +10,11 @@ img.page-image {
     .card {
         width: 100%;
     }
+
+    .card-list {
+        margin-bottom: 15em;
+    }
+
 }
 
 /*// Medium devices (tablets, 768px and up)*/
@@ -17,6 +22,8 @@ img.page-image {
     .card-columns {
         columns: 2;
     }
+
+
 }
 
 /*// Large devices (desktops, 992px and up)*/

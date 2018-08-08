@@ -21,3 +21,30 @@ input.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+
+/* Display on anything 992px and larger */
+@media (min-width: 992px) {
+    nav#layout-navbar {
+        display: block;
+    }
+
+    nav.navbar.navbar-footer {
+        display: none;
+    }
+}
+
+/* Small devices (landscape phones, 991px and below) */
+@media (max-width: 991px) {
+    nav#layout-navbar {
+        display: none;
+    }
+
+    nav.navbar.navbar-footer {
+        display: block;
+    }
+
+    .new-page {
+        margin-bottom: 8em;
+    }
+}

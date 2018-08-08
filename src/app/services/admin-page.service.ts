@@ -46,6 +46,7 @@ export class AdminPageService {
             } else {
                 const data = action.payload.data() as Page;
                 data.uid = action.payload.id;
+                console.log('data in getPage()', data);
                 return data;
             }
         });
@@ -65,6 +66,7 @@ export class AdminPageService {
             author: formData.author,
             date: formData.date,
             photoURL: formData.photoURL,
+            bannerPhotoURL: formData.bannerPhotoURL,
             category: formData.category,
             published: formData.published,
             template: formData.template,

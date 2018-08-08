@@ -1,8 +1,99 @@
 <!-- * REGISTER-PAGE * -->
-<span *ngIf="page">
+<div *ngIf="page">
 
     <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
 
-    <h1>{{ page.title }}</h1>
+    <div class="container">
+        <h1 class="title">{{ page.title }}</h1>
+    </div>
 
-</span>
+    <div class="row crumbs">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/home']">Register</a>
+                </li>
+                <li class="breadcrumb-item active">{{page.title}}</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <img [src]="page.photoURL"
+                 alt="{{page.title}} image"
+                 class="photoURL">
+            <div [innerHTML]="page.body"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4 offset-md-4 text-center">
+                <h2 class="card-sec-title">Additional Details</h2>
+                <div class="col-4 offset-4">
+                    <div class="underline"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row cards">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card one-of-three text-center">
+                        <img class="card-img-top"
+                             src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/DDW19_Website_Bottom_360x230.png"
+                             alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Why Attend DDW?</h5>
+                            <p class="card-text">Learn why DDW is the must-attend GI event of 2019 and what's included
+                                in registration.</p>
+                            <p class="text-center">
+                                <a href="#"
+                                   class="btn btn-warning btn-lg">See Benefits
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card one-of-three text-center">
+                        <img class="card-img-top"
+                             src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/NightSanDiego_360x230.jpg"
+                             alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">San Diego Awaits</h5>
+                            <p class="card-text">San Diego is soaked in culture, 70+ miles of sparkling coastline and a
+                                vibrant downtown.</p>
+                            <p class="text-center">
+                                <a href="#"
+                                   class="btn btn-warning btn-lg">Start Planning
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card one-of-three text-center">
+                        <img class="card-img-top"
+                             src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/DC%20Skyline%20in%20Autumn_360x240.jpg"
+                             alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Weather in CA</h5>
+                            <p class="card-text">Temperatures boast an average of 71°F and 300 sunny days.</p>
+                            <p class="text-center">
+                                <a href="#"
+                                   class="btn btn-warning btn-lg">Learn More
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

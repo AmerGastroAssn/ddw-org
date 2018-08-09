@@ -21,6 +21,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminAdsService } from './services/admin-ads.service';
+import { AdminCardService } from './services/admin-card.service';
 import { AdminMetaService } from './services/admin-meta.service';
 import { AdminSettingsService } from './services/admin-settings.service';
 import { AdminService } from './services/admin.service';
@@ -78,6 +79,7 @@ firebase.initializeApp(environment.firebase);
         AdminAdsService,
         PageService,
         CountdownService,
+        AdminCardService,
     ],
     bootstrap: [AppComponent]
 })

@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatMenuModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProgressbarModule } from 'ngx-bootstrap';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
+import { AdminCardsComponent } from './admin-core/admin-cards/admin-cards.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
@@ -29,6 +31,7 @@ import { AdminComponent } from './admin.component';
         AdminResetPasswordComponent,
         AdminMetaComponent,
         AdminAdsComponent,
+        AdminCardsComponent,
     ],
     imports: [
         CommonModule,
@@ -39,6 +42,7 @@ import { AdminComponent } from './admin.component';
         BrowserAnimationsModule,
         MatButtonModule,
         MatMenuModule,
+        ProgressbarModule,
     ],
     exports: [
         MatButtonModule,

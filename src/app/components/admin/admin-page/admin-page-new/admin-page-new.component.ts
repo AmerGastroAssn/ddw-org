@@ -19,9 +19,9 @@ import { AuthService } from '../../../../services/auth.service';
     styleUrls: ['./admin-page-new.component.css']
 })
 export class AdminPageNewComponent implements OnInit, OnDestroy {
+    newPageForm: FormGroup;
     user: User;
     page: Page;
-    newPageForm: FormGroup;
     title: string;
     author: string;
     date: number;

@@ -1,2 +1,47 @@
 <!-- * HOME * -->
-<h1>{{ title }}</h1>
+<ddw-navbar></ddw-navbar>
+<img src="https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png"/>
+<!--<div class="hero"></div>-->
+<div class="row">
+    <div class="container text-center">
+        <div class="col-auto offset-md-1 offset-sm-0">
+            <div class="header-content">
+                <h1 class="title">{{ title }}</h1>
+                <h1 class="subtitle">{{ subtitle }} <span class="forTime">{{ forTime }}</span></h1>
+                <h2 class="loc-date">{{ subheaderLoc }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="forTime">
+                    <i class="fa fa-calendar"></i></span>&nbsp;&nbsp;{{ subheaderDate }}
+                </h2>
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-1 offset-sm-0">
+                        <div class="container">
+                            <table *ngIf="time1$ | async as time1" class="countdown">
+                                <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <div class="days"><h1 class="time">{{time1.days}}</h1></div>
+                                        <h6 class="time">Days</h6>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="hours"><h1 class="time">{{time1.hours}}</h1></div>
+                                        <h6 class="time">Hours</h6>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="minutes"><h1 class="time">{{time1.minutes}}</h1></div>
+                                        <h6 class="time">Minutes</h6>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="seconds"><h1 class="time">{{time1.seconds}}</h1></div>
+                                        <h6 class="time">Seconds</h6>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

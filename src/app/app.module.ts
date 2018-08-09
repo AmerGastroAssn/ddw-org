@@ -27,6 +27,7 @@ import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { AdminPageService } from './services/admin-page.service';
 import { AdminUserService } from './services/admin-user.service';
+import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
 import { EducationComponent } from './components/pages/education/education.component';
@@ -75,7 +76,8 @@ firebase.initializeApp(environment.firebase);
         AdminService,
         AdminMetaService,
         AdminAdsService,
-        PageService
+        PageService,
+        CountdownService,
     ],
     bootstrap: [AppComponent]
 })

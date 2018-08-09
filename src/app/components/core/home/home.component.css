@@ -1,0 +1,117 @@
+img.banner-background {
+    top: 0;
+    width: 100%;
+}
+
+.header-content {
+    top: 150px;
+    position: fixed;
+}
+
+h1.title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.8em;
+}
+
+.subtitle {
+    font-size: 60px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 0.6em;
+}
+
+h2.loc-date {
+    color: #fff;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.forTime {
+    color: #FEB512;
+}
+
+/* Countdown Timer */
+
+.countdown {
+    margin-top: 3em;
+}
+
+td {
+    padding: 1em;
+}
+
+.time {
+    padding-top: 0.7em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.days {
+    background: #15abe8 none repeat scroll 0 0;
+    border-radius: 50%;
+    /*bottom: 0;*/
+    content: "";
+    /*display: block;*/
+    height: 110px;
+    /*left: 12px;*/
+    /*position: absolute;*/
+    /*top: -35px;*/
+    width: 110px;
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, .5);
+}
+
+.hours {
+    background: #15abe8 none repeat scroll 0 0;
+    border-radius: 50%;
+    /*bottom: 0;*/
+    content: "";
+    /*display: inline-block;*/
+    height: 110px;
+    /*left: 12px;*/
+    /*position: absolute;*/
+    /*top: -35px;*/
+    width: 110px;
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, .5);
+}
+
+.minutes {
+    background: #15abe8 none repeat scroll 0 0;
+    border-radius: 50%;
+    /*bottom: 0;*/
+    content: "";
+    /*display: block;*/
+    height: 110px;
+    /*left: 12px;*/
+    /*position: absolute;*/
+    /*top: -35px;*/
+    width: 110px;
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, .5);
+}
+
+.seconds {
+    background: #15abe8 none repeat scroll 0 0;
+    border-radius: 50%;
+    /*bottom: 0;*/
+    content: "";
+    /*display: block;*/
+    height: 110px;
+    /*left: 12px;*/
+    /*position: absolute;*/
+    /*top: -35px;*/
+    width: 110px;
+    z-index: 1;
+    border: 3px solid rgba(255, 255, 255, .5);
+}
+
+/*.hero {*/
+/*background-position: top center;*/
+/*background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png);*/
+/*padding-top: 720px;*/
+/*background-repeat: repeat-x;*/
+/*background-size: cover;*/
+/*}*/

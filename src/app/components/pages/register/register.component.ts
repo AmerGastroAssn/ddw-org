@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Page } from '../../../models/Page';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
@@ -38,6 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
+
     }
 
 }

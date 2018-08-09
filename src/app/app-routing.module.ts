@@ -12,7 +12,8 @@ import { PresentersComponent } from './components/pages/presenters/presenters.co
 import { RegisterComponent } from './components/pages/register/register.component';
 
 const appRoutes: Routes = [
-    { path: '', component: PagesComponent },
+    { path: 'home', component: HomeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: 'register', component: PagesComponent,
         children: [
@@ -49,7 +50,7 @@ const appRoutes: Routes = [
             { path: ':id', component: PresentersComponent }
         ]
     },
-    { path: 'home', component: HomeComponent },
+
     { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

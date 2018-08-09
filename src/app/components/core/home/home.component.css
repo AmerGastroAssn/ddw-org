@@ -1,11 +1,16 @@
-img.banner-background {
-    top: 0;
+.hero {
+    background-position: top center;
+    background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png);
+    padding-bottom: 200px;
     width: 100%;
+    height: 100%;
+    background-repeat: repeat-x;
+    background-size: cover;
 }
 
 .header-content {
     top: 150px;
-    position: fixed;
+    position: relative;
 }
 
 h1.title {
@@ -108,10 +113,65 @@ td {
     border: 3px solid rgba(255, 255, 255, .5);
 }
 
-/*.hero {*/
-/*background-position: top center;*/
-/*background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png);*/
-/*padding-top: 720px;*/
-/*background-repeat: repeat-x;*/
-/*background-size: cover;*/
+
+/* Post-Meeting Resources */
+h2.card-sec-title {
+    padding-top: 2em;
+}
+
+.card-sec-subtitle {
+    font-size: 1.5em;
+    line-height: 2em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.underline {
+    border-bottom: 2px solid #FEB512;
+    margin-top: 1em;
+}
+
+
+/* Cards */
+.row.cards {
+    margin: 5em 0 8em 0;
+}
+
+
+.card-body {
+    line-height: 2em;
+}
+
+.card-text {
+    padding: 2em;
+}
+
+a.btn.btn-warning.btn-lg {
+    background-color: #F47700;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+a.btn.btn-warning.btn-lg:hover {
+    background-color: #FEB512;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* For inline img banner */
+
+/*img.banner-background {*/
+    /*top: 0;*/
+    /*width: 100%;*/
 /*}*/

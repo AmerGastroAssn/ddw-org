@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Settings } from '../../../../models/Settings';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { CountdownService } from '../../../../services/countdown.service';
 
 @Component({
     selector: 'ddw-admin-settings',
@@ -12,18 +13,22 @@ import { AdminSettingsService } from '../../../../services/admin-settings.servic
 })
 export class AdminSettingsComponent implements OnInit {
     @ViewChild('settingsForm') settingsForm: NgForm;
+    @ViewChild('countdownForm') countdownForm: NgForm;
+
     settingsAllowed: boolean; // Allow settings to be edited/viewed.
 
     settings: Settings;
     allowSignup: boolean;
     allowSettings: boolean;
     disableAdmin: boolean;
+    countdown: string;
 
 
     constructor(
       public settingsService: AdminSettingsService,
       private flashMessage: FlashMessagesService,
       private sbAlert: MatSnackBar,
+      private countdownService: CountdownService
     ) {
     }
 
@@ -47,6 +52,13 @@ export class AdminSettingsComponent implements OnInit {
             verticalPosition: 'bottom',
             panelClass: ['snackbar-success']
         });
+    }
+
+    onCountdownSubmit(cdForm: NgForm) {
+        const value = cdForm.value;
+        // this.countdownService.saveCountdown(value);
+        console.log(value);
+
     }
 
 }

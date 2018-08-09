@@ -105,3 +105,30 @@
         </div>
     </div>
 </div>
+
+<div class="row mt-5">
+    <div class="container">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form (ngSubmit)="onCountdownSubmit(countdownForm);"
+                          #countdownForm="ngForm">
+                        <div class="form-group">
+                            <label>Set Countdown Date
+                                <small>(Home page)</small>
+                            </label>
+                            <input type="string"
+                                   class="form-control"
+                                   name="countdown"
+                                   id="countdown"
+                                   bsDatepicker
+                                   [(ngModel)]="countdown"
+                                   #cd="ngModel">
+                        </div>
+                        <button class="btn btn-primary">Save Countdown</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

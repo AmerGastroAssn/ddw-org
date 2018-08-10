@@ -104,6 +104,8 @@
                             <input type="string"
                                    class="form-control"
                                    bsDatepicker
+                                   [bsConfig]="bsConfig"
+                                   placement="right"
                                    [class.invalid]="!f.date.valid && f.date.touched"
                                    formControlName="date">
                             <p class="help-block alert alert-warning text-center mt-1"

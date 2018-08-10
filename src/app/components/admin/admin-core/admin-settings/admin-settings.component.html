@@ -128,8 +128,8 @@
                           (ngSubmit)="onCountdownSubmit(countdownForm.value)"
                           *ngIf="countdown; else loading">
                         <div class="form-group">
-                            <label>Set Countdown Date
-                                <small>(Home page)</small>
+                            <label><h5>Set Countdown Date</h5>
+                                Current Set Date is: <br> {{ countdown.date.toDate() | date:'medium' }}
                             </label>
                             <input type="string"
                                    class="form-control"

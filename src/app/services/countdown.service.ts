@@ -38,6 +38,12 @@ export class CountdownService {
 
     getCountdown(): Observable<Countdown> {
         this.countdownDoc = this.afs.doc<Countdown>(`countdownDate/${this.$countdownKey}`);
+        return this.countdownDoc.valueChanges();
+    }
+
+
+    getCountdownDetails(): Observable<Countdown> {
+        this.countdownDoc = this.afs.doc<Countdown>(`countdownDate/${this.$countdownKey}`);
         this.countdown$ = this.countdownDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;

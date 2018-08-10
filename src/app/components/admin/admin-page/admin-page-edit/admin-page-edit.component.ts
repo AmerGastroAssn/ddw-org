@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { BsDatepickerDirective } from 'ngx-bootstrap';
+import { BsDatepickerConfig, BsDatepickerDirective } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
@@ -46,6 +46,7 @@ export class AdminPageEditComponent implements OnInit {
     value: any;
     togglePagePreview = true;
     color = 'primary';
+    bsConfig: Partial<BsDatepickerConfig>;
 
 
     constructor(
@@ -58,6 +59,12 @@ export class AdminPageEditComponent implements OnInit {
       private storage: AngularFireStorage,
       private sbAlert: MatSnackBar,
     ) {
+        // Datepicker Config
+        this.bsConfig = Object.assign({},
+          {
+              containerClass: 'theme-default',
+              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
+          });
     }
 
     // For Form Validations

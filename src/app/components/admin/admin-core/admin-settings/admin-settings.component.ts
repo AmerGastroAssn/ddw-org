@@ -23,7 +23,7 @@ export class AdminSettingsComponent implements OnInit {
     // Countdown
     countdownForm: FormGroup;
     countdown: Countdown;
-    date: string;
+    date: any;
     $key: string;
     uid: string;
     bsConfig: Partial<BsDatepickerConfig>;
@@ -43,21 +43,22 @@ export class AdminSettingsComponent implements OnInit {
                 // Form:
                 this.countdownForm = this.fb.group({
                     $key: [this.countdown.$key],
-                    date: [this.countdown.date],
+                    date: [this.date],
                     uid: [this.countdown.uid],
                 });
 
                 this.$key = this.countdownForm.value.$key;
                 this.date = this.countdownForm.value.date;
                 this.uid = this.countdownForm.value.uid;
-
+                console.log(this.date);
             }
         });
 
         // Datepicker Config
         this.bsConfig = Object.assign({},
           {
-              containerClass: 'theme-orange'
+              containerClass: 'theme-default',
+              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
           });
     }
 
@@ -86,9 +87,9 @@ export class AdminSettingsComponent implements OnInit {
     }
 
     onCountdownSubmit(cdFormData) {
-        const value = cdFormData.value;
-        this.countdownService.updateCountdown(value);
-        console.log(value);
+        this.countdownService.updateCountdown(cdFormData);
+        console.log('cdFormData', cdFormData);
+
     }
 
 }

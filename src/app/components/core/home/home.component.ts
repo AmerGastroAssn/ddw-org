@@ -17,18 +17,30 @@ export class HomeComponent implements OnInit {
     subheaderDate = 'May 18-21, 2019';
     cards$: Observable<Card[]>;
 
+    countdownTime: string;
     time1$: Observable<Time>;
     time2$: Observable<Time>;
+    datePipe: any;
 
     constructor(
       private countdownService: CountdownService,
       private cardService: AdminCardService,
     ) {
+
     }
 
     ngOnInit() {
-        this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
         this.cards$ = this.cardService.getAllCards();
+
+        this.countdownService.getCountdown()
+            .subscribe((countdown) => {
+                const newDate = Date.parse(countdown.date);
+                this.time1$ = this.countdownService.timer(new Date(countdown.date.toDate()));
+
+            });
+
+        // To put Date in manually.
+        // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
     }
 
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
@@ -44,6 +45,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     isHovering: boolean;
     isInvalid: boolean;
     value: any;
+    bsConfig: Partial<BsDatepickerConfig>;
+
 
     constructor(
       private adminPageService: AdminPageService,
@@ -67,6 +70,13 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
         this.uid = this.afs.createId();
         this.user = this.authService.getProfile();
+
+        // Datepicker Config
+        this.bsConfig = Object.assign({},
+          {
+              containerClass: 'theme-default',
+              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
+          });
     }
 
     // For Form Validations

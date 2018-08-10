@@ -137,6 +137,10 @@ h2.card-sec-title {
     margin: 5em 0 8em 0;
 }
 
+.card {
+    /*max-width: 23rem;*/
+}
+
 
 .card-body {
     line-height: 2em;

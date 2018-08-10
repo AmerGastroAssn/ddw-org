@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { Countdown } from '../../../../models/Countdown';
 import { Settings } from '../../../../models/Settings';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { CountdownService } from '../../../../services/countdown.service';
@@ -13,23 +15,50 @@ import { CountdownService } from '../../../../services/countdown.service';
 })
 export class AdminSettingsComponent implements OnInit {
     @ViewChild('settingsForm') settingsForm: NgForm;
-    @ViewChild('countdownForm') countdownForm: NgForm;
-
     settingsAllowed: boolean; // Allow settings to be edited/viewed.
-
     settings: Settings;
     allowSignup: boolean;
     allowSettings: boolean;
     disableAdmin: boolean;
-    countdown: string;
+    // Countdown
+    countdownForm: FormGroup;
+    countdown: Countdown;
+    date: string;
+    $key: string;
+    uid: string;
+    bsConfig: Partial<BsDatepickerConfig>;
 
 
     constructor(
       public settingsService: AdminSettingsService,
       private flashMessage: FlashMessagesService,
       private sbAlert: MatSnackBar,
+      private fb: FormBuilder,
       private countdownService: CountdownService
     ) {
+        // Get Countdown
+        this.countdownService.getCountdown().subscribe((countdown) => {
+            if (countdown !== null) {
+                this.countdown = countdown;
+                // Form:
+                this.countdownForm = this.fb.group({
+                    $key: [this.countdown.$key],
+                    date: [this.countdown.date],
+                    uid: [this.countdown.uid],
+                });
+
+                this.$key = this.countdownForm.value.$key;
+                this.date = this.countdownForm.value.date;
+                this.uid = this.countdownForm.value.uid;
+
+            }
+        });
+
+        // Datepicker Config
+        this.bsConfig = Object.assign({},
+          {
+              containerClass: 'theme-orange'
+          });
     }
 
     ngOnInit() {
@@ -40,10 +69,12 @@ export class AdminSettingsComponent implements OnInit {
         this.allowSignup = this.settings.allowSignup;
         this.disableAdmin = this.settings.disableAdmin;
         this.allowSettings = this.settings.allowSettings;
+
+
     }
 
-    onSettingsSubmit(form: NgForm) {
-        const value = form.value;
+    onSettingsSubmit(formData) {
+        const value = formData.value;
         this.settingsService.saveSettings(value);
         console.log(value);
 
@@ -54,11 +85,10 @@ export class AdminSettingsComponent implements OnInit {
         });
     }
 
-    onCountdownSubmit(cdForm: NgForm) {
-        const value = cdForm.value;
-        // this.countdownService.saveCountdown(value);
+    onCountdownSubmit(cdFormData) {
+        const value = cdFormData.value;
+        this.countdownService.updateCountdown(value);
         console.log(value);
-
     }
 
 }

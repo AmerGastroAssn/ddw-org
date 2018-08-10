@@ -1,3 +1,7 @@
 i.fa-spinner {
     font-size: 4em;
 }
+
+.card.image-uploader {
+    border: 2px dashed #ccc;
+}

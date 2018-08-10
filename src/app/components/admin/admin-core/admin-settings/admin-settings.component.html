@@ -115,23 +115,32 @@
 <div class="row mt-5">
     <div class="container">
         <div class="col-md-6">
+            <ng-template #loading>
+                <div class="text-center text-dark p-5">
+                    <i class="far fa-spinner fa-pulse"></i>
+                    <br>
+                    loading...
+                </div>
+            </ng-template>
             <div class="card">
                 <div class="card-body">
-                    <form (ngSubmit)="onCountdownSubmit(countdownForm);"
-                          #countdownForm="ngForm">
+                    <form [formGroup]="countdownForm"
+                          (ngSubmit)="onCountdownSubmit(countdownForm.value)"
+                          *ngIf="countdown; else loading">
                         <div class="form-group">
                             <label>Set Countdown Date
                                 <small>(Home page)</small>
                             </label>
                             <input type="string"
                                    class="form-control"
-                                   name="countdown"
-                                   id="countdown"
                                    bsDatepicker
-                                   [(ngModel)]="countdown"
-                                   #cd="ngModel">
+                                   [bsConfig]="bsConfig"
+                                   placement="top"
+                                   formControlName="date">
                         </div>
-                        <button class="btn btn-primary"><i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown</button>
+                        <button class="btn btn-primary">
+                            <i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown
+                        </button>
                     </form>
                 </div>
             </div>

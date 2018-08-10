@@ -1,4 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
+import { Countdown } from '../models/Countdown';
 import { Settings } from '../models/Settings';
 
 @Injectable({
@@ -7,6 +10,7 @@ import { Settings } from '../models/Settings';
 export class AdminSettingsService {
     settingsAdded = new EventEmitter<Settings>();
     localSettings: Settings;
+
 
     /*------------------------------------------------
      Default settings pre-defined before admin can set them.
@@ -22,7 +26,8 @@ export class AdminSettingsService {
         disableAdmin: false,
     };
 
-    constructor() {
+    constructor(private sbAlert: MatSnackBar) {
+
         if (localStorage.getItem('settings') !== null) {
             this.localSettings = JSON.parse(localStorage.getItem('settings'));
         } else {
@@ -47,6 +52,8 @@ export class AdminSettingsService {
         localStorage.setItem('settings', JSON.stringify(settings));
         this.settingsAdded.emit(settings);
     }
+
+
 
 
 }

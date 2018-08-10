@@ -31,6 +31,7 @@ export class AdminCardsComponent implements OnInit {
     body: string;
     buttonString: string;
     url: string;
+    orderNumber: number;
     uid: string;
     $key: string;
     disableAdminOnNew: boolean;
@@ -115,6 +116,7 @@ export class AdminCardsComponent implements OnInit {
                 this.cardForm1 = this.fb.group({
                     $key: [this.card1.$key],
                     uid: [this.card1.uid],
+                    orderNumber: [this.card1.orderNumber],
                     title: [this.card1.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
@@ -132,6 +134,7 @@ export class AdminCardsComponent implements OnInit {
 
                 this.$key = this.cardForm1.value.$key;
                 this.uid = this.cardForm1.value.uid;
+                this.orderNumber = this.cardForm1.value.orderNumber;
                 this.title = this.cardForm1.value.title;
                 this.body = this.cardForm1.value.body;
                 this.photoURL = this.cardForm1.value.photoURL;
@@ -148,6 +151,7 @@ export class AdminCardsComponent implements OnInit {
                 this.cardForm2 = this.fb.group({
                     $key: [this.card2.$key],
                     uid: [this.card2.uid],
+                    orderNumber: [this.card2.orderNumber],
                     title: [this.card2.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
@@ -181,6 +185,7 @@ export class AdminCardsComponent implements OnInit {
                 this.cardForm3 = this.fb.group({
                     $key: [this.card3.$key],
                     uid: [this.card3.uid],
+                    orderNumber: [this.card2.orderNumber],
                     title: [this.card3.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
@@ -198,6 +203,7 @@ export class AdminCardsComponent implements OnInit {
 
                 this.$key = this.cardForm3.value.$key;
                 this.uid = this.cardForm3.value.uid;
+                this.orderNumber = this.cardForm3.value.orderNumber;
                 this.title = this.cardForm3.value.title;
                 this.body = this.cardForm3.value.body;
                 this.photoURL = this.cardForm3.value.photoURL;

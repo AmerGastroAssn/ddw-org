@@ -63,3 +63,7 @@ input.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
+.card.image-uploader, .image-uploader {
+    border: 2px dashed #ccc;
+}

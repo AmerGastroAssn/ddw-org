@@ -10,9 +10,10 @@ import { Card } from '../models/Card';
     providedIn: 'root'
 })
 export class AdminCardService {
-    cardCollection: AngularFirestoreCollection<Card[]>;
+    cardCollection: AngularFirestoreCollection<Card>;
     cardDoc: AngularFirestoreDocument<Card>;
-    card: Observable<Card>;
+    cards$: Observable<Card[]>;
+    card$: Observable<Card>;
     $keyCard1: string;
     $keyCard2: string;
     $keyCard3: string;
@@ -28,9 +29,16 @@ export class AdminCardService {
         this.$keyCard3 = 'RSm22cNL5n1QzRpq0agQ';
     }
 
+    getAllCards(): Observable<Card[]> {
+        this.cardCollection = this.afs.collection<Card>('cards', ref => {
+            return ref.orderBy('orderNumber');
+        });
+        return this.cards$ = this.cardCollection.valueChanges();
+    }
+
     getCard1(): Observable<Card> {
         this.cardDoc = this.afs.doc<Card>(`cards/${this.$keyCard1}`);
-        this.card = this.cardDoc.snapshotChanges().map((action) => {
+        this.card$ = this.cardDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;
             } else {
@@ -40,12 +48,12 @@ export class AdminCardService {
             }
         });
 
-        return this.card;
+        return this.card$;
     }
 
     getCard2(): Observable<Card> {
         this.cardDoc = this.afs.doc<Card>(`cards/${this.$keyCard2}`);
-        this.card = this.cardDoc.snapshotChanges().map((action) => {
+        this.card$ = this.cardDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;
             } else {
@@ -55,12 +63,12 @@ export class AdminCardService {
             }
         });
 
-        return this.card;
+        return this.card$;
     }
 
     getCard3(): Observable<Card> {
         this.cardDoc = this.afs.doc<Card>(`cards/${this.$keyCard3}`);
-        this.card = this.cardDoc.snapshotChanges().map((action) => {
+        this.card$ = this.cardDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;
             } else {
@@ -70,7 +78,7 @@ export class AdminCardService {
             }
         });
 
-        return this.card;
+        return this.card$;
     }
 
     updateCard1(updatedCard): void {
@@ -117,7 +125,6 @@ export class AdminCardService {
                 console.log(`ERROR~uM: `, error);
             });
     }
-
 
 
     updateCard3(updatedCard): void {

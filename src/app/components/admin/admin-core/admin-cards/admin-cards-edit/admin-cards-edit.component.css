@@ -1,13 +1,19 @@
+i.fa-spinner {
+    font-size: 4em;
+}
+
+.card.image-uploader {
+    border: 2px dashed #ccc;
+}
+
+.btn-light {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
 /* Cards */
-.card-body {
-    line-height: 2em;
-}
-
-.card-text {
-    padding: 2em;
-}
-
-a.btn.btn-warning.btn-lg {
+a.btn.btn-warning.btn-sm {
     background-color: #F47700;
     color: #fff;
     -webkit-border-radius: 0;
@@ -16,7 +22,7 @@ a.btn.btn-warning.btn-lg {
     font-weight: bold;
 }
 
-a.btn.btn-warning.btn-lg:hover {
+a.btn.btn-warning:hover.btn-sm {
     background-color: #FEB512;
     color: #fff;
     -webkit-border-radius: 0;

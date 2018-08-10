@@ -36,6 +36,10 @@ export class AdminCardService {
         return this.cards$ = this.cardCollection.valueChanges();
     }
 
+
+    /*------------------------------------------------
+     GET CARDS
+     ------------------------------------------------*/
     getCard1(): Observable<Card> {
         this.cardDoc = this.afs.doc<Card>(`cards/${this.$keyCard1}`);
         this.card$ = this.cardDoc.snapshotChanges().map((action) => {
@@ -81,12 +85,15 @@ export class AdminCardService {
         return this.card$;
     }
 
+    /*------------------------------------------------
+     UPDATE CARDS
+     ------------------------------------------------*/
     updateCard1(updatedCard): void {
         this.cardDoc = this.afs.doc<Card>(`cards/${this.$keyCard1}`);
 
         this.cardDoc.update(updatedCard)
             .then(() => {
-                this.sbAlert.open('Card was Saved!', 'Dismiss', {
+                this.sbAlert.open('Card2 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -94,7 +101,7 @@ export class AdminCardService {
                 console.log('Card updated', updatedCard);
             })
             .catch((error) => {
-                this.sbAlert.open('Card was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Card2 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']
@@ -109,7 +116,7 @@ export class AdminCardService {
 
         this.cardDoc.update(updatedCard)
             .then(() => {
-                this.sbAlert.open('Card was Saved!', 'Dismiss', {
+                this.sbAlert.open('Card2 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -117,7 +124,7 @@ export class AdminCardService {
                 console.log('Card updated', updatedCard);
             })
             .catch((error) => {
-                this.sbAlert.open('Card was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Card3 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']
@@ -132,7 +139,7 @@ export class AdminCardService {
 
         this.cardDoc.update(updatedCard)
             .then(() => {
-                this.sbAlert.open('Card was Saved!', 'Dismiss', {
+                this.sbAlert.open('Card3 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -140,7 +147,7 @@ export class AdminCardService {
                 console.log('Card updated', updatedCard);
             })
             .catch((error) => {
-                this.sbAlert.open('Card was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Card3 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']

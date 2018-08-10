@@ -131,42 +131,11 @@ h2.card-sec-title {
     margin-top: 1em;
 }
 
-
 /* Cards */
 .row.cards {
     margin: 5em 0 8em 0;
 }
 
-.card {
-    /*max-width: 23rem;*/
-}
-
-
-.card-body {
-    line-height: 2em;
-}
-
-.card-text {
-    padding: 2em;
-}
-
-a.btn.btn-warning.btn-lg {
-    background-color: #F47700;
-    color: #fff;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    font-weight: bold;
-}
-
-a.btn.btn-warning.btn-lg:hover {
-    background-color: #FEB512;
-    color: #fff;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    font-weight: bold;
-}
 
 
 

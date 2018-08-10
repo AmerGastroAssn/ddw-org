@@ -73,23 +73,11 @@
     <div class="container">
         <div class="card-deck">
             <div class="row">
-                <div class="col-md-4" *ngFor="let card of cards$ | async">
-                    <div class="card text-center mt-3 mb-3">
-                        <img class="card-img-top"
-                             [src]="card.photoURL"
-                             [alt]="card.title">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ card.title }}</h5>
-                            <p class="card-text">{{ card.body }}</p>
-                            <p class="text-center">
-                                <a [href]="card.url"
-                                   class="btn btn-warning btn-lg">
-                                    {{ card.buttonString }}
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <ddw-admin-cards
+                        class="col-md-4"
+                        *ngFor="let cardEl of cards$ | async"
+                        [card]="cardEl">
+                </ddw-admin-cards>
             </div>
         </div>
     </div>

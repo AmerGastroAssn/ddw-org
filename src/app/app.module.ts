@@ -7,34 +7,35 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import * as firebase from 'firebase/app';
-import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
+import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
+import { EducationComponent } from './components/pages/education/education.component';
+import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
+import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
 import { PagesComponent } from './components/pages/pages.component';
+import { PresentersComponent } from './components/pages/presenters/presenters.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCardService } from './services/admin-card.service';
 import { AdminMetaService } from './services/admin-meta.service';
+import { AdminPageService } from './services/admin-page.service';
 import { AdminSettingsService } from './services/admin-settings.service';
+import { AdminUserService } from './services/admin-user.service';
 import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
-import { AdminPageService } from './services/admin-page.service';
-import { AdminUserService } from './services/admin-user.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
-import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
-import { EducationComponent } from './components/pages/education/education.component';
-import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
-import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
-import { PresentersComponent } from './components/pages/presenters/presenters.component';
 
 // Inits the app (Fixes a bug).
 firebase.initializeApp(environment.firebase);
@@ -55,6 +56,7 @@ firebase.initializeApp(environment.firebase);
         ExhibitorInformationComponent,
         NewsAndMediaComponent,
         PresentersComponent,
+        AdminCardsComponent,
     ],
     imports: [
         BrowserModule,
@@ -66,7 +68,8 @@ firebase.initializeApp(environment.firebase);
         BsDatepickerModule.forRoot(),
         ProgressbarModule.forRoot(),
         FlashMessagesModule.forRoot(),
-        MatSnackBarModule
+        PopoverModule.forRoot(),
+        MatSnackBarModule,
     ],
     exports: [],
     providers: [

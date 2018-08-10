@@ -1,0 +1,394 @@
+<!-- * ADMIN-PAGE-NEW * -->
+<div class="row mb-4">
+    <div class="container">
+        <a class="text-primary back-pages"
+           [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+        </a>
+    </div>
+</div>
+
+<div class="row text-right mb-4">
+    <div class="container">
+        <div class="btn-group float-right" role="group" aria-label="Basic example">
+            <a class="btn btn-warning"
+               [routerLink]="['/admin/pages']">
+                <i class="fa fa-undo"></i>&nbsp;Cancel
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- * Image Uploader * -->
+<div class="row mb-5">
+    <div class="container">
+        <div class="col">
+            <div class="card bg-light image-uploader">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Image Uploader
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="custom-file">
+                                <label class="custom-file-label" *ngIf="!downloadURL">
+                                    Click To Select
+                                </label>
+                                <label class="custom-file-label" *ngIf="downloadURL">
+                                    {{ downloadURL | async }}
+                                </label>
+                                <input type="file"
+                                       ddwDropZone
+                                       class="custom-file-input"
+                                       accept=".png, .jpg, jpeg"
+                                       (change)="uploadImage($event)">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div *ngIf="downloadURL | async as url; else loadingURL">
+                                <p class="pb-2">
+                                    <b>Copy and paste url into the Image URL input below:</b>
+                                </p>
+                                <p>
+                                    <a [href]="url">
+                                        {{ url }}
+                                    </a>
+                                </p>
+                                <p><img [src]="url" style="max-width:100px;"></p>
+                            </div>
+                            <ng-template #loadingURL>
+                                <p class="text-center text-light">
+                                    Upload Image, Then a URL will appear here. Copy and paste that link
+                                    into any Image URL to use throughout the site (cards below).
+                                </p>
+                            </ng-template>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
+                        <progressbar class="progress-striped active"
+                                     [value]="pct"
+                                     type="primary"><i>Image Upload {{ pct | number }}%</i>
+                        </progressbar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- * CARDS * -->
+
+<div class="row">
+    <div class="container new-page">
+        <div class="row">
+            <!-- * Card 1 * -->
+            <div class="col-md-4">
+                <ng-template #loading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card mb-5">
+                    <!-- * PREVIEW * -->
+                    <ng-template #card1Popup>
+                        <div class="card">
+                            <img class="card-img-top"
+                                 [src]="card1.photoURL"
+                                 [alt]="card1.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ card1.title }}</h5>
+                                <p class="card-text">{{ card1.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="card1.url"
+                                       class="btn btn-warning btn-sm">
+                                        {{ card1.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <button class="btn btn-light"
+                            placement="top"
+                            [popover]="card1Popup">
+                        <i class="fa fa-eye"></i> Preview
+                    </button>
+                    <!-- *  Card Start * -->
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Card 1
+                                <small class="text-secondary">(left)</small>
+                            </h4>
+                        </div>
+                        <form [formGroup]="cardForm1"
+                              (ngSubmit)="onUpdateCard1(cardForm1.value)"
+                              *ngIf="card1; else loading">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card1.title"
+                                       formControlName="title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body</label>
+                                <textarea type="text"
+                                          rows="5"
+                                          class="form-control"
+                                          [(ngModel)]="card1.body"
+                                          formControlName="body">
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Button Text</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card1.buttonString"
+                                       formControlName="buttonString">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Button Link</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card1.url"
+                                       formControlName="url">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card1.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
+                            <button type="submit"
+                                    [disabled]="!cardForm1.valid"
+                                    class="btn btn-primary btn-sm mb-5">
+                                <i class="fa fa-file-plus"></i>&nbsp;Update
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- * Card 2 * -->
+            <div class="col-md-4">
+                <ng-template #loading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card mb-5">
+                    <!-- * PREVIEW * -->
+                    <ng-template #card2Popup>
+                        <div class="card">
+                            <img class="card-img-top"
+                                 [src]="card2.photoURL"
+                                 [alt]="card2.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ card2.title }}</h5>
+                                <p class="card-text">{{ card2.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="card2.url"
+                                       class="btn btn-warning btn-sm">
+                                        {{ card2.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <button class="btn btn-light"
+                            placement="top"
+                            [popover]="card2Popup">
+                        <i class="fa fa-eye"></i> Preview
+                    </button>
+                    <!-- *  Card Start * -->
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Card 2
+                                <small class="text-secondary">(Middle)</small>
+                            </h4>
+                        </div>
+                        <form [formGroup]="cardForm2"
+                              (ngSubmit)="onUpdateCard2(cardForm2.value)"
+                              *ngIf="card2; else loading">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card2.title"
+                                       formControlName="title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body</label>
+                                <textarea type="text"
+                                          rows="5"
+                                          class="form-control"
+                                          [(ngModel)]="card2.body"
+                                          formControlName="body">
+                                </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Button Text</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card2.buttonString"
+                                       formControlName="buttonString">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Button Link</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card2.url"
+                                       formControlName="url">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card2.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
+
+                            <button type="submit"
+                                    [disabled]="!cardForm1.valid"
+                                    class="btn btn-primary btn-sm mb-5">
+                                <i class="fa fa-file-plus"></i>&nbsp;Update
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- * Card 3 * -->
+            <div class="col-md-4">
+                <ng-template #loading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card mb-5">
+                    <!-- * PREVIEW * -->
+                    <ng-template #card3Popup>
+                        <div class="card">
+                            <img class="card-img-top"
+                                 [src]="card3.photoURL"
+                                 [alt]="card3.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ card3.title }}</h5>
+                                <p class="card-text">{{ card3.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="card3.url"
+                                       class="btn btn-warning btn-sm">
+                                        {{ card3.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <button class="btn btn-light"
+                            placement="top"
+                            [popover]="card3Popup">
+                        <i class="fa fa-eye"></i> Preview
+                    </button>
+                    <!-- *  Card Start * -->
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h4>Card 3
+                                <small class="text-secondary">(Right)</small>
+                            </h4>
+                        </div>
+                        <form [formGroup]="cardForm3"
+                              (ngSubmit)="onUpdateCard3(cardForm3.value)"
+                              *ngIf="card3; else loading">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card3.title"
+                                       formControlName="title">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body</label>
+                                <textarea type="text"
+                                          rows="5"
+                                          class="form-control"
+                                          [(ngModel)]="card3.body"
+                                          formControlName="body">
+                                </textarea>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Button Text</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card3.buttonString"
+                                       formControlName="buttonString">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Button Link</label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card3.url"
+                                       formControlName="url">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card3.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
+
+                            <button type="submit"
+                                    [disabled]="!cardForm1.valid"
+                                    class="btn btn-primary btn-sm mb-5">
+                                <i class="fa fa-file-plus"></i>&nbsp;Update
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

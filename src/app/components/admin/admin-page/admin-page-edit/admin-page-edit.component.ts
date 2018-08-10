@@ -24,7 +24,7 @@ export class AdminPageEditComponent implements OnInit {
     $key: string;
     title: string;
     author: string;
-    date: string;
+    date: any;
     photoURL: any;
     bannerPhotoURL: any;
     body: string;

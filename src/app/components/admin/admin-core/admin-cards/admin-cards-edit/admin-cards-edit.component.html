@@ -33,7 +33,7 @@
                                 <label class="custom-file-label" *ngIf="!downloadURL">
                                     Click To Select
                                 </label>
-                                <label class="custom-file-label" *ngIf="downloadURL">
+                                <label class="custom-file-label text-truncate" *ngIf="downloadURL">
                                     {{ downloadURL | async }}
                                 </label>
                                 <input type="file"

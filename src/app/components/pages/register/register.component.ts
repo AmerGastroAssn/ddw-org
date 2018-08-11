@@ -1,6 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/switchMap';
+import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 
@@ -12,28 +16,36 @@ import { PageService } from '../../../services/page.service';
 export class RegisterComponent implements OnInit, OnDestroy {
     page: Page;
     id: string;
+    cards$: Observable<Card[]>;
 
     constructor(
       private pageService: PageService,
       private adminPageService: AdminPageService,
       private route: ActivatedRoute,
+      private cardService: AdminCardService,
     ) {
         // Get id from url
-        this.id = this.route.snapshot.params['id'];
+        // this.id = this.route.snapshot.params['id'];
+
     }
 
     ngOnInit() {
+        this.cards$ = this.cardService.getAllCards();
         // this.pages$ = this.pageService.getRegisterPages();
 
         // Get each user's details
         // this.page = this.pageService.getPage(this.id);
 
-        this.adminPageService.getPage(this.id).take(1).subscribe((page) => {
-            if (page !== null) {
+        this.route.params.switchMap((params: Params) => {
+            this.id = params['id'];
+
+            return this.adminPageService.getPage(this.id);
+        })
+            .subscribe((page) => {
                 this.page = page;
-                console.log('this.page', this.page);
-            }
-        });
+            });
+
+
     }
 
     ngOnDestroy() {

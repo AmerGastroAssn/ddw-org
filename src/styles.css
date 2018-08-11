@@ -67,3 +67,8 @@ input.invalid {
 .card.image-uploader, .image-uploader {
     border: 2px dashed #ccc;
 }
+
+/* Cards (Universal) */
+ddw-admin-cards.col-md-4 {
+    padding: 0;
+}

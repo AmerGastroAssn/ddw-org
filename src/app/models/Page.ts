@@ -10,7 +10,8 @@ export class Page {
       public bannerPhotoURL: string,
       public category: string,
       public published: boolean,
-      public template: string
+      public template: string,
+      public url: string,
     ) {
     }
 }

@@ -8,8 +8,8 @@ import { BsDatepickerConfig, BsDatepickerDirective } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
-import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
+import { AdminSettingsService } from '../../../../services/admin-settings.service';
 
 
 @Component({
@@ -32,6 +32,7 @@ export class AdminPageEditComponent implements OnInit {
     uid: string;
     published: boolean;
     template: string;
+    url: string;
     disableAdminOnEdit: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -109,6 +110,7 @@ export class AdminPageEditComponent implements OnInit {
         this.adminPageService.getPage(this.uid).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
+                const newURL: string = this.adminPageService.string_to_slug(page.title);
 
                 // Form:
                 this.editPageForm = this.fb.group({
@@ -130,6 +132,7 @@ export class AdminPageEditComponent implements OnInit {
                     category: [page.category || ''],
                     published: [page.published || false],
                     template: [page.template, Validators.required],
+                    url: [newURL, Validators.required],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -142,6 +145,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.category = this.editPageForm.value.category;
                 this.published = this.editPageForm.value.published;
                 this.template = this.editPageForm.value.template;
+                this.url = this.editPageForm.value.url;
             }
         });
     }

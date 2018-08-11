@@ -33,6 +33,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     uid: string;
     published: boolean;
     template: string;
+    url: string;
     disableAdminOnNew: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -133,7 +134,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg', Validators.required],
             category: ['' || 'Register', Validators.required],
             published: [''],
-            template: ['' || 'Full Width', Validators.required]
+            template: ['' || 'Full Width', Validators.required],
+            url: ['', Validators.required]
         });
 
         this.title = this.newPageForm.value.title;

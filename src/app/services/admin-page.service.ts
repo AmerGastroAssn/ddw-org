@@ -12,6 +12,25 @@ export class AdminPageService {
     pageDoc: AngularFirestoreDocument<Page>;
     page: Observable<Page>;
 
+
+    string_to_slug = (str) => {
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+
+        // remove accents, swap ñ for n, etc
+        const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
+        const to = 'aaaaeeeeiiiioooouuuunc------';
+        for (let i = 0, l = from.length; i < l; i += 1) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                 .replace(/\s+/g, '-') // collapse whitespace and replace by -
+                 .replace(/-+/g, '-'); // collapse dashes
+
+        return str;
+    };
+
     constructor(
       private readonly afs: AngularFirestore,
       private readonly router: Router,
@@ -25,7 +44,7 @@ export class AdminPageService {
     getPages(): Observable<Page[]> {
         // Ref, and order by title
         this.pageCollection = this.afs.collection(`pages`,
-          ref => ref.orderBy('title', 'asc')
+          ref => ref.orderBy('url', 'asc')
         );
         // Gets array of pages along with their uid.
         return this.pageCollection.snapshotChanges()
@@ -56,6 +75,7 @@ export class AdminPageService {
 
     setPage(formData) {
         const new$key = this.afs.createId();
+        const newURL: string = this.string_to_slug(formData.title);
         // Sets user data to firestore on login
         const pageRef: AngularFirestoreDocument<any> = this.afs.doc(`pages/${new$key}`);
         const data: Page = {
@@ -70,13 +90,13 @@ export class AdminPageService {
             category: formData.category,
             published: formData.published,
             template: formData.template,
+            url: newURL
         };
 
         return pageRef.set(data)
                       .then((page) => this.router.navigate(['/admin/pages']))
                       .catch((error) => console.log(`ERROR~aP: `, error));
     }
-
 
     updatePage(updatedPage, id: string): void {
         this.pageDoc = this.afs.doc<Page>(`pages/${id}`);

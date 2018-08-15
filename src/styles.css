@@ -77,3 +77,23 @@ ddw-admin-cards.col-md-4 {
 i.fa-spinner {
     font-size: 4em;
 }
+
+/* Featured Blog Posts */
+
+a.btn.btn-warning.btn-lg {
+    background-color: #F47700;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+a.btn.btn-warning.btn-lg:hover {
+    background-color: #FEB512;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}

@@ -1,0 +1,26 @@
+/* Posts */
+.card {
+    border: none;
+    background-color: #F9F9F9;
+}
+
+img.card-img-top {
+    margin-bottom: 2em;
+}
+
+a.link-text:link {
+    font-size: 18px;
+    color: #003F5F;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.card-body {
+    line-height: 2;
+    font-size: 18px;
+    padding: 0;
+}
+
+.card-text {
+    /*padding: 2em;*/
+}

@@ -157,6 +157,88 @@ img.headerbar {
     margin: 1em 0 5em 0;
 }
 
+.blog-posts {
+    background-color: #F9F9F9;
+    padding: 5em 0 8em 0;
+}
+
+/* On Demand */
+.on-demand-top {
+    padding: 3em 0;
+}
+
+.on-demand-bottom {
+    padding: 1em 0;
+}
+
+div.row.on-demand-bottom > div.container > p {
+    line-height: 2;
+    font-size: 18px;
+}
+
+.purchase {
+    margin-bottom: 3em;
+}
+
+/* DDW By The Numbers */
+.ddw-by-the-numbers {
+    background-size: cover;
+    background: url(https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/bg2.jpg) center;
+    color: #ffffff;
+    padding: 3em 0;
+}
+
+.numbers {
+
+}
+
+p.num {
+    font-size: 72px;
+}
+
+p.num-def {
+    font-size: 18px;
+    line-height: 2;
+}
+
+/* Sponsors */
+
+.row.sponsors {
+    padding: 4em 0 3em 0;
+}
+
+.sponsor-images {
+    padding-bottom: 3em;
+}
+
+img.aasld {
+    max-width: 208px;
+    vertical-align: middle;
+    padding-top: 1em;
+}
+
+img.aga {
+    max-width: 280px;
+    vertical-align: middle;
+    padding-top: 2em;
+}
+
+img.asge {
+    max-width: 186px;
+    vertical-align: middle;
+}
+
+img.ssat {
+    max-width: 162px;
+    vertical-align: middle;
+}
+
+/*.pad1 {*/
+/*padding-top: 4em;*/
+/*padding-bottom: 4em;*/
+/*background: #fff;*/
+/*}*/
+
 /* For inline img banner */
 
 /*img.banner-background {*/

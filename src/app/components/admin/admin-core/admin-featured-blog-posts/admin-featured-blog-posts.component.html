@@ -1,0 +1,18 @@
+<!-- * ADMIN-FEATURED-BLOG-POSTS * -->
+<div class="card text-center">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <img class="card-img-top rounded-circle img-fluid text-center"
+                 [src]="post.photoURL">
+        </div>
+    </div>
+    <p class="text-center">
+        <a [href]="post.url"
+           class="link-text">
+            {{ post.linkText }}
+        </a>
+    </p>
+    <div class="card-body">
+        <p class="card-text">{{ post.body }}</p>
+    </div>
+</div>

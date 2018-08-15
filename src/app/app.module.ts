@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
+import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.component';
@@ -61,6 +62,7 @@ firebase.initializeApp(environment.firebase);
         PresentersComponent,
         AdminCardsComponent,
         MetaTagsComponent,
+        AdminFeaturedBlogPostsComponent
     ],
     imports: [
         BrowserModule,

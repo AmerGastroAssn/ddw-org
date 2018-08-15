@@ -68,7 +68,7 @@
     </div>
 </div>
 
-
+<!-- * Cards * -->
 <div class="row cards">
     <div class="container">
         <div class="card-deck">
@@ -83,6 +83,7 @@
     </div>
 </div>
 
+<!-- * DDW Video * -->
 <div class="row bg-blue">
     <div class="container">
         <div class="row">
@@ -110,6 +111,127 @@
                 experts in the field. For additional news and videos, visit the <a href="http://blog.ddw.org/"
                                                                                    target="_blank">DDW Blog</a>.</h5>
         </div>
+    </div>
+</div>
+
+<!-- * Featured Blog Posts * -->
+<div class="row blog-posts">
+    <div class="container">
+        <div class="card-deck">
+            <div class="row">
+                <ddw-admin-featured-blog-posts
+                        class="col-md-4"
+                        *ngFor="let postEl of featuredPosts$ | async"
+                        [post]="postEl">
+                </ddw-admin-featured-blog-posts>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4 offset-md-4 text-center">
+                <a href="http://blog.ddw.org" target="_blank" class="btn btn-warning btn-lg">
+                    View All Posts
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- * On Demand Offer * -->
+<div class="row on-demand-top">
+    <div class="container">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2 class="card-sec-title">DDW On Demand Offer</h2>
+            <div class="col-4 offset-4">
+                <div class="underline"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row on-demand-bottom">
+    <div class="container">
+        <p>If you were unable to attend DDW 2018, you can still access the great education presented at the meeting with
+            DDW On Demand. Get immediate access to the most comprehensive CME accredited program in gastroenterology.
+            Your On Demand player provides access to 450 hours of educational content organized by the 17 DDW Tracks, as
+            well as the AASLD Hepatology Update and AGA Postgraduate Course.
+        </p>
+        <p>
+            You can conveniently access your On Demand program from any computer or mobile device. Our state-of-the-art
+            media player makes it easy to search the exact content you’re looking for. We’ll even direct you to the
+            specific slide that contains your search term. And with downloadable MP3 audio files, integrated online CME
+            testing and a complimentary hard drive, we make it easy for you to access your content anytime, anywhere.
+            Limited time offer.</p>
+    </div>
+</div>
+<div class="row purchase">
+    <div class="col-md-4 offset-md-4 text-center">
+        <a href="https://orders.ondemand.org/cgi-bin/htmlos/tracking.html?trackpage=postweb&tracktype=ddw"
+           target="_blank" class="btn btn-warning btn-lg">
+            Purchase
+        </a>
+    </div>
+</div>
+
+
+<!-- * DDW By The Numbers * -->
+<div class="ddw-by-the-numbers">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-6 offset-md-3 text-center">
+                <h2 class="by-nums-title"><b>DDW by the Numbers</b></h2>
+                <div class="col-4 offset-4">
+                    <div class="underline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="numbers text-center reverse contain-inner">
+        <div class="HtmlContent">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="num"><b>14,000+</b></p>
+                    <p class="num-def">Annual DDW Attendance</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="num"><b>5,400</b></p>
+                    <p class="num-def">Original lectures, poster presentations and oral abstract presentations</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class="num"><b>285</b></p>
+                    <p class="num-def">Exhibitors showcasing the newest technology innovations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- * Sponsoring Societies * -->
+<div class="row sponsors">
+    <div class="container">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2 class="by-nums-title"><b>DDW by the Numbers</b></h2>
+            <div class="col-4 offset-4">
+                <div class="underline"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row text-center sponsor-images">
+    <div class="col-sm-3">
+        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-aasld.png"
+             alt="aasld" class="aasld img-fluid">
+    </div>
+    <div class="col-sm-3">
+        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/AGA_Logo_Horizontal_RGB.png"
+             alt="aga" class="aga img-fluid">
+    </div>
+    <div class="col-sm-3">
+        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-asge.png"
+             alt="asge" class="asge img-fluid">
+    </div>
+    <div class="col-sm-3">
+        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-ssat.png"
+             alt="ssat" class="ssat img-fluid">
     </div>
 </div>
 

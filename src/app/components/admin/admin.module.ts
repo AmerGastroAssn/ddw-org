@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
+import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
@@ -17,8 +18,6 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminFeaturedBlogPostsComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
-import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +33,6 @@ import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured
         AdminMetaComponent,
         AdminAdsComponent,
         AdminCardsEditComponent,
-        AdminFeaturedBlogPostsComponent,
         AdminFeaturedBlogPostsEditComponent,
     ],
     imports: [

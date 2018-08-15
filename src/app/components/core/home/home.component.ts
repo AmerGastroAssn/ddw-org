@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
-import { Ads } from '../../../models/Ads';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
 @Component({
@@ -26,9 +26,9 @@ export class HomeComponent implements OnInit {
     time1$: Observable<Time>;
     time2$: Observable<Time>;
     datePipe: any;
-    ads$: Ads;
-    headerbar: string;
     featuredPosts$: Observable<FeaturedPost[]>;
+    headerbar: string;
+    videoURL: any;
 
     constructor(
       private countdownService: CountdownService,
@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
       private meta: Meta,
       private adsService: AdminAdsService,
       private featuredPostService: AdminFeaturedPostService,
+      private settingsService: AdminSettingsService,
+      public sanitizer: DomSanitizer,
     ) {
         // this.meta.addTag({ name: 'description', content: 'How to use Angular 4 meta service' });
         // this.meta.addTag({ name: 'author', content: 'talkingdotnet' });
@@ -45,11 +47,16 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.adsService.getAds()
             .subscribe((ads) => {
-                return this.ads$ = ads;
+                return this.headerbar = ads.headerbar;
             });
 
         this.cards$ = this.cardService.getAllCards();
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
+        this.settingsService.getVideoURL()
+            .subscribe((dailyVideo) => {
+                console.log('dailyVideo', dailyVideo);
+                return this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
+            });
 
         this.countdownService.getCountdown()
             .subscribe((countdown) => {

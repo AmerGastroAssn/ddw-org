@@ -95,10 +95,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 offset-md-1 text-center">
+            <div class="col-md-10 offset-md-1 text-center" *ngIf="videoURL">
                 <iframe width="560"
                         height="315"
-                        src="https://www.youtube.com/embed/AGTlYCAwuJA"
+                        [src]="videoURL"
                         class="daily-news"
                         frameborder="0"
                         allow="autoplay; encrypted-media"
@@ -128,7 +128,7 @@
 <div class="row blog-posts">
     <div class="container">
         <div class="card-deck">
-            <div class="row">
+            <div class="row" *ngIf="featuredPosts$">
                 <ddw-admin-featured-blog-posts
                         class="col-md-4"
                         *ngFor="let postEl of featuredPosts$ | async"
@@ -249,7 +249,7 @@
 <div class="row">
     <div class="container">
         <div class="text-center">
-            <img [src]="ads$.headerbar" class="headerbar"/>
+            <img [src]="headerbar" class="headerbar"/>
         </div>
     </div>
 </div>

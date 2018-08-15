@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Countdown } from '../../../../models/Countdown';
+import { DailyVideo } from '../../../../models/DailyVideo';
 import { Settings } from '../../../../models/Settings';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { CountdownService } from '../../../../services/countdown.service';
@@ -27,6 +28,10 @@ export class AdminSettingsComponent implements OnInit {
     $key: string;
     uid: string;
     bsConfig: Partial<BsDatepickerConfig>;
+    // DDW Daily Video Form
+    dailyVideoForm: FormGroup;
+    dailyVideo: DailyVideo;
+    videoURL: string;
 
 
     constructor(
@@ -43,14 +48,13 @@ export class AdminSettingsComponent implements OnInit {
                 // Form:
                 this.countdownForm = this.fb.group({
                     $key: [this.countdown.$key],
-                    date: [this.date],
+                    date: [this.countdown.date],
                     uid: [this.countdown.uid],
                 });
 
                 this.$key = this.countdownForm.value.$key;
                 this.date = this.countdownForm.value.date;
                 this.uid = this.countdownForm.value.uid;
-                console.log(this.date);
             }
         });
 
@@ -60,6 +64,23 @@ export class AdminSettingsComponent implements OnInit {
               containerClass: 'theme-default',
               dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
           });
+
+        // Video URL
+        this.settingsService.getVideoURL().subscribe((url) => {
+            if (url !== null) {
+                this.dailyVideo = url;
+                // Form:
+                this.dailyVideoForm = this.fb.group({
+                    $key: [this.dailyVideo.$key],
+                    uid: [this.dailyVideo.uid],
+                    videoURL: [this.dailyVideo.videoURL],
+                });
+
+                this.$key = this.dailyVideoForm.value.$key;
+                this.uid = this.dailyVideoForm.value.uid;
+                this.videoURL = this.dailyVideoForm.value.videoURL;
+            }
+        });
     }
 
     ngOnInit() {
@@ -88,8 +109,11 @@ export class AdminSettingsComponent implements OnInit {
 
     onCountdownSubmit(cdFormData) {
         this.countdownService.updateCountdown(cdFormData);
-        console.log('cdFormData', cdFormData);
+    }
 
+    onDailyVideoSubmit(videoForm) {
+        this.settingsService.updateVideoURL(videoForm);
+        console.log('videoForm', videoForm);
     }
 
 }

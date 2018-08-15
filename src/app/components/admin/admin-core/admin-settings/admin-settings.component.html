@@ -114,34 +114,68 @@
 
 <div class="row mt-5">
     <div class="container">
-        <div class="col-md-6">
-            <ng-template #loading>
-                <div class="text-center text-dark p-5">
-                    <i class="far fa-spinner fa-pulse"></i>
-                    <br>
-                    loading...
+        <div class="row">
+            <div class="col-md-6">
+                <ng-template #videoLoading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="dailyVideoForm"
+                              (ngSubmit)="onDailyVideoSubmit(dailyVideoForm.value)"
+                              *ngIf="dailyVideo; else videoLoading">
+                            <div class="form-group">
+                                <label>
+                                    <h5>DDW Daily News Video</h5>
+                                    <p class="text-light">URL needs to come from a embedded iFrame</p>
+                                    <p class="text-light">ie. Go to YouTube video > share > embed > grab url from src="this-url"</p>
+                                </label>
+                                <input type="url"
+                                       class="form-control"
+                                       [(ngModel)]="videoURL"
+                                       formControlName="videoURL">
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fa fa-video"></i>&nbsp;Save Video URL
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </ng-template>
-            <div class="card">
-                <div class="card-body">
-                    <form [formGroup]="countdownForm"
-                          (ngSubmit)="onCountdownSubmit(countdownForm.value)"
-                          *ngIf="countdown; else loading">
-                        <div class="form-group">
-                            <label><h5>Set Countdown Date</h5>
-                                Current Set Date is: <br> {{ countdown.date.toDate() | date:'medium' }}
-                            </label>
-                            <input type="string"
-                                   class="form-control"
-                                   bsDatepicker
-                                   [bsConfig]="bsConfig"
-                                   placement="top"
-                                   formControlName="date">
-                        </div>
-                        <button class="btn btn-primary">
-                            <i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown
-                        </button>
-                    </form>
+            </div>
+            <div class="col-md-6">
+                <ng-template #loading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="countdownForm"
+                              (ngSubmit)="onCountdownSubmit(countdownForm.value)"
+                              *ngIf="countdown; else loading">
+                            <div class="form-group">
+                                <label><h5>Set Countdown Date</h5>
+                                    Current Set Date is: <br> {{ countdown.date.toDate() | date:'medium' }}
+                                </label>
+                                <input type="string"
+                                       class="form-control"
+                                       bsDatepicker
+                                       [bsConfig]="bsConfig"
+                                       placement="top"
+                                       [(ngModel)]="date"
+                                       formControlName="date">
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

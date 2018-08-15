@@ -153,8 +153,9 @@ iframe.daily-news {
     margin: 2em 0;
 }
 
-img.headerbar {
+.ads {
     margin: 1em 0 5em 0;
+    width: 100%;
 }
 
 

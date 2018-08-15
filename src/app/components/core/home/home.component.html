@@ -245,11 +245,11 @@
     </div>
 </div>
 
-<!-- * AD * -->
+<!-- * AD Footerbar * -->
 <div class="row">
     <div class="container">
         <div class="text-center">
-            <img [src]="headerbar" class="headerbar"/>
+            <div [innerHTML]="footerbar | safeHtml" ddwRunScripts class="ads"></div>
         </div>
     </div>
 </div>

@@ -39,6 +39,9 @@ import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
+import { ScriptService } from './services/script.service';
+import { RunScriptsDirective } from './directives/run-scripts.directive';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 
 // Inits the app (Fixes a bug).
@@ -62,7 +65,9 @@ firebase.initializeApp(environment.firebase);
         PresentersComponent,
         AdminCardsComponent,
         MetaTagsComponent,
-        AdminFeaturedBlogPostsComponent
+        AdminFeaturedBlogPostsComponent,
+        RunScriptsDirective,
+        SafeHtmlPipe
     ],
     imports: [
         BrowserModule,
@@ -90,6 +95,7 @@ firebase.initializeApp(environment.firebase);
         CountdownService,
         AdminCardService,
         AdminFeaturedPostService,
+        ScriptService,
     ],
     bootstrap: [AppComponent]
 })

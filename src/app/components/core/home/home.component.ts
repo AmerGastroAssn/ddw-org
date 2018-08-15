@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
     time2$: Observable<Time>;
     datePipe: any;
     featuredPosts$: Observable<FeaturedPost[]>;
-    headerbar: string;
+    headerbar: any;
+    footerbar: any;
     videoURL: any;
 
     constructor(
@@ -47,14 +48,13 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.adsService.getAds()
             .subscribe((ads) => {
-                return this.headerbar = ads.headerbar;
+                this.footerbar = ads.footerbar;
             });
 
         this.cards$ = this.cardService.getAllCards();
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
         this.settingsService.getVideoURL()
             .subscribe((dailyVideo) => {
-                console.log('dailyVideo', dailyVideo);
                 return this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
             });
 

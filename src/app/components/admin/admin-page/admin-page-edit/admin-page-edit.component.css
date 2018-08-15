@@ -36,3 +36,7 @@ input.invalid {
 img.card-img-top {
     max-height: 300px;
 }
+
+.slug {
+    font-size: 1em;
+}

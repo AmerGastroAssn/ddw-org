@@ -62,7 +62,7 @@
                                    [class.invalid]="!f.title.valid && f.title.touched"
                                    [(ngModel)]="page.title"
                                    formControlName="title">
-                            <p class="help-block alert alert-warning text-center mt-1"
+                            <p class="help-block alert invalid-tooltip text-center mt-1"
                                *ngIf="!f.title.valid && f.title.touched">
                                 Valid <b>Title</b> is required!
                             </p>
@@ -71,16 +71,7 @@
 
                         <div class="form-group">
                             <label>Slug</label>
-                            <input type="text"
-                                   class="form-control"
-                                   disabled
-                                   [class.invalid]="!f.url.valid && f.url.touched"
-                                   [(ngModel)]="url"
-                                   formControlName="url">
-                            <p class="help-block alert alert-warning text-center mt-1"
-                               *ngIf="!f.url.valid && f.url.touched">
-                                <b>Slug/URL</b> is required!
-                            </p>
+                            <pre class="alert bg-light text-secondary slug">/{{category}}/{{url}}</pre>
                         </div>
 
 

@@ -4,6 +4,7 @@ export class Meta {
       public metaDesc?: string,
       public metaAuthor?: string,
       public metaKeywords?: string,
+      public metaImageURL?: string,
       public headerArea?: string,
       public seo?: string,
       public footerArea?: string,

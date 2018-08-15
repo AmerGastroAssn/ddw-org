@@ -15,6 +15,7 @@ export class AdminMetaComponent implements OnInit {
     metaDesc: string;
     metaAuthor: string;
     metaKeywords: string;
+    metaImageURL: string;
     headerArea: string;
     seo: string;
     footerArea: string;
@@ -38,6 +39,7 @@ export class AdminMetaComponent implements OnInit {
                     metaDesc: [this.metaDesc],
                     metaAuthor: [this.metaAuthor],
                     metaKeywords: [this.metaKeywords],
+                    metaImageURL: [this.metaImageURL],
                     headerArea: [this.headerArea],
                     seo: [this.seo],
                     footerArea: [this.footerArea],
@@ -47,6 +49,7 @@ export class AdminMetaComponent implements OnInit {
                 this.metaDesc = this.metaForm.value.metaDesc;
                 this.metaAuthor = this.metaForm.value.metaAuthor;
                 this.metaKeywords = this.metaForm.value.metaKeywords;
+                this.metaImageURL = this.metaForm.value.metaImageURL;
                 this.headerArea = this.metaForm.value.headerArea;
                 this.seo = this.metaForm.value.seo;
                 this.footerArea = this.metaForm.value.footerArea;

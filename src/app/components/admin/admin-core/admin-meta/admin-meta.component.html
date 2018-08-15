@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Meta Description <br>
+                            <label>Meta Author <br>
                                 <small>Author of the site</small>
                             </label>
                             <pre>
@@ -74,7 +74,7 @@
                             </label>
                             <pre>
                                  <textarea type="text"
-                                           rows="1"
+                                           rows="2"
                                            class="form-control"
                                            placeholder="Enter keywords here..."
                                            [(ngModel)]="meta.metaKeywords"
@@ -83,21 +83,38 @@
                              </pre>
                         </div>
 
-                        <div class="form-group">
-                            <label>Header Meta Scripts Tags <br>
-                                <small>(Between header tags)</small>
-                            </label>
 
+                        <div class="form-group">
+                            <label>Meta Image URL <br>
+                                <small>Image that's loaded on your smart phone/social network when shared.</small>
+                            </label>
                             <pre>
                                  <textarea type="text"
-                                           rows="13"
+                                           rows="2"
                                            class="form-control"
-                                           placeholder="Enter header scripts here..."
-                                           [(ngModel)]="meta.headerArea"
-                                           formControlName="headerArea">
+                                           placeholder="Enter keywords here..."
+                                           [(ngModel)]="meta.metaImageURL"
+                                           formControlName="metaImageURL">
                                 </textarea>
                              </pre>
                         </div>
+
+
+                        <!--<div class="form-group">-->
+                            <!--<label>Header Meta Scripts Tags <br>-->
+                                <!--<small>(Between header tags)</small>-->
+                            <!--</label>-->
+
+                            <!--<pre>-->
+                                 <!--<textarea type="text"-->
+                                           <!--rows="13"-->
+                                           <!--class="form-control"-->
+                                           <!--placeholder="Enter header scripts here..."-->
+                                           <!--[(ngModel)]="meta.headerArea"-->
+                                           <!--formControlName="headerArea">-->
+                                <!--</textarea>-->
+                             <!--</pre>-->
+                        <!--</div>-->
 
                         <div class="form-group">
                             <label>SEO Meta Tags <br>

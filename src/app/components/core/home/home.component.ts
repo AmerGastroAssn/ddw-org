@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, Meta } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
-import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
@@ -35,24 +34,14 @@ export class HomeComponent implements OnInit {
     constructor(
       private countdownService: CountdownService,
       private cardService: AdminCardService,
-      private metaService: AdminMetaService,
       private adsService: AdminAdsService,
       private featuredPostService: AdminFeaturedPostService,
       private settingsService: AdminSettingsService,
       public sanitizer: DomSanitizer,
-      private meta: Meta
     ) {
     }
 
     ngOnInit() {
-        // Meta tags
-        this.metaService.getMeta()
-            .subscribe((meta) => {
-                return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
-                  this.meta.addTag({ name: 'author', content: meta.metaAuthor }),
-                  this.meta.addTag({ name: 'keywords', content: meta.metaKeywords });
-            });
-
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {

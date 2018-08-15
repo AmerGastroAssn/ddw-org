@@ -12,6 +12,9 @@ export class AdminMetaComponent implements OnInit {
     metaForm: FormGroup;
     meta: Meta;
     $key: string;
+    metaDesc: string;
+    metaAuthor: string;
+    metaKeywords: string;
     headerArea: string;
     seo: string;
     footerArea: string;
@@ -32,12 +35,18 @@ export class AdminMetaComponent implements OnInit {
                 // Form:
                 this.metaForm = this.fb.group({
                     $key: [this.metaService.$key],
+                    metaDesc: [this.metaDesc],
+                    metaAuthor: [this.metaAuthor],
+                    metaKeywords: [this.metaKeywords],
                     headerArea: [this.headerArea],
                     seo: [this.seo],
                     footerArea: [this.footerArea],
                 });
 
                 this.$key = this.metaForm.value.$key;
+                this.metaDesc = this.metaForm.value.metaDesc;
+                this.metaAuthor = this.metaForm.value.metaAuthor;
+                this.metaKeywords = this.metaForm.value.metaKeywords;
                 this.headerArea = this.metaForm.value.headerArea;
                 this.seo = this.metaForm.value.seo;
                 this.footerArea = this.metaForm.value.footerArea;

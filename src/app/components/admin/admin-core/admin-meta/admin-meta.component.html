@@ -36,6 +36,53 @@
                           (ngSubmit)="onMetaSubmit(metaForm.value)"
                           *ngIf="meta; else loading">
 
+
+                        <div class="form-group">
+                            <label>Meta Description <br>
+                                <small>Should be around 150 characters</small>
+                            </label>
+                            <pre>
+                                 <textarea type="text"
+                                           rows="3"
+                                           class="form-control"
+                                           placeholder="Enter description of site here"
+                                           [(ngModel)]="meta.metaDesc"
+                                           formControlName="metaDesc">
+                                </textarea>
+                             </pre>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Meta Description <br>
+                                <small>Author of the site</small>
+                            </label>
+                            <pre>
+                                 <textarea type="text"
+                                           rows="1"
+                                           class="form-control"
+                                           placeholder="Enter author here..."
+                                           [(ngModel)]="meta.metaAuthor"
+                                           formControlName="metaAuthor">
+                                </textarea>
+                             </pre>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Meta keywords <br>
+                                <small>Broken by a comma. eg: gi, aga, conference, etc...</small>
+                            </label>
+                            <pre>
+                                 <textarea type="text"
+                                           rows="1"
+                                           class="form-control"
+                                           placeholder="Enter keywords here..."
+                                           [(ngModel)]="meta.metaKeywords"
+                                           formControlName="metaKeywords">
+                                </textarea>
+                             </pre>
+                        </div>
+
                         <div class="form-group">
                             <label>Header Meta Scripts Tags <br>
                                 <small>(Between header tags)</small>

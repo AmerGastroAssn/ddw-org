@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Meta } from '../../../models/Meta';
-import { AdminMetaService } from '../../../services/admin-meta.service';
 
 @Component({
     selector: 'ddw-meta-tags',
@@ -16,16 +15,16 @@ export class MetaTagsComponent implements OnInit {
     seo: string;
 
     constructor(
-      private metaService: AdminMetaService,
+      // private metaService: AdminMetaService,
     ) {
     }
 
     ngOnInit() {
-        this.metaService.getMeta()
-            .subscribe((metaInfo) => {
-                console.log('this.meta', metaInfo);
-                return this.meta = metaInfo;
-            });
+        // this.metaService.getMeta()
+        //     .subscribe((metaInfo) => {
+        //         console.log('this.meta', metaInfo);
+        //         return this.meta = metaInfo;
+        //     });
     }
 
 }

@@ -6,6 +6,7 @@ import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
@@ -34,23 +35,31 @@ export class HomeComponent implements OnInit {
     constructor(
       private countdownService: CountdownService,
       private cardService: AdminCardService,
-      private meta: Meta,
+      private metaService: AdminMetaService,
       private adsService: AdminAdsService,
       private featuredPostService: AdminFeaturedPostService,
       private settingsService: AdminSettingsService,
       public sanitizer: DomSanitizer,
+      private meta: Meta
     ) {
-        // this.meta.addTag({ name: 'description', content: 'How to use Angular 4 meta service' });
-        // this.meta.addTag({ name: 'author', content: 'talkingdotnet' });
-        // this.meta.addTag({ name: 'keywords', content: 'Angular, Meta Service' });
     }
 
     ngOnInit() {
+        // Meta tags
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
+                  this.meta.addTag({ name: 'author', content: meta.metaAuthor }),
+                  this.meta.addTag({ name: 'keywords', content: meta.metaKeywords });
+            });
+
+        // Ads
         this.adsService.getAds()
             .subscribe((ads) => {
                 this.footerbar = ads.footerbar;
             });
 
+        // Page elements
         this.cards$ = this.cardService.getAllCards();
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
         this.settingsService.getVideoURL()

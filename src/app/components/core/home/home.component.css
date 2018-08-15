@@ -157,6 +157,13 @@ img.headerbar {
     margin: 1em 0 5em 0;
 }
 
+
+/* Featured Blog Posts */
+.featured {
+    background-color: #F9F9F9;
+    padding-top: 3em;
+}
+
 .blog-posts {
     background-color: #F9F9F9;
     padding: 5em 0 8em 0;

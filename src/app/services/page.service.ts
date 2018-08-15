@@ -33,7 +33,8 @@ export class PageService {
 
     getRegisterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'register');
+            return ref.where('category', '==', 'register')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
@@ -41,46 +42,43 @@ export class PageService {
 
     getAttendeePlanningPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'attendee-planning');
+            return ref.where('category', '==', 'attendee-planning')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
 
     getEducationPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'education');
+            return ref.where('category', '==', 'education')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
 
     getExhibitorInfoPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'exhibitor-information');
+            return ref.where('category', '==', 'exhibitor-information')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
 
     getNewsAndMediaPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'news-and-media');
+            return ref.where('category', '==', 'news-and-media')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
 
     getPresenterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'attendee-planning');
+            return ref.where('category', '==', 'attendee-planning')
+                      .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
-
-
-
-
-    // getRegisterPage(id): Observable<Page> {
-    //     this.pageDoc = this.afs.doc(`pages/${id}`);
-    //     return this.page$ = this.pageDoc.valueChanges();
-    // }
 
 
 }

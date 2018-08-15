@@ -29,7 +29,8 @@ export class AdminPageService {
                  .replace(/-+/g, '-'); // collapse dashes
 
         return str;
-    };
+    }
+
 
     constructor(
       private readonly afs: AngularFirestore,

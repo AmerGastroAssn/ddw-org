@@ -35,24 +35,21 @@
     <div class="col-md-2">
         <h5>Register</h5>
         <ul>
-            <li><a [routerLink]="['#']">Registration</a></li>
-            <li><a [routerLink]="['#']">Housing</a></li>
-            <li><a [routerLink]="['#']">Host City &amp; Travel Arrangements</a></li>
-            <li><a [routerLink]="['#']">International Attendees</a></li>
-            <li><a [routerLink]="['#']">First-Time Attendee</a></li>
-            <li><a [routerLink]="['#']">First-Time Attendee Guide</a></li>
+            <li *ngFor="let regPage of registerPages$ | async">
+                <a [routerLink]="['/register/', regPage.url]">
+                    {{ regPage.title }}
+                </a>
+            </li>
         </ul>
-
     </div>
     <div class="col-md-2">
         <h5>Attendee Planning</h5>
         <ul>
-            <li><a [routerLink]="['#']">Program Planning Resources</a></li>
-            <li><a [routerLink]="['#']">Scope Out the Exhibit Hall</a></li>
-            <li><a [routerLink]="['#']">Networking Events</a></li>
-            <li><a [routerLink]="['#']">Mobile App</a></li>
-            <li><a [routerLink]="['#']">Online Planner</a></li>
-            <li><a [routerLink]="['#']">DDW Tracks</a></li>
+            <li *ngFor="let attPage of attendeePlanningPages$ | async">
+                <a [routerLink]="['/attendee-planning/', attPage.url]">
+                    {{ attPage.title }}
+                </a>
+            </li>
         </ul>
     </div>
     <div class="col-md-2">
@@ -60,41 +57,42 @@
             Education
         </h5>
         <ul>
-            <li><a [routerLink]="['#']">Scientific Sessions</a></li>
-            <li><a [routerLink]="['#']">Abstracts</a></li>
-            <li><a [routerLink]="['#']">Poster Hall</a></li>
-            <li><a [routerLink]="['#']">CME Credit &amp; Certificate of Attendance</a></li>
-            <li><a [routerLink]="['#']">Session Recordings</a></li>
+            <li *ngFor="let edPage of educationPages$ | async">
+                <a [routerLink]="['/education/', edPage.url]">
+                    {{ edPage.title }}
+                </a>
+            </li>
         </ul>
     </div>
     <div class="col-md-2">
         <h5>Exhibitor Information</h5>
         <ul>
-            <li><a [routerLink]="['#']">Reserve Your Space</a></li>
-            <li><a [routerLink]="['#']">Floor Plan</a></li>
-            <li><a [routerLink]="['#']">Exhibitor Portal</a></li>
-            <li><a [routerLink]="['#']">Exhibitor Policies</a></li>
-            <li><a [routerLink]="['#']">Marketing Opportunities</a></li>
-            <li><a [routerLink]="['#']">Host an On-Site Meeting</a></li>
+            <li *ngFor="let exhPage of exhibitorInfoPages$ | async">
+                <a [routerLink]="['/exhibitor-information/', exhPage.url]">
+                    {{ exhPage.title }}
+                </a>
+            </li>
         </ul>
     </div>
     <div class="col-md-2">
         <h5>News &amp; Media</h5>
         <ul>
-            <li><a [routerLink]="['#']">DDW Daily News</a></li>
-            <li><a [routerLink]="['#']">Press Room</a></li>
-            <li><a [routerLink]="['#']">Press Releases</a></li>
-            <li><a [routerLink]="['#']">Social Media</a></li>
-            <li><a [routerLink]="['#']">Media Policy</a></li>
-            <li><a [routerLink]="['#']">Guidelines &amp; License for Use of DDW Content</a></li>
+            <li *ngFor="let newsPage of newsAndMediaPages$ | async">
+                <a [routerLink]="['/news-and-media/', newsPage.url]">
+                    {{ newsPage.title }}
+                </a>
+            </li>
         </ul>
     </div>
+    <!-- * TODO: Make external link pages * -->
     <div class="col-md-2">
         <h5>Presenters</h5>
         <ul>
-            <li><a [routerLink]="['#']">Submit an Abstract</a></li>
-            <li><a [routerLink]="['#']">Travel Awards</a></li>
-            <li><a [routerLink]="['#']">Presenter Resources</a></li>
+            <li *ngFor="let presPage of presentersPages$ | async">
+                <a [routerLink]="['/presenters/', presPage.url]">
+                    {{ presPage.title }}
+                </a>
+            </li>
         </ul>
     </div>
 </div>
@@ -114,9 +112,10 @@
                 &nbsp;Privacy Policy | &copy; 2018 Digestive Disease Week. All Rights Reserved.
             </p>
         </div>
-        <div class="col">
+        <div class="col text-right">
             <p>
-                Site Built by <a href="https://gastro.org" target="_blank" class="aga-copy">&copy; 2018 American Gastroenterological Association</a>.&nbsp;
+                Site Built by <a href="https://gastro.org" target="_blank" class="aga-copy">&copy; 2018 American
+                Gastroenterological Association</a>.&nbsp;
                 <a href="https://www.facebook.com/DDWMeeting" target="_blank" class="social"><i
                         class="fab fa-facebook"></i></a>
                 <a href="https://twitter.com/DDWMeeting" target="_blank" class="social"><i

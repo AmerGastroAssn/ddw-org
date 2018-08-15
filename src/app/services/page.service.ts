@@ -74,7 +74,7 @@ export class PageService {
 
     getPresenterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'attendee-planning')
+            return ref.where('category', '==', 'presenters')
                       .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();

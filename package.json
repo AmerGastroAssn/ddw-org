@@ -25,6 +25,7 @@
     "@angular/router": "^6.0.3",
     "angular2-flash-messages": "^2.0.5",
     "angularfire2": "^5.0.0-rc.11",
+    "angulartics2": "^6.2.0",
     "blueimp-canvas-to-blob": "^3.14.0",
     "bootstrap": "^4.1.1",
     "ckeditor": "^4.5.11",

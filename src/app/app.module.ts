@@ -6,6 +6,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import * as firebase from 'firebase/app';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
@@ -81,6 +83,7 @@ firebase.initializeApp(environment.firebase);
         FlashMessagesModule.forRoot(),
         PopoverModule.forRoot(),
         MatSnackBarModule,
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     ],
     exports: [],
     providers: [

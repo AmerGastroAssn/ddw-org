@@ -1,0 +1,13 @@
+i.fa-spinner {
+    font-size: 4em;
+}
+
+.card.image-uploader {
+    border: 2px dashed #ccc;
+}
+
+.btn-light {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}

@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
+import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.component';
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
@@ -28,6 +29,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCardService } from './services/admin-card.service';
+import { AdminFeaturedPostService } from './services/admin-featured-post.service';
 import { AdminMetaService } from './services/admin-meta.service';
 import { AdminPageService } from './services/admin-page.service';
 import { AdminSettingsService } from './services/admin-settings.service';
@@ -36,6 +38,7 @@ import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
+
 
 // Inits the app (Fixes a bug).
 firebase.initializeApp(environment.firebase);
@@ -57,6 +60,7 @@ firebase.initializeApp(environment.firebase);
         NewsAndMediaComponent,
         PresentersComponent,
         AdminCardsComponent,
+        MetaTagsComponent,
     ],
     imports: [
         BrowserModule,
@@ -83,6 +87,7 @@ firebase.initializeApp(environment.firebase);
         PageService,
         CountdownService,
         AdminCardService,
+        AdminFeaturedPostService,
     ],
     bootstrap: [AppComponent]
 })

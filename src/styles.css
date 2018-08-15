@@ -72,3 +72,8 @@ input.invalid {
 ddw-admin-cards.col-md-4 {
     padding: 0;
 }
+
+
+i.fa-spinner {
+    font-size: 4em;
+}

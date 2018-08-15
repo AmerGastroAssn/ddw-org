@@ -10,9 +10,10 @@ import { Meta } from '../models/Meta';
     providedIn: 'root'
 })
 export class AdminMetaService {
-    metaCollection: AngularFirestoreCollection<Meta[]>;
+    metaCollection: AngularFirestoreCollection<Meta>;
     metaDoc: AngularFirestoreDocument<Meta>;
     meta: Observable<Meta>;
+    metas: Observable<Meta[]>;
     $key: string;
 
     constructor(
@@ -22,6 +23,11 @@ export class AdminMetaService {
       public sbAlert: MatSnackBar,
     ) {
         this.$key = 'UJYRE64jy6mFVeay7mHL';
+    }
+
+    getAllMeta(): Observable<Meta[]> {
+        this.metaCollection = this.afs.collection<Meta>('meta');
+        return this.metas = this.metaCollection.valueChanges();
     }
 
     getMeta(): Observable<Meta> {

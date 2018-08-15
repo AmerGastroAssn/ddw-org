@@ -1,3 +1,7 @@
+a:link {
+    color: #2e6da4;
+}
+
 .hero {
     background-position: top center;
     background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png);
@@ -113,7 +117,6 @@ td {
     border: 3px solid rgba(255, 255, 255, .5);
 }
 
-
 /* Post-Meeting Resources */
 h2.card-sec-title {
     padding-top: 2em;
@@ -136,15 +139,27 @@ h2.card-sec-title {
     margin: 5em 0 8em 0;
 }
 
+.bg-blue {
+    background-color: #003F5F;
+    color: #ffffff;
+    padding: 3em 0;
+}
 
+h5 {
+    line-height: 2em;
+}
 
+iframe.daily-news {
+    margin: 2em 0;
+}
 
-
-
+img.headerbar {
+    margin: 1em 0 5em 0;
+}
 
 /* For inline img banner */
 
 /*img.banner-background {*/
-    /*top: 0;*/
-    /*width: 100%;*/
+/*top: 0;*/
+/*width: 100%;*/
 /*}*/

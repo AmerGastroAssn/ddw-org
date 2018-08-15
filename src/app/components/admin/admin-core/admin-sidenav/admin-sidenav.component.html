@@ -75,6 +75,14 @@
         </a>
     </li>
 
+    <!-- * Featured Posts * -->
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/featured-posts']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-passport"></i>&nbsp;Featured Posts</div>
+        </a>
+    </li>
+
     <!-- * Divider * -->
     <li class="sidenav-divider mb-1" *ngIf="isLoggedIn"></li>
 

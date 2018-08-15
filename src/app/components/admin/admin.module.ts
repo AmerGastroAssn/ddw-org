@@ -17,6 +17,8 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminFeaturedBlogPostsComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
+import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,8 @@ import { AdminComponent } from './admin.component';
         AdminMetaComponent,
         AdminAdsComponent,
         AdminCardsEditComponent,
+        AdminFeaturedBlogPostsComponent,
+        AdminFeaturedBlogPostsEditComponent,
     ],
     imports: [
         CommonModule,

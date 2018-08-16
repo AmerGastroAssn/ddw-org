@@ -91,7 +91,9 @@ export class AdminPageService {
             category: formData.category,
             published: formData.published,
             template: formData.template,
-            url: newURL
+            url: newURL,
+            extURL: formData.extURL,
+            isExtURL: formData.isExtURL
         };
 
         return pageRef.set(data)

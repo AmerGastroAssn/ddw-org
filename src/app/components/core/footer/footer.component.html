@@ -36,7 +36,10 @@
         <h5>Register</h5>
         <ul>
             <li *ngFor="let regPage of registerPages$ | async">
-                <a [routerLink]="['/register/', regPage.url]">
+                <a [routerLink]="['/register/', regPage.url]" *ngIf="!regPage.isExtURL">
+                    {{ regPage.title }}
+                </a>
+                <a [href]="regPage.extURL" target="_blank" *ngIf="regPage.isExtURL">
                     {{ regPage.title }}
                 </a>
             </li>
@@ -46,7 +49,10 @@
         <h5>Attendee Planning</h5>
         <ul>
             <li *ngFor="let attPage of attendeePlanningPages$ | async">
-                <a [routerLink]="['/attendee-planning/', attPage.url]">
+                <a [routerLink]="['/attendee-planning/', attPage.url]" *ngIf="!attPage.isExtURL">
+                    {{ attPage.title }}
+                </a>
+                <a [href]="attPage.extURL" target="_blank" *ngIf="attPage.isExtURL">
                     {{ attPage.title }}
                 </a>
             </li>
@@ -58,7 +64,10 @@
         </h5>
         <ul>
             <li *ngFor="let edPage of educationPages$ | async">
-                <a [routerLink]="['/education/', edPage.url]">
+                <a [routerLink]="['/education/', edPage.url]" *ngIf="!edPage.isExtURL">
+                    {{ edPage.title }}
+                </a>
+                <a [href]="edPage.extURL" target="_blank" *ngIf="edPage.isExtURL">
                     {{ edPage.title }}
                 </a>
             </li>
@@ -68,7 +77,10 @@
         <h5>Exhibitor Information</h5>
         <ul>
             <li *ngFor="let exhPage of exhibitorInfoPages$ | async">
-                <a [routerLink]="['/exhibitor-information/', exhPage.url]">
+                <a [routerLink]="['/exhibitor-information/', exhPage.url]" *ngIf="!exhPage.isExtURL">
+                    {{ exhPage.title }}
+                </a>
+                <a [href]="exhPage.extURL" target="_blank" *ngIf="exhPage.isExtURL">
                     {{ exhPage.title }}
                 </a>
             </li>
@@ -78,7 +90,10 @@
         <h5>News &amp; Media</h5>
         <ul>
             <li *ngFor="let newsPage of newsAndMediaPages$ | async">
-                <a [routerLink]="['/news-and-media/', newsPage.url]">
+                <a [routerLink]="['/news-and-media/', newsPage.url]" *ngIf="!newsPage.isExtURL">
+                    {{ newsPage.title }}
+                </a>
+                <a [href]="newsPage.extURL" target="_blank" *ngIf="newsPage.isExtURL">
                     {{ newsPage.title }}
                 </a>
             </li>
@@ -89,7 +104,10 @@
         <h5>Presenters</h5>
         <ul>
             <li *ngFor="let presPage of presentersPages$ | async">
-                <a [routerLink]="['/presenters/', presPage.url]">
+                <a [routerLink]="['/presenters/', presPage.url]" *ngIf="!presPage.isExtURL">
+                    {{ presPage.title }}
+                </a>
+                <a [href]="presPage.extURL" target="_blank" *ngIf="presPage.isExtURL">
                     {{ presPage.title }}
                 </a>
             </li>

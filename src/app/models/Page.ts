@@ -12,6 +12,8 @@ export class Page {
       public published: boolean,
       public template: string,
       public url: string,
+      public extURL?: string,
+      public isExtURL?: boolean,
     ) {
     }
 }

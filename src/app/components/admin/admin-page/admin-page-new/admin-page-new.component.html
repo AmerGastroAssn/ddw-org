@@ -31,6 +31,33 @@
 
 
                     <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="isExtURL"
+                                   formControlName="isExtURL"
+                                   (click)="isExtURLToggle()">
+                            <label class="custom-control-label"
+                                   for="isExtURL">Is this an external URL?</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="isExtURLPage">
+                        <label>External URL <br>
+                            <p class="alert alert-info">All values needed if this is an external URL!</p>
+                        </label>
+                        <input type="url"
+                               class="form-control"
+                               [class.invalid]="!f.extURL.valid && f.extURL.touched"
+                               formControlName="extURL">
+                        <p class="help-block alert alert-warning text-center mt-1"
+                           *ngIf="!f.extURL.valid && f.extURL.touched">
+                            <b>External URL</b> is invalid!
+                        </p>
+                    </div>
+
+
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Author</label>
                         <input type="text"
                                class="form-control"
@@ -43,7 +70,7 @@
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Publish On</label>
                         <input type="string"
                                class="form-control"
@@ -74,7 +101,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label for="category">Template</label>
                         <select class="form-control"
                                 id="template"
@@ -87,7 +114,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Body</label>
                         <ckeditor formControlName="body"
                                   [class.invalid]="!f.body.valid && f.body.touched"
@@ -104,7 +131,7 @@
                         </p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <div class="card image-uploader">
                             <div class="card-body">
                                 <p class="card-title">
@@ -159,12 +186,11 @@
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Banner Image URL
                             <small>(Top banner image)</small>
                         </label>
                         <input type="text"
-                               required
                                class="form-control"
                                [class.invalid]="!f.bannerPhotoURL.valid && f.bannerPhotoURL.touched"
                                [(ngModel)]="bannerPhotoURL"
@@ -175,7 +201,7 @@
                         </p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Image URL
                             <small>(Image on the page)</small>
                         </label>
@@ -209,7 +235,6 @@
                     </div>
 
                     <button type="submit"
-                            [disabled]="!newPageForm.valid"
                             class="btn btn-primary btn-sm mb-5">
                         <i class="fa fa-file-plus"></i>&nbsp;Create
                     </button>

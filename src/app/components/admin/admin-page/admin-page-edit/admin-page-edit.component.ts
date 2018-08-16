@@ -33,6 +33,8 @@ export class AdminPageEditComponent implements OnInit {
     published: boolean;
     template: string;
     url: string;
+    extURL: string;
+    isExtURL: boolean;
     disableAdminOnEdit: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -48,6 +50,7 @@ export class AdminPageEditComponent implements OnInit {
     togglePagePreview = true;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
+    isExtURLPage: boolean;
 
 
     constructor(
@@ -120,19 +123,17 @@ export class AdminPageEditComponent implements OnInit {
                                 Validators.required, Validators.minLength(5)
                             ])
                     ],
-                    body: [page.body,
-                           Validators.compose([
-                               Validators.required, Validators.minLength(100)
-                           ])
-                    ],
-                    author: [page.author, Validators.required],
-                    date: [page.date, Validators.required],
-                    bannerPhotoURL: [page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg', Validators.required],
+                    body: [page.body],
+                    author: [page.author],
+                    date: [page.date],
+                    bannerPhotoURL: [page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
                     photoURL: [page.photoURL],
-                    category: [page.category || ''],
+                    category: [page.category, Validators.required],
                     published: [page.published || false],
-                    template: [page.template, Validators.required],
+                    template: [page.template],
                     url: [newURL, Validators.required],
+                    extURL: [page.extURL],
+                    isExtURL: [page.isExtURL],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -146,6 +147,8 @@ export class AdminPageEditComponent implements OnInit {
                 this.published = this.editPageForm.value.published;
                 this.template = this.editPageForm.value.template;
                 this.url = this.editPageForm.value.url;
+                this.extURL = this.editPageForm.value.extURL;
+                this.isExtURL = this.editPageForm.value.isExtURL;
             }
         });
     }

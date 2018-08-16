@@ -7,8 +7,7 @@
 
 <div class="container mb-3">
     <div class="row">
-        <div class="col-lg-8"></div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 offset-lg-8">
             <div class="card bg-light text-light image-uploader text-center">
                 <div class="card-body p-3">
                     <label class="switcher switcher-md">
@@ -29,20 +28,6 @@
     </div>
 </div>
 
-<!--<div class="row mb-4">-->
-<!--<div class="container text-right">-->
-<!--<button class="btn btn-outline-info"-->
-<!--(click)="toggleListCardView()"-->
-<!--*ngIf="!showListToggle">-->
-<!--<i class="fa fa-th-list"></i> View as list-->
-<!--</button>-->
-<!--<button class="btn btn-outline-info"-->
-<!--(click)="toggleListCardView()"-->
-<!--*ngIf="showListToggle">-->
-<!--<i class="fa fa-credit-card-front"></i> View as Cards-->
-<!--</button>-->
-<!--</div>-->
-<!--</div>-->
 <div class="layout-content mb-5" *ngIf="!showListToggle">
     <div class="container card-list">
         <div class="card-columns">
@@ -57,7 +42,7 @@
 <!-- Layout content -->
 <div class="layout-content mb-5" *ngIf="showListToggle">
     <!-- Content -->
-    <div class="container flex-grow-1 container-p-y">
+    <div class="container-fluid flex-grow-1 container-p-y">
 
         <div class="card p-3">
             <h4 class="font-weight-bold py-3 mb-4 pl-2">
@@ -71,7 +56,7 @@
                         <th scope="col">Banner Image</th>
                         <th scope="col">Body Image</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Body</th>
+                        <th scope="col">External URL</th>
                         <th scope="col">Published</th>
                         <th scope="col">Date</th>
                         <th scope="col">Author</th>
@@ -97,18 +82,21 @@
                                 {{ page.title }}
                             </a>
                         </td>
-                        <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.uid]" class="text-truncate">
-                                <span class="card-text">{{ page.body | slice:0:20 }}</span>
-                            </a>
+                        <td scope="col" style="text-align:center;">
+                            <span class="badge badge-outline-success" *ngIf="page.isExtURL">
+                                Yes
+                            </span>
+                            <span class="badge badge-outline-danger" *ngIf="!page.isExtURL">
+                                No
+                            </span>
                         </td>
                         <td scope="col" style="text-align:center;">
-                                <span class="badge badge-outline-success" *ngIf="page.published">
-                                    Yes
-                                </span>
+                            <span class="badge badge-outline-success" *ngIf="page.published">
+                                Yes
+                            </span>
                             <span class="badge badge-outline-danger" *ngIf="!page.published">
-                                    No
-                                </span>
+                                No
+                            </span>
                         </td>
                         <td scope="col">{{ page.date.toDate() | date:'mediumDate' }}</td>
                         <td scope="col" style="text-align:center;">

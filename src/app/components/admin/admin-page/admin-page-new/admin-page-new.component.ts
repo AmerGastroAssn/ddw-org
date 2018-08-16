@@ -34,6 +34,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     published: boolean;
     template: string;
     url: string;
+    extURL: string;
+    isExtURL: boolean;
     disableAdminOnNew: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -47,6 +49,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     isInvalid: boolean;
     value: any;
     bsConfig: Partial<BsDatepickerConfig>;
+    isExtURLPage: boolean;
 
 
     constructor(
@@ -118,24 +121,18 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
         // Form:
         this.newPageForm = this.fb.group({
-            title: ['',
-                    Validators.compose([
-                        Validators.required, Validators.minLength(5)
-                    ])
-            ],
-            body: ['',
-                   Validators.compose([
-                       Validators.required, Validators.minLength(100)
-                   ])
-            ],
-            author: ['' || this.user.email, Validators.required],
-            date: ['', Validators.required],
+            title: ['', Validators.required],
+            body: ['' || 'extURL'],
+            author: ['' || this.user.email],
+            date: ['' || new Date()],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
-            bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg', Validators.required],
+            bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
             category: ['' || 'Register', Validators.required],
-            published: [''],
-            template: ['' || 'Full Width', Validators.required],
-            url: ['', Validators.required]
+            published: ['' || false],
+            template: ['' || 'Full Width'],
+            url: [''],
+            extURL: [''],
+            isExtURL: ['' || false],
         });
 
         this.title = this.newPageForm.value.title;
@@ -147,6 +144,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.category = this.newPageForm.value.category;
         this.published = this.newPageForm.value.published;
         this.template = this.newPageForm.value.template;
+        this.extURL = this.newPageForm.value.extURL;
+        this.isExtURL = this.newPageForm.value.isExtURL;
     }
 
     ngOnDestroy() {
@@ -156,7 +155,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     onAddNewPage(formData) {
         if (!this.newPageForm.valid) {
-            this.sbAlert.open('Something went wrong, Page was NOT created.', 'Dismiss', {
+            this.sbAlert.open('Page not valid, was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']
@@ -171,6 +170,10 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
                 panelClass: ['snackbar-success']
             });
         }
+    }
+
+    isExtURLToggle() {
+        this.isExtURLPage = !this.isExtURLPage;
     }
 
 }

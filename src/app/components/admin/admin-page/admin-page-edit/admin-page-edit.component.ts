@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
@@ -16,6 +17,24 @@ import { AdminSettingsService } from '../../../../services/admin-settings.servic
     selector: 'ddw-admin-page-edit',
     templateUrl: './admin-page-edit.component.html',
     styleUrls: ['./admin-page-edit.component.css'],
+    animations: [
+        // the fade-in/fade-out animation.
+        trigger('simpleFadeAnimation', [
+
+            // the "in" style determines the "resting" state of the element when it is visible.
+            state('in', style({opacity: 1})),
+
+            // fade in when created. this could also be written as transition('void => *')
+            transition(':enter', [
+                style({opacity: 0}),
+                animate(600 )
+            ]),
+
+            // fade out when destroyed. this could also be written as transition('void => *')
+            transition(':leave',
+              animate(300, style({opacity: 0})))
+        ])
+    ]
 })
 export class AdminPageEditComponent implements OnInit {
     @ViewChild(BsDatepickerDirective) datepicker: BsDatepickerDirective;

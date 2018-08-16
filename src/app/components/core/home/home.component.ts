@@ -60,11 +60,11 @@ export class HomeComponent implements OnInit {
             .subscribe((countdown) => {
                 const newDate = Date.parse(countdown.date);
                 this.time1$ = this.countdownService.timer(new Date(countdown.date.toDate()));
-
+                // To put Date in manually.
+                // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
 
-        // To put Date in manually.
-        // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
+
     }
 
 }

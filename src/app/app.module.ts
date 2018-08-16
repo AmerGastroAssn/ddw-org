@@ -73,7 +73,7 @@ firebase.initializeApp(environment.firebase);
     ],
     imports: [
         BrowserModule,
-        AngularFireModule.initializeApp(environment.firebase, 'ddw-org'),
+        AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireAuthModule,
         AngularFireStorageModule,

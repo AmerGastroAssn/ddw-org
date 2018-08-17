@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
+import { AdminModule } from './components/admin/admin.module';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.component';
@@ -44,6 +45,7 @@ import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { TrustUrlPipe } from './pipes/trust-url.pipe';
 
 
 // Inits the app (Fixes a bug).
@@ -69,7 +71,6 @@ firebase.initializeApp(environment.firebase);
         MetaTagsComponent,
         AdminFeaturedBlogPostsComponent,
         RunScriptsDirective,
-        SafeHtmlPipe
     ],
     imports: [
         BrowserModule,
@@ -84,8 +85,10 @@ firebase.initializeApp(environment.firebase);
         PopoverModule.forRoot(),
         MatSnackBarModule,
         Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+        AdminModule,
     ],
-    exports: [],
+    exports: [
+    ],
     providers: [
         AdminUserService,
         AdminPageService,

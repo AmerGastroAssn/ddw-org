@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-lg-8"></div>
         <div class="col-lg-4">
-            <div class="card bg-light text-light image-uploader text-center">
+            <div class="card bg-light text-light text-center">
                 <div class="card-body p-3">
                     <label class="switcher switcher-md">
                         <input type="checkbox" class="switcher-input">
@@ -104,6 +104,7 @@
                                       [class.invalid]="!f.body.valid && f.body.touched"
                                       [(ngModel)]="page.body"
                                       [readonly]="false"
+                                      [config]="CkeditorConfig"
                                       debounce="500">
                             </ckeditor>
                             <p class="help-block alert alert-warning text-center mt-1"
@@ -300,10 +301,10 @@
 
         <div class="col-md-6" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
             <div class="card">
-                <p>Banner Photo</p>
-                <img class="card-img-top img-fluid" [src]="page.bannerPhotoURL" [alt]="page.title">
-                <p>Page Photo</p>
-                <img class="card-img-top img-fluid" [src]="page.photoURL" [alt]="page.title">
+                <p *ngIf="page.bannerPhotoURL">Banner Photo</p>
+                <img class="card-img-top img-fluid" [src]="page.bannerPhotoURL">
+                <p *ngIf="page.photoURL">Page Photo</p>
+                <img class="card-img-top img-fluid" [src]="page.photoURL">
                 <div class="card-body">
                     <h5 class="card-title">{{ page.title }}</h5>
                     <p class="card-text">
@@ -311,7 +312,7 @@
                         Categories: {{ page.category }} <br>
                         Body: <br>
                     </p>
-                    <div [innerHTML]="page.body"></div>
+                    <div [innerHTML]="page.body | safeHtml"></div>
 
                 </div>
                 <div class="card-footer">

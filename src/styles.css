@@ -1,6 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+/* CUSTOM FRONT-END STYLES */
+
+.cta {
+    background-color: #003f5f;
+    color: #ffffff;
+}
+
+.cta-right > * {
+    padding: 1em 0;
+    vertical-align: middle;
+}
+
+
+
+
+
+/* Application wide Styles */
 body {
     background-color: #fff;
 }
@@ -20,6 +37,7 @@ button:focus {
 
 a.back-pages {
     text-decoration: none;
+    margin: 2em 0;
 }
 
 .snackbar-success {

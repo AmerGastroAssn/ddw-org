@@ -21,9 +21,8 @@
     <div class="row">
         <div class="container">
             <img [src]="page.photoURL"
-                 alt="{{page.title}} image"
                  class="photoURL">
-            <div [innerHTML]="page.body"></div>
+            <div [innerHTML]="page.body | safeHtml"></div>
         </div>
     </div>
 

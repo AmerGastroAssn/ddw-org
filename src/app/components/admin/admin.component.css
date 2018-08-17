@@ -1,8 +1,4 @@
 /* Global Admin Styles */
-flash-messages {
-
-}
-
 p, div, tr, th, tr, td, span, input.form-control {
     font-size: 14px;
 }
@@ -11,11 +7,18 @@ p, div, tr, th, tr, td, span, input.form-control {
     background-color: #282E3E !important;
 }
 
+
 button[mat-mini-fab] {
-    background-color: #20A2F0;
-    color: #fcfcfc;
+    background-color: #1C202B;
+    margin: 0.5em 0 0 1em;
+    border: 3px solid #9d9fa1;
 }
 
+i.fa-chevron-double-left,
+i.fa-chevron-double-right {
+    color: #9d9fa1;
+    padding-bottom: 8px;
+}
 
 /* Mobile Queries */
 

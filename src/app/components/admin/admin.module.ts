@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatMenuModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
@@ -16,6 +18,7 @@ import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settin
 import { AdminSidenavComponent } from './admin-core/admin-sidenav/admin-sidenav.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 
@@ -47,11 +50,14 @@ import { AdminComponent } from './admin.component';
         ProgressbarModule,
         BsDatepickerModule,
         PopoverModule,
+        AdminPageModule,
     ],
     exports: [
         MatButtonModule,
         MatMenuModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        SafeHtmlPipe,
+        TrustUrlPipe
     ]
 })
 export class AdminModule {}

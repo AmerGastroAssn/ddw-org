@@ -1,3 +1,14 @@
+nav#layout-navbar {
+    background-color: #1C202B;
+    color: #9d9fa1;
+}
+
+li > a.nav-link {
+    /*color: #5B5E63;*/
+    /*color: #4F5A78;*/
+    color: #9d9fa1;
+}
+
 img.user-image {
     max-width: 25px;
 }

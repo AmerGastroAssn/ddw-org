@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
@@ -71,6 +72,12 @@ export class AdminPageEditComponent implements OnInit {
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;
 
+    CkeditorConfig = {
+        allowedContent: true,
+        height: 500,
+        extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
+    };
+
 
     constructor(
       private adminPageService: AdminPageService,
@@ -81,6 +88,7 @@ export class AdminPageEditComponent implements OnInit {
       private settingsService: AdminSettingsService,
       private storage: AngularFireStorage,
       private sbAlert: MatSnackBar,
+      private sanitizer: DomSanitizer,
     ) {
         // Datepicker Config
         this.bsConfig = Object.assign({},

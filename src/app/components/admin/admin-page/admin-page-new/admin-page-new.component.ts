@@ -52,6 +52,12 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     isExtURLPage: boolean;
 
 
+    CkeditorConfig = {
+        allowedContent: true,
+        height: 500,
+        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
+    };
+
     constructor(
       private adminPageService: AdminPageService,
       private router: Router,
@@ -122,7 +128,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         // Form:
         this.newPageForm = this.fb.group({
             title: ['', Validators.required],
-            body: ['' || 'extURL'],
+            body: [''],
             author: ['' || this.user.email],
             date: ['' || new Date()],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
@@ -152,7 +158,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     }
 
-
     onAddNewPage(formData) {
         if (!this.newPageForm.valid) {
             this.sbAlert.open('Page not valid, was NOT created.', 'Dismiss', {
@@ -175,5 +180,4 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     isExtURLToggle() {
         this.isExtURLPage = !this.isExtURLPage;
     }
-
 }

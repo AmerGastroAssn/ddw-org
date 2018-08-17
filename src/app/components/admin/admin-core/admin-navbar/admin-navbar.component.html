@@ -1,4 +1,4 @@
-<nav class="layout-navbar navbar navbar-expand-lg bg-white container-p-x" id="layout-navbar">
+<nav class="layout-navbar navbar navbar-expand-lg text-light container-p-x" id="layout-navbar">
     <!--<a class="navbar-brand" href="#">DDW<sup>&reg;</sup> Admin</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,8 @@
 
         <ul class="navbar-nav ml-auto text-right">
             <li class="nav-item" *ngIf="isLoggedIn">
-                <button class="btn btn-primary btn-sm float-right mt-2 mr-5"
+                <button class="btn new-page btn-sm float-right mt-2 mr-5"
+                        style="background-color:#9d9fa1; border-radius:0;"
                         [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
                 </button>
             </li>

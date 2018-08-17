@@ -1,7 +1,7 @@
 <!-- * ADMIN-PAGE-ITEM * -->
 <a [routerLink]="['/admin/pages/', page.$key]">
     <div class="card mb-2" [class.bg-light]="page.isExtURL">
-        <img class="card-img-top" [src]="page.photoURL" [alt]="page.title" *ngIf="!page.isExtURL">
+        <img class="card-img-top" [src]="page.photoURL" *ngIf="!page.isExtURL">
         <div class="card-body">
             <h5 class="card-title">{{ page.title }}</h5>
             <h6 class="card-subtitle">{{ page.date.toDate() | date:'mediumDate' }}</h6>

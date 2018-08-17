@@ -118,14 +118,11 @@
                     <div class="form-group" *ngIf="!isExtURLPage">
                         <label>Body</label>
                         <ckeditor formControlName="body"
+                                  [config]="CkeditorConfig"
                                   [class.invalid]="!f.body.valid && f.body.touched"
                                   [readonly]="false"
                                   debounce="500">
                         </ckeditor>
-                        <!--<textarea class="form-control"-->
-                        <!--rows="10"-->
-                        <!--formControlName="body">-->
-                        <!--</textarea>-->
                         <p class="help-block alert alert-warning text-center mt-1"
                            *ngIf="!f.body.valid && f.body.touched">
                             The <b>Body</b> with at least 100 characters is required!

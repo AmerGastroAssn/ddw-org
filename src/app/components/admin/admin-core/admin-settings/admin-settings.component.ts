@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
@@ -15,18 +15,19 @@ import { CountdownService } from '../../../../services/countdown.service';
     styleUrls: ['./admin-settings.component.css']
 })
 export class AdminSettingsComponent implements OnInit {
-    @ViewChild('settingsForm') settingsForm: NgForm;
-    settingsAllowed: boolean; // Allow settings to be edited/viewed.
+    // Settings
+    settingsForm: FormGroup;
     settings: Settings;
+    $key: string;
     allowSignup: boolean;
     allowSettings: boolean;
     disableAdmin: boolean;
+    uid: string;
+    settingsAllowed: boolean; // Allow settings to be edited/viewed.
     // Countdown
     countdownForm: FormGroup;
     countdown: Countdown;
     date: any;
-    $key: string;
-    uid: string;
     bsConfig: Partial<BsDatepickerConfig>;
     // DDW Daily Video Form
     dailyVideoForm: FormGroup;
@@ -41,6 +42,27 @@ export class AdminSettingsComponent implements OnInit {
       private fb: FormBuilder,
       private countdownService: CountdownService
     ) {
+        // Settings Form
+        this.settingsService.getSettings().subscribe((settingsData) => {
+            if (settingsData !== null) {
+                this.settings = settingsData;
+                // Form:
+                this.settingsForm = this.fb.group({
+                    $key: [this.settings.$key],
+                    allowSignup: [this.settings.allowSignup],
+                    allowSettings: [this.settings.allowSettings],
+                    disableAdmin: [this.settings.disableAdmin],
+                    uid: [this.settings.uid],
+                });
+
+                this.$key = this.settingsForm.value.$key;
+                this.allowSignup = this.settingsForm.value.allowSignup;
+                this.allowSettings = this.settingsForm.value.allowSettings;
+                this.disableAdmin = this.settingsForm.value.disableAdmin;
+                this.uid = this.settingsForm.value.uid;
+            }
+        });
+
         // Get Countdown
         this.countdownService.getCountdown().subscribe((countdown) => {
             if (countdown !== null) {
@@ -65,6 +87,7 @@ export class AdminSettingsComponent implements OnInit {
               dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
           });
 
+
         // Video URL
         this.settingsService.getVideoURL().subscribe((url) => {
             if (url !== null) {
@@ -87,24 +110,17 @@ export class AdminSettingsComponent implements OnInit {
         // Settings
         this.settingsAllowed = this.settingsService.getAdminSettings().allowSettings;
 
-        this.settings = this.settingsService.getAdminSettings();
-        this.allowSignup = this.settings.allowSignup;
-        this.disableAdmin = this.settings.disableAdmin;
-        this.allowSettings = this.settings.allowSettings;
+        // this.settings = this.settingsService.getAdminSettings();
+        // this.allowSignup = this.settings.allowSignup;
+        // this.disableAdmin = this.settings.disableAdmin;
+        // this.allowSettings = this.settings.allowSettings;
 
 
     }
 
     onSettingsSubmit(formData) {
-        const value = formData.value;
-        this.settingsService.saveSettings(value);
-        console.log(value);
-
-        this.sbAlert.open('Settings Saved!', 'Dismiss', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            panelClass: ['snackbar-success']
-        });
+        this.settingsService.updateSettings(formData);
+        // console.log(formData);
     }
 
     onCountdownSubmit(cdFormData) {

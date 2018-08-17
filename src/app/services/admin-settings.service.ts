@@ -20,23 +20,6 @@ export class AdminSettingsService {
     settings$key: string;
 
 
-    /*------------------------------------------------
-     Default settings pre-defined before admin can set them.
-     If you set disableSettings === true,
-     it will prevent page from being rendered
-     1. allowSignup allows users to be able to create account.
-     2. allowSettings allows admin to edit their settings.
-     3. disableAdmin prevents a user from making new user admin.
-     ------------------------------------------------*/
-    presetSettings: Settings = {
-        $key: this.settings$key,
-        allowSignup: true,
-        allowSettings: true,
-        disableAdmin: false,
-        uid: this.settings$key,
-    };
-
-
     constructor(
       private sbAlert: MatSnackBar,
       private afs: AngularFirestore,
@@ -51,9 +34,6 @@ export class AdminSettingsService {
 
         if (localStorage.getItem('settings') !== null) {
             this.localSettings = JSON.parse(localStorage.getItem('settings'));
-        } else {
-            // this.localSettings = this.presetSettings;
-            // this.saveSettings(this.settingsAdded);
         }
     }
 
@@ -65,13 +45,11 @@ export class AdminSettingsService {
             return this.localSettings = JSON.parse(local);
         } else {
             this.saveLocalSettings();
-            // return this.presetSettings;
         }
     }
 
 
     saveLocalSettings() {
-        // const newSettings = new Settings(settings);
         localStorage.setItem('settings', JSON.stringify(this.settings));
         this.settingsAdded.emit(this.settings);
     }

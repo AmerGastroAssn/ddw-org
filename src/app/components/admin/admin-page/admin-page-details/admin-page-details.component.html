@@ -1,5 +1,5 @@
 <!-- * ADMIN-PAGE-DETAILS (PREVIEW) * -->
-<div class="row mb-4" >
+<div class="row mb-4">
     <div class="container">
         <!-- * Edit Navbar Panel * -->
         <nav class="navbar navbar-expand-lg bg-light text-light" *ngIf="page">
@@ -51,14 +51,31 @@
     </div>
 </div>
 
-<div class="row mb-5" [@simpleFadeAnimation]="'in'">
-    <div *ngIf="page">
-        <img class="img-fluid" [src]="page.photoURL" [alt]="page.title">
+<div *ngIf="page" [@simpleFadeAnimation]="'in'">
 
-        <div class="container-fluid">
-            <h5 class="card-title">{{ page.title }}</h5>
-            <div [innerHTML]="page.body | safeHtml"></div>
-            <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
+    <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
+
+    <div class="container">
+        <h1 class="title">{{ page.title }}</h1>
+    </div>
+
+    <div class="row crumbs">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/home']">Register</a>
+                </li>
+                <li class="breadcrumb-item active">{{page.title}}</li>
+            </ol>
         </div>
     </div>
+
+    <div class="row">
+        <div class="container">
+            <img [src]="page.photoURL"
+                 class="photoURL">
+            <div [innerHTML]="page.body | safeHtml" class="details-body"></div>
+        </div>
+    </div>
+
 </div>

@@ -2,6 +2,7 @@ a {
     text-decoration: none;
 }
 
+
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 768px) {
     .card {

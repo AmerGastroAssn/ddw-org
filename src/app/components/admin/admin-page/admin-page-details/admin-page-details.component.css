@@ -9,3 +9,89 @@ li.nav-item {
 .navbar-brand {
 
 }
+
+/* Preview */
+img.bannerPhotoURL {
+    top: 0;
+    left: 0;
+    position: relative;
+    max-height: 350px;
+    width: 100%;
+    /*z-index: 0;*/
+}
+
+h1.title {
+    position: absolute;
+    top: 47%;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+p {
+
+}
+
+.row.crumbs {
+    padding: 2em 0;
+}
+
+ol.breadcrumb, li.breadcrumb-item {
+    background-color: #fff;
+    font-size: 18px;
+}
+
+img.photoURL {
+    max-width: 450px;
+    float: right;
+    margin: 0 0 1em 1em;
+}
+
+h2.card-sec-title {
+    padding-top: 2em;
+}
+
+.underline {
+    border-bottom: 2px solid #FEB512;
+    margin-top: 1em;
+}
+
+.row.cards {
+    margin: 5em 0 8em 0;
+}
+
+
+.card-body {
+    line-height: 2em;
+}
+
+.details-body {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.details-body > h2 {
+    font-weight: 700;
+}
+
+.card-text {
+    padding: 2em;
+}
+
+a.btn.btn-warning.btn-lg {
+    background-color: #F47700;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+a.btn.btn-warning.btn-lg:hover {
+    background-color: #FEB512;
+    color: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-weight: bold;
+}

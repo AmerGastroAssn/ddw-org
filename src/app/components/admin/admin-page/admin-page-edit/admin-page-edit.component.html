@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <h2>Edit <b><i>{{ page.title }}</i></b></h2>
+                        <h2>Edit: <b>{{ page.title }}</b></h2>
                     </div>
 
                     <form [formGroup]="editPageForm"
@@ -301,26 +301,31 @@
 
         <div class="col-md-6" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
             <div class="card">
-                <p *ngIf="page.bannerPhotoURL">Banner Photo</p>
-                <img class="card-img-top img-fluid" [src]="page.bannerPhotoURL">
-                <p *ngIf="page.photoURL">Page Photo</p>
-                <img class="card-img-top img-fluid" [src]="page.photoURL">
-                <div class="card-body">
-                    <h5 class="card-title">{{ page.title }}</h5>
-                    <p class="card-text">
-                        {{ page.author }} <br>
-                        Categories: {{ page.category }} <br>
-                        Body: <br>
-                    </p>
-                    <div [innerHTML]="page.body | safeHtml"></div>
+                <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
 
+                <div class="container">
+                    <h1 class="title">{{ page.title }}</h1>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Publish Date: {{ page.date.toDate() | date:'fullDate' }}</small>
+
+                <div class="row crumbs">
+                    <div class="container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a [routerLink]="['/home']">Register</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{page.title}}</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container">
+                        <img [src]="page.photoURL"
+                             class="photoURL">
+                        <div [innerHTML]="page.body | safeHtml" class="preview-body"></div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>

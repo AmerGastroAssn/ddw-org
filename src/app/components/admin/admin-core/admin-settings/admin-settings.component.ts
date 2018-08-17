@@ -120,7 +120,6 @@ export class AdminSettingsComponent implements OnInit {
 
     onSettingsSubmit(formData) {
         this.settingsService.updateSettings(formData);
-        // console.log(formData);
     }
 
     onCountdownSubmit(cdFormData) {

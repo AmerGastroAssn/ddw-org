@@ -1,6 +1,8 @@
 /* Global Admin Styles */
 p, div, tr, th, tr, td, span, input.form-control {
     font-size: 14px;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
+
 }
 
 .bg-dark {

@@ -66,19 +66,19 @@
                     <tbody>
                     <tr *ngFor="let page of pageList | async;">
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.uid]">
+                            <a [routerLink]="['/admin/pages/', page.url]">
                                 <img [src]="page.bannerPhotoURL"
                                      class="page-image">
                             </a>
                         </td>
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.uid]">
+                            <a [routerLink]="['/admin/pages/', page.url]">
                                 <img [src]="page.photoURL"
                                      class="page-image">
                             </a>
                         </td>
                         <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.uid]" class="text-truncate">
+                            <a [routerLink]="['/admin/pages/', page.url]" class="text-truncate">
                                 {{ page.title }}
                             </a>
                         </td>
@@ -112,7 +112,7 @@
                         <!--</td>-->
                         <td>
                             <a class="btn btn-default btn-xs icon-btn md-btn-flat user-tooltip"
-                               [routerLink]="['/admin/pages/', page.uid]">
+                               [routerLink]="['/admin/pages/', page.url]">
                                 <i class="fa fa-pencil"></i>&nbsp;
                             </a>
                         </td>

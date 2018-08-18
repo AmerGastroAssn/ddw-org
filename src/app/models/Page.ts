@@ -12,6 +12,7 @@ export class Page {
       public published: boolean,
       public template: string,
       public url: string,
+      public sortOrder: number,
       public extURL?: string,
       public isExtURL?: boolean,
     ) {

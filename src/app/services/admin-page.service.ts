@@ -93,7 +93,8 @@ export class AdminPageService {
             template: formData.template,
             url: newURL,
             extURL: formData.extURL,
-            isExtURL: formData.isExtURL
+            isExtURL: formData.isExtURL,
+            sortOrder: formData.sortOrder
         };
 
         return pageRef.set(data)

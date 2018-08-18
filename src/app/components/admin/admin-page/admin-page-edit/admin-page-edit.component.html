@@ -161,6 +161,23 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="category">Sort Order <br>
+                                <small>Order shown in navbar dropdown category</small>
+                            </label>
+                            <select class="form-control"
+                                    id="sortOrder"
+                                    [class.invalid]="!f.sortOrder.valid && f.sortOrder.touched"
+                                    formControlName="sortOrder">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </div>
+
                         <div class="form-group" *ngIf="!isExtURL">
                             <label for="category">Template</label>
                             <select class="form-control"

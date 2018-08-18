@@ -36,6 +36,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     url: string;
     extURL: string;
     isExtURL: boolean;
+    sortOrder: number;
     disableAdminOnNew: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -139,6 +140,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             url: [''],
             extURL: [''],
             isExtURL: ['' || false],
+            sortOrder: ['' || 1],
         });
 
         this.title = this.newPageForm.value.title;
@@ -152,6 +154,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.template = this.newPageForm.value.template;
         this.extURL = this.newPageForm.value.extURL;
         this.isExtURL = this.newPageForm.value.isExtURL;
+        this.sortOrder = this.newPageForm.value.sortOrder;
     }
 
     ngOnDestroy() {

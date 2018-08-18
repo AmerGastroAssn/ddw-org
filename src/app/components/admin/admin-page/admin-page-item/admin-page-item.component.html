@@ -1,5 +1,5 @@
 <!-- * ADMIN-PAGE-ITEM * -->
-<a [routerLink]="['/admin/pages/', page.$key]">
+<a [routerLink]="['/admin/pages/', page.url]">
     <div class="card mb-2" [class.bg-light]="page.isExtURL">
         <img class="card-img-top" [src]="page.photoURL" *ngIf="!page.isExtURL">
         <div class="card-body">

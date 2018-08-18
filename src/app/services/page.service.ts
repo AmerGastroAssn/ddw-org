@@ -37,6 +37,7 @@ export class PageService {
                       .where('published', '==', true);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
+
     }
 
 

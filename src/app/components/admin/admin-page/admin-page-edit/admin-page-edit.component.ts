@@ -55,6 +55,7 @@ export class AdminPageEditComponent implements OnInit {
     url: string;
     extURL: string;
     isExtURL: boolean;
+    sortOrder: number;
     disableAdminOnEdit: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -161,6 +162,7 @@ export class AdminPageEditComponent implements OnInit {
                     url: [newURL, Validators.required],
                     extURL: [page.extURL],
                     isExtURL: [page.isExtURL],
+                    sortOrder: [page.sortOrder],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -176,6 +178,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.url = this.editPageForm.value.url;
                 this.extURL = this.editPageForm.value.extURL;
                 this.isExtURL = this.editPageForm.value.isExtURL;
+                this.sortOrder = this.editPageForm.value.sortOrder;
             }
         });
     }

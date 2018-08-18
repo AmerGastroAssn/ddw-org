@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 
@@ -11,27 +14,28 @@ import { PageService } from '../../../services/page.service';
 })
 export class EducationComponent implements OnInit {
     page: Page;
-    id: string;
+    url: string;
+    cards$: Observable<Card[]>;
 
     constructor(
       private pageService: PageService,
       private adminPageService: AdminPageService,
       private route: ActivatedRoute,
+      private cardService: AdminCardService,
     ) {
-        // Get id from url
-        this.id = this.route.snapshot.params['id'];
     }
 
     ngOnInit() {
-        // this.pages$ = this.pageService.getRegisterPages();
+        this.cards$ = this.cardService.getAllCards();
 
-        // Get each user's details
-        this.adminPageService.getPage(this.id).subscribe((page) => {
-            if (page !== null) {
+        // Gets $key which is a Slug
+        this.route.params.switchMap((params: Params) => {
+            this.url = params['id'];
+
+            return this.adminPageService.getPage(this.url);
+        })
+            .subscribe((page) => {
                 this.page = page;
-                console.log('this.page', this.page);
-            }
-        });
+            });
     }
-
 }

@@ -44,7 +44,7 @@
                 <div class="dropdown-menu"
                      aria-labelledby="attendeeDropdown">
                     <a class="dropdown-item"
-                       *ngFor="let attnPage of attendeePlanningPages$ | async"
+                       *ngFor="let attnPage of attendeePlanningPages$"
                        [routerLink]="['/attendee-planning/', attnPage.url]">
                         {{ attnPage.title }}
                     </a>
@@ -64,7 +64,7 @@
                 <div class="dropdown-menu"
                      aria-labelledby="edDropdown">
                     <a class="dropdown-item"
-                       *ngFor="let edPage of educationPages$ | async"
+                       *ngFor="let edPage of educationPages$"
                        [routerLink]="['/education/', edPage.url]">
                         {{ edPage.title }}
                     </a>
@@ -84,7 +84,7 @@
                 <div class="dropdown-menu"
                      aria-labelledby="exhDropdown">
                     <a class="dropdown-item"
-                       *ngFor="let exhPage of exhibitorInfoPages$ | async"
+                       *ngFor="let exhPage of exhibitorInfoPages$"
                        [routerLink]="['/exhibitor-information/', exhPage.url]">
                         {{ exhPage.title }}
                     </a>
@@ -105,7 +105,7 @@
                 <div class="dropdown-menu"
                      aria-labelledby="newsDropdown">
                     <a class="dropdown-item"
-                       *ngFor="let newsPage of newsAndMediaPages$ | async"
+                       *ngFor="let newsPage of newsAndMediaPages$"
                        [routerLink]="['/news-and-media/', newsPage.url]">
                         {{ newsPage.title }}
                     </a>
@@ -125,7 +125,7 @@
                 <div class="dropdown-menu"
                      aria-labelledby="presDropdown">
                     <a class="dropdown-item"
-                       *ngFor="let presPage of presentersPages$ | async"
+                       *ngFor="let presPage of presentersPages$"
                        [routerLink]="['/presenters/', presPage.url]">
                         {{ presPage.title }}
                     </a>

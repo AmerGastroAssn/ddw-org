@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/switchMap';
@@ -13,9 +13,9 @@ import { PageService } from '../../../services/page.service';
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit {
     page: Page;
-    id: string;
+    url: string;
     cards$: Observable<Card[]>;
 
     constructor(
@@ -24,32 +24,20 @@ export class RegisterComponent implements OnInit, OnDestroy {
       private route: ActivatedRoute,
       private cardService: AdminCardService,
     ) {
-        // Get id from url
-        // this.id = this.route.snapshot.params['id'];
-
     }
 
     ngOnInit() {
         this.cards$ = this.cardService.getAllCards();
-        // this.pages$ = this.pageService.getRegisterPages();
 
-        // Get each user's details
-        // this.page = this.pageService.getPage(this.id);
-
+        // Gets $key which is a Slug
         this.route.params.switchMap((params: Params) => {
-            this.id = params['id'];
+            this.url = params['id'];
 
-            return this.adminPageService.getPage(this.id);
+            return this.adminPageService.getPage(this.url);
         })
             .subscribe((page) => {
                 this.page = page;
             });
-
-
-    }
-
-    ngOnDestroy() {
-
     }
 
 }

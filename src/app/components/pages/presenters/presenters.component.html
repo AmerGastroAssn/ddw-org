@@ -1,3 +1,52 @@
-<p>
-  presenters works!
-</p>
+<!-- * PRESENTERS-PAGE * -->
+<div *ngIf="page">
+  <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
+
+  <div class="container">
+    <h1 class="title">{{ page.title }}</h1>
+  </div>
+
+  <div class="row crumbs">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a [routerLink]="['/home']">Register</a>
+        </li>
+        <li class="breadcrumb-item active">{{page.title}}</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <img [src]="page.photoURL"
+           class="photoURL">
+      <div [innerHTML]="page.body | safeHtml"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <div class="col-md-4 offset-md-4 text-center">
+        <h2 class="card-sec-title">Additional Details</h2>
+        <div class="col-4 offset-4">
+          <div class="underline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row cards">
+    <div class="container">
+      <div class="card-deck">
+        <div class="row">
+          <ddw-admin-cards
+                  class="col-md-4"
+                  *ngFor="let cardEl of cards$ | async"
+                  [card]="cardEl">
+          </ddw-admin-cards>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

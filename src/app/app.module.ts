@@ -31,6 +31,7 @@ import { PagesComponent } from './components/pages/pages.component';
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
+import { RunScriptsDirective } from './directives/run-scripts.directive';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCardService } from './services/admin-card.service';
 import { AdminFeaturedPostService } from './services/admin-featured-post.service';
@@ -43,9 +44,6 @@ import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
-import { RunScriptsDirective } from './directives/run-scripts.directive';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
-import { TrustUrlPipe } from './pipes/trust-url.pipe';
 
 
 // Inits the app (Fixes a bug).

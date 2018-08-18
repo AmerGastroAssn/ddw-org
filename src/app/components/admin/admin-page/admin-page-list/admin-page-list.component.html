@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div class="layout-content mb-5" *ngIf="!showListToggle">
+<div class="layout-content mb-5" *ngIf="!showListToggle" [@simpleFadeAnimation]="'in'">
     <div class="container card-list">
         <div class="card-columns">
             <ddw-admin-page-item
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Layout content -->
-<div class="layout-content mb-5" *ngIf="showListToggle">
+<div class="layout-content mb-5" *ngIf="showListToggle" [@simpleFadeAnimation]="'in'">
     <!-- Content -->
     <div class="container-fluid flex-grow-1 container-p-y">
 

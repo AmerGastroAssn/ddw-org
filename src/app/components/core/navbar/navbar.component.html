@@ -25,7 +25,7 @@
                      aria-labelledby="registerDropdown">
                     <a class="dropdown-item"
                        *ngFor="let regPage of registerPages$ | async"
-                       [routerLink]="['/register/', regPage.$key]">
+                       [routerLink]="['/register/', regPage.url]">
                         {{ regPage.title }}
                     </a>
                 </div>

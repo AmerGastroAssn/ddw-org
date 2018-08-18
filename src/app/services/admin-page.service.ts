@@ -77,8 +77,8 @@ export class AdminPageService {
     setPage(formData) {
         const new$key = this.afs.createId();
         const newURL: string = this.string_to_slug(formData.title);
-        // Sets user data to firestore on login
-        const pageRef: AngularFirestoreDocument<any> = this.afs.doc(`pages/${new$key}`);
+        // Creates new page with slug as the $key
+        const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${newURL}`);
         const data: Page = {
             $key: new$key,
             uid: new$key,

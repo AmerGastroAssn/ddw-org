@@ -11,8 +11,14 @@ export class PageService {
     pages$: Observable<Page[]>;
     pageDoc: AngularFirestoreDocument<Page>;
     page$: Observable<Page>;
+    currentTime: Date;
+    timeToNum: number;
 
     constructor(private afs: AngularFirestore) {
+        this.currentTime = new Date();
+        this.timeToNum = this.currentTime.getTime();
+        console.log('this.currentTime', this.currentTime.valueOf());
+        console.log('geteTIme()', this.currentTime.getTime());
     }
 
     getPage(id: string): Observable<Page> {
@@ -34,8 +40,10 @@ export class PageService {
     getRegisterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'register')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
+
         return this.pages$ = this.pagesCollection.valueChanges();
 
     }

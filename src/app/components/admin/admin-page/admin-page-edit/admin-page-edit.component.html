@@ -100,7 +100,7 @@
 
                         <div class="form-group" *ngIf="!isExtURL">
                             <label>Body</label>
-                            <ckeditor formControlName="body"
+                            <ckeditor [formControl]="editPageForm.controls['body']"
                                       [class.invalid]="!f.body.valid && f.body.touched"
                                       [(ngModel)]="page.body"
                                       [readonly]="false"

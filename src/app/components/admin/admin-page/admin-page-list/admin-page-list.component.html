@@ -56,6 +56,7 @@
                         <th scope="col">Banner Image</th>
                         <th scope="col">Body Image</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Category/Sort #</th>
                         <th scope="col">External URL</th>
                         <th scope="col">Published</th>
                         <th scope="col">Date</th>
@@ -79,7 +80,12 @@
                         </td>
                         <td scope="col">
                             <a [routerLink]="['/admin/pages/', page.url]" class="text-truncate">
-                                {{ page.title }}
+                                {{ page.title | slice:0:20 }}
+                            </a>
+                        </td>
+                        <td scope="col">
+                            <a [routerLink]="['/admin/pages/', page.url]" class="btn btn-default">
+                                {{ page.category }} <span class="badge">{{ page.sortOrder }}</span>
                             </a>
                         </td>
                         <td scope="col" style="text-align:center;">
@@ -98,7 +104,7 @@
                                 No
                             </span>
                         </td>
-                        <td scope="col">{{ page.date.toDate() | date:'mediumDate' }}</td>
+                        <td scope="col">{{ page.date | date:'mediumDate' }}</td>
                         <td scope="col" style="text-align:center;">
                             <span>{{ page.author }}</span>
                         </td>

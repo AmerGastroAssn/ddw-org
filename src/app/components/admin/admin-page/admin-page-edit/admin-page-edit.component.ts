@@ -23,17 +23,17 @@ import { AdminSettingsService } from '../../../../services/admin-settings.servic
         trigger('simpleFadeAnimation', [
 
             // the "in" style determines the "resting" state of the element when it is visible.
-            state('in', style({opacity: 1})),
+            state('in', style({ opacity: 1 })),
 
             // fade in when created. this could also be written as transition('void => *')
             transition(':enter', [
-                style({opacity: 0}),
-                animate(600 )
+                style({ opacity: 0 }),
+                animate(600)
             ]),
 
             // fade out when destroyed. this could also be written as transition('void => *')
             transition(':leave',
-              animate(300, style({opacity: 0})))
+              animate(300, style({ opacity: 0 })))
         ])
     ]
 })
@@ -169,7 +169,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.title = this.editPageForm.value.title;
                 this.body = this.editPageForm.value.body;
                 this.author = this.editPageForm.value.author;
-                this.date = this.editPageForm.value.date;
+                this.date = this.editPageForm.value.date.valueOf();
                 this.bannerPhotoURL = this.editPageForm.value.bannerPhotoURL;
                 this.photoURL = this.editPageForm.value.photoURL;
                 this.category = this.editPageForm.value.category;

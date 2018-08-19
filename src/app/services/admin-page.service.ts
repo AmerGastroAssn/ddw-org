@@ -11,6 +11,7 @@ export class AdminPageService {
     pageCollection: AngularFirestoreCollection<Page>;
     pageDoc: AngularFirestoreDocument<Page>;
     page: Observable<Page>;
+    timestampToNum: number;
 
 
     string_to_slug = (str) => {
@@ -77,6 +78,7 @@ export class AdminPageService {
     setPage(formData) {
         const new$key = this.afs.createId();
         const newURL: string = this.string_to_slug(formData.title);
+        const timestampToNum = formData.date.getTime();
         // Creates new page with slug as the $key
         const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${newURL}`);
         const data: Page = {
@@ -85,7 +87,7 @@ export class AdminPageService {
             title: formData.title,
             body: formData.body,
             author: formData.author,
-            date: formData.date,
+            date: timestampToNum,
             photoURL: formData.photoURL,
             bannerPhotoURL: formData.bannerPhotoURL,
             category: formData.category,
@@ -102,7 +104,58 @@ export class AdminPageService {
                       .catch((error) => console.log(`ERROR~aP: `, error));
     }
 
-    updatePage(updatedPage, id: string): void {
+
+    updatePage(formData, url: string) {
+        // const newURL: string = this.string_to_slug(formData.title);
+        const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${url}`);
+        if (typeof formData.date === 'number') {
+            const timestampToNum = formData.date;
+            const data: Page = {
+                $key: url,
+                uid: url,
+                title: formData.title,
+                body: formData.body,
+                author: formData.author,
+                date: timestampToNum,
+                photoURL: formData.photoURL,
+                bannerPhotoURL: formData.bannerPhotoURL,
+                category: formData.category,
+                published: formData.published,
+                template: formData.template,
+                url: url,
+                extURL: formData.extURL,
+                isExtURL: formData.isExtURL,
+                sortOrder: formData.sortOrder
+            };
+            return pageRef.update(data)
+                          .then(() => this.router.navigate(['/admin/pages']))
+                          .catch((error) => console.log(`ERROR~aP: `, error));
+        } else {
+            const timestampToNum = formData.date.getTime();
+            const data: Page = {
+                $key: url,
+                uid: url,
+                title: formData.title,
+                body: formData.body,
+                author: formData.author,
+                date: timestampToNum,
+                photoURL: formData.photoURL,
+                bannerPhotoURL: formData.bannerPhotoURL,
+                category: formData.category,
+                published: formData.published,
+                template: formData.template,
+                url: url,
+                extURL: formData.extURL,
+                isExtURL: formData.isExtURL,
+                sortOrder: formData.sortOrder
+            };
+            return pageRef.update(data)
+                          .then(() => this.router.navigate(['/admin/pages']))
+                          .catch((error) => console.log(`ERROR~aP: `, error));
+        }
+    }
+
+    updatePage2(updatedPage, id: string): void {
         this.pageDoc = this.afs.doc<Page>(`pages/${id}`);
         this.pageDoc.update(updatedPage)
             .then((page) => this.router.navigate([`/admin/pages/${id}`]))

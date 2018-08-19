@@ -5,7 +5,7 @@ export class Page {
       public title: string,
       public body: string,
       public author: string,
-      public date: any,
+      public date: number,
       public photoURL: string,
       public bannerPhotoURL: string,
       public category: string,

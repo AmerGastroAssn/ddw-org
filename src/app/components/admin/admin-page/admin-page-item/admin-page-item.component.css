@@ -2,6 +2,14 @@ a {
     text-decoration: none;
 }
 
+img.bannerPhotoURL {
+    /*max-width: 30px;*/
+}
+
+img.photoURL {
+    max-width: 50px;
+    float: right;
+}
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 768px) {

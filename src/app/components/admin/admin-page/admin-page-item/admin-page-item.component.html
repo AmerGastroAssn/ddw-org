@@ -1,15 +1,18 @@
 <!-- * ADMIN-PAGE-ITEM * -->
 <a [routerLink]="['/admin/pages/', page.url]">
     <div class="card mb-2" [class.bg-light]="page.isExtURL">
-        <img class="card-img-top" [src]="page.photoURL" *ngIf="!page.isExtURL">
+        <img class="card-img-top" [src]="page.bannerPhotoURL" *ngIf="!page.isExtURL">
         <div class="card-body">
-            <h5 class="card-title">{{ page.title }}</h5>
+            <h5 class="card-title">
+                {{ page.title }}
+                <img [src]="page.photoURL" class="photoURL">
+            </h5>
             <h6 class="card-subtitle">{{ page.date | date:'mediumDate' }}</h6>
             <hr>
             <p class="card-text" *ngIf="!page.isExtURL">{{ page.body | slice:0:75 }}...</p>
             <a [href]="page.extURL" target="_blank" *ngIf="page.isExtURL">
-                <h6 class="btn btn-xs btn-outline-primary">
-                    External Link: {{ page.extURL }}
+                <h6 class="btn btn-xs btn-outline-primary text-truncate">
+                    External Link: {{ page.extURL | slice:0:25 }}
                 </h6>
             </a>
             <span class="badge badge-pill badge-primary">{{ page.category }}</span>

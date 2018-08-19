@@ -134,7 +134,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             date: ['' || Date.now()],
             photoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
             bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
-            category: ['' || 'Register', Validators.required],
+            category: ['', Validators.required],
             published: ['' || false],
             template: ['' || 'Full Width'],
             url: [''],

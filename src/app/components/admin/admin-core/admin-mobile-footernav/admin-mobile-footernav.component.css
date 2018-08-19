@@ -1,25 +1,31 @@
 nav.navbar {
     background-color: #242936;
-    padding: .5rem 1rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     white-space: nowrap;
     text-align: center;
     z-index: 1000;
 }
-
 
 button.menu-icon.active {
     color: #24abf2;
     background-color: transparent;
 }
 
+small.footernav-txt {
+    color: #9d9fa1 !important;
+}
+
 button.menu-icon {
-    color: #A9B5C6;
+    color: #9d9fa1 !important;
     margin: 0;
     /*background-color: #F7F8F9;*/
     display: inline-block;
     line-height: 1.3em;
 }
 
+i.fa {
+    color: #9d9fa1;
+}
 
 .mat-menu-panel {
     min-width: 110px;

@@ -159,6 +159,10 @@
                                 <option>news-and-media</option>
                                 <option>presenters</option>
                             </select>
+                            <p class="help-block alert alert-warning text-center mt-1"
+                               *ngIf="!f.category.valid && f.category.touched">
+                                <b>Category</b> is required!
+                            </p>
                         </div>
 
                         <div class="form-group">

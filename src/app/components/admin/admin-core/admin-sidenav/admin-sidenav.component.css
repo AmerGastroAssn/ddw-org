@@ -25,6 +25,11 @@ a.sidenav-link {
     text-decoration: none;
 }
 
+li.divider, .divider {
+    border-top: 1px solid #16171A !important;
+    border-bottom: 1px solid #3E4250 !important;
+}
+
 img.ddw-logo {
     /*margin-left: em;*/
     /*max-width: 150px;*/

@@ -14,10 +14,14 @@
 }
 
 .btn-default {
-    color: #1C202B;
-    /*border: 1px solid #1C202B;*/
+    color: #282E3E;
+    /*background: #9d9fa1;*/
 }
 
+.btn-default .badge {
+    color: #fff;
+    background: #282E3E;
+}
 /* CUSTOM FRONT-END STYLES */
 .cta {
     background-color: #003f5f;

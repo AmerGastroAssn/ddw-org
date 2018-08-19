@@ -6,7 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <!--<a class="nav-item nav-link" [routerLink]="['pages']"><i class="fa fa-file"></i>&nbsp;Pages</a>-->
+            <span class="nav-item nav-link" [routerLink]="['pages']">
+                <i class="fa fa-calendar"></i> {{ currentDate | date:'fullDate' }}
+            </span>
             <!--<a class="nav-item nav-link" [routerLink]="['users']"><i class="fa fa-user"></i>&nbsp;Users</a>-->
             <!--<a class="nav-item nav-link" [routerLink]="['/']"><i class="fa fa-globe"></i>&nbsp;Live Site</a>-->
 

@@ -4,8 +4,8 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { AuthService } from '../../../../services/auth.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
     selector: 'ddw-admin-navbar',
@@ -24,6 +24,7 @@ export class AdminNavbarComponent implements OnInit {
     dbUser: any;
     isAdmin: boolean;
     email: string;
+    currentDate: Date;
 
     constructor(
       private authService: AuthService,
@@ -32,7 +33,7 @@ export class AdminNavbarComponent implements OnInit {
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
     ) {
-
+        this.currentDate = new Date();
     }
 
     ngOnInit() {

@@ -118,7 +118,7 @@
                             <input type="text"
                                    class="form-control"
                                    [class.invalid]="!f.author.valid && f.author.touched"
-                                   [(ngModel)]="page.author"
+                                   [(ngModel)]="author"
                                    formControlName="author">
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.author.valid && f.author.touched">

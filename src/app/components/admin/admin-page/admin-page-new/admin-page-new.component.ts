@@ -163,7 +163,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     onAddNewPage(formData) {
         if (!this.newPageForm.valid) {
-            this.sbAlert.open('Page not valid, was NOT created.', 'Dismiss', {
+            this.sbAlert.open('Missing at least one input, page was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']

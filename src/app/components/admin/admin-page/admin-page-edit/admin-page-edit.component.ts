@@ -12,6 +12,7 @@ import { finalize } from 'rxjs/operators';
 import { Page } from '../../../../models/Page';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AuthService } from '../../../../services/auth.service';
 
 
 @Component({
@@ -90,6 +91,7 @@ export class AdminPageEditComponent implements OnInit {
       private storage: AngularFireStorage,
       private sbAlert: MatSnackBar,
       private sanitizer: DomSanitizer,
+      private authService: AuthService,
     ) {
         // Datepicker Config
         this.bsConfig = Object.assign({},
@@ -97,6 +99,15 @@ export class AdminPageEditComponent implements OnInit {
               containerClass: 'theme-default',
               dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
           });
+
+        // Get Current Author
+        this.authService.getAuth().subscribe((auth) => {
+            if (auth) {
+                this.author = auth.email;
+            } else {
+
+            }
+        });
     }
 
     // For Form Validations
@@ -152,7 +163,7 @@ export class AdminPageEditComponent implements OnInit {
                             ])
                     ],
                     body: [page.body],
-                    author: [page.author],
+                    author: [this.author],
                     date: [page.date],
                     bannerPhotoURL: [page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
                     photoURL: [page.photoURL],

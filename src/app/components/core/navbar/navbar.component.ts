@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
     exhibitorInfoPages$: Page[];
     newsAndMediaPages$: Page[];
     presentersPages$: Page[];
+    isExtURL: boolean;
 
     constructor(private pageService: PageService) {
     }
@@ -54,5 +55,6 @@ export class NavbarComponent implements OnInit {
                 this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
     }
+
 
 }

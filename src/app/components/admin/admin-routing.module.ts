@@ -6,9 +6,7 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
-import { AdminCardsComponent } from './admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
-import { AdminFeaturedBlogPostsComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
@@ -59,9 +57,7 @@ const adminRoutes: Routes = [
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
         ]
-
     },
-
 ];
 
 @NgModule({

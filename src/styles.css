@@ -3,8 +3,22 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i');
 /*font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;*/
 
-/* CUSTOM FRONT-END STYLES */
+/* Theme colors */
 
+.bg-dark {
+    background-color: #1C202B;
+}
+
+.text-dark {
+    color: #1C202B;
+}
+
+.btn-default {
+    color: #1C202B;
+    /*border: 1px solid #1C202B;*/
+}
+
+/* CUSTOM FRONT-END STYLES */
 .cta {
     background-color: #003f5f;
     color: #ffffff;

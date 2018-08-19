@@ -23,11 +23,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="registerDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let regPage of registerPages$"
-                       [routerLink]="['/register/', regPage.url]">
-                        {{ regPage.title }}
-                    </a>
+                    <span *ngFor="let regPage of registerPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!regPage.isExtURL"
+                           [routerLink]="['/register/', regPage.url]">
+                            {{ regPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="regPage.isExtURL"
+                           [href]="regPage.extURL"
+                           target="_blank">
+                            {{ regPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 
@@ -43,11 +51,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="attendeeDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let attnPage of attendeePlanningPages$"
-                       [routerLink]="['/attendee-planning/', attnPage.url]">
-                        {{ attnPage.title }}
-                    </a>
+                    <span *ngFor="let attPage of attendeePlanningPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!attPage.isExtURL"
+                           [routerLink]="['/register/', attPage.url]">
+                            {{ attPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="attPage.isExtURL"
+                           [href]="attPage.extURL"
+                           target="_blank">
+                            {{ attPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 
@@ -63,11 +79,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="edDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let edPage of educationPages$"
-                       [routerLink]="['/education/', edPage.url]">
-                        {{ edPage.title }}
-                    </a>
+                    <span *ngFor="let edPage of educationPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!edPage.isExtURL"
+                           [routerLink]="['/register/', edPage.url]">
+                            {{ edPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="edPage.isExtURL"
+                           [href]="edPage.extURL"
+                           target="_blank">
+                            {{ edPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 
@@ -83,11 +107,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="exhDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let exhPage of exhibitorInfoPages$"
-                       [routerLink]="['/exhibitor-information/', exhPage.url]">
-                        {{ exhPage.title }}
-                    </a>
+                    <span *ngFor="let exhPage of exhibitorInfoPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!exhPage.isExtURL"
+                           [routerLink]="['/register/', exhPage.url]">
+                            {{ exhPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="exhPage.isExtURL"
+                           [href]="exhPage.extURL"
+                           target="_blank">
+                            {{ exhPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 
@@ -104,11 +136,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="newsDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let newsPage of newsAndMediaPages$"
-                       [routerLink]="['/news-and-media/', newsPage.url]">
-                        {{ newsPage.title }}
-                    </a>
+                    <span *ngFor="let newsPage of newsAndMediaPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!newsPage.isExtURL"
+                           [routerLink]="['/register/', newsPage.url]">
+                            {{ newsPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="newsPage.isExtURL"
+                           [href]="newsPage.extURL"
+                           target="_blank">
+                            {{ newsPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 
@@ -124,11 +164,19 @@
                 </a>
                 <div class="dropdown-menu"
                      aria-labelledby="presDropdown">
-                    <a class="dropdown-item"
-                       *ngFor="let presPage of presentersPages$"
-                       [routerLink]="['/presenters/', presPage.url]">
-                        {{ presPage.title }}
-                    </a>
+                    <span *ngFor="let presPage of presentersPages$">
+                        <a class="dropdown-item"
+                           *ngIf="!presPage.isExtURL"
+                           [routerLink]="['/register/', presPage.url]">
+                            {{ presPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="presPage.isExtURL"
+                           [href]="presPage.extURL"
+                           target="_blank">
+                            {{ presPage.title }}
+                        </a>
+                    </span>
                 </div>
             </li>
 

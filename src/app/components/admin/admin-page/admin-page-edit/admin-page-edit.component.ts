@@ -225,4 +225,8 @@ export class AdminPageEditComponent implements OnInit {
         this.togglePagePreview = !this.togglePagePreview;
     }
 
+    isExtURLToggle() {
+        this.isExtURLPage = !this.isExtURLPage;
+    }
+
 }

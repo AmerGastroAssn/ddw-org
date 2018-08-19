@@ -4,7 +4,7 @@
         <img class="card-img-top" [src]="page.photoURL" *ngIf="!page.isExtURL">
         <div class="card-body">
             <h5 class="card-title">{{ page.title }}</h5>
-            <h6 class="card-subtitle">{{ page.date.toDate() | date:'mediumDate' }}</h6>
+            <h6 class="card-subtitle">{{ page.date | date:'mediumDate' }}</h6>
             <hr>
             <p class="card-text" *ngIf="!page.isExtURL">{{ page.body | slice:0:75 }}...</p>
             <a [href]="page.extURL" target="_blank" *ngIf="page.isExtURL">

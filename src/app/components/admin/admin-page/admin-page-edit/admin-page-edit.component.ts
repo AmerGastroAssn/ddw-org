@@ -69,7 +69,7 @@ export class AdminPageEditComponent implements OnInit {
     isHovering: boolean;
     isInvalid: boolean;
     value: any;
-    togglePagePreview = true;
+    togglePagePreview = false;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;

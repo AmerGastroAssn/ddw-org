@@ -11,7 +11,6 @@ export class AdminPageService {
     pageCollection: AngularFirestoreCollection<Page>;
     pageDoc: AngularFirestoreDocument<Page>;
     page: Observable<Page>;
-    timestampToNum: number;
 
 
     string_to_slug = (str) => {

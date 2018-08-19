@@ -17,8 +17,6 @@ export class PageService {
     constructor(private afs: AngularFirestore) {
         this.currentTime = new Date();
         this.timeToNum = this.currentTime.getTime();
-        console.log('this.currentTime', this.currentTime.valueOf());
-        console.log('geteTIme()', this.currentTime.getTime());
     }
 
     getPage(id: string): Observable<Page> {
@@ -33,7 +31,6 @@ export class PageService {
                 return data;
             }
         });
-
         return this.page$;
     }
 
@@ -43,16 +40,15 @@ export class PageService {
                       .where('published', '==', true)
                       .where('date', '<=', this.timeToNum);
         });
-
         return this.pages$ = this.pagesCollection.valueChanges();
-
     }
 
 
     getAttendeePlanningPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'attendee-planning')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
@@ -60,7 +56,8 @@ export class PageService {
     getEducationPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'education')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
@@ -68,7 +65,8 @@ export class PageService {
     getExhibitorInfoPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'exhibitor-information')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
@@ -76,7 +74,8 @@ export class PageService {
     getNewsAndMediaPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'news-and-media')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }
@@ -84,7 +83,8 @@ export class PageService {
     getPresenterPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'presenters')
-                      .where('published', '==', true);
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
     }

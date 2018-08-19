@@ -21,6 +21,9 @@ button.btn-default:hover {
     color: #4E5155;
 }
 
+.current-date {
+    color: #9d9fa1;
+}
 
 /* Mobile Queries */
 

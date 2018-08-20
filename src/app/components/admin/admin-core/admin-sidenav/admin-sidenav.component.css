@@ -8,17 +8,18 @@ a.sidenav-link {
 
 li.sidenav-item {
     font-size: 1em;
+    line-height: 1.5;
 }
 
 li.sub-item {
     margin-left: 1.5em;
 }
 
-.sidenav-vertical
-.sidenav-menu
+.sidenav-vertical,
+.sidenav-menu,
 .sidenav-link {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
 }
 
 a.sidenav-link {

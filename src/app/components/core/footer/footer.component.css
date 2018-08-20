@@ -1,11 +1,13 @@
-h6 {
+h5 {
     font-weight: bold;
+    font-size: 18px;
 }
 
 li > a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.95em;
+    font-size: 14px !important;
+    font-weight: 600;
 }
 
 ul {
@@ -17,6 +19,7 @@ ul {
 ul > li {
     list-style-type: none;
     line-height: 1.5em;
+    font-size: 14px !important;
 }
 
 ul > li > a {
@@ -27,6 +30,13 @@ ul > li > a {
     background-color: #003f5f;
     color: #ffffff;
     padding: 2em 0.5em;
+    font-size: 14px;
+}
+
+p.apps {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
 }
 
 img.ddw-white {
@@ -104,8 +114,13 @@ h5 {
     background-color: #003f5f;
     color: #ffffff;
     padding: 1em 0;
-    font-weight: bold;
-    font-size: 12px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+p.copy {
+    font-size: 13px;
+    font-weight: 600;
 }
 
 a.aga-copy {

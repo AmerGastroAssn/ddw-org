@@ -1,3 +1,23 @@
+p, ul, ol, li  {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 2;
+    font-size: 18px;
+}
+
+p, ul, ol, li {
+    font-size: 18px;
+}
+
+h1, h2, h3 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.card-body.ext-link *, .card-body.ext-link > p, .card-body.ext-link > h4 {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    line-height: 1.5;
+}
+
 .navbar {
     -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12),
@@ -9,10 +29,7 @@
 
 li.nav-item {
     padding: 0 1em;
-}
-
-.navbar-brand {
-
+    font-size: 14px;
 }
 
 /* Preview */
@@ -30,10 +47,6 @@ h1.title {
     top: 30%;
     color: #ffffff;
     font-weight: bold;
-}
-
-p {
-
 }
 
 .row.crumbs {
@@ -89,6 +102,7 @@ a.btn.btn-warning.btn-lg {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }
 
 a.btn.btn-warning.btn-lg:hover {
@@ -98,4 +112,5 @@ a.btn.btn-warning.btn-lg:hover {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }

@@ -1,4 +1,19 @@
-h1, h2, h3, h4, h5, h6, p, div, span, td, th, li, ul {
+p, div, span, li, ul {
     font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
     line-height: 2;
+    font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+ul, ol, li {
+    font-size: 18px;
+}
+
+
+ol.breadcrumb > li.breadcrumb-item > a {
+    text-decoration: none;
 }

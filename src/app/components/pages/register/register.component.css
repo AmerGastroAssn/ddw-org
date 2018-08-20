@@ -1,3 +1,21 @@
+p, div, td, th, li, ul {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 2;
+}
+
+p, ul, ol, li {
+    font-size: 18px !important;
+}
+
+h1, h2, h3 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.container-fluid.body-container {
+    max-width: 1200px;
+}
+
 img.bannerPhotoURL {
     top: 0;
     left: 0;
@@ -61,6 +79,7 @@ a.btn.btn-warning.btn-lg {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }
 
 a.btn.btn-warning.btn-lg:hover {
@@ -70,4 +89,5 @@ a.btn.btn-warning.btn-lg:hover {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }

@@ -20,6 +20,7 @@ a.btn.btn-warning.btn-sm {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }
 
 a.btn.btn-warning:hover.btn-sm {
@@ -29,4 +30,5 @@ a.btn.btn-warning:hover.btn-sm {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    text-decoration: none;
 }

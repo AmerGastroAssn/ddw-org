@@ -80,6 +80,7 @@ a.btn.btn-warning.btn-lg {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    padding: 0.5em 2em;
 }
 
 a.btn.btn-warning.btn-lg:hover {
@@ -89,4 +90,5 @@ a.btn.btn-warning.btn-lg:hover {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+    padding: 0.5em 2em;
 }

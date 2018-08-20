@@ -7,6 +7,11 @@
     padding: 2em;
 }
 
+h5.card-title {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
 a.btn.btn-warning.btn-lg {
     background-color: #F47700;
     color: #fff;

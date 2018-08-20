@@ -15,6 +15,7 @@ li > a.nav-link {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
     font-size: 14px;
     color: #9d9fa1;
+    text-decoration: none;
 }
 
 img.user-image {

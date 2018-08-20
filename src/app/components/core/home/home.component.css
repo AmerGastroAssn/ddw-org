@@ -146,7 +146,8 @@ h2.card-sec-title {
 }
 
 /* Cards */
-.row.cards {
+row.cards {
+    max-width: 1200px;
     margin: 5em 0 8em 0;
 }
 

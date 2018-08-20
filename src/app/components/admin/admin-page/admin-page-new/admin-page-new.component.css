@@ -8,6 +8,11 @@ label.form-check-label {
     cursor: pointer;
 }
 
+p.alert {
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
+}
+
 input.invalid {
     display: block;
     width: 100%;

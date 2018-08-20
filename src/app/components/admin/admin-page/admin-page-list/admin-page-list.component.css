@@ -16,6 +16,12 @@ img.page-image {
     max-width: 25px;
 }
 
+a.page-link {
+    font-size: 14px !important;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    text-decoration: none;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .card-columns {
@@ -28,7 +34,6 @@ img.page-image {
     .card-list {
         margin-bottom: 15em;
     }
-
 }
 
 /*// Medium devices (tablets, 768px and up)*/
@@ -36,8 +41,6 @@ img.page-image {
     .card-columns {
         columns: 2;
     }
-
-
 }
 
 /*// Large devices (desktops, 992px and up)*/

@@ -17,6 +17,7 @@ import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/a
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSidenavComponent } from './admin-core/admin-sidenav/admin-sidenav.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
+import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -37,6 +38,7 @@ import { AdminComponent } from './admin.component';
         AdminAdsComponent,
         AdminCardsEditComponent,
         AdminFeaturedBlogPostsEditComponent,
+        AdminPageExhibitorInformationListComponent
     ],
     imports: [
         CommonModule,

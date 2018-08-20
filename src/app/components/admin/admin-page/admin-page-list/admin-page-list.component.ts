@@ -50,7 +50,7 @@ export class AdminPageListComponent implements OnInit {
     ngOnInit() {
         this.page$ = this.adminPageService.getPages();
         this.user = this.authService.getProfile();
-        this.pageList = this.adminPageService.getAllRegisterPages();
+        this.pageList = this.adminPageService.getAllPages();
 
         // Get Page uid
         // Get id from url

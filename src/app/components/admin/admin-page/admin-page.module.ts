@@ -13,6 +13,11 @@ import { AdminPageHomeComponent } from './admin-page-home/admin-page-home.compon
 import { AdminPageItemComponent } from './admin-page-item/admin-page-item.component';
 import { AdminPageListComponent } from './admin-page-list/admin-page-list.component';
 import { AdminPageNewComponent } from './admin-page-new/admin-page-new.component';
+import { AdminPageRegisterListComponent } from './admin-page-register-list/admin-page-register-list.component';
+import { AdminPagePresentersListComponent } from './admin-page-presenters-list/admin-page-presenters-list.component';
+import { AdminPageNewsAndMediaListComponent } from './admin-page-news-and-media-list/admin-page-news-and-media-list.component';
+import { AdminPageAttendeePlanningListComponent } from './admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';
+import { AdminPageEducationListComponent } from './admin-page-education-list/admin-page-education-list.component';
 
 @NgModule({
     imports: [
@@ -34,7 +39,12 @@ import { AdminPageNewComponent } from './admin-page-new/admin-page-new.component
         AdminPageEditComponent,
         AdminPageDetailsComponent,
         SafeHtmlPipe,
-        TrustUrlPipe
+        TrustUrlPipe,
+        AdminPageRegisterListComponent,
+        AdminPagePresentersListComponent,
+        AdminPageNewsAndMediaListComponent,
+        AdminPageAttendeePlanningListComponent,
+        AdminPageEducationListComponent
     ],
     exports: [
         SafeHtmlPipe,

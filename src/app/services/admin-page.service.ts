@@ -11,6 +11,7 @@ export class AdminPageService {
     pageCollection: AngularFirestoreCollection<Page>;
     pageDoc: AngularFirestoreDocument<Page>;
     page: Observable<Page>;
+    pages$: Observable<Page[]>;
 
 
     string_to_slug = (str) => {
@@ -38,7 +39,7 @@ export class AdminPageService {
     ) {
     }
 
-    getAllRegisterPages(): Observable<Page[]> {
+    getAllPages(): Observable<Page[]> {
         return this.afs.collection<Page>('pages').valueChanges();
     }
 
@@ -168,6 +169,48 @@ export class AdminPageService {
                 .then((page) => this.router.navigate([`/admin/pages`]))
                 .catch((error) => console.log(`ERROR~dP: `, error));
         }
+    }
+
+    getAllRegisterPages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'register');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
+    }
+
+    getAllNewsPages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'attendee-planning');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
+    }
+
+    getAllExhibitorPages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'education');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
+    }
+
+    getAllEducationPages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'exhibitor-information');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
+    }
+
+    getAllAttendeePages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'news-and-media');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
+    }
+
+    getAllPresenterPages(): Observable<Page[]> {
+        this.pageCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'presenters');
+        });
+        return this.pages$ = this.pageCollection.valueChanges();
     }
 
 

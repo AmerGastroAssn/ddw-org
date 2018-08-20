@@ -85,8 +85,7 @@ firebase.initializeApp(environment.firebase);
         Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
         AdminModule,
     ],
-    exports: [
-    ],
+    exports: [],
     providers: [
         AdminUserService,
         AdminPageService,

@@ -81,6 +81,7 @@ a.btn.btn-warning.btn-lg {
     border-radius: 0;
     font-weight: bold;
     padding: 0.5em 2em;
+    font-size: 18px;
 }
 
 a.btn.btn-warning.btn-lg:hover {
@@ -91,4 +92,5 @@ a.btn.btn-warning.btn-lg:hover {
     border-radius: 0;
     font-weight: bold;
     padding: 0.5em 2em;
+    font-size: 18px;
 }

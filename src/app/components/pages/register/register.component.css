@@ -81,6 +81,7 @@ a.btn.btn-warning.btn-lg {
     font-weight: bold;
     text-decoration: none;
     padding: 0.5em 2em;
+    font-size: 18px;
 }
 
 a.btn.btn-warning.btn-lg:hover {
@@ -92,4 +93,5 @@ a.btn.btn-warning.btn-lg:hover {
     font-weight: bold;
     text-decoration: none;
     padding: 0.5em 2em;
+    font-size: 18px;
 }

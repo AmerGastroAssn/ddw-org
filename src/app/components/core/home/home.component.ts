@@ -9,6 +9,7 @@ import { AdminFeaturedPostService } from '../../../services/admin-featured-post.
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
+
 @Component({
     selector: 'ddw-home',
     templateUrl: './home.component.html',
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
       private settingsService: AdminSettingsService,
       public sanitizer: DomSanitizer,
     ) {
+
     }
 
     ngOnInit() {

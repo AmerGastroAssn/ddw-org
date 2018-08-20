@@ -3,6 +3,8 @@ import * as _ from 'lodash';
 import { Page } from '../../../models/Page';
 import { PageService } from '../../../services/page.service';
 
+declare var $: any;
+
 @Component({
     selector: 'ddw-navbar',
     templateUrl: './navbar.component.html',
@@ -17,7 +19,26 @@ export class NavbarComponent implements OnInit {
     presentersPages$: Page[];
     isExtURL: boolean;
 
+
     constructor(private pageService: PageService) {
+        // $(document).ready(function () {
+        //     $(window).scroll(function () {
+        //         const scrollPos   = $(window).scrollTop(),
+        //               navLinks    = $('li.nav-item > a'),
+        //               navDropdown = $('a.dropdown-item'),
+        //               navbar      = $('.navbar');
+        //
+        //         if (scrollPos > 150) {
+        //             navbar.addClass('navbarWhite');
+        //             navLinks.addClass('linksDark');
+        //             navDropdown.addClass('linksDark');
+        //         } else {
+        //             navbar.removeClass('navbarWhite');
+        //             navLinks.removeClass('linksDark');
+        //             navDropdown.removeClass('linksDark');
+        //         }
+        //     });
+        // });
     }
 
     ngOnInit() {

@@ -1,6 +1,24 @@
 nav.navbar {
     opacity: 0.9;
+    background-color: #ffffff;
 }
+
+/* Navbar */
+.navbarWhite {
+    background-color: #fff;
+    color: #5F6A72;
+    /*opacity: 0.9;*/
+}
+
+.linksDark {
+    color: #5F6A72 !important;
+}
+
+.linksLight {
+    color: #ffffff;
+    font-weight: bold;
+}
+
 
 li.nav-item > a {
     font-size: 16px;
@@ -10,3 +28,13 @@ li.nav-item > a {
 img.ddw-logo {
     max-width: 200px;
 }
+
+/* Navbar afix */
+/*.affix {*/
+    /*!*background-color: #eee;*!*/
+    /*background-color: transparent;*/
+    /*-webkit-transition: padding 0.2s ease-out;*/
+    /*-moz-transition: padding 0.2s ease-out;*/
+    /*-o-transition: padding 0.2s ease-out;*/
+    /*transition: padding 0.2s ease-out;*/
+/*}*/

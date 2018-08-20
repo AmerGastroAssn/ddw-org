@@ -8,6 +8,8 @@ import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 
+declare var $: any;
+
 @Component({
     selector: 'ddw-register-page',
     templateUrl: './register.component.html',
@@ -24,7 +26,21 @@ export class RegisterComponent implements OnInit {
       private route: ActivatedRoute,
       private cardService: AdminCardService,
     ) {
+        // Removes Navbar styling
+        // $(document).ready(function () {
+        //     $(window).scroll(function () {
+        //           const navLinks    = $('li.nav-item > a'),
+        //                 navDropdown = $('a.dropdown-item'),
+        //                 navbar      = $('.navbar');
+        //
+        //           navbar.removeClass('navbarWhite');
+        //           navLinks.removeClass('linksDark');
+        //           navDropdown.removeClass('linksDark');
+        //       }
+        //     )
+        // };
     }
+
 
     ngOnInit() {
         this.cards$ = this.cardService.getAllCards();

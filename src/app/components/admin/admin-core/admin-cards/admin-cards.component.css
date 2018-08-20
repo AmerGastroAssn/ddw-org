@@ -4,12 +4,13 @@
 }
 
 .card-text {
-    padding: 2em;
+    padding-bottom: 1em;
 }
 
 h5.card-title {
     font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 a.btn.btn-warning.btn-lg {

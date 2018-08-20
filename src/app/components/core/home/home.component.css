@@ -50,11 +50,19 @@ td {
     padding: 1em;
 }
 
+h1.time {
+    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    color: #fff;
+    font-size: 45px;
+    font-weight: 900;
+}
+
 .time {
-    padding-top: 0.7em;
+    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    padding-top: 0.5em;
     color: #fff;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .days {
@@ -120,6 +128,9 @@ td {
 /* Post-Meeting Resources */
 h2.card-sec-title {
     padding-top: 2em;
+    font-size: 30px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
 }
 
 .card-sec-subtitle {
@@ -158,7 +169,6 @@ iframe.daily-news {
     width: 100%;
 }
 
-
 /* Featured Blog Posts */
 .featured {
     background-color: #F9F9F9;
@@ -193,8 +203,13 @@ div.row.on-demand-bottom > div.container > p {
     background-size: cover;
     background: url(https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/bg2.jpg) center;
     color: #ffffff;
-    padding: 3em 0;
+    /*height: 460px;*/
+    background-size: cover;
+    background-position: center;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
+
 
 .numbers {
 

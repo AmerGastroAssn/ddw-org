@@ -5,6 +5,7 @@ import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
+import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -57,7 +58,11 @@ const adminRoutes: Routes = [
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },
             { path: 'attendee-planning', component: AdminPageAttendeePlanningListComponent, canActivate: [AuthGuard] },
             { path: 'education', component: AdminPageEducationListComponent, canActivate: [AuthGuard] },
-            { path: 'exhibitor-information', component: AdminPageExhibitorInformationListComponent, canActivate: [AuthGuard] },
+            {
+                path: 'exhibitor-information',
+                component: AdminPageExhibitorInformationListComponent,
+                canActivate: [AuthGuard]
+            },
             { path: 'news-and-media', component: AdminPageNewsAndMediaListComponent, canActivate: [AuthGuard] },
             { path: 'presenters', component: AdminPagePresentersListComponent, canActivate: [AuthGuard] },
             { path: 'login', component: AdminLoginComponent },
@@ -68,6 +73,7 @@ const adminRoutes: Routes = [
             { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AdminGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
+            { path: 'calendar', component: AdminCalendarEditComponent, canActivate: [AdminGuard] },
         ]
     },
 ];

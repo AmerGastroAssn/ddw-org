@@ -22,6 +22,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminCalendarComponent } from './admin-core/admin-calendar/admin-calendar.component';
+import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,9 @@ import { AdminComponent } from './admin.component';
         AdminAdsComponent,
         AdminCardsEditComponent,
         AdminFeaturedBlogPostsEditComponent,
-        AdminPageExhibitorInformationListComponent
+        AdminPageExhibitorInformationListComponent,
+        AdminCalendarComponent,
+        AdminCalendarEditComponent
     ],
     imports: [
         CommonModule,

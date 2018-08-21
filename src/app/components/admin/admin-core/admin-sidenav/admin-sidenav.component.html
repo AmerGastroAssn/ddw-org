@@ -140,6 +140,14 @@
         </a>
     </li>
 
+
+    <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
+        <a [routerLink]="['/admin/calendar']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-calendar"></i>&nbsp;Calendar</div>
+        </a>
+    </li>
+
     <li class="sidenav-item">
         <a class="sidenav-link" [routerLink]="['/']" target="_blank">
             <i class="sidenav-icon ion ion-md-quote"></i>

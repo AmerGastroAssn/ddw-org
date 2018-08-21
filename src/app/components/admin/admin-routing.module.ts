@@ -4,8 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../../guards/admin.guard';
 import { AuthGuard } from '../../guards/auth.guard';
 import { RegisterGuard } from '../../guards/register.guard';
+import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
+import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
+import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
+import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
-import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -55,6 +58,14 @@ const adminRoutes: Routes = [
                     { path: ':id/edit', component: AdminUserEditComponent, canActivate: [AuthGuard, AdminGuard] },
                 ]
             },
+            {
+                path: 'calendar', component: AdminCalendarComponent,
+                children: [
+                    { path: '', component: AdminCalendarListComponent, canActivate: [AuthGuard] },
+                    { path: 'new', component: AdminCalendarNewComponent, canActivate: [AuthGuard] },
+                    { path: ':id/edit', component: AdminCalendarEditComponent, canActivate: [AuthGuard] },
+                ]
+            },
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },
             { path: 'attendee-planning', component: AdminPageAttendeePlanningListComponent, canActivate: [AuthGuard] },
             { path: 'education', component: AdminPageEducationListComponent, canActivate: [AuthGuard] },
@@ -73,7 +84,6 @@ const adminRoutes: Routes = [
             { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AdminGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
-            { path: 'calendar', component: AdminCalendarEditComponent, canActivate: [AdminGuard] },
         ]
     },
 ];

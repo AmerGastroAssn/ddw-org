@@ -9,7 +9,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import * as firebase from 'firebase/app';
-import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -33,6 +33,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
 import { AdminAdsService } from './services/admin-ads.service';
+import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
 import { AdminFeaturedPostService } from './services/admin-featured-post.service';
 import { AdminMetaService } from './services/admin-meta.service';
@@ -83,6 +84,8 @@ firebase.initializeApp(environment.firebase);
         PopoverModule.forRoot(),
         MatSnackBarModule,
         Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+        TabsModule.forRoot(),
+        TimepickerModule.forRoot(),
         AdminModule,
     ],
     exports: [],
@@ -99,6 +102,7 @@ firebase.initializeApp(environment.firebase);
         AdminCardService,
         AdminFeaturedPostService,
         ScriptService,
+        AdminCalendarService,
     ],
     bootstrap: [AppComponent]
 })

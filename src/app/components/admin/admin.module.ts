@@ -3,9 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatMenuModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
+import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
+import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
+import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
+import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
@@ -22,8 +26,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminCalendarComponent } from './admin-core/admin-calendar/admin-calendar.component';
-import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
+import { AdminCalendarItemComponent } from './admin-calendar/admin-calendar-item/admin-calendar-item.component';
 
 @NgModule({
     declarations: [
@@ -41,8 +44,11 @@ import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-ca
         AdminCardsEditComponent,
         AdminFeaturedBlogPostsEditComponent,
         AdminPageExhibitorInformationListComponent,
+        AdminCalendarEditComponent,
+        AdminCalendarListComponent,
+        AdminCalendarNewComponent,
         AdminCalendarComponent,
-        AdminCalendarEditComponent
+        AdminCalendarItemComponent,
     ],
     imports: [
         CommonModule,
@@ -57,13 +63,16 @@ import { AdminCalendarEditComponent } from './admin-core/admin-calendar/admin-ca
         BsDatepickerModule,
         PopoverModule,
         AdminPageModule,
+        TabsModule,
+        TimepickerModule,
     ],
     exports: [
         MatButtonModule,
         MatMenuModule,
         MatSnackBarModule,
         SafeHtmlPipe,
-        TrustUrlPipe
+        TrustUrlPipe,
+        TabsModule,
     ]
 })
 export class AdminModule {}

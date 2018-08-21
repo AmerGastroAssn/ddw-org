@@ -3,8 +3,11 @@ export class Calendar {
       public $key: string,
       public body: string,
       public date: number,
-      public time: string,
-      public uid: string
+      public column: number,
+      public endTime: number,
+      public startTime: number,
+      public title: string,
+      public uid: string,
     ) {
     }
 }

@@ -38,12 +38,12 @@
                         </td>
                         <td scope="col" style="text-align:center;">
                             <span class="badge badge-outline-default">
-                                {{ event.startTime }}
+                                {{ event.startTime | date:'shortTime' }}
                             </span>
                         </td>
                         <td scope="col" style="text-align:center;">
                             <span class="badge badge-outline-default">
-                                {{ event.endTime }}
+                                {{ event.endTime | date:'shortTime' }}
                             </span>
                         </td>
                         <td>

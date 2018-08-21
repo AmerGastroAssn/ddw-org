@@ -4,12 +4,10 @@ import { FormBuilder, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { CalColumnValues } from '../../../../models/CalColumnValues';
 import { Calendar } from '../../../../models/Calendar';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 
-interface ColumnDay {
-    column: string;
-}
 
 @Component({
     selector: 'ddw-admin-calendar-edit',
@@ -36,17 +34,24 @@ interface ColumnDay {
 })
 export class AdminCalendarEditComponent implements OnInit {
     @ViewChild('calF') calF: NgForm;
+    @ViewChild('colVF') colVF: NgForm;
     calendar: Calendar;
+    calColumnValues: CalColumnValues;
 
     $key: string;
     body: string;
     date: number;
-    column: number;
+    column: string;
     endTime: number;
     startTime: number;
     title: string;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
+
+    column1: string;
+    column2: string;
+    column3: string;
+    column4: string;
 
     constructor(
       private calendarService: AdminCalendarService,
@@ -58,7 +63,7 @@ export class AdminCalendarEditComponent implements OnInit {
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY,h:mm a'
+              dateInputFormat: 'MMMM Do YYYY'
           });
     }
 
@@ -70,33 +75,11 @@ export class AdminCalendarEditComponent implements OnInit {
             .subscribe((calInfo) => {
                 this.calendar = calInfo;
             });
-
-
-        // this.calendarService.getCalendar(this.$key).subscribe((calendar) => {
-        //     if (calendar !== null) {
-        //         this.calendar = calendar;
-        //         // Form:
-        //         this.calendarForm = this.fb.group({
-        //             $key: [this.calendarService.$key],
-        //             body: [this.body],
-        //             date: [this.date],
-        //             column: [this.column],
-        //             endTime: [this.endTime],
-        //             startTime: [this.startTime],
-        //             title: [this.title],
-        //             uid: [this.calendarService.$key]
-        //         });
-        //
-        //         this.$key = this.calendarForm.value.$key;
-        //         this.body = this.calendarForm.value.body;
-        //         this.column = this.calendarForm.value.column;
-        //         this.endTime = this.calendarForm.value.endTime;
-        //         this.startTime = this.calendarForm.value.startTime;
-        //         this.title = this.calendarForm.value.title;
-        //         this.date = this.calendarForm.value.date;
-        //     }
-        // });
-
+        // Get Column Values
+        this.calendarService.getCalColumnValues()
+            .subscribe((values) => {
+                this.calColumnValues = values;
+            });
     }
 
 
@@ -122,6 +105,31 @@ export class AdminCalendarEditComponent implements OnInit {
         } else {
             this.calendarService.updateCalendar(newCalEvent);
             console.log('Cal Event Good', newCalEvent);
+        }
+        // this.calF.reset(this.calendarService.getCalendar(this.$key));
+    }
+
+
+    onColumnSubmit(columnData: NgForm) {
+        const value = columnData.value;
+        const newColumns = new CalColumnValues(
+          this.calColumnValues.$key,
+          value.column1,
+          value.column2,
+          value.column3,
+          value.column4,
+          this.calColumnValues.uid,
+        );
+
+        if (!columnData.valid) {
+            this.sbAlert.open('Columns/Days Not Valid!', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
+            });
+        } else {
+            this.calendarService.updateCalColumnValues(newColumns);
+            console.log('Column events sent', newColumns);
         }
         // this.calF.reset(this.calendarService.getCalendar(this.$key));
     }

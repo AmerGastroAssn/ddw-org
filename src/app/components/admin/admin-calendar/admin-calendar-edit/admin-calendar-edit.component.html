@@ -26,7 +26,6 @@
 </div>
 
 
-<!-- * Event  * -->
 <div class="row" [@simpleFadeAnimation]="'in'">
     <div class="container mb-5">
         <div class="col-md-12">
@@ -39,9 +38,94 @@
             </ng-template>
             <div class="card">
                 <div class="card-body">
+                    <h3>Edit Card Columns</h3>
+                    <p class="text-secondary">(The day displayed at the top of the calendar</p>
+                    <form #colVF="ngForm"
+                          (ngSubmit)="onColumnSubmit(colVF)"
+                          *ngIf="calColumnValues; else loading">
+                        <div class="form-group">
+                            <label>Column/Day 1</label>
+                            <input type="text"
+                                   class="form-control"
+                                   required
+                                   name="column1"
+                                   [(ngModel)]="calColumnValues.column1"
+                                   #col1="ngModel"/>
+                            <p class="help-block alert alert-danger text-center"
+                               [hidden]="col1.valid || col1.untouched">
+                                <b>Column 1</b> is required!
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Column/Day 2</label>
+                            <input type="text"
+                                   class="form-control"
+                                   required
+                                   name="column2"
+                                   [(ngModel)]="calColumnValues.column2"
+                                   #col2="ngModel"/>
+                            <p class="help-block alert alert-danger text-center"
+                               [hidden]="col2.valid || col2.untouched">
+                                <b>Column 2</b> is required!
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Column/Day 3</label>
+                            <input type="text"
+                                   class="form-control"
+                                   required
+                                   name="column3"
+                                   [(ngModel)]="calColumnValues.column3"
+                                   #col3="ngModel"/>
+                            <p class="help-block alert alert-danger text-center"
+                               [hidden]="col3.valid || col3.untouched">
+                                <b>Column 3</b> is required!
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Column/Day 4</label>
+                            <input type="text"
+                                   class="form-control"
+                                   required
+                                   name="column4"
+                                   [(ngModel)]="calColumnValues.column4"
+                                   #col4="ngModel"/>
+                            <p class="help-block alert alert-danger text-center"
+                               [hidden]="col4.valid || col4.untouched">
+                                <b>Column 4</b> is required!
+                            </p>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary mb-5">
+                            <i class="fa columns"></i>&nbsp;Save Columns
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- * Event  * -->
+<div class="row" [@simpleFadeAnimation]="'in'">
+    <div class="container mb-5">
+        <div class="col-md-12">
+            <ng-template #loading2>
+                <div class="text-center text-dark p-5">
+                    <i class="far fa-spinner fa-pulse"></i>
+                    <br>
+                    loading...
+                </div>
+            </ng-template>
+            <div class="card">
+                <div class="card-body">
                     <form #calF="ngForm"
                           (ngSubmit)="onCalendarSubmit(calF)"
-                          *ngIf="calendar; else loading">
+                          *ngIf="calendar; else loading2">
 
                         <div class="form-group">
                             <label>Title</label>
@@ -65,10 +149,18 @@
                                     name="column"
                                     [(ngModel)]="calendar.column"
                                     #calColumn="ngModel">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                                <option value="4">Four</option>
+                                <option [value]="calColumnValues.column1">
+                                    {{ calColumnValues.column1 }}
+                                </option>
+                                <option [value]="calColumnValues.column2">
+                                    {{ calColumnValues.column2 }}
+                                </option>
+                                <option [value]="calColumnValues.column3">
+                                    {{ calColumnValues.column3 }}
+                                </option>
+                                <option [value]="calColumnValues.column4">
+                                    {{ calColumnValues.column4 }}
+                                </option>
                             </select>
                             <p class="help-block alert alert-danger text-center"
                                [hidden]="calColumn.valid || calColumn.untouched">

@@ -54,7 +54,7 @@
                     <span *ngFor="let attPage of attendeePlanningPages$">
                         <a class="dropdown-item"
                            *ngIf="!attPage.isExtURL"
-                           [routerLink]="['/register/', attPage.url]">
+                           [routerLink]="['/attendee-planning/', attPage.url]">
                             {{ attPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -82,7 +82,7 @@
                     <span *ngFor="let edPage of educationPages$">
                         <a class="dropdown-item"
                            *ngIf="!edPage.isExtURL"
-                           [routerLink]="['/register/', edPage.url]">
+                           [routerLink]="['/education/', edPage.url]">
                             {{ edPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -110,7 +110,7 @@
                     <span *ngFor="let exhPage of exhibitorInfoPages$">
                         <a class="dropdown-item"
                            *ngIf="!exhPage.isExtURL"
-                           [routerLink]="['/register/', exhPage.url]">
+                           [routerLink]="['/exhibitor-information/', exhPage.url]">
                             {{ exhPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -139,7 +139,7 @@
                     <span *ngFor="let newsPage of newsAndMediaPages$">
                         <a class="dropdown-item"
                            *ngIf="!newsPage.isExtURL"
-                           [routerLink]="['/register/', newsPage.url]">
+                           [routerLink]="['/news-and-media/', newsPage.url]">
                             {{ newsPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -167,7 +167,7 @@
                     <span *ngFor="let presPage of presentersPages$">
                         <a class="dropdown-item"
                            *ngIf="!presPage.isExtURL"
-                           [routerLink]="['/register/', presPage.url]">
+                           [routerLink]="['/presenters/', presPage.url]">
                             {{ presPage.title }}
                         </a>
                         <a class="dropdown-item"

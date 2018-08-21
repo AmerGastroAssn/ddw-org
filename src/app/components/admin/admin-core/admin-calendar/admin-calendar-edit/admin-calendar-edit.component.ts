@@ -102,6 +102,106 @@ export class AdminCalendarEditComponent implements OnInit {
                 this.time = this.calendarForm2.value.time;
             }
         });
+
+        // Get Event 3
+        this.calendarService.getCalendar3().subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar3 = calendar;
+                // Form:
+                this.calendarForm3 = this.fb.group({
+                    $key: [this.calendarService.cal3$key],
+                    body: [this.body],
+                    date: [this.date],
+                    time: [this.time],
+                    uid: [this.calendarService.cal3$key]
+                });
+
+                this.$key = this.calendarForm3.value.$key;
+                this.body = this.calendarForm3.value.body;
+                this.date = this.calendarForm3.value.date;
+                this.time = this.calendarForm3.value.time;
+            }
+        });
+
+        // Get Event 4
+        this.calendarService.getCalendar4().subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar4 = calendar;
+                // Form:
+                this.calendarForm4 = this.fb.group({
+                    $key: [this.calendarService.cal4$key],
+                    body: [this.body],
+                    date: [this.date],
+                    time: [this.time],
+                    uid: [this.calendarService.cal4$key]
+                });
+
+                this.$key = this.calendarForm4.value.$key;
+                this.body = this.calendarForm4.value.body;
+                this.date = this.calendarForm4.value.date;
+                this.time = this.calendarForm4.value.time;
+            }
+        });
+
+        // Get Event 5
+        this.calendarService.getCalendar5().subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar5 = calendar;
+                // Form:
+                this.calendarForm5 = this.fb.group({
+                    $key: [this.calendarService.cal5$key],
+                    body: [this.body],
+                    date: [this.date],
+                    time: [this.time],
+                    uid: [this.calendarService.cal5$key]
+                });
+
+                this.$key = this.calendarForm5.value.$key;
+                this.body = this.calendarForm5.value.body;
+                this.date = this.calendarForm5.value.date;
+                this.time = this.calendarForm5.value.time;
+            }
+        });
+
+        // Get Event 6
+        this.calendarService.getCalendar6().subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar6 = calendar;
+                // Form:
+                this.calendarForm6 = this.fb.group({
+                    $key: [this.calendarService.cal6$key],
+                    body: [this.body],
+                    date: [this.date],
+                    time: [this.time],
+                    uid: [this.calendarService.cal6$key]
+                });
+
+                this.$key = this.calendarForm6.value.$key;
+                this.body = this.calendarForm6.value.body;
+                this.date = this.calendarForm6.value.date;
+                this.time = this.calendarForm6.value.time;
+            }
+        });
+
+        // Get Event 7
+        this.calendarService.getCalendar7().subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar7 = calendar;
+                // Form:
+                this.calendarForm7 = this.fb.group({
+                    $key: [this.calendarService.cal7$key],
+                    body: [this.body],
+                    date: [this.date],
+                    time: [this.time],
+                    uid: [this.calendarService.cal7$key]
+                });
+
+                this.$key = this.calendarForm7.value.$key;
+                this.body = this.calendarForm7.value.body;
+                this.date = this.calendarForm7.value.date;
+                this.time = this.calendarForm7.value.time;
+            }
+        });
     }
 
 
@@ -112,7 +212,32 @@ export class AdminCalendarEditComponent implements OnInit {
 
     onCalendar2Submit(calendarData) {
         this.calendarService.updateCalendar(calendarData);
-        this.calendarForm1.reset(this.calendarService.getCalendar2());
+        this.calendarForm2.reset(this.calendarService.getCalendar2());
+    }
+
+    onCalendar3Submit(calendarData) {
+        this.calendarService.updateCalendar(calendarData);
+        this.calendarForm3.reset(this.calendarService.getCalendar3());
+    }
+
+    onCalendar4Submit(calendarData) {
+        this.calendarService.updateCalendar(calendarData);
+        this.calendarForm4.reset(this.calendarService.getCalendar4());
+    }
+
+    onCalendar5Submit(calendarData) {
+        this.calendarService.updateCalendar(calendarData);
+        this.calendarForm5.reset(this.calendarService.getCalendar5());
+    }
+
+    onCalendar6Submit(calendarData) {
+        this.calendarService.updateCalendar(calendarData);
+        this.calendarForm6.reset(this.calendarService.getCalendar6());
+    }
+
+    onCalendar7Submit(calendarData) {
+        this.calendarService.updateCalendar(calendarData);
+        this.calendarForm7.reset(this.calendarService.getCalendar7());
     }
 
 }

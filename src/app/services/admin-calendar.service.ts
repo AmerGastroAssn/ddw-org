@@ -70,6 +70,81 @@ export class AdminCalendarService {
         return this.calendar;
     }
 
+
+    getCalendar3(): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${this.cal3$key}`);
+        this.calendar = this.calendarDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Calendar;
+                data.$key = action.payload.id;
+                return data;
+            }
+        });
+        return this.calendar;
+    }
+
+
+    getCalendar4(): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${this.cal4$key}`);
+        this.calendar = this.calendarDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Calendar;
+                data.$key = action.payload.id;
+                return data;
+            }
+        });
+        return this.calendar;
+    }
+
+
+    getCalendar5(): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${this.cal5$key}`);
+        this.calendar = this.calendarDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Calendar;
+                data.$key = action.payload.id;
+                return data;
+            }
+        });
+        return this.calendar;
+    }
+
+
+    getCalendar6(): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${this.cal6$key}`);
+        this.calendar = this.calendarDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Calendar;
+                data.$key = action.payload.id;
+                return data;
+            }
+        });
+        return this.calendar;
+    }
+
+
+    getCalendar7(): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${this.cal7$key}`);
+        this.calendar = this.calendarDoc.snapshotChanges().map((action) => {
+            if (action.payload.exists === false) {
+                return null;
+            } else {
+                const data = action.payload.data() as Calendar;
+                data.$key = action.payload.id;
+                return data;
+            }
+        });
+        return this.calendar;
+    }
+
     updateCalendar(formData) {
         const pageRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
         const timestampToNum = formData.date.getTime();

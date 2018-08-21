@@ -180,28 +180,28 @@ export class AdminPageService {
 
     getAllNewsPages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'attendee-planning');
+            return ref.where('category', '==', 'news-and-media');
         });
         return this.pages$ = this.pageCollection.valueChanges();
     }
 
     getAllExhibitorPages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'education');
+            return ref.where('category', '==', 'exhibitor-information');
         });
         return this.pages$ = this.pageCollection.valueChanges();
     }
 
     getAllEducationPages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'exhibitor-information');
+            return ref.where('category', '==', 'education');
         });
         return this.pages$ = this.pageCollection.valueChanges();
     }
 
     getAllAttendeePages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'news-and-media');
+            return ref.where('category', '==', 'attendee-planning');
         });
         return this.pages$ = this.pageCollection.valueChanges();
     }

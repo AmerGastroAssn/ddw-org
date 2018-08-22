@@ -16,3 +16,9 @@ p.alert {
 .back-edit {
     float: right;
 }
+
+.mat-expansion-panel {
+    box-shadow: none !important;
+    border: 1px solid #eaeaea;
+    border-top-color: #fcfcfc;
+}

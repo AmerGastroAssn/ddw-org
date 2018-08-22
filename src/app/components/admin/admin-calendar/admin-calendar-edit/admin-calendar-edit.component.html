@@ -38,6 +38,8 @@
     </div>
 </div>
 
+
+<!-- * Event  * -->
 <div class="row" [@simpleFadeAnimation]="'in'">
     <div class="container mb-5">
         <div class="col-md-12">
@@ -50,199 +52,161 @@
             </ng-template>
             <div class="card">
                 <div class="card-body">
-                    <h3>Edit Card Columns</h3>
-                    <p class="text-secondary">(The day displayed at the top of the calendar)</p>
-                    <form #colVF="ngForm"
-                          (ngSubmit)="onColumnSubmit(colVF)"
-                          *ngIf="calColumnValues; else loading">
-                        <div class="form-group">
-                            <label>Column/Day 1</label>
-                            <input type="text"
-                                   class="form-control"
-                                   required
-                                   name="column1"
-                                   [(ngModel)]="calColumnValues.column1"
-                                   #col1="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!col1.valid && col1.touched">
-                                <b>Column 1</b> is required!
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Column/Day 2</label>
-                            <input type="text"
-                                   class="form-control"
-                                   required
-                                   name="column2"
-                                   [(ngModel)]="calColumnValues.column2"
-                                   #col2="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!col2.valid && col2.touched">
-                                <b>Column 2</b> is required!
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Column/Day 3</label>
-                            <input type="text"
-                                   class="form-control"
-                                   required
-                                   name="column3"
-                                   [(ngModel)]="calColumnValues.column3"
-                                   #col3="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!col3.valid && col3.touched">
-                                <b>Column 3</b> is required!
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Column/Day 4</label>
-                            <input type="text"
-                                   class="form-control"
-                                   required
-                                   name="column4"
-                                   [(ngModel)]="calColumnValues.column4"
-                                   #col4="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!col4.valid && col4.touched">
-                                <b>Column 4</b> is required!
-                            </p>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary mb-5"
-                                [disabled]="!colVF.valid">
-                            <i class="fa columns"></i>&nbsp;Save Columns
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- * Event  * -->
-<div class="row" [@simpleFadeAnimation]="'in'">
-    <div class="container mb-5">
-        <div class="col-md-12">
-            <ng-template #loading2>
-                <div class="text-center text-dark p-5">
-                    <i class="far fa-spinner fa-pulse"></i>
-                    <br>
-                    loading...
-                </div>
-            </ng-template>
-            <div class="card">
-                <div class="card-body">
-                    <h3>Edit Calendar Event</h3>
-                    <form #calF="ngForm"
-                          (ngSubmit)="onCalendarSubmit(calF)"
-                          *ngIf="calendar; else loading2">
+                    <form (ngSubmit)="onCalendarUpdate(updateCalForm.value)"
+                          [formGroup]="updateCalForm"
+                          *ngIf="calendar; else loading">
 
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text"
                                    class="form-control"
                                    required
-                                   name="title"
                                    [(ngModel)]="calendar.title"
-                                   #calTitle="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!calTitle.valid && calTitle.touched">
-                                <b>Title</b> is required!
-                            </p>
+                                   formControlName="title"/>
                         </div>
 
-                        <div class="form-group">
-                            <label>Column (day)</label>
-                            <select class="custom-select"
-                                    size="4"
-                                    required
-                                    name="column"
-                                    [(ngModel)]="calendar.column"
-                                    #calColumn="ngModel"
-                                    *ngIf="calColumnValues">
-                                <option [value]="calColumnValues.column1">
-                                    {{ calColumnValues.column1 }}
-                                </option>
-                                <option [value]="calColumnValues.column2">
-                                    {{ calColumnValues.column2 }}
-                                </option>
-                                <option [value]="calColumnValues.column3">
-                                    {{ calColumnValues.column3 }}
-                                </option>
-                                <option [value]="calColumnValues.column4">
-                                    {{ calColumnValues.column4 }}
-                                </option>
-                            </select>
-                        </div>
+                        <!-- * Date 1 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    One
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 1</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       [(ngModel)]="calendar.date1"
+                                       formControlName="date1"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Event Date</label>
-                            <input type="text"
-                                   class="form-control"
-                                   bsDatepicker
-                                   placement="top"
-                                   required
-                                   name="date"
-                                   [bsValue]="currentDate"
-                                   [(ngModel)]="calendar.date"
-                                   [bsConfig]="bsConfig"
-                                   #calDate="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!calDate.valid && calDate.touched">
-                                <b>Date</b> is required!
-                            </p>
-                        </div>
+                            <div class="form-group">
+                                <label>Body Date 1</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [(ngModel)]="calendar.body1"
+                                          [formControl]="updateCalForm.controls['body1']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
 
-                        <div class="form-group">
-                            <label>Start Time <br>
-                                <b>Currently Set To: {{ calendar.startTime | date:'shortTime' }}</b>
-                            </label>
-                            <timepicker type="text"
-                                        required
-                                        name="startTime"
-                                        class="form-control"
-                                        ngModel="calendar.startTime"
-                                        #calStart="ngModel">
-                            </timepicker>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!calStart.valid && calStart.touched">
-                                <b>Start Time</b> is required!
-                            </p>
-                        </div>
 
-                        <div class="form-group">
-                            <label>End Time <br>
-                                <b>Currently Set To: {{ calendar.endTime | date:'shortTime' }}</b>
-                            </label>
-                            <timepicker type="text"
-                                        class="form-control"
-                                        required
-                                        name="endTime"
-                                        ngModel="calendar.endTime"
-                                        #calEnd="ngModel">
-                            </timepicker>
-                            <p class="help-block alert alert-danger text-center"
-                               *ngIf="!calEnd.valid && calEnd.touched">
-                                <b>End Time</b> is required!
-                            </p>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Body</label>
-                            <ckeditor [config]="CkeditorConfig"
-                                      [readonly]="false"
-                                      debounce="500"
-                                      name="body"
-                                      [(ngModel)]="calendar.body">
-                            </ckeditor>
-                        </div>
 
-                        <button type="submit" class="btn btn-primary mb-5">
-                            <i class="fa fa-calendar"></i>&nbsp;Save Event
+                        <!-- * Date 2 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Two
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 2</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       [(ngModel)]="calendar.date2"
+                                       formControlName="date2"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body Date 2</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [(ngModel)]="calendar.body2"
+                                          [formControl]="updateCalForm.controls['body2']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
+
+
+                        <!-- * Date 3 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Three
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div class="form-group">
+                                <label>Date 3</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       [(ngModel)]="calendar.date3"
+                                       formControlName="date3"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body Date 3</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [(ngModel)]="calendar.body3"
+                                          [formControl]="updateCalForm.controls['body3']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
+
+
+                        <!-- * Date 4 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Four
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+
+                            <div class="form-group">
+                                <label>Date 4</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       [(ngModel)]="calendar.date4"
+                                       formControlName="date4"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body Date 4</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [(ngModel)]="calendar.body4"
+                                          [formControl]="updateCalForm.controls['body4']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
+
+
+                        <button type="submit" class="btn btn-primary mb-5 mt-5">
+                            <i class="fa fa-calendar"></i>&nbsp;Save Calendar
                         </button>
                     </form>
                 </div>

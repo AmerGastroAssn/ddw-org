@@ -71,17 +71,52 @@ export class AdminCalendarService {
 
     }
 
+
+    updateCalendar(formData) {
+        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
+
+        const data: Calendar = {
+            $key: formData.$key,
+            body1: formData.body1,
+            body2: formData.body2,
+            body3: formData.body3,
+            body4: formData.body4,
+            date1: formData.date1,
+            date2: formData.date2,
+            date3: formData.date3,
+            date4: formData.date4,
+            title: formData.title,
+            uid: formData.uid,
+        };
+
+        console.log('data', data);
+        return calRef.update(data)
+                     .then(() => {
+                         this.router.navigate(['/admin/calendar']);
+                         this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
+                             duration: 3000,
+                             verticalPosition: 'bottom',
+                             panelClass: ['snackbar-success']
+                         });
+                         console.log('Calendar Event updated', data);
+                     })
+                     .catch((error) => console.log(`ERROR~uC: `, error));
+    }
+
     saveCalendar(formData) {
         const new$key = this.afs.createId();
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${new$key}`);
 
         const data: Calendar = {
             $key: new$key,
-            body: formData.body,
-            column: formData.column,
-            date: formData.date.getTime(),
-            endTime: formData.endTime.getTime(),
-            startTime: formData.startTime.getTime(),
+            body1: formData.body1,
+            body2: formData.body2,
+            body3: formData.body3,
+            body4: formData.body4,
+            date1: formData.date1,
+            date2: formData.date2,
+            date3: formData.date3,
+            date4: formData.date4,
             title: formData.title,
             uid: new$key,
         };
@@ -98,33 +133,21 @@ export class AdminCalendarService {
                          console.log('Calendar Event updated', data);
                      })
                      .catch((error) => console.log(`ERROR~uC: `, error));
-
-
     }
 
-    updateCalendar(formData) {
+    updateCalendar2(formData) {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
-        /*------------------------------------------------
-         Checks to make sure timestamps are converted to numbers.
-         Numbers are needed for querying (Timestamps make it difficult.
-         ------------------------------------------------*/
-        if (typeof formData.startTime === 'number') {
-            this.stampStartNum = formData.startTime;
-        } else {
-            this.stampStartNum = formData.startTime.getTime();
-        }
-        if (typeof formData.endTime === 'number') {
-            this.stampEndNum = formData.endTime;
-        } else {
-            this.stampEndNum = formData.endTime.getTime();
-        }
+
         const data: Calendar = {
             $key: formData.$key,
-            body: formData.body,
-            column: formData.column,
-            date: this.stampDateNum,
-            endTime: this.stampEndNum,
-            startTime: this.stampStartNum,
+            body1: formData.body1,
+            body2: formData.body2,
+            body3: formData.body3,
+            body4: formData.body4,
+            date1: formData.date1,
+            date2: formData.date2,
+            date3: formData.date3,
+            date4: formData.date4,
             title: formData.title,
             uid: formData.uid,
         };

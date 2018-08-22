@@ -37,19 +37,22 @@ export class AdminCalendarNewComponent implements OnInit {
     calColumnValues: CalColumnValues;
 
     $key: string;
-    uid: string;
-    body: string;
-    date: number;
-    column: string;
-    endTime: number;
-    startTime: number;
+    body1: string;
+    body2: string;
+    body3: string;
+    body4: string;
+    date1: number;
+    date2: number;
+    date3: number;
+    date4: number;
     title: string;
+    uid: string;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
 
     CkeditorConfig = {
         allowedContent: true,
-        height: 200,
+        height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
     };
 
@@ -69,22 +72,28 @@ export class AdminCalendarNewComponent implements OnInit {
         // New Calendar:
         this.newCalForm = this.fb.group({
             $key: [''],
+            body1: ['', Validators.required],
+            body2: ['', Validators.required],
+            body3: [''],
+            body4: [''],
+            date1: ['', Validators.required],
+            date2: ['', Validators.required],
+            date3: [''],
+            date4: [''],
             title: ['', Validators.required],
-            body: ['', Validators.required],
-            date: ['', Validators.required],
-            column: ['', Validators.required],
-            endTime: ['', Validators.required],
-            startTime: ['', Validators.required],
             uid: [''],
         });
 
         this.$key = this.newCalForm.value.$key;
         this.title = this.newCalForm.value.title;
-        this.body = this.newCalForm.value.body;
-        this.date = this.newCalForm.value.date;
-        this.column = this.newCalForm.value.column;
-        this.endTime = this.newCalForm.value.endTime;
-        this.startTime = this.newCalForm.value.startTime;
+        this.body1 = this.newCalForm.value.body1;
+        this.body2 = this.newCalForm.value.body2;
+        this.body3 = this.newCalForm.value.body3;
+        this.body4 = this.newCalForm.value.body4;
+        this.date1 = this.newCalForm.value.date1;
+        this.date2 = this.newCalForm.value.date2;
+        this.date3 = this.newCalForm.value.date3;
+        this.date4 = this.newCalForm.value.date4;
         this.uid = this.newCalForm.value.uid;
     }
 

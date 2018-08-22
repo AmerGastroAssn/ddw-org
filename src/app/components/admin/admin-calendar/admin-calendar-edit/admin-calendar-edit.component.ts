@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
@@ -33,18 +33,22 @@ import { AdminCalendarService } from '../../../../services/admin-calendar.servic
     ]
 })
 export class AdminCalendarEditComponent implements OnInit {
-    @ViewChild('calF') calF: NgForm;
-    @ViewChild('colVF') colVF: NgForm;
+    updateCalForm: FormGroup;
+    // @ViewChild('colVF') colVF: NgForm;
     calendar: Calendar;
     calColumnValues: CalColumnValues;
 
     $key: string;
-    body: string;
-    date: number;
-    column: string;
-    endTime: number;
-    startTime: number;
+    body1: string;
+    body2: string;
+    body3: string;
+    body4: string;
+    date1: number;
+    date2: number;
+    date3: number;
+    date4: number;
     title: string;
+    uid: string;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
 
@@ -73,6 +77,33 @@ export class AdminCalendarEditComponent implements OnInit {
               containerClass: 'theme-default',
               dateInputFormat: 'MMMM Do YYYY'
           });
+
+        // New Calendar:
+        this.updateCalForm = this.fb.group({
+            $key: [''],
+            body1: ['', Validators.required],
+            body2: ['', Validators.required],
+            body3: [''],
+            body4: [''],
+            date1: ['', Validators.required],
+            date2: ['', Validators.required],
+            date3: [''],
+            date4: [''],
+            title: ['', Validators.required],
+            uid: [''],
+        });
+
+        this.$key = this.updateCalForm.value.$key;
+        this.title = this.updateCalForm.value.title;
+        this.body1 = this.updateCalForm.value.body1;
+        this.body2 = this.updateCalForm.value.body2;
+        this.body3 = this.updateCalForm.value.body3;
+        this.body4 = this.updateCalForm.value.body4;
+        this.date1 = this.updateCalForm.value.date1;
+        this.date2 = this.updateCalForm.value.date2;
+        this.date3 = this.updateCalForm.value.date3;
+        this.date4 = this.updateCalForm.value.date4;
+        this.uid = this.updateCalForm.value.uid;
     }
 
     ngOnInit() {
@@ -94,14 +125,17 @@ export class AdminCalendarEditComponent implements OnInit {
     onCalendarSubmit(calendarData: NgForm) {
         const value = calendarData.value;
         const newCalEvent = new Calendar(
-          value.$key = this.$key,
-          value.body,
-          value.column,
-          value.date,
-          value.endTime,
-          value.startTime,
+          value.$key,
+          value.body1,
+          value.body2,
+          value.body3,
+          value.body4,
+          value.date1,
+          value.date2,
+          value.date3,
+          value.date4,
           value.title,
-          value.uid = this.$key,
+          value.uid,
         );
 
         if (!calendarData.valid) {
@@ -118,28 +152,24 @@ export class AdminCalendarEditComponent implements OnInit {
     }
 
 
-    onColumnSubmit(columnData: NgForm) {
-        const value = columnData.value;
-        const newColumns = new CalColumnValues(
-          this.calColumnValues.$key,
-          value.column1,
-          value.column2,
-          value.column3,
-          value.column4,
-          this.calColumnValues.uid,
-        );
-
-        if (!columnData.valid) {
-            this.sbAlert.open('Columns/Days Not Valid!', 'Dismiss', {
+    // Reactive Form
+    onCalendarUpdate(calendarData) {
+        if (!this.updateCalForm.valid) {
+            this.sbAlert.open('Missing at least one input, Event was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.calendarService.updateCalColumnValues(newColumns);
-            console.log('Column events sent', newColumns);
+            this.calendarService.updateCalendar(calendarData);
+            console.log(calendarData);
+            this.updateCalForm.reset();
+            this.sbAlert.open('New Event created!', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-success']
+            });
         }
-        // this.calF.reset(this.calendarService.getCalendar(this.$key));
     }
 
 

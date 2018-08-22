@@ -35,6 +35,7 @@
     </div>
 </div>
 
+
 <!-- * Event  * -->
 <div class="row" [@simpleFadeAnimation]="'in'">
     <div class="container mb-5">
@@ -60,79 +61,135 @@
                                    formControlName="title"/>
                         </div>
 
-                        <div class="form-group">
-                            <label>Column (day) <br>
-                                <span class="text-right back-edit">
-                                    <a [routerLink]="['/admin/calendar']"
-                                       class="btn btn-default">
-                                      <i class="fa fa-pencil"></i> Back to edit event, to edit Days/Columns
-                                    </a>
-                                </span>
-                            </label>
-                            <select class="custom-select"
-                                    size="4"
-                                    required
-                                    formControlName="column">
-                                <option [value]="calColumnValues.column1">
-                                    {{ calColumnValues.column1 }}
-                                </option>
-                                <option [value]="calColumnValues.column2">
-                                    {{ calColumnValues.column2 }}
-                                </option>
-                                <option [value]="calColumnValues.column3">
-                                    {{ calColumnValues.column3 }}
-                                </option>
-                                <option [value]="calColumnValues.column4">
-                                    {{ calColumnValues.column4 }}
-                                </option>
-                            </select>
-                        </div>
+                        <!-- * Date 1 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    One
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 1</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       formControlName="date1"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Event Date</label>
-                            <input type="text"
-                                   class="form-control"
-                                   bsDatepicker
-                                   placement="top"
-                                   required
-                                   formControlName="date"
-                                   [bsConfig]="bsConfig"/>
-                        </div>
+                            <div class="form-group">
+                                <label>Body Date 1</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [formControl]="newCalForm.controls['body1']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
 
-                        <div class="form-group">
-                            <label>Start Time <br>
-                                <b>Currently Set To: {{ startTime | date:'shortTime' }}</b>
-                            </label>
-                            <timepicker type="text"
-                                        required
-                                        name="startTime"
-                                        class="form-control"
-                                        formControlName="startTime">
-                            </timepicker>
-                        </div>
 
-                        <div class="form-group">
-                            <label>End Time <br>
-                                <b>Currently Set To: {{ endTime | date:'shortTime' }}</b>
-                            </label>
-                            <timepicker type="text"
-                                        class="form-control"
-                                        required
-                                        name="endTime"
-                                        formControlName="endTime">
-                            </timepicker>
-                        </div>
+                        <!-- * Date 2 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Two
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 2</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       formControlName="date2"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Body</label>
-                            <ckeditor [config]="CkeditorConfig"
-                                      [readonly]="false"
-                                      debounce="500"
-                                      [formControl]="newCalForm.controls['body']">
-                            </ckeditor>
-                        </div>
+                            <div class="form-group">
+                                <label>Body Date 2</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [formControl]="newCalForm.controls['body2']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
 
-                        <button type="submit" class="btn btn-primary mb-5">
+
+                        <!-- * Date 3 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Three
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 3</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       formControlName="date3"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body Date 3</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [formControl]="newCalForm.controls['body3']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
+
+
+                        <!-- * Date 4 * -->
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Day
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Four
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="form-group">
+                                <label>Date 4</label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       placement="top"
+                                       required
+                                       formControlName="date4"
+                                       [bsConfig]="bsConfig"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Body Date 4</label>
+                                <ckeditor [config]="CkeditorConfig"
+                                          [readonly]="false"
+                                          debounce="500"
+                                          [formControl]="newCalForm.controls['body4']">
+                                </ckeditor>
+                            </div>
+                        </mat-expansion-panel>
+
+
+                        <button type="submit" class="btn btn-primary mb-5 mt-5">
                             <i class="fa fa-calendar"></i>&nbsp;Save Event
                         </button>
                     </form>

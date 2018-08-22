@@ -1,7 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatMenuModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSnackBarModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
@@ -67,6 +73,7 @@ import { AdminCalendarItemComponent } from './admin-calendar/admin-calendar-item
         TabsModule,
         TimepickerModule,
         CKEditorModule,
+        MatExpansionModule,
     ],
     exports: [
         MatButtonModule,

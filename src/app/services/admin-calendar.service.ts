@@ -23,6 +23,10 @@ export class AdminCalendarService {
     $key: string;
     calColumnValue$key: string;
 
+    stampDateNum: any;
+    stampStartNum: any;
+    stampEndNum: any;
+
 
     constructor(
       private afs: AngularFirestore,
@@ -74,6 +78,7 @@ export class AdminCalendarService {
         const stampStartNum = formData.startTime.getTime();
         const stampEndNum = formData.endTime.getTime();
 
+
         const data: Calendar = {
             $key: new$key,
             body: formData.body,
@@ -94,21 +99,38 @@ export class AdminCalendarService {
                          console.log('Calendar Event updated', data);
                      })
                      .catch((error) => console.log(`ERROR~uC: `, error));
+
+
     }
 
     updateCalendar(formData) {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
-        const stampDateNum = formData.date.getTime();
-        const stampStartNum = formData.startTime.getTime();
-        const stampEndNum = formData.endTime.getTime();
-
+        /*------------------------------------------------
+         Checks to make sure timestamps are converted to numbers.
+         Numbers are needed for querying (Timestamps make it difficult.
+         ------------------------------------------------*/
+        if (typeof formData.date === 'number') {
+            this.stampDateNum = formData.date;
+        } else {
+            this.stampDateNum = formData.date.getTime();
+        }
+        if (typeof formData.startTime === 'number') {
+            this.stampStartNum = formData.startTime;
+        } else {
+            this.stampStartNum = formData.startTime.getTime();
+        }
+        if (typeof formData.endTime === 'number') {
+            this.stampEndNum = formData.endTime;
+        } else {
+            this.stampEndNum = formData.endTime.getTime();
+        }
         const data: Calendar = {
             $key: formData.$key,
             body: formData.body,
-            date: stampDateNum,
+            date: this.stampDateNum,
             column: formData.column,
-            startTime: stampStartNum,
-            endTime: stampEndNum,
+            startTime: this.stampStartNum,
+            endTime: this.stampEndNum,
             title: formData.title,
             uid: formData.uid,
         };

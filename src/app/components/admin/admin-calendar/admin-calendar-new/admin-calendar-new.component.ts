@@ -47,6 +47,12 @@ export class AdminCalendarNewComponent implements OnInit {
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
 
+    CkeditorConfig = {
+        allowedContent: true,
+        height: 200,
+        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
+    };
+
     constructor(
       private calendarService: AdminCalendarService,
       private fb: FormBuilder,
@@ -59,28 +65,6 @@ export class AdminCalendarNewComponent implements OnInit {
               containerClass: 'theme-default',
               dateInputFormat: 'MMMM Do YYYY'
           });
-
-        // New Calendar:
-        // this.newCalForm = this.fb.group({
-        //     $key: [''],
-        //     title: ['', Validators.required],
-        //     body: ['', Validators.required],
-        //     date: ['', Validators.required],
-        //     column: ['', Validators.required],
-        //     endTime: ['', Validators.required],
-        //     startTime: ['', Validators.required],
-        //     uid: [''],
-        // });
-        //
-        // this.$key = this.newCalForm.value.$key;
-        // this.title = this.newCalForm.value.title;
-        // this.body = this.newCalForm.value.body;
-        // this.date = this.newCalForm.value.date;
-        // this.column = this.newCalForm.value.column;
-        // this.endTime = this.newCalForm.value.endTime;
-        // this.startTime = this.newCalForm.value.startTime;
-        // this.uid = this.newCalForm.value.uid;
-
     }
 
 
@@ -91,25 +75,6 @@ export class AdminCalendarNewComponent implements OnInit {
                 this.calColumnValues = values;
             });
     }
-
-    // onCalendarCreate(calendarData) {
-    //     if (!this.newCalForm.valid) {
-    //         this.sbAlert.open('Missing at least one input, Event was NOT created.', 'Dismiss', {
-    //             duration: 3000,
-    //             verticalPosition: 'bottom',
-    //             panelClass: ['snackbar-danger']
-    //         });
-    //     } else {
-    //         // this.calendarService.saveCalendar(calendarData);
-    //         console.log(calendarData);
-    //         this.newCalForm.reset();
-    //         this.sbAlert.open('New Event created!', 'Dismiss', {
-    //             duration: 3000,
-    //             verticalPosition: 'bottom',
-    //             panelClass: ['snackbar-success']
-    //         });
-    //     }
-    // }
 
     onCalendarCreate(calendarData: NgForm) {
         const value = calendarData.value;

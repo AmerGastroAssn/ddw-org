@@ -8,7 +8,7 @@
                <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
                     alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
                         <i class="fa fa-calendar"></i>&nbsp;Admin
-                    </span> Calendar Settings
+                    </span> Calendar Event Edit
                 </h1>
             </div>
         </div>
@@ -19,8 +19,9 @@
     <div class="container">
         <a [routerLink]="['/admin/settings']" class="back-pages"><i class="fal fa-arrow-circle-left"></i>&nbsp;Settings</a>
         <div class="text-right mr-5">
-            <a [routerLink]="['/admin/calendar']" class="btn btn-default"><i class="fa fa-eye"></i>&nbsp;Preview
-                Calendar</a>
+            <a [routerLink]="['/admin/calendar']" class="btn btn-default">
+                <i class="fa fa-arrow-square-left"></i>&nbsp;
+                Calendar List</a>
         </div>
     </div>
 </div>
@@ -52,7 +53,7 @@
                                    [(ngModel)]="calColumnValues.column1"
                                    #col1="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="col1.valid || col1.untouched">
+                               *ngIf="!col1.valid && col1.touched">
                                 <b>Column 1</b> is required!
                             </p>
                         </div>
@@ -66,7 +67,7 @@
                                    [(ngModel)]="calColumnValues.column2"
                                    #col2="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="col2.valid || col2.untouched">
+                               *ngIf="!col2.valid && col2.touched">
                                 <b>Column 2</b> is required!
                             </p>
                         </div>
@@ -80,7 +81,7 @@
                                    [(ngModel)]="calColumnValues.column3"
                                    #col3="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="col3.valid || col3.untouched">
+                               *ngIf="!col3.valid && col3.touched">
                                 <b>Column 3</b> is required!
                             </p>
                         </div>
@@ -94,13 +95,14 @@
                                    [(ngModel)]="calColumnValues.column4"
                                    #col4="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="col4.valid || col4.untouched">
+                               *ngIf="!col4.valid && col4.touched">
                                 <b>Column 4</b> is required!
                             </p>
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary mb-5">
+                        <button type="submit" class="btn btn-primary mb-5"
+                                [disabled]="!colVF.valid">
                             <i class="fa columns"></i>&nbsp;Save Columns
                         </button>
                     </form>
@@ -137,7 +139,7 @@
                                    [(ngModel)]="calendar.title"
                                    #calTitle="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="calTitle.valid || calTitle.untouched">
+                               *ngIf="!calTitle.valid && calTitle.touched">
                                 <b>Title</b> is required!
                             </p>
                         </div>
@@ -149,7 +151,8 @@
                                     required
                                     name="column"
                                     [(ngModel)]="calendar.column"
-                                    #calColumn="ngModel">
+                                    #calColumn="ngModel"
+                                    *ngIf="calColumnValues">
                                 <option [value]="calColumnValues.column1">
                                     {{ calColumnValues.column1 }}
                                 </option>
@@ -163,10 +166,6 @@
                                     {{ calColumnValues.column4 }}
                                 </option>
                             </select>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calColumn.valid || calColumn.untouched">
-                                <b>Column</b> is required!
-                            </p>
                         </div>
 
                         <div class="form-group">
@@ -176,11 +175,12 @@
                                    bsDatepicker
                                    required
                                    name="date"
+                                   [bsValue]="currentDate"
                                    [(ngModel)]="calendar.date"
                                    [bsConfig]="bsConfig"
                                    #calDate="ngModel"/>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="calDate.valid || calDate.untouched">
+                               *ngIf="!calDate.valid && calDate.touched">
                                 <b>Date</b> is required!
                             </p>
                         </div>
@@ -193,11 +193,11 @@
                                         required
                                         name="startTime"
                                         class="form-control"
-                                        [(ngModel)]="calendar.startTime"
+                                        ngModel="calendar.startTime"
                                         #calStart="ngModel">
                             </timepicker>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="calStart.valid || calStart.untouched">
+                               *ngIf="!calStart.valid && calStart.touched">
                                 <b>Start Time</b> is required!
                             </p>
                         </div>
@@ -210,30 +210,23 @@
                                         class="form-control"
                                         required
                                         name="endTime"
-                                        [(ngModel)]="calendar.endTime"
+                                        ngModel="calendar.endTime"
                                         #calEnd="ngModel">
                             </timepicker>
                             <p class="help-block alert alert-danger text-center"
-                               [hidden]="calEnd.valid || calEnd.untouched">
+                               *ngIf="!calEnd.valid && calEnd.touched">
                                 <b>End Time</b> is required!
                             </p>
                         </div>
 
                         <div class="form-group">
                             <label>Body</label>
-                            <textarea type="text"
-                                      rows="5"
-                                      class="form-control"
-                                      placeholder="Enter body of event here..."
-                                      required
+                            <ckeditor [config]="CkeditorConfig"
+                                      [readonly]="false"
+                                      debounce="500"
                                       name="body"
-                                      [(ngModel)]="calendar.body"
-                                      #calBody="ngModel">
-                                <p class="help-block alert alert-danger text-center"
-                                   [hidden]="calBody.valid || calBody.untouched">
-                                 <b>Body</b> is required!
-                            </p>
-                            </textarea>
+                                      [(ngModel)]="calendar.body">
+                            </ckeditor>
                         </div>
 
                         <button type="submit" class="btn btn-primary mb-5">

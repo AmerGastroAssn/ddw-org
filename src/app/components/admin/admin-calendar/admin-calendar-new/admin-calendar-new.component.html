@@ -136,19 +136,12 @@
 
                         <div class="form-group">
                             <label>Body</label>
-                            <textarea type="text"
-                                      rows="5"
-                                      class="form-control"
-                                      placeholder="Enter body of event here..."
-                                      required
+                            <ckeditor [config]="CkeditorConfig"
+                                      [readonly]="false"
+                                      debounce="500"
                                       name="body"
-                                      [(ngModel)]="body"
-                                      #calBody="ngModel">
-<p class="help-block alert alert-danger text-center"
-   [hidden]="calBody.valid || calBody.untouched">
-<b>Body</b> is required!
-</p>
-</textarea>
+                                      [(ngModel)]="body">
+                            </ckeditor>
                         </div>
 
                         <button type="submit" class="btn btn-primary mb-5">

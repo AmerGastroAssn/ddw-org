@@ -52,6 +52,14 @@ export class AdminCalendarEditComponent implements OnInit {
     column2: string;
     column3: string;
     column4: string;
+    currentDate = new Date();
+
+    CkeditorConfig = {
+        allowedContent: true,
+        height: 200,
+        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
+    };
+
 
     constructor(
       private calendarService: AdminCalendarService,

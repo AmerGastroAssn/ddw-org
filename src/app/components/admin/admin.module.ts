@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatMenuModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
@@ -65,6 +66,7 @@ import { AdminCalendarItemComponent } from './admin-calendar/admin-calendar-item
         AdminPageModule,
         TabsModule,
         TimepickerModule,
+        CKEditorModule,
     ],
     exports: [
         MatButtonModule,

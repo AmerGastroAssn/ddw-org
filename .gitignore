@@ -2,6 +2,12 @@
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
 /functions/node_modules
+.firebase
+firestore.indexes.json
+firestore.rules
+firebase.json
+database.rules.json
+.firebaserc
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 # compiled output

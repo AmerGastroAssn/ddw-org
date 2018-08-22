@@ -74,23 +74,22 @@ export class AdminCalendarService {
     saveCalendar(formData) {
         const new$key = this.afs.createId();
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${new$key}`);
-        const stampDateNum = formData.date.getTime();
-        const stampStartNum = formData.startTime.getTime();
-        const stampEndNum = formData.endTime.getTime();
-
 
         const data: Calendar = {
             $key: new$key,
             body: formData.body,
-            date: stampDateNum,
             column: formData.column,
-            startTime: stampStartNum,
-            endTime: stampEndNum,
+            date: formData.date.getTime(),
+            endTime: formData.endTime.getTime(),
+            startTime: formData.startTime.getTime(),
             title: formData.title,
             uid: new$key,
         };
+
+        console.log('data', data);
         return calRef.set(data)
                      .then(() => {
+                         this.router.navigate(['/admin/calendar']);
                          this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
                              duration: 3000,
                              verticalPosition: 'bottom',
@@ -109,11 +108,6 @@ export class AdminCalendarService {
          Checks to make sure timestamps are converted to numbers.
          Numbers are needed for querying (Timestamps make it difficult.
          ------------------------------------------------*/
-        if (typeof formData.date === 'number') {
-            this.stampDateNum = formData.date;
-        } else {
-            this.stampDateNum = formData.date.getTime();
-        }
         if (typeof formData.startTime === 'number') {
             this.stampStartNum = formData.startTime;
         } else {
@@ -127,15 +121,16 @@ export class AdminCalendarService {
         const data: Calendar = {
             $key: formData.$key,
             body: formData.body,
-            date: this.stampDateNum,
             column: formData.column,
-            startTime: this.stampStartNum,
+            date: this.stampDateNum,
             endTime: this.stampEndNum,
+            startTime: this.stampStartNum,
             title: formData.title,
             uid: formData.uid,
         };
         return calRef.update(data)
                      .then(() => {
+                         this.router.navigate(['/admin/calendar']);
                          this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
                              duration: 3000,
                              verticalPosition: 'bottom',

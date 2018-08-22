@@ -17,15 +17,26 @@
 
 <div class="row m-4 pl-5" [@simpleFadeAnimation]="'in'">
     <div class="container">
-        <a [routerLink]="['/admin/settings']" class="back-pages"><i class="fal fa-arrow-circle-left"></i>&nbsp;Settings</a>
         <div class="text-right mr-5">
-            <a [routerLink]="['/admin/calendar']" class="btn btn-default">
-                <i class="fa fa-arrow-square-left"></i>&nbsp;
-                Calendar List</a>
+            <div class="btn-group btn-group-md float-right"
+                 role="group"
+                 aria-label="Basic example">
+                <a [routerLink]="['/admin/settings']"
+                   class="btn btn-default">
+                    <i class="fa fa-wrench"></i>&nbsp;Settings
+                </a>
+                <a [routerLink]="['/admin/calendar']"
+                   class="btn btn-default">
+                    <i class="fa fa-arrow-square-left"></i>&nbsp;
+                    Calendar List</a>
+                <a [routerLink]="['/admin/calendar/new']"
+                   class="btn btn-default">
+                    <i class="fa fa-calendar-plus"></i>&nbsp;New Event
+                </a>
+            </div>
         </div>
     </div>
 </div>
-
 
 <div class="row" [@simpleFadeAnimation]="'in'">
     <div class="container mb-5">
@@ -173,6 +184,7 @@
                             <input type="text"
                                    class="form-control"
                                    bsDatepicker
+                                   placement="top"
                                    required
                                    name="date"
                                    [bsValue]="currentDate"

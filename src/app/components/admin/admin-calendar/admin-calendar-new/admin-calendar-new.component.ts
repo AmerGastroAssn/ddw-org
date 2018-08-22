@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
@@ -32,7 +32,7 @@ import { AdminCalendarService } from '../../../../services/admin-calendar.servic
     ]
 })
 export class AdminCalendarNewComponent implements OnInit {
-    @ViewChild('calF') calF: NgForm;
+    newCalForm: FormGroup;
     calendar: Calendar;
     calColumnValues: CalColumnValues;
 
@@ -65,6 +65,27 @@ export class AdminCalendarNewComponent implements OnInit {
               containerClass: 'theme-default',
               dateInputFormat: 'MMMM Do YYYY'
           });
+
+        // New Calendar:
+        this.newCalForm = this.fb.group({
+            $key: [''],
+            title: ['', Validators.required],
+            body: ['', Validators.required],
+            date: ['', Validators.required],
+            column: ['', Validators.required],
+            endTime: ['', Validators.required],
+            startTime: ['', Validators.required],
+            uid: [''],
+        });
+
+        this.$key = this.newCalForm.value.$key;
+        this.title = this.newCalForm.value.title;
+        this.body = this.newCalForm.value.body;
+        this.date = this.newCalForm.value.date;
+        this.column = this.newCalForm.value.column;
+        this.endTime = this.newCalForm.value.endTime;
+        this.startTime = this.newCalForm.value.startTime;
+        this.uid = this.newCalForm.value.uid;
     }
 
 
@@ -76,30 +97,25 @@ export class AdminCalendarNewComponent implements OnInit {
             });
     }
 
-    onCalendarCreate(calendarData: NgForm) {
-        const value = calendarData.value;
-        const newCalEvent = new Calendar(
-          value.$key,
-          value.body,
-          value.date,
-          value.column,
-          value.startTime,
-          value.endTime,
-          value.title,
-          value.uid,
-        );
-
-        if (!calendarData.valid) {
-            this.sbAlert.open('Calendar Event Not Valid!', 'Dismiss', {
+    // Reactive Form
+    onCalendarCreate(calendarData) {
+        if (!this.newCalForm.valid) {
+            this.sbAlert.open('Missing at least one input, Event was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.calendarService.saveCalendar(newCalEvent);
-            console.log('Cal Event Good', newCalEvent);
+            this.calendarService.saveCalendar(calendarData);
+            console.log(calendarData);
+            this.newCalForm.reset();
+            this.sbAlert.open('New Event created!', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-success']
+            });
         }
-        // this.calF.reset(this.calendarService.getCalendar(this.$key));
     }
+
 
 }

@@ -1,9 +1,4 @@
 <!-- * CALENDAR-NEW * -->
-<div class="row m-4 pl-5">
-    <div class="container">
-        <a [routerLink]="['/admin/settings']" class="back-pages"><i class="fal fa-arrow-circle-left"></i>&nbsp;Settings</a>
-    </div>
-</div>
 <div class="row mb-5 mt-3">
     <div class="col-md-6 mx-auto">
         <div class="card">
@@ -19,6 +14,27 @@
         </div>
     </div>
 </div>
+
+<!-- * button nav group * -->
+<div class="row m-4 pl-5" [@simpleFadeAnimation]="'in'">
+    <div class="container">
+        <div class="text-right mr-5">
+            <div class="btn-group btn-group-md float-right"
+                 role="group"
+                 aria-label="Basic example">
+                <a [routerLink]="['/admin/settings']"
+                   class="btn btn-default">
+                    <i class="fa fa-wrench"></i>&nbsp;Settings
+                </a>
+                <a [routerLink]="['/admin/calendar']"
+                   class="btn btn-default">
+                    <i class="fa fa-arrow-square-left"></i>&nbsp;
+                    Calendar List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- * Event  * -->
 <div class="row" [@simpleFadeAnimation]="'in'">
     <div class="container mb-5">
@@ -32,8 +48,8 @@
             </ng-template>
             <div class="card">
                 <div class="card-body">
-                    <form #calF="ngForm"
-                          (ngSubmit)="onCalendarCreate(calF)"
+                    <form (ngSubmit)="onCalendarCreate(newCalForm.value)"
+                          [formGroup]="newCalForm"
                           *ngIf="calColumnValues; else loading">
 
                         <div class="form-group">
@@ -41,13 +57,7 @@
                             <input type="text"
                                    class="form-control"
                                    required
-                                   name="title"
-                                   [(ngModel)]="title"
-                                   #calTitle="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calTitle.valid || calTitle.untouched">
-                                <b>Title</b> is required!
-                            </p>
+                                   formControlName="title"/>
                         </div>
 
                         <div class="form-group">
@@ -62,9 +72,7 @@
                             <select class="custom-select"
                                     size="4"
                                     required
-                                    name="column"
-                                    [(ngModel)]="column"
-                                    #calColumn="ngModel">
+                                    formControlName="column">
                                 <option [value]="calColumnValues.column1">
                                     {{ calColumnValues.column1 }}
                                 </option>
@@ -78,10 +86,6 @@
                                     {{ calColumnValues.column4 }}
                                 </option>
                             </select>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calColumn.valid || calColumn.untouched">
-                                <b>Column</b> is required!
-                            </p>
                         </div>
 
                         <div class="form-group">
@@ -89,15 +93,10 @@
                             <input type="text"
                                    class="form-control"
                                    bsDatepicker
+                                   placement="top"
                                    required
-                                   name="date"
-                                   [(ngModel)]="date"
-                                   [bsConfig]="bsConfig"
-                                   #calDate="ngModel"/>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calDate.valid || calDate.untouched">
-                                <b>Date</b> is required!
-                            </p>
+                                   formControlName="date"
+                                   [bsConfig]="bsConfig"/>
                         </div>
 
                         <div class="form-group">
@@ -108,30 +107,20 @@
                                         required
                                         name="startTime"
                                         class="form-control"
-                                        [(ngModel)]="startTime"
-                                        #calStart="ngModel">
+                                        formControlName="startTime">
                             </timepicker>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calStart.valid || calStart.untouched">
-                                <b>Start Time</b> is required!
-                            </p>
                         </div>
 
                         <div class="form-group">
-                            <label>Start Time <br>
+                            <label>End Time <br>
                                 <b>Currently Set To: {{ endTime | date:'shortTime' }}</b>
                             </label>
                             <timepicker type="text"
                                         class="form-control"
                                         required
                                         name="endTime"
-                                        [(ngModel)]="endTime"
-                                        #calEnd="ngModel">
+                                        formControlName="endTime">
                             </timepicker>
-                            <p class="help-block alert alert-danger text-center"
-                               [hidden]="calEnd.valid || calEnd.untouched">
-                                <b>End Time</b> is required!
-                            </p>
                         </div>
 
                         <div class="form-group">
@@ -139,8 +128,7 @@
                             <ckeditor [config]="CkeditorConfig"
                                       [readonly]="false"
                                       debounce="500"
-                                      name="body"
-                                      [(ngModel)]="body">
+                                      [formControl]="newCalForm.controls['body']">
                             </ckeditor>
                         </div>
 

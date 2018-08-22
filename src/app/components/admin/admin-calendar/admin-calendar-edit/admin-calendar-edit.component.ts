@@ -96,10 +96,10 @@ export class AdminCalendarEditComponent implements OnInit {
         const newCalEvent = new Calendar(
           value.$key = this.$key,
           value.body,
-          value.date,
           value.column,
-          value.startTime,
+          value.date,
           value.endTime,
+          value.startTime,
           value.title,
           value.uid = this.$key,
         );

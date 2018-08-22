@@ -1,18 +1,26 @@
 <!-- * ADMIN-CALENDAR-LIST * -->
-<div class="row">
+<!-- * button nav group * -->
+<div class="row m-4 pl-5" [@simpleFadeAnimation]="'in'">
     <div class="container">
-        <a [routerLink]="['/admin/settings']" class="back-pages">
-            <i class="fal fa-arrow-circle-left"></i>&nbsp;Settings
-        </a>
         <div class="text-right mr-5">
-            <a [routerLink]="['/admin/calendar/new']" class="btn btn-default">
-                <i class="fa fa-calendar-plus"></i>&nbsp;New Calendar Event
-            </a>
+            <div class="btn-group btn-group-md float-right"
+                 role="group"
+                 aria-label="Basic example">
+                <a [routerLink]="['/admin/settings']"
+                   class="btn btn-default">
+                    <i class="fa fa-wrench"></i>&nbsp;Settings
+                </a>
+                <a [routerLink]="['/admin/calendar/new']"
+                   class="btn btn-default">
+                    <i class="fa fa-calendar-plus"></i>&nbsp;
+                    New Event</a>
+            </div>
         </div>
     </div>
 </div>
+
 <!-- Layout content -->
-<div class="layout-content mb-5">
+<div class="layout-content mb-5" [@simpleFadeAnimation]="'in'">
     <!-- Content -->
     <div class="container-fluid flex-grow-1 container-p-y">
         <div class="card p-3">

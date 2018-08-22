@@ -1,0 +1,18 @@
+label {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 14px;
+}
+
+input[text], input[textarea], select[option] {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 14px;
+}
+
+p.alert {
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+}
+
+.back-edit {
+    float: right;
+}

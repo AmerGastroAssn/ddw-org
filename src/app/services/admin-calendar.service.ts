@@ -67,6 +67,34 @@ export class AdminCalendarService {
 
     }
 
+    saveCalendar(formData) {
+        const new$key = this.afs.createId();
+        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${new$key}`);
+        const stampDateNum = formData.date.getTime();
+        const stampStartNum = formData.startTime.getTime();
+        const stampEndNum = formData.endTime.getTime();
+
+        const data: Calendar = {
+            $key: new$key,
+            body: formData.body,
+            date: stampDateNum,
+            column: formData.column,
+            startTime: stampStartNum,
+            endTime: stampEndNum,
+            title: formData.title,
+            uid: new$key,
+        };
+        return calRef.set(data)
+                     .then(() => {
+                         this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
+                             duration: 3000,
+                             verticalPosition: 'bottom',
+                             panelClass: ['snackbar-success']
+                         });
+                         console.log('Calendar Event updated', data);
+                     })
+                     .catch((error) => console.log(`ERROR~uC: `, error));
+    }
 
     updateCalendar(formData) {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);

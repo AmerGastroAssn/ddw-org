@@ -85,7 +85,7 @@
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-secondary">
                                 <i class="fa fa-wrench"></i>&nbsp;Save Settings
                             </button>
 
@@ -94,20 +94,26 @@
                     <div class="col-md-6">
                         <div class="text-right m-2">
                             <a [routerLink]="['/admin/meta']"
-                               class="btn btn-outline-primary borderless">
+                               class="btn btn-outline-dark borderless">
                                 <i class="fa fa-chart-line"></i>&nbsp;Edit Meta/Scripts
                             </a>
                         </div>
                         <div class="text-right m-2">
                             <a [routerLink]="['/admin/ads']"
-                               class="btn btn-outline-primary borderless">
+                               class="btn btn-outline-dark borderless">
                                 <i class="fa fa-money-bill-wave"></i>&nbsp;Edit Advertising Scripts
                             </a>
                         </div>
                         <div class="text-right m-2">
                             <a [routerLink]="['/admin/cards']"
-                               class="btn btn-outline-primary borderless">
+                               class="btn btn-outline-dark borderless">
                                 <i class="fa fa-passport"></i>&nbsp;Edit Cards
+                            </a>
+                        </div>
+                        <div class="text-right m-2">
+                            <a [routerLink]="['/admin/calendar']"
+                               class="btn btn-outline-dark borderless">
+                                <i class="fa fa-calendar"></i>&nbsp;Edit Calendar
                             </a>
                         </div>
                     </div>
@@ -145,7 +151,7 @@
                                        [(ngModel)]="videoURL"
                                        formControlName="videoURL">
                             </div>
-                            <button class="btn btn-primary">
+                            <button class="btn btn-secondary">
                                 <i class="fa fa-video"></i>&nbsp;Save Video URL
                             </button>
                         </form>
@@ -177,7 +183,7 @@
                                        [(ngModel)]="date"
                                        formControlName="date">
                             </div>
-                            <button class="btn btn-primary">
+                            <button class="btn btn-secondary">
                                 <i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown
                             </button>
                         </form>

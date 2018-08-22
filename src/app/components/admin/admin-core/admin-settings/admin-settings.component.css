@@ -1,7 +1,13 @@
 input, label {
     cursor: pointer;
+    line-height: 1.5;
 }
 
 i.fa-spinner {
     font-size: 4em;
+}
+
+p {
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
 }

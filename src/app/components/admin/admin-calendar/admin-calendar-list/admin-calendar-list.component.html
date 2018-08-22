@@ -1,4 +1,16 @@
 <!-- * ADMIN-CALENDAR-LIST * -->
+<div class="row">
+    <div class="container">
+        <a [routerLink]="['/admin/settings']" class="back-pages">
+            <i class="fal fa-arrow-circle-left"></i>&nbsp;Settings
+        </a>
+        <div class="text-right mr-5">
+            <a [routerLink]="['/admin/calendar/new']" class="btn btn-default">
+                <i class="fa fa-calendar-plus"></i>&nbsp;New Calendar Event
+            </a>
+        </div>
+    </div>
+</div>
 <!-- Layout content -->
 <div class="layout-content mb-5">
     <!-- Content -->
@@ -22,28 +34,31 @@
                     <tbody>
                     <tr *ngFor="let event of calendarEvents$ | async;">
                         <td scope="col">
-                            <a routerLink="/admin/calendar/{{event.$key}}/edit">
-                                {{ event.column }}
+                            <a routerLink="/admin/calendar/{{event.$key}}/edit"
+                               class="text-dark">
+                                <i class="fa fa-calendar"></i> {{ event.column }}
                             </a>
                         </td>
                         <td scope="col">
-                            <a routerLink="/admin/calendar/{{event.$key}}/edit">
-                                {{ event.date | date:'fullDate' }}
+                            <a routerLink="/admin/calendar/{{event.$key}}/edit"
+                               class="text-dark">
+                                <i class="fa fa-calendar-check"></i> {{ event.date | date:'fullDate' }}
                             </a>
                         </td>
                         <td scope="col">
-                            <a routerLink="/admin/calendar/{{event.$key}}/edit">
+                            <a routerLink="/admin/calendar/{{event.$key}}/edit"
+                               class="text-dark">
                                 {{ event.title }}
                             </a>
                         </td>
                         <td scope="col" style="text-align:center;">
                             <span class="badge badge-outline-default">
-                                {{ event.startTime | date:'shortTime' }}
+                               <i class="fa fa-alarm-clock"></i> {{ event.startTime | date:'shortTime' }}
                             </span>
                         </td>
                         <td scope="col" style="text-align:center;">
                             <span class="badge badge-outline-default">
-                                {{ event.endTime | date:'shortTime' }}
+                               <i class="fal fa-alarm-clock"></i> {{ event.endTime | date:'shortTime' }}
                             </span>
                         </td>
                         <td>

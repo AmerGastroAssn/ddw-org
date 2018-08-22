@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Edit Card Columns</h3>
-                    <p class="text-secondary">(The day displayed at the top of the calendar</p>
+                    <p class="text-secondary">(The day displayed at the top of the calendar)</p>
                     <form #colVF="ngForm"
                           (ngSubmit)="onColumnSubmit(colVF)"
                           *ngIf="calColumnValues; else loading">
@@ -123,6 +123,7 @@
             </ng-template>
             <div class="card">
                 <div class="card-body">
+                    <h3>Edit Calendar Event</h3>
                     <form #calF="ngForm"
                           (ngSubmit)="onCalendarSubmit(calF)"
                           *ngIf="calendar; else loading2">
@@ -202,7 +203,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Start Time <br>
+                            <label>End Time <br>
                                 <b>Currently Set To: {{ calendar.endTime | date:'shortTime' }}</b>
                             </label>
                             <timepicker type="text"

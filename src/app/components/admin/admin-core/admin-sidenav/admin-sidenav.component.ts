@@ -21,6 +21,7 @@ export class AdminSidenavComponent implements OnInit {
     id: string;
     showPagesToggle: boolean;
     showUsersToggle: boolean;
+    showCalendarToggle: boolean;
     user: User;
     isAdmin: boolean;
     dbUser: User;
@@ -71,6 +72,10 @@ export class AdminSidenavComponent implements OnInit {
 
     onShowUsersToggle() {
         this.showUsersToggle = !this.showUsersToggle;
+    }
+
+    onShowCalendarToggle() {
+        this.showCalendarToggle = !this.showCalendarToggle;
     }
 
     onLogout() {

@@ -72,7 +72,12 @@
                                     <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Day One
+                                    <span *ngIf="calendar.date1">
+                                        {{ calendar.date1.toDate() | date:'fullDate' }}
+                                    </span>
+                                    <span *ngIf="!calendar.date1">
+                                        Day One
+                                    </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -105,7 +110,12 @@
                                     <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Day Two
+                                   <span *ngIf="calendar.date2">
+                                        {{ calendar.date2.toDate() | date:'fullDate' }}
+                                    </span>
+                                    <span *ngIf="!calendar.date2">
+                                        Day Two
+                                    </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -138,7 +148,12 @@
                                     <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Day Three
+                                    <span *ngIf="calendar.date3">
+                                        {{ calendar.date3.toDate() | date:'fullDate' }}
+                                    </span>
+                                    <span *ngIf="!calendar.date3">
+                                        Day Three
+                                    </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
 
@@ -172,7 +187,12 @@
                                     <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Day Four
+                                    <span *ngIf="calendar.date4">
+                                        {{ calendar.date4.toDate() | date:'fullDate' }}
+                                    </span>
+                                    <span *ngIf="!calendar.date4">
+                                        Day Four
+                                    </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
 

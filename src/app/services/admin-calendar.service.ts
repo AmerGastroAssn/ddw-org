@@ -72,11 +72,11 @@ export class AdminCalendarService {
     }
 
 
-    updateCalendar(formData) {
-        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
+    updateCalendar(formData, id) {
+        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${id}`);
 
         const data: Calendar = {
-            $key: formData.$key,
+            $key: id,
             body1: formData.body1,
             body2: formData.body2,
             body3: formData.body3,
@@ -86,11 +86,11 @@ export class AdminCalendarService {
             date3: formData.date3,
             date4: formData.date4,
             title: formData.title,
-            uid: formData.uid,
+            uid: id,
         };
 
         console.log('data', data);
-        return calRef.update(data)
+        return calRef.set(data,  { merge: true })
                      .then(() => {
                          this.router.navigate(['/admin/calendar']);
                          this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {

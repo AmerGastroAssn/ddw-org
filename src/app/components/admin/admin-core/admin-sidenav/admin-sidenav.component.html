@@ -89,7 +89,7 @@
                     <div><i class="fal fa-users"></i>&nbsp;All Users</div>
                 </a>
             </li>
-            <li class="sidenav-item sub-item">
+            <li class="sidenav-item sub-item" *ngIf="isAdmin">
                 <a [routerLink]="['/admin/users/new']" class="sidenav-link">
                     <div><i class="fal fa-user-plus"></i>&nbsp;New User</div>
                 </a>

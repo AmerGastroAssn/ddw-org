@@ -8,7 +8,7 @@
                <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
                     alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
                         <i class="fa fa-calendar"></i>&nbsp;Admin
-                    </span> Calendar Event Edit
+                    </span> Calendar Edit
                 </h1>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     Calendar List</a>
                 <a [routerLink]="['/admin/calendar/new']"
                    class="btn btn-default">
-                    <i class="fa fa-calendar-plus"></i>&nbsp;New Event
+                    <i class="fa fa-calendar-plus"></i>&nbsp;New Calendar
                 </a>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     loading...
                 </div>
             </ng-template>
-            <div class="card">
+            <div class="card bg-lighter">
                 <div class="card-body">
                     <form (ngSubmit)="onCalendarUpdate(updateCalForm.value)"
                           [formGroup]="updateCalForm"
@@ -69,10 +69,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                  Day
+                                    <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    One
+                                    Day One
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -81,7 +81,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        [(ngModel)]="calendar.date1"
                                        formControlName="date1"
                                        [bsConfig]="bsConfig"/>
@@ -99,16 +98,14 @@
                         </mat-expansion-panel>
 
 
-
-
                         <!-- * Date 2 * -->
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Day
+                                    <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Two
+                                    Day Two
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -117,7 +114,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        [(ngModel)]="calendar.date2"
                                        formControlName="date2"
                                        [bsConfig]="bsConfig"/>
@@ -139,10 +135,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                  Day
+                                    <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Three
+                                    Day Three
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
 
@@ -152,7 +148,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        [(ngModel)]="calendar.date3"
                                        formControlName="date3"
                                        [bsConfig]="bsConfig"/>
@@ -174,10 +169,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                  Day
+                                    <div class="fa fa-calendar-edit"></div>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Four
+                                    Day Four
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
 
@@ -187,7 +182,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        [(ngModel)]="calendar.date4"
                                        formControlName="date4"
                                        [bsConfig]="bsConfig"/>
@@ -206,7 +200,7 @@
 
 
                         <button type="submit" class="btn btn-primary mb-5 mt-5">
-                            <i class="fa fa-calendar"></i>&nbsp;Save Calendar
+                            <i class="fa fa-calendar"></i>&nbsp;Create Calendar
                         </button>
                     </form>
                 </div>

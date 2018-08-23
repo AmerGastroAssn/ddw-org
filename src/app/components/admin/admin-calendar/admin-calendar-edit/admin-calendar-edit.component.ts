@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
@@ -122,36 +122,6 @@ export class AdminCalendarEditComponent implements OnInit {
     }
 
 
-    onCalendarSubmit(calendarData: NgForm) {
-        const value = calendarData.value;
-        const newCalEvent = new Calendar(
-          value.$key,
-          value.body1,
-          value.body2,
-          value.body3,
-          value.body4,
-          value.date1,
-          value.date2,
-          value.date3,
-          value.date4,
-          value.title,
-          value.uid,
-        );
-
-        if (!calendarData.valid) {
-            this.sbAlert.open('Calendar Event Not Valid!', 'Dismiss', {
-                duration: 3000,
-                verticalPosition: 'bottom',
-                panelClass: ['snackbar-danger']
-            });
-        } else {
-            this.calendarService.updateCalendar(newCalEvent);
-            console.log('Cal Event Good', newCalEvent);
-        }
-        // this.calF.reset(this.calendarService.getCalendar(this.$key));
-    }
-
-
     // Reactive Form
     onCalendarUpdate(calendarData) {
         if (!this.updateCalForm.valid) {
@@ -161,7 +131,7 @@ export class AdminCalendarEditComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.calendarService.updateCalendar(calendarData);
+            this.calendarService.updateCalendar(calendarData, this.$key);
             console.log(calendarData);
             this.updateCalForm.reset();
             this.sbAlert.open('New Event created!', 'Dismiss', {

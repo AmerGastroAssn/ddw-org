@@ -1,0 +1,9 @@
+p {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+a:link {
+    text-decoration: none;
+}

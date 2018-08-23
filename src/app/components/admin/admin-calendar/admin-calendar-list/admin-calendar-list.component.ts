@@ -1,6 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Calendar } from '../../../../models/Calendar';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 
@@ -28,7 +27,7 @@ import { AdminCalendarService } from '../../../../services/admin-calendar.servic
     ]
 })
 export class AdminCalendarListComponent implements OnInit {
-    calendarEvents$: Observable<Calendar[]>;
+    calendarEvents$: Calendar[];
 
     constructor(
       public adminCalendarService: AdminCalendarService,
@@ -36,7 +35,10 @@ export class AdminCalendarListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.calendarEvents$ = this.adminCalendarService.getAllCalendarEvents();
+        this.adminCalendarService.getAllCalendarEvents()
+            .subscribe((dates) => {
+                this.calendarEvents$ = dates;
+            });
     }
 
 }

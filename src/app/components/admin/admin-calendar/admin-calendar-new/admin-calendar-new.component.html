@@ -47,7 +47,7 @@
                     loading...
                 </div>
             </ng-template>
-            <div class="card">
+            <div class="card bg-lighter">
                 <div class="card-body">
                     <form (ngSubmit)="onCalendarCreate(newCalForm.value)"
                           [formGroup]="newCalForm"
@@ -65,10 +65,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Day
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    One
+                                    Day One
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -97,10 +97,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Day
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Two
+                                    Day Two
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -109,7 +109,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        formControlName="date2"
                                        [bsConfig]="bsConfig"/>
                             </div>
@@ -129,10 +128,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Day
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Three
+                                    Day Three
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -141,7 +140,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        formControlName="date3"
                                        [bsConfig]="bsConfig"/>
                             </div>
@@ -161,10 +159,10 @@
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    Day
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    Four
+                                    Day Four
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
@@ -173,7 +171,6 @@
                                        class="form-control"
                                        bsDatepicker
                                        placement="top"
-                                       required
                                        formControlName="date4"
                                        [bsConfig]="bsConfig"/>
                             </div>

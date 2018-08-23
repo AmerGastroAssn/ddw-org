@@ -80,15 +80,21 @@
                                     </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
+
                             <div class="form-group">
-                                <label>Date 1</label>
-                                <input type="text"
-                                       class="form-control"
-                                       bsDatepicker
-                                       placement="top"
-                                       [(ngModel)]="calendar.date1"
-                                       formControlName="date1"
-                                       [bsConfig]="bsConfig"/>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control"
+                                           bsDatepicker
+                                           placement="top"
+                                           formControlName="date1"
+                                           [bsConfig]="bsConfig">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -119,14 +125,19 @@
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
-                                <label>Date 2</label>
-                                <input type="text"
-                                       class="form-control"
-                                       bsDatepicker
-                                       placement="top"
-                                       [(ngModel)]="calendar.date2"
-                                       formControlName="date2"
-                                       [bsConfig]="bsConfig"/>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control"
+                                           bsDatepicker
+                                           placement="top"
+                                           formControlName="date2"
+                                           [bsConfig]="bsConfig">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -158,14 +169,19 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <label>Date 3</label>
-                                <input type="text"
-                                       class="form-control"
-                                       bsDatepicker
-                                       placement="top"
-                                       [(ngModel)]="calendar.date3"
-                                       formControlName="date3"
-                                       [bsConfig]="bsConfig"/>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control"
+                                           bsDatepicker
+                                           placement="top"
+                                           formControlName="date3"
+                                           [bsConfig]="bsConfig">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -197,14 +213,19 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <label>Date 4</label>
-                                <input type="text"
-                                       class="form-control"
-                                       bsDatepicker
-                                       placement="top"
-                                       [(ngModel)]="calendar.date4"
-                                       formControlName="date4"
-                                       [bsConfig]="bsConfig"/>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text"
+                                           class="form-control"
+                                           bsDatepicker
+                                           placement="top"
+                                           formControlName="date4"
+                                           [bsConfig]="bsConfig" *ngIf="calendar.date4">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -220,7 +241,7 @@
 
 
                         <button type="submit" class="btn btn-primary mb-5 mt-5">
-                            <i class="fa fa-calendar"></i>&nbsp;Create Calendar
+                            <i class="fa fa-calendar"></i>&nbsp;Update Calendar
                         </button>
                     </form>
                 </div>
@@ -228,5 +249,3 @@
         </div>
     </div>
 </div>
-
-

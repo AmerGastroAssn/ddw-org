@@ -56,6 +56,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     value: any;
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;
+    currentDate: Date;
 
 
     CkeditorConfig = {
@@ -87,12 +88,14 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
         this.uid = this.afs.createId();
         this.user = this.authService.getProfile();
+        this.currentDate = new Date();
 
         // Datepicker Config
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
+              dateInputFormat: 'MMMM Do YYYY,h:mm a',
+              placeholder: this.currentDate,
           });
     }
 
@@ -140,7 +143,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             title: ['', Validators.required],
             body: [''],
             author: ['' || this.user.email],
-            date: ['' || Date.now(), Validators.required],
+            date: ['' || this.currentDate, Validators.required],
             photoURL: [''],
             bannerPhotoURL: ['' || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
             category: ['', Validators.required],

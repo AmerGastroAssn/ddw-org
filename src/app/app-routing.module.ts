@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './components/admin/admin.module';
+import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
 import { EducationComponent } from './components/pages/education/education.component';
@@ -13,6 +14,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'contactus', component: ContactUsComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: 'register', component: PagesComponent,

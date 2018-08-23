@@ -45,6 +45,7 @@ import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
+import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 
 
 // Inits the app (Fixes a bug).
@@ -70,6 +71,7 @@ firebase.initializeApp(environment.firebase);
         MetaTagsComponent,
         AdminFeaturedBlogPostsComponent,
         RunScriptsDirective,
+        ContactUsComponent,
     ],
     imports: [
         BrowserModule,

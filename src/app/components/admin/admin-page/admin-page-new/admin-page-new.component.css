@@ -2,6 +2,10 @@ a.back-pages {
     text-decoration: none;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 input.form-check-input,
 .form-check,
 label.form-check-label {

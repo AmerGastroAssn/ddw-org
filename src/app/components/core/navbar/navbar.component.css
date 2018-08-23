@@ -1,13 +1,13 @@
 nav.navbar {
     opacity: 0.9;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
 }
 
 /* Navbar */
 .navbarWhite {
     background-color: #fff;
     color: #5F6A72;
-    /*opacity: 0.9;*/
+    opacity: 0.9;
 }
 
 .linksDark {

@@ -8,8 +8,10 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
+import { Calendar } from '../../../../models/Calendar';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
+import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -37,6 +39,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     extURL: string;
     isExtURL: boolean;
     sortOrder: number;
+    hasCalendar: boolean;
+    calendarTitle: string;
+    calendar$: Observable<Calendar[]>;
     disableAdminOnNew: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -70,6 +75,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private storage: AngularFireStorage,
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
+      private adminCalendarService: AdminCalendarService,
     ) {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
@@ -126,6 +132,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
 
+        // Get Calendar Titles
+        this.calendar$ = this.adminCalendarService.getAllCalendars();
+
         // Form:
         this.newPageForm = this.fb.group({
             title: ['', Validators.required],
@@ -141,6 +150,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             extURL: [''],
             isExtURL: ['' || false],
             sortOrder: ['' || 1],
+            hasCalendar: [''],
+            calendarTitle: [''],
         });
 
         this.title = this.newPageForm.value.title;
@@ -155,6 +166,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.extURL = this.newPageForm.value.extURL;
         this.isExtURL = this.newPageForm.value.isExtURL;
         this.sortOrder = this.newPageForm.value.sortOrder;
+        this.hasCalendar = this.newPageForm.value.hasCalendar;
+        this.calendarTitle = this.newPageForm.value.calendarTitle;
     }
 
     ngOnDestroy() {
@@ -181,6 +194,10 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     }
 
     isExtURLToggle() {
-        this.isExtURLPage = !this.isExtURLPage;
+        this.isExtURL = !this.isExtURL;
+    }
+
+    toggleHasCalendar() {
+        this.hasCalendar = !this.hasCalendar;
     }
 }

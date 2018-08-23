@@ -37,7 +37,7 @@ export class AdminCalendarService {
         this.calColumnValue$key = 'BYowCajpbtyWUMVCWDUY';
     }
 
-    getAllCalendarEvents(): Observable<Calendar[]> {
+    getAllCalendars(): Observable<Calendar[]> {
         this.calendarCollection = this.afs.collection<Calendar>('calendar');
         return this.calendars$ = this.calendarCollection.valueChanges();
     }

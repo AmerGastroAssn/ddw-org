@@ -46,6 +46,7 @@ import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
+import { PressReleasesComponent } from './components/press-releases/press-releases.component';
 
 
 // Inits the app (Fixes a bug).
@@ -72,6 +73,7 @@ firebase.initializeApp(environment.firebase);
         AdminFeaturedBlogPostsComponent,
         RunScriptsDirective,
         ContactUsComponent,
+        PressReleasesComponent,
     ],
     imports: [
         BrowserModule,

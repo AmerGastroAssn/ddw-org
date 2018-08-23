@@ -68,7 +68,7 @@
                             </p>
                         </div>
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <label>Slug</label>
                             <pre class="alert bg-light text-secondary slug">/{{category}}/{{url}}</pre>
                         </div>
@@ -85,7 +85,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group" *ngIf="isExtURLPage">
+                        <div class="form-group" *ngIf="page.isExtURL">
                             <label>External URL</label>
                             <input type="url"
                                    class="form-control"
@@ -98,7 +98,7 @@
                             </p>
                         </div>
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="page.isExtURL">
                             <label>Author</label>
                             <input type="text"
                                    class="form-control"
@@ -157,7 +157,6 @@
                         </div>
 
 
-
                         <div class="form-group">
                             <label for="sortOrder">Sort Order <br>
                                 <small>Order shown in navbar dropdown category</small>
@@ -176,7 +175,7 @@
                         </div>
 
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <label for="template">Template</label>
                             <select class="form-control"
                                     id="template"
@@ -191,7 +190,38 @@
                         </div>
 
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="card bg-lighter">
+                            <div class="card-body">
+                                <div class="form-group" *ngIf="!page.isExtURL">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox"
+                                               class="custom-control-input"
+                                               id="hasCalendar"
+                                               formControlName="hasCalendar"
+                                               (click)="toggleHasCalendar()">
+                                        <label class="custom-control-label"
+                                               for="hasCalendar">Does the page have a Calendar?</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" *ngIf="page.hasCalendar && !page.isExtURL">
+                                    <label for="calendarTitle">Select Calendar or
+                                        <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
+                                            <i class="fa fa-calendar-plus"></i>  Create New</a>
+                                    </label>
+                                    <select class="form-control"
+                                            id="calendarTitle"
+                                            formControlName="calendarTitle">
+                                        <option *ngFor="let cal of calendar$ | async">
+                                            {{ cal.title }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <label>Body</label>
                             <ckeditor [formControl]="editPageForm.controls['body']"
                                       [class.invalid]="!f.body.valid && f.body.touched"
@@ -207,8 +237,7 @@
                         </div>
 
 
-
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <div class="card image-uploader">
                                 <div class="card-body">
                                     <p class="card-title">
@@ -262,7 +291,7 @@
                         </div>
 
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <label>Banner Image URL
                                 <small>(Top banner image)</small>
                             </label>
@@ -277,7 +306,7 @@
                             </p>
                         </div>
 
-                        <div class="form-group" *ngIf="!isExtURL && !isExtURLPage">
+                        <div class="form-group" *ngIf="!page.isExtURL">
                             <label>Image URL
                                 <small>(Image on the page)</small>
                             </label>

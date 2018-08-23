@@ -9,7 +9,9 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { BsDatepickerConfig, BsDatepickerDirective } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
+import { Calendar } from '../../../../models/Calendar';
 import { Page } from '../../../../models/Page';
+import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -56,7 +58,11 @@ export class AdminPageEditComponent implements OnInit {
     url: string;
     extURL: string;
     isExtURL: boolean;
+    isExtURLPage: boolean;
     sortOrder: number;
+    hasCalendar: boolean;
+    calendarTitle: string;
+    calendar$: Observable<Calendar[]>;
     disableAdminOnEdit: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -72,7 +78,7 @@ export class AdminPageEditComponent implements OnInit {
     togglePagePreview = false;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
-    isExtURLPage: boolean;
+
 
     CkeditorConfig = {
         allowedContent: true,
@@ -92,6 +98,7 @@ export class AdminPageEditComponent implements OnInit {
       private sbAlert: MatSnackBar,
       private sanitizer: DomSanitizer,
       private authService: AuthService,
+      private adminCalendarService: AdminCalendarService,
     ) {
         // Datepicker Config
         this.bsConfig = Object.assign({},
@@ -146,6 +153,9 @@ export class AdminPageEditComponent implements OnInit {
     ngOnInit() {
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
 
+        // Get Calendar Titles
+        this.calendar$ = this.adminCalendarService.getAllCalendars();
+
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
         // Get Page
@@ -174,6 +184,8 @@ export class AdminPageEditComponent implements OnInit {
                     extURL: [page.extURL],
                     isExtURL: [page.isExtURL],
                     sortOrder: [page.sortOrder],
+                    hasCalendar: [page.hasCalendar],
+                    calendarTitle: [page.calendarTitle],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -190,6 +202,8 @@ export class AdminPageEditComponent implements OnInit {
                 this.extURL = this.editPageForm.value.extURL;
                 this.isExtURL = this.editPageForm.value.isExtURL;
                 this.sortOrder = this.editPageForm.value.sortOrder;
+                this.hasCalendar = this.editPageForm.value.hasCalendar;
+                this.calendarTitle = this.editPageForm.value.calendarTitle;
             }
         });
     }
@@ -226,7 +240,10 @@ export class AdminPageEditComponent implements OnInit {
     }
 
     isExtURLToggle() {
-        this.isExtURLPage = !this.isExtURLPage;
+        this.page.isExtURL = !this.page.isExtURL;
     }
 
+    toggleHasCalendar() {
+        this.page.hasCalendar = !this.page.hasCalendar;
+    }
 }

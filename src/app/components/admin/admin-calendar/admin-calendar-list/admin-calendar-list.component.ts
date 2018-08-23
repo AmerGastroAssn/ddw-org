@@ -35,7 +35,7 @@ export class AdminCalendarListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.adminCalendarService.getAllCalendarEvents()
+        this.adminCalendarService.getAllCalendars()
             .subscribe((dates) => {
                 this.calendarEvents$ = dates;
             });

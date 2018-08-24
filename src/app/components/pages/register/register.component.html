@@ -17,6 +17,15 @@
         </div>
     </div>
 
+    <div class="row" *ngIf="page.hasCalendar">
+        <div class="container-fluid">
+            <ddw-admin-calendar-item
+                    *ngFor="let calEl of calendar$ | async"
+                    [calendar]="calEl">
+            </ddw-admin-calendar-item>
+        </div>
+    </div>
+
     <div class="row">
         <div class="container-fluid body-container">
             <img [src]="page.photoURL"

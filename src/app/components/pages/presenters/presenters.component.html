@@ -26,7 +26,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row" *ngIf="page.hasCalendar">
         <div class="container-fluid">
             <ddw-admin-calendar-item
                     *ngFor="let calEl of calendar$ | async"

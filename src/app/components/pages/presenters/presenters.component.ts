@@ -43,7 +43,9 @@ export class PresentersComponent implements OnInit {
             .subscribe((page) => {
                 this.page = page;
                 // Calendar
-                this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                if (this.page.hasCalendar) {
+                    this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                }
             });
 
     }

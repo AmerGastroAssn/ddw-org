@@ -1,27 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 
 @Component({
-  selector: 'ddw-attendee-planning',
-  templateUrl: './attendee-planning.component.html',
-  styleUrls: ['./attendee-planning.component.css']
+    selector: 'ddw-attendee-planning',
+    templateUrl: './attendee-planning.component.html',
+    styleUrls: ['./attendee-planning.component.css']
 })
 export class AttendeePlanningComponent implements OnInit {
     page: Page;
     url: string;
     cards$: Observable<Card[]>;
+    calendar$: Observable<Calendar[]>;
+    calendarTitle: string;
 
     constructor(
       private pageService: PageService,
       private adminPageService: AdminPageService,
       private route: ActivatedRoute,
       private cardService: AdminCardService,
+      private adminCalendarService: AdminCalendarService,
     ) {
     }
 
@@ -36,6 +41,10 @@ export class AttendeePlanningComponent implements OnInit {
         })
             .subscribe((page) => {
                 this.page = page;
+                // Calendar
+                if (this.page.hasCalendar) {
+                    this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                }
             });
     }
 }

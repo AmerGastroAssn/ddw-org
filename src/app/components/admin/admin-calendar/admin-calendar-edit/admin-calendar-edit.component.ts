@@ -43,10 +43,10 @@ export class AdminCalendarEditComponent implements OnInit {
     body2: string;
     body3: string;
     body4: string;
-    date1: number;
-    date2: number;
-    date3: number;
-    date4: number;
+    date1: any;
+    date2: any;
+    date3: any;
+    date4: any;
     title: string;
     uid: string;
     color = 'primary';

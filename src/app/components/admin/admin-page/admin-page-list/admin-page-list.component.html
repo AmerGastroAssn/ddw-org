@@ -60,6 +60,7 @@
                         <th scope="col" style="vertical-align: top;">External URL</th>
                         <th scope="col" style="vertical-align: top;">Published</th>
                         <th scope="col" style="vertical-align: top;">Publish <br> Date</th>
+                        <th scope="col" style="vertical-align: top;">Calendar</th>
                         <th scope="col" style="vertical-align: top;">Author</th>
                         <th scope="col" style="vertical-align: top;">Options</th>
                     </tr>
@@ -105,6 +106,18 @@
                             </span>
                         </td>
                         <td scope="col" class="date">{{ page.date | date:'mediumDate' }}</td>
+                        <td scope="col" style="text-align:center;">
+                            <a [routerLink]="['/admin/calendar']">
+                                <span class="badge badge-outline-success" *ngIf="page.hasCalendar">
+                                <i class="fa fa-calendar-check"></i>
+                            </span>
+                            </a>
+                            <a [routerLink]="['/admin/calendar']">
+                                <span class="badge badge-outline-danger" *ngIf="!page.hasCalendar">
+                                <i class="fa fa-calendar-times"></i>
+                            </span>
+                            </a>
+                        </td>
                         <td scope="col" style="text-align:center;">
                             <span>{{ page.author }}</span>
                         </td>

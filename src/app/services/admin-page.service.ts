@@ -131,7 +131,7 @@ export class AdminPageService {
                 hasCalendar: formData.hasCalendar,
                 calendarTitle: formData.calendarTitle,
             };
-            return pageRef.update(data)
+            return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate(['/admin/pages']))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         } else {
@@ -155,7 +155,7 @@ export class AdminPageService {
                 hasCalendar: formData.hasCalendar,
                 calendarTitle: formData.calendarTitle,
             };
-            return pageRef.update(data)
+            return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate(['/admin/pages']))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         }

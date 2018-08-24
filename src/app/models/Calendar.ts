@@ -10,6 +10,7 @@ export class Calendar {
       public date3: any,
       public date4: any,
       public title: string,
+      public displayName: string,
       public uid: string,
     ) {
     }

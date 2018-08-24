@@ -48,6 +48,7 @@ export class AdminCalendarEditComponent implements OnInit {
     date3: any;
     date4: any;
     title: string;
+    displayName: string;
     uid: string;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
@@ -97,6 +98,7 @@ export class AdminCalendarEditComponent implements OnInit {
                     date3: [calendar.date3],
                     date4: [calendar.date4],
                     title: [calendar.title, Validators.required],
+                    displayName: [calendar.displayName, Validators.required],
                     uid: [calendar.uid],
                 });
 
@@ -110,6 +112,7 @@ export class AdminCalendarEditComponent implements OnInit {
                 this.date2 = this.updateCalForm.value.date2;
                 this.date3 = this.updateCalForm.value.date3;
                 this.date4 = this.updateCalForm.value.date4;
+                this.displayName = this.updateCalForm.value.displayName;
                 this.uid = this.updateCalForm.value.uid;
             }
         });
@@ -124,18 +127,18 @@ export class AdminCalendarEditComponent implements OnInit {
             .subscribe((calInfo) => {
                 this.calendar = calInfo;
             });
-        // Get Column Values
-        this.calendarService.getCalColumnValues()
-            .subscribe((values) => {
-                this.calColumnValues = values;
-            });
+        // // Get Column Values
+        // this.calendarService.getCalColumnValues()
+        //     .subscribe((values) => {
+        //         this.calColumnValues = values;
+        //     });
     }
 
 
     // Reactive Form
     onCalendarUpdate(calendarData) {
         if (!this.updateCalForm.valid) {
-            this.sbAlert.open('Missing at least one input, Event was NOT created.', 'Dismiss', {
+            this.sbAlert.open('Missing at least one input, Calendar was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']
@@ -144,7 +147,7 @@ export class AdminCalendarEditComponent implements OnInit {
             this.calendarService.updateCalendar(calendarData, this.$key);
             console.log(calendarData);
             this.updateCalForm.reset();
-            this.sbAlert.open('New Event created!', 'Dismiss', {
+            this.sbAlert.open('Calendar Updated!', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-success']

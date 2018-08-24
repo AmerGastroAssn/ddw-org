@@ -44,10 +44,10 @@
 
                     <form [formGroup]="editPageForm"
                           (ngSubmit)="onUpdatePage(editPageForm.value)">
-                        <button type="submit"
-                                [disabled]="!editPageForm.valid"
-                                class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update
-                        </button>
+                        <!--<button type="submit"-->
+                                <!--[disabled]="!editPageForm.valid"-->
+                                <!--class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update-->
+                        <!--</button>-->
 
                         <div class="btn-group float-right" role="group" aria-label="Basic example">
                             <a class="btn btn-warning btn-sm"
@@ -207,12 +207,15 @@
                                 <div class="form-group" *ngIf="page.hasCalendar && !page.isExtURL">
                                     <label for="calendarTitle">Select Calendar or
                                         <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
-                                            <i class="fa fa-calendar-plus"></i>  Create New</a>
+                                            <i class="fa fa-calendar-plus"></i> Create New</a> <br>
+                                        Current Calendar set
+                                        to: <b>{{ page.calendarTitle }}</b>
                                     </label>
                                     <select class="form-control"
                                             id="calendarTitle"
+                                            [(ngModel)]="page.calendarTitle"
                                             formControlName="calendarTitle">
-                                        <option *ngFor="let cal of calendar$ | async">
+                                        <option *ngFor="let cal of calendars$ | async">
                                             {{ cal.title }}
                                         </option>
                                     </select>

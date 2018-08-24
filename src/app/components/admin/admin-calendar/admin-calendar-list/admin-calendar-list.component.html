@@ -34,8 +34,9 @@
                     <tr>
 
                         <th scope="col" style="vertical-align: top;">Title</th>
-                        <th scope="col" style="vertical-align: top;">Date</th>
-                        <th scope="col" style="vertical-align: top;">Body</th>
+                        <th scope="col" style="vertical-align: top;">Display Name</th>
+                        <th scope="col" style="vertical-align: top;">Dates</th>
+                        <th scope="col" style="vertical-align: top;">Bodies</th>
                         <th scope="col" style="vertical-align: top;">Edit</th>
                     </tr>
                     </thead>
@@ -45,6 +46,12 @@
                             <a routerLink="/admin/calendar/{{event.$key}}/edit"
                                class="text-dark">
                                 {{ event.title }}
+                            </a>
+                        </td>
+                        <td scope="col">
+                            <a routerLink="/admin/calendar/{{event.$key}}/edit"
+                               class="text-dark">
+                                {{ event.displayName }}
                             </a>
                         </td>
                         <td scope="col">

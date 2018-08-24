@@ -63,7 +63,7 @@ export class AdminCalendarService {
         return this.calendar$;
     }
 
-    getCalColumnValues() {
+    getCalColumnValues(): Observable<CalColumnValues> {
         this.calColumnValuesDoc = this.afs.doc<CalColumnValues>(`calColumnValues/${this.calColumnValue$key}`);
         this.calColumnValue$ = this.calColumnValuesDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
@@ -79,7 +79,7 @@ export class AdminCalendarService {
     }
 
 
-    updateCalendar(formData, id) {
+    updateCalendar(formData, id): object {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${id}`);
 
         const data: Calendar = {
@@ -93,6 +93,7 @@ export class AdminCalendarService {
             date3: formData.date3,
             date4: formData.date4,
             title: formData.title,
+            displayName: formData.displayName,
             uid: id,
         };
 
@@ -110,7 +111,7 @@ export class AdminCalendarService {
                      .catch((error) => console.log(`ERROR~uC: `, error));
     }
 
-    saveCalendar(formData) {
+    saveCalendar(formData): object {
         const new$key = this.afs.createId();
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${new$key}`);
 
@@ -125,6 +126,7 @@ export class AdminCalendarService {
             date3: formData.date3,
             date4: formData.date4,
             title: formData.title,
+            displayName: formData.displayName,
             uid: new$key,
         };
 
@@ -142,7 +144,7 @@ export class AdminCalendarService {
                      .catch((error) => console.log(`ERROR~uC: `, error));
     }
 
-    updateCalendar2(formData) {
+    updateCalendar2(formData): object {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${formData.$key}`);
 
         const data: Calendar = {
@@ -156,6 +158,7 @@ export class AdminCalendarService {
             date3: formData.date3,
             date4: formData.date4,
             title: formData.title,
+            displayName: formData.displayName,
             uid: formData.uid,
         };
         return calRef.update(data)
@@ -171,7 +174,7 @@ export class AdminCalendarService {
                      .catch((error) => console.log(`ERROR~uC: `, error));
     }
 
-    updateCalColumnValues(formData) {
+    updateCalColumnValues(formData): object {
         const colRef: AngularFirestoreDocument<CalColumnValues> = this.afs.doc(`calColumnValues/${this.calColumnValue$key}`);
 
         const data: CalColumnValues = {

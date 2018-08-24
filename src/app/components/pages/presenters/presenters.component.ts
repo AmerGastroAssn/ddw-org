@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
@@ -14,7 +14,7 @@ import { PageService } from '../../../services/page.service';
     templateUrl: './presenters.component.html',
     styleUrls: ['./presenters.component.css']
 })
-export class PresentersComponent implements OnInit {
+export class PresentersComponent implements OnInit, OnDestroy {
     page: Page;
     url: string;
     cards$: Observable<Card[]>;
@@ -48,5 +48,8 @@ export class PresentersComponent implements OnInit {
                 }
             });
 
+    }
+
+    ngOnDestroy() {
     }
 }

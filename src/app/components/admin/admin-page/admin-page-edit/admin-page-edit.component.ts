@@ -16,7 +16,6 @@ import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 
-
 @Component({
     selector: 'ddw-admin-page-edit',
     templateUrl: './admin-page-edit.component.html',
@@ -62,7 +61,8 @@ export class AdminPageEditComponent implements OnInit {
     sortOrder: number;
     hasCalendar: boolean;
     calendarTitle: string;
-    calendar$: Observable<Calendar[]>;
+    calendars$: Observable<Calendar[]>;
+    calendars: Calendar[];
     disableAdminOnEdit: boolean;
     // Image upload
     task: AngularFireUploadTask;
@@ -154,7 +154,11 @@ export class AdminPageEditComponent implements OnInit {
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
 
         // Get Calendar Titles
-        this.calendar$ = this.adminCalendarService.getAllCalendars();
+        this.calendars$ = this.adminCalendarService.getAllCalendars();
+        // this.adminCalendarService.getAllCalendars()
+        //     .subscribe((calArr) => {
+        //         this.calendars = _.orderBy(calArr, ['title'], ['asc']);
+        //     });
 
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
@@ -172,20 +176,20 @@ export class AdminPageEditComponent implements OnInit {
                                 Validators.required, Validators.minLength(5)
                             ])
                     ],
-                    body: [page.body],
-                    author: [this.author],
-                    date: [page.date],
-                    bannerPhotoURL: [page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
-                    photoURL: [page.photoURL],
-                    category: [page.category, Validators.required],
-                    published: [page.published || false],
-                    template: [page.template],
+                    body: ['' || page.body],
+                    author: ['' || this.author],
+                    date: ['' || page.date],
+                    bannerPhotoURL: ['' || page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
+                    photoURL: ['' || page.photoURL],
+                    category: ['' || page.category, Validators.required],
+                    published: ['' || page.published || false],
+                    template: ['' || page.template],
                     url: [newURL, Validators.required],
-                    extURL: [page.extURL],
-                    isExtURL: [page.isExtURL],
-                    sortOrder: [page.sortOrder],
-                    hasCalendar: [page.hasCalendar],
-                    calendarTitle: [page.calendarTitle],
+                    extURL: ['' || page.extURL],
+                    isExtURL: ['' || page.isExtURL],
+                    sortOrder: ['' || page.sortOrder],
+                    hasCalendar: ['' || page.hasCalendar],
+                    calendarTitle: ['' || page.calendarTitle],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -216,8 +220,9 @@ export class AdminPageEditComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
+            console.log('formData', formData);
             this.adminPageService.updatePage(formData, this.page.uid);
-            this.editPageForm.reset();
+            this.editPageForm.reset(this.editPageForm);
             this.sbAlert.open('Page was updated!', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',

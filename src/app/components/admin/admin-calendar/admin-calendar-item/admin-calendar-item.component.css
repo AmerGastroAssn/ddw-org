@@ -39,3 +39,12 @@ a:link, a:link:active {
 h4, p, li {
     font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
 }
+
+#calTab {
+    border: 1px solid #EBEBEB;
+}
+
+.tab-content {
+    border: 1px solid #EBEBEB;
+    border-top: #fff;
+}

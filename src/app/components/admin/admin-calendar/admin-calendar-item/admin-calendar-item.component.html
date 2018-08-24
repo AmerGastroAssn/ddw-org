@@ -2,7 +2,7 @@
 <div class="row">
     <div class="container-fluid" style="max-width:1200px;">
         <div class="col-md-12" style="padding-left:0;">
-            <h2 style="margin-left:0;">{{ calendar.title }}</h2>
+            <h2 style="margin-left:0;">{{ calendar.displayName }}</h2>
         </div>
     </div>
 </div>
@@ -18,7 +18,8 @@
                    href="#date1"
                    role="tab"
                    aria-controls="date1"
-                   aria-selected="true">{{ calendar.date1.toDate() | date:'LLLL dd' }}</a>
+                   aria-selected="true"
+                   *ngIf="calendar.date1">{{ calendar.date1.toDate() | date:'LLLL dd' }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -27,7 +28,8 @@
                    href="#date2"
                    role="tab"
                    aria-controls="date2"
-                   aria-selected="false">{{ calendar.date2.toDate() | date:'LLLL dd' }}</a>
+                   aria-selected="false"
+                   *ngIf="calendar.date2">{{ calendar.date2.toDate() | date:'LLLL dd' }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -36,7 +38,8 @@
                    href="#date3"
                    role="tab"
                    aria-controls="date3"
-                   aria-selected="false">{{ calendar.date3.toDate() | date:'LLLL dd' }}</a>
+                   aria-selected="false"
+                   *ngIf="calendar.date3">{{ calendar.date3.toDate() | date:'LLLL dd' }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -45,7 +48,8 @@
                    href="#date4"
                    role="tab"
                    aria-controls="date4"
-                   aria-selected="false">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
+                   aria-selected="false"
+                   *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -53,8 +57,9 @@
                  id="date1"
                  role="tabpanel"
                  aria-labelledby="date1-tab">
-                <h4 class="pt-5 mt-3 pb-5 mb-3">
-                    <b>{{ calendar.date2.toDate() | date:'EEEE' }},</b> {{ calendar.date2.toDate() | date }}
+                <h4 class="pt-5 pb-5 mb-3 pl-3"
+                    *ngIf="calendar.date1 && calendar.body1">
+                    <b>{{ calendar.date1.toDate() | date:'EEEE' }},</b> {{ calendar.date1.toDate() | date }}
                 </h4>
                 <div [innerHTML]="calendar.body1 | safeHtml" class="cal-content"></div>
             </div>
@@ -62,18 +67,30 @@
                  id="date2"
                  role="tabpanel"
                  aria-labelledby="date2-tab">
+                <h4 class="pt-5 pb-5 mb-3 pl-3"
+                    *ngIf="calendar.date2 && calendar.body2">
+                    <b>{{ calendar.date2.toDate() | date:'EEEE' }},</b> {{ calendar.date2.toDate() | date }}
+                </h4>
                 <div [innerHTML]="calendar.body2 | safeHtml" class="cal-content"></div>
             </div>
             <div class="tab-pane fade"
                  id="date3"
                  role="tabpanel"
                  aria-labelledby="date3-tab">
+                <h4 class="pt-5 pb-5 mb-3 pl-3"
+                    *ngIf="calendar.date3 && calendar.body3">
+                    <b>{{ calendar.date3.toDate() | date:'EEEE' }},</b> {{ calendar.date3.toDate() | date }}
+                </h4>
                 <div [innerHTML]="calendar.body3 | safeHtml" class="cal-content"></div>
             </div>
             <div class="tab-pane fade"
                  id="date4"
                  role="tabpanel"
                  aria-labelledby="date4-tab">
+                <h4 class="pt-5 pb-5 mb-3 pl-3"
+                    *ngIf="calendar.date4 && calendar.body4">
+                    <b>{{ calendar.date4.toDate() | date:'EEEE' }},</b> {{ calendar.date4.toDate() | date }}
+                </h4>
                 <div [innerHTML]="calendar.body4 | safeHtml" class="cal-content"></div>
             </div>
         </div>

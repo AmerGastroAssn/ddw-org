@@ -46,6 +46,7 @@ export class AdminCalendarNewComponent implements OnInit {
     date3: any;
     date4: any;
     title: string;
+    displayName: string;
     uid: string;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
@@ -81,6 +82,7 @@ export class AdminCalendarNewComponent implements OnInit {
             date3: [''],
             date4: [''],
             title: ['', Validators.required],
+            displayName: ['', Validators.required],
             uid: [''],
         });
 
@@ -94,6 +96,7 @@ export class AdminCalendarNewComponent implements OnInit {
         this.date2 = this.newCalForm.value.date2;
         this.date3 = this.newCalForm.value.date3;
         this.date4 = this.newCalForm.value.date4;
+        this.displayName = this.newCalForm.value.displayName;
         this.uid = this.newCalForm.value.uid;
     }
 
@@ -118,7 +121,7 @@ export class AdminCalendarNewComponent implements OnInit {
             this.calendarService.saveCalendar(calendarData);
             console.log(calendarData);
             this.newCalForm.reset();
-            this.sbAlert.open('New Event created!', 'Dismiss', {
+            this.sbAlert.open('New Calendar created!', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-success']

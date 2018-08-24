@@ -60,7 +60,7 @@ export class AdminCalendarEditComponent implements OnInit {
 
     CkeditorConfig = {
         allowedContent: true,
-        height: 200,
+        height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
     };
 
@@ -71,6 +71,8 @@ export class AdminCalendarEditComponent implements OnInit {
       private route: ActivatedRoute,
       private sbAlert: MatSnackBar,
     ) {
+        // Get id from url
+        this.$key = this.route.snapshot.params['id'];
         // Datepicker Config
         this.bsConfig = Object.assign({},
           {
@@ -78,37 +80,45 @@ export class AdminCalendarEditComponent implements OnInit {
               dateInputFormat: 'MMMM Do YYYY'
           });
 
-        // New Calendar:
-        this.updateCalForm = this.fb.group({
-            $key: [''],
-            body1: ['', Validators.required],
-            body2: ['', Validators.required],
-            body3: [''],
-            body4: [''],
-            date1: [''],
-            date2: [''],
-            date3: [''],
-            date4: [''],
-            title: ['', Validators.required],
-            uid: [''],
+        // Edit Calendar:
+        this.calendarService.getCalendar(this.$key).subscribe((calendar) => {
+            if (calendar !== null) {
+                this.calendar = calendar;
+
+
+                this.updateCalForm = this.fb.group({
+                    $key: [calendar.$key],
+                    body1: [calendar.body1, Validators.required],
+                    body2: [calendar.body1, Validators.required],
+                    body3: [calendar.body1],
+                    body4: [calendar.body1],
+                    date1: [calendar.date1],
+                    date2: [calendar.date2],
+                    date3: [calendar.date3],
+                    date4: [calendar.date4],
+                    title: [calendar.title, Validators.required],
+                    uid: [calendar.uid],
+                });
+
+                this.$key = this.updateCalForm.value.$key;
+                this.title = this.updateCalForm.value.title;
+                this.body1 = this.updateCalForm.value.body1;
+                this.body2 = this.updateCalForm.value.body2;
+                this.body3 = this.updateCalForm.value.body3;
+                this.body4 = this.updateCalForm.value.body4;
+                this.date1 = this.updateCalForm.value.date1;
+                this.date2 = this.updateCalForm.value.date2;
+                this.date3 = this.updateCalForm.value.date3;
+                this.date4 = this.updateCalForm.value.date4;
+                this.uid = this.updateCalForm.value.uid;
+            }
         });
 
-        this.$key = this.updateCalForm.value.$key;
-        this.title = this.updateCalForm.value.title;
-        this.body1 = this.updateCalForm.value.body1;
-        this.body2 = this.updateCalForm.value.body2;
-        this.body3 = this.updateCalForm.value.body3;
-        this.body4 = this.updateCalForm.value.body4;
-        this.date1 = this.updateCalForm.value.date1;
-        this.date2 = this.updateCalForm.value.date2;
-        this.date3 = this.updateCalForm.value.date3;
-        this.date4 = this.updateCalForm.value.date4;
-        this.uid = this.updateCalForm.value.uid;
+
     }
 
     ngOnInit() {
-        // Get id from url
-        this.$key = this.route.snapshot.params['id'];
+
         // Get Event 1
         this.calendarService.getCalendar(this.$key)
             .subscribe((calInfo) => {

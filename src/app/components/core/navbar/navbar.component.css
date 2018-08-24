@@ -1,6 +1,6 @@
 nav.navbar {
     opacity: 0.9;
-    /*background-color: #ffffff;*/
+    background-color: #ffffff;
 }
 
 /* Navbar */
@@ -19,7 +19,6 @@ nav.navbar {
     font-weight: bold;
 }
 
-
 li.nav-item > a {
     font-size: 16px;
     text-decoration: none;
@@ -31,10 +30,10 @@ img.ddw-logo {
 
 /* Navbar afix */
 /*.affix {*/
-    /*!*background-color: #eee;*!*/
-    /*background-color: transparent;*/
-    /*-webkit-transition: padding 0.2s ease-out;*/
-    /*-moz-transition: padding 0.2s ease-out;*/
-    /*-o-transition: padding 0.2s ease-out;*/
-    /*transition: padding 0.2s ease-out;*/
+/*!*background-color: #eee;*!*/
+/*background-color: transparent;*/
+/*-webkit-transition: padding 0.2s ease-out;*/
+/*-moz-transition: padding 0.2s ease-out;*/
+/*-o-transition: padding 0.2s ease-out;*/
+/*transition: padding 0.2s ease-out;*/
 /*}*/

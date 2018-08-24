@@ -20,6 +20,10 @@ export class AttendeePlanningComponent implements OnInit {
     cards$: Observable<Card[]>;
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
+    tab1: string;
+    tab2: string;
+    tab3: string;
+    tab4: string;
 
     constructor(
       private pageService: PageService,

@@ -96,7 +96,9 @@ export class AdminPageService {
             url: newURL,
             extURL: formData.extURL,
             isExtURL: formData.isExtURL,
-            sortOrder: formData.sortOrder
+            sortOrder: formData.sortOrder,
+            hasCalendar: formData.hasCalendar,
+            calendarTitle: formData.calendarTitle,
         };
 
         return pageRef.set(data)
@@ -125,7 +127,9 @@ export class AdminPageService {
                 url: url,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,
-                sortOrder: formData.sortOrder
+                sortOrder: formData.sortOrder,
+                hasCalendar: formData.hasCalendar,
+                calendarTitle: formData.calendarTitle,
             };
             return pageRef.update(data)
                           .then(() => this.router.navigate(['/admin/pages']))
@@ -147,7 +151,9 @@ export class AdminPageService {
                 url: url,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,
-                sortOrder: formData.sortOrder
+                sortOrder: formData.sortOrder,
+                hasCalendar: formData.hasCalendar,
+                calendarTitle: formData.calendarTitle,
             };
             return pageRef.update(data)
                           .then(() => this.router.navigate(['/admin/pages']))

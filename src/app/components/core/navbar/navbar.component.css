@@ -7,7 +7,7 @@ nav.navbar {
 .navbarWhite {
     background-color: #fff;
     color: #5F6A72;
-    /*opacity: 0.9;*/
+    opacity: 0.9;
 }
 
 .linksDark {
@@ -18,7 +18,6 @@ nav.navbar {
     color: #ffffff;
     font-weight: bold;
 }
-
 
 li.nav-item > a {
     font-size: 16px;
@@ -31,10 +30,10 @@ img.ddw-logo {
 
 /* Navbar afix */
 /*.affix {*/
-    /*!*background-color: #eee;*!*/
-    /*background-color: transparent;*/
-    /*-webkit-transition: padding 0.2s ease-out;*/
-    /*-moz-transition: padding 0.2s ease-out;*/
-    /*-o-transition: padding 0.2s ease-out;*/
-    /*transition: padding 0.2s ease-out;*/
+/*!*background-color: #eee;*!*/
+/*background-color: transparent;*/
+/*-webkit-transition: padding 0.2s ease-out;*/
+/*-moz-transition: padding 0.2s ease-out;*/
+/*-o-transition: padding 0.2s ease-out;*/
+/*transition: padding 0.2s ease-out;*/
 /*}*/

@@ -61,7 +61,7 @@
                             <input type="text"
                                    class="form-control"
                                    required
-                                   [(ngModel)]="calendar.title"
+                                   [(ngModel)]="title"
                                    formControlName="title"/>
                         </div>
 
@@ -224,7 +224,7 @@
                                            bsDatepicker
                                            placement="top"
                                            formControlName="date4"
-                                           [bsConfig]="bsConfig" *ngIf="calendar.date4">
+                                           [bsConfig]="bsConfig">
                                 </div>
                             </div>
 

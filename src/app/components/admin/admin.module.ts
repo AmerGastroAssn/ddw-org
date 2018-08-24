@@ -33,7 +33,6 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminCalendarItemComponent } from './admin-calendar/admin-calendar-item/admin-calendar-item.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +54,6 @@ import { AdminCalendarItemComponent } from './admin-calendar/admin-calendar-item
         AdminCalendarListComponent,
         AdminCalendarNewComponent,
         AdminCalendarComponent,
-        AdminCalendarItemComponent,
     ],
     imports: [
         CommonModule,

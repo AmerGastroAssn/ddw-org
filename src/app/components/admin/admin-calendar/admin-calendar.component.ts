@@ -18,6 +18,6 @@ export class AdminCalendarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.calendarEvents$ = this.adminCalendarService.getAllCalendarEvents();
+        this.calendarEvents$ = this.adminCalendarService.getAllCalendars();
     }
 }

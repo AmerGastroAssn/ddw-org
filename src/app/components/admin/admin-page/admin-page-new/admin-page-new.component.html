@@ -30,35 +30,39 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox"
-                                   class="custom-control-input"
-                                   id="isExtURL"
-                                   formControlName="isExtURL"
-                                   (click)="isExtURLToggle()">
-                            <label class="custom-control-label"
-                                   for="isExtURL">Is this an external URL?</label>
+                    <div class="card bg-lighter mb-3">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="isExtURL"
+                                           formControlName="isExtURL"
+                                           (click)="isExtURLToggle()">
+                                    <label class="custom-control-label"
+                                           for="isExtURL">Is this an external URL?</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" *ngIf="isExtURL">
+                                <label>External URL <br>
+                                    <p class="alert alert-info">All values are needed if this is an external URL!</p>
+                                </label>
+                                <input type="url"
+                                       class="form-control"
+                                       placeholder="https://"
+                                       [class.invalid]="!f.extURL.valid && f.extURL.touched"
+                                       formControlName="extURL">
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.extURL.valid && f.extURL.touched">
+                                    <b>External URL</b> is invalid!
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group" *ngIf="isExtURLPage">
-                        <label>External URL <br>
-                            <p class="alert alert-info">All values are needed if this is an external URL!</p>
-                        </label>
-                        <input type="url"
-                               class="form-control"
-                               placeholder="https://"
-                               [class.invalid]="!f.extURL.valid && f.extURL.touched"
-                               formControlName="extURL">
-                        <p class="help-block alert alert-warning text-center mt-1"
-                           *ngIf="!f.extURL.valid && f.extURL.touched">
-                            <b>External URL</b> is invalid!
-                        </p>
-                    </div>
 
-
-                    <div class="form-group" *ngIf="!isExtURLPage">
+                    <div class="form-group">
                         <label>Author</label>
                         <input type="text"
                                class="form-control"
@@ -82,7 +86,6 @@
                             <input type="text"
                                    class="form-control"
                                    id="date"
-                                   placeholder="Select Date"
                                    bsDatepicker
                                    [bsConfig]="bsConfig"
                                    placement="bottom"
@@ -97,18 +100,18 @@
 
 
                     <!--<div class="form-group">-->
-                        <!--<label>Publish On</label>-->
-                        <!--<input type="string"-->
-                               <!--class="form-control"-->
-                               <!--bsDatepicker-->
-                               <!--[bsConfig]="bsConfig"-->
-                               <!--placement="bottom"-->
-                               <!--[class.invalid]="!f.date.valid && f.date.touched"-->
-                               <!--formControlName="date">-->
-                        <!--<p class="help-block alert alert-warning text-center mt-1"-->
-                           <!--*ngIf="!f.date.valid && f.date.touched">-->
-                            <!--<b>Date</b> is required!-->
-                        <!--</p>-->
+                    <!--<label>Publish On</label>-->
+                    <!--<input type="string"-->
+                    <!--class="form-control"-->
+                    <!--bsDatepicker-->
+                    <!--[bsConfig]="bsConfig"-->
+                    <!--placement="bottom"-->
+                    <!--[class.invalid]="!f.date.valid && f.date.touched"-->
+                    <!--formControlName="date">-->
+                    <!--<p class="help-block alert alert-warning text-center mt-1"-->
+                    <!--*ngIf="!f.date.valid && f.date.touched">-->
+                    <!--<b>Date</b> is required!-->
+                    <!--</p>-->
                     <!--</div>-->
 
 
@@ -149,7 +152,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group" *ngIf="!isExtURLPage">
+                    <div class="form-group" *ngIf="!isExtURL">
                         <label for="category">Template</label>
                         <select class="form-control"
                                 id="template"
@@ -162,7 +165,38 @@
                         </select>
                     </div>
 
-                    <div class="form-group" *ngIf="!isExtURLPage">
+
+                    <div class="card bg-lighter mb-3" *ngIf="!isExtURL">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="hasCalendar"
+                                           formControlName="hasCalendar"
+                                           (click)="toggleHasCalendar()">
+                                    <label class="custom-control-label"
+                                           for="hasCalendar">Does the page have a Calendar?</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" *ngIf="hasCalendar">
+                                <label for="calendarTitle">Select Calendar or
+                                    <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
+                                        <i class="fa fa-calendar-plus"></i>  Create New</a>
+                                </label>
+                                <select class="form-control"
+                                        id="calendarTitle"
+                                        formControlName="calendarTitle">
+                                    <option *ngFor="let cal of calendar$ | async">
+                                        {{ cal.title }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="!isExtURL">
                         <label>Body</label>
                         <ckeditor [formControl]="newPageForm.controls['body']"
                                   [config]="CkeditorConfig"
@@ -176,7 +210,7 @@
                         </p>
                     </div>
 
-                    <div class="form-group" *ngIf="!isExtURLPage">
+                    <div class="form-group" *ngIf="!isExtURL">
                         <div class="card image-uploader">
                             <div class="card-body">
                                 <p class="card-title">
@@ -231,7 +265,7 @@
                     </div>
 
 
-                    <div class="form-group" *ngIf="!isExtURLPage">
+                    <div class="form-group" *ngIf="!isExtURL">
                         <label>Banner Image URL
                             <small>(Top banner image)</small>
                         </label>
@@ -246,7 +280,7 @@
                         </p>
                     </div>
 
-                    <div class="form-group" *ngIf="!isExtURLPage">
+                    <div class="form-group" *ngIf="!isExtURL">
                         <label>Image URL
                             <small>(Image on the page)</small>
                         </label>

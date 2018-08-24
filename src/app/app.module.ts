@@ -14,6 +14,8 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AdminCalendarItemComponent } from './components/admin/admin-calendar/admin-calendar-item/admin-calendar-item.component';
+import { AdminCalendarComponent } from './components/admin/admin-calendar/admin-calendar.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { AdminModule } from './components/admin/admin.module';
@@ -46,6 +48,7 @@ import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
+import { PressReleasesComponent } from './components/press-releases/press-releases.component';
 
 
 // Inits the app (Fixes a bug).
@@ -72,6 +75,8 @@ firebase.initializeApp(environment.firebase);
         AdminFeaturedBlogPostsComponent,
         RunScriptsDirective,
         ContactUsComponent,
+        PressReleasesComponent,
+        AdminCalendarItemComponent,
     ],
     imports: [
         BrowserModule,
@@ -89,6 +94,7 @@ firebase.initializeApp(environment.firebase);
         TabsModule.forRoot(),
         TimepickerModule.forRoot(),
         AdminModule,
+
     ],
     exports: [],
     providers: [

@@ -13,6 +13,8 @@ export class Page {
       public template: string,
       public url: string,
       public sortOrder: number,
+      public hasCalendar: boolean,
+      public calendarTitle: string,
       public extURL?: string,
       public isExtURL?: boolean,
     ) {

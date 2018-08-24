@@ -37,8 +37,15 @@ export class AdminCalendarService {
         this.calColumnValue$key = 'BYowCajpbtyWUMVCWDUY';
     }
 
-    getAllCalendarEvents(): Observable<Calendar[]> {
+    getAllCalendars(): Observable<Calendar[]> {
         this.calendarCollection = this.afs.collection<Calendar>('calendar');
+        return this.calendars$ = this.calendarCollection.valueChanges();
+    }
+
+    getCalendarByTitle(title: string): Observable<Calendar[]> {
+        this.calendarCollection = this.afs.collection<Calendar>('calendar', ref => {
+            return ref.where('title', '==', `${title}`);
+        });
         return this.calendars$ = this.calendarCollection.valueChanges();
     }
 
@@ -90,7 +97,7 @@ export class AdminCalendarService {
         };
 
         console.log('data', data);
-        return calRef.set(data,  { merge: true })
+        return calRef.set(data, { merge: true })
                      .then(() => {
                          this.router.navigate(['/admin/calendar']);
                          this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {

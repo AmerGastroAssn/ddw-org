@@ -32,7 +32,7 @@ export class AdminPressReleaseDetailsComponent implements OnInit {
     id: string;
     pressRelease: PressRelease;
     url: string;
-    body: string;
+    body: any;
 
     constructor(
       private adminPressReleaseService: AdminPressReleaseService,

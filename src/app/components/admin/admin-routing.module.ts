@@ -28,6 +28,11 @@ import { AdminPagePresentersListComponent } from './admin-page/admin-page-presen
 import { AdminPageRegisterListComponent } from './admin-page/admin-page-register-list/admin-page-register-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
+import { AdminPressReleaseDetailsComponent } from './admin-press-release/admin-press-release-details/admin-press-release-details.component';
+import { AdminPressReleaseEditComponent } from './admin-press-release/admin-press-release-edit/admin-press-release-edit.component';
+import { AdminPressReleaseListComponent } from './admin-press-release/admin-press-release-list/admin-press-release-list.component';
+import { AdminPressReleaseNewComponent } from './admin-press-release/admin-press-release-new/admin-press-release-new.component';
+import { AdminPressReleaseComponent } from './admin-press-release/admin-press-release.component';
 import { AdminUserDetailsComponent } from './admin-user/admin-user-details/admin-user-details.component';
 import { AdminUserEditComponent } from './admin-user/admin-user-edit/admin-user-edit.component';
 import { AdminUserListComponent } from './admin-user/admin-user-list/admin-user-list.component';
@@ -47,6 +52,15 @@ const adminRoutes: Routes = [
                     { path: 'new', component: AdminPageNewComponent, canActivate: [AuthGuard] },
                     { path: ':id', component: AdminPageDetailsComponent, canActivate: [AuthGuard] },
                     { path: ':id/edit', component: AdminPageEditComponent, canActivate: [AuthGuard] },
+                ]
+            },
+            {
+                path: 'press-releases', component: AdminPressReleaseComponent,
+                children: [
+                    { path: '', component: AdminPressReleaseListComponent, canActivate: [AuthGuard] },
+                    { path: 'new', component: AdminPressReleaseNewComponent, canActivate: [AuthGuard] },
+                    { path: ':id', component: AdminPressReleaseDetailsComponent, canActivate: [AuthGuard] },
+                    { path: ':id/edit', component: AdminPressReleaseEditComponent, canActivate: [AuthGuard] },
                 ]
             },
             {

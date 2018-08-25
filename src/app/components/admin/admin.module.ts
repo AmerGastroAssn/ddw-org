@@ -31,6 +31,7 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
+import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 
@@ -72,6 +73,7 @@ import { AdminComponent } from './admin.component';
         TimepickerModule,
         CKEditorModule,
         MatExpansionModule,
+        AdminPressReleaseModule,
     ],
     exports: [
         MatButtonModule,

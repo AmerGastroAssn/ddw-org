@@ -1,9 +1,11 @@
 <!-- * ADMIN-PAGE-NEW * -->
 <div class="row mb-4">
     <div class="container">
-        <a class="text-primary back-pages"
-           [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
-        </a>
+        <div class="col-md-12">
+            <a class="btn btn-default"
+               [routerLink]="['/admin/pages']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+            </a>
+        </div>
     </div>
 </div>
 
@@ -136,7 +138,7 @@
 
 
                     <div class="form-group">
-                        <label for="category">Sort Order <br>
+                        <label for="sortOrder">Sort Order <br>
                             <small>Order shown in navbar dropdown category</small>
                         </label>
                         <select class="form-control"
@@ -153,7 +155,7 @@
                     </div>
 
                     <div class="form-group" *ngIf="!isExtURL">
-                        <label for="category">Template</label>
+                        <label for="template">Template</label>
                         <select class="form-control"
                                 id="template"
                                 [class.invalid]="!f.template.valid && f.template.touched"

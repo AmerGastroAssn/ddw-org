@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
+import { AdminUserService } from '../../../../services/admin-user.service';
 import { AdminService } from '../../../../services/admin.service';
 import { AuthService } from '../../../../services/auth.service';
-import { AdminUserService } from '../../../../services/admin-user.service';
 
 @Component({
     selector: 'ddw-admin-sidenav',
@@ -22,6 +22,7 @@ export class AdminSidenavComponent implements OnInit {
     showPagesToggle: boolean;
     showUsersToggle: boolean;
     showCalendarToggle: boolean;
+    showPressReleaseToggle: boolean;
     user: User;
     isAdmin: boolean;
     dbUser: User;
@@ -76,6 +77,10 @@ export class AdminSidenavComponent implements OnInit {
 
     onShowCalendarToggle() {
         this.showCalendarToggle = !this.showCalendarToggle;
+    }
+
+    onShowPressReleaseToggle() {
+        this.showPressReleaseToggle = !this.showPressReleaseToggle;
     }
 
     onLogout() {

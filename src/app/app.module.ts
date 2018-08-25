@@ -49,6 +49,7 @@ import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { PressReleasesComponent } from './components/press-releases/press-releases.component';
+import { AdminPressReleaseNewComponent } from './components/admin/admin-press-release/admin-press-release-new/admin-press-release-new.component';
 
 
 // Inits the app (Fixes a bug).

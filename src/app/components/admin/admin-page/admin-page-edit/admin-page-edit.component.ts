@@ -104,7 +104,8 @@ export class AdminPageEditComponent implements OnInit {
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
+              dateInputFormat: 'MMMM Do YYYY,h:mm',
+              placeholder: new Date()
           });
 
         // Get Current Author

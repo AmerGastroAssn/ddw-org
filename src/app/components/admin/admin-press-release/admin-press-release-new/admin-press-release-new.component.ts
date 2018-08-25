@@ -8,7 +8,6 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { PressRelease } from '../../../../models/PressRelease';
 import { User } from '../../../../models/User';
-import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminPressReleaseService } from '../../../../services/admin-press-release.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -54,7 +53,6 @@ export class AdminPressReleaseNewComponent implements OnInit {
       private storage: AngularFireStorage,
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
-      private adminCalendarService: AdminCalendarService,
     ) {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {

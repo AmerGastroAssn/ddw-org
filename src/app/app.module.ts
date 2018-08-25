@@ -15,10 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AdminCalendarItemComponent } from './components/admin/admin-calendar/admin-calendar-item/admin-calendar-item.component';
-import { AdminCalendarComponent } from './components/admin/admin-calendar/admin-calendar.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { AdminModule } from './components/admin/admin.module';
+import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.component';
@@ -32,8 +32,11 @@ import { NewsAndMediaComponent } from './components/pages/news-and-media/news-an
 import { PagesComponent } from './components/pages/pages.component';
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { PressReleasesComponent } from './components/press-releases/press-releases.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { TrustUrlPipe } from './pipes/trust-url.pipe';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
@@ -47,9 +50,6 @@ import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
-import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
-import { PressReleasesComponent } from './components/press-releases/press-releases.component';
-import { AdminPressReleaseNewComponent } from './components/admin/admin-press-release/admin-press-release-new/admin-press-release-new.component';
 
 
 // Inits the app (Fixes a bug).
@@ -95,9 +95,10 @@ firebase.initializeApp(environment.firebase);
         TabsModule.forRoot(),
         TimepickerModule.forRoot(),
         AdminModule,
+    ],
+    exports: [
 
     ],
-    exports: [],
     providers: [
         AdminUserService,
         AdminPageService,

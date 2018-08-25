@@ -31,6 +31,7 @@ import { AdminPressReleaseComponent } from './admin-press-release.component';
         AdminPressReleaseEditComponent,
         AdminPressReleaseDetailsComponent,
         AdminPressReleaseListComponent,
+
     ],
     exports: []
 })

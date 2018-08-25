@@ -104,25 +104,44 @@ export class AdminPressReleaseService {
 
 
     updatePressRelease(formData, url: string) {
-        const newURL: string = this.string_to_slug(formData.title);
         const pressReleaseRef: AngularFirestoreDocument<PressRelease> = this.afs.doc(`pressReleases/${url}`);
 
-        const data: PressRelease = {
-            $key: url,
-            author: formData.author,
-            createdAt: this.currentTime,
-            body: formData.body,
-            sortOrder: formData.sortOrder,
-            published: formData.published,
-            publishOn: formData.publishOn,
-            summary: formData.summary,
-            title: formData.title,
-            uid: url,
-            url: newURL,
-        };
-        return pressReleaseRef.set(data, { merge: true })
-                              .then(() => this.router.navigate(['/admin/press-releases']))
-                              .catch((error) => console.log(`ERROR~aPR: `, error));
+        if (typeof formData.publishOn === 'number') {
+            const data: PressRelease = {
+                $key: url,
+                author: formData.author,
+                createdAt: this.currentTime,
+                body: formData.body,
+                sortOrder: formData.sortOrder,
+                published: formData.published,
+                publishOn: formData.publishOn,
+                summary: formData.summary,
+                title: formData.title,
+                uid: url,
+                url: url,
+            };
+            return pressReleaseRef.set(data, { merge: true })
+                                  .then(() => this.router.navigate(['/admin/press-releases']))
+                                  .catch((error) => console.log(`ERROR~uPR: `, error));
+        } else {
+            const pubOnStampToNum = formData.publishOn.getTime();
+            const data: PressRelease = {
+                $key: url,
+                author: formData.author,
+                createdAt: this.currentTime,
+                body: formData.body,
+                sortOrder: formData.sortOrder,
+                published: formData.published,
+                publishOn: pubOnStampToNum,
+                summary: formData.summary,
+                title: formData.title,
+                uid: url,
+                url: url,
+            };
+            return pressReleaseRef.set(data, { merge: true })
+                                  .then(() => this.router.navigate(['/admin/press-releases']))
+                                  .catch((error) => console.log(`ERROR~uPR: `, error));
+        }
 
     }
 

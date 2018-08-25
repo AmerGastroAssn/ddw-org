@@ -22,7 +22,9 @@
                       (ngSubmit)="onAddNewPressRelease(newPressReleaseForm.value)">
 
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Title <br>
+                            <small>Make sure Title is correct, Title cannot be changed</small>
+                        </label>
                         <input type="text"
                                required
                                class="form-control"
@@ -131,12 +133,12 @@
                     </button>
 
                     <!--* Debugging * -->
-                    <code>
-                        <pre>Form value: {{ newPressReleaseForm.value | json }}</pre>
-                    </code>
-                    <code>
-                        <pre>Form value: {{ newPressReleaseForm.status | json }}</pre>
-                    </code>
+                    <!--<code>-->
+                    <!--<pre>Form value: {{ newPressReleaseForm.value | json }}</pre>-->
+                    <!--</code>-->
+                    <!--<code>-->
+                    <!--<pre>Form value: {{ newPressReleaseForm.status | json }}</pre>-->
+                    <!--</code>-->
 
                 </form>
             </div>

@@ -52,7 +52,12 @@
                                 No
                             </span>
                         </td>
-                        <td scope="col" class="date">{{ pressRelease.publishOn | date:'mediumDate' }}</td>
+                        <td scope="col">
+                            <a [routerLink]="['/admin/press-releases/', pressRelease.url]"
+                               class="text-dark">
+                                {{ pressRelease.publishOn | date:'shortDate' }}
+                            </a>
+                        </td>
                         <td>
                             <a class="btn btn-default btn-xs icon-btn md-btn-flat user-tooltip"
                                [routerLink]="['/admin/press-releases/', pressRelease.url]">

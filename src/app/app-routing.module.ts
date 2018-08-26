@@ -10,7 +10,9 @@ import { ExhibitorInformationComponent } from './components/pages/exhibitor-info
 import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
+import { PressReleasesDetailsComponent } from './components/pages/press-releases/press-releases-details/press-releases-details.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { PressReleasesComponent } from './components/pages/press-releases/press-releases.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -41,7 +43,7 @@ const appRoutes: Routes = [
         ]
     },
     {
-        path: 'news-and-media', component: PagesComponent,
+        path: 'news', component: PagesComponent,
         children: [
             { path: ':id', component: NewsAndMediaComponent }
         ]
@@ -50,6 +52,12 @@ const appRoutes: Routes = [
         path: 'presenters', component: PagesComponent,
         children: [
             { path: ':id', component: PresentersComponent }
+        ]
+    },
+    {
+        path: 'blogs', component: PressReleasesComponent,
+        children: [
+            { path: ':id', component: PressReleasesDetailsComponent },
         ]
     },
 

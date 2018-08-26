@@ -1,0 +1,34 @@
+<!-- * PRESS-RELEASE-DETAILS * -->
+<!-- * TODO: ADD NAVBAR * -->
+<div *ngIf="pressRelease">
+    <img [src]="banner" class="bannerPhotoURL">
+
+    <div class="container-fluid">
+        <h1 class="title">{{ pageTitle }}</h1>
+    </div>
+
+    <div class="row crumbs">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/home']">{{ newsTitle }}</a>
+                </li>
+                <li class="breadcrumb-item active">{{pageTitle}}</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="row">
+        <div class="container-fluid" style="max-width:1200px;">
+            <h3>{{ pressRelease.title}}</h3>
+            <p class="text-light">
+                <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>
+            </p>
+            <p [innerHTML]="pressRelease.body | safeHtml"></p>
+        </div>
+    </div>
+
+</div>

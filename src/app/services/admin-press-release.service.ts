@@ -48,7 +48,7 @@ export class AdminPressReleaseService {
     getPressReleases(): Observable<PressRelease[]> {
         // Ref, and order by title
         this.pressReleaseCollection = this.afs.collection(`pressReleases`,
-          ref => ref.orderBy('url', 'asc')
+          ref => ref.orderBy('title', 'asc')
         );
         // Gets array of pressReleases along with their uid.
         return this.pressReleaseCollection.snapshotChanges()

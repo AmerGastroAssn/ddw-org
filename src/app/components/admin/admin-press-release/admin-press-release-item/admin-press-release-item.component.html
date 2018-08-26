@@ -1,6 +1,6 @@
 <!-- * ADMIN-PRESS-RELEASE-ITEM * -->
-<h3>{{ pressRelease.title}}</h3>
+<h3><a [routerLink]="['/blogs/', pressRelease.url]">{{ pressRelease.title}}</a></h3>
 <p class="text-light">
-    <small>{{ pressRelease.publishOn }}</small>
+    <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>
 </p>
-<p>{{ pressRelease.body }}</p>
+<p [innerHTML]="pressRelease.summary | safeHtml"></p>

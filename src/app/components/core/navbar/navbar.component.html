@@ -139,13 +139,12 @@
                     <span *ngFor="let newsPage of newsAndMediaPages$">
                         <a class="dropdown-item"
                            *ngIf="!newsPage.isExtURL"
-                           [routerLink]="['/news-and-media/', newsPage.url]">
+                           [routerLink]="['/news/', newsPage.url]">
                             {{ newsPage.title }}
                         </a>
                         <a class="dropdown-item"
                            *ngIf="newsPage.isExtURL"
-                           [href]="newsPage.extURL"
-                           target="_blank">
+                           [routerLink]="['/news/', newsPage.url]">
                             {{ newsPage.title }}
                         </a>
                     </span>

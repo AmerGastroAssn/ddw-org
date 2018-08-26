@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { PressRelease } from '../../../models/PressRelease';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
+import { AdminPressReleaseService } from '../../../services/admin-press-release.service';
 import { PageService } from '../../../services/page.service';
 
 @Component({
-  selector: 'ddw-news-and-media',
-  templateUrl: './news-and-media.component.html',
-  styleUrls: ['./news-and-media.component.css']
+    selector: 'ddw-news-and-media',
+    templateUrl: './news-and-media.component.html',
+    styleUrls: ['./news-and-media.component.css']
 })
 export class NewsAndMediaComponent implements OnInit {
     page: Page;
@@ -20,6 +22,10 @@ export class NewsAndMediaComponent implements OnInit {
     cards$: Observable<Card[]>;
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
+    pressRelease$: Observable<PressRelease[]>;
+    banner: string;
+    pageTitle: string;
+    newsTitle: string;
 
     constructor(
       private pageService: PageService,
@@ -27,11 +33,16 @@ export class NewsAndMediaComponent implements OnInit {
       private route: ActivatedRoute,
       private cardService: AdminCardService,
       private adminCalendarService: AdminCalendarService,
+      private adminPressReleaseService: AdminPressReleaseService,
     ) {
+        this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
+        this.pageTitle = 'Press Releases';
+        this.newsTitle = 'News & Media';
     }
 
     ngOnInit() {
         this.cards$ = this.cardService.getAllCards();
+
 
         // Gets $key which is a Slug
         this.route.params.switchMap((params: Params) => {
@@ -40,7 +51,12 @@ export class NewsAndMediaComponent implements OnInit {
             return this.adminPageService.getPage(this.url);
         })
             .subscribe((page) => {
-                this.page = page;
+                if (page.title === 'Releases') {
+                    this.pressRelease$ = this.adminPressReleaseService.getAllPressReleases();
+                    this.page = null;
+                } else {
+                    this.page = page;
+                }
                 // Calendar
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);

@@ -88,7 +88,7 @@ const adminRoutes: Routes = [
                 component: AdminPageExhibitorInformationListComponent,
                 canActivate: [AuthGuard]
             },
-            { path: 'news-and-media', component: AdminPageNewsAndMediaListComponent, canActivate: [AuthGuard] },
+            { path: 'news', component: AdminPageNewsAndMediaListComponent, canActivate: [AuthGuard] },
             { path: 'presenters', component: AdminPagePresentersListComponent, canActivate: [AuthGuard] },
             { path: 'login', component: AdminLoginComponent },
             { path: 'reset', component: AdminResetPasswordComponent },

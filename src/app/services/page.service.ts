@@ -90,4 +90,14 @@ export class PageService {
     }
 
 
+    getPressReleasePages(): Observable<Page[]> {
+        this.pagesCollection = this.afs.collection('pages', ref => {
+            return ref.where('category', '==', 'press-releases')
+                      .where('published', '==', true)
+                      .where('date', '<=', this.timeToNum);
+        });
+        return this.pages$ = this.pagesCollection.valueChanges();
+    }
+
+
 }

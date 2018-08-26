@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AdminCalendarItemComponent } from './components/admin/admin-calendar/admin-calendar-item/admin-calendar-item.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
+import { AdminPressReleaseItemComponent } from './components/admin/admin-press-release/admin-press-release-item/admin-press-release-item.component';
 import { AdminModule } from './components/admin/admin.module';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { FooterComponent } from './components/core/footer/footer.component';
@@ -31,12 +32,11 @@ import { ExhibitorInformationComponent } from './components/pages/exhibitor-info
 import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
+import { PressReleasesDetailsComponent } from './components/pages/press-releases/press-releases-details/press-releases-details.component';
+import { PressReleasesComponent } from './components/pages/press-releases/press-releases.component';
 import { RegisterComponent } from './components/pages/register/register.component';
-import { PressReleasesComponent } from './components/press-releases/press-releases.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
-import { TrustUrlPipe } from './pipes/trust-url.pipe';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
@@ -78,6 +78,8 @@ firebase.initializeApp(environment.firebase);
         ContactUsComponent,
         PressReleasesComponent,
         AdminCalendarItemComponent,
+        AdminPressReleaseItemComponent,
+        PressReleasesDetailsComponent,
     ],
     imports: [
         BrowserModule,
@@ -96,9 +98,7 @@ firebase.initializeApp(environment.firebase);
         TimepickerModule.forRoot(),
         AdminModule,
     ],
-    exports: [
-
-    ],
+    exports: [],
     providers: [
         AdminUserService,
         AdminPageService,

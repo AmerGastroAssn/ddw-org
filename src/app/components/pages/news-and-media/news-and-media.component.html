@@ -59,3 +59,32 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="pressRelease$">
+    <img [src]="banner" class="bannerPhotoURL">
+
+    <div class="container">
+        <h1 class="title">{{ pageTitle }}</h1>
+    </div>
+
+    <div class="row crumbs">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/home']">{{ newsTitle }}</a>
+                </li>
+                <li class="breadcrumb-item active">{{pageTitle}}</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="container-fluid">
+            <ddw-admin-press-release-item
+                    *ngFor="let prEl of pressRelease$ | async"
+                    [pressRelease]="prEl">
+            </ddw-admin-press-release-item>
+        </div>
+    </div>
+</div>

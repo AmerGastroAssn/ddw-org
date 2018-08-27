@@ -45,6 +45,8 @@ export class AdminSettingsService {
             return this.localSettings = JSON.parse(local);
         } else {
             this.saveLocalSettings();
+            const local = localStorage.getItem('settings');
+            return JSON.parse(local);
         }
     }
 

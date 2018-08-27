@@ -59,10 +59,10 @@ export class AdminNavbarComponent implements OnInit {
         this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
-                    if (userArr) {
+                    if (userInfo) {
                         if (this.afAuth.auth.currentUser.email === userInfo.email) {
                             return this.dbUser = userInfo;
-                        } else if (this.localUser) {
+                        } else if (this.localUser != null) {
                             this.dbUser = this.localUser;
                         } else {
                             return null;

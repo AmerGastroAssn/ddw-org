@@ -11,8 +11,8 @@ import { NewsAndMediaComponent } from './components/pages/news-and-media/news-an
 import { PagesComponent } from './components/pages/pages.component';
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
 import { PressReleasesDetailsComponent } from './components/pages/press-releases/press-releases-details/press-releases-details.component';
-import { RegisterComponent } from './components/pages/register/register.component';
 import { PressReleasesComponent } from './components/pages/press-releases/press-releases.component';
+import { RegisterComponent } from './components/pages/register/register.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -45,7 +45,13 @@ const appRoutes: Routes = [
     {
         path: 'news', component: PagesComponent,
         children: [
-            { path: ':id', component: NewsAndMediaComponent }
+            { path: ':id', component: NewsAndMediaComponent },
+            {
+                path: 'press-releases', component: PressReleasesComponent,
+                children: [
+                    { path: ':id', component: PressReleasesDetailsComponent },
+                ]
+            },
         ]
     },
     {
@@ -54,12 +60,12 @@ const appRoutes: Routes = [
             { path: ':id', component: PresentersComponent }
         ]
     },
-    {
-        path: 'press-releases', component: PressReleasesComponent,
-        children: [
-            { path: ':id', component: PressReleasesDetailsComponent },
-        ]
-    },
+    // {
+    //     path: 'press-releases', component: PressReleasesComponent,
+    //     children: [
+    //         { path: ':id', component: PressReleasesDetailsComponent },
+    //     ]
+    // },
 
     { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

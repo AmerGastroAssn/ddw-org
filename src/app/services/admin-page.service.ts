@@ -186,7 +186,7 @@ export class AdminPageService {
 
     getAllNewsPages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'news-and-media');
+            return ref.where('category', '==', 'news');
         });
         return this.pages$ = this.pageCollection.valueChanges();
     }

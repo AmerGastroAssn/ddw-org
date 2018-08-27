@@ -76,7 +76,7 @@ export class PageService {
 
     getNewsAndMediaPages(): Observable<Page[]> {
         this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'news-and-media')
+            return ref.where('category', '==', 'news')
                       .where('published', '==', true)
                       .where('date', '<=', this.timeToNum);
         });

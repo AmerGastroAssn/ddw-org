@@ -90,7 +90,7 @@
         <h5>News &amp; Media</h5>
         <ul>
             <li *ngFor="let newsPage of newsAndMediaPages$">
-                <a [routerLink]="['/news-and-media/', newsPage.url]" *ngIf="!newsPage.isExtURL">
+                <a [routerLink]="['/news/', newsPage.url]" *ngIf="!newsPage.isExtURL">
                     {{ newsPage.title }}
                 </a>
                 <a [href]="newsPage.extURL" target="_blank" *ngIf="newsPage.isExtURL">

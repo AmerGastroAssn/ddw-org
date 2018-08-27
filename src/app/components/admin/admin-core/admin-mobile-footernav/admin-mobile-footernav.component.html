@@ -101,6 +101,15 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
+                    *ngIf="isLoggedIn"
+                    [routerLink]="['/admin/ads']">
+                <i class="fa fa-money-bill-wave"></i>&nbsp;
+                <small>Advertising</small>
+            </button>
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
                     *ngIf="isLoggedIn && allowSettings"
                     [routerLink]="['/admin/settings']">
                 <i class="fa fa-wrench"></i>&nbsp;
@@ -129,9 +138,9 @@
                     class="menu-icon"
                     routerLinkActive="active"
                     *ngIf="isLoggedIn"
-                    [routerLink]="['/admin/ads']">
-                <i class="fa fa-money-bill-wave"></i>&nbsp;
-                <small>Advertising</small>
+                    [routerLink]="['/admin/press-releases']">
+                <i class="fa fa-bullhorn"></i>&nbsp;
+                <small>Press Releases</small>
             </button>
 
 

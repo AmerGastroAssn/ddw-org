@@ -22,6 +22,7 @@ export class NewsAndMediaComponent implements OnInit {
     cards$: Observable<Card[]>;
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
+    hasCalendar: boolean;
     pressRelease$: Observable<PressRelease[]>;
     banner: string;
     pageTitle: string;
@@ -51,15 +52,17 @@ export class NewsAndMediaComponent implements OnInit {
             return this.adminPageService.getPage(this.url);
         })
             .subscribe((page) => {
-                if (page.title === 'Releases') {
-                    this.pressRelease$ = this.adminPressReleaseService.getAllPressReleases();
+                if (page.title === 'Press Releases') {
+                    this.pressRelease$ = this.pageService.getPublishedPressReleases();
                     this.page = null;
                 } else {
                     this.page = page;
                 }
                 // Calendar
-                if (this.page.hasCalendar) {
+                if (page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                } else {
+                    this.calendar$ = null;
                 }
             });
     }

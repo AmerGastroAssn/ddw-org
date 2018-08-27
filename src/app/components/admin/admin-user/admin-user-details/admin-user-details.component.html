@@ -2,8 +2,9 @@
 <div class="row">
     <div class="container">
         <div class="row mb-4">
-            <a class="text-primary back-users"
-               [routerLink]="['/admin/users']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
+            <a class="btn btn-default"
+               [routerLink]="['/admin/users']">
+                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
             </a>
         </div>
     </div>
@@ -11,7 +12,7 @@
 
 <div class="container mb-5">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-6 offset-md-3 col-sm-12">
             <div class="card" *ngIf="user">
                 <div class="card-body">
                     <div class="btn-group float-right"

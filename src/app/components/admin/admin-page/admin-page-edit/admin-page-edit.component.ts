@@ -78,6 +78,7 @@ export class AdminPageEditComponent implements OnInit {
     togglePagePreview = false;
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
+    isNewsCategory: boolean;
 
 
     CkeditorConfig = {

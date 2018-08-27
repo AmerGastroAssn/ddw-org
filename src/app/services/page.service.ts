@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Page } from '../models/Page';
+import { PressRelease } from '../models/PressRelease';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,8 @@ export class PageService {
     page$: Observable<Page>;
     currentTime: Date;
     timeToNum: number;
+    pressReleases$: Observable<PressRelease[]>;
+    pressReleaseCollection: AngularFirestoreCollection<PressRelease>;
 
     constructor(private afs: AngularFirestore) {
         this.currentTime = new Date();
@@ -90,13 +93,13 @@ export class PageService {
     }
 
 
-    getPressReleasePages(): Observable<Page[]> {
-        this.pagesCollection = this.afs.collection('pages', ref => {
-            return ref.where('category', '==', 'press-releases')
-                      .where('published', '==', true)
-                      .where('date', '<=', this.timeToNum);
+    getPublishedPressReleases(): Observable<PressRelease[]> {
+        const currentDate = Date.now();
+        this.pressReleaseCollection = this.afs.collection<PressRelease>('pressReleases', (ref) => {
+            return ref.where('published', '==', true)
+                      .where('publishOn', '<=', currentDate);
         });
-        return this.pages$ = this.pagesCollection.valueChanges();
+        return this.pressReleases$ = this.pressReleaseCollection.valueChanges();
     }
 
 

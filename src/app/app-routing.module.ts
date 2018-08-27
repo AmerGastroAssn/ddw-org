@@ -55,7 +55,7 @@ const appRoutes: Routes = [
         ]
     },
     {
-        path: 'blogs', component: PressReleasesComponent,
+        path: 'press-releases', component: PressReleasesComponent,
         children: [
             { path: ':id', component: PressReleasesDetailsComponent },
         ]

@@ -10,7 +10,7 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a [routerLink]="['/home']">Register</a>
+                    <div class="text-capitalize text-decoration-none">Attendee Planning</div>
                 </li>
                 <li class="breadcrumb-item active">{{page.title}}</li>
             </ol>
@@ -24,7 +24,6 @@
             <div [innerHTML]="page.body | safeHtml"></div>
         </div>
     </div>
-
 
 
     <div class="row" *ngIf="page.hasCalendar">

@@ -11,9 +11,10 @@
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a [routerLink]="['/home']">{{ newsTitle }}</a>
+                    <a [routerLink]="['/news/press-releases']"
+                       class="text-capitalize text-decoration-none">News  /  Press Release</a>
                 </li>
-                <li class="breadcrumb-item active">{{pageTitle}}</li>
+                <li class="breadcrumb-item active">{{pressRelease.title}}</li>
             </ol>
         </div>
     </div>

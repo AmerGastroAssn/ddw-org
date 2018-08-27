@@ -6,7 +6,8 @@
     </div>
     <div class="col-md-6">
         <p class="apps">Plan Your Itinerary with the Free DDW Mobile App.</p>
-        <p class="apps">The free app helps you search scientific sessions, browse posters, and find everything you need to know at
+        <p class="apps">The free app helps you search scientific sessions, browse posters, and find everything you need
+            to know at
             the event. It is now available to download.</p>
         <div class="row">
             <div class="col-sm-6">
@@ -93,7 +94,7 @@
                 <a [routerLink]="['/news/', newsPage.url]" *ngIf="!newsPage.isExtURL">
                     {{ newsPage.title }}
                 </a>
-                <a [href]="newsPage.extURL" target="_blank" *ngIf="newsPage.isExtURL">
+                <a [routerLink]="['/news/', newsPage.extURL]" *ngIf="newsPage.isExtURL">
                     {{ newsPage.title }}
                 </a>
             </li>

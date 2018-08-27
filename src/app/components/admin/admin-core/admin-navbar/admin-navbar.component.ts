@@ -59,16 +59,20 @@ export class AdminNavbarComponent implements OnInit {
         this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
-                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        return this.dbUser = userInfo;
-                    } else if (this.localUser) {
-                        this.dbUser = this.localUser;
-                    } else {
-                        return null;
-                    }
-                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        this.isAdmin = userInfo.admin === true;
-                        console.log(this.isAdmin);
+                    if (userArr) {
+                        if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                            return this.dbUser = userInfo;
+                        } else if (this.localUser) {
+                            this.dbUser = this.localUser;
+                        } else {
+                            return null;
+                        }
+                        if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                            this.isAdmin = userInfo.admin === true;
+                            console.log(this.isAdmin);
+                        } else {
+                            return null;
+                        }
                     }
                 });
             });

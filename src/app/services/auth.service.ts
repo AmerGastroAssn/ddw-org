@@ -212,7 +212,7 @@ export class AuthService {
 
     resetPassword(formData: any) {
         const auth = firebase.auth();
-        return auth.sendPasswordResetEmail(formData)
+        return auth.sendPasswordResetEmail(formData.email)
                    .then(() => {
                        this.sbAlert.open('Email confirmation was sent to your email.', 'Dismiss', {
                            duration: 3000,
@@ -223,9 +223,10 @@ export class AuthService {
                        this.router.navigate(['/admin/login']);
                    })
                    .catch((error) => {
-                       this.flashMessage.show(error, {
-                           cssClass: 'alert-danger',
-                           timeout: 2500
+                       this.sbAlert.open(error, 'Dismiss', {
+                           duration: 3000,
+                           verticalPosition: 'bottom',
+                           panelClass: ['snackbar-danger']
                        });
                        console.log(error);
                    });

@@ -3,12 +3,14 @@
 <div *ngIf="pressRelease">
     <img [src]="banner" class="bannerPhotoURL">
 
-    <div class="container-fluid">
-        <h1 class="title">{{ pageTitle }}</h1>
+    <div class="row">
+        <div class="container-fluid" style="max-width:1200px;">
+            <h1 class="title">{{ pageTitle }}</h1>
+        </div>
     </div>
 
     <div class="row crumbs">
-        <div class="container-fluid">
+        <div class="container-fluid" style="max-width:1200px;">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     News /

@@ -12,6 +12,10 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
+h3.press-title {
+    font-size: 24px;
+}
+
 .container-fluid.body-container {
     max-width: 1200px;
 }
@@ -42,6 +46,14 @@ p {
 
 ol.breadcrumb, li.breadcrumb-item {
     background-color: #fff;
+}
+
+a.bread {
+    color: #2a6496;
+}
+
+a:link {
+    color: #2a6496 !important;
 }
 
 img.photoURL {

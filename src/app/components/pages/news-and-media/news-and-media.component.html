@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div *ngIf="pressRelease$ && !page">
+<div *ngIf="pressReleases && !page">
     <img [src]="banner" class="bannerPhotoURL">
 
     <div class="container">
@@ -82,7 +82,7 @@
     <div class="row">
         <div class="container-fluid">
             <ddw-admin-press-release-item
-                    *ngFor="let prEl of pressRelease$ | async"
+                    *ngFor="let prEl of pressReleases"
                     [pressRelease]="prEl">
             </ddw-admin-press-release-item>
         </div>

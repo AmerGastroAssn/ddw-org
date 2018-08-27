@@ -1,6 +1,7 @@
 <!-- * ADMIN-PRESS-RELEASE-ITEM * -->
-<h3><a [routerLink]="['/news/press-releases/', pressRelease.url]">{{ pressRelease.title}}</a></h3>
-<p class="text-light">
-    <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>
+<p class="divider"></p>
+<h3><a [routerLink]="['/news/press-releases/', pressRelease.url]" class="title-link">{{ pressRelease.title}}</a></h3>
+<p class="publish-on">
+    {{ pressRelease.publishOn | date:'fullDate' }}
 </p>
 <p [innerHTML]="pressRelease.summary | safeHtml"></p>

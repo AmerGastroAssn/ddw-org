@@ -11,8 +11,9 @@
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
+                    News /
                     <a [routerLink]="['/news/press-releases']"
-                       class="text-capitalize text-decoration-none">News  /  Press Release</a>
+                       class="text-capitalize bread">Press Releases</a>
                 </li>
                 <li class="breadcrumb-item active">{{pressRelease.title}}</li>
             </ol>
@@ -23,7 +24,7 @@
 
     <div class="row">
         <div class="container-fluid" style="max-width:1200px;">
-            <h3>{{ pressRelease.title}}</h3>
+            <h3 class="press-title">{{ pressRelease.title}}</h3>
             <p class="text-light">
                 <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>
             </p>

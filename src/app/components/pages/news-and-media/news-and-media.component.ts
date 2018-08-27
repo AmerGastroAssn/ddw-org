@@ -10,6 +10,8 @@ import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { AdminPressReleaseService } from '../../../services/admin-press-release.service';
 import { PageService } from '../../../services/page.service';
+import * as _ from 'lodash';
+
 
 @Component({
     selector: 'ddw-news-and-media',
@@ -23,7 +25,8 @@ export class NewsAndMediaComponent implements OnInit {
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
     hasCalendar: boolean;
-    pressRelease$: Observable<PressRelease[]>;
+    pressReleases$: Observable<PressRelease[]>;
+    pressReleases: PressRelease[];
     banner: string;
     pageTitle: string;
     newsTitle: string;
@@ -38,7 +41,7 @@ export class NewsAndMediaComponent implements OnInit {
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
-        this.newsTitle = 'News & Media';
+        this.newsTitle = 'News';
     }
 
     ngOnInit() {
@@ -53,7 +56,11 @@ export class NewsAndMediaComponent implements OnInit {
         })
             .subscribe((page) => {
                 if (page.title === 'Press Releases') {
-                    this.pressRelease$ = this.pageService.getPublishedPressReleases();
+                    this.pageService.getPublishedPressReleases()
+                      .subscribe((prs) => {
+                          // Lists press releases in Decending order.
+                          this.pressReleases = _.orderBy(prs, ['publishOn'], ['desc']);
+                      });
                     this.page = null;
                 } else {
                     this.page = page;

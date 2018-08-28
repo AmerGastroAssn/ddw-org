@@ -71,7 +71,6 @@ export class AuthService {
                 this.uid = userData.uid;
                 this.email = userData.email;
                 this.title = userData.title;
-                // this.password = userData.password;
                 this.photoURL = userData.photoURL;
                 this.loginDate = Date.now();
                 this.isOnline = userData.isOnline;
@@ -258,7 +257,6 @@ export class AuthService {
         const data: User = {
             uid: user.uid,
             email: user.email,
-            password: user.password,
             isOnline: false,
             loginDate: user.loginDate,
             photoURL: user.photoURL,
@@ -282,7 +280,6 @@ export class AuthService {
             $key: user.uid,
             uid: user.uid,
             email: user.email,
-            password: user.password,
             isOnline: true,
             loginDate: Date.now(),
             photoURL: user.photoURL,
@@ -311,7 +308,6 @@ export class AuthService {
             $key: new$key,
             uid: new$key,
             email: user.email,
-            password: user.password,
             isOnline: user.isOnline,
             loginDate: user.loginDate,
             photoURL: user.photoURL,
@@ -339,7 +335,6 @@ export class AuthService {
             $key: new$key,
             uid: new$key,
             email: user.email,
-            password: user.password,
             isOnline: user.isOnline,
             loginDate: user.loginDate,
             photoURL: user.photoURL,

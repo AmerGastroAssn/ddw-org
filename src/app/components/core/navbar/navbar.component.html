@@ -1,28 +1,121 @@
-<!-- * NAVBAR * -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-light">
-    <a class="navbar-brand" [routerLink]="['/']">
-        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
-             alt="ddw logo" class="ddw-logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="row fixed-top" id="TopHeader">
+    <div class="col-md-12">
+        <div id="header">
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="navbar-brand" [routerLink]="['/']">
+                        <img class="img-responsive ddw-logo"
+                             src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
+                             alt="DDW Website">
+                    </a>
+                </div>
+                <div class="col-md-9">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="registerDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    Register
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="registerDropdown">
+
+                    <!--BEGIN SEARCH-->
+                    <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group mb-3">
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Search"
+                                       aria-label="Search"
+                                       aria-describedby="search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondarywaa text-secondary"
+                                            type="button"
+                                            id="search">
+                                        <i class="far fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!--END SEARCH-->
+
+
+                    <!--BEGIN SOCIAL-->
+                    <div class="inline networking pull-right d-sm-none d-md-block d-none d-sm-block">
+                        <div class="HtmlContent"><a href="https://www.facebook.com/DDWMeeting" target="_blank"
+                                                    rel="noopener"><i class="fab fa-facebook"></i></a> <a
+                                href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i
+                                class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"
+                                                                   target="_blank" rel="noopener"><i
+                                class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"
+                                                                   target="_blank" rel="noopener"><i
+                                class="fab fa-instagram"></i></a></div>
+                    </div>
+                    <!--END SOCIAL-->
+
+
+                    <!--BEGIN LINKS-->
+                    <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
+                        <div id="MPAuxNav" class="inline vertical-align-middle">
+                            <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: left;">
+                                <ul class="level1 static" tabindex="0" role="menubar"
+                                    style="position: relative; width: auto; float: left;">
+                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                            title="How to get in contact with us" class="level1 MPAuxNav static"
+                                            href="/contactus" tabindex="-1">Contact Us</a></li>
+                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                            class="level1 MPAuxNav static" href="/careercenter" target="_blank"
+                                            tabindex="-1">Career Center</a></li>
+                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                            class="level1 MPAuxNav static" href="/new-item" target="_blank"
+                                            tabindex="-1">DDW
+                                        Blog</a></li>
+                                </ul>
+                            </div>
+                            <div style="clear: left;"></div>
+                        </div>
+                    </div>
+                    <!--END LINKS-->
+
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <nav class="navbar navbar-expand-lg ">
+                    <button _ngcontent-c2="" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation" class="navbar-toggler collapsed"
+                            data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span
+                            _ngcontent-c2="" class="navbar-toggler-icon"></span></button>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="registerDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Register
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="registerDropdown">
                     <span *ngFor="let regPage of registerPages$">
                         <a class="dropdown-item"
                            *ngIf="!regPage.isExtURL"
@@ -36,21 +129,21 @@
                             {{ regPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="attendeeDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    Attendee Planning
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="attendeeDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="attendeeDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Attendee Planning
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="attendeeDropdown">
                     <span *ngFor="let attPage of attendeePlanningPages$">
                         <a class="dropdown-item"
                            *ngIf="!attPage.isExtURL"
@@ -64,21 +157,21 @@
                             {{ attPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="edDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    Education
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="edDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="edDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Education
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="edDropdown">
                     <span *ngFor="let edPage of educationPages$">
                         <a class="dropdown-item"
                            *ngIf="!edPage.isExtURL"
@@ -92,21 +185,21 @@
                             {{ edPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="exhDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    Exhibitor Information
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="exhDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="exhDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Exhibitor Information
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="exhDropdown">
                     <span *ngFor="let exhPage of exhibitorInfoPages$">
                         <a class="dropdown-item"
                            *ngIf="!exhPage.isExtURL"
@@ -120,22 +213,22 @@
                             {{ exhPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="newsDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    News &amp; Media
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="newsDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="newsDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        News &amp; Media
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="newsDropdown">
                     <span *ngFor="let newsPage of newsAndMediaPages$">
                         <a class="dropdown-item"
                            *ngIf="!newsPage.isExtURL"
@@ -148,21 +241,21 @@
                             {{ newsPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle"
-                   href="#"
-                   id="presDropdown"
-                   role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true"
-                   aria-expanded="false">
-                    Presenters
-                </a>
-                <div class="dropdown-menu"
-                     aria-labelledby="presDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle"
+                                       href="#"
+                                       id="presDropdown"
+                                       role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Presenters
+                                    </a>
+                                    <div class="dropdown-menu"
+                                         aria-labelledby="presDropdown">
                     <span *ngFor="let presPage of presentersPages$">
                         <a class="dropdown-item"
                            *ngIf="!presPage.isExtURL"
@@ -176,41 +269,30 @@
                             {{ presPage.title }}
                         </a>
                     </span>
-                </div>
-            </li>
+                                    </div>
+                                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Admin
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/admin/pages']">Pages</a>
-                    <a class="dropdown-item" [routerLink]="['/admin/users']">Users</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" [routerLink]="['/admin/login']">Log In</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <div class="input-group mb-3">
-                <input type="text"
-                       class="form-control"
-                       placeholder="Search"
-                       aria-label="Search"
-                       aria-describedby="search">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondarywaa text-secondary"
-                            type="button"
-                            id="search">
-                        <i class="far fa-search"></i>
-                    </button>
-                </div>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        Admin
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" [routerLink]="['/admin/pages']">Pages</a>
+                                        <a class="dropdown-item" [routerLink]="['/admin/users']">Users</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" [routerLink]="['/admin/login']">Log In</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-        </form>
+        </div>
     </div>
-</nav>
+
+
+</div>
+

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './components/admin/admin.module';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { HomeComponent } from './components/core/home/home.component';
+import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
 import { EducationComponent } from './components/pages/education/education.component';
 import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
@@ -47,11 +48,16 @@ const appRoutes: Routes = [
         children: [
             { path: ':id', component: NewsAndMediaComponent },
             {
-                path: 'press-releases', component: PressReleasesComponent,
+                path: '', component: PressReleasesComponent,
                 children: [
-                    { path: ':id', component: PressReleasesDetailsComponent },
+                    { path: 'press-releases', component: PressReleasesComponent },
+                    { path: 'press-releases/:id', component: PressReleasesDetailsComponent },
+                    { path: '**', redirectTo: '/news/press-releases', pathMatch: 'full' },
                 ]
             },
+            { path: '**', redirectTo: 'press-releases', pathMatch: 'full' },
+
+
         ]
     },
     {
@@ -60,14 +66,15 @@ const appRoutes: Routes = [
             { path: ':id', component: PresentersComponent }
         ]
     },
-    // {
-    //     path: 'press-releases', component: PressReleasesComponent,
-    //     children: [
-    //         { path: ':id', component: PressReleasesDetailsComponent },
-    //     ]
-    // },
+    { path: 'not-found', component: NotFoundComponent },
+    {
+        path: 'blogs', component: PressReleasesComponent,
+        children: [
+            { path: '**', redirectTo: '/news/press-releases' },
+        ]
+    },
 
-    { path: '**', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
@@ -76,7 +83,7 @@ const appRoutes: Routes = [
         CommonModule,
         AdminModule,
         RouterModule.forRoot(appRoutes,
-          // {enableTracing: true}  // For route debugging.
+          { enableTracing: true }  // For route debugging.
         ),
     ],
     exports: [

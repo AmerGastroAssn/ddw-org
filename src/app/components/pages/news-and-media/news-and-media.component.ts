@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
@@ -10,7 +11,6 @@ import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { AdminPressReleaseService } from '../../../services/admin-press-release.service';
 import { PageService } from '../../../services/page.service';
-import * as _ from 'lodash';
 
 
 @Component({
@@ -55,21 +55,23 @@ export class NewsAndMediaComponent implements OnInit {
             return this.adminPageService.getPage(this.url);
         })
             .subscribe((page) => {
-                if (page.title === 'Press Releases') {
-                    this.pageService.getPublishedPressReleases()
-                      .subscribe((prs) => {
-                          // Lists press releases in Decending order.
-                          this.pressReleases = _.orderBy(prs, ['publishOn'], ['desc']);
-                      });
-                    this.page = null;
-                } else {
-                    this.page = page;
-                }
-                // Calendar
-                if (page.hasCalendar) {
-                    this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
-                } else {
-                    this.calendar$ = null;
+                if (page) {
+                    if (page.title === 'Press Releases') {
+                        this.pageService.getPublishedPressReleases()
+                            .subscribe((prs) => {
+                                // Lists press releases in Decending order.
+                                this.pressReleases = _.orderBy(prs, ['publishOn'], ['desc']);
+                            });
+                        this.page = null;
+                    } else {
+                        this.page = page;
+                    }
+                    // Calendar
+                    if (page.hasCalendar) {
+                        this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                    } else {
+                        this.calendar$ = null;
+                    }
                 }
             });
     }

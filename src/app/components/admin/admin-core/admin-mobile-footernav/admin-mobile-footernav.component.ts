@@ -20,7 +20,9 @@ export class AdminMobileFooternavComponent implements OnInit {
       public authService: AuthService,
       private settingsService: AdminSettingsService,
     ) {
-        this.localUser = this.authService.getProfile();
+        if (this.isLoggedIn) {
+            this.localUser = this.authService.getProfile();
+        }
     }
 
     ngOnInit() {

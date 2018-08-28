@@ -134,6 +134,7 @@ export class AuthService {
                    });
     }
 
+
     // Sets the databaseUsers's info.
     setUserInLocalStorage(userData) {
         this.statusChange.emit(userData);
@@ -150,11 +151,6 @@ export class AuthService {
             this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
                 .then((userData) => {
                     if (userData) {
-                        this.sbAlert.open('Logged in successfully.', 'Dismiss', {
-                            duration: 3000,
-                            verticalPosition: 'bottom',
-                            panelClass: ['snackbar-success']
-                        });
                         this.usersList$.subscribe((userArr) => {
                             userArr.forEach((userInfo) => {
                                 if (userData.user.email === userInfo.email) {
@@ -166,6 +162,11 @@ export class AuthService {
                     this.currentUserToken();
                 })
                 .then(() => {
+                    this.sbAlert.open('Logged in successfully.', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
+                    });
                     this.router.navigate(['/admin/users']);
                 })
                 .catch((error) => {

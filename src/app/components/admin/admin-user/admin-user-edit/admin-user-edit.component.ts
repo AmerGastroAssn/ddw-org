@@ -4,6 +4,9 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { Observable } from 'rxjs/Observable';
+import { finalize } from 'rxjs/operators';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
@@ -27,6 +30,16 @@ export class AdminUserEditComponent implements OnInit {
     uid: string;
     disableAdminOnEdit: boolean;
     isAdmin: boolean;
+    // Image upload
+    task: AngularFireUploadTask;
+    // Progress monitoring
+    percentage: Observable<number>;
+    snapshot: Observable<any>;
+    // Download URL
+    downloadURL: Observable<string>;
+    // State for dropzone CSS toggling
+    isHovering: boolean;
+    isInvalid: boolean;
 
     constructor(
       private adminUserService: AdminUserService,
@@ -37,12 +50,40 @@ export class AdminUserEditComponent implements OnInit {
       private settingsService: AdminSettingsService,
       private afAuth: AngularFireAuth,
       private sbAlert: MatSnackBar,
+      private storage: AngularFireStorage,
     ) {
     }
 
     // For Form Validations
     get f() {
         return this.editUserForm.controls;
+    }
+
+    uploadImage(event) {
+        const customMetadata = { app: this.user.displayName };
+        // The File object
+        const file = event.target.files[0];
+        // Client-side validation example
+        if (file.type.split('/')[0] !== 'image') {
+            console.error('unsupported file type :( ');
+            this.isInvalid = true;
+            return;
+        }
+        // The storage path
+        const path = `pageImages/${new Date().getTime()}_${file.name}`;
+        const fileRef = this.storage.ref(path);
+        // The main task
+        this.task = this.storage.upload(path, file, { customMetadata });
+        // Progress monitoring
+        this.percentage = this.task.percentageChanges();
+        this.snapshot = this.task.snapshotChanges();
+        // The file's download URL
+        this.task.snapshotChanges().pipe(
+          finalize(() => {
+              this.downloadURL = fileRef.getDownloadURL();
+          })
+        )
+            .subscribe();
     }
 
     ngOnInit() {

@@ -55,6 +55,23 @@ p.alert, .flash-messages * {
     background: #282E3E;
 }
 
+.form-control {
+    font-size: 14px;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
+}
+
+input[type=text],
+input[type=textarea],
+input[type=email],
+input[type=date],
+input[type=file],
+input[type=password],
+select[value="value"]   {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
 /* CUSTOM FRONT-END STYLES */
 .cta {
     background-color: #003f5f;

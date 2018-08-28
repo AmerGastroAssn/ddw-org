@@ -2,9 +2,70 @@
 <div class="row">
     <div class="container">
         <div class="row mb-4">
-            <a class="text-primary back-users"
-               [routerLink]="['/admin/users']"><i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
+            <a class="btn btn-default"
+               [routerLink]="['/admin/users']">
+                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Users
             </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mb-5 mt-1">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="form-group" *ngIf="user">
+                <div class="card image-uploader">
+                    <div class="card-body">
+                        <p class="card-title">
+                            Image Uploader
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="custom-file">
+                                    <label class="custom-file-label" *ngIf="!downloadURL">
+                                        Click To Select
+                                    </label>
+                                    <label class="custom-file-label text-truncate" *ngIf="downloadURL">
+                                        {{ downloadURL | async }}
+                                    </label>
+                                    <input type="file"
+                                           ddwDropZone
+                                           class="custom-file-input"
+                                           accept=".png, .jpg, jpeg"
+                                           (change)="uploadImage($event)">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div *ngIf="downloadURL | async as url; else loadingURL">
+                                    <p class="pb-2">
+                                        <b>Copy and paste url into the Image URL input below:</b>
+                                    </p>
+                                    <p>
+                                        <a [href]="url">
+                                            {{ url }}
+                                        </a>
+                                    </p>
+                                    <p><img [src]="url" style="max-width:100px;"></p>
+                                </div>
+                                <ng-template #loadingURL>
+                                    <p class="text-center text-light">
+                                        Upload Image, Then a URL will appear here. Copy and paste that link
+                                        into Image URL below to use.
+                                    </p>
+                                </ng-template>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
+                            <progressbar class="progress-striped active"
+                                         [value]="pct"
+                                         type="primary"><i>{{ pct | number }}%</i>
+                            </progressbar>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -56,6 +117,18 @@
                                    [class.invalid]="!f.title.valid && f.title.touched"
                                    [(ngModel)]="user.title"
                                    formControlName="title">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Image <br>
+                                <small>Use the Image Uploader to get string and replace the default here</small>
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                   [(ngModel)]="user.photoURL"
+                                   formControlName="photoURL">
                         </div>
 
                         <div class="form-group form-check">

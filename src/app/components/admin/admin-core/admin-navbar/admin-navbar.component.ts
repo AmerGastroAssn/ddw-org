@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -12,7 +12,7 @@ import { AuthService } from '../../../../services/auth.service';
     templateUrl: './admin-navbar.component.html',
     styleUrls: ['./admin-navbar.component.css']
 })
-export class AdminNavbarComponent implements OnInit {
+export class AdminNavbarComponent implements OnInit, AfterContentInit {
     isLoggedIn: boolean;
     loggedInUser: string;
     user: Observable<User>;
@@ -34,6 +34,10 @@ export class AdminNavbarComponent implements OnInit {
       private afAuth: AngularFireAuth,
     ) {
         this.currentDate = new Date();
+        // Gets User in Local Storage
+        if (this.isLoggedIn) {
+            this.localUser = this.authService.getProfile();
+        }
     }
 
     ngOnInit() {
@@ -52,31 +56,25 @@ export class AdminNavbarComponent implements OnInit {
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
-        // Gets User in Local Storage
-        this.localUser = this.authService.getProfile();
-
         // Gets the correct user for navbar profile and checks if is admin.
         this.adminUserService.getUsersInfo()
             .subscribe((userArr) => {
                 userArr.forEach((userInfo) => {
-                    if (userInfo) {
-                        if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                            return this.dbUser = userInfo;
-                        } else if (this.localUser != null) {
+                    if (this.isLoggedIn) {
+                        this.dbUser = this.localUser;
+                    } else if (this.afAuth.auth.currentUser.email === userInfo.email) {
+                        this.isAdmin = userInfo.admin === true;
+                        return this.dbUser = userInfo;
+                    } else {
+                        setTimeout(() => {
                             this.dbUser = this.localUser;
-                        } else {
-                            return null;
-                        }
-                        if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                            this.isAdmin = userInfo.admin === true;
-                            console.log(this.isAdmin);
-                        } else {
-                            return null;
-                        }
+                        }, 1500);
                     }
                 });
             });
+    }
 
+    ngAfterContentInit() {
 
     }
 

@@ -78,14 +78,16 @@
         <!-- * Trigger * -->
 
         <mat-menu #appMenu="matMenu" class="bg-dark">
-            <button mat-menu-item
-                    class="menu-icon"
-                    routerLinkActive="active"
-                    *ngIf="authService.afsUser$ | async"
-                    [routerLink]="['/admin/users/', localUser.uid]">
+            <span *ngIf="localUser">
+                <button mat-menu-item
+                        class="menu-icon"
+                        routerLinkActive="active"
+                        *ngIf="authService.afsUser$ | async"
+                        [routerLink]="['/admin/users/', localUser.uid]">
                 <i class="fa fa-user"></i>&nbsp;
                 <small>My Profile</small>
             </button>
+            </span>
 
             <div class="divider"></div>
 

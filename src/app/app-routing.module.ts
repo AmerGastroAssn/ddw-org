@@ -82,7 +82,7 @@ const appRoutes: Routes = [
         CommonModule,
         AdminModule,
         RouterModule.forRoot(appRoutes,
-          { enableTracing: true }  // For route debugging.
+          // { enableTracing: true }  // For route debugging.
         ),
     ],
     exports: [

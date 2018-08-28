@@ -12,7 +12,7 @@ export class AdminPageService {
     pageDoc: AngularFirestoreDocument<Page>;
     page: Observable<Page>;
     pages$: Observable<Page[]>;
-
+    newSlug: string;
 
     string_to_slug = (str) => {
         str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -79,10 +79,17 @@ export class AdminPageService {
         const new$key = this.afs.createId();
         const newURL: string = this.string_to_slug(formData.title);
         const timestampToNum = formData.date.getTime();
+
+        if (formData.isGrandchildPage) {
+            this.newSlug = `/${formData.category}/${formData.grandchildURL}/${newURL}`;
+        } else {
+            this.newSlug = `/${formData.category}/${newURL}`;
+        }
+
         // Creates new page with slug as the $key
         const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${newURL}`);
         const data: Page = {
-            $key: new$key,
+            $key: this.newSlug,
             uid: new$key,
             title: formData.title,
             body: formData.body,
@@ -94,11 +101,15 @@ export class AdminPageService {
             published: formData.published,
             template: formData.template,
             url: newURL,
+            slug: this.newSlug,
             extURL: formData.extURL,
             isExtURL: formData.isExtURL,
             sortOrder: formData.sortOrder,
             hasCalendar: formData.hasCalendar,
             calendarTitle: formData.calendarTitle,
+            isGrandchildPage: formData.isGrandchildPage,
+            grandchildURL: formData.grandchildURL,
+            hidden: formData.hidden,
         };
 
         return pageRef.set(data)
@@ -109,11 +120,16 @@ export class AdminPageService {
 
     updatePage(formData, url: string) {
         // const newURL: string = this.string_to_slug(formData.title);
+        if (formData.isGrandchildPage) {
+            this.newSlug = `${formData.grandchildURL}/${url}`;
+        } else {
+            this.newSlug = `${formData.category}/${url}`;
+        }
         const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${url}`);
         if (typeof formData.date === 'number') {
             const timestampToNum = formData.date;
             const data: Page = {
-                $key: url,
+                $key: this.newSlug,
                 uid: url,
                 title: formData.title,
                 body: formData.body,
@@ -125,11 +141,15 @@ export class AdminPageService {
                 published: formData.published,
                 template: formData.template,
                 url: url,
+                slug: this.newSlug,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,
                 sortOrder: formData.sortOrder,
                 hasCalendar: formData.hasCalendar,
                 calendarTitle: formData.calendarTitle,
+                isGrandchildPage: formData.isGrandchildPage,
+                grandchildURL: formData.grandchildURL,
+                hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate(['/admin/pages']))
@@ -137,7 +157,7 @@ export class AdminPageService {
         } else {
             const timestampToNum = formData.date.getTime();
             const data: Page = {
-                $key: url,
+                $key: this.newSlug,
                 uid: url,
                 title: formData.title,
                 body: formData.body,
@@ -149,11 +169,15 @@ export class AdminPageService {
                 published: formData.published,
                 template: formData.template,
                 url: url,
+                slug: this.newSlug,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,
                 sortOrder: formData.sortOrder,
                 hasCalendar: formData.hasCalendar,
                 calendarTitle: formData.calendarTitle,
+                isGrandchildPage: formData.isGrandchildPage,
+                grandchildURL: formData.grandchildURL,
+                hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate(['/admin/pages']))

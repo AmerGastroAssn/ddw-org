@@ -25,6 +25,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     newPageForm: FormGroup;
     user: User;
     page: Page;
+    pages$: Observable<Page[]>;
     title: string;
     author: string;
     date: number;
@@ -57,7 +58,17 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;
     currentDate: Date;
-
+    isGrandchildPage: boolean;
+    grandchildURL: string;
+    grandchildSlugs: string[];
+    hidden: boolean;
+    // Form Grandchildren pages
+    registerPages$: Observable<Page[]>;
+    newsPages$: Observable<Page[]>;
+    exhibitPages$: Observable<Page[]>;
+    edPages$: Observable<Page[]>;
+    attendeePages$: Observable<Page[]>;
+    presPages$: Observable<Page[]>;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -135,6 +146,14 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
 
+        // Gets Page Categories for Grandchild page selection.
+        this.registerPages$ = this.adminPageService.getAllRegisterPages();
+        this.newsPages$ = this.adminPageService.getAllNewsPages();
+        this.exhibitPages$ = this.adminPageService.getAllExhibitorPages();
+        this.edPages$ = this.adminPageService.getAllEducationPages();
+        this.attendeePages$ = this.adminPageService.getAllAttendeePages();
+        this.presPages$ = this.adminPageService.getAllPresenterPages();
+
         // Get Calendar Titles
         this.calendar$ = this.adminCalendarService.getAllCalendars();
 
@@ -155,7 +174,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             sortOrder: ['' || 1],
             hasCalendar: [''],
             calendarTitle: [''],
+            isGrandchildPage: ['' || false],
+            grandchildURL: [''],
+            hidden: ['' || false]
         });
+
 
         this.title = this.newPageForm.value.title;
         this.body = this.newPageForm.value.body;
@@ -171,6 +194,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.sortOrder = this.newPageForm.value.sortOrder;
         this.hasCalendar = this.newPageForm.value.hasCalendar;
         this.calendarTitle = this.newPageForm.value.calendarTitle;
+        this.isGrandchildPage = this.newPageForm.value.isGrandchildPage;
+        this.grandchildURL = this.newPageForm.value.grandchildURL;
+        this.hidden = this.newPageForm.value.hidden;
+
+
     }
 
     ngOnDestroy() {
@@ -202,5 +230,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     toggleHasCalendar() {
         this.hasCalendar = !this.hasCalendar;
+    }
+
+    toggleIsGrandchildPage() {
+        this.isGrandchildPage = !this.isGrandchildPage;
     }
 }

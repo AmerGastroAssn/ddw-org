@@ -41,7 +41,15 @@ const appRoutes: Routes = [
     {
         path: 'exhibitor-information', component: PagesComponent,
         children: [
-            { path: ':id', component: ExhibitorInformationComponent }
+            { path: ':id', component: ExhibitorInformationComponent },
+            {
+                path: '', component: ExhibitorInformationComponent,
+                children: [
+                    { path: ':id', component: ExhibitorInformationComponent },
+                    { path: '**', redirectTo: 'Home', pathMatch: 'full' },
+                ]
+            },
+            { path: '**', redirectTo: 'home', pathMatch: 'full' },
         ]
     },
     {

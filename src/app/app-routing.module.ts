@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'contactus', component: ContactUsComponent },
+    { path: 'not-found', component: NotFoundComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: 'register', component: PagesComponent,
@@ -66,14 +67,12 @@ const appRoutes: Routes = [
             { path: ':id', component: PresentersComponent }
         ]
     },
-    { path: 'not-found', component: NotFoundComponent },
     {
         path: 'blogs', component: PressReleasesComponent,
         children: [
             { path: '**', redirectTo: '/news/press-releases' },
         ]
     },
-
     { path: '**', component: NotFoundComponent },
 ];
 

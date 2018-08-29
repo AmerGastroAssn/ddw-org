@@ -58,11 +58,10 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;
     currentDate: Date;
+    // Form Grandchildren pages
     isGrandchildPage: boolean;
     grandchildURL: string;
-    grandchildSlugs: string[];
     hidden: boolean;
-    // Form Grandchildren pages
     registerPages$: Observable<Page[]>;
     newsPages$: Observable<Page[]>;
     exhibitPages$: Observable<Page[]>;

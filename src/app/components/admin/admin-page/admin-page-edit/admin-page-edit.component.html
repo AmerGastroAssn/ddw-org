@@ -46,8 +46,8 @@
                     <form [formGroup]="editPageForm"
                           (ngSubmit)="onUpdatePage(editPageForm.value)">
                         <!--<button type="submit"-->
-                                <!--[disabled]="!editPageForm.valid"-->
-                                <!--class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update-->
+                        <!--[disabled]="!editPageForm.valid"-->
+                        <!--class="btn btn-primary btn-sm mb-5"><i class="fa fa-save"></i>&nbsp;Update-->
                         <!--</button>-->
 
                         <div class="btn-group float-right" role="group" aria-label="Basic example">
@@ -71,7 +71,7 @@
 
                         <div class="form-group" *ngIf="!page.isExtURL">
                             <label>Slug</label>
-                            <pre class="alert bg-light text-secondary slug">/{{category}}/{{url}}</pre>
+                            <pre class="alert bg-light text-secondary slug">{{ page.slug }}</pre>
                         </div>
 
                         <div class="form-group">
@@ -157,6 +157,39 @@
                             </p>
                         </div>
 
+                        <div class="card bg-lighter mb-3">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox"
+                                               class="custom-control-input"
+                                               id="isGrandchildPageCheckbox"
+                                               formControlName="isGrandchildPage"
+                                               [checked]="page.isGrandchildPage"
+                                               (click)="toggleIsGrandchildPage()">
+                                        <label class="custom-control-label"
+                                               for="isGrandchildPageCheckbox">Is this page a Grandchild?</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" *ngIf="page.isGrandchildPage">
+                                    <label for="isGrandchildPage">What grandchild of
+                                        <span class="text-capitalize">
+                                        <b>{{ page.category }}?</b>
+                                        </span>
+                                    </label>
+                                    <select class="form-control"
+                                            id="isGrandchildPage"
+                                            [class.invalid]="!f.grandchildURL.valid && f.grandchildURL.touched"
+                                            formControlName="grandchildURL">
+                                        <option *ngFor="let page of pages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="sortOrder">Sort Order <br>
@@ -172,6 +205,10 @@
                                 <option>4</option>
                                 <option>5</option>
                                 <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
                             </select>
                         </div>
 
@@ -325,6 +362,20 @@
                             </p>
                         </div>
 
+
+                        <div class="form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox"
+                                       class="custom-control-input"
+                                       id="hidden"
+                                       [checked]="page.hidden"
+                                       formControlName="hidden">
+                                <label class="custom-control-label"
+                                       for="hidden">Should the page be hidden from the menu?</label>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox"
@@ -332,7 +383,10 @@
                                        id="published"
                                        formControlName="published">
                                 <label class="custom-control-label"
-                                       for="published">Publish?</label>
+                                       for="published"><span class="text-danger"><b>Publish</b></span> the page on
+                                    "Update"? <br>
+                                    <small>If so, page will appear according to "Publish On" date.</small>
+                                </label>
                             </div>
                         </div>
 

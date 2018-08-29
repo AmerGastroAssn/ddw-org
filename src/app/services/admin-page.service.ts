@@ -121,7 +121,7 @@ export class AdminPageService {
     updatePage(formData, url: string) {
         // const newURL: string = this.string_to_slug(formData.title);
         if (formData.isGrandchildPage) {
-            this.newSlug = `${formData.grandchildURL}/${url}`;
+            this.newSlug = `/${formData.category}/${formData.grandchildURL}/${url}`;
         } else {
             this.newSlug = `${formData.category}/${url}`;
         }
@@ -130,7 +130,7 @@ export class AdminPageService {
             const timestampToNum = formData.date;
             const data: Page = {
                 $key: this.newSlug,
-                uid: url,
+                uid: formData.uid,
                 title: formData.title,
                 body: formData.body,
                 author: formData.author,
@@ -158,7 +158,7 @@ export class AdminPageService {
             const timestampToNum = formData.date.getTime();
             const data: Page = {
                 $key: this.newSlug,
-                uid: url,
+                uid: formData.uid,
                 title: formData.title,
                 body: formData.body,
                 author: formData.author,

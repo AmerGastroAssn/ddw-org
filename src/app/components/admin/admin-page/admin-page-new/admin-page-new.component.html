@@ -154,8 +154,6 @@
                                 <label for="isGrandchildPage">Grandchild of what page?</label>
                                 <select class="form-control"
                                         id="isGrandchildPage"
-                                        [class.invalid]="!f.grandchildURL.valid &&
-                                        f.grandchildURL.touched"
                                         formControlName="grandchildURL">
                                     <optgroup label="Register">
                                         <option *ngFor="let page of registerPages$ | async">
@@ -188,10 +186,6 @@
                                         </option>
                                     </optgroup>
                                 </select>
-                                <p class="help-block alert alert-warning text-center mt-1"
-                                   *ngIf="!f.grandchildURL.valid && f.grandchildURL.touched">
-                                    <b>Category</b> is required!
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -211,6 +205,10 @@
                             <option>4</option>
                             <option>5</option>
                             <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
                         </select>
                     </div>
 

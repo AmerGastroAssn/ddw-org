@@ -12,9 +12,13 @@ export class Page {
       public published: boolean,
       public template: string,
       public url: string,
+      public slug: string,
       public sortOrder: number,
       public hasCalendar: boolean,
       public calendarTitle: string,
+      public isGrandchildPage: boolean,
+      public grandchildURL: string,
+      public hidden: boolean,
       public extURL?: string,
       public isExtURL?: boolean,
     ) {

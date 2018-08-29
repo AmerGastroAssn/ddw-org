@@ -79,14 +79,17 @@ export class AdminPageEditComponent implements OnInit {
     color = 'primary';
     bsConfig: Partial<BsDatepickerConfig>;
     isNewsCategory: boolean;
-
+    // Form Grandchildren pages
+    isGrandchildPage: boolean;
+    grandchildURL: string;
+    hidden: boolean;
+    pages$: Observable<Page[]>;
 
     CkeditorConfig = {
         allowedContent: true,
         height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
     };
-
 
     constructor(
       private adminPageService: AdminPageService,
@@ -192,6 +195,9 @@ export class AdminPageEditComponent implements OnInit {
                     sortOrder: ['' || page.sortOrder],
                     hasCalendar: ['' || page.hasCalendar],
                     calendarTitle: ['' || page.calendarTitle],
+                    isGrandchildPage: ['' || page.isGrandchildPage],
+                    grandchildURL: ['' || page.grandchildURL],
+                    hidden: ['' || false]
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -210,8 +216,39 @@ export class AdminPageEditComponent implements OnInit {
                 this.sortOrder = this.editPageForm.value.sortOrder;
                 this.hasCalendar = this.editPageForm.value.hasCalendar;
                 this.calendarTitle = this.editPageForm.value.calendarTitle;
+                this.isGrandchildPage = this.editPageForm.value.isGrandchildPage;
+                this.grandchildURL = this.editPageForm.value.grandchildURL;
+                this.hidden = this.editPageForm.value.hidden;
+
+
+            }
+
+            // Shows only the grandchildren of that section versus all (saves on read/writes).
+            switch (page.category) {
+                case 'register':
+                    this.pages$ = this.adminPageService.getAllRegisterPages();
+                    break;
+                case 'attendee-planning':
+                    this.pages$ = this.adminPageService.getAllAttendeePages();
+                    break;
+                case 'education':
+                    this.pages$ = this.adminPageService.getAllEducationPages();
+                    break;
+                case 'exhibitor-information':
+                    this.pages$ = this.adminPageService.getAllExhibitorPages();
+                    break;
+                case 'news':
+                    this.pages$ = this.adminPageService.getAllNewsPages();
+                    break;
+                case 'presenters':
+                    this.pages$ = this.adminPageService.getAllPresenterPages();
+                    break;
+                default:
+                    this.pages$ = null;
             }
         });
+
+
     }
 
     onUpdatePage(formData) {
@@ -252,5 +289,10 @@ export class AdminPageEditComponent implements OnInit {
 
     toggleHasCalendar() {
         this.page.hasCalendar = !this.page.hasCalendar;
+    }
+
+
+    toggleIsGrandchildPage() {
+        this.page.isGrandchildPage = !this.page.isGrandchildPage;
     }
 }

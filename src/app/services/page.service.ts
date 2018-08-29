@@ -41,6 +41,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'register')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
@@ -51,6 +52,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'attendee-planning')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
@@ -60,6 +62,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'education')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
@@ -69,6 +72,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'exhibitor-information')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
@@ -78,6 +82,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'news')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();
@@ -87,6 +92,7 @@ export class PageService {
         this.pagesCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'presenters')
                       .where('published', '==', true)
+                      .where('hidden', '==', false)
                       .where('date', '<=', this.timeToNum);
         });
         return this.pages$ = this.pagesCollection.valueChanges();

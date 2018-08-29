@@ -118,8 +118,13 @@
                                          aria-labelledby="registerDropdown">
                     <span *ngFor="let regPage of registerPages$">
                         <a class="dropdown-item"
-                           *ngIf="!regPage.isExtURL"
+                           *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage"
                            [routerLink]="['/register/', regPage.url]">
+                            {{ regPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!regPage.isExtURL && regPage.isGrandchildPage"
+                           [routerLink]="['/register/', regPage.grandchildURL ,regPage.url]">
                             {{ regPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -146,8 +151,13 @@
                                          aria-labelledby="attendeeDropdown">
                     <span *ngFor="let attPage of attendeePlanningPages$">
                         <a class="dropdown-item"
-                           *ngIf="!attPage.isExtURL"
+                           *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage"
                            [routerLink]="['/attendee-planning/', attPage.url]">
+                            {{ attPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!attPage.isExtURL && attPage.isGrandchildPage"
+                           [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]">
                             {{ attPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -174,8 +184,13 @@
                                          aria-labelledby="edDropdown">
                     <span *ngFor="let edPage of educationPages$">
                         <a class="dropdown-item"
-                           *ngIf="!edPage.isExtURL"
+                           *ngIf="!edPage.isExtURL && !edPage.isGrandchildPage"
                            [routerLink]="['/education/', edPage.url]">
+                            {{ edPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!edPage.isExtURL && edPage.isGrandchildPage"
+                           [routerLink]="['/education/', edPage.grandchildURL, edPage.url]">
                             {{ edPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -202,8 +217,13 @@
                                          aria-labelledby="exhDropdown">
                     <span *ngFor="let exhPage of exhibitorInfoPages$">
                         <a class="dropdown-item"
-                           *ngIf="!exhPage.isExtURL"
+                           *ngIf="!exhPage.isExtURL && !exhPage.isGrandchildPage"
                            [routerLink]="['/exhibitor-information/', exhPage.url]">
+                            {{ exhPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!exhPage.isExtURL && exhPage.isGrandchildPage"
+                           [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]">
                             {{ exhPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -231,8 +251,13 @@
                                          aria-labelledby="newsDropdown">
                     <span *ngFor="let newsPage of newsAndMediaPages$">
                         <a class="dropdown-item"
-                           *ngIf="!newsPage.isExtURL"
+                           *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage"
                            [routerLink]="['/news/', newsPage.url]">
+                            {{ newsPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage"
+                           [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">
                             {{ newsPage.title }}
                         </a>
                         <a class="dropdown-item"
@@ -258,8 +283,13 @@
                                          aria-labelledby="presDropdown">
                     <span *ngFor="let presPage of presentersPages$">
                         <a class="dropdown-item"
-                           *ngIf="!presPage.isExtURL"
+                           *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage"
                            [routerLink]="['/presenters/', presPage.url]">
+                            {{ presPage.title }}
+                        </a>
+                        <a class="dropdown-item"
+                           *ngIf="!presPage.isExtURL && presPage.isGrandchildPage"
+                           [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">
                             {{ presPage.title }}
                         </a>
                         <a class="dropdown-item"

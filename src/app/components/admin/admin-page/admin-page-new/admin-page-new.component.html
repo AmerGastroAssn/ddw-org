@@ -136,6 +136,60 @@
                         </p>
                     </div>
 
+                    <div class="card bg-lighter mb-3">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="isGrandchildPageCheckbox"
+                                           formControlName="isGrandchildPage"
+                                           (click)="toggleIsGrandchildPage()">
+                                    <label class="custom-control-label"
+                                           for="isGrandchildPageCheckbox">Is this page a Grandchild?</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" *ngIf="isGrandchildPage">
+                                <label for="isGrandchildPage">Grandchild of what page?</label>
+                                <select class="form-control"
+                                        id="isGrandchildPage"
+                                        formControlName="grandchildURL">
+                                    <optgroup label="Register">
+                                        <option *ngFor="let page of registerPages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="News">
+                                        <option *ngFor="let page of newsPages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="Exhibitor Information">
+                                        <option *ngFor="let page of exhibitPages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="Education">
+                                        <option *ngFor="let page of edPages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="Attendee">
+                                        <option *ngFor="let page of attendeePages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="Presenters">
+                                        <option *ngFor="let page of presPages$ | async">
+                                            {{ page.url }}
+                                        </option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="sortOrder">Sort Order <br>
@@ -151,6 +205,10 @@
                             <option>4</option>
                             <option>5</option>
                             <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
                         </select>
                     </div>
 
@@ -185,7 +243,7 @@
                             <div class="form-group" *ngIf="hasCalendar">
                                 <label for="calendarTitle">Select Calendar or
                                     <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
-                                        <i class="fa fa-calendar-plus"></i>  Create New</a>
+                                        <i class="fa fa-calendar-plus"></i> Create New</a>
                                 </label>
                                 <select class="form-control"
                                         id="calendarTitle"
@@ -297,6 +355,19 @@
                         </p>
                     </div>
 
+
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"
+                                   class="custom-control-input"
+                                   id="hidden"
+                                   formControlName="hidden">
+                            <label class="custom-control-label"
+                                   for="hidden">Should the page be hidden from the menu?</label>
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"
@@ -304,7 +375,8 @@
                                    id="published"
                                    formControlName="published">
                             <label class="custom-control-label"
-                                   for="published">Publish?</label>
+                                   for="published"><span class="text-danger"><b>Publish</b></span> the page on "Create"? <br>
+                            <small>If so, page will appear according to "Publish On" date.</small></label>
                         </div>
                     </div>
 

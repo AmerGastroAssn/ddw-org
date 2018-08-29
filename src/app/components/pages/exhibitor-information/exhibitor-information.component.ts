@@ -10,9 +10,9 @@ import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 
 @Component({
-  selector: 'ddw-exhibitor-information',
-  templateUrl: './exhibitor-information.component.html',
-  styleUrls: ['./exhibitor-information.component.css']
+    selector: 'ddw-exhibitor-information',
+    templateUrl: './exhibitor-information.component.html',
+    styleUrls: ['./exhibitor-information.component.css']
 })
 export class ExhibitorInformationComponent implements OnInit {
     page: Page;
@@ -44,6 +44,8 @@ export class ExhibitorInformationComponent implements OnInit {
                 // Calendar
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                } else {
+                    this.calendar$ = null;
                 }
             });
     }

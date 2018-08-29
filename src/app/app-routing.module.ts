@@ -23,33 +23,33 @@ const appRoutes: Routes = [
     {
         path: 'register', component: PagesComponent,
         children: [
-            { path: ':id', component: RegisterComponent }
+            { path: ':id', component: RegisterComponent },
+            { path: ':id/:id', component: RegisterComponent },
+            { path: '**', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     {
         path: 'attendee-planning', component: PagesComponent,
         children: [
-            { path: ':id', component: AttendeePlanningComponent }
+            { path: ':id', component: AttendeePlanningComponent },
+            { path: ':id/:id', component: AttendeePlanningComponent },
+            { path: '**', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     {
         path: 'education', component: PagesComponent,
         children: [
-            { path: ':id', component: EducationComponent }
+            { path: ':id', component: EducationComponent },
+            { path: ':id/:id', component: EducationComponent },
+            { path: '**', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     {
         path: 'exhibitor-information', component: PagesComponent,
         children: [
             { path: ':id', component: ExhibitorInformationComponent },
-            {
-                path: '', component: ExhibitorInformationComponent,
-                children: [
-                    { path: ':id', component: ExhibitorInformationComponent },
-                    { path: '**', redirectTo: 'Home', pathMatch: 'full' },
-                ]
-            },
-            { path: '**', redirectTo: 'home', pathMatch: 'full' },
+            { path: ':id/:id', component: ExhibitorInformationComponent },
+            { path: '**', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     {
@@ -72,7 +72,9 @@ const appRoutes: Routes = [
     {
         path: 'presenters', component: PagesComponent,
         children: [
-            { path: ':id', component: PresentersComponent }
+            { path: ':id', component: PresentersComponent },
+            { path: ':id/:id', component: PresentersComponent },
+            { path: '**', redirectTo: '/home', pathMatch: 'full' },
         ]
     },
     {

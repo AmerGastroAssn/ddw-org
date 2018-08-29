@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { Page } from '../../../models/Page';
 import { PageService } from '../../../services/page.service';
-
+// For jQuery
 declare var $: any;
 
 @Component({

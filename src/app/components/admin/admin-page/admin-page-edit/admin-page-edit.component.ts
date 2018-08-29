@@ -84,20 +84,12 @@ export class AdminPageEditComponent implements OnInit {
     grandchildURL: string;
     hidden: boolean;
     pages$: Observable<Page[]>;
-    registerPages$: Observable<Page[]>;
-    newsPages$: Observable<Page[]>;
-    exhibitPages$: Observable<Page[]>;
-    edPages$: Observable<Page[]>;
-    attendeePages$: Observable<Page[]>;
-    presPages$: Observable<Page[]>;
-
 
     CkeditorConfig = {
         allowedContent: true,
         height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
     };
-
 
     constructor(
       private adminPageService: AdminPageService,

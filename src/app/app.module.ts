@@ -26,14 +26,20 @@ import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.compone
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
+
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
+
 import { EducationComponent } from './components/pages/education/education.component';
+
 import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
+
 import { NewsAndMediaComponent } from './components/pages/news-and-media/news-and-media.component';
 import { PagesComponent } from './components/pages/pages.component';
+
 import { PresentersComponent } from './components/pages/presenters/presenters.component';
 import { PressReleasesDetailsComponent } from './components/pages/press-releases/press-releases-details/press-releases-details.component';
 import { PressReleasesComponent } from './components/pages/press-releases/press-releases.component';
+
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';

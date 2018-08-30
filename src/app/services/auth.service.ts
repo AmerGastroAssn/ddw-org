@@ -313,7 +313,7 @@ export class AuthService {
         };
         console.log('data', data);
         console.log('userRef', userRef);
-        return userRef.set(data, { merge: true });
+        return userRef.set(data);
     }
 
 

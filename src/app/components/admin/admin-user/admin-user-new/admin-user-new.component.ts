@@ -59,7 +59,7 @@ export class AdminUserNewComponent implements OnInit {
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: [{ value: false, disabled: this.disableAdminOnNew }],
+            admin: [{ value: false, disabled: this.disableAdminOnNew } || false],
             title: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(5)

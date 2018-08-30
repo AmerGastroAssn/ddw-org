@@ -21,7 +21,7 @@
                         [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
                 </button>
             </li>
-            <li class="nav-item" *ngIf="user">
+            <li class="nav-item" *ngIf="user && isLoggedIn">
                 <a class="nav-link"
                    [routerLink]="['/admin/users/', user.$key ]">
                     <img [src]="user.photoURL"

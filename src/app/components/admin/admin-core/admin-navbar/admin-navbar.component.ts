@@ -1,6 +1,7 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { auth } from 'firebase';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../../../../models/User';
@@ -65,9 +66,9 @@ export class AdminNavbarComponent implements OnInit, AfterContentInit {
           }));
 
         this.user$.subscribe((currentUserInfo) => {
-            if (currentUserInfo) {
+            if (currentUserInfo && this.afAuth.auth.currentUser) {
                 this.user = currentUserInfo;
-                // this.authService.setUserInLocalStorage(currentUserInfo);
+                this.authService.setUserInLocalStorage(currentUserInfo);
                 this.isAdmin = currentUserInfo.admin === true;
             } else {
                 return of(null);

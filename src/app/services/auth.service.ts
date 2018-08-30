@@ -311,8 +311,9 @@ export class AuthService {
             title: userData.title,
             displayName: userData.displayName,
         };
-        console.log('data', data);
-        console.log('userRef', userRef);
+        this.setUserInLocalStorage(data);
+        // console.log('data', data);
+        // console.log('userRef', userRef);
         return userRef.set(data);
     }
 

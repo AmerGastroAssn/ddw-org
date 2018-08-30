@@ -57,8 +57,6 @@ export class AuthService {
         this.afsUser$ = afAuth.authState.do((user) => {
             if (user) {
                 return this.currentUserId = user.uid;
-                // this.updateOnConnect();
-                // this.setOffline();
             } else {
                 return null;
             }
@@ -83,9 +81,6 @@ export class AuthService {
                 this.isOnline = false;
             }
         });
-    }
-
-    updateOnConnect() {
     }
 
     isLoggedIn() {
@@ -190,15 +185,6 @@ export class AuthService {
                    });
     }
 
-    // emailSignup(userData) {
-    //     return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
-    //                .then((user) => {
-    //                    return this.setUserData(user);
-    //                })
-    //                .catch(error => {
-    //                    this.router.navigate(['/admin/signup']);
-    //                });
-    // }
 
     logout() {
         this.afAuth.auth.signOut()
@@ -328,26 +314,6 @@ export class AuthService {
         console.log('data', data);
         console.log('userRef', userRef);
         return userRef.set(data, { merge: true });
-    }
-
-    // Without setting in local storage
-    private setNewUserData(user) {
-        // const new$key = this.afs.createId();
-        // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}`);
-        const data: User = {
-            $key: new$key,
-            uid: new$key,
-            email: user.email,
-            isOnline: user.isOnline,
-            loginDate: user.loginDate,
-            photoURL: user.photoURL,
-            admin: user.admin,
-            title: user.title,
-            displayName: user.displayName,
-        };
-
-        return userRef.set(data);
     }
 
 

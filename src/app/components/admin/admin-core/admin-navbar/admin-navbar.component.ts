@@ -39,9 +39,7 @@ export class AdminNavbarComponent implements OnInit, AfterContentInit {
         if (this.isLoggedIn) {
             this.localUser = this.authService.getProfile();
         }
-    }
 
-    ngOnInit() {
         // Checks authentication of user and get's ID.
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
@@ -52,56 +50,33 @@ export class AdminNavbarComponent implements OnInit, AfterContentInit {
                 this.isLoggedIn = false;
             }
 
-
-            // Get auth data, then get firestore user document || null
-            this.user$ = this.afAuth.authState.pipe(
-              switchMap(user => {
-                  if (user) {
-                      return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-                  } else {
-                      return of(null);
-                  }
-              }));
-
-            this.user$.subscribe((currentUserInfo) => {
-                if (currentUserInfo) {
-                    this.user = currentUserInfo;
-                    this.authService.setUserInLocalStorage(currentUserInfo);
-                    this.isAdmin = currentUserInfo.admin === true;
-                } else {
-                    return of(null);
-                }
-            });
         });
+    }
 
+    ngOnInit() {
+        // Get auth data, then get firestore user document || null
+        this.user$ = this.afAuth.authState.pipe(
+          switchMap(user => {
+              if (user) {
+                  return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+              } else {
+                  return of(null);
+              }
+          }));
+
+        this.user$.subscribe((currentUserInfo) => {
+            if (currentUserInfo) {
+                this.user = currentUserInfo;
+                // this.authService.setUserInLocalStorage(currentUserInfo);
+                this.isAdmin = currentUserInfo.admin === true;
+            } else {
+                return of(null);
+            }
+        });
         // Settings:
         this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
         this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
-        // Gets the correct user for navbar profile and checks if is admin.
-        // this.adminUserService.getUsersInfo()
-        //     .subscribe((userArr) => {
-        //         this.authService.setUserInLocalStorage(localUserInfo);
-        //         this.isAdmin = localUserInfo.admin === true;
-        //         this.localUser = localUserInfo;
-        //         // userArr.forEach((userInfo) => {
-        //         //     if (this.afAuth.auth) {
-        //         //         if (this.afAuth.auth.currentUser.email === userInfo.email) {
-        //         //             this.adminUserService.getUser(userInfo.uid)
-        //         //                 .subscribe((localUserInfo) => {
-        //         //                     console.log('localuserInfo', localUserInfo);
-        //         //                     this.authService.setUserInLocalStorage(localUserInfo);
-        //         //                     this.isAdmin = localUserInfo.admin === true;
-        //         //                     this.localUser = localUserInfo;
-        //         //                 });
-        //         //         } else {
-        //         //             setTimeout(() => {
-        //         //                 // this.dbUser = this.localUser;
-        //         //             }, 1500);
-        //         //         }
-        //         //     }
-        //         // });
-        //     });
     }
 
     ngAfterContentInit() {

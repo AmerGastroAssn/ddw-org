@@ -181,13 +181,24 @@ export class AuthService {
 
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
-                   .then(() => {
-                       return this.setUserData(userData);
+                   .then(user => {
+                       console.log('user', user);
+                       return this.setUserData(userData, user); // create initial user document
                    })
                    .catch(error => {
                        this.router.navigate(['/admin/signup']);
                    });
     }
+
+    // emailSignup(userData) {
+    //     return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
+    //                .then((user) => {
+    //                    return this.setUserData(user);
+    //                })
+    //                .catch(error => {
+    //                    this.router.navigate(['/admin/signup']);
+    //                });
+    // }
 
     logout() {
         this.afAuth.auth.signOut()
@@ -234,8 +245,8 @@ export class AuthService {
 
     addUser(newUser: User) {
         return this.afAuth.auth.createUserWithEmailAndPassword(newUser.email, newUser.password)
-                   .then(() => {
-                       this.setNewUserData(newUser)
+                   .then((user) => {
+                       this.setUserData(newUser, user)
                            .then(() => {
                                this.router.navigate([`/admin/users`]);
                            })
@@ -298,39 +309,32 @@ export class AuthService {
     }
 
     // Sets user but also in local storage.
-    private setUserData(user) {
-        // const userId = this.userService.currentUserId;
-        const new$key = this.afs.createId();
-        // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
+    private setUserData(userData, info) {
+        const user = info.user;
+        console.log('userSet', user);
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {
-            $key: new$key,
-            uid: new$key,
+            $key: user.uid,
+            uid: user.uid,
             email: user.email,
-            isOnline: user.isOnline,
-            loginDate: user.loginDate,
-            photoURL: user.photoURL,
-            admin: user.admin,
-            title: user.title,
-            displayName: user.displayName,
+            isOnline: true,
+            loginDate: Date.now(),
+            photoURL: userData.photoURL,
+            admin: userData.admin,
+            title: userData.title,
+            displayName: userData.displayName,
         };
-
-        return userRef.set(data)
-                      .then(() => {
-                          this.setUserInLocalStorage(data);
-                          this.currentUserToken();
-                      })
-                      .catch((error) => {
-                          console.log('User not set in local storage:', error);
-                      });
+        console.log('data', data);
+        console.log('userRef', userRef);
+        return userRef.set(data, { merge: true });
     }
 
     // Without setting in local storage
     private setNewUserData(user) {
-        const new$key = this.afs.createId();
+        // const new$key = this.afs.createId();
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${new$key}`);
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}`);
         const data: User = {
             $key: new$key,
             uid: new$key,

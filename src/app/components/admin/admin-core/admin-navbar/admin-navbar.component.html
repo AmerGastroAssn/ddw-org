@@ -21,10 +21,10 @@
                         [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
                 </button>
             </li>
-            <li class="nav-item" *ngIf="isLoggedIn && dbUser">
+            <li class="nav-item" *ngIf="user">
                 <a class="nav-link"
-                   [routerLink]="['/admin/users/', dbUser.uid ]">
-                    <img [src]="dbUser.photoURL"
+                   [routerLink]="['/admin/users/', user.$key ]">
+                    <img [src]="user.photoURL"
                          class="user-image rounded-circle"> &nbsp;{{ loggedInUser }}
                 </a>
             </li>

@@ -103,11 +103,6 @@ export class AdminUserEditComponent implements OnInit {
                                 Validators.required, Validators.email
                             ])
                     ],
-                    password: [this.user.password,
-                               Validators.compose([
-                                   Validators.required, Validators.minLength(8)
-                               ])
-                    ],
                     displayName: [this.user.displayName, Validators.required],
                     isOnline: [this.user.isOnline],
                     loginDate: [Date.now()],
@@ -121,7 +116,6 @@ export class AdminUserEditComponent implements OnInit {
                 });
 
                 this.email = this.editUserForm.value.email;
-                this.password = this.editUserForm.value.password;
                 this.displayName = this.editUserForm.value.displayName;
                 this.isOnline = this.editUserForm.value.isOnline;
                 this.loginDate = this.editUserForm.value.loginDate;

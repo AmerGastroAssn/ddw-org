@@ -27,7 +27,6 @@ export class AdminUserService {
       public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = this.afs.collection<User>('users');
-
     }
 
     getUsers(): Observable<User[]> {

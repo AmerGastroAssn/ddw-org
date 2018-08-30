@@ -27,11 +27,6 @@ export class AdminSettingsService {
         this.video$Key = 'TsCwvT2a4VolBZrvTbOS';
         this.settings$key = 'YgCYgsItfFPq4DkNCHZq';
 
-        this.getSettings()
-            .subscribe(settings => {
-                return this.settings = settings;
-            });
-
         if (localStorage.getItem('settings') !== null) {
             this.localSettings = JSON.parse(localStorage.getItem('settings'));
         }
@@ -44,16 +39,20 @@ export class AdminSettingsService {
             const local = localStorage.getItem('settings');
             return this.localSettings = JSON.parse(local);
         } else {
-            this.saveLocalSettings();
+            this.getSettings()
+                .subscribe(settings => {
+                    this.saveLocalSettings(settings);
+                });
+
             const local = localStorage.getItem('settings');
             return JSON.parse(local);
         }
     }
 
 
-    saveLocalSettings() {
-        localStorage.setItem('settings', JSON.stringify(this.settings));
-        this.settingsAdded.emit(this.settings);
+    saveLocalSettings(settings) {
+        localStorage.setItem('settings', JSON.stringify(settings));
+        this.settingsAdded.emit(settings);
     }
 
     getVideoURL(): Observable<DailyVideo> {
@@ -79,11 +78,12 @@ export class AdminSettingsService {
             } else {
                 const data = action.payload.data() as Settings;
                 data.$key = action.payload.id;
+                console.log('data.key', data);
                 return data;
             }
         });
-
         return this.settings$;
+
     }
 
     updateVideoURL(updatedVideoURL): void {
@@ -113,7 +113,7 @@ export class AdminSettingsService {
 
         this.settingsDoc.update(settings)
             .then(() => {
-                this.saveLocalSettings();
+                this.saveLocalSettings(settings);
                 this.sbAlert.open('Settings Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',

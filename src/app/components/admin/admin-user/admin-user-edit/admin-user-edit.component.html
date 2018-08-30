@@ -90,14 +90,6 @@
                                    formControlName="email">
                         </div>
 
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password"
-                                   class="form-control"
-                                   [class.invalid]="!f.password.valid && f.password.touched"
-                                   formControlName="password">
-                        </div>
-
                         <!-- * TODO: Create username from email function if blank * -->
                         <div class="form-group">
                             <label>Display Name
@@ -159,10 +151,7 @@
                            *ngIf="!f.email.valid && f.email.touched">
                             Valid <b>Email</b> is required!
                         </p>
-                        <p class="help-block alert alert-warning text-center"
-                           *ngIf="!f.password.valid && f.password.touched">
-                            <b>Password</b> with at least 8 characters and one number is required!
-                        </p>
+
                         <p class="help-block alert alert-warning text-center"
                            *ngIf="!f.displayName.valid && f.displayName.touched">
                             <b>Display Name</b> is required!

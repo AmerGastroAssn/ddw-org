@@ -9,12 +9,12 @@ import { PageService } from '../../../services/page.service';
     styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-    registerPages$: Page[];
-    attendeePlanningPages$: Page[];
-    educationPages$: Page[];
-    exhibitorInfoPages$: Page[];
-    newsAndMediaPages$: Page[];
-    presentersPages$: Page[];
+    registerPages: Page[];
+    attendeePlanningPages: Page[];
+    educationPages: Page[];
+    exhibitorInfoPages: Page[];
+    newsAndMediaPages: Page[];
+    presentersPages: Page[];
 
     constructor(private pageService: PageService) {
     }
@@ -26,32 +26,32 @@ export class FooterComponent implements OnInit {
          ------------------------------------------------*/
         this.pageService.getRegisterPages()
             .subscribe((pageArr) => {
-                this.registerPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.registerPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
 
         this.pageService.getAttendeePlanningPages()
             .subscribe((pageArr) => {
-                this.attendeePlanningPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.attendeePlanningPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
 
         this.pageService.getEducationPages()
             .subscribe((pageArr) => {
-                this.educationPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.educationPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
 
         this.pageService.getExhibitorInfoPages()
             .subscribe((pageArr) => {
-                this.exhibitorInfoPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.exhibitorInfoPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
 
         this.pageService.getNewsAndMediaPages()
             .subscribe((pageArr) => {
-                this.newsAndMediaPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.newsAndMediaPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
 
         this.pageService.getPresenterPages()
             .subscribe((pageArr) => {
-                this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+                this.presentersPages = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
     }
 

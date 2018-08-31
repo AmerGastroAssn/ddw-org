@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
@@ -39,11 +40,26 @@ export class HomeComponent implements OnInit {
       private featuredPostService: AdminFeaturedPostService,
       private settingsService: AdminSettingsService,
       public sanitizer: DomSanitizer,
+      private meta: Meta,
+      private metaService: AdminMetaService,
     ) {
 
     }
 
     ngOnInit() {
+        // Meta tags
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                if (meta) {
+                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
+                      this.meta.addTag({ name: 'author', content: meta.metaAuthor }),
+                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
+                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
+                      this.meta.addTag({ property: 'og:title', content: 'Digestive Digest Week®' }),
+                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
+                      this.meta.addTag({ property: 'og:image', content: meta.metaImageURL });
+                }
+            });
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {

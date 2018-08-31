@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PressRelease } from '../../../../models/PressRelease';
+import { AdminMetaService } from '../../../../services/admin-meta.service';
 import { AdminPressReleaseService } from '../../../../services/admin-press-release.service';
 
 @Component({
@@ -26,6 +27,8 @@ export class PressReleasesDetailsComponent implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
       private sanitizer: DomSanitizer,
+      private meta: Meta,
+      private metaService: AdminMetaService,
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
@@ -33,6 +36,23 @@ export class PressReleasesDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Meta tags
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                if (this.pressRelease && meta) {
+                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
+                      this.meta.addTag({ name: 'author', content: this.pressRelease.author }),
+                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
+                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
+                      this.meta.addTag({
+                          property: 'og:title',
+                          content: `${this.pageTitle} - Digestive Digest Week®`
+                      }),
+                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
+                      this.meta.addTag({ property: 'og:image', content: meta.metaImageURL });
+                }
+            });
+
         // Get url/id
         this.url = this.route.snapshot.params['id'];
         // Get each user's details

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
@@ -8,6 +9,7 @@ import { Page } from '../../../models/Page';
 import { PressRelease } from '../../../models/PressRelease';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
+import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { AdminPressReleaseService } from '../../../services/admin-press-release.service';
 import { PageService } from '../../../services/page.service';
@@ -38,6 +40,8 @@ export class NewsAndMediaComponent implements OnInit {
       private cardService: AdminCardService,
       private adminCalendarService: AdminCalendarService,
       private adminPressReleaseService: AdminPressReleaseService,
+      private meta: Meta,
+      private metaService: AdminMetaService,
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
@@ -45,6 +49,23 @@ export class NewsAndMediaComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Meta tags
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                if (this.page && meta) {
+                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
+                      this.meta.addTag({ name: 'author', content: this.page.author }),
+                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
+                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
+                      this.meta.addTag({
+                          property: 'og:title',
+                          content: `${this.page.title} - Digestive Digest Week®`
+                      }),
+                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
+                      this.meta.addTag({ property: 'og:image', content: this.page.photoURL });
+                }
+            });
+
         this.cards$ = this.cardService.getAllCards();
 
 

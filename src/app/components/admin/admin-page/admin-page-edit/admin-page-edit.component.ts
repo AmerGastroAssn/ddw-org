@@ -104,6 +104,8 @@ export class AdminPageEditComponent implements OnInit {
       private authService: AuthService,
       private adminCalendarService: AdminCalendarService,
     ) {
+
+
         // Datepicker Config
         this.bsConfig = Object.assign({},
           {
@@ -156,8 +158,8 @@ export class AdminPageEditComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Settings
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
-
         // Get Calendar Titles
         this.calendars$ = this.adminCalendarService.getAllCalendars();
         // this.adminCalendarService.getAllCalendars()

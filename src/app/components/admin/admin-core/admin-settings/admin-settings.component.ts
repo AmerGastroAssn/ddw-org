@@ -42,6 +42,9 @@ export class AdminSettingsComponent implements OnInit {
       private fb: FormBuilder,
       private countdownService: CountdownService
     ) {
+        // Settings
+        this.settingsAllowed = this.settingsService.getAdminSettings().allowSettings;
+
         // Settings Form
         this.settingsService.getSettings().subscribe((settingsData) => {
             if (settingsData !== null) {
@@ -107,13 +110,6 @@ export class AdminSettingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        // Settings
-        this.settingsAllowed = this.settingsService.getAdminSettings().allowSettings;
-
-        // this.settings = this.settingsService.getAdminSettings();
-        // this.allowSignup = this.settings.allowSignup;
-        // this.disableAdmin = this.settings.disableAdmin;
-        // this.allowSettings = this.settings.allowSettings;
 
 
     }

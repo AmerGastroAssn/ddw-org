@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 
@@ -39,11 +40,40 @@ export class HomeComponent implements OnInit {
       private featuredPostService: AdminFeaturedPostService,
       private settingsService: AdminSettingsService,
       public sanitizer: DomSanitizer,
+      private meta: Meta,
+      private metaService: AdminMetaService,
     ) {
 
     }
 
     ngOnInit() {
+        // Meta tags
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                if (meta) {
+                    this.meta.addTags([
+                        { name: 'description', content: meta.metaDesc },
+                        { name: 'author', content: meta.metaAuthor },
+                        { name: 'keywords', content: meta.metaKeywords },
+                        { property: 'canonical', href: 'https://ddw.org/home' },
+                        { property: 'og:url', content: 'https://ddw.org' },
+                        { property: 'og:title', content: `Digestive Digest Week®` },
+                        { property: 'og:site_name', content: `Digestive Digest Week®` },
+                        { property: 'og:see_also', content: `http://ddw.org/home` },
+                        { property: 'og:description', content: meta.metaDesc },
+                        { property: 'og:image', content: meta.metaImageURL },
+                        { itemprop: 'name', content: 'http://ddw.org/home' },
+                        { itemprop: 'description', content: meta.metaDesc },
+                        { itemprop: 'image', content: meta.metaImageURL },
+                        { name: 'twitter:card', content: meta.metaDesc },
+                        { name: 'twitter:url', content: 'https://ddw.org/home' },
+                        { name: 'twitter:title', content: `Digestive Digest Week®` },
+                        { name: 'twitter:description', content: meta.metaDesc },
+                        { name: 'twitter:image', content: meta.metaImageURL },
+
+                    ], true);
+                }
+            });
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {

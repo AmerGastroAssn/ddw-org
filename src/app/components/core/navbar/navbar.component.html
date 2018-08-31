@@ -1,326 +1,366 @@
-<div class="row fixed-top" id="TopHeader">
-    <div class="col-md-12">
-        <div id="header">
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="navbar-brand" [routerLink]="['/']">
-                        <img class="img-responsive ddw-logo"
-                             src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
-                             alt="DDW Website">
-                    </a>
-                </div>
-                <div class="col-md-9">
+<!--BEGIN MOBILE MENU-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top d-md-block d-lg-none d-xl-none">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png"
+                 width="150" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            MENU
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Register</span>
+                    <strong class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let regPage of registerPages$">
+                        <li *ngIf="!regPage.isExtURL  && !regPage.isGrandchildPage"><a
+                                [routerLink]="['/register/', regPage.url]">{{ regPage.title }}</a></li>
+                        <li *ngIf="!regPage.isExtURL  && regPage.isGrandchildPage"><a
+                                [routerLink]="['/register/', regPage.grandchildURL, regPage.url]">{{ regPage.title }}</a></li>
+                        <li *ngIf="regPage.isExtURL"><a
+                                [href]="regPage.extURL"
+                                target="_blank">{{ regPage.title }}</a></li>
+                            </span>
+                    </ul>
+                </li>
+                <li class='dropdown'><a href='#' class='dropdown-toggle'
+                                        data-toggle='dropdown'><span>Attendee Planning</span> <strong
+                        class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let attPage of attendeePlanningPages$">
+                        <li *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage"><a
+                                [routerLink]="['/attendee-planning/',  attPage.url]">{{ attPage.title }}</a></li>
+                        <li *ngIf="!attPage.isExtURL && attPage.isGrandchildPage"><a
+                                [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]">{{ attPage.title }}</a></li>
+                        <li *ngIf="attPage.isExtURL"><a
+                                [href]="attPage.extURL"
+                                target="_blank">{{ attPage.title }}</a></li>
+                        </span>
+                    </ul>
+                </li>
+                <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Education</span>
+                    <strong class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let edPage of educationPages$">
+                        <li *ngIf="!edPage.isExtURL && !edPage.isGrandchildPage"><a
+                                [routerLink]="['/education/', edPage.url]">{{ edPage.title }}</a></li>
+                        <li *ngIf="!edPage.isExtURL && edPage.isGrandchildPage"><a
+                                [routerLink]="['/education/', edPage.grandchildURL, edPage.url]">{{ edPage.title }}</a></li>
+                        <li *ngIf="edPage.isExtURL"><a
+                                [href]="edPage.extURL"
+                                target="_blank">{{ edPage.title }}</a></li>
+                        </span>
+                    </ul>
+                </li>
+                <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Exhibitor Information</span>
+                    <strong class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let exhPage of exhibitorInfoPages$">
+                        <li *ngIf="!exhPage.isExtURL && !exhPage.isGrandchildPage"><a
+                                [routerLink]="['/exhibitor-information/', exhPage.url]">{{ exhPage.title }}</a></li>
+                        <li *ngIf="!exhPage.isExtURL && exhPage.isGrandchildPage"><a
+                                [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]">{{ exhPage.title }}</a></li>
+                        <li *ngIf="exhPage.isExtURL"><a
+                                [href]="exhPage.extURL"
+                                target="_blank">{{ exhPage.title }}</a></li>
+                            </span>
+                    </ul>
+                </li>
+                <li class='dropdown'><a href='#' class='dropdown-toggle'
+                                        data-toggle='dropdown'><span>News & Media</span> <strong class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let newsPage of newsAndMediaPages$">
+                        <li *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage"><a
+                                [routerLink]="['/news/', newsPage.url]">{{ newsPage.title }}</a></li>
+                        <li *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage"><a
+                                [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">{{ newsPage.title }}</a></li>
+                        <li *ngIf="newsPage.isExtURL"><a
+                                [href]="newsPage.extURL">{{ newsPage.title }}</a></li>
+                            </span>
+                    </ul>
+                </li>
+                <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Presenters</span>
+                    <strong class='caret'></strong></a>
+                    <ul class='dropdown-menu'>
+                        <span *ngFor="let presPage of presentersPages$">
+                        <li *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage"><a
+                                [routerLink]="['/presenters/', presPage.url]">{{ presPage.title }}</a></li>
+                        <li *ngIf="!presPage.isExtURL && presPage.isGrandchildPage"><a
+                                [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">{{ presPage.title }}</a></li>
+                        <li *ngIf="presPage.isExtURL"><a
+                                [href]="presPage.extURL"
+                                target="_blank">{{ presPage.title }}</a></li>
+                            </span>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--END MOBILE MENU-->
 
 
-                    <!--BEGIN SEARCH-->
-                    <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
-                        <form class="form-inline my-2 my-lg-0">
-                            <div class="input-group mb-3">
-                                <input type="text"
-                                       class="form-control"
-                                       placeholder="Search"
-                                       aria-label="Search"
-                                       aria-describedby="search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondarywaa text-secondary"
-                                            type="button"
-                                            id="search">
-                                        <i class="far fa-search"></i>
-                                    </button>
+<div class="fixed-top d-none d-sm-none d-md-none d-lg-block d-xl-block" id="TopHeader">
+    <div class="container">
+        <div class="col-md-12">
+            <div id="header">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a class="navbar-brand" [routerLink]="['/']">
+                            <img class="img-responsive ddw-logo"
+                                 src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
+                                 alt="DDW Website">
+                        </a>
+                    </div>
+                    <div class="col-md-9">
+
+
+                        <!--BEGIN SEARCH-->
+                        <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
+                            <form class="form-inline my-2 my-lg-0">
+                                <div class="input-group mb-3">
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Search"
+                                           aria-label="Search"
+                                           aria-describedby="search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondarywaa text-secondary"
+                                                type="button"
+                                                id="search">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </form>
-                    </div>
-                    <!--END SEARCH-->
-
-
-                    <!--BEGIN SOCIAL-->
-                    <div class="inline networking pull-right d-sm-none d-md-block d-none d-sm-block">
-                        <div class="HtmlContent"><a href="https://www.facebook.com/DDWMeeting" target="_blank"
-                                                    rel="noopener"><i class="fab fa-facebook"></i></a> <a
-                                href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i
-                                class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"
-                                                                   target="_blank" rel="noopener"><i
-                                class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"
-                                                                   target="_blank" rel="noopener"><i
-                                class="fab fa-instagram"></i></a></div>
-                    </div>
-                    <!--END SOCIAL-->
-
-
-                    <!--BEGIN LINKS-->
-                    <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
-                        <div id="MPAuxNav" class="inline vertical-align-middle">
-                            <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: left;">
-                                <ul class="level1 static" tabindex="0" role="menubar"
-                                    style="position: relative; width: auto; float: left;">
-                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
-                                            title="How to get in contact with us" class="level1 MPAuxNav static"
-                                            href="/contactus" tabindex="-1">Contact Us</a></li>
-                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
-                                            class="level1 MPAuxNav static" href="/careercenter" target="_blank"
-                                            tabindex="-1">Career Center</a></li>
-                                    <li role="menuitem" class="static" style="position: relative; float: left;"><a
-                                            class="level1 MPAuxNav static" href="/new-item" target="_blank"
-                                            tabindex="-1">DDW
-                                        Blog</a></li>
-                                </ul>
-                            </div>
-                            <div style="clear: left;"></div>
+                            </form>
                         </div>
+                        <!--END SEARCH-->
+
+
+                        <!--BEGIN SOCIAL-->
+                        <div class="inline networking pull-right"><a href="https://www.facebook.com/DDWMeeting"
+                                                                     target="_blank"
+                                                                     rel="noopener"><i class="fab fa-facebook"></i></a>
+                            <a
+                                    href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i
+                                    class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"
+                                                                       target="_blank" rel="noopener"><i
+                                    class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"
+                                                                       target="_blank" rel="noopener"><i
+                                    class="fab fa-instagram"></i></a></div>
+                        <!--END SOCIAL-->
+
+
+                        <!--BEGIN LINKS-->
+                        <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
+                            <div id="MPAuxNav" class="inline vertical-align-middle auxnav">
+                                <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: left;">
+                                    <ul class="level1 static" tabindex="0" role="menubar"
+                                        style="position: relative; width: auto; float: left;">
+                                        <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                                title="How to get in contact with us" class="level1 MPAuxNav static"
+                                                href="/contactus" tabindex="-1">Contact Us</a></li>
+                                        <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                                class="level1 MPAuxNav static" href="/careercenter" target="_blank"
+                                                tabindex="-1">Career Center</a></li>
+                                        <li role="menuitem" class="static" style="position: relative; float: left;"><a
+                                                class="level1 MPAuxNav static" href="http://blog.ddw.org"
+                                                target="_blank"
+                                                tabindex="-1">DDW
+                                            Blog</a></li>
+                                    </ul>
+                                </div>
+                                <div style="clear: left;"></div>
+                            </div>
+                        </div>
+                        <!--END LINKS-->
+
+
                     </div>
-                    <!--END LINKS-->
-
-
                 </div>
             </div>
+        </div>
 
 
-            <div class="row">
-                <nav class="navbar navbar-expand-lg ">
-                    <button _ngcontent-c2="" aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation" class="navbar-toggler collapsed"
-                            data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span
-                            _ngcontent-c2="" class="navbar-toggler-icon"></span></button>
+        <div class="row" id="nav">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg bg-light">
 
-                    <div class="row">
-
-                        <div class="col-md-12">
-
-
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                    data-target="#navbarSupportedContent"
-                                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="registerDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Register
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="registerDropdown">
-                    <span *ngFor="let regPage of registerPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage"
-                           [routerLink]="['/register/', regPage.url]">
-                            {{ regPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!regPage.isExtURL && regPage.isGrandchildPage"
-                           [routerLink]="['/register/', regPage.grandchildURL ,regPage.url]">
-                            {{ regPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="regPage.isExtURL"
-                           [href]="regPage.extURL"
-                           target="_blank">
-                            {{ regPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="attendeeDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Attendee Planning
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="attendeeDropdown">
-                    <span *ngFor="let attPage of attendeePlanningPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage"
-                           [routerLink]="['/attendee-planning/', attPage.url]">
-                            {{ attPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!attPage.isExtURL && attPage.isGrandchildPage"
-                           [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]">
-                            {{ attPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="attPage.isExtURL"
-                           [href]="attPage.extURL"
-                           target="_blank">
-                            {{ attPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="edDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Education
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="edDropdown">
-                    <span *ngFor="let edPage of educationPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!edPage.isExtURL && !edPage.isGrandchildPage"
-                           [routerLink]="['/education/', edPage.url]">
-                            {{ edPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!edPage.isExtURL && edPage.isGrandchildPage"
-                           [routerLink]="['/education/', edPage.grandchildURL, edPage.url]">
-                            {{ edPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="edPage.isExtURL"
-                           [href]="edPage.extURL"
-                           target="_blank">
-                            {{ edPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="exhDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Exhibitor Information
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="exhDropdown">
-                    <span *ngFor="let exhPage of exhibitorInfoPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!exhPage.isExtURL && !exhPage.isGrandchildPage"
-                           [routerLink]="['/exhibitor-information/', exhPage.url]">
-                            {{ exhPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!exhPage.isExtURL && exhPage.isGrandchildPage"
-                           [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]">
-                            {{ exhPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="exhPage.isExtURL"
-                           [href]="exhPage.extURL"
-                           target="_blank">
-                            {{ exhPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="newsDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        News &amp; Media
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="newsDropdown">
-                    <span *ngFor="let newsPage of newsAndMediaPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage"
-                           [routerLink]="['/news/', newsPage.url]">
-                            {{ newsPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage"
-                           [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">
-                            {{ newsPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="newsPage.isExtURL"
-                           [routerLink]="['/news/', newsPage.url]">
-                            {{ newsPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle"
-                                       href="#"
-                                       id="presDropdown"
-                                       role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                        Presenters
-                                    </a>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="presDropdown">
-                    <span *ngFor="let presPage of presentersPages$">
-                        <a class="dropdown-item"
-                           *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage"
-                           [routerLink]="['/presenters/', presPage.url]">
-                            {{ presPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="!presPage.isExtURL && presPage.isGrandchildPage"
-                           [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">
-                            {{ presPage.title }}
-                        </a>
-                        <a class="dropdown-item"
-                           *ngIf="presPage.isExtURL"
-                           [href]="presPage.extURL"
-                           target="_blank">
-                            {{ presPage.title }}
-                        </a>
-                    </span>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                       data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false">
-                                        Admin
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" [routerLink]="['/admin/pages']">Pages</a>
-                                        <a class="dropdown-item" [routerLink]="['/admin/users']">Users</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" [routerLink]="['/admin/login']">Log In</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   id="navbarDropdownMenuLink1"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Register
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                    <span *ngFor="let regPage of registerPages$">
+                                        <li class="dropdown-item"
+                                            *ngIf="!regPage.isExtURL  && !regPage.isGrandchildPage">
+                                            <a [routerLink]="['/register/', regPage.url]">{{ regPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!regPage.isExtURL  && regPage.isGrandchildPage">
+                                            <a [routerLink]="['/register/', regPage.grandchildURL, regPage.url]">
+                                                {{ regPage.title }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="regPage.isExtURL">
+                                            <a [href]="regPage.extURL"
+                                               target="_blank">{{ regPage.title }}
+                                            </a>
+                                        </li>
+                                    </span>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   id="navbarDropdownMenuLink2"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Attendee Planning
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                    <span *ngFor="let attPage of attendeePlanningPages$">
+                                        <li class="dropdown-item"
+                                            *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage"><a
+                                                [routerLink]="['/attendee-planning/',  attPage.url]">
+                                            {{ attPage.title }}
+                                        </a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!attPage.isExtURL && attPage.isGrandchildPage"><a
+                                                [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]">{{ attPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="attPage.isExtURL">
+                                            <a [href]="attPage.extURL"
+                                               target="_blank">{{ attPage.title }}
+                                            </a>
+                                        </li>
+                                    </span>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   id="navbarDropdownMenuLink3"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Education
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                    <span *ngFor="let edPage of educationPages$">
+                                        <li class="dropdown-item"
+                                            *ngIf="!edPage.isExtURL  && !edPage.isGrandchildPage">
+                                            <a [routerLink]="['/education/', edPage.url]">{{ edPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item" *ngIf="!edPage.isExtURL  && edPage.isGrandchildPage">
+                                            <a [routerLink]="['/education/', edPage.grandchildURL, edPage.url]">
+                                                {{ edPage.title }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="edPage.isExtURL"><a
+                                                [href]="edPage.extURL"
+                                                target="_blank">{{ edPage.title }}
+                                        </a>
+                                        </li>
+                                    </span>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="#"
+                                   id="navbarDropdownMenuLink4"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Exhibitor Information
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                    <span *ngFor="let exhPage of exhibitorInfoPages$">
+                                        <li class="dropdown-item"
+                                            *ngIf="!exhPage.isExtURL  && !exhPage.isGrandchildPage"><a
+                                                [routerLink]="['/exhibitor-information/', exhPage.url]">{{ exhPage.title
+                                            }}</a></li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!exhPage.isExtURL  && exhPage.isGrandchildPage">
+                                            <a [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]">{{ exhPage.title }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="exhPage.isExtURL">
+                                            <a [href]="exhPage.extURL"
+                                               target="_blank">{{ exhPage.title }}
+                                            </a>
+                                        </li>
+                                    </span>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink5"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    News & Media
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink5">
+                                    <span *ngFor="let newsPage of newsAndMediaPages$">
+                                        <li class="dropdown-item"
+                                            *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage">
+                                            <a [routerLink]="['/news/',  newsPage.url]">{{ newsPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!newsPage.isExtURL   && newsPage.isGrandchildPage">
+                                            <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">{{ newsPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="newsPage.isExtURL"><a
+                                                [routerLink]="['/news/', newsPage.url]">{{ newsPage.title }}
+                                        </a>
+                                        </li>
+                                    </span>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink6"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Presenters
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink6">
+                                    <span *ngFor="let presPage of presentersPages$">
+                                    <li class="dropdown-item"
+                                        *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage">
+                                        <a [routerLink]="['/presenters/', presPage.url]">{{ presPage.title }}</a>
+                                    </li>
+                                    <li class="dropdown-item"
+                                        *ngIf="!presPage.isExtURL && presPage.isGrandchildPage"><a
+                                            [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">{{ presPage.title }}</a></li>
+                                    <li class="dropdown-item"
+                                        *ngIf="presPage.isExtURL"><a
+                                            [href]="presPage.extURL"
+                                            target="_blank">{{ presPage.title }}</a>
+                                    </li>
+                                    </span>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
         </div>
+
+
     </div>
 
 

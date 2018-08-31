@@ -87,7 +87,9 @@ export class AdminUserEditComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Settings
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
+        console.log('disableAdmin', this.disableAdminOnEdit);
 
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
@@ -98,7 +100,7 @@ export class AdminUserEditComponent implements OnInit {
 
                 // Form:
                 this.editUserForm = this.fb.group({
-                    email: [this.user.email,
+                    email: [{value: this.user.email, disabled: this.disableAdminOnEdit},
                             Validators.compose([
                                 Validators.required, Validators.email
                             ])
@@ -107,7 +109,7 @@ export class AdminUserEditComponent implements OnInit {
                     isOnline: [this.user.isOnline],
                     loginDate: [Date.now()],
                     photoURL: [this.user.photoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-                    admin: [{ value: this.user.admin, disabled: this.disableAdminOnEdit }],
+                    admin: [{ value: this.user.admin || false, disabled: this.disableAdminOnEdit }],
                     title: [this.user.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)

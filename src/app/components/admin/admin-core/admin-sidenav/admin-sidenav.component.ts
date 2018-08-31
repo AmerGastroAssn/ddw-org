@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
@@ -24,6 +27,7 @@ export class AdminSidenavComponent implements OnInit {
     showCalendarToggle: boolean;
     showPressReleaseToggle: boolean;
     user: User;
+    user$: Observable<User>;
     isAdmin: boolean;
     dbUser: User;
 
@@ -32,8 +36,10 @@ export class AdminSidenavComponent implements OnInit {
       private adminUserService: AdminUserService,
       private settingsService: AdminSettingsService,
       private adminService: AdminService,
-      private afAuth: AngularFireAuth
+      private afAuth: AngularFireAuth,
+      private afs: AngularFirestore
     ) {
+
     }
 
     ngOnInit() {
@@ -51,20 +57,24 @@ export class AdminSidenavComponent implements OnInit {
             }
         });
 
+        // Get auth data, then get firestore user document || null
+        this.user$ = this.afAuth.authState.pipe(
+          switchMap(user => {
+              if (user) {
+                  return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+              } else {
+                  return of(null);
+              }
+          }));
 
-        // Is Admin?
-        this.adminUserService.getUsersInfo()
-            .subscribe((userArr) => {
-                userArr.forEach((userInfo) => {
-                    if (this.afAuth.auth.currentUser.email === userInfo.email) {
-                        if (userInfo.admin === true) {
-                            this.isAdmin = true;
-                        } else {
-                            this.isAdmin = false;
-                        }
-                    }
-                });
-            });
+        this.user$.subscribe((currentUserInfo) => {
+            if (currentUserInfo && this.afAuth.auth.currentUser) {
+                this.user = currentUserInfo;
+                this.isAdmin = currentUserInfo.admin === true;
+            } else {
+                return of(null);
+            }
+        });
     }
 
     onShowPagesToggle() {

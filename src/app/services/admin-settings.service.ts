@@ -1,9 +1,12 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { DailyVideo } from '../models/DailyVideo';
 import { Settings } from '../models/Settings';
+import { User } from '../models/User';
 
 @Injectable({
     providedIn: 'root'
@@ -18,37 +21,51 @@ export class AdminSettingsService {
     settings$: Observable<Settings>;
     settings: Settings;
     settings$key: string;
+    disableAdmin: boolean;
+    allowSettings: boolean;
+    allowSignup: boolean;
+    user$: Observable<User>;
 
 
     constructor(
       private sbAlert: MatSnackBar,
       private afs: AngularFirestore,
+      private afAuth: AngularFireAuth,
     ) {
         this.video$Key = 'TsCwvT2a4VolBZrvTbOS';
         this.settings$key = 'YgCYgsItfFPq4DkNCHZq';
-
-        if (localStorage.getItem('settings') !== null) {
-            this.localSettings = JSON.parse(localStorage.getItem('settings'));
-        }
+        // Checks authentication of user and get's ID.
+        this.user$ = this.afAuth.authState.pipe(
+          switchMap(user => {
+              if (user) {
+                  return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+              } else {
+                  return of(null);
+              }
+          }));
+        // if (localStorage.getItem('settings') !== null) {
+        //     this.localSettings = JSON.parse(localStorage.getItem('settings'));
+        // }
     }
 
     /* If settings not in local storage, then
      get settings from Firestore and save in local storage to use */
     getAdminSettings(): Settings {
-        if (localStorage.getItem('settings') !== null) {
+        if (localStorage.getItem('settings') && this.user$) {
             const local = localStorage.getItem('settings');
             return this.localSettings = JSON.parse(local);
         } else {
             this.getSettings()
-                .subscribe(settings => {
+                .subscribe((settings) => {
                     this.saveLocalSettings(settings);
                 });
 
             const local = localStorage.getItem('settings');
-            return JSON.parse(local);
+            return this.localSettings = JSON.parse(local);
+
+
         }
     }
-
 
     saveLocalSettings(settings) {
         localStorage.setItem('settings', JSON.stringify(settings));

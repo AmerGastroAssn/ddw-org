@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
     isExtURL: boolean;
 
 
+
     constructor(private pageService: PageService) {
         $(document).ready(function () {
             $(window).scroll(function () {
@@ -76,6 +77,9 @@ export class NavbarComponent implements OnInit {
                 this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
     }
+
+
+
 
 
 }

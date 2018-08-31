@@ -88,6 +88,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private sbAlert: MatSnackBar,
       private adminCalendarService: AdminCalendarService,
     ) {
+        // Settings
+        this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
+
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
                 this.author = auth.email;
@@ -142,9 +145,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // Settings
-        this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
-
         // Gets Page Categories for Grandchild page selection.
         this.registerPages$ = this.adminPageService.getAllRegisterPages();
         this.newsPages$ = this.adminPageService.getAllNewsPages();

@@ -53,16 +53,18 @@ export class NewsAndMediaComponent implements OnInit {
         this.metaService.getMeta()
             .subscribe((meta) => {
                 if (this.page && meta) {
-                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
-                      this.meta.addTag({ name: 'author', content: this.page.author }),
-                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
-                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
-                      this.meta.addTag({
-                          property: 'og:title',
-                          content: `${this.page.title} - Digestive Digest Week®`
-                      }),
-                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
-                      this.meta.addTag({ property: 'og:image', content: this.page.photoURL });
+                    this.meta.addTags([
+                        { name: 'description', content: meta.metaDesc },
+                        { name: 'author', content: this.page.author },
+                        { name: 'keywords', content: meta.metaKeywords },
+                        { property: 'og:url', content: 'https://ddw.org' },
+                        {
+                            property: 'og:title',
+                            content: `${this.page} - Digestive Digest Week®`
+                        },
+                        { property: 'og:description', content: meta.metaDesc },
+                        { property: 'og:image', content: meta.metaImageURL },
+                    ], true);
                 }
             });
 

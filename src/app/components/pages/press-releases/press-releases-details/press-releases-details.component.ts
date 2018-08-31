@@ -40,16 +40,18 @@ export class PressReleasesDetailsComponent implements OnInit {
         this.metaService.getMeta()
             .subscribe((meta) => {
                 if (this.pressRelease && meta) {
-                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
-                      this.meta.addTag({ name: 'author', content: this.pressRelease.author }),
-                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
-                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
-                      this.meta.addTag({
-                          property: 'og:title',
-                          content: `${this.pageTitle} - Digestive Digest Week®`
-                      }),
-                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
-                      this.meta.addTag({ property: 'og:image', content: meta.metaImageURL });
+                    this.meta.addTags([
+                        { name: 'description', content: meta.metaDesc },
+                        { name: 'author', content: this.pressRelease.author },
+                        { name: 'keywords', content: meta.metaKeywords },
+                        { property: 'og:url', content: 'https://ddw.org' },
+                        {
+                            property: 'og:title',
+                            content: `${this.pageTitle} - Digestive Digest Week®`
+                        },
+                        { property: 'og:description', content: meta.metaDesc },
+                        { property: 'og:image', content: meta.metaImageURL },
+                    ], true);
                 }
             });
 

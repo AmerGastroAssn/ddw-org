@@ -51,13 +51,27 @@ export class HomeComponent implements OnInit {
         this.metaService.getMeta()
             .subscribe((meta) => {
                 if (meta) {
-                    return this.meta.addTag({ name: 'description', content: meta.metaDesc }),
-                      this.meta.addTag({ name: 'author', content: meta.metaAuthor }),
-                      this.meta.addTag({ name: 'keywords', content: meta.metaKeywords }),
-                      this.meta.addTag({ property: 'og:url', content: 'https://ddw.org' }),
-                      this.meta.addTag({ property: 'og:title', content: 'Digestive Digest Week®' }),
-                      this.meta.addTag({ property: 'og:description', content: meta.metaDesc }),
-                      this.meta.addTag({ property: 'og:image', content: meta.metaImageURL });
+                    this.meta.addTags([
+                        { name: 'description', content: meta.metaDesc },
+                        { name: 'author', content: meta.metaAuthor },
+                        { name: 'keywords', content: meta.metaKeywords },
+                        { property: 'canonical', href: 'https://ddw.org/home' },
+                        { property: 'og:url', content: 'https://ddw.org' },
+                        { property: 'og:title', content: `Digestive Digest Week®` },
+                        { property: 'og:site_name', content: `Digestive Digest Week®` },
+                        { property: 'og:see_also', content: `http://ddw.org/home` },
+                        { property: 'og:description', content: meta.metaDesc },
+                        { property: 'og:image', content: meta.metaImageURL },
+                        { itemprop: 'name', content: 'http://ddw.org/home' },
+                        { itemprop: 'description', content: meta.metaDesc },
+                        { itemprop: 'image', content: meta.metaImageURL },
+                        { name: 'twitter:card', content: meta.metaDesc },
+                        { name: 'twitter:url', content: 'https://ddw.org/home' },
+                        { name: 'twitter:title', content: `Digestive Digest Week®` },
+                        { name: 'twitter:description', content: meta.metaDesc },
+                        { name: 'twitter:image', content: meta.metaImageURL },
+
+                    ], true);
                 }
             });
         // Ads

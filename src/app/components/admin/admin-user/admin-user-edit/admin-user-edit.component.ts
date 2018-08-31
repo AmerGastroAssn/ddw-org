@@ -100,7 +100,7 @@ export class AdminUserEditComponent implements OnInit {
 
                 // Form:
                 this.editUserForm = this.fb.group({
-                    email: [this.user.email,
+                    email: [{value: this.user.email, disabled: this.disableAdminOnEdit},
                             Validators.compose([
                                 Validators.required, Validators.email
                             ])

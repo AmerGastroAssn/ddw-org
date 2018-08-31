@@ -20,25 +20,26 @@ export class NavbarComponent implements OnInit {
     isExtURL: boolean;
 
 
+
     constructor(private pageService: PageService) {
-        // $(document).ready(function () {
-        //     $(window).scroll(function () {
-        //         const scrollPos   = $(window).scrollTop(),
-        //               navLinks    = $('li.nav-item > a'),
-        //               navDropdown = $('a.dropdown-item'),
-        //               navbar      = $('.navbar');
-        //
-        //         if (scrollPos > 150) {
-        //             navbar.addClass('navbarWhite');
-        //             navLinks.addClass('linksDark');
-        //             navDropdown.addClass('linksDark');
-        //         } else {
-        //             navbar.removeClass('navbarWhite');
-        //             navLinks.removeClass('linksDark');
-        //             navDropdown.removeClass('linksDark');
-        //         }
-        //     });
-        // });
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                const scrollPos   = $(window).scrollTop(),
+                      navLinks    = $('li.nav-item > a'),
+                      navDropdown = $('a.dropdown-item'),
+                      navbar      = $('.navbar');
+
+                if (scrollPos > 150) {
+                    navbar.addClass('navbarWhite');
+                    navLinks.addClass('linksDark');
+                    navDropdown.addClass('linksDark');
+                } else {
+                    navbar.removeClass('navbarWhite');
+                    navLinks.removeClass('linksDark');
+                    navDropdown.removeClass('linksDark');
+                }
+            });
+        });
     }
 
     ngOnInit() {
@@ -76,6 +77,9 @@ export class NavbarComponent implements OnInit {
                 this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
     }
+
+
+
 
 
 }

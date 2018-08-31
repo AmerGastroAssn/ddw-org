@@ -94,8 +94,8 @@ const adminRoutes: Routes = [
             { path: 'reset', component: AdminResetPasswordComponent },
             { path: 'signup', component: AdminSignupComponent, canActivate: [RegisterGuard] },
             { path: 'settings', component: AdminSettingsComponent, canActivate: [AdminGuard] },
-            { path: 'cards', component: AdminCardsEditComponent, canActivate: [AdminGuard] },
-            { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AdminGuard] },
+            { path: 'cards', component: AdminCardsEditComponent, canActivate: [AuthGuard] },
+            { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AuthGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
         ]

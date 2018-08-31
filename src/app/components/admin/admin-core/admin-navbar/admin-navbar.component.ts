@@ -1,7 +1,6 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { auth } from 'firebase';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../../../../models/User';
@@ -14,7 +13,7 @@ import { AuthService } from '../../../../services/auth.service';
     templateUrl: './admin-navbar.component.html',
     styleUrls: ['./admin-navbar.component.css']
 })
-export class AdminNavbarComponent implements OnInit, AfterContentInit {
+export class AdminNavbarComponent implements OnInit, OnDestroy {
     isLoggedIn: boolean;
     loggedInUser: string;
     user$: Observable<User>;
@@ -50,11 +49,14 @@ export class AdminNavbarComponent implements OnInit, AfterContentInit {
             } else {
                 this.isLoggedIn = false;
             }
-
         });
     }
 
     ngOnInit() {
+        // Settings:
+        this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
+        this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
+
         // Get auth data, then get firestore user document || null
         this.user$ = this.afAuth.authState.pipe(
           switchMap(user => {
@@ -74,14 +76,10 @@ export class AdminNavbarComponent implements OnInit, AfterContentInit {
                 return of(null);
             }
         });
-        // Settings:
-        this.allowSignup = this.settingsService.getAdminSettings().allowSignup;
-        this.allowSettings = this.settingsService.getAdminSettings().allowSettings;
 
     }
 
-    ngAfterContentInit() {
-
+    ngOnDestroy() {
     }
 
     onLogout() {

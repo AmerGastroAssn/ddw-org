@@ -14,9 +14,9 @@ import { AdminSettingsService } from '../../../../../services/admin-settings.ser
 import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
-  selector: 'ddw-admin-featured-blog-posts-edit',
-  templateUrl: './admin-featured-blog-posts-edit.component.html',
-  styleUrls: ['./admin-featured-blog-posts-edit.component.css']
+    selector: 'ddw-admin-featured-blog-posts-edit',
+    templateUrl: './admin-featured-blog-posts-edit.component.html',
+    styleUrls: ['./admin-featured-blog-posts-edit.component.css']
 })
 export class AdminFeaturedBlogPostsEditComponent implements OnInit {
     postForm1: FormGroup;
@@ -106,7 +106,6 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
     ngOnInit() {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
-
         // Get Post 1
         this.postService.getPost1().subscribe((post) => {
             // Post 1

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
-import { AuthService } from '../../../../services/auth.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
     selector: 'ddw-admin-user-new',
@@ -42,8 +42,9 @@ export class AdminUserNewComponent implements OnInit {
     }
 
     ngOnInit() {
-        // Settings:
+        // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
+
 
         // Form:
         this.newUserForm = this.fb.group({
@@ -59,7 +60,7 @@ export class AdminUserNewComponent implements OnInit {
             isOnline: [false],
             loginDate: [Date.now()],
             photoURL: ['https://s3.amazonaws.com/DDW/ddw-org/images/avatar_transparent.png'],
-            admin: ['' || false ],
+            admin: [{ value: '' || false, disabled: this.disableAdminOnNew }],
             title: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(5)

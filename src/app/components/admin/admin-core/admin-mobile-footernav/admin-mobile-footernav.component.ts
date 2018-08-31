@@ -20,6 +20,7 @@ export class AdminMobileFooternavComponent implements OnInit {
       public authService: AuthService,
       private settingsService: AdminSettingsService,
     ) {
+
         if (this.isLoggedIn) {
             this.localUser = this.authService.getProfile();
         }

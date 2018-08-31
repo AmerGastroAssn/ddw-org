@@ -107,7 +107,6 @@ export class AdminCardsEditComponent implements OnInit {
     ngOnInit() {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
-
         // Get Card 1
         this.cardService.getCard1().subscribe((card) => {
             // Card 1

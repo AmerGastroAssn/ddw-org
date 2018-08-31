@@ -34,6 +34,7 @@ export class AdminSidenavComponent implements OnInit {
       private adminService: AdminService,
       private afAuth: AngularFireAuth
     ) {
+
     }
 
     ngOnInit() {

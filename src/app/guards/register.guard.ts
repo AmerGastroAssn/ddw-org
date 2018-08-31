@@ -17,15 +17,24 @@ export class RegisterGuard implements CanActivate {
     }
 
     canActivate(): boolean {
-        if (this.settingsService.getAdminSettings().allowSignup) {
-            return true;
+        if (this.settingsService.getAdminSettings() !== null) {
+            if (this.settingsService.getAdminSettings().allowSignup === true && this.settingsService.getAdminSettings().allowSignup !== null) {
+                return true;
+            } else {
+                this.router.navigate(['/admin/login']);
+                this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web team for help.`, {
+                    cssClass: 'alert-warning',
+                    timeout: 5000
+                });
+                return false;
+            }
         } else {
-            this.router.navigate(['/admin/login']);
-            this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web Development team (awhite@gastro.org) for help.`, {
+            window.location.reload();
+            this.router.navigate(['home']);
+            this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web team for help.`, {
                 cssClass: 'alert-warning',
-                timeout: 10000
+                timeout: 5000
             });
-            return false;
         }
     }
 

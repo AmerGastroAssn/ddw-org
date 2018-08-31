@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { AdminMetaService } from './services/admin-meta.service';
+import { AdminSettingsService } from './services/admin-settings.service';
 
 @Component({
     selector: 'ddw-root',
@@ -12,7 +13,12 @@ export class AppComponent implements OnInit {
     constructor(
       private meta: Meta,
       private metaService: AdminMetaService,
+      private settingsService: AdminSettingsService,
     ) {
+        this.settingsService.getSettings()
+            .subscribe((settings) => {
+                this.settingsService.saveLocalSettings(settings);
+            });
     }
 
     ngOnInit() {

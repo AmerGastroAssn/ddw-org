@@ -120,7 +120,8 @@ firebase.initializeApp(environment.firebase);
         ScriptService,
         AdminCalendarService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+
 })
 export class AppModule {
 }

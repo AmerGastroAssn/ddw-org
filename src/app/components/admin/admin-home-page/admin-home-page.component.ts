@@ -124,6 +124,7 @@ export class AdminHomePageComponent implements OnInit {
     }
 
     onHomePageSubmit(homePageFormData) {
+        this.adminHomePageService.updateHomeForm(homePageFormData);
         console.log('homePageFormData sent', homePageFormData);
     }
 

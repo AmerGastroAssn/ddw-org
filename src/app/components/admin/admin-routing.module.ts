@@ -16,6 +16,7 @@ import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
+import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { AdminPageAttendeePlanningListComponent } from './admin-page/admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';
 import { AdminPageDetailsComponent } from './admin-page/admin-page-details/admin-page-details.component';
 import { AdminPageEditComponent } from './admin-page/admin-page-edit/admin-page-edit.component';
@@ -98,6 +99,7 @@ const adminRoutes: Routes = [
             { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AuthGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
+            { path: 'home', component: AdminHomePageComponent, canActivate: [AdminGuard] },
         ]
     },
 ];

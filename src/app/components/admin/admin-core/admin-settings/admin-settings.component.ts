@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
-import { Countdown } from '../../../../models/Countdown';
-import { DailyVideo } from '../../../../models/DailyVideo';
 import { Settings } from '../../../../models/Settings';
+import { AdminHomePageService } from '../../../../services/admin-home-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { CountdownService } from '../../../../services/countdown.service';
 
@@ -24,15 +22,6 @@ export class AdminSettingsComponent implements OnInit {
     disableAdmin: boolean;
     uid: string;
     settingsAllowed: boolean; // Allow settings to be edited/viewed.
-    // Countdown
-    countdownForm: FormGroup;
-    countdown: Countdown;
-    date: any;
-    bsConfig: Partial<BsDatepickerConfig>;
-    // DDW Daily Video Form
-    dailyVideoForm: FormGroup;
-    dailyVideo: DailyVideo;
-    videoURL: string;
 
 
     constructor(
@@ -40,7 +29,8 @@ export class AdminSettingsComponent implements OnInit {
       private flashMessage: FlashMessagesService,
       private sbAlert: MatSnackBar,
       private fb: FormBuilder,
-      private countdownService: CountdownService
+      private countdownService: CountdownService,
+      private adminHomePageService: AdminHomePageService
     ) {
         // Settings
         this.settingsAllowed = this.settingsService.getAdminSettings().allowSettings;
@@ -66,65 +56,15 @@ export class AdminSettingsComponent implements OnInit {
             }
         });
 
-        // Get Countdown
-        this.countdownService.getCountdown().subscribe((countdown) => {
-            if (countdown !== null) {
-                this.countdown = countdown;
-                // Form:
-                this.countdownForm = this.fb.group({
-                    $key: [this.countdown.$key],
-                    date: [this.countdown.date],
-                    uid: [this.countdown.uid],
-                });
 
-                this.$key = this.countdownForm.value.$key;
-                this.date = this.countdownForm.value.date;
-                this.uid = this.countdownForm.value.uid;
-            }
-        });
-
-        // Datepicker Config
-        this.bsConfig = Object.assign({},
-          {
-              containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY,h:mm:ss a'
-          });
-
-
-        // Video URL
-        this.settingsService.getVideoURL().subscribe((url) => {
-            if (url !== null) {
-                this.dailyVideo = url;
-                // Form:
-                this.dailyVideoForm = this.fb.group({
-                    $key: [this.dailyVideo.$key],
-                    uid: [this.dailyVideo.uid],
-                    videoURL: [this.dailyVideo.videoURL],
-                });
-
-                this.$key = this.dailyVideoForm.value.$key;
-                this.uid = this.dailyVideoForm.value.uid;
-                this.videoURL = this.dailyVideoForm.value.videoURL;
-            }
-        });
     }
 
     ngOnInit() {
-
-
     }
 
     onSettingsSubmit(formData) {
         this.settingsService.updateSettings(formData);
     }
 
-    onCountdownSubmit(cdFormData) {
-        this.countdownService.updateCountdown(cdFormData);
-    }
-
-    onDailyVideoSubmit(videoForm) {
-        this.settingsService.updateVideoURL(videoForm);
-        console.log('videoForm', videoForm);
-    }
 
 }

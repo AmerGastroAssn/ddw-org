@@ -6,6 +6,7 @@ import { FeaturedPost } from '../../../models/FeaturedPost';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminHomePageService } from '../../../services/admin-home-page.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
       public sanitizer: DomSanitizer,
       private meta: Meta,
       private metaService: AdminMetaService,
+      private adminHomePageService: AdminHomePageService
     ) {
 
     }
@@ -83,7 +85,7 @@ export class HomeComponent implements OnInit {
         // Page elements
         this.cards$ = this.cardService.getAllCards();
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
-        this.settingsService.getVideoURL()
+        this.adminHomePageService.getVideoURL()
             .subscribe((dailyVideo) => {
                 return this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
             });

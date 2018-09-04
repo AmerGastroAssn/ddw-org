@@ -47,6 +47,7 @@ import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
 import { AdminFeaturedPostService } from './services/admin-featured-post.service';
+import { AdminHomePageService } from './services/admin-home-page.service';
 import { AdminMetaService } from './services/admin-meta.service';
 import { AdminPageService } from './services/admin-page.service';
 import { AdminSettingsService } from './services/admin-settings.service';
@@ -119,6 +120,7 @@ firebase.initializeApp(environment.firebase);
         AdminFeaturedPostService,
         ScriptService,
         AdminCalendarService,
+        AdminHomePageService,
     ],
     bootstrap: [AppComponent],
 

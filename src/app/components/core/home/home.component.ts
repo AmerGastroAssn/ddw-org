@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
       private metaService: AdminMetaService,
       private adminHomePageService: AdminHomePageService
     ) {
-
     }
 
     ngOnInit() {

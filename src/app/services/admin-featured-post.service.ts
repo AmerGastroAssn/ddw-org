@@ -94,7 +94,7 @@ export class AdminFeaturedPostService {
 
         this.postDoc.update(updatedPost)
             .then(() => {
-                this.sbAlert.open('Post2 was Saved!', 'Dismiss', {
+                this.sbAlert.open('Post 1 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -102,7 +102,7 @@ export class AdminFeaturedPostService {
                 console.log('Post updated', updatedPost);
             })
             .catch((error) => {
-                this.sbAlert.open('Post2 was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Post 1 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']
@@ -117,7 +117,7 @@ export class AdminFeaturedPostService {
 
         this.postDoc.update(updatedPost)
             .then(() => {
-                this.sbAlert.open('Post2 was Saved!', 'Dismiss', {
+                this.sbAlert.open('Post 2 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -125,7 +125,7 @@ export class AdminFeaturedPostService {
                 console.log('Post updated', updatedPost);
             })
             .catch((error) => {
-                this.sbAlert.open('Post3 was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Post 2 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']
@@ -140,7 +140,7 @@ export class AdminFeaturedPostService {
 
         this.postDoc.update(updatedPost)
             .then(() => {
-                this.sbAlert.open('Post3 was Saved!', 'Dismiss', {
+                this.sbAlert.open('Post 3 was Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-success']
@@ -148,7 +148,7 @@ export class AdminFeaturedPostService {
                 console.log('Post updated', updatedPost);
             })
             .catch((error) => {
-                this.sbAlert.open('Post3 was NOT Saved.', 'Dismiss', {
+                this.sbAlert.open('Post 3 was NOT Saved.', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
                     panelClass: ['snackbar-danger']

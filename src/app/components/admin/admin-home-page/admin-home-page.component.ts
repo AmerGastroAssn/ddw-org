@@ -34,7 +34,41 @@ export class AdminHomePageComponent implements OnInit {
     forTime: string;
     subheaderLoc: string;
     subheaderDate: string;
+    cardsTitle: string;
+    cardsSubtitle: string;
+    videoTitle: string;
+    videoSubtitle: string;
+    postsTitle: string;
+    postsSubtitle: string;
+    postsButtonText: string;
+    postsButtonURL: string;
+    onDemandTitle: string;
+    onDemandText: string;
+    onDemandButtonText: string;
+    onDemandButtonURL: string;
+    byTheNumbersTitle: string;
+    byTheNumbersOneNumber: string;
+    byTheNumbersOneSubtitle: string;
+    byTheNumbersTwoNumber: string;
+    byTheNumbersTwoSubtitle: string;
+    byTheNumbersThreeNumber: string;
+    byTheNumbersThreeSubtitle: string;
+    sponsorTitle: string;
+    sponsorOneImg: string;
+    sponsorOneURL: string;
+    sponsorTwoImg: string;
+    sponsorTwoURL: string;
+    sponsorThreeImg: string;
+    sponsorThreeURL: string;
+    sponsorFourImg: string;
+    sponsorFourURL: string;
 
+
+    CkeditorConfig = {
+        allowedContent: true,
+        height: 200,
+        extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
+    };
 
     constructor(
       private flashMessage: FlashMessagesService,
@@ -97,6 +131,34 @@ export class AdminHomePageComponent implements OnInit {
                     forTime: [this.homePage.forTime],
                     subheaderLoc: [this.homePage.subheaderLoc],
                     subheaderDate: [this.homePage.subheaderDate],
+                    cardsTitle: [this.homePage.cardsTitle],
+                    cardsSubtitle: [this.homePage.cardsSubtitle],
+                    videoTitle: [this.homePage.videoTitle],
+                    videoSubtitle: [this.homePage.videoSubtitle],
+                    postsTitle: [this.homePage.postsTitle],
+                    postsSubtitle: [this.homePage.postsSubtitle],
+                    postsButtonText: [this.homePage.postsButtonText],
+                    postsButtonURL: [this.homePage.postsButtonURL],
+                    onDemandTitle: [this.homePage.onDemandTitle],
+                    onDemandText: [this.homePage.onDemandText],
+                    onDemandButtonText: [this.homePage.onDemandButtonText],
+                    onDemandButtonURL: [this.homePage.onDemandButtonURL],
+                    byTheNumbersTitle: [this.homePage.byTheNumbersTitle],
+                    byTheNumbersOneNumber: [this.homePage.byTheNumbersOneNumber],
+                    byTheNumbersOneSubtitle: [this.homePage.byTheNumbersOneSubtitle],
+                    byTheNumbersTwoNumber: [this.homePage.byTheNumbersTwoNumber],
+                    byTheNumbersTwoSubtitle: [this.homePage.byTheNumbersTwoSubtitle],
+                    byTheNumbersThreeNumber: [this.homePage.byTheNumbersThreeNumber],
+                    byTheNumbersThreeSubtitle: [this.homePage.byTheNumbersThreeSubtitle],
+                    sponsorTitle: [this.homePage.sponsorTitle],
+                    sponsorOneImg: [this.homePage.sponsorOneImg],
+                    sponsorOneURL: [this.homePage.sponsorOneURL],
+                    sponsorTwoImg: [this.homePage.sponsorTwoImg],
+                    sponsorTwoURL: [this.homePage.sponsorTwoURL],
+                    sponsorThreeImg: [this.homePage.sponsorThreeImg],
+                    sponsorThreeURL: [this.homePage.sponsorThreeURL],
+                    sponsorFourImg: [this.homePage.sponsorFourImg],
+                    sponsorFourURL: [this.homePage.sponsorFourURL],
                 });
 
                 this.$key = this.homePageForm.value.$key;
@@ -106,6 +168,34 @@ export class AdminHomePageComponent implements OnInit {
                 this.forTime = this.homePageForm.value.forTime;
                 this.subheaderLoc = this.homePageForm.value.subheaderLoc;
                 this.subheaderDate = this.homePageForm.value.subheaderDate;
+                this.cardsTitle = this.homePageForm.value.cardsTitle;
+                this.cardsSubtitle = this.homePageForm.value.cardsSubtitle;
+                this.videoTitle = this.homePageForm.value.videoTitle;
+                this.videoSubtitle = this.homePageForm.value.videoSubtitle;
+                this.postsTitle = this.homePageForm.value.postsTitle;
+                this.postsSubtitle = this.homePageForm.value.postsSubtitle;
+                this.postsButtonText = this.homePageForm.value.postsButtonText;
+                this.postsButtonURL = this.homePageForm.value.postsButtonURL;
+                this.onDemandTitle = this.homePageForm.value.onDemandTitle;
+                this.onDemandText = this.homePageForm.value.onDemandText;
+                this.onDemandButtonText = this.homePageForm.value.onDemandButtonText;
+                this.onDemandButtonURL = this.homePageForm.value.onDemandButtonURL;
+                this.byTheNumbersTitle = this.homePageForm.value.byTheNumbersTitle;
+                this.byTheNumbersOneNumber = this.homePageForm.value.byTheNumbersOneNumber;
+                this.byTheNumbersOneSubtitle = this.homePageForm.value.byTheNumbersOneSubtitle;
+                this.byTheNumbersTwoNumber = this.homePageForm.value.byTheNumbersTwoNumber;
+                this.byTheNumbersTwoSubtitle = this.homePageForm.value.byTheNumbersTwoSubtitle;
+                this.byTheNumbersThreeNumber = this.homePageForm.value.byTheNumbersThreeNumber;
+                this.byTheNumbersThreeSubtitle = this.homePageForm.value.byTheNumbersThreeSubtitle;
+                this.sponsorTitle = this.homePageForm.value.sponsorTitle;
+                this.sponsorOneImg = this.homePageForm.value.sponsorOneImg;
+                this.sponsorOneURL = this.homePageForm.value.sponsorOneURL;
+                this.sponsorTwoImg = this.homePageForm.value.sponsorTwoImg;
+                this.sponsorTwoURL = this.homePageForm.value.sponsorTwoURL;
+                this.sponsorThreeImg = this.homePageForm.value.sponsorThreeImg;
+                this.sponsorThreeURL = this.homePageForm.value.sponsorThreeURL;
+                this.sponsorFourImg = this.homePageForm.value.sponsorFourImg;
+                this.sponsorFourURL = this.homePageForm.value.sponsorFourURL;
             }
         });
     }

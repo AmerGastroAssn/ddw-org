@@ -189,7 +189,7 @@ export class AdminCardsEditComponent implements OnInit {
                 this.cardForm3 = this.fb.group({
                     $key: [this.card3.$key],
                     uid: [this.card3.uid],
-                    orderNumber: [this.card2.orderNumber],
+                    orderNumber: [this.card3.orderNumber],
                     title: [this.card3.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)

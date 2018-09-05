@@ -4,7 +4,8 @@ input, label {
 }
 
 input[type="url"],
-input[type="text"] {
+input[type="text"],
+textarea[type="text"] {
     border-radius: 0;
 }
 

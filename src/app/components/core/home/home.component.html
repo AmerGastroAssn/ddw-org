@@ -52,7 +52,7 @@
 <div class="row">
     <div class="container">
         <div class="col-md-7 offset-md-3 text-center">
-            <h2 class="card-sec-title">DDW Post-Meeting Resources</h2>
+            <h2 class="card-sec-title">{{ homePage.cardsTitle }}</h2>
             <div class="col-4 offset-4">
                 <div class="underline"></div>
             </div>
@@ -63,8 +63,7 @@
 <div class="row">
     <div class="container">
         <div class="card-sec-subtitle">
-            <p>DDW may be over, but a variety of guides and information are still available to you after the meeting. We
-                encourage all attendees to continue using these resources.</p>
+            <p> {{ homePage.cardsSubtitle }}</p>
         </div>
     </div>
 </div>
@@ -89,7 +88,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
-                <h2 class="blue-sec">DDW Daily News Videos</h2>
+                <h2 class="blue-sec">{{ homePage.videoTitle }}</h2>
                 <div class="col-4 offset-4">
                     <div class="underline"></div>
                 </div>
@@ -108,9 +107,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <h5>Get up-to-speed on the hottest topics at DDW. Watch video interviews with DDW 2018 presenters and
-                experts in the field. For additional news and videos, visit the <a href="http://blog.ddw.org/"
-                                                                                   target="_blank">DDW Blog</a>.</h5>
+            <h5 [innerHTML]="homePage.videoSubtitle"></h5>
         </div>
     </div>
 </div>
@@ -119,7 +116,7 @@
 <div class="row featured">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="card-sec-title">Featured Blog Posts</h2>
+            <h2 class="card-sec-title">{{ homePage.postsTitle }}</h2>
             <div class="col-4 offset-4">
                 <div class="underline"></div>
             </div>
@@ -139,8 +136,8 @@
         </div>
         <div class="row mt-5">
             <div class="col-md-4 offset-md-4 text-center">
-                <a href="http://blog.ddw.org" target="_blank" class="btn btn-warning btn-lg">
-                    View All Posts
+                <a [href]="homePage.postsButtonURL" target="_blank" class="btn btn-warning btn-lg">
+                    {{ homePage.postsButtonText }}
                 </a>
             </div>
         </div>
@@ -151,7 +148,7 @@
 <div class="row on-demand-top">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="card-sec-title">DDW On Demand Offer</h2>
+            <h2 class="card-sec-title">{{ homePage.onDemandTitle }}</h2>
             <div class="col-4 offset-4">
                 <div class="underline"></div>
             </div>
@@ -161,24 +158,14 @@
 
 <div class="row on-demand-bottom">
     <div class="container">
-        <p>If you were unable to attend DDW 2018, you can still access the great education presented at the meeting with
-            DDW On Demand. Get immediate access to the most comprehensive CME accredited program in gastroenterology.
-            Your On Demand player provides access to 450 hours of educational content organized by the 17 DDW Tracks, as
-            well as the AASLD Hepatology Update and AGA Postgraduate Course.
-        </p>
-        <p>
-            You can conveniently access your On Demand program from any computer or mobile device. Our state-of-the-art
-            media player makes it easy to search the exact content you’re looking for. We’ll even direct you to the
-            specific slide that contains your search term. And with downloadable MP3 audio files, integrated online CME
-            testing and a complimentary hard drive, we make it easy for you to access your content anytime, anywhere.
-            Limited time offer.</p>
+        <div [innerHTML]="homePage.onDemandText"></div>
     </div>
 </div>
 <div class="row purchase">
     <div class="col-md-4 offset-md-4 text-center">
-        <a href="https://orders.ondemand.org/cgi-bin/htmlos/tracking.html?trackpage=postweb&tracktype=ddw"
+        <a [href]="homePage.onDemandButtonURL"
            target="_blank" class="btn btn-warning btn-lg">
-            Purchase
+            {{ homePage.onDemandButtonText }}
         </a>
     </div>
 </div>
@@ -189,7 +176,7 @@
     <div class="row">
         <div class="container">
             <div class="col-md-6 offset-md-3 text-center">
-                <h2 class="by-nums-title"><b>DDW by the Numbers</b></h2>
+                <h2 class="by-nums-title">{{ homePage.byTheNumbersTitle }}</h2>
                 <div class="col-4 offset-4">
                     <div class="underline"></div>
                 </div>
@@ -200,16 +187,16 @@
         <div class="HtmlContent">
             <div class="row">
                 <div class="col-sm-4">
-                    <p class="num"><b>14,000+</b></p>
-                    <p class="num-def">Annual DDW Attendance</p>
+                    <p class="num"><b>{{ homePage.byTheNumbersOneNumber }}</b></p>
+                    <p class="num-def">{{ homePage.byTheNumbersOneSubtitle }}</p>
                 </div>
                 <div class="col-sm-4">
-                    <p class="num"><b>5,400</b></p>
-                    <p class="num-def">Original lectures, poster presentations and oral abstract presentations</p>
+                    <p class="num"><b>{{ homePage.byTheNumbersTwoNumber }}</b></p>
+                    <p class="num-def">{{ homePage.byTheNumbersTwoSubtitle }}</p>
                 </div>
                 <div class="col-sm-4">
-                    <p class="num"><b>285</b></p>
-                    <p class="num-def">Exhibitors showcasing the newest technology innovations.</p>
+                    <p class="num"><b>{{ homePage.byTheNumbersThreeNumber }}</b></p>
+                    <p class="num-def">{{ homePage.byTheNumbersThreeSubtitle }}</p>
                 </div>
             </div>
         </div>
@@ -220,7 +207,7 @@
 <div class="row sponsors">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="by-nums-title"><b>DDW's Sponsoring Societies</b></h2>
+            <h2 class="by-nums-title">{{ homePage.sponsorTitle }}</h2>
             <div class="col-4 offset-4">
                 <div class="underline"></div>
             </div>
@@ -229,20 +216,32 @@
 </div>
 <div class="row text-center sponsor-images">
     <div class="col-sm-3">
-        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-aasld.png"
-             alt="aasld" class="aasld img-fluid">
+        <a [href]="homePage.sponsorOneURL">
+            <img [src]="homePage.sponsorOneImg"
+                 [alt]="homePage.sponsorOneImg"
+                 class="sponsor-one img-fluid">
+        </a>
     </div>
     <div class="col-sm-3">
-        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/AGA_Logo_Horizontal_RGB.png"
-             alt="aga" class="aga img-fluid">
+        <a [href]="homePage.sponsorTwoURL">
+            <img [src]="homePage.sponsorTwoImg"
+                 [alt]="homePage.sponsorTwoImg"
+                 class="sponsor-two img-fluid">
+        </a>
     </div>
     <div class="col-sm-3">
-        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-asge.png"
-             alt="asge" class="asge img-fluid">
+        <a [href]="homePage.sponsorThreeURL">
+            <img [src]="homePage.sponsorThreeImg"
+                 [alt]="homePage.sponsorThreeImg"
+                 class="sponsor-three img-fluid">
+        </a>
     </div>
     <div class="col-sm-3">
-        <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/logo-ssat.png"
-             alt="ssat" class="ssat img-fluid">
+        <a [href]="homePage.sponsorFourURL">
+            <img [src]="homePage.sponsorFourImg"
+                 [alt]="homePage.sponsorFourImg"
+                 class="sponsor-four img-fluid">
+        </a>
     </div>
 </div>
 

@@ -1,0 +1,505 @@
+<div class="row mb-5 mt-3">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center text-secondary pb-4 pt-3">
+                    <span class="text-dark">
+               <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
+                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                        <i class="fa fa-home"></i>&nbsp;Admin
+                    </span> Home Page
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- * Page Sections * -->
+<div class="row mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ng-template #homeLoading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Page Sections</h4>
+                        <hr>
+                        <form [formGroup]="homePageForm"
+                              (ngSubmit)="onHomePageSubmit(homePageForm.value)"
+                              *ngIf="homePage; else homeLoading">
+                            <h5>Banner Section</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="title"
+                                               [(ngModel)]="homePage.title"
+                                               formControlName="title">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="subtitle">Subtitle</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="subtitle"
+                                               [(ngModel)]="homePage.subtitle"
+                                               formControlName="subtitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="forTime">For Time</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="forTime"
+                                               [(ngModel)]="homePage.forTime"
+                                               formControlName="forTime">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subheaderLoc">Subheader Location</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="subheaderLoc"
+                                               [(ngModel)]="homePage.subheaderLoc"
+                                               formControlName="subheaderLoc">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subheaderDate">Subheader Date</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="subheaderDate"
+                                               [(ngModel)]="homePage.subheaderDate"
+                                               formControlName="subheaderDate">
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Cards Title &amp; Subtitle</h5>
+                                    <div class="form-group">
+                                        <label for="cardsTitle">Cards Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="cardsTitle"
+                                               [(ngModel)]="homePage.cardsTitle"
+                                               formControlName="cardsTitle">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cardsSubtitle">Cards Subtitle</label>
+                                        <textarea type="text"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  id="cardsSubtitle"
+                                                  [(ngModel)]="homePage.cardsSubtitle"
+                                                  formControlName="cardsSubtitle">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Video Title &amp; Subtitle</h5>
+
+                                    <div class="form-group">
+                                        <label for="videoTitle">Video Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="videoTitle"
+                                               [(ngModel)]="homePage.videoTitle"
+                                               formControlName="videoTitle">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="videoSubtitle">Video Subtitle</label>
+                                        <ckeditor [formControl]="homePageForm.controls['videoSubtitle']"
+                                                  [(ngModel)]="homePage.videoSubtitle"
+                                                  id="videoSubtitle"
+                                                  [readonly]="false"
+                                                  debounce="200"
+                                                  [config]="CkeditorConfig">
+                                        </ckeditor>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Posts Title, Subtitle &amp; Button</h5>
+
+                                    <div class="form-group">
+                                        <label for="postsTitle">Posts Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="postsTitle"
+                                               [(ngModel)]="homePage.postsTitle"
+                                               formControlName="postsTitle">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="postsSubtitle">Posts Subtitle</label>
+                                        <textarea type="text"
+                                                  class="form-control"
+                                                  rows="3"
+                                                  id="postsSubtitle"
+                                                  [(ngModel)]="homePage.postsSubtitle"
+                                                  formControlName="postsSubtitle">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postsButtonText">Posts Button Text</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="postsButtonText"
+                                               [(ngModel)]="homePage.postsButtonText"
+                                               formControlName="postsButtonText">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postsButtonURL">Posts Button URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="postsButtonURL"
+                                               [(ngModel)]="homePage.postsButtonURL"
+                                               formControlName="postsButtonURL">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>On Demand Title, Text &amp; Button</h5>
+                                    <div class="form-group">
+                                        <label for="onDemandTitle">On Demand Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="onDemandTitle"
+                                               [(ngModel)]="homePage.onDemandTitle"
+                                               formControlName="onDemandTitle">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>On Demand Text</label>
+                                        <ckeditor [formControl]="homePageForm.controls['onDemandText']"
+                                                  [(ngModel)]="homePage.onDemandText"
+                                                  [readonly]="false"
+                                                  [config]="CkeditorConfig"
+                                                  debounce="500">
+                                        </ckeditor>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="onDemandButtonText">On Demand Button Text</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="onDemandButtonText"
+                                               [(ngModel)]="homePage.onDemandButtonText"
+                                               formControlName="onDemandButtonText">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="onDemandButtonURL">On Demand Button URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="onDemandButtonURL"
+                                               [(ngModel)]="homePage.onDemandButtonURL"
+                                               formControlName="onDemandButtonURL">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Numbers Title and Three Sections</h5>
+                                    <div class="form-group">
+                                        <label for="byTheNumbersTitle">Numbers Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersTitle"
+                                               [(ngModel)]="homePage.byTheNumbersTitle"
+                                               formControlName="byTheNumbersTitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="byTheNumbersOneNumber">Numbers Left Number</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersOneNumber"
+                                               [(ngModel)]="homePage.byTheNumbersOneNumber"
+                                               formControlName="byTheNumbersOneNumber">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="byTheNumbersOneSubtitle">Numbers Left Subtitle</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersOneSubtitle"
+                                               [(ngModel)]="homePage.byTheNumbersOneSubtitle"
+                                               formControlName="byTheNumbersOneSubtitle">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="byTheNumbersTwoNumber">Numbers Middle Number</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersTwoNumber"
+                                               [(ngModel)]="homePage.byTheNumbersTwoNumber"
+                                               formControlName="byTheNumbersTwoNumber">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="byTheNumbersTwoSubtitle">Numbers Middle Subtitle</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersTwoSubtitle"
+                                               [(ngModel)]="homePage.byTheNumbersTwoSubtitle"
+                                               formControlName="byTheNumbersTwoSubtitle">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="byTheNumbersThreeNumber">Numbers Right Number</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersThreeNumber"
+                                               [(ngModel)]="homePage.byTheNumbersThreeNumber"
+                                               formControlName="byTheNumbersThreeNumber">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="byTheNumbersThreeSubtitle">Numbers Right Subtitle</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="byTheNumbersThreeSubtitle"
+                                               [(ngModel)]="homePage.byTheNumbersThreeSubtitle"
+                                               formControlName="byTheNumbersThreeSubtitle">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Sponsors</h5>
+                                    <p>
+                                        <small>Use the Image Uploader below to get new Image URL</small>
+                                    </p>
+                                    <div class="form-group">
+                                        <label for="sponsorTitle">Sponsors Title</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorTitle"
+                                               [(ngModel)]="homePage.sponsorTitle"
+                                               formControlName="sponsorTitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="sponsorOneImg">Sponsor One Image</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorOneImg"
+                                               [(ngModel)]="homePage.sponsorOneImg"
+                                               formControlName="sponsorOneImg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sponsorOneURL">Sponsor One URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorOneURL"
+                                               [(ngModel)]="homePage.sponsorOneURL"
+                                               formControlName="sponsorOneURL">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="sponsorTwoImg">Sponsor Two Image</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorTwoImg"
+                                               [(ngModel)]="homePage.sponsorTwoImg"
+                                               formControlName="sponsorTwoImg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sponsorTwoURL">Sponsor Two URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorTwoURL"
+                                               [(ngModel)]="homePage.sponsorTwoURL"
+                                               formControlName="sponsorTwoURL">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="sponsorThreeImg">Sponsor Three Image</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorThreeImg"
+                                               [(ngModel)]="homePage.sponsorThreeImg"
+                                               formControlName="sponsorThreeImg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sponsorThreeURL">Sponsor Three URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorThreeURL"
+                                               [(ngModel)]="homePage.sponsorThreeURL"
+                                               formControlName="sponsorThreeURL">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="sponsorFourImg">Sponsor Four Image</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorFourImg"
+                                               [(ngModel)]="homePage.sponsorFourImg"
+                                               formControlName="sponsorFourImg">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sponsorFourURL">Sponsor Four URL</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="sponsorFourURL"
+                                               [(ngModel)]="homePage.sponsorFourURL"
+                                               formControlName="sponsorFourURL">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-secondary full-width">
+                                    <i class="fa fa-home"></i>&nbsp;Save Home Page Content
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- * Video and Countdown Clock * -->
+<div class="row mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ng-template #videoLoading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="dailyVideoForm"
+                              (ngSubmit)="onDailyVideoSubmit(dailyVideoForm.value)"
+                              *ngIf="dailyVideo; else videoLoading">
+                            <div class="form-group">
+                                <label>
+                                    <h5>DDW Daily News Video</h5>
+                                    <p class="text-light">URL needs to come from a embedded iFrame</p>
+                                    <p class="text-light">ie. Go to YouTube video > share > embed > grab url from
+                                        src="this-url"</p>
+                                </label>
+                                <input type="url"
+                                       class="form-control"
+                                       [(ngModel)]="videoURL"
+                                       formControlName="videoURL">
+                            </div>
+                            <button class="btn btn-secondary full-width">
+                                <i class="fa fa-video"></i>&nbsp;Save Video URL
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ng-template #loading>
+                    <div class="text-center text-dark p-5">
+                        <i class="far fa-spinner fa-pulse"></i>
+                        <br>
+                        loading...
+                    </div>
+                </ng-template>
+                <div class="card" style="height:100%;">
+                    <div class="card-body">
+                        <form [formGroup]="countdownForm"
+                              (ngSubmit)="onCountdownSubmit(countdownForm.value)"
+                              *ngIf="countdown; else loading">
+                            <div class="form-group">
+                                <label><h5>Set Countdown Date</h5>
+                                    Current Set Date is: <br> {{ countdown.date.toDate() | date:'medium' }}
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       bsDatepicker
+                                       [bsConfig]="bsConfig"
+                                       placement="top"
+                                       [(ngModel)]="date"
+                                       formControlName="date">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </div>
+                            <button class="btn btn-secondary full-width">
+                                <i class="fa fa-alarm-clock"></i>&nbsp;Save Countdown
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- * Card Edit * -->
+<ddw-admin-cards-edit></ddw-admin-cards-edit>
+
+
+<!-- * Featured Posts * -->
+<ddw-admin-featured-blog-posts-edit></ddw-admin-featured-blog-posts-edit>
+

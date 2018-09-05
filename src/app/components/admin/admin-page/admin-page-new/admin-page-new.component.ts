@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -68,6 +68,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     edPages$: Observable<Page[]>;
     attendeePages$: Observable<Page[]>;
     presPages$: Observable<Page[]>;
+    invalidTitle: EventEmitter<boolean> = new EventEmitter();
+    titleNotValid: boolean;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -145,6 +147,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+
         // Gets Page Categories for Grandchild page selection.
         this.registerPages$ = this.adminPageService.getAllRegisterPages();
         this.newsPages$ = this.adminPageService.getAllNewsPages();
@@ -155,9 +158,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
         // Get Calendar Titles
         this.calendar$ = this.adminCalendarService.getAllCalendars();
+        this.pages$ = this.adminPageService.getAllPages();
 
         // Form:
         this.newPageForm = this.fb.group({
+
             title: ['', Validators.required],
             body: [''],
             author: ['' || this.user.email],
@@ -177,7 +182,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             grandchildURL: [''],
             hidden: ['' || false]
         });
-
+        console.log('this.title', this.title);
 
         this.title = this.newPageForm.value.title;
         this.body = this.newPageForm.value.body;
@@ -234,4 +239,22 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     toggleIsGrandchildPage() {
         this.isGrandchildPage = !this.isGrandchildPage;
     }
+
+    duplicatePage(control) {
+        if (control) {
+            this.pages$.subscribe((pageArr) => {
+                console.log('pageArr', pageArr);
+                pageArr.forEach(page => {
+                    console.log('page', page);
+                    if (page.title === control) {
+                        return this.titleNotValid = true;
+                    } else {
+                        return this.titleNotValid = false;
+                    }
+                });
+            });
+        }
+    }
+
+
 }

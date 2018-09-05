@@ -4,7 +4,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { DailyVideo } from '../models/DailyVideo';
 import { Settings } from '../models/Settings';
 import { User } from '../models/User';
 
@@ -14,9 +13,7 @@ import { User } from '../models/User';
 export class AdminSettingsService {
     settingsAdded = new EventEmitter<Settings>();
     localSettings: Settings;
-    videoDoc: AngularFirestoreDocument<DailyVideo>;
-    video$: Observable<DailyVideo>;
-    video$Key: string;
+
     settingsDoc: AngularFirestoreDocument<Settings>;
     settings$: Observable<Settings>;
     settings: Settings;
@@ -32,7 +29,7 @@ export class AdminSettingsService {
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
     ) {
-        this.video$Key = 'TsCwvT2a4VolBZrvTbOS';
+
         this.settings$key = 'YgCYgsItfFPq4DkNCHZq';
         // Checks authentication of user and get's ID.
         this.user$ = this.afAuth.authState.pipe(
@@ -72,20 +69,6 @@ export class AdminSettingsService {
         this.settingsAdded.emit(settings);
     }
 
-    getVideoURL(): Observable<DailyVideo> {
-        this.videoDoc = this.afs.doc<DailyVideo>(`dailyVideo/${this.video$Key}`);
-        this.video$ = this.videoDoc.snapshotChanges().map((action) => {
-            if (action.payload.exists === false) {
-                return null;
-            } else {
-                const data = action.payload.data() as DailyVideo;
-                data.$key = action.payload.id;
-                return data;
-            }
-        });
-
-        return this.video$;
-    }
 
     getSettings(): Observable<Settings> {
         this.settingsDoc = this.afs.doc<Settings>(`settings/${this.settings$key}`);
@@ -103,27 +86,6 @@ export class AdminSettingsService {
 
     }
 
-    updateVideoURL(updatedVideoURL): void {
-        this.videoDoc = this.afs.doc<DailyVideo>(`dailyVideo/${this.video$Key}`);
-
-        this.videoDoc.update(updatedVideoURL)
-            .then(() => {
-                this.sbAlert.open('Video URL was Saved!', 'Dismiss', {
-                    duration: 3000,
-                    verticalPosition: 'bottom',
-                    panelClass: ['snackbar-success']
-                });
-                console.log('Video URL updated', updatedVideoURL);
-            })
-            .catch((error) => {
-                this.sbAlert.open('Video URL was NOT Saved.', 'Dismiss', {
-                    duration: 3000,
-                    verticalPosition: 'bottom',
-                    panelClass: ['snackbar-danger']
-                });
-                console.log(`ERROR~uDV: `, error);
-            });
-    }
 
     updateSettings(settings): void {
         this.settingsDoc = this.afs.doc<Settings>(`settings/${this.settings$key}`);

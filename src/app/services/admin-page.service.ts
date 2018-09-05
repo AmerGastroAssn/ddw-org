@@ -118,19 +118,20 @@ export class AdminPageService {
     }
 
 
-    updatePage(formData, url: string) {
-        // const newURL: string = this.string_to_slug(formData.title);
+    updatePage(formData, uid: string) {
+        const new$key = this.afs.createId();
+        const titleToSlug: string = this.string_to_slug(formData.title);
         if (formData.isGrandchildPage) {
-            this.newSlug = `/${formData.category}/${formData.grandchildURL}/${url}`;
+            this.newSlug = `/${formData.category}/${formData.grandchildURL}/${titleToSlug}`;
         } else {
-            this.newSlug = `${formData.category}/${url}`;
+            this.newSlug = `${formData.category}/${titleToSlug}`;
         }
-        const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${url}`);
+        const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${titleToSlug}`);
         if (typeof formData.date === 'number') {
             const timestampToNum = formData.date;
             const data: Page = {
                 $key: this.newSlug,
-                uid: formData.uid,
+                uid: new$key,
                 title: formData.title,
                 body: formData.body,
                 author: formData.author,
@@ -140,7 +141,7 @@ export class AdminPageService {
                 category: formData.category,
                 published: formData.published,
                 template: formData.template,
-                url: url,
+                url: titleToSlug,
                 slug: this.newSlug,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,
@@ -158,7 +159,7 @@ export class AdminPageService {
             const timestampToNum = formData.date.getTime();
             const data: Page = {
                 $key: this.newSlug,
-                uid: formData.uid,
+                uid: new$key,
                 title: formData.title,
                 body: formData.body,
                 author: formData.author,
@@ -168,7 +169,7 @@ export class AdminPageService {
                 category: formData.category,
                 published: formData.published,
                 template: formData.template,
-                url: url,
+                url: titleToSlug,
                 slug: this.newSlug,
                 extURL: formData.extURL,
                 isExtURL: formData.isExtURL,

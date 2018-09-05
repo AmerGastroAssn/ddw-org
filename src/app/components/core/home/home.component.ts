@@ -3,9 +3,11 @@ import { DomSanitizer, Meta } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
+import { HomePage } from '../../../models/HomePage';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
+import { AdminHomePageService } from '../../../services/admin-home-page.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
@@ -17,11 +19,11 @@ import { CountdownService, Time } from '../../../services/countdown.service';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    title = `Digestive Disease Week®`;
-    subtitle = 'The Global Leader';
-    forTime = 'for 50 Years';
-    subheaderLoc = 'San Diego Convention Center | San Diego, CA';
-    subheaderDate = 'May 18-21, 2019';
+    title: string;
+    subtitle: string;
+    forTime: string;
+    subheaderLoc: string;
+    subheaderDate: string;
     cards$: Observable<Card[]>;
 
     countdownTime: string;
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
     headerbar: any;
     footerbar: any;
     videoURL: any;
+    homePage: HomePage;
 
     constructor(
       private countdownService: CountdownService,
@@ -42,6 +45,7 @@ export class HomeComponent implements OnInit {
       public sanitizer: DomSanitizer,
       private meta: Meta,
       private metaService: AdminMetaService,
+      private adminHomePageService: AdminHomePageService
     ) {
 
     }
@@ -74,6 +78,13 @@ export class HomeComponent implements OnInit {
                     ], true);
                 }
             });
+
+        // Home Page Sections
+        this.adminHomePageService.getHomeForm()
+            .subscribe((homePage) => {
+                this.homePage = homePage;
+            });
+
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {
@@ -83,11 +94,12 @@ export class HomeComponent implements OnInit {
         // Page elements
         this.cards$ = this.cardService.getAllCards();
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
-        this.settingsService.getVideoURL()
+        this.adminHomePageService.getVideoURL()
             .subscribe((dailyVideo) => {
                 return this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
             });
 
+        // Countdown
         this.countdownService.getCountdown()
             .subscribe((countdown) => {
                 const newDate = Date.parse(countdown.date);

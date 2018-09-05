@@ -143,6 +143,7 @@
                                     id="category"
                                     [class.invalid]="!f.category.valid && f.category.touched"
                                     [(ngModel)]="page.category"
+                                    [value]="page.category"
                                     formControlName="category">
                                 <option>register</option>
                                 <option>attendee-planning</option>
@@ -182,7 +183,8 @@
                                             id="isGrandchildPage"
                                             [class.invalid]="!f.grandchildURL.valid && f.grandchildURL.touched"
                                             formControlName="grandchildURL">
-                                        <option *ngFor="let page of pages$ | async">
+                                        <option *ngFor="let page of pages$ | async"
+                                                [value]="page.url">
                                             {{ page.url }}
                                         </option>
                                     </select>
@@ -198,6 +200,8 @@
                             <select class="form-control"
                                     id="sortOrder"
                                     [class.invalid]="!f.sortOrder.valid && f.sortOrder.touched"
+                                    [(ngModel)]="page.sortOrder"
+                                    [value]="page.sortOrder"
                                     formControlName="sortOrder">
                                 <option>1</option>
                                 <option>2</option>
@@ -219,6 +223,7 @@
                                     id="template"
                                     [class.invalid]="!f.template.valid && f.template.touched"
                                     [(ngModel)]="page.template"
+                                    [value]="page.template"
                                     formControlName="template">
                                 <option>Full Width</option>
                                 <option>3 Column Bottom</option>
@@ -253,7 +258,8 @@
                                             id="calendarTitle"
                                             [(ngModel)]="page.calendarTitle"
                                             formControlName="calendarTitle">
-                                        <option *ngFor="let cal of calendars$ | async">
+                                        <option *ngFor="let cal of calendars$ | async"
+                                                [value]="cal.title">
                                             {{ cal.title }}
                                         </option>
                                     </select>

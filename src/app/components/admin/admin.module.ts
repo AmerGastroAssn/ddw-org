@@ -34,6 +34,7 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 
 @NgModule({
     declarations: [
@@ -55,6 +56,7 @@ import { AdminComponent } from './admin.component';
         AdminCalendarListComponent,
         AdminCalendarNewComponent,
         AdminCalendarComponent,
+        AdminHomePageComponent,
     ],
     imports: [
         CommonModule,

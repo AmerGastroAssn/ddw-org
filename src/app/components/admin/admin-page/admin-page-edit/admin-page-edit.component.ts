@@ -196,7 +196,7 @@ export class AdminPageEditComponent implements OnInit {
                     isExtURL: ['' || page.isExtURL],
                     sortOrder: ['' || page.sortOrder],
                     hasCalendar: ['' || page.hasCalendar],
-                    calendarTitle: ['' || page.calendarTitle],
+                    calendarTitle: [page.calendarTitle],
                     isGrandchildPage: ['' || page.isGrandchildPage],
                     grandchildURL: ['' || page.grandchildURL],
                     hidden: ['' || false]

@@ -253,7 +253,8 @@
                                             id="calendarTitle"
                                             [(ngModel)]="page.calendarTitle"
                                             formControlName="calendarTitle">
-                                        <option *ngFor="let cal of calendars$ | async">
+                                        <option *ngFor="let cal of calendars$ | async"
+                                                [value]="cal.title">
                                             {{ cal.title }}
                                         </option>
                                     </select>

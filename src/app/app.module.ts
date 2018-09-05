@@ -57,6 +57,7 @@ import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
+import { PagesNavbarComponent } from './components/core/pages-navbar/pages-navbar.component';
 
 
 // Inits the app (Fixes a bug).
@@ -87,6 +88,7 @@ firebase.initializeApp(environment.firebase);
         AdminCalendarItemComponent,
         AdminPressReleaseItemComponent,
         PressReleasesDetailsComponent,
+        PagesNavbarComponent,
     ],
     imports: [
         BrowserModule,

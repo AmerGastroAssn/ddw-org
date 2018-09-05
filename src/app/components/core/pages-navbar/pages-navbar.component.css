@@ -24,10 +24,9 @@ li.dropdown-item a {
     font-size: 14px;
 }
 
-/* Colin's Addition */
-/*li.dropdown-item:hover, li.dropdown-item *:hover, li.dropdown-item *:active, li.dropdown-item > a:link:hover {*/
-    /*background-color: #eeeeee !important;*/
-/*}*/
+li.dropdown-item:hover, li.dropdown-item *:hover, li.dropdown-item *:active, li.dropdown-item > a:link:hover {
+    background-color: #eeeeee !important;
+}
 
 .dropdown-menu>li:not(.dropdown-item)>a:not(.dropdown-item):hover, .dropdown-menu>li:not(.dropdown-item)>a:not(.dropdown-item):focus {
     background-color: rgba(24,28,33,0.03);

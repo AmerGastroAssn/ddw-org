@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
       private metaService: AdminMetaService,
       private adminHomePageService: AdminHomePageService
     ) {
+
     }
 
     ngOnInit() {
@@ -77,6 +78,13 @@ export class HomeComponent implements OnInit {
                     ], true);
                 }
             });
+
+        // Home Page Sections
+        this.adminHomePageService.getHomeForm()
+            .subscribe((homePage) => {
+                this.homePage = homePage;
+            });
+
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {
@@ -98,12 +106,6 @@ export class HomeComponent implements OnInit {
                 this.time1$ = this.countdownService.timer(new Date(countdown.date.toDate()));
                 // To put Date in manually.
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
-            });
-
-        // Home Page Sections
-        this.adminHomePageService.getHomeForm()
-            .subscribe((homePage) => {
-                this.homePage = homePage;
             });
 
 

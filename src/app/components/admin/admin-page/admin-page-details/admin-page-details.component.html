@@ -69,8 +69,9 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a [routerLink]="['/home']">Register</a>
+                    <div class="text-capitalize text-decoration-none">{{ page.category }}</div>
                 </li>
+                <li class="breadcrumb-item text-capitalize" *ngIf="page.isGrandchildPage">{{page.grandchildURL}}</li>
                 <li class="breadcrumb-item active">{{page.title}}</li>
             </ol>
         </div>

@@ -254,7 +254,8 @@
                                 <select class="form-control"
                                         id="calendarTitle"
                                         formControlName="calendarTitle">
-                                    <option *ngFor="let cal of calendar$ | async">
+                                    <option *ngFor="let cal of calendar$ | async"
+                                            [value]="cal.title">
                                         {{ cal.title }}
                                     </option>
                                 </select>
@@ -381,8 +382,10 @@
                                    id="published"
                                    formControlName="published">
                             <label class="custom-control-label"
-                                   for="published"><span class="text-danger"><b>Publish</b></span> the page on "Create"? <br>
-                            <small>If so, page will appear according to "Publish On" date.</small></label>
+                                   for="published"><span class="text-danger"><b>Publish</b></span> the page on "Create"?
+                                <br>
+                                <small>If so, page will appear according to "Publish On" date.</small>
+                            </label>
                         </div>
                     </div>
 

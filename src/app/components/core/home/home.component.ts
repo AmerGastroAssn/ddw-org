@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, Meta } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
@@ -45,12 +45,15 @@ export class HomeComponent implements OnInit {
       public sanitizer: DomSanitizer,
       private meta: Meta,
       private metaService: AdminMetaService,
-      private adminHomePageService: AdminHomePageService
+      private adminHomePageService: AdminHomePageService,
+      private titleService: Title
     ) {
 
     }
 
     ngOnInit() {
+        // For page title
+        this.titleService.setTitle('Home - DDW Website');
         // Meta tags
         this.metaService.getMeta()
             .subscribe((meta) => {

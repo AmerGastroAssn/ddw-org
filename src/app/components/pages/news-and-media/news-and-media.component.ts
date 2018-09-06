@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
@@ -42,6 +42,7 @@ export class NewsAndMediaComponent implements OnInit {
       private adminPressReleaseService: AdminPressReleaseService,
       private meta: Meta,
       private metaService: AdminMetaService,
+      private titleService: Title
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
@@ -49,25 +50,6 @@ export class NewsAndMediaComponent implements OnInit {
     }
 
     ngOnInit() {
-        // Meta tags
-        this.metaService.getMeta()
-            .subscribe((meta) => {
-                if (this.page && meta) {
-                    this.meta.addTags([
-                        { name: 'description', content: meta.metaDesc },
-                        { name: 'author', content: this.page.author },
-                        { name: 'keywords', content: meta.metaKeywords },
-                        { property: 'og:url', content: 'https://ddw.org' },
-                        {
-                            property: 'og:title',
-                            content: `${this.page} - Digestive Digest Week®`
-                        },
-                        { property: 'og:description', content: meta.metaDesc },
-                        { property: 'og:image', content: meta.metaImageURL },
-                    ], true);
-                }
-            });
-
         this.cards$ = this.cardService.getAllCards();
 
 
@@ -88,6 +70,26 @@ export class NewsAndMediaComponent implements OnInit {
                         this.page = null;
                     } else {
                         this.page = page;
+                        // For page title
+                        this.titleService.setTitle(`${this.page.title} - DDW Website`);
+                        // Meta tags
+                        this.metaService.getMeta()
+                            .subscribe((meta) => {
+                                if (this.page && meta) {
+                                    this.meta.addTags([
+                                        { name: 'description', content: meta.metaDesc },
+                                        { name: 'author', content: this.page.author },
+                                        { name: 'keywords', content: meta.metaKeywords },
+                                        { property: 'og:url', content: 'https://ddw.org' },
+                                        {
+                                            property: 'og:title',
+                                            content: `${this.page.title} - Digestive Digest Week®`
+                                        },
+                                        { property: 'og:description', content: meta.metaDesc },
+                                        { property: 'og:image', content: meta.metaImageURL },
+                                    ], true);
+                                }
+                            });
                     }
                     // Calendar
                     if (page.hasCalendar) {

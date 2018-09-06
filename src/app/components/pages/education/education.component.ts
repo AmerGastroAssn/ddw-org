@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
@@ -31,29 +31,11 @@ export class EducationComponent implements OnInit {
       private adminCalendarService: AdminCalendarService,
       private meta: Meta,
       private metaService: AdminMetaService,
+      private titleService: Title
     ) {
     }
 
     ngOnInit() {
-        // Meta tags
-        this.metaService.getMeta()
-            .subscribe((meta) => {
-                if (this.page && meta) {
-                    this.meta.addTags([
-                        { name: 'description', content: meta.metaDesc },
-                        { name: 'author', content: this.page.author },
-                        { name: 'keywords', content: meta.metaKeywords },
-                        { property: 'og:url', content: 'https://ddw.org' },
-                        {
-                            property: 'og:title',
-                            content: `${this.page} - Digestive Digest Week®`
-                        },
-                        { property: 'og:description', content: meta.metaDesc },
-                        { property: 'og:image', content: meta.metaImageURL },
-                    ], true);
-                }
-            });
-
         this.cards$ = this.cardService.getAllCards();
 
         // Gets $key which is a Slug
@@ -64,6 +46,27 @@ export class EducationComponent implements OnInit {
         })
             .subscribe((page) => {
                 this.page = page;
+                // For page title
+                this.titleService.setTitle(`${this.page.title} - DDW Website`);
+                // Meta tags
+                this.metaService.getMeta()
+                    .subscribe((meta) => {
+                        if (this.page && meta) {
+                            this.meta.addTags([
+                                { name: 'description', content: meta.metaDesc },
+                                { name: 'author', content: this.page.author },
+                                { name: 'keywords', content: meta.metaKeywords },
+                                { property: 'og:url', content: 'https://ddw.org' },
+                                {
+                                    property: 'og:title',
+                                    content: `${this.page.title} - Digestive Digest Week®`
+                                },
+                                { property: 'og:description', content: meta.metaDesc },
+                                { property: 'og:image', content: meta.metaImageURL },
+                            ], true);
+                        }
+                    });
+
                 // Calendar
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);

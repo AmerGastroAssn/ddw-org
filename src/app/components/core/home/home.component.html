@@ -144,6 +144,27 @@
     </div>
 </div>
 
+<!-- * Calendar * -->
+<div class="row" *ngIf="homePage && homePage.hasCalendar">
+    <div class="container">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h2 class="card-sec-title">{{ homePage.calendarSectionTitle }}</h2>
+            <div class="col-4 offset-4">
+                <div class="underline"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="homePage && homePage.hasCalendar">
+    <div class="container-fluid">
+        <ddw-admin-calendar-item
+                *ngFor="let calEl of calendars$ | async"
+                [calendar]="calEl">
+        </ddw-admin-calendar-item>
+    </div>
+</div>
+
 <!-- * On Demand Offer * -->
 <div class="row on-demand-top" *ngIf="homePage">
     <div class="container">

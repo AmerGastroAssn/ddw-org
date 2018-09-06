@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { HomePage } from '../../../models/HomePage';
 import { AdminAdsService } from '../../../services/admin-ads.service';
+import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
 import { AdminHomePageService } from '../../../services/admin-home-page.service';
@@ -35,6 +37,9 @@ export class HomeComponent implements OnInit {
     footerbar: any;
     videoURL: any;
     homePage: HomePage;
+    calendars$: Observable<Calendar[]>;
+    hasCalendar: boolean;
+    calendarTitle: string;
 
     constructor(
       private countdownService: CountdownService,
@@ -46,7 +51,8 @@ export class HomeComponent implements OnInit {
       private meta: Meta,
       private metaService: AdminMetaService,
       private adminHomePageService: AdminHomePageService,
-      private titleService: Title
+      private titleService: Title,
+      private calendarService: AdminCalendarService,
     ) {
 
     }
@@ -86,6 +92,7 @@ export class HomeComponent implements OnInit {
         this.adminHomePageService.getHomeForm()
             .subscribe((homePage) => {
                 this.homePage = homePage;
+                this.calendars$ = this.calendarService.getCalendarByTitle(this.homePage.calendarTitle);
             });
 
         // Ads
@@ -110,6 +117,9 @@ export class HomeComponent implements OnInit {
                 // To put Date in manually.
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
+
+
+        console.log(this.calendars$);
 
 
     }

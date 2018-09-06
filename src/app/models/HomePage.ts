@@ -34,6 +34,9 @@ export class HomePage {
       public sponsorThreeURL: string,
       public sponsorFourImg: string,
       public sponsorFourURL: string,
+      public hasCalendar: boolean,
+      public calendarTitle: string,
+      public calendarSectionTitle: string,
       public uid: string,
     ) {
     }

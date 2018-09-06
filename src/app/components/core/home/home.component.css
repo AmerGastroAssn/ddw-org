@@ -133,16 +133,16 @@ h2.card-sec-title {
     font-weight: 500;
 }
 
+.underline {
+    border-bottom: 2px solid #FEB512;
+    margin-top: 1em;
+}
+
 .card-sec-subtitle {
     font-size: 1.5em;
     line-height: 2em;
     text-align: center;
     margin-top: 2em;
-}
-
-.underline {
-    border-bottom: 2px solid #FEB512;
-    margin-top: 1em;
 }
 
 /* Cards */

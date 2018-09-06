@@ -180,6 +180,19 @@ i.fa-spinner {
     font-size: 4em;
 }
 
+/* Section Underlined title */
+h2.card-sec-title {
+    padding-top: 2em;
+    font-size: 30px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.underline {
+    border-bottom: 2px solid #FEB512;
+    margin-top: 1em;
+}
+
 /* Featured Blog Posts */
 
 a.btn.btn-warning.btn-lg {

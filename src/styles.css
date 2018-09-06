@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Muli');
+@import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans|Roboto');
 
 /* Front Pages */
 p, li {
@@ -13,7 +11,7 @@ p, li {
 
 h1, h2, h3 {
     font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 p > a:link, li > a:link {
@@ -68,7 +66,7 @@ input[type=email],
 input[type=date],
 input[type=file],
 input[type=password],
-select[value="value"]   {
+select[value="value"] {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
@@ -219,5 +217,30 @@ a.btn.btn-warning.btn-lg:hover {
     font-size: 18px;
 }
 
+.btn.btn-clear {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    font-size: 18px;
+    padding: .5em 2em;
+    margin: 1.5em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+.btn.btn-clear:hover {
+    background-color: #F47700;
+    border: 0 none;
+    color: #fff;
+    font-size: 18px;
+    padding: .6em 2em;
+    margin: 1.5em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    text-decoration: none;
+}
 
 /* Cavin's Custom */

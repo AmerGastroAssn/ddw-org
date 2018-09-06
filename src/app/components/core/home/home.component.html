@@ -95,10 +95,11 @@
             </div>
         </div>
         <div class="row">
+            <div class="video-spacer" *ngIf="!videoURL"></div>
             <div class="col-md-10 offset-md-1 text-center" *ngIf="videoURL">
                 <iframe width="560"
                         height="315"
-                        [src]="videoURL"
+                        [src]="safeVideoURL"
                         class="daily-news"
                         frameborder="0"
                         allow="autoplay; encrypted-media"

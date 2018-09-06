@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
     featuredPosts$: Observable<FeaturedPost[]>;
     headerbar: any;
     footerbar: any;
-    videoURL: any;
+    safeVideoURL: any;
+    videoURL: string;
     homePage: HomePage;
     calendars$: Observable<Calendar[]>;
     hasCalendar: boolean;
@@ -106,7 +107,8 @@ export class HomeComponent implements OnInit {
         this.featuredPosts$ = this.featuredPostService.getAllPosts();
         this.adminHomePageService.getVideoURL()
             .subscribe((dailyVideo) => {
-                return this.videoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
+                this.safeVideoURL = this.sanitizer.bypassSecurityTrustResourceUrl(dailyVideo.videoURL);
+                this.videoURL = dailyVideo.videoURL;
             });
 
         // Countdown
@@ -118,9 +120,9 @@ export class HomeComponent implements OnInit {
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
 
+    }
 
-        console.log(this.calendars$);
-
+    videoURLToggle() {
 
     }
 

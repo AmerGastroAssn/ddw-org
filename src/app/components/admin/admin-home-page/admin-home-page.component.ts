@@ -39,16 +39,20 @@ export class AdminHomePageComponent implements OnInit {
     subheaderDate: string;
     cardsTitle: string;
     cardsSubtitle: string;
+    cardsHidden: boolean;
     videoTitle: string;
     videoSubtitle: string;
+    videoHidden: boolean;
     postsTitle: string;
     postsSubtitle: string;
     postsButtonText: string;
     postsButtonURL: string;
+    postsHidden: boolean;
     onDemandTitle: string;
     onDemandText: string;
     onDemandButtonText: string;
     onDemandButtonURL: string;
+    onDemandHidden: boolean;
     byTheNumbersTitle: string;
     byTheNumbersOneNumber: string;
     byTheNumbersOneSubtitle: string;
@@ -56,6 +60,7 @@ export class AdminHomePageComponent implements OnInit {
     byTheNumbersTwoSubtitle: string;
     byTheNumbersThreeNumber: string;
     byTheNumbersThreeSubtitle: string;
+    byTheNumbersHidden: boolean;
     sponsorTitle: string;
     sponsorOneImg: string;
     sponsorOneURL: string;
@@ -65,6 +70,7 @@ export class AdminHomePageComponent implements OnInit {
     sponsorThreeURL: string;
     sponsorFourImg: string;
     sponsorFourURL: string;
+    sponsorHidden: boolean;
     calendars$: Observable<Calendar[]>;
     hasCalendar: boolean;
     calendarTitle: string;
@@ -141,16 +147,20 @@ export class AdminHomePageComponent implements OnInit {
                     subheaderDate: [this.homePage.subheaderDate],
                     cardsTitle: [this.homePage.cardsTitle],
                     cardsSubtitle: [this.homePage.cardsSubtitle],
+                    cardsHidden: [this.homePage.cardsHidden],
                     videoTitle: [this.homePage.videoTitle],
                     videoSubtitle: [this.homePage.videoSubtitle],
+                    videoHidden: [this.homePage.videoHidden],
                     postsTitle: [this.homePage.postsTitle],
                     postsSubtitle: [this.homePage.postsSubtitle],
                     postsButtonText: [this.homePage.postsButtonText],
                     postsButtonURL: [this.homePage.postsButtonURL],
+                    postsHidden: [this.homePage.postsHidden],
                     onDemandTitle: [this.homePage.onDemandTitle],
                     onDemandText: [this.homePage.onDemandText],
                     onDemandButtonText: [this.homePage.onDemandButtonText],
                     onDemandButtonURL: [this.homePage.onDemandButtonURL],
+                    onDemandHidden: [this.homePage.onDemandHidden],
                     byTheNumbersTitle: [this.homePage.byTheNumbersTitle],
                     byTheNumbersOneNumber: [this.homePage.byTheNumbersOneNumber],
                     byTheNumbersOneSubtitle: [this.homePage.byTheNumbersOneSubtitle],
@@ -158,6 +168,7 @@ export class AdminHomePageComponent implements OnInit {
                     byTheNumbersTwoSubtitle: [this.homePage.byTheNumbersTwoSubtitle],
                     byTheNumbersThreeNumber: [this.homePage.byTheNumbersThreeNumber],
                     byTheNumbersThreeSubtitle: [this.homePage.byTheNumbersThreeSubtitle],
+                    byTheNumbersHidden: [this.homePage.byTheNumbersHidden],
                     sponsorTitle: [this.homePage.sponsorTitle],
                     sponsorOneImg: [this.homePage.sponsorOneImg],
                     sponsorOneURL: [this.homePage.sponsorOneURL],
@@ -167,6 +178,7 @@ export class AdminHomePageComponent implements OnInit {
                     sponsorThreeURL: [this.homePage.sponsorThreeURL],
                     sponsorFourImg: [this.homePage.sponsorFourImg],
                     sponsorFourURL: [this.homePage.sponsorFourURL],
+                    sponsorHidden: [this.homePage.sponsorHidden],
                     hasCalendar: [this.homePage.hasCalendar || false],
                     calendarTitle: [this.homePage.calendarTitle],
                     calendarSectionTitle: [this.homePage.calendarSectionTitle],
@@ -181,16 +193,20 @@ export class AdminHomePageComponent implements OnInit {
                 this.subheaderDate = this.homePageForm.value.subheaderDate;
                 this.cardsTitle = this.homePageForm.value.cardsTitle;
                 this.cardsSubtitle = this.homePageForm.value.cardsSubtitle;
+                this.cardsHidden = this.homePageForm.value.cardsHidden;
                 this.videoTitle = this.homePageForm.value.videoTitle;
                 this.videoSubtitle = this.homePageForm.value.videoSubtitle;
+                this.videoHidden = this.homePageForm.value.videoHidden;
                 this.postsTitle = this.homePageForm.value.postsTitle;
                 this.postsSubtitle = this.homePageForm.value.postsSubtitle;
                 this.postsButtonText = this.homePageForm.value.postsButtonText;
                 this.postsButtonURL = this.homePageForm.value.postsButtonURL;
+                this.postsHidden = this.homePageForm.value.postsHidden;
                 this.onDemandTitle = this.homePageForm.value.onDemandTitle;
                 this.onDemandText = this.homePageForm.value.onDemandText;
                 this.onDemandButtonText = this.homePageForm.value.onDemandButtonText;
                 this.onDemandButtonURL = this.homePageForm.value.onDemandButtonURL;
+                this.onDemandHidden = this.homePageForm.value.onDemandHidden;
                 this.byTheNumbersTitle = this.homePageForm.value.byTheNumbersTitle;
                 this.byTheNumbersOneNumber = this.homePageForm.value.byTheNumbersOneNumber;
                 this.byTheNumbersOneSubtitle = this.homePageForm.value.byTheNumbersOneSubtitle;
@@ -198,6 +214,7 @@ export class AdminHomePageComponent implements OnInit {
                 this.byTheNumbersTwoSubtitle = this.homePageForm.value.byTheNumbersTwoSubtitle;
                 this.byTheNumbersThreeNumber = this.homePageForm.value.byTheNumbersThreeNumber;
                 this.byTheNumbersThreeSubtitle = this.homePageForm.value.byTheNumbersThreeSubtitle;
+                this.byTheNumbersHidden = this.homePageForm.value.byTheNumbersHidden;
                 this.sponsorTitle = this.homePageForm.value.sponsorTitle;
                 this.sponsorOneImg = this.homePageForm.value.sponsorOneImg;
                 this.sponsorOneURL = this.homePageForm.value.sponsorOneURL;
@@ -207,6 +224,7 @@ export class AdminHomePageComponent implements OnInit {
                 this.sponsorThreeURL = this.homePageForm.value.sponsorThreeURL;
                 this.sponsorFourImg = this.homePageForm.value.sponsorFourImg;
                 this.sponsorFourURL = this.homePageForm.value.sponsorFourURL;
+                this.sponsorHidden = this.homePageForm.value.sponsorHidden;
                 this.hasCalendar = this.homePageForm.value.hasCalendar;
                 this.calendarTitle = this.homePageForm.value.calendarTitle;
                 this.calendarSectionTitle = this.homePageForm.value.calendarSectionTitle;
@@ -236,6 +254,36 @@ export class AdminHomePageComponent implements OnInit {
     toggleHasCalendar() {
         console.log('this.homepage', this.homePage);
         this.homePage.hasCalendar = !this.homePage.hasCalendar;
+    }
+
+    toggleCardsHidden() {
+        this.homePage.cardsHidden = !this.homePage.cardsHidden;
+        console.log('this.cardsHidden', this.homePage.cardsHidden);
+    }
+
+    toggleVideoHidden() {
+        this.homePage.videoHidden = !this.homePage.videoHidden;
+        console.log('this.Video', this.homePage.videoHidden);
+    }
+
+    togglePostsHidden() {
+        this.homePage.postsHidden = !this.homePage.postsHidden;
+        console.log('this.postsHidden', this.homePage.postsHidden);
+    }
+
+    toggleOnDemandHidden() {
+        this.homePage.onDemandHidden = !this.homePage.onDemandHidden;
+        console.log('this.onDemandHidden', this.homePage.onDemandHidden);
+    }
+
+    toggleByTheNumbersHidden() {
+        this.homePage.byTheNumbersHidden = !this.homePage.byTheNumbersHidden;
+        console.log('this.byTheNumbersHidden', this.homePage.byTheNumbersHidden);
+    }
+
+    toggleSponsorHidden() {
+        this.homePage.sponsorHidden = !this.homePage.sponsorHidden;
+        console.log('this.sponsorHidden', this.homePage.sponsorHidden);
     }
 
 }

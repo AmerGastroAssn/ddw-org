@@ -1,6 +1,6 @@
 <div class="row mb-5 mt-3">
     <div class="col-md-6 mx-auto">
-        <div class="card">
+        <div class="card admin-badge-card">
             <div class="card-body">
                 <h1 class="text-center text-secondary pb-4 pt-3">
                     <span class="text-dark">
@@ -98,6 +98,25 @@
                                     <hr>
                                     <h5>Cards Title &amp; Subtitle</h5>
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="cardsHidden"
+                                                   formControlName="cardsHidden"
+                                                   (click)="toggleCardsHidden()">
+                                            <label class="custom-control-label"
+                                                   for="cardsHidden">Hide Cards Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.cardsHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                Cards Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.cardsHidden">
                                         <label for="cardsTitle">Cards Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -106,7 +125,7 @@
                                                formControlName="cardsTitle">
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="!homePage.cardsHidden">
                                         <label for="cardsSubtitle">Cards Subtitle</label>
                                         <textarea type="text"
                                                   class="form-control"
@@ -124,8 +143,26 @@
                                 <div class="col-sm-12">
                                     <hr>
                                     <h5>Video Title &amp; Subtitle</h5>
-
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="videoHidden"
+                                                   formControlName="videoHidden"
+                                                   (click)="toggleVideoHidden()">
+                                            <label class="custom-control-label"
+                                                   for="videoHidden">Hide Video Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.videoHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                Videos Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.videoHidden">
                                         <label for="videoTitle">Video Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -135,7 +172,7 @@
                                     </div>
 
 
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="!homePage.videoHidden">
                                         <label for="videoSubtitle">Video Subtitle</label>
                                         <ckeditor [formControl]="homePageForm.controls['videoSubtitle']"
                                                   [(ngModel)]="homePage.videoSubtitle"
@@ -154,8 +191,26 @@
                                 <div class="col-sm-12">
                                     <hr>
                                     <h5>Posts Title, Subtitle &amp; Button</h5>
-
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="postsHidden"
+                                                   formControlName="postsHidden"
+                                                   (click)="togglePostsHidden()">
+                                            <label class="custom-control-label"
+                                                   for="postsHidden">Hide Posts Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.postsHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                Posts Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.postsHidden">
                                         <label for="postsTitle">Posts Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -164,7 +219,7 @@
                                                formControlName="postsTitle">
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="!homePage.postsHidden">
                                         <label for="postsSubtitle">Posts Subtitle</label>
                                         <textarea type="text"
                                                   class="form-control"
@@ -176,7 +231,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="!homePage.postsHidden">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="postsButtonText">Posts Button Text</label>
@@ -205,6 +260,25 @@
                                     <hr>
                                     <h5>On Demand Title, Text &amp; Button</h5>
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="onDemandHidden"
+                                                   formControlName="onDemandHidden"
+                                                   (click)="toggleOnDemandHidden()">
+                                            <label class="custom-control-label"
+                                                   for="onDemandHidden">Hide On Demand Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.onDemandHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                On Demand Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.onDemandHidden">
                                         <label for="onDemandTitle">On Demand Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -212,7 +286,7 @@
                                                [(ngModel)]="homePage.onDemandTitle"
                                                formControlName="onDemandTitle">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" *ngIf="!homePage.onDemandHidden">
                                         <label>On Demand Text</label>
                                         <ckeditor [formControl]="homePageForm.controls['onDemandText']"
                                                   [(ngModel)]="homePage.onDemandText"
@@ -223,7 +297,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="!homePage.onDemandHidden">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="onDemandButtonText">On Demand Button Text</label>
@@ -252,6 +326,25 @@
                                     <hr>
                                     <h5>Numbers Title and Three Sections</h5>
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="byTheNumbersHidden"
+                                                   formControlName="byTheNumbersHidden"
+                                                   (click)="toggleByTheNumbersHidden()">
+                                            <label class="custom-control-label"
+                                                   for="byTheNumbersHidden">Hide By The Numbers Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.byTheNumbersHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                On By The Numbers Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.byTheNumbersHidden">
                                         <label for="byTheNumbersTitle">Numbers Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -261,7 +354,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="!homePage.byTheNumbersHidden">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="byTheNumbersOneNumber">Numbers Left Number</label>
@@ -327,6 +420,25 @@
                                         <small>Use the Image Uploader below to get new Image URL</small>
                                     </p>
                                     <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   id="sponsorHidden"
+                                                   formControlName="sponsorHidden"
+                                                   (click)="toggleSponsorHidden()">
+                                            <label class="custom-control-label"
+                                                   for="sponsorHidden">Hide Sponsors Section?</label>
+                                        </div>
+                                    </div>
+                                    <div class="card snackbar-warning" *ngIf="homePage.sponsorHidden">
+                                        <div class="card-body">
+                                            <h6 class="text-center">
+                                                <i class="fa fa-exclamation-triangle"></i>
+                                                On Sponsors Section Disabled
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="!homePage.sponsorHidden">
                                         <label for="sponsorTitle">Sponsors Title</label>
                                         <input type="text"
                                                class="form-control"
@@ -336,7 +448,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="!homePage.sponsorHidden">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="sponsorOneImg">Sponsor One Image</label>
@@ -442,7 +554,8 @@
 
                                             <div class="form-group" *ngIf="homePage.hasCalendar">
                                                 <label for="calendarTitle">Select Calendar or
-                                                    <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
+                                                    <a [routerLink]="['/admin/calendar/new']"
+                                                       class="btn btn-sm btn-default">
                                                         <i class="fa fa-calendar-plus"></i> Create New</a> <br>
                                                     Current Calendar set
                                                     to: <b>{{ homePage.calendarTitle }}</b>
@@ -496,7 +609,9 @@
                             <div class="form-group">
                                 <label>
                                     <h5>DDW Daily News Video</h5>
-                                    <p><small>If left blank, space will be removed from that blue section</small></p>
+                                    <p>
+                                        <small>If left blank, space will be removed from that blue section</small>
+                                    </p>
                                     <p class="text-light">URL needs to come from a embedded iFrame</p>
                                     <p class="text-light">ie. Go to YouTube video > share > embed > grab url from
                                         src="this-url"</p>

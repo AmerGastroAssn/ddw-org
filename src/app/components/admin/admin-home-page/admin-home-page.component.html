@@ -31,6 +31,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Page Sections</h4>
                         <hr>
+                        <!-- * Banner * -->
                         <form [formGroup]="homePageForm"
                               (ngSubmit)="onHomePageSubmit(homePageForm.value)"
                               *ngIf="homePage; else homeLoading">
@@ -91,6 +92,7 @@
                                 <hr>
                             </div>
 
+                            <!-- * Cards * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -117,6 +119,7 @@
                                 </div>
                             </div>
 
+                            <!-- * Videos * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -146,6 +149,7 @@
                             </div>
 
 
+                            <!-- * Posts * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -195,6 +199,7 @@
                                 </div>
                             </div>
 
+                            <!-- * On Demand * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -241,6 +246,7 @@
                                 </div>
                             </div>
 
+                            <!-- * Numbers * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -312,6 +318,7 @@
                                 </div>
                             </div>
 
+                            <!-- * Sponsors * -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <hr>
@@ -404,7 +411,58 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <!-- * Calendar * -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <hr>
+                                    <h5>Calendar</h5>
+                                    <div class="card bg-lighter">
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox"
+                                                           class="custom-control-input"
+                                                           id="hasCalendar"
+                                                           formControlName="hasCalendar"
+                                                           (click)="toggleHasCalendar()">
+                                                    <label class="custom-control-label"
+                                                           for="hasCalendar">Does the page have a Calendar?</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" *ngIf="homePage.hasCalendar">
+                                                <label for="calendarSectionTitle">Calendar Section Title</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       id="calendarSectionTitle"
+                                                       [(ngModel)]="homePage.calendarSectionTitle"
+                                                       formControlName="calendarSectionTitle">
+                                            </div>
+
+                                            <div class="form-group" *ngIf="homePage.hasCalendar">
+                                                <label for="calendarTitle">Select Calendar or
+                                                    <a [routerLink]="['/admin/calendar/new']" class="btn btn-sm btn-default">
+                                                        <i class="fa fa-calendar-plus"></i> Create New</a> <br>
+                                                    Current Calendar set
+                                                    to: <b>{{ homePage.calendarTitle }}</b>
+                                                </label>
+                                                <select class="form-control"
+                                                        id="calendarTitle"
+                                                        [(ngModel)]="homePage.calendarTitle"
+                                                        formControlName="calendarTitle">
+                                                    <option *ngFor="let cal of calendars$ | async"
+                                                            [value]="cal.title">
+                                                        {{ cal.title }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4">
                                 <button class="btn btn-secondary full-width">
                                     <i class="fa fa-home"></i>&nbsp;Save Home Page Content
                                 </button>
@@ -438,6 +496,7 @@
                             <div class="form-group">
                                 <label>
                                     <h5>DDW Daily News Video</h5>
+                                    <p><small>If left blank, space will be removed from that blue section</small></p>
                                     <p class="text-light">URL needs to come from a embedded iFrame</p>
                                     <p class="text-light">ie. Go to YouTube video > share > embed > grab url from
                                         src="this-url"</p>

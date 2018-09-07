@@ -3,9 +3,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
+import { Observable } from 'rxjs';
+import { Calendar } from '../../../models/Calendar';
 import { Countdown } from '../../../models/Countdown';
 import { DailyVideo } from '../../../models/DailyVideo';
 import { HomePage } from '../../../models/HomePage';
+import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminHomePageService } from '../../../services/admin-home-page.service';
 import { CountdownService } from '../../../services/countdown.service';
 
@@ -62,6 +65,10 @@ export class AdminHomePageComponent implements OnInit {
     sponsorThreeURL: string;
     sponsorFourImg: string;
     sponsorFourURL: string;
+    calendars$: Observable<Calendar[]>;
+    hasCalendar: boolean;
+    calendarTitle: string;
+    calendarSectionTitle: string;
 
 
     CkeditorConfig = {
@@ -75,7 +82,8 @@ export class AdminHomePageComponent implements OnInit {
       private sbAlert: MatSnackBar,
       private fb: FormBuilder,
       private countdownService: CountdownService,
-      private adminHomePageService: AdminHomePageService
+      private adminHomePageService: AdminHomePageService,
+      private calendarService: AdminCalendarService
     ) {
         // Get Countdown
         this.countdownService.getCountdown().subscribe((countdown) => {
@@ -159,6 +167,9 @@ export class AdminHomePageComponent implements OnInit {
                     sponsorThreeURL: [this.homePage.sponsorThreeURL],
                     sponsorFourImg: [this.homePage.sponsorFourImg],
                     sponsorFourURL: [this.homePage.sponsorFourURL],
+                    hasCalendar: [this.homePage.hasCalendar || false],
+                    calendarTitle: [this.homePage.calendarTitle],
+                    calendarSectionTitle: [this.homePage.calendarSectionTitle],
                 });
 
                 this.$key = this.homePageForm.value.$key;
@@ -196,11 +207,15 @@ export class AdminHomePageComponent implements OnInit {
                 this.sponsorThreeURL = this.homePageForm.value.sponsorThreeURL;
                 this.sponsorFourImg = this.homePageForm.value.sponsorFourImg;
                 this.sponsorFourURL = this.homePageForm.value.sponsorFourURL;
+                this.hasCalendar = this.homePageForm.value.hasCalendar;
+                this.calendarTitle = this.homePageForm.value.calendarTitle;
+                this.calendarSectionTitle = this.homePageForm.value.calendarSectionTitle;
             }
         });
     }
 
     ngOnInit() {
+        this.calendars$ = this.calendarService.getAllCalendars();
     }
 
 
@@ -216,6 +231,11 @@ export class AdminHomePageComponent implements OnInit {
     onHomePageSubmit(homePageFormData) {
         this.adminHomePageService.updateHomeForm(homePageFormData);
         console.log('homePageFormData sent', homePageFormData);
+    }
+
+    toggleHasCalendar() {
+        console.log('this.homepage', this.homePage);
+        this.homePage.hasCalendar = !this.homePage.hasCalendar;
     }
 
 }

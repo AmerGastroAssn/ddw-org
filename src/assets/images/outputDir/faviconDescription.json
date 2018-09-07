@@ -1,0 +1,60 @@
+{
+  "masterPicture": "src/assets/images/icons/favicon.png",
+  "iconsPath": "src/assets/images/outputDir",
+  "design": {
+    "ios": {
+      "pictureAspect": "backgroundAndMargin",
+      "backgroundColor": "#fcfcfc",
+      "margin": "21%",
+      "assets": {
+        "ios6AndPriorIcons": false,
+        "ios7AndLaterIcons": false,
+        "precomposedIcons": false,
+        "declareOnlyDefaultIcon": true
+      }
+    },
+    "desktopBrowser": {},
+    "windows": {
+      "pictureAspect": "noChange",
+      "backgroundColor": "#fcfcfc",
+      "onConflict": "override",
+      "assets": {
+        "windows80Ie10Tile": false,
+        "windows10Ie11EdgeTiles": {
+          "small": false,
+          "medium": true,
+          "big": false,
+          "rectangle": false
+        }
+      }
+    },
+    "androidChrome": {
+      "pictureAspect": "backgroundAndMargin",
+      "margin": "17%",
+      "backgroundColor": "#fcfcfc",
+      "themeColor": "#fcfcfc",
+      "manifest": {
+        "name": "DDW®",
+        "display": "standalone",
+        "orientation": "notSet",
+        "onConflict": "override",
+        "declared": true
+      },
+      "assets": {
+        "legacyIcon": false,
+        "lowResolutionIcons": false
+      }
+    },
+    "safariPinnedTab": {
+      "pictureAspect": "silhouette",
+      "themeColor": "#003754"
+    }
+  },
+  "settings": {
+    "scalingAlgorithm": "Mitchell",
+    "errorOnImageTooSmall": false,
+    "readmeFile": false,
+    "htmlCodeFile": false,
+    "usePathAsIs": false
+  }
+}

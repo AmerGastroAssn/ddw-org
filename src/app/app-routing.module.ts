@@ -16,9 +16,9 @@ import { PressReleasesComponent } from './components/pages/press-releases/press-
 import { RegisterComponent } from './components/pages/register/register.component';
 
 const appRoutes: Routes = [
-    { path: 'home', component: HomeComponent },
-    { path: 'contactus', component: ContactUsComponent },
-    { path: 'not-found', component: NotFoundComponent },
+    { path: 'home', component: HomeComponent, data: {title: 'Home' } },
+    { path: 'contactus', component: ContactUsComponent, data: {title: 'Contact Us' } },
+    { path: 'not-found', component: NotFoundComponent, data: {title: 'Page Not Found' } },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
         path: 'register', component: PagesComponent,

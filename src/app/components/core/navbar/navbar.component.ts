@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { Page } from '../../../models/Page';
 import { PageService } from '../../../services/page.service';
@@ -10,7 +10,7 @@ declare var $: any;
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
     registerPages$: Page[];
     attendeePlanningPages$: Page[];
     educationPages$: Page[];
@@ -28,18 +28,18 @@ export class NavbarComponent implements OnInit {
                 $('.static a').css({ color: 'white' });
                 $('.dropdown a').css({ color: 'white' });
                 $('i .fa-search').css({ color: 'white' });
-                $('img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
+                $('img.ddw-logo').attr('src',
+                  'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('.fa-search').css({ color: 'white' });
                 $('li.show').css({ color: 'gray' });
                 $('').css({ color: 'white' });
-
-
             } else {
                 $('#TopHeader').css({ background: 'rgba(255, 255, 255, 0.9)' });
                 $('.networking a').css({ color: '#2e6da4' });
                 $('.static a').css({ color: '#5F6A72' });
                 $('.dropdown a').css({ color: '#5F6A72' });
-                $('img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
+                $('img.ddw-logo').attr('src',
+                  'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
             }
         });
 
@@ -50,20 +50,21 @@ export class NavbarComponent implements OnInit {
                 $('.static a').css({ color: 'white' });
                 $('.dropdown a').css({ color: 'white' });
                 $('i .fa-search').css({ color: 'white' });
-                $('img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
+                $('img.ddw-logo').attr('src',
+                  'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('.fa-search').css({ color: 'white' });
                 $('#nav a.show').css({ color: 'gray' });
-
-
             } else {
                 $('#TopHeader').css({ background: 'rgba(255, 255, 255, 0.9)' });
                 $('.networking a').css({ color: '#2e6da4' });
                 $('.static a').css({ color: '#5F6A72' });
                 $('.dropdown a').css({ color: '#5F6A72' });
-                $('img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
+                $('img.ddw-logo').attr('src',
+                  'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
                 $('.fa-search').css({ color: '#5F6A72' });
             }
         });
+
     }
 
     ngOnInit() {
@@ -102,5 +103,14 @@ export class NavbarComponent implements OnInit {
             });
     }
 
+
+    ngOnDestroy() {
+        // $('#TopHeader').css({ background: 'rgba(255, 255, 255, 0.9)' });
+        // $('.networking a').css({ color: '#2e6da4' });
+        // $('.static a').css({ color: '#5F6A72' });
+        // $('.dropdown a').css({ color: '#5F6A72' });
+        // $('img.ddw-logo').attr('src',
+        // 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
+    }
 
 }

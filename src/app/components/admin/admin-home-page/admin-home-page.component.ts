@@ -243,47 +243,38 @@ export class AdminHomePageComponent implements OnInit {
 
     onDailyVideoSubmit(videoForm) {
         this.adminHomePageService.updateVideoURL(videoForm);
-        console.log('videoForm', videoForm);
     }
 
     onHomePageSubmit(homePageFormData) {
         this.adminHomePageService.updateHomeForm(homePageFormData);
-        console.log('homePageFormData sent', homePageFormData);
     }
 
     toggleHasCalendar() {
-        console.log('this.homepage', this.homePage);
         this.homePage.hasCalendar = !this.homePage.hasCalendar;
     }
 
     toggleCardsHidden() {
         this.homePage.cardsHidden = !this.homePage.cardsHidden;
-        console.log('this.cardsHidden', this.homePage.cardsHidden);
     }
 
     toggleVideoHidden() {
         this.homePage.videoHidden = !this.homePage.videoHidden;
-        console.log('this.Video', this.homePage.videoHidden);
     }
 
     togglePostsHidden() {
         this.homePage.postsHidden = !this.homePage.postsHidden;
-        console.log('this.postsHidden', this.homePage.postsHidden);
     }
 
     toggleOnDemandHidden() {
         this.homePage.onDemandHidden = !this.homePage.onDemandHidden;
-        console.log('this.onDemandHidden', this.homePage.onDemandHidden);
     }
 
     toggleByTheNumbersHidden() {
         this.homePage.byTheNumbersHidden = !this.homePage.byTheNumbersHidden;
-        console.log('this.byTheNumbersHidden', this.homePage.byTheNumbersHidden);
     }
 
     toggleSponsorHidden() {
         this.homePage.sponsorHidden = !this.homePage.sponsorHidden;
-        console.log('this.sponsorHidden', this.homePage.sponsorHidden);
     }
 
 }

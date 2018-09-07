@@ -49,7 +49,7 @@
 </div>
 
 
-<div class="row" *ngIf="homePage">
+<div class="row" *ngIf="homePage && !homePage.cardsHidden">
     <div class="container">
         <div class="col-md-7 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.cardsTitle }}</h2>
@@ -60,7 +60,7 @@
     </div>
 </div>
 
-<div class="row" *ngIf="homePage">
+<div class="row" *ngIf="homePage && !homePage.cardsHidden">
     <div class="container">
         <div class="card-sec-subtitle">
             <p>{{ homePage.cardsSubtitle }}</p>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- * Cards * -->
-<div class="row cards">
+<div class="row cards" *ngIf="!homePage.cardsHidden">
     <div class="container">
         <div class="card-deck">
             <div class="row">
@@ -84,7 +84,7 @@
 </div>
 
 <!-- * DDW Video * -->
-<div class="row bg-blue" *ngIf="homePage">
+<div class="row bg-blue" *ngIf="homePage && !homePage.videoHidden">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
@@ -114,7 +114,7 @@
 </div>
 
 <!-- * Featured Blog Posts * -->
-<div class="row featured" *ngIf="homePage">
+<div class="row featured" *ngIf="homePage && !homePage.postsHidden">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.postsTitle }}</h2>
@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<div class="row blog-posts">
+<div class="row blog-posts" *ngIf="!homePage.postsHidden">
     <div class="container">
         <div class="card-deck">
             <div class="row" *ngIf="featuredPosts$">
@@ -167,7 +167,7 @@
 </div>
 
 <!-- * On Demand Offer * -->
-<div class="row on-demand-top" *ngIf="homePage">
+<div class="row on-demand-top" *ngIf="homePage && !homePage.onDemandHidden">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.onDemandTitle }}</h2>
@@ -178,12 +178,12 @@
     </div>
 </div>
 
-<div class="row on-demand-bottom" *ngIf="homePage">
+<div class="row on-demand-bottom" *ngIf="homePage && !homePage.onDemandHidden">
     <div class="container">
         <div [innerHTML]="homePage.onDemandText"></div>
     </div>
 </div>
-<div class="row purchase" *ngIf="homePage">
+<div class="row purchase" *ngIf="homePage && !homePage.onDemandHidden">
     <div class="col-md-4 offset-md-4 text-center">
         <a [href]="homePage.onDemandButtonURL"
            target="_blank" class="btn btn-warning btn-lg">
@@ -194,7 +194,7 @@
 
 
 <!-- * DDW By The Numbers * -->
-<div class="ddw-by-the-numbers" *ngIf="homePage">
+<div class="ddw-by-the-numbers" *ngIf="homePage && !homePage.byTheNumbersHidden">
     <div class="row">
         <div class="container">
             <div class="col-md-6 offset-md-3 text-center">
@@ -226,7 +226,7 @@
 </div>
 
 <!-- * Sponsoring Societies * -->
-<div class="row sponsors" *ngIf="homePage">
+<div class="row sponsors" *ngIf="homePage && !homePage.sponsorHidden">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
             <h2 class="by-nums-title">{{ homePage.sponsorTitle }}</h2>
@@ -236,7 +236,7 @@
         </div>
     </div>
 </div>
-<div class="row text-center sponsor-images" *ngIf="homePage">
+<div class="row text-center sponsor-images" *ngIf="homePage && !homePage.sponsorHidden">
     <div class="col-sm-3">
         <a [href]="homePage.sponsorOneURL">
             <img [src]="homePage.sponsorOneImg"

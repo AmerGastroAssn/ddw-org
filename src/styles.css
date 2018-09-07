@@ -13,6 +13,27 @@ h1, h2, h3 {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 600;
 }
+.layout-container {
+    background-color: #fcfcfc !important;
+}
+
+.admin-badge-card {
+    margin-bottom: 100px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.2);
+}
+
+h1.admin-badge {
+    /*background-color: #ccc;*/
+    /*text-align: center;*/
+    /*margin-top: 30px;*/
+    /*color: transparent;*/
+    /*font-weight: 900 !important;*/
+    /*text-shadow: 0 1px 1px rgba(255,255,255,0.3);*/
+    /*-webkit-background-clip: text;*/
+    /*background-clip: text;*/
+}
 
 p > a:link, li > a:link {
     color: #2e6da4;
@@ -135,7 +156,9 @@ a.back-pages {
 
 .snackbar-warning {
     background-color: #FFF3CF;
-    color: #846315;
+    color: #5C440F;
+    border: 1px solid #EDE1C1;
+
 }
 
 .snackbar-danger {
@@ -244,3 +267,167 @@ a.btn.btn-warning.btn-lg:hover {
 }
 
 /* Cavin's Custom */
+
+.block {
+    border: 1px solid #C6C6C6;
+    padding-bottom: 1em;
+    margin-top: 1em;
+}
+
+.home .btn-primary, .block .btn-primary, a.btn.cta, .btn-cta {
+    background-color: #F47700;
+    border: 0px none;
+    color: #fff;
+    font-size: 18px;
+    padding: .5em 2em;
+    margin-top: 1.5em;
+}
+
+.block h3 {
+    font-size: 20px;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+}
+
+.block p {
+    text-align: center;
+}
+
+p.quoteby {
+    color: #FFFFFF;
+}
+
+.HtmlContent img {
+    max-width: 100%;
+}
+
+.body-cotainer p {
+    text-align: left;
+}
+
+
+h1, h2, h3, h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h5.card-title[_ngcontent-c3] {
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.col-quote blockquote {
+    background-color: transparent;
+    border-left: 0px;
+    color: #fff;
+    margin-bottom: 1em;
+}
+
+.quoteby {
+    padding-left: 2em;
+}
+
+.bg-blue-inner {
+    background-color: #003F5F;
+}
+
+.row .bg-blue-inner {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.quoteby span {
+    font-style: normal;
+    color: #FEBE10;
+}
+
+.col-media {
+    padding: 0px;
+    line-height: 0;
+}
+
+.pad1 {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    background: #fff;
+}
+
+.bg-blue, .bg-blue-inner {background-color:#003F5F}
+
+blockquote {
+    background-color: transparent;
+    border-left: 0px;
+    color: #fff;
+    margin-bottom: 1em;
+    line-height: 2;
+}
+
+blockquote::before, blockquote::after {
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 50px;
+}
+blockquote:before {
+    content: open-quote;
+}
+
+blockquote::after {
+    content: "\201D";
+    line-height: 10px;
+    position: relative;
+    top: 2rem;
+}
+
+
+blockquote:before {
+    color: #ccc;
+    font-size: 4em;
+    line-height: .1em;
+    vertical-align: -.3em;
+    margin-right: 5px;
+}
+
+blockquote:after {
+    color: #ccc;
+    font-size: 4em;
+    line-height: .1em;
+    vertical-align: -.1em;
+    margin-right: 5px;
+}
+
+.quoteby {
+    padding-left: 2em;
+}
+
+.quoteby span {
+    font-style: normal;
+    color: #FEBE10;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    .col-quote {
+        padding-left: 3em;
+        padding-right: 3em;
+        padding-top: 1em;
+    }
+
+}
+
+table.ddw1 tbody > tr:first-child td {
+    background: #053c60 none repeat scroll 0 0;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+table.ddw1 td {
+    border: 1px solid #eee !important;
+    padding: 10px !important;
+}

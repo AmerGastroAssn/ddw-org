@@ -8,31 +8,31 @@
             <div class="col-auto offset-md-1 offset-sm-0">
                 <div class="header-content" *ngIf="homePage">
                     <h1 class="title">{{ homePage.title }}</h1>
-                    <h1 class="subtitle">{{ homePage.subtitle }} <span class="forTime">{{ homePage.forTime }}</span>
-                    </h1>
-                    <h2 class="loc-date">{{ homePage.subheaderLoc }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="forTime">
-                    <i class="fa fa-calendar"></i></span>&nbsp;&nbsp;{{ homePage.subheaderDate }}
+                    <h2 class="subtitle">{{ homePage.subtitle }} <span class="forTime">{{ homePage.forTime }}</span>
                     </h2>
+                    <h3 class="loc-date">{{ homePage.subheaderLoc }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="forTime">
+                    <i class="fa fa-calendar"></i></span>&nbsp;&nbsp;{{ homePage.subheaderDate }}
+                    </h3>
 
                     <div class="row">
-                        <div class="col-md-8 offset-md-2 offset-sm-0">
-                            <div class="container">
-                                <table *ngIf="time1$ | async as time1" class="countdown">
+                        <div class="col-md-8 offset-lg-2 offset-md-1 offset-sm-0">
+                            <div class="container container-time">
+                                <table *ngIf="time1$ | async as time1" class="countdown table-responsive-sm">
                                     <tbody>
                                     <tr>
-                                        <td class="text-center">
+                                        <td class="text-center circles">
                                             <div class="days"><h1 class="time">{{time1.days}}</h1></div>
                                             <h6 class="time">Days</h6>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center circles">
                                             <div class="hours"><h1 class="time">{{time1.hours}}</h1></div>
                                             <h6 class="time">Hours</h6>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center circles">
                                             <div class="minutes"><h1 class="time">{{time1.minutes}}</h1></div>
                                             <h6 class="time">Minutes</h6>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-center circles">
                                             <div class="seconds"><h1 class="time">{{time1.seconds}}</h1></div>
                                             <h6 class="time">Seconds</h6>
                                         </td>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- * Cards * -->
-<div class="row cards" *ngIf="!homePage.cardsHidden">
+<div class="row cards" *ngIf="homePage && !homePage.cardsHidden">
     <div class="container">
         <div class="card-deck">
             <div class="row">
@@ -124,7 +124,7 @@
         </div>
     </div>
 </div>
-<div class="row blog-posts" *ngIf="!homePage.postsHidden">
+<div class="row blog-posts" *ngIf="homePage && !homePage.postsHidden">
     <div class="container">
         <div class="card-deck">
             <div class="row" *ngIf="featuredPosts$">

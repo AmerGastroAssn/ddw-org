@@ -25,7 +25,7 @@ li.dropdown-item a {
 
 /* Colin's Addition */
 /*li.dropdown-item:hover, li.dropdown-item *:hover, li.dropdown-item *:active, li.dropdown-item > a:link:hover {*/
-    /*background-color: #eeeeee !important;*/
+/*background-color: #eeeeee !important;*/
 /*}*/
 
 .dropdown-menu>li:not(.dropdown-item)>a:not(.dropdown-item):hover, .dropdown-menu>li:not(.dropdown-item)>a:not(.dropdown-item):focus {
@@ -278,7 +278,7 @@ button.text-secondary {
         /*border-bottom-left-radius: .25em;
         border-bottom-right-radius: .25em;*/
     }
-    li.dropdown.show a {
+    li.dropdown.show > a {
         background: #FFFFFF;
     }
     .dropdown-item {
@@ -349,4 +349,9 @@ button.text-secondary {
         position: static;
         float: none;
     }
+}
+
+
+.navbar.bg-light .navbar-nav .show>.nav-link {
+    color: #4E5155 !important;
 }

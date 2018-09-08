@@ -10,12 +10,18 @@
             <!-- * Navbar * -->
             <ddw-admin-navbar></ddw-admin-navbar>
             <!-- * Fab Toggle Button * -->
-            <button mat-mini-fab (click)="onToggleSidenav()">
-                <i class="fa"
-                   [ngClass]="{'fa-chevron-double-left':toggleSidenav,
-                   'fa-chevron-double-right':!toggleSidenav}">
-                </i>
-            </button>
+            <i class="fal"
+               [ngClass]="{'fa-arrow-alt-to-left':toggleSidenav,
+                   'fa-arrow-alt-from-left':!toggleSidenav}"
+               (click)="onToggleSidenav()"
+               matTooltip="Click to toggle sidebar navigation"
+               [matTooltipShowDelay]="showDelay.value"
+               [matTooltipHideDelay]="hideDelay.value"
+               aria-label="Click to toggle sidebar navigation">
+            </i>
+            <!--<button mat-mini-fab>-->
+                <!---->
+            <!--</button>-->
             <!-- * App Container * -->
             <router-outlet></router-outlet>
             <ddw-admin-mobile-footernav></ddw-admin-mobile-footernav>

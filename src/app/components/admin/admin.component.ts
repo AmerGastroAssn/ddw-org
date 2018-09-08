@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,8 +9,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AdminComponent implements OnInit {
     toggleSidenav: boolean;
+    showDelay = new FormControl(1000);
+    hideDelay = new FormControl(0);
 
     constructor(public authService: AuthService) {
+
     }
 
     ngOnInit() {

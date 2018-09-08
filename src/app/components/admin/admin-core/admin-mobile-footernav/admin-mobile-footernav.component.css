@@ -11,6 +11,10 @@ button.menu-icon.active {
     background-color: transparent;
 }
 
+.text-theme-gray {
+    color: #9d9fa1 !important;
+}
+
 small.footernav-txt {
     color: #9d9fa1 !important;
 }
@@ -21,6 +25,10 @@ button.menu-icon {
     /*background-color: #F7F8F9;*/
     display: inline-block;
     line-height: 1.3em;
+}
+
+button > span > small {
+    color: #9d9fa1 !important;
 }
 
 i.fa {
@@ -45,6 +53,10 @@ i.fa {
 
 .spacer {
     padding-bottom: 5em;
+}
+
+img.user-image {
+    max-width: 25px;
 }
 
 /* Mobile Queries */

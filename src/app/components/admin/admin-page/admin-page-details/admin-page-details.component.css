@@ -27,6 +27,12 @@ h1, h2, h3 {
     0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
+
+.fa-caret-square-down {
+    color: #9d9fa1 !important;
+}
+
+
 li.nav-item {
     padding: 0 1em;
     font-size: 14px;
@@ -117,4 +123,11 @@ a.btn.btn-warning.btn-lg:hover {
     text-decoration: none;
     padding: 0.5em 2em;
     font-size: 18px;
+}
+
+
+@media (max-width: 575px) {
+    form.form-inline {
+        margin: 2em 0 1em 0;
+    }
 }

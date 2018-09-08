@@ -6,7 +6,7 @@ import {
     MatExpansionModule,
     MatMenuModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -76,6 +76,7 @@ import { AdminHomePageComponent } from './admin-home-page/admin-home-page.compon
         CKEditorModule,
         MatExpansionModule,
         AdminPressReleaseModule,
+        MatTooltipModule,
     ],
     exports: [
         MatButtonModule,

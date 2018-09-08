@@ -1,43 +1,45 @@
 <!-- * ADMIN-MOBILE-FOOTERNAV * -->
 <nav class="navbar navbar-footer fixed-bottom navbar-inverse bg-dark text-center">
 
-    <span *ngIf="!isLoggedIn;">
-        <button mat-button
-                class="menu-icon"
-                routerLinkActive="active"
-                [routerLink]="['/admin/login']">
-            <i class="fa fa-sign-in-alt"></i>
-            <br>
-            <small>Login</small>
-        </button>
 
-        <button mat-button
-                class="menu-icon"
-                routerLinkActive="active"
-                *ngIf="!isLoggedIn && allowSignup"
-                [routerLink]="['/admin/signup']">
-            <i class="fa fa-address-card"></i>
-            <br>
-            <small>Signup</small>
-        </button>
+    <button mat-button
+            *ngIf="!isLoggedIn"
+            class="menu-icon"
+            routerLinkActive="active"
+            [routerLink]="['/admin/login']">
+        <i class="fa fa-sign-in-alt"></i>
+        <br>
+        <small class="text-theme-gray">Login</small>
+    </button>
 
-        <button mat-button
-                class="menu-icon"
-                routerLinkActive="active"
-                *ngIf="!isLoggedIn && allowSettings"
-                [routerLink]="['/admin/settings']">
-            <i class="fa fa-wrench"></i>
-            <br>
-            <small>Settings</small>
-        </button>
-    </span>
+    <button mat-button
+            class="menu-icon"
+            routerLinkActive="active"
+            *ngIf="allowSignup"
+            [routerLink]="['/admin/signup']">
+        <i class="fa fa-address-card"></i>
+        <br>
+        <small class="text-theme-gray">Signup</small>
+    </button>
+
+    <button mat-button
+            class="menu-icon"
+            routerLinkActive="active"
+            *ngIf="!isLoggedIn"
+            target="_blank"
+            [routerLink]="['/']">
+        <i class="fa fa-laptop"></i>&nbsp;
+        <br>
+        <small class="text-theme-gray">Live Site</small>
+    </button>
+
 
     <span *ngIf="isLoggedIn">
         <!-- * IF logged in * -->
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.afsUser$ | async"
+                *ngIf="user$"
                 [routerLink]="['/admin/pages']">
             <i class="fa fa-copy fa-lg"></i>
             <br>
@@ -47,7 +49,7 @@
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.afsUser$ | async"
+                *ngIf="user$"
                 [routerLinkActiveOptions]="{exact:true}"
                 [routerLink]="['/admin/pages/new']">
             <i class="fa fa-file-plus fa-lg"></i>
@@ -58,7 +60,7 @@
         <button mat-button
                 class="menu-icon"
                 routerLinkActive="active"
-                *ngIf="authService.afsUser$ | async"
+                *ngIf="user$"
                 [routerLink]="['/admin/users']">
             <i class="fa fa-users fa-lg"></i>
             <br>
@@ -68,7 +70,7 @@
         <button mat-button
                 [matMenuTriggerFor]="appMenu"
                 class="menu-icon"
-                *ngIf="authService.afsUser$ | async">
+                *ngIf="user$">
                 <i class="fa fa-ellipsis-h fa-lg"></i>
                 <br>
                 <small class="footernav-txt">More</small>
@@ -78,13 +80,14 @@
         <!-- * Trigger * -->
 
         <mat-menu #appMenu="matMenu" class="bg-dark">
-            <span *ngIf="localUser">
+            <span *ngIf="user && isLoggedIn">
                 <button mat-menu-item
                         class="menu-icon"
                         routerLinkActive="active"
-                        *ngIf="authService.afsUser$ | async"
-                        [routerLink]="['/admin/users/', localUser.uid]">
-                <i class="fa fa-user"></i>&nbsp;
+                        *ngIf="isLoggedIn"
+                        [routerLink]="['/admin/users/', user.$key ]">
+                 <img [src]="user.photoURL"
+                      class="user-image rounded-circle"> &nbsp;
                 <small>My Profile</small>
             </button>
             </span>
@@ -94,7 +97,7 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="isLoggedIn && allowSettings"
+                    *ngIf="isLoggedIn && allowSettings && isAdmin"
                     [routerLink]="['/admin/meta']">
                 <i class="fa fa-chart-line"></i>&nbsp;
                 <small>Meta</small>
@@ -103,7 +106,7 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="isLoggedIn"
+                    *ngIf="isLoggedIn && isAdmin"
                     [routerLink]="['/admin/ads']">
                 <i class="fa fa-money-bill-wave"></i>&nbsp;
                 <small>Advertising</small>
@@ -112,7 +115,7 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="isLoggedIn && allowSettings"
+                    *ngIf="isLoggedIn && allowSettings && isAdmin"
                     [routerLink]="['/admin/settings']">
                 <i class="fa fa-wrench"></i>&nbsp;
                 <small>Settings</small>
@@ -162,7 +165,7 @@
             <button mat-menu-item
                     class="menu-icon"
                     routerLinkActive="active"
-                    *ngIf="authService.afsUser$ | async;"
+                    *ngIf="isLoggedIn;"
                     (click)="onLogout()">
                 <i class="fa fa-sign-out-alt"></i>
                 <small>Logout</small>

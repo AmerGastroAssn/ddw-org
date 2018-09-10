@@ -264,6 +264,7 @@ img.sponsor-four {
         background-repeat: repeat-x;
         background-size: cover;
     }
+
     td.circles {
         float: left;
         width: 23%;
@@ -276,11 +277,11 @@ img.sponsor-four {
     .container-time {
         padding: 0;
     }
+
     .header-content[_ngcontent-c1] {
         top: 110px;
         position: relative;
     }
-
 
 }
 

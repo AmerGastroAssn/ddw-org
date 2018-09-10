@@ -13,6 +13,7 @@ h1, h2, h3 {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 600;
 }
+
 .layout-container {
     background-color: #fcfcfc !important;
 }
@@ -21,7 +22,7 @@ h1, h2, h3 {
     margin-bottom: 100px;
     background: #fff;
     border-radius: 3px;
-    box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 h1.admin-badge {
@@ -214,6 +215,20 @@ h2.card-sec-title {
     margin-top: 1em;
 }
 
+/* Buttons */
+
+.btn,
+.btn-primary,
+.btn-info,
+.btn-secondary,
+.btn-warning,
+.btn-success,
+.btn-danger {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
 /* Featured Blog Posts */
 
 a.btn.btn-warning.btn-lg {
@@ -306,7 +321,6 @@ p.quoteby {
     text-align: left;
 }
 
-
 h1, h2, h3, h4 {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -314,11 +328,10 @@ h1, h2, h3, h4 {
 }
 
 h5.card-title[_ngcontent-c3] {
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 20px;
 }
-
 
 .col-quote blockquote {
     background-color: transparent;
@@ -356,7 +369,9 @@ h5.card-title[_ngcontent-c3] {
     background: #fff;
 }
 
-.bg-blue, .bg-blue-inner {background-color:#003F5F}
+.bg-blue, .bg-blue-inner {
+    background-color: #003F5F
+}
 
 blockquote {
     background-color: transparent;
@@ -371,6 +386,7 @@ blockquote::before, blockquote::after {
     font-family: "Roboto";
     font-size: 50px;
 }
+
 blockquote:before {
     content: open-quote;
 }
@@ -381,7 +397,6 @@ blockquote::after {
     position: relative;
     top: 2rem;
 }
-
 
 blockquote:before {
     color: #ccc;
@@ -407,8 +422,6 @@ blockquote:after {
     font-style: normal;
     color: #FEBE10;
 }
-
-
 
 @media only screen and (min-width: 992px) {
     .col-quote {

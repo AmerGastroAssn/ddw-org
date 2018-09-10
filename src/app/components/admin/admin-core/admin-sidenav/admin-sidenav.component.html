@@ -27,13 +27,13 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowPagesToggle()">
             <i class="sidenav-icon ion ion-ios-albums"></i>
-            <div><i class="fal fa-copy"></i>&nbsp;Pages</div>
+            <div><i class="fal fa-layer-group"></i>&nbsp;Pages</div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/pages']" class="sidenav-link">
-                    <div><i class="fal fa-copy"></i>&nbsp;All Pages</div>
+                    <div><i class="fal fa-layer-group"></i>&nbsp;All Pages</div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
@@ -68,7 +68,7 @@
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/pages/new']" class="sidenav-link">
-                    <div><i class="fal fa-file-plus"></i>&nbsp;New Page</div>
+                    <div><i class="fal fa-layer-plus"></i>&nbsp;New Page</div>
                 </a>
             </li>
         </ul>
@@ -82,18 +82,18 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowPressReleaseToggle()">
             <i class="sidenav-icon ion ion-md-speedometer"></i>
-            <div><i class="fal fa-bullhorn"></i>&nbsp;Press Releases</div>
+            <div><i class="fal fa-newspaper"></i>&nbsp;Press Releases</div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/press-releases']" class="sidenav-link">
-                    <div><i class="fal fa-bullhorn"></i>&nbsp;All PR</div>
+                    <div><i class="fal fa-newspaper"></i>&nbsp;All PR</div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/press-releases/new']" class="sidenav-link">
-                    <div><i class="fal fa-bullhorn"></i>&nbsp;New PR</div>
+                    <div><i class="fal fa-newspaper"></i>&nbsp;New PR</div>
                 </a>
             </li>
         </ul>

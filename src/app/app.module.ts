@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AdminCalendarItemComponent } from './components/admin/admin-calendar/admin-calendar-item/admin-calendar-item.component';
+import { AdminBottomSheetNewComponent } from './components/admin/admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { AdminPressReleaseItemComponent } from './components/admin/admin-press-release/admin-press-release-item/admin-press-release-item.component';
@@ -25,6 +26,7 @@ import { HomeComponent } from './components/core/home/home.component';
 import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.component';
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
+import { PagesNavbarComponent } from './components/core/pages-navbar/pages-navbar.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
@@ -57,7 +59,6 @@ import { AuthService } from './services/auth.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
-import { PagesNavbarComponent } from './components/core/pages-navbar/pages-navbar.component';
 
 
 // Inits the app (Fixes a bug).
@@ -124,6 +125,7 @@ firebase.initializeApp(environment.firebase);
         AdminCalendarService,
         AdminHomePageService,
     ],
+    entryComponents: [AdminBottomSheetNewComponent],
     bootstrap: [AppComponent],
 
 })

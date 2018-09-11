@@ -69,28 +69,37 @@ export class RegisterComponent implements OnInit {
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.page && meta) {
-                            this.meta.addTags([
-                                { name: 'description', content: meta.metaDesc },
-                                { name: 'author', content: this.page.author },
-                                { name: 'keywords', content: meta.metaKeywords },
-                                { property: 'og:url', content: `http://ddw.org/${this.page.slug}` },
-                                {
-                                    property: 'og:title',
-                                    content: `${this.page.title} - Digestive Digest Week®`
-                                },
-                                { property: 'og:see_also', content: `http://ddw.org/home` },
-                                { property: 'og:description', content: meta.metaDesc },
-                                { property: 'og:image', content: this.page.photoURL || meta.metaImageURL },
-                                { itemprop: 'name', content: `http://ddw.org/${this.page.slug}` },
-                                { itemprop: 'description', content: meta.metaDesc },
-                                { itemprop: 'image', content: this.page.photoURL },
-                                { name: 'twitter:card', content: meta.metaDesc },
-                                { name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` },
-                                { name: 'twitter:title', content: this.page.title },
-                                { name: 'twitter:description', content: meta.metaDesc },
-                                { name: 'twitter:image', content: this.page.photoURL || meta.metaImageURL }]);
+                            this.meta.updateTag({ name: 'description', content: meta.metaDesc });
+                            this.meta.updateTag({ name: 'author', content: this.page.author });
+                            this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
+                            this.meta.updateTag({ property: 'og:url', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({
+                                property: 'og:title',
+                                content: `${this.page.title} - Digestive Digest Week®`
+                            });
+                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
+                            this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
+                            this.meta.updateTag({ property: 'og:description', content: meta.metaDesc });
+                            this.meta.updateTag({
+                                property: 'og:image',
+                                content: this.page.photoURL || meta.metaImageURL
+                            });
+                            this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({ itemprop: 'description', content: meta.metaDesc });
+                            this.meta.updateTag({ itemprop: 'image', content: this.page.photoURL });
+                            this.meta.updateTag({ name: 'twitter:card', content: meta.metaDesc });
+                            this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({ name: 'twitter:title', content: this.page.title });
+                            this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
+                            this.meta.updateTag({ name: 'twitter:description', content: meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:image',
+                                content: this.page.photoURL || meta.metaImageURL
+                            });
                         }
                     });
+
+
                 // Calendar
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);

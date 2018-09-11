@@ -46,6 +46,7 @@ export class AdminBottomSheetNewComponent implements OnInit {
                   return of(null);
               }
           }));
+        // Unwraps the observable to extract the data.
         this.user$.subscribe((currentUserInfo) => {
             if (currentUserInfo && this.afAuth.auth.currentUser) {
                 this.user = currentUserInfo;

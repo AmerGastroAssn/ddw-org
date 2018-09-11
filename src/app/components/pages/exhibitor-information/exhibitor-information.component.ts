@@ -57,14 +57,22 @@ export class ExhibitorInformationComponent implements OnInit {
                                 { name: 'description', content: meta.metaDesc },
                                 { name: 'author', content: this.page.author },
                                 { name: 'keywords', content: meta.metaKeywords },
-                                { property: 'og:url', content: 'https://ddw.org' },
+                                { property: 'og:url', content: `http://ddw.org/${this.page.slug}` },
                                 {
                                     property: 'og:title',
                                     content: `${this.page.title} - Digestive Digest Week®`
                                 },
+                                { property: 'og:see_also', content: `http://ddw.org/home` },
                                 { property: 'og:description', content: meta.metaDesc },
-                                { property: 'og:image', content: meta.metaImageURL },
-                            ], true);
+                                { property: 'og:image', content: this.page.photoURL || meta.metaImageURL },
+                                { itemprop: 'name', content: `http://ddw.org/${this.page.slug}` },
+                                { itemprop: 'description', content: meta.metaDesc },
+                                { itemprop: 'image', content: this.page.photoURL },
+                                { name: 'twitter:card', content: meta.metaDesc },
+                                { name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` },
+                                { name: 'twitter:title', content: this.page.title },
+                                { name: 'twitter:description', content: meta.metaDesc },
+                                { name: 'twitter:image', content: this.page.photoURL || meta.metaImageURL }]);
                         }
                     });
                 // Calendar

@@ -15,7 +15,6 @@ const currentDate = new Date();
 // Deploy your own instance of Rendertron for production
 // const renderUrl = 'your-rendertron-url';
 
-
 // Generates the URL
 function generateUrl(request) {
     return url.format({
@@ -25,17 +24,17 @@ function generateUrl(request) {
     });
 }
 
+
 // List of bots to target, add more if you'd like
 function detectBot(userAgent) {
 
+    // search engine crawler bots
     const bots = [
-        // search engine crawler bots
         'googlebot',
         'bingbot',
         'yandexbot',
         'duckduckbot',
         'slurp',
-        // social media link bots
         'twitterbot',
         'facebookexternalhit',
         'linkedinbot',
@@ -74,6 +73,7 @@ app.get('*', (req, res) => {
         const botUrl = generateUrl(req);
         // If Bot, fetch url via rendertron
 
+        console.log('renderUrl/botUrl', `${renderUrl}/${botUrl}`);
         fetch(`${renderUrl}/${botUrl}`)
           .then(res => res.text())
           .then(body => {

@@ -93,7 +93,9 @@ app.get('*', (req, res) => {
         // Not a bot, fetch the regular Angular app
         // This is not an infinite loop because Firebase Hosting Priorities dictate index.html will be loaded first
         fetch(`https://${appUrl}`)
-          .then(res => res.text())
+          .then(res => {
+              return res.text();
+          })
           .then(body => {
               console.log('Page hit at: ', currentDate);
               return res.send(body.toString());

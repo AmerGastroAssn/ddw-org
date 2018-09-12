@@ -83,7 +83,9 @@
                                 </a>
                             </li>
                             <li *ngIf="newsPage.isExtURL">
-                                <a [href]="newsPage.extURL">{{ newsPage.title }}</a>
+                            <a [routerLink]="['/news/', newsPage.url]">
+                                 {{ newsPage.title }}
+                            </a>
                             </li>
                         </span>
                     </ul>

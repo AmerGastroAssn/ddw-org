@@ -97,5 +97,7 @@ fabric.properties
 .idea/httpRequests
 
 
+### FUNCTIONS ###
 
 /functions/node_modules/
+/functions/.env

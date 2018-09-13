@@ -82,7 +82,7 @@ export class AdminCalendarNewComponent implements OnInit {
             date3: [''],
             date4: [''],
             title: ['', Validators.required],
-            displayName: ['', Validators.required],
+            displayName: [''],
             uid: [''],
         });
 

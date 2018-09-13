@@ -98,7 +98,7 @@ export class AdminCalendarEditComponent implements OnInit {
                     date3: [calendar.date3],
                     date4: [calendar.date4],
                     title: [calendar.title, Validators.required],
-                    displayName: [calendar.displayName, Validators.required],
+                    displayName: [calendar.displayName],
                     uid: [calendar.uid],
                 });
 

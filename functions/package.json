@@ -1,24 +1,33 @@
 {
   "name": "functions",
-  "description": "Cloud Functions for Firebase",
   "scripts": {
-    "lint": "eslint .",
-    "serve": "firebase serve --only functions",
-    "shell": "firebase functions:shell",
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
+  "main": "lib/index.js",
   "dependencies": {
     "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "firebase-admin": "^6.0.0",
-    "firebase-functions": "^2.0.5",
-    "node-fetch": "^2.2.0"
+    "firebase-admin": "~6.0.0",
+    "firebase-functions": "^2.0.3",
+    "puppeteer": "^1.8.0"
   },
   "devDependencies": {
-    "eslint": "^4.12.0",
-    "eslint-plugin-promise": "^3.6.0"
+    "tslint": "~5.8.0",
+    "typescript": "~2.8.3"
   },
-  "private": true
+  "engines": {
+    "node": "8"
+  },
+  "private": true,
+  "compilerOptions": {
+    "lib": [
+      "es7",
+      "dom"
+    ]
+  }
 }

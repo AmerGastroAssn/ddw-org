@@ -22,15 +22,24 @@ form * {
 
 
 button[mat-mini-fab] {
-    background-color: #1C202B;
-    margin: 0.5em 0 0 1em;
-    border: 3px solid #9d9fa1;
+    /*background-color: #1C202B;*/
+    background-color: transparent;
+
+    /*border: 3px solid #9d9fa1;*/
+    /*border: 3px solid #1C202B;*/
 }
 
-i.fa-chevron-double-left,
-i.fa-chevron-double-right {
-    color: #9d9fa1;
+i.fa-arrow-alt-to-left,
+i.fa-arrow-alt-from-left {
+    color: #282E3E;
     padding-bottom: 8px;
+    padding-left: 3px;
+    font-size: 3em;
+    margin: 2em 0 0 .3em;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    cursor: pointer;
+    position: fixed;
+    z-index: 3000;
 }
 
 /* Mobile Queries */

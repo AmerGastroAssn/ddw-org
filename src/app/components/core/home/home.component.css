@@ -4,6 +4,12 @@ h2 {
     font-weight: 600;
 }
 
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+}
+
 a:link {
     color: #2e6da4;
 }
@@ -27,19 +33,20 @@ h1.title {
     color: #fff;
     font-weight: 600;
     margin-bottom: 0.8em;
+    font-size: 42px;
 }
 
-.subtitle {
+h2.subtitle {
     font-size: 60px;
     color: #fff;
     font-weight: 600;
     margin-bottom: 0.6em;
 }
 
-h2.loc-date {
+h3.loc-date {
     color: #fff;
-    font-weight: 600;
-    font-size: 42px;
+    font-weight: 700;
+    font-size: 26px;
 }
 
 .forTime {
@@ -47,7 +54,6 @@ h2.loc-date {
 }
 
 /* Countdown Timer */
-
 .countdown {
     margin-top: 3em;
 }
@@ -65,7 +71,7 @@ h1.time {
 
 .time {
     font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
-    padding-top: 0.5em;
+    padding-top: 0.1em;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
@@ -74,13 +80,8 @@ h1.time {
 .days {
     background: #15abe8 none repeat scroll 0 0;
     border-radius: 50%;
-    /*bottom: 0;*/
     content: "";
-    /*display: block;*/
     height: 110px;
-    /*left: 12px;*/
-    /*position: absolute;*/
-    /*top: -35px;*/
     width: 110px;
     z-index: 1;
     border: 3px solid rgba(255, 255, 255, .5);
@@ -89,13 +90,8 @@ h1.time {
 .hours {
     background: #15abe8 none repeat scroll 0 0;
     border-radius: 50%;
-    /*bottom: 0;*/
     content: "";
-    /*display: inline-block;*/
     height: 110px;
-    /*left: 12px;*/
-    /*position: absolute;*/
-    /*top: -35px;*/
     width: 110px;
     z-index: 1;
     border: 3px solid rgba(255, 255, 255, .5);
@@ -104,13 +100,8 @@ h1.time {
 .minutes {
     background: #15abe8 none repeat scroll 0 0;
     border-radius: 50%;
-    /*bottom: 0;*/
     content: "";
-    /*display: block;*/
     height: 110px;
-    /*left: 12px;*/
-    /*position: absolute;*/
-    /*top: -35px;*/
     width: 110px;
     z-index: 1;
     border: 3px solid rgba(255, 255, 255, .5);
@@ -119,13 +110,8 @@ h1.time {
 .seconds {
     background: #15abe8 none repeat scroll 0 0;
     border-radius: 50%;
-    /*bottom: 0;*/
     content: "";
-    /*display: block;*/
     height: 110px;
-    /*left: 12px;*/
-    /*position: absolute;*/
-    /*top: -35px;*/
     width: 110px;
     z-index: 1;
     border: 3px solid rgba(255, 255, 255, .5);
@@ -268,15 +254,105 @@ img.sponsor-four {
     vertical-align: middle;
 }
 
-/*.pad1 {*/
-/*padding-top: 4em;*/
-/*padding-bottom: 4em;*/
-/*background: #fff;*/
-/*}*/
+@media (max-width: 767px) {
+    .hero[_ngcontent-c1] {
+        background-position: top center;
+        background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/banners/ddw-2019-hero-blue.png);
+        padding-bottom: 180px;
+        width: 100%;
+        height: 100%;
+        background-repeat: repeat-x;
+        background-size: cover;
+    }
 
-/* For inline img banner */
+    td.circles {
+        float: left;
+        width: 23%;
+        padding: 0;
+    }
+}
 
-/*img.banner-background {*/
-/*top: 0;*/
-/*width: 100%;*/
-/*}*/
+/* Mobile Media Queries */
+@media (max-width: 991px) {
+    .container-time {
+        padding: 0;
+    }
+
+    .header-content[_ngcontent-c1] {
+        top: 110px;
+        position: relative;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    h1.title {
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 0.8em;
+        font-size: 30px;
+    }
+
+    h2.subtitle {
+        font-size: 36px;
+        color: #fff;
+        font-weight: 600;
+        margin-bottom: 0.6em;
+    }
+
+    h3.loc-date {
+        color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .forTime {
+        color: #FEB512;
+    }
+
+    /* Countdown Timer */
+    .countdown {
+        margin-top: 3em;
+    }
+
+    .days[_ngcontent-c1] {
+        background: #15abe8 none repeat scroll 0 0;
+        border-radius: 50%;
+        content: "";
+        height: 100px;
+        width: 100px;
+        z-index: 1;
+        border: 3px solid rgba(255, 255, 255, .5);
+    }
+
+    .hours[_ngcontent-c1] {
+        background: #15abe8 none repeat scroll 0 0;
+        border-radius: 50%;
+        content: "";
+        height: 100px;
+        width: 100px;
+        z-index: 1;
+        border: 3px solid rgba(255, 255, 255, .5);
+    }
+
+    .minutes[_ngcontent-c1] {
+        background: #15abe8 none repeat scroll 0 0;
+        border-radius: 50%;
+        content: "";
+        height: 100px;
+        width: 100px;
+        z-index: 1;
+        border: 3px solid rgba(255, 255, 255, .5);
+    }
+
+    .seconds[_ngcontent-c1] {
+        background: #15abe8 none repeat scroll 0 0;
+        border-radius: 50%;
+        content: "";
+        height: 100px;
+        width: 100px;
+        z-index: 1;
+        border: 3px solid rgba(255, 255, 255, .5);
+    }
+
+}

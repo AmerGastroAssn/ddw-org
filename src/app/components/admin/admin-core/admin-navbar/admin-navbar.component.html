@@ -1,7 +1,12 @@
 <nav class="layout-navbar navbar navbar-expand-lg text-light container-p-x" id="layout-navbar">
     <!--<a class="navbar-brand" href="#">DDW<sup>&reg;</sup> Admin</a>-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -16,9 +21,13 @@
 
         <ul class="navbar-nav ml-auto text-right">
             <li class="nav-item" *ngIf="isLoggedIn">
-                <button class="btn new-page btn-sm float-right mt-2 mr-5"
-                        style="background-color:#9d9fa1; border-radius:0;"
-                        [routerLink]="['/admin/pages/new']"><i class="fa fa-file-plus"></i>&nbsp; New Page
+                <button mat-raised-button
+                        color="link"
+                        class="nav-link btn-open"
+                        (click)="openBottomSheet()">
+                    <span class="btn-text">
+                    <i class="fal fa-plus-hexagon"></i> Add New
+                </span>
                 </button>
             </li>
             <li class="nav-item" *ngIf="user && isLoggedIn">

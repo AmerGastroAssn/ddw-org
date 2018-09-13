@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatBottomSheet } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
@@ -7,6 +8,7 @@ import { User } from '../../../../models/User';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
 import { AuthService } from '../../../../services/auth.service';
+import { AdminBottomSheetNewComponent } from '../admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 
 @Component({
     selector: 'ddw-admin-navbar',
@@ -33,6 +35,7 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
       private settingsService: AdminSettingsService,
       private afs: AngularFirestore,
       private afAuth: AngularFireAuth,
+      private bottomSheet: MatBottomSheet,
     ) {
         this.currentDate = new Date();
         // Gets User in Local Storage
@@ -50,6 +53,11 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
                 this.isLoggedIn = false;
             }
         });
+    }
+
+    openBottomSheet(): void {
+        this.bottomSheet.open(AdminBottomSheetNewComponent);
+        console.log('clicked AdminBottomSheetNewComponent');
     }
 
     ngOnInit() {

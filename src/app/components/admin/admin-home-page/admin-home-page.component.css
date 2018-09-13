@@ -17,3 +17,11 @@ p {
     font-size: 14px;
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
 }
+
+.hide-btn {
+    float: right;
+}
+
+p.spacer {
+    padding: 1em;
+}

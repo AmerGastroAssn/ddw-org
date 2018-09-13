@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-    MatButtonModule,
+    MatBottomSheetModule,
+    MatButtonModule, MatDivider, MatDividerModule,
     MatExpansionModule,
     MatMenuModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -35,6 +36,7 @@ import { AdminPressReleaseModule } from './admin-press-release/admin-press-relea
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
+import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 
 @NgModule({
     declarations: [
@@ -57,6 +59,7 @@ import { AdminHomePageComponent } from './admin-home-page/admin-home-page.compon
         AdminCalendarNewComponent,
         AdminCalendarComponent,
         AdminHomePageComponent,
+        AdminBottomSheetNewComponent,
     ],
     imports: [
         CommonModule,
@@ -76,6 +79,9 @@ import { AdminHomePageComponent } from './admin-home-page/admin-home-page.compon
         CKEditorModule,
         MatExpansionModule,
         AdminPressReleaseModule,
+        MatTooltipModule,
+        MatBottomSheetModule,
+        MatDividerModule,
     ],
     exports: [
         MatButtonModule,

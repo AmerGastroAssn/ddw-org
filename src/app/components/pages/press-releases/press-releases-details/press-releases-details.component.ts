@@ -19,7 +19,7 @@ export class PressReleasesDetailsComponent implements OnInit {
     title: string;
     publishOn: number;
     banner: string;
-    pageTitle: string;
+    pressReleaseTitle: string;
     newsTitle: string;
 
     constructor(
@@ -32,7 +32,7 @@ export class PressReleasesDetailsComponent implements OnInit {
       private titleService: Title
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
-        this.pageTitle = 'Press Releases';
+        this.pressReleaseTitle = 'Press Releases';
         this.newsTitle = 'News & Media';
     }
 
@@ -45,24 +45,48 @@ export class PressReleasesDetailsComponent implements OnInit {
                 this.pressRelease = pressRelease;
                 // Needed to sanitize the innerHTML
                 this.body = this.sanitizer.bypassSecurityTrustHtml(pressRelease.body);
-                // For page title
+                // For pressRelease title
                 this.titleService.setTitle(`${this.pressRelease.title} - DDW Website`);
                 // Meta tags
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.pressRelease && meta) {
-                            this.meta.addTags([
-                                { name: 'description', content: meta.metaDesc },
-                                { name: 'author', content: this.pressRelease.author },
-                                { name: 'keywords', content: meta.metaKeywords },
-                                { property: 'og:url', content: 'https://ddw.org' },
-                                {
-                                    property: 'og:title',
-                                    content: `${this.pressRelease.title} - Digestive Digest Week®`
-                                },
-                                { property: 'og:description', content: meta.metaDesc },
-                                { property: 'og:image', content: meta.metaImageURL },
-                            ], true);
+                            this.meta.updateTag({ name: 'description', content: meta.metaDesc });
+                            this.meta.updateTag({ name: 'author', content: this.pressRelease.author });
+                            this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
+                            this.meta.updateTag({
+                                property: 'og:url',
+                                content: `http://ddw.org/${this.pressRelease.url}`
+                            });
+                            this.meta.updateTag({
+                                property: 'og:title',
+                                content: `${this.pressRelease.title} - Digestive Digest Week®`
+                            });
+                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
+                            this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
+                            this.meta.updateTag({ property: 'og:description', content: meta.metaDesc });
+                            this.meta.updateTag({
+                                property: 'og:image',
+                                content: meta.metaImageURL
+                            });
+                            this.meta.updateTag({
+                                itemprop: 'name',
+                                content: `http://ddw.org/${this.pressRelease.url}`
+                            });
+                            this.meta.updateTag({ itemprop: 'description', content: meta.metaDesc });
+                            this.meta.updateTag({ itemprop: 'image', content: meta.metaImageURL });
+                            this.meta.updateTag({ name: 'twitter:card', content: meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:url',
+                                content: `http://ddw.org/${this.pressRelease.url}`
+                            });
+                            this.meta.updateTag({ name: 'twitter:title', content: this.pressRelease.title });
+                            this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
+                            this.meta.updateTag({ name: 'twitter:description', content: meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:image',
+                                content: meta.metaImageURL
+                            });
                         }
                     });
             }

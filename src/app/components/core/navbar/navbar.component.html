@@ -1,3 +1,4 @@
+<!-- * NAVBAR * -->
 <!--BEGIN MOBILE MENU-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top d-md-block d-lg-none d-xl-none">
     <div class="container">
@@ -68,21 +69,30 @@
                             </span>
                     </ul>
                 </li>
-                <li class='dropdown'><a href='#' class='dropdown-toggle'
-                                        data-toggle='dropdown'><span>News & Media</span> <strong class='caret'></strong></a>
+                <li class='dropdown'>
+                    <a href='#' class='dropdown-toggle'
+                       data-toggle='dropdown'><span>News & Media</span> <strong class='caret'></strong></a>
                     <ul class='dropdown-menu'>
                         <span *ngFor="let newsPage of newsAndMediaPages$">
-                        <li *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage"><a
-                                [routerLink]="['/news/', newsPage.url]">{{ newsPage.title }}</a></li>
-                        <li *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage"><a
-                                [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">{{ newsPage.title }}</a></li>
-                        <li *ngIf="newsPage.isExtURL"><a
-                                [href]="newsPage.extURL">{{ newsPage.title }}</a></li>
-                            </span>
+                            <li *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage">
+                                <a [routerLink]="['/news/', newsPage.url]">{{ newsPage.title }}</a>
+                            </li>
+                            <li *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage">
+                                <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">
+                                    {{ newsPage.title }}
+                                </a>
+                            </li>
+                            <li *ngIf="newsPage.isExtURL">
+                            <a [routerLink]="['/news/', newsPage.url]">
+                                 {{ newsPage.title }}
+                            </a>
+                            </li>
+                        </span>
                     </ul>
                 </li>
-                <li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Presenters</span>
-                    <strong class='caret'></strong></a>
+                <li class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown'><span>Presenters</span>
+                        <strong class='caret'></strong></a>
                     <ul class='dropdown-menu'>
                         <span *ngFor="let presPage of presentersPages$">
                         <li *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage"><a
@@ -102,7 +112,7 @@
 <!--END MOBILE MENU-->
 
 
-<div class="fixed-top d-none d-sm-none d-md-none d-lg-block d-xl-block" id="TopHeader">
+<div class="fixed-top d-none d-sm-none d-md-none d-lg-block d-xl-block" id="HomeNavBar">
     <div class="container">
         <div class="col-md-12">
             <div id="header">
@@ -141,16 +151,28 @@
 
 
                         <!--BEGIN SOCIAL-->
-                        <div class="inline networking pull-right"><a href="https://www.facebook.com/DDWMeeting"
-                                                                     target="_blank"
-                                                                     rel="noopener"><i class="fab fa-facebook"></i></a>
-                            <a
-                                    href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i
-                                    class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"
-                                                                       target="_blank" rel="noopener"><i
-                                    class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"
-                                                                       target="_blank" rel="noopener"><i
-                                    class="fab fa-instagram"></i></a></div>
+                        <div class="inline networking pull-right">
+                            <a href="https://www.facebook.com/DDWMeeting"
+                               target="_blank"
+                               rel="noopener">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://twitter.com/DDWMeeting"
+                               target="_blank"
+                               rel="noopener">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.youtube.com/user/DDWMeeting"
+                               target="_blank"
+                               rel="noopener">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/ddwmeeting"
+                               target="_blank"
+                               rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                         <!--END SOCIAL-->
 
 
@@ -321,13 +343,15 @@
                                             <a [routerLink]="['/news/',  newsPage.url]">{{ newsPage.title }}</a>
                                         </li>
                                         <li class="dropdown-item"
-                                            *ngIf="!newsPage.isExtURL   && newsPage.isGrandchildPage">
-                                            <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">{{ newsPage.title }}</a>
+                                            *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage">
+                                            <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]">
+                                                {{ newsPage.title }}</a>
                                         </li>
                                         <li class="dropdown-item"
-                                            *ngIf="newsPage.isExtURL"><a
-                                                [routerLink]="['/news/', newsPage.url]">{{ newsPage.title }}
-                                        </a>
+                                            *ngIf="newsPage.isExtURL">
+                                            <a [routerLink]="['/news/', newsPage.url]">
+                                                {{ newsPage.title }}
+                                            </a>
                                         </li>
                                     </span>
                                 </ul>
@@ -339,18 +363,22 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink6">
                                     <span *ngFor="let presPage of presentersPages$">
-                                    <li class="dropdown-item"
-                                        *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage">
-                                        <a [routerLink]="['/presenters/', presPage.url]">{{ presPage.title }}</a>
-                                    </li>
-                                    <li class="dropdown-item"
-                                        *ngIf="!presPage.isExtURL && presPage.isGrandchildPage"><a
-                                            [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">{{ presPage.title }}</a></li>
-                                    <li class="dropdown-item"
-                                        *ngIf="presPage.isExtURL"><a
-                                            [href]="presPage.extURL"
-                                            target="_blank">{{ presPage.title }}</a>
-                                    </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage">
+                                            <a [routerLink]="['/presenters/', presPage.url]">{{ presPage.title }}</a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="!presPage.isExtURL && presPage.isGrandchildPage">
+                                            <a [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]">
+                                            {{ presPage.title }}
+                                        </a>
+                                        </li>
+                                        <li class="dropdown-item"
+                                            *ngIf="presPage.isExtURL">
+                                            <a [href]="presPage.extURL"
+                                               target="_blank">{{ presPage.title }}
+                                            </a>
+                                        </li>
                                     </span>
                                 </ul>
                             </li>

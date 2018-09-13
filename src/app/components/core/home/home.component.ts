@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
                         { itemprop: 'image', content: meta.metaImageURL },
                         { name: 'twitter:card', content: meta.metaDesc },
                         { name: 'twitter:url', content: 'https://ddw.org/home' },
+                        { name: 'twitter:site', content: '@DDWMeeting' },
                         { name: 'twitter:title', content: `Digestive Digest Week®` },
                         { name: 'twitter:description', content: meta.metaDesc },
                         { name: 'twitter:image', content: meta.metaImageURL },

@@ -19,21 +19,20 @@ h1, h2, h3 {
 }
 
 .admin-badge-card {
-    margin-bottom: 100px;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    /*margin-bottom: 100px;*/
+    /*background: #fff;*/
+    /*border-radius: 3px;*/
+    /*box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);*/
 }
 
-h1.admin-badge {
-    /*background-color: #ccc;*/
-    /*text-align: center;*/
-    /*margin-top: 30px;*/
-    /*color: transparent;*/
-    /*font-weight: 900 !important;*/
-    /*text-shadow: 0 1px 1px rgba(255,255,255,0.3);*/
-    /*-webkit-background-clip: text;*/
-    /*background-clip: text;*/
+h1.admin-badge, h1.admin-badge > i.fa  {
+    background-color: #565656;
+    color: transparent;
+    text-shadow: 0px 1px 2px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    font-weight: 900;
 }
 
 p > a:link, li > a:link {

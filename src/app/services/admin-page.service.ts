@@ -153,7 +153,7 @@ export class AdminPageService {
                 hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate(['/admin/pages']))
+                          .then(() => this.router.navigate([`/admin/${data.category}`]))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         } else {
             const timestampToNum = formData.date.getTime();
@@ -181,7 +181,7 @@ export class AdminPageService {
                 hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate(['/admin/pages']))
+                          .then(() => this.router.navigate([`/admin/${data.category}`]))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         }
     }

@@ -247,6 +247,7 @@ const appRoutes: Routes = [
             { path: '**', redirectTo: '/news/press-releases' },
         ]
     },
+    { path: 'ddwwebsite/:id/:id', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },
 
 

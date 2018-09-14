@@ -75,7 +75,8 @@ export class PressReleasesDetailsComponent implements OnInit {
                             });
                             this.meta.updateTag({ itemprop: 'description', content: meta.metaDesc });
                             this.meta.updateTag({ itemprop: 'image', content: meta.metaImageURL });
-                            this.meta.updateTag({ name: 'twitter:card', content: meta.metaDesc });
+                            this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+                            this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
                             this.meta.updateTag({
                                 name: 'twitter:url',
                                 content: `http://ddw.org/${this.pressRelease.url}`

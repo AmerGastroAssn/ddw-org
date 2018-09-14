@@ -124,7 +124,7 @@ export class AdminPageService {
         if (formData.isGrandchildPage) {
             this.newSlug = `/${formData.category}/${formData.grandchildURL}/${titleToSlug}`;
         } else {
-            this.newSlug = `${formData.category}/${titleToSlug}`;
+            this.newSlug = `/${formData.category}/${titleToSlug}`;
         }
         const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${titleToSlug}`);
         if (typeof formData.date === 'number') {

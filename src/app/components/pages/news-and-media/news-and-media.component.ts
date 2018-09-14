@@ -94,7 +94,7 @@ export class NewsAndMediaComponent implements OnInit {
                                     this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/${this.page.slug}` });
                                     this.meta.updateTag({ itemprop: 'description', content: meta.metaDesc });
                                     this.meta.updateTag({ itemprop: 'image', content: this.page.photoURL });
-                                    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+                                    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
                                     this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
                                     this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` });
                                     this.meta.updateTag({ name: 'twitter:title', content: this.page.title });

@@ -124,7 +124,7 @@ export class AdminPageService {
         if (formData.isGrandchildPage) {
             this.newSlug = `/${formData.category}/${formData.grandchildURL}/${titleToSlug}`;
         } else {
-            this.newSlug = `${formData.category}/${titleToSlug}`;
+            this.newSlug = `/${formData.category}/${titleToSlug}`;
         }
         const pageRef: AngularFirestoreDocument<Page> = this.afs.doc(`pages/${titleToSlug}`);
         if (typeof formData.date === 'number') {
@@ -153,7 +153,7 @@ export class AdminPageService {
                 hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate(['/admin/pages']))
+                          .then(() => this.router.navigate([`/admin/${data.category}`]))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         } else {
             const timestampToNum = formData.date.getTime();
@@ -181,7 +181,7 @@ export class AdminPageService {
                 hidden: formData.hidden,
             };
             return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate(['/admin/pages']))
+                          .then(() => this.router.navigate([`/admin/${data.category}`]))
                           .catch((error) => console.log(`ERROR~aP: `, error));
         }
     }

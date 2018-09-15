@@ -75,16 +75,26 @@ export class HomeComponent implements OnInit {
                         { property: 'og:site_name', content: `Digestive Digest Week®` },
                         { property: 'og:see_also', content: `http://ddw.org/home` },
                         { property: 'og:description', content: meta.metaDesc },
-                        { property: 'og:image', content: meta.metaImageURL },
+                        {
+                            property: 'og:image',
+                            content: meta.metaImageURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png'
+                        },
                         { itemprop: 'name', content: 'http://ddw.org/home' },
                         { itemprop: 'description', content: meta.metaDesc },
-                        { itemprop: 'image', content: meta.metaImageURL },
-                        { name: 'twitter:card', content: meta.metaDesc },
+                        {
+                            itemprop: 'image',
+                            content: meta.metaImageURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png'
+                        },
+                        { name: 'twitter:card', content: 'summary_large_image' },
+                        { name: 'twitter:creator', content: '@DDWMeeting' },
                         { name: 'twitter:url', content: 'https://ddw.org/home' },
                         { name: 'twitter:site', content: '@DDWMeeting' },
                         { name: 'twitter:title', content: `Digestive Digest Week®` },
                         { name: 'twitter:description', content: meta.metaDesc },
-                        { name: 'twitter:image', content: meta.metaImageURL },
+                        {
+                            name: 'twitter:image',
+                            content: meta.metaImageURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png'
+                        },
 
                     ], true);
                 }

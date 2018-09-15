@@ -36,7 +36,7 @@ i.fa-arrow-alt-from-left {
     padding-left: 3px;
     font-size: 3em;
     margin: 2em 0 0 .3em;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
     cursor: pointer;
     position: fixed;
     z-index: 3000;

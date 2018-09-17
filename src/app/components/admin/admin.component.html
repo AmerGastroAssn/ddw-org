@@ -2,7 +2,9 @@
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-2">
     <div class="layout-inner">
-        <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark" style="background-color:#282E3E;" *ngIf="toggleSidenav">
+        <div id="layout-sidenav"
+             class="layout-sidenav sidenav sidenav-vertical bg-dark" style="background-color:#282E3E;"
+             *ngIf="toggleSidenav">
             <ddw-admin-sidenav></ddw-admin-sidenav>
         </div>
 
@@ -10,18 +12,18 @@
             <!-- * Navbar * -->
             <ddw-admin-navbar></ddw-admin-navbar>
             <!-- * Fab Toggle Button * -->
-            <i class="fal"
-               [ngClass]="{'fa-arrow-alt-to-left':toggleSidenav,
-                   'fa-arrow-alt-from-left':!toggleSidenav}"
-               (click)="onToggleSidenav()"
-               matTooltip="Click to toggle sidebar navigation"
-               [matTooltipShowDelay]="showDelay.value"
-               [matTooltipHideDelay]="hideDelay.value"
-               aria-label="Click to toggle sidebar navigation">
-            </i>
-            <!--<button mat-mini-fab>-->
-                <!---->
-            <!--</button>-->
+
+            <button mat-fab
+                    (click)="onToggleSidenav()">
+                <i class="fa"
+                   [ngClass]="{'fa-arrow-alt-circle-left':toggleSidenav,
+                   'fa-arrow-alt-circle-right':!toggleSidenav}"
+                   matTooltip="Click to toggle sidebar navigation"
+                   [matTooltipShowDelay]="showDelay.value"
+                   [matTooltipHideDelay]="hideDelay.value"
+                   aria-label="Click to toggle sidebar navigation">
+                </i>
+            </button>
             <!-- * App Container * -->
             <router-outlet></router-outlet>
             <ddw-admin-mobile-footernav></ddw-admin-mobile-footernav>

@@ -1,7 +1,7 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
-    selector: '[ddwRunScripts]'
+    selector: '[runScripts]'
 })
 export class RunScriptsDirective implements OnInit {
     constructor(private elementRef: ElementRef) {
@@ -12,6 +12,7 @@ export class RunScriptsDirective implements OnInit {
             this.reinsertScripts();
         });
     }
+
 
     reinsertScripts(): void {
         const scripts = <HTMLScriptElement[]>this.elementRef.nativeElement.getElementsByTagName('script');

@@ -307,13 +307,13 @@ export class AuthService {
             isOnline: true,
             loginDate: Date.now(),
             photoURL: userData.photoURL,
-            admin: userData.admin,
+            admin: userData.admin || false,
             title: userData.title,
             displayName: userData.displayName,
         };
         this.setUserInLocalStorage(data);
-        // console.log('data', data);
-        // console.log('userRef', userRef);
+        console.log('data', data);
+        console.log('userRef', userRef);
         return userRef.set(data);
     }
 

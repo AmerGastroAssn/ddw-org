@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
     calendars$: Observable<Calendar[]>;
     hasCalendar: boolean;
     calendarTitle: string;
+    postsHidden: boolean;
 
     constructor(
       private countdownService: CountdownService,
@@ -133,8 +134,5 @@ export class HomeComponent implements OnInit {
 
     }
 
-    videoURLToggle() {
-
-    }
 
 }

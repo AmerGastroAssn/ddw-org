@@ -37,6 +37,9 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
+import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
+import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
+import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +63,9 @@ import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-ne
         AdminCalendarComponent,
         AdminHomePageComponent,
         AdminBottomSheetNewComponent,
+        AdminContactUsComponent,
+        AdminContactUsDetailsComponent,
+        AdminContactUsListComponent,
     ],
     imports: [
         CommonModule,

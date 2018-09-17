@@ -1,0 +1,94 @@
+<!-- * ADMIN-CONTACT-US-DETAILS * -->
+<div class="row mt-4">
+    <div class="container">
+        <div class="row mb-4">
+            <a class="btn btn-default"
+               [routerLink]="['/admin/contacts']">
+                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Contacts
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngIf="contact">
+                <div class="card-body">
+                    <div class="btn-group float-right mb-5"
+                         role="group"
+                         aria-label="Basic example">
+                        <a class="btn btn-warning btn-sm"
+                           [routerLink]="['/admin/contacts']">
+                            <i class="fa fa-undo"></i>&nbsp;Cancel
+                        </a>
+                        <a class="btn btn-danger btn-sm text-white"
+                           (click)="onDeleteContact()">
+                            <i class="fa fa-trash"></i> Delete
+                        </a>
+                    </div>
+
+                    <table class="table table-striped mt-4">
+                        <tbody>
+                        <tr>
+                            <th scope="col">From:</th>
+                            <td>{{ contact.firstName }} {{ contact.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Program:</th>
+                            <td>{{ contact.programType }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Send Date:</th>
+                            <td><i class="fa fa-calendar-alt"></i> {{ contact.sentDate | date:'medium' }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Phone Number:</th>
+                            <td>
+                                <a href="tel:{{ contact.phoneNumber }}"
+                                   class="text-decoration-none">
+                                    <i class="fa fa-phone"></i> {{ contact.phoneNumber }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">Email:</th>
+                            <td>
+                                <a href="mailto:{{ contact.email }}?subject=DDW® Contact"
+                                   class="text-decoration-none">
+                                    <i class="fa fa-envelope"></i> {{ contact.email }}
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                Subject:
+                            </h6>
+                            <p class="card-text">
+                                {{ contact.subject }}
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <h6 class="card-title">
+                                Message:
+                            </h6>
+                            <p class="card-text">
+                                {{ contact.message }}
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

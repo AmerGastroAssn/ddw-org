@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -56,6 +57,7 @@ import { AdminSettingsService } from './services/admin-settings.service';
 import { AdminUserService } from './services/admin-user.service';
 import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
+import { ContactFormService } from './services/contact-form.service';
 import { CountdownService } from './services/countdown.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
@@ -92,7 +94,9 @@ firebase.initializeApp(environment.firebase);
         PagesNavbarComponent,
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireAuthModule,
@@ -124,6 +128,7 @@ firebase.initializeApp(environment.firebase);
         ScriptService,
         AdminCalendarService,
         AdminHomePageService,
+        ContactFormService,
     ],
     entryComponents: [AdminBottomSheetNewComponent],
     bootstrap: [AppComponent],

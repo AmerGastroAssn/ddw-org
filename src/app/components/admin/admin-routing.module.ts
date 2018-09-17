@@ -10,6 +10,9 @@ import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/a
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
+import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
+import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
+import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
@@ -79,6 +82,13 @@ const adminRoutes: Routes = [
                     { path: '', component: AdminCalendarListComponent, canActivate: [AuthGuard] },
                     { path: 'new', component: AdminCalendarNewComponent, canActivate: [AuthGuard] },
                     { path: ':id/edit', component: AdminCalendarEditComponent, canActivate: [AuthGuard] },
+                ]
+            },
+            {
+                path: 'contacts', component: AdminContactUsComponent,
+                children: [
+                    { path: '', component: AdminContactUsListComponent, canActivate: [AuthGuard] },
+                    { path: ':id', component: AdminContactUsDetailsComponent, canActivate: [AuthGuard] },
                 ]
             },
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },

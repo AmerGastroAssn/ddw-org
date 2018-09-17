@@ -1,17 +1,21 @@
 .app-brand.demo, li.active > ul {
     background-color: #1C202B;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
 }
 
 a.sidenav-link {
     cursor: pointer;
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
 }
 
 li.sidenav-item {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     font-size: 1em;
     line-height: 1.5;
 }
 
 li.sub-item {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     margin-left: 0.5em;
 }
 

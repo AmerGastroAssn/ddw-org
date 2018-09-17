@@ -24,6 +24,7 @@ img.user-image {
 
 /* Navbar Button */
 button.btn-open[_ngcontent-c3] {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     color: #a3a4a6;
     border: 1px solid #2E3445;
     background-color: #292E3D;

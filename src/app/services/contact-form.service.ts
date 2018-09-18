@@ -66,7 +66,7 @@ export class ContactFormService {
             email: formData.email,
             phoneNumber: formData.phoneNumber,
             subject: formData.subject,
-            message: formData.message,
+            body: formData.body,
             sentDate: Date.now(),
             programType: formData.programType,
             uid: new$key,

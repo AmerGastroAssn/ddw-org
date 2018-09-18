@@ -2,10 +2,12 @@
 <div class="row mt-4">
     <div class="container">
         <div class="row mb-4">
-            <a class="btn btn-default"
-               [routerLink]="['/admin/contacts']">
-                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Contacts
-            </a>
+            <div class="offset-md-9 col">
+                <a class="btn btn-default"
+                   [routerLink]="['/admin/contacts']">
+                    <i class="fal fa-arrow-circle-left"></i>&nbsp;All Contacts
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -32,21 +34,21 @@
                         <tbody>
                         <tr>
                             <th scope="col">From:</th>
-                            <td>{{ contact.firstName }} {{ contact.lastName }}</td>
+                            <td class="text-dark">{{ contact.firstName }} {{ contact.lastName }}</td>
                         </tr>
                         <tr>
                             <th scope="col">Program:</th>
-                            <td>{{ contact.programType }}</td>
+                            <td class="text-dark">{{ contact.programType }}</td>
                         </tr>
                         <tr>
                             <th scope="col">Send Date:</th>
-                            <td><i class="fa fa-clock"></i> {{ contact.sentDate | date:'medium' }}</td>
+                            <td class="text-dark"><i class="fa fa-clock"></i> {{ contact.sentDate | date:'medium' }}</td>
                         </tr>
                         <tr>
                             <th scope="col">Phone Number:</th>
                             <td>
                                 <a href="tel:{{ contact.phoneNumber }}"
-                                   class="text-decoration-none">
+                                   class="text-decoration-none text-dark">
                                     <i class="fa fa-phone"></i> {{ contact.phoneNumber }}
                                 </a>
                             </td>
@@ -55,7 +57,7 @@
                             <th scope="col">Email:</th>
                             <td>
                                 <a href="mailto:{{ contact.email }}?subject=DDW® Contact"
-                                   class="text-decoration-none">
+                                   class="text-decoration-none text-dark">
                                     <i class="fa fa-envelope"></i> {{ contact.email }}
                                 </a>
                             </td>
@@ -63,25 +65,25 @@
                         </tbody>
                     </table>
 
-                    <div class="card">
+                    <div class="card bg-lighter">
                         <div class="card-body">
                             <h6 class="card-title">
                                 Subject:
                             </h6>
-                            <p class="card-text">
+                            <p class="card-text p-3">
                                 {{ contact.subject }}
                             </p>
                         </div>
                     </div>
 
 
-                    <div class="card mt-2">
+                    <div class="card mt-3 bg-lighter">
                         <div class="card-body">
                             <h6 class="card-title">
-                                Message:
+                                Body:
                             </h6>
-                            <p class="card-text">
-                                {{ contact.message }}
+                            <p class="card-text p-3">
+                                {{ contact.body }}
                             </p>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ContactForm } from '../../../models/ContactForm';
 import { ContactFormService } from '../../../services/contact-form.service';
@@ -18,28 +19,31 @@ export class ContactUsComponent implements OnInit {
     email: string;
     phoneNumber: string;
     subject: string;
-    message: string;
+    body: string;
     programType: string;
     sentDate: number;
     uid: string;
+    mainAccountEmailAddress: string;
 
     constructor(
       private fb: FormBuilder,
       private contactFormService: ContactFormService,
       private sbAlert: MatSnackBar,
+      private httpClient: HttpClient,
     ) {
         this.sentDate = Date.now();
+        this.mainAccountEmailAddress = 'cstodd@gastro.org';
     }
 
     ngOnInit() {
         // Form:
         this.newContactForm = this.fb.group({
-            firstName: ['' || this.firstName],
-            lastName: ['' || this.lastName],
-            email: ['' || this.email],
+            firstName: ['' || this.firstName, Validators.required],
+            lastName: ['' || this.lastName, Validators.required],
+            email: ['' || this.email, Validators.required],
             phoneNumber: ['' || this.phoneNumber],
-            subject: ['' || this.subject],
-            message: ['' || this.message],
+            subject: ['' || this.subject, Validators.required],
+            body: ['' || this.body, Validators.required],
             sentDate: ['' || this.sentDate],
             programType: ['' || this.programType],
         });
@@ -49,7 +53,7 @@ export class ContactUsComponent implements OnInit {
         this.email = this.newContactForm.value.email;
         this.phoneNumber = this.newContactForm.value.phoneNumber;
         this.subject = this.newContactForm.value.subject;
-        this.message = this.newContactForm.value.message;
+        this.body = this.newContactForm.value.body;
         this.sentDate = this.newContactForm.value.sentDate;
         this.programType = this.newContactForm.value.programType;
     }
@@ -62,8 +66,11 @@ export class ContactUsComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.contactFormService.setContactForm(formData);
-            console.log(formData);
+            this.contactFormService.setContactForm(formData)
+                .then(() => {
+                    this.sendEmail(formData);
+                    console.log('sendEmail(formData)', formData);
+                });
             this.newContactForm.reset();
             this.sbAlert.open('Form was sent Successfully!', 'Dismiss', {
                 duration: 3000,
@@ -71,6 +78,23 @@ export class ContactUsComponent implements OnInit {
                 panelClass: ['snackbar-success']
             });
         }
+    }
+
+    sendEmail(formData) {
+        const endpoint = `https://us-central1-ddw-org.cloudfunctions.net/httpEmail`;
+
+        const data = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phoneNumber: formData.phoneNumber,
+            programType: formData.programType,
+            subject: formData.subject,
+            body: formData.body,
+        };
+        console.log('data in sendEmail', data);
+
+        this.httpClient.post(endpoint, data).subscribe();
     }
 
 }

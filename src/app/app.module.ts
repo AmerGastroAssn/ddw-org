@@ -1,5 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -111,6 +113,7 @@ firebase.initializeApp(environment.firebase);
         TabsModule.forRoot(),
         TimepickerModule.forRoot(),
         AdminModule,
+        HttpClientModule,
     ],
     exports: [],
     providers: [

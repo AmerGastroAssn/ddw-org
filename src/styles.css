@@ -14,6 +14,10 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
+.helv {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+}
+
 .layout-container {
     background-color: #fcfcfc !important;
 }
@@ -26,9 +30,9 @@ h1, h2, h3 {
 }
 
 h1.admin-badge, h1.admin-badge > i.fa {
-    background-color: #282E3E;
+    background-color: #848484;
     color: transparent;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -521,6 +525,166 @@ button.gsc-search-button.gsc-search-button-v2 {
     padding: 4px 8px;
     border: 2px solid #ccc;
 }
+
+
+/* Cavin's Custom */
+
+
+
+
+
+.gsc-control-cse {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    border: none;
+}
+
+
+.gsc-search-button-v2, .gsc-search-button-v2:hover {
+    font-size: 0px;
+    padding: 6px 27px;
+    width: auto;
+    vertical-align: middle;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-top: 2px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    background-image: none;
+    filter: none;
+
+}
+
+.gsc-input-box {
+    border: 1px solid #ffffff;
+    background-color: transparent !important;
+}
+
+input#gsc-i-id1.gsc-input {
+    width: 100%;
+    padding: 0px;
+    border: none;
+    margin: -0.0625em 0px 0px;
+    height: 1.25em;
+    outline: none;
+    background: none !important;
+    text-indent: 48px;
+    color: #FFFFFF;
+}
+
+#header .networking {
+    float: right;
+    padding-top: 10px;
+}
+
+#AuxMenu {
+    margin-top: 2px;
+}
+
+
+/*ADDITIONAL STYLES*/
+
+
+.header-content h1 {
+    color: white;
+}
+
+li.nav-item > a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+.bg-blue a.btn:hover {
+    background-color: #FEBD00;
+    color: #004060;
+    border: 2px solid #FFFFFF;
+}
+
+.cal-content .col-md-3 b, .begin-time {
+    color: #004060;
+    padding-left: 20px;
+}
+
+
+.middle-footer li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px!important;
+    font-weight: normal;
+}
+
+
+a.app.google:hover {
+    background-image:url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/google-hover.png');
+}
+
+a.app.apple:hover {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/apple-hover.png');
+}
+
+.row.top-footer {
+    margin-top: 50px;
+}
+
+.row-blocks img {
+    width: 100%;
+}
+
+
+a.btn.btn-warning.btn-lg {
+    background-color: #f47700;
+    color: #fff;
+    border-radius: 0;
+    font-weight: normal;
+    text-decoration: none;
+    padding: .5em 2em;
+    font-size: 18px;
+}
+
+.cta-right>blockquote {
+    font-family: 'Open Sans',Roboto,'Helvetica Neue',sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: normal !important;
+}
+
+h2.card-sec-title::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #FEBE10;
+    width: 65px;
+    margin: 15px auto 0px;
+}
+
+.col-quote blockquote {
+    background-color: transparent;
+    border-left: 0;
+    color: #fff;
+    margin-bottom: 1em;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 15px 0;
+}
+
+.block {
+    border: none;
+    padding-bottom: 1em;
+    margin-top: 1em;
+}
+
+.block h3, .block p {
+    text-align: left;
+    padding: 0;
+}
+
+.container a {
+    color: #0056b3;
+}
+
+
 
 /* MOBILE */
 @media only screen and (min-width: 992px) {

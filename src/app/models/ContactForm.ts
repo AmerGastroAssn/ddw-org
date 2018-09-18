@@ -6,7 +6,7 @@ export class ContactForm {
       public email: string,
       public phoneNumber: string,
       public subject: string,
-      public message: string,
+      public body: string,
       public programType: string,
       public sentDate: number,
       public uid: string,

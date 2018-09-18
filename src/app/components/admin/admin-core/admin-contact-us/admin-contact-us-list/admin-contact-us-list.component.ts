@@ -29,6 +29,9 @@ import { ContactFormService } from '../../../../../services/contact-form.service
 })
 export class AdminContactUsListComponent implements OnInit {
     contacts$: Observable<ContactForm[]>;
+    // contact: ContactForm;
+    // id: string;
+    $key: string;
 
     constructor(
       private contactFormService: ContactFormService,
@@ -37,5 +40,18 @@ export class AdminContactUsListComponent implements OnInit {
 
     ngOnInit() {
         this.contacts$ = this.contactFormService.getAllContactForms();
+        // // Get id from url
+        // this.id = this.route.snapshot.params['id'];
+        // // Get each contact's details
+        // this.contactFormService.getContact(this.id).subscribe((contactInfo) => {
+        //     if (contactInfo !== null) {
+        //         this.contact = contactInfo;
+        //         console.log('this.contact', this.contact);
+        //     }
+        // });
+    }
+
+    onDeleteContact() {
+        this.contactFormService.deleteContact(this.$key);
     }
 }

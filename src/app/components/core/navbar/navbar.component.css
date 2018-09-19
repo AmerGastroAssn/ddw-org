@@ -218,9 +218,6 @@ button.text-secondary {
 }
 
 
-
-
-
 @media only screen and (min-width: 992px) {
     .navbar-nav > li > .dropdown-menu {
         min-width: 370px;
@@ -355,3 +352,4 @@ button.text-secondary {
 .navbar.bg-light .navbar-nav .show>.nav-link {
     color: #4E5155 !important;
 }
+

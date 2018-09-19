@@ -1,4 +1,4 @@
-<ddw-navbar></ddw-navbar>
+<ddw-pages-navbar></ddw-pages-navbar>
 <img src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg"
      class="bannerPhotoURL">
 <div class="container">
@@ -41,48 +41,70 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="pt-2 pb-2 send-msg">Send Us A Message</h2>
-                        <form>
+                        <form [formGroup]="newContactForm"
+                              (ngSubmit)="onNewContact(newContactForm.value)">
+
+                            <div class="form-group">
+                                <label for="programType">Program</label>
+                                <select class="custom-select custom-select-lg mb-3"
+                                        id="programType"
+                                        formControlName="programType">
+                                    <option selected>Select A Program</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+
+
                             <div class="form-group">
                                 <label>Your First Name</label>
                                 <input type="text"
-                                       class="form-control">
+                                       class="form-control"
+                                       formControlName="firstName">
                             </div>
 
                             <div class="form-group">
                                 <label>Your Last Name</label>
                                 <input type="text"
-                                       class="form-control">
+                                       class="form-control"
+                                       formControlName="lastName">
                             </div>
 
                             <div class="form-group">
                                 <label>Your Email Address</label>
                                 <input type="email"
-                                       class="form-control">
+                                       class="form-control"
+                                       formControlName="email">
                             </div>
 
                             <div class="form-group col-md-3 phone-number">
                                 <label>Your Phone Number (optional)</label>
                                 <input type="text"
-                                       class="form-control">
+                                       class="form-control"
+                                       formControlName="phoneNumber">
                             </div>
 
                             <div class="form-group">
                                 <label>Subject</label>
                                 <input type="text"
-                                       class="form-control">
+                                       class="form-control"
+                                       formControlName="subject">
                             </div>
 
                             <div class="form-group">
-                                <label>Message</label>
+                                <label>body</label>
                                 <textarea class="form-control"
-                                          rows="10">
+                                          rows="10"
+                                          formControlName="body">
                                </textarea>
                             </div>
 
                             <div class="form-group">
-                                <a href="#" class="btn btn-primary btn-sm">
+                                <button type="submit"
+                                        class="btn btn-primary btn-sm">
                                     Send
-                                </a>
+                                </button>
                             </div>
 
                         </form>

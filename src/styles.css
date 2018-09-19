@@ -14,6 +14,10 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
+.helv {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+}
+
 .layout-container {
     background-color: #fcfcfc !important;
 }
@@ -25,10 +29,10 @@ h1, h2, h3 {
     /*box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);*/
 }
 
-h1.admin-badge, h1.admin-badge > i.fa  {
-    background-color: #686D70;
+h1.admin-badge, h1.admin-badge > i.fa {
+    background-color: #848484;
     color: transparent;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -290,7 +294,7 @@ a.btn.btn-warning.btn-lg:hover {
 
 .home .btn-primary, .block .btn-primary, a.btn.cta, .btn-cta {
     background-color: #F47700;
-    border: 0px none;
+    border: 0 none;
     color: #fff;
     font-size: 18px;
     padding: .5em 2em;
@@ -382,7 +386,7 @@ blockquote {
 
 blockquote::before, blockquote::after {
     color: #fff;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-size: 50px;
 }
 
@@ -422,15 +426,6 @@ blockquote:after {
     color: #FEBE10;
 }
 
-@media only screen and (min-width: 992px) {
-    .col-quote {
-        padding-left: 3em;
-        padding-right: 3em;
-        padding-top: 1em;
-    }
-
-}
-
 table.ddw1 tbody > tr:first-child td {
     background: #053c60 none repeat scroll 0 0;
     font-size: 14px;
@@ -442,4 +437,261 @@ table.ddw1 tbody > tr:first-child td {
 table.ddw1 td {
     border: 1px solid #eee !important;
     padding: 10px !important;
+}
+
+.mat-fab .mat-button-wrapper {
+    padding: 0 !important;
+    display: inline-block;
+    line-height: 24px;
+}
+
+/* Colin's Searchbar updates */
+.cse .gsc-control-cse, .gsc-control-cse {
+    font-family: Arial, sans-serif;
+    background-color: transparent !important;
+    border: transparent !important;
+}
+
+button.gsc-search-button.gsc-search-button-v2 {
+    font-size: 0px;
+    padding: 6px 27px;
+    width: auto;
+    vertical-align: middle;
+    border: transparent;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-top: 2px;
+    /* border-color: #000; */
+    background-color: transparent;
+    /* background-image: -webkit-gradient(linear,left top,left bottom,from(#333333),to(#333333)); */
+    background-image: none;
+}
+
+/* Use a different font family for search results */
+.gs-title, .gs-snippet {
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Add a border between individual search results */
+.gs-webResult {
+    border: transparent;
+    padding: 1em;
+}
+
+/* Do no display the count of search results */
+.gsc-result-info {
+    display: none;
+}
+
+/* Hide the Google branding in search results */
+.gcsc-branding {
+    display: none;
+}
+
+/* Hide the thumbnail images in search results */
+.gsc-thumbnail {
+    display: none;
+}
+
+/* Hide the snippets in Google search results */
+.gs-snippet {
+    display: none;
+}
+
+/* Change the font size of the title of search results */
+.gs-title a {
+    font-size: 16px;
+}
+
+/* Change the font size of snippets inside search results */
+.gs-snippet {
+    font-size: 14px;
+}
+
+/* Google Custom Search highlights matching words in bold, toggle that */
+.gs-title b, .gs-snippet b {
+    font-weight: normal;
+}
+
+/* Do no display the URL of web pages in search results */
+.gsc-url-top, .gsc-url-bottom {
+    display: none;
+}
+
+/* Highlight the pagination buttons at the bottom of search results */
+.gsc-cursor-page {
+    font-size: 1.5em;
+    padding: 4px 8px;
+    border: 2px solid #ccc;
+}
+
+
+/* Cavin's Custom */
+
+
+
+
+
+.gsc-control-cse {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    border: none;
+}
+
+
+.gsc-search-button-v2, .gsc-search-button-v2:hover {
+    font-size: 0px;
+    padding: 6px 27px;
+    width: auto;
+    vertical-align: middle;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-top: 2px;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+    background-image: none;
+    filter: none;
+
+}
+
+.gsc-input-box {
+    border: 1px solid #ffffff;
+    background-color: transparent !important;
+}
+
+input#gsc-i-id1.gsc-input {
+    width: 100%;
+    padding: 0px;
+    border: none;
+    margin: -0.0625em 0px 0px;
+    height: 1.25em;
+    outline: none;
+    background: none !important;
+    text-indent: 48px;
+    color: #FFFFFF;
+}
+
+#header .networking {
+    float: right;
+    padding-top: 10px;
+}
+
+#AuxMenu {
+    margin-top: 2px;
+}
+
+
+/*ADDITIONAL STYLES*/
+
+
+.header-content h1 {
+    color: white;
+}
+
+li.nav-item > a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+.bg-blue a.btn:hover {
+    background-color: #FEBD00;
+    color: #004060;
+    border: 2px solid #FFFFFF;
+}
+
+.cal-content .col-md-3 b, .begin-time {
+    color: #004060;
+    padding-left: 20px;
+}
+
+
+.middle-footer li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px!important;
+    font-weight: normal;
+}
+
+
+a.app.google:hover {
+    background-image:url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/google-hover.png');
+}
+
+a.app.apple:hover {
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/apple-hover.png');
+}
+
+.row.top-footer {
+    margin-top: 50px;
+}
+
+.row-blocks img {
+    width: 100%;
+}
+
+
+a.btn.btn-warning.btn-lg {
+    background-color: #f47700;
+    color: #fff;
+    border-radius: 0;
+    font-weight: normal;
+    text-decoration: none;
+    padding: .5em 2em;
+    font-size: 18px;
+}
+
+.cta-right>blockquote {
+    font-family: 'Open Sans',Roboto,'Helvetica Neue',sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: normal !important;
+}
+
+h2.card-sec-title::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #FEBE10;
+    width: 65px;
+    margin: 15px auto 0px;
+}
+
+.col-quote blockquote {
+    background-color: transparent;
+    border-left: 0;
+    color: #fff;
+    margin-bottom: 1em;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 15px 0;
+}
+
+.block {
+    border: none;
+    padding-bottom: 1em;
+    margin-top: 1em;
+}
+
+.block h3, .block p {
+    text-align: left;
+    padding: 0;
+}
+
+.container a {
+    color: #0056b3;
+}
+
+
+
+/* MOBILE */
+@media only screen and (min-width: 992px) {
+    .col-quote {
+        padding-left: 3em;
+        padding-right: 3em;
+        padding-top: 1em;
+    }
+
 }

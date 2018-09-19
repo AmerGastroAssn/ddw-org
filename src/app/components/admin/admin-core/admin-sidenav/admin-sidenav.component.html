@@ -27,53 +27,52 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowPagesToggle()">
             <i class="sidenav-icon ion ion-ios-albums"></i>
-            <div><i class="fal fa-layer-group"></i>&nbsp;Pages</div>
+            <div><i class="fal fa-layer-group"></i>&nbsp;<span class="helv">Pages</span></div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/pages']" class="sidenav-link">
-                    <div><i class="fal fa-layer-group"></i>&nbsp;All Pages</div>
+                    <div><i class="fal fa-layer-group"></i>&nbsp;<span class="helv">All Pages</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/register']" class="sidenav-link">
-                    <div><i class="fal fa-pen-nib"></i>&nbsp;Register</div>
+                    <div><i class="fal fa-pen-nib"></i>&nbsp;<span class="helv">Register</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/attendee-planning']" class="sidenav-link">
-                    <div><i class="fal fa-book-reader"></i>&nbsp;Attendee Planning</div>
+                    <div><i class="fal fa-book-reader"></i>&nbsp;<span class="helv">Attendee Planning</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/education']" class="sidenav-link">
-                    <div><i class="fal fa-graduation-cap"></i>&nbsp;Education</div>
+                    <div><i class="fal fa-graduation-cap"></i>&nbsp;<span class="helv">Education</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/exhibitor-information']" class="sidenav-link">
-                    <div><i class="fal fa-info"></i>&nbsp;Exhibitor Info</div>
+                    <div><i class="fal fa-info"></i>&nbsp;<span class="helv">Exhibitor Info</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/news']" class="sidenav-link">
-                    <div><i class="fal fa-newspaper"></i>&nbsp;News & Media</div>
+                    <div><i class="fal fa-newspaper"></i>&nbsp;<span class="helv">News & Media</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/presenters']" class="sidenav-link">
-                    <div><i class="fal fa-mouse-pointer"></i>&nbsp;Presenters</div>
+                    <div><i class="fal fa-mouse-pointer"></i>&nbsp;<span class="helv">Presenters</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/pages/new']" class="sidenav-link">
-                    <div><i class="fal fa-layer-plus"></i>&nbsp;New Page</div>
+                    <div><i class="fal fa-layer-plus"></i>&nbsp;<span class="helv">New Page</span></div>
                 </a>
             </li>
         </ul>
     </li>
-
 
 
     <!-- * Press Releases * -->
@@ -82,18 +81,18 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowPressReleaseToggle()">
             <i class="sidenav-icon ion ion-md-speedometer"></i>
-            <div><i class="fal fa-newspaper"></i>&nbsp;Press Releases</div>
+            <div><i class="fal fa-newspaper"></i>&nbsp;<span class="helv">Press Releases</span></div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/press-releases']" class="sidenav-link">
-                    <div><i class="fal fa-newspaper"></i>&nbsp;All PR</div>
+                    <div><i class="fal fa-newspaper"></i>&nbsp;<span class="helv">All PR</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/press-releases/new']" class="sidenav-link">
-                    <div><i class="fal fa-newspaper"></i>&nbsp;New PR</div>
+                    <div><i class="fal fa-newspaper"></i>&nbsp;<span class="helv">New PR</span></div>
                 </a>
             </li>
         </ul>
@@ -105,18 +104,18 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowCalendarToggle()">
             <i class="sidenav-icon ion ion-md-speedometer"></i>
-            <div><i class="fal fa-calendar"></i>&nbsp;Calendar</div>
+            <div><i class="fal fa-calendar"></i>&nbsp;<span class="helv">Calendar</span></div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/calendar']" class="sidenav-link">
-                    <div><i class="fal fa-calendar-check"></i>&nbsp;All Calendars</div>
+                    <div><i class="fal fa-calendar-check"></i>&nbsp;<span class="helv">All Calendars</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/calendar/new']" class="sidenav-link">
-                    <div><i class="fal fa-calendar-plus"></i>&nbsp;New Calendar</div>
+                    <div><i class="fal fa-calendar-plus"></i>&nbsp;<span class="helv">New Calendar</span></div>
                 </a>
             </li>
         </ul>
@@ -126,24 +125,32 @@
     <li class="sidenav-item" *ngIf="isLoggedIn">
         <a [routerLink]="['/admin/home']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-home"></i>&nbsp;Home Page</div>
+            <div><i class="fal fa-home"></i>&nbsp;<span class="helv">Home Page</span></div>
+        </a>
+    </li>
+
+    <!-- * Contacts * -->
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/contacts']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-address-book"></i>&nbsp;<span class="helv">Contacts</span></div>
         </a>
     </li>
 
     <!-- * Cards * -->
     <!--<li class="sidenav-item" *ngIf="isLoggedIn">-->
-        <!--<a [routerLink]="['/admin/cards']" class="sidenav-link">-->
-            <!--<i class="sidenav-icon ion ion-md-quote"></i>-->
-            <!--<div><i class="fal fa-passport"></i>&nbsp;Cards</div>-->
-        <!--</a>-->
+    <!--<a [routerLink]="['/admin/cards']" class="sidenav-link">-->
+    <!--<i class="sidenav-icon ion ion-md-quote"></i>-->
+    <!--<div><i class="fal fa-passport"></i>&nbsp;Cards</div>-->
+    <!--</a>-->
     <!--</li>-->
 
     <!-- * Featured Posts * -->
     <!--<li class="sidenav-item" *ngIf="isLoggedIn">-->
-        <!--<a [routerLink]="['/admin/featured-posts']" class="sidenav-link">-->
-            <!--<i class="sidenav-icon ion ion-md-quote"></i>-->
-            <!--<div><i class="fal fa-passport"></i>&nbsp;Featured Posts</div>-->
-        <!--</a>-->
+    <!--<a [routerLink]="['/admin/featured-posts']" class="sidenav-link">-->
+    <!--<i class="sidenav-icon ion ion-md-quote"></i>-->
+    <!--<div><i class="fal fa-passport"></i>&nbsp;Featured Posts</div>-->
+    <!--</a>-->
     <!--</li>-->
 
 
@@ -153,18 +160,18 @@
         *ngIf="isLoggedIn">
         <a class="sidenav-link sidenav-toggle" (click)="onShowUsersToggle()">
             <i class="sidenav-icon ion ion-md-speedometer"></i>
-            <div><i class="fal fa-users"></i>&nbsp;Users</div>
+            <div><i class="fal fa-users"></i>&nbsp;<span class="helv">Users</span></div>
         </a>
 
         <ul class="sidenav-menu">
             <li class="sidenav-item sub-item">
                 <a [routerLink]="['/admin/users']" class="sidenav-link">
-                    <div><i class="fal fa-users"></i>&nbsp;All Users</div>
+                    <div><i class="fal fa-users"></i>&nbsp;<span class="helv">All Users</span></div>
                 </a>
             </li>
             <li class="sidenav-item sub-item" *ngIf="isAdmin">
                 <a [routerLink]="['/admin/users/new']" class="sidenav-link">
-                    <div><i class="fal fa-user-plus"></i>&nbsp;New User</div>
+                    <div><i class="fal fa-user-plus"></i>&nbsp;<span class="helv">New User</span></div>
                 </a>
             </li>
         </ul>
@@ -174,26 +181,26 @@
     <li class="sidenav-divider mb-1" *ngIf="isLoggedIn"></li>
 
     <!-- * Extras * -->
-    <li class="sidenav-header small font-weight-semibold">Extras</li>
+    <li class="sidenav-header small font-weight-semibold"><span class="helv">Extras</span></li>
 
     <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/settings']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-wrench"></i>&nbsp;Settings</div>
+            <div><i class="fal fa-wrench"></i>&nbsp;<span class="helv">Settings</span></div>
         </a>
     </li>
 
     <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/meta']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-chart-line"></i>&nbsp;Meta</div>
+            <div><i class="fal fa-chart-line"></i>&nbsp;<span class="helv">Meta</span></div>
         </a>
     </li>
 
     <li class="sidenav-item" *ngIf="isLoggedIn && isAdmin">
         <a [routerLink]="['/admin/ads']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-money-bill-wave"></i>&nbsp;Advertising</div>
+            <div><i class="fal fa-money-bill-wave"></i>&nbsp;<span class="helv">Advertising</span></div>
         </a>
     </li>
 
@@ -201,7 +208,7 @@
     <li class="sidenav-item">
         <a class="sidenav-link" [routerLink]="['/']" target="_blank">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-laptop"></i>&nbsp;Live Site</div>
+            <div><i class="fal fa-laptop"></i>&nbsp;<span class="helv">Live Site</span></div>
         </a>
     </li>
 
@@ -211,14 +218,14 @@
         <a class="sidenav-link"
            (click)="onLogout()">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-sign-out-alt"></i>&nbsp;Logout</div>
+            <div><i class="fal fa-sign-out-alt"></i>&nbsp;<span class="helv">Logout</span></div>
         </a>
     </li>
 
     <li class="sidenav-item" *ngIf="!isLoggedIn">
         <a [routerLink]="['/admin/login']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-sign-in-alt"></i>&nbsp;Log In</div>
+            <div><i class="fal fa-sign-in-alt"></i>&nbsp;<span class="helv">Log In</span></div>
         </a>
     </li>
 </ul>

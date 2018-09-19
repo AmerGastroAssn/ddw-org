@@ -15,7 +15,7 @@
     <button mat-button
             class="menu-icon"
             routerLinkActive="active"
-            *ngIf="allowSignup"
+            *ngIf="allowSignup && !isLoggedIn"
             [routerLink]="['/admin/signup']">
         <i class="fa fa-address-card"></i>
         <br>

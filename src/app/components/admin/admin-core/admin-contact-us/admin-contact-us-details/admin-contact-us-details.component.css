@@ -1,0 +1,11 @@
+h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, span, ul, ol, li {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    line-height: 1.5;
+}
+
+.card, .card-body, .card-text, .card-footer {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    line-height: 1.7;
+    font-size: 1em;
+    border-radius: 0;
+}

@@ -6,7 +6,6 @@ p, div, tr, th, tr, td, span, ul, ol, li, input.form-control, input[text], input
 
 }
 
-
 .image-uploader * {
     font-size: 14px;
 }
@@ -15,31 +14,32 @@ form * {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
 }
 
-
 .bg-dark {
     background-color: #282E3E !important;
 }
 
-
-button[mat-mini-fab] {
+button[mat-fab] {
     /*background-color: #1C202B;*/
-    background-color: transparent;
-
-    /*border: 3px solid #9d9fa1;*/
+    background-color: #1C202B;
+    margin: 5em 0 0 0;
+    border: 3px solid #9d9fa1;
     /*border: 3px solid #1C202B;*/
-}
-
-i.fa-arrow-alt-to-left,
-i.fa-arrow-alt-from-left {
-    color: #282E3E;
-    padding-bottom: 8px;
-    padding-left: 3px;
-    font-size: 3em;
-    margin: 2em 0 0 .3em;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
-    cursor: pointer;
     position: fixed;
     z-index: 3000;
+}
+
+i.fa-arrow-alt-circle-left,
+i.fa-arrow-alt-circle-right {
+    color: #9d9fa1;
+    /*padding-bottom: 8px;*/
+    /*padding-left: 3px;*/
+    font-size: 2.3em;
+    /*padding: 0 0 4em 0.2em;*/
+    /*margin: 3em 0 0 0;*/
+    /*text-shadow: 2px 2px 3px rgba(0,0,0,0.4);*/
+    cursor: pointer;
+    /*position: fixed;*/
+    /*z-index: 3000;*/
 }
 
 /* Mobile Queries */
@@ -57,7 +57,7 @@ i.fa-arrow-alt-from-left {
 
 /* Small devices (landscape phones, 991px and below) */
 @media (max-width: 991px) {
-    nav#layout-navbar, button[mat-mini-fab] {
+    nav#layout-navbar, button[mat-fab] {
         display: none;
     }
 

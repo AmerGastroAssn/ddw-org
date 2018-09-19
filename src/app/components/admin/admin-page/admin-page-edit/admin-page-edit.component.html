@@ -1,5 +1,5 @@
 <!-- * ADMIN-PAGE-EDIT * -->
-<div class="row">
+<div class="row mt-4">
     <div class="container">
         <div class="row mb-4">
             <a class="btn btn-default"
@@ -233,9 +233,9 @@
                         </div>
 
 
-                        <div class="card bg-lighter">
+                        <div class="card bg-lighter" *ngIf="!page.isExtURL">
                             <div class="card-body">
-                                <div class="form-group" *ngIf="!page.isExtURL">
+                                <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox"
                                                class="custom-control-input"

@@ -37,17 +37,17 @@
                             <i class="fal fa-times"></i> Viewed
                         </a>
                         <a class="btn btn-danger btn-sm text-white"
-                           (click)="onDeleteContact()">
-                            <i class="fa fa-trash"></i> Delete
+                           (click)="onDeleteContact(contact.$key)">
+                            <i class="fa fa-trash-alt"></i> Delete
                         </a>
                     </div>
                 </div>
                 </div>
 
                     <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 text-center">
                         <h3 class="alert alert-warning mt-2" *ngIf="contact.viewed">
-                            Marked As Viewed
+                          <i class="fa fa-check-square"></i>&nbsp;Marked As Viewed
                         </h3>
                     </div>
                     </div>

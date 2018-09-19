@@ -40,7 +40,9 @@
                     <tbody>
                     <tr *ngFor="let contact of contacts$ | async" [class.viewed]="contact.viewed">
                         <td scope="col">
-                            <a [routerLink]="['/admin/contacts/', contact.$key]">
+                            <a [routerLink]="['/admin/contacts/', contact.$key]"
+                               class="text-decoration-none"
+                               [class.viewed-text]="contact.viewed">
                                 {{ contact.lastName }}, {{ contact.firstName }}
                             </a>
                         </td>
@@ -54,7 +56,7 @@
                             {{ contact.programType }}
                         </td>
                         <td scope="col" class="text-truncate">
-                            {{ contact.sentDate | date:'mediumDate' }}
+                            {{ contact.sentDate | date:'medium' }}
                         </td>
                         <td class="text-center">
                             <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip"
@@ -62,22 +64,22 @@
                                [routerLink]="['/admin/contacts/', contact.$key]">
                                 <i class="fa fa-pencil-alt"></i>&nbsp;
                             </a>
-                            <a class="btn btn-warning btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                            <a class="btn btn-warning btn-sm icon-btn md-btn-flat user-tooltip ml-2"
                                *ngIf="!contact.viewed"
                                matTooltip="Mark as viewed"
                                (click)="onMarkViewed(contact.$key)">
-                                <i class="fal fa-glasses"></i>
+                                <i class="fa fa-check"></i>
                             </a>
-                            <a class="btn btn-outline-warning btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                            <a class="btn btn-outline-warning btn-sm icon-btn md-btn-flat user-tooltip ml-2"
                                *ngIf="contact.viewed"
                                matTooltip="Un-Mark as viewed"
                                (click)="onUnmarkViewed(contact.$key)">
-                                <i class="fal fa-times"></i>
+                                <i class="fa fa-times"></i>
                             </a>
-                            <a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                            <a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-2"
                                matTooltip="Delete Contact"
                                (click)="onDeleteContact(contact.$key)">
-                                <i class="fal fa-trash text-white"></i>
+                                <i class="fa fa-trash-alt text-white"></i>
                             </a>
                         </td>
                     </tr>

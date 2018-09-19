@@ -32,8 +32,8 @@ export class AdminContactUsDetailsComponent implements OnInit {
         });
     }
 
-    onDeleteContact() {
-        this.contactFormService.deleteContact(this.contact.uid);
+    onDeleteContact(id) {
+        this.contactFormService.deleteContact(id);
     }
 
     onMarkViewed(id) {

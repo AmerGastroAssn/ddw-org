@@ -102,7 +102,6 @@
 </nav>
 <!--END MOBILE MENU-->
 
-
 <div class="fixed-top d-none d-sm-none d-md-none d-lg-block d-xl-block" id="TopHeader">
     <div class="container">
         <div class="col-md-12">
@@ -119,69 +118,124 @@
 
 
                         <!--BEGIN SEARCH-->
-                        <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
-                            <form class="form-inline my-2 my-lg-0">
-                                <div class="input-group mb-3">
-                                    <input type="text"
-                                           class="form-control"
-                                           placeholder="Search"
-                                           aria-label="Search"
-                                           aria-describedby="search">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondarywaa text-secondary"
-                                                type="button"
-                                                id="search">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+
+                        <div class="row">
+                            <div class="col inline">
+                                <div id="MPAuxNav" class="inline auxnav">
+                                    <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: right;">
+                                        <ul class="level1 static" tabindex="0" role="menubar"
+                                            style="position: relative; width: auto; float: left;">
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a title="How to get in contact with us"
+                                                   class="level1 MPAuxNav static"
+                                                   [routerLink]="['/contactus']" tabindex="-1">Contact Us</a></li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [routerLink]="['/careercenter']"
+                                                   target="_blank"
+                                                   tabindex="-1">Career Center</a>
+                                            </li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static" href="http://blog.ddw.org"
+                                                   target="_blank"
+                                                   tabindex="-1">DDW
+                                                    Blog</a>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div style="clear: left;"></div>
                                 </div>
-
-                            </form>
-                        </div>
-                        <!--END SEARCH-->
-
-
-                        <!--BEGIN SOCIAL-->
-                        <div class="inline networking pull-right"><a href="https://www.facebook.com/DDWMeeting"
-                                                                     target="_blank"
-                                                                     rel="noopener"><i class="fab fa-facebook"></i></a>
-                            <a
-                                    href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i
-                                    class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"
-                                                                       target="_blank" rel="noopener"><i
-                                    class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"
-                                                                       target="_blank" rel="noopener"><i
-                                    class="fab fa-instagram"></i></a></div>
-                        <!--END SOCIAL-->
-
-
-                        <!--BEGIN LINKS-->
-                        <div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">
-                            <div id="MPAuxNav" class="inline vertical-align-middle auxnav">
-                                <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: left;">
-                                    <ul class="level1 static" tabindex="0" role="menubar"
-                                        style="position: relative; width: auto; float: left;">
-                                        <li role="menuitem" class="static" style="position: relative; float: left;">
-                                            <a title="How to get in contact with us"
-                                               class="level1 MPAuxNav static"
-                                               [routerLink]="['/contactus']" tabindex="-1">Contact Us</a></li>
-                                        <li role="menuitem" class="static" style="position: relative; float: left;">
-                                            <a class="level1 MPAuxNav static"
-                                               [routerLink]="['/careercenter']"
-                                               target="_blank"
-                                               tabindex="-1">Career Center</a>
-                                        </li>
-                                        <li role="menuitem" class="static" style="position: relative; float: left;"><a
-                                                class="level1 MPAuxNav static"
-                                                href="http://blog.ddw.org"
-                                                target="_blank"
-                                                tabindex="-1">DDW
-                                            Blog</a></li>
-                                    </ul>
+                            </div>
+                            <div class="col-2 inline networking">
+                                <a href="https://www.facebook.com/DDWMeeting"
+                                   target="_blank"
+                                   rel="noopener">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://twitter.com/DDWMeeting"
+                                   target="_blank"
+                                   rel="noopener">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/user/DDWMeeting"
+                                   target="_blank"
+                                   rel="noopener">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://www.instagram.com/ddwmeeting"
+                                   target="_blank" rel="noopener"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-4">
+                                <div [innerHTML]="googleSearch | safeHtml" runScripts>
                                 </div>
-                                <div style="clear: left;"></div>
                             </div>
                         </div>
+
+                        <!--<div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">-->
+                            <!--<form class="form-inline my-2 my-lg-0">-->
+                                <!--<div class="input-group mb-3">-->
+                                    <!--<div [innerHTML]="googleSearch | safeHtml" runScripts></div>-->
+                                    <!--&lt;!&ndash;<input type="text"&ndash;&gt;-->
+                                           <!--&lt;!&ndash;class="form-control"&ndash;&gt;-->
+                                           <!--&lt;!&ndash;placeholder="Search"&ndash;&gt;-->
+                                           <!--&lt;!&ndash;aria-label="Search"&ndash;&gt;-->
+                                           <!--&lt;!&ndash;aria-describedby="search">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="input-group-append">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<button class="btn btn-outline-secondarywaa text-secondary"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;type="button"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;id="search">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<i class="fas fa-search"></i>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--</div>-->
+
+                            <!--</form>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash;END SEARCH&ndash;&gt;-->
+
+
+                        <!--&lt;!&ndash;BEGIN SOCIAL&ndash;&gt;-->
+                        <!--<div class="inline networking pull-right"><a href="https://www.facebook.com/DDWMeeting"-->
+                                                                     <!--target="_blank"-->
+                                                                     <!--rel="noopener"><i class="fab fa-facebook"></i></a>-->
+                            <!--<a-->
+                                    <!--href="https://twitter.com/DDWMeeting" target="_blank" rel="noopener"><i-->
+                                    <!--class="fab fa-twitter"></i></a> <a href="https://www.youtube.com/user/DDWMeeting"-->
+                                                                       <!--target="_blank" rel="noopener"><i-->
+                                    <!--class="fab fa-youtube"></i></a> <a href="https://www.instagram.com/ddwmeeting"-->
+                                                                       <!--target="_blank" rel="noopener"><i-->
+                                    <!--class="fab fa-instagram"></i></a></div>-->
+                        <!--&lt;!&ndash;END SOCIAL&ndash;&gt;-->
+
+
+                        <!--&lt;!&ndash;BEGIN LINKS&ndash;&gt;-->
+                        <!--<div class="inline pull-right d-sm-none d-md-block d-none d-sm-block">-->
+                            <!--<div id="MPAuxNav" class="inline vertical-align-middle auxnav">-->
+                                <!--<div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: left;">-->
+                                    <!--<ul class="level1 static" tabindex="0" role="menubar"-->
+                                        <!--style="position: relative; width: auto; float: left;">-->
+                                        <!--<li role="menuitem" class="static" style="position: relative; float: left;">-->
+                                            <!--<a title="How to get in contact with us"-->
+                                               <!--class="level1 MPAuxNav static"-->
+                                               <!--[routerLink]="['/contactus']" tabindex="-1">Contact Us</a></li>-->
+                                        <!--<li role="menuitem" class="static" style="position: relative; float: left;">-->
+                                            <!--<a class="level1 MPAuxNav static"-->
+                                               <!--[routerLink]="['/careercenter']"-->
+                                               <!--target="_blank"-->
+                                               <!--tabindex="-1">Career Center</a>-->
+                                        <!--</li>-->
+                                        <!--<li role="menuitem" class="static" style="position: relative; float: left;"><a-->
+                                                <!--class="level1 MPAuxNav static"-->
+                                                <!--href="http://blog.ddw.org"-->
+                                                <!--target="_blank"-->
+                                                <!--tabindex="-1">DDW-->
+                                            <!--Blog</a></li>-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                                <!--<div style="clear: left;"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <!--END LINKS-->
 
 

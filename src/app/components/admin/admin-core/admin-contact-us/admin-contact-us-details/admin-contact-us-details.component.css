@@ -9,3 +9,17 @@ h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, span, ul, ol, li {
     font-size: 1em;
     border-radius: 0;
 }
+
+a.text-dark:hover {
+    color: #44484f!important;
+}
+
+.viewed {
+    background-color: #FFF3CF !important;
+    color: #5C440F !important;
+    border: 1px solid #EDE1C1;
+}
+
+a.viewed-text {
+    color: #5C440F !important;
+}

@@ -6,9 +6,9 @@ import { PageService } from '../../../services/page.service';
 declare var $: any;
 
 @Component({
-  selector: 'ddw-pages-navbar',
-  templateUrl: './pages-navbar.component.html',
-  styleUrls: ['./pages-navbar.component.css']
+    selector: 'ddw-pages-navbar',
+    templateUrl: './pages-navbar.component.html',
+    styleUrls: ['./pages-navbar.component.css']
 })
 export class PagesNavbarComponent implements OnInit {
     registerPages$: Page[];
@@ -18,8 +18,7 @@ export class PagesNavbarComponent implements OnInit {
     newsAndMediaPages$: Page[];
     presentersPages$: Page[];
     isExtURL: boolean;
-
-
+    googleSearch: string;
 
     constructor(private pageService: PageService) {
         // $(document).ready(function () {
@@ -76,9 +75,23 @@ export class PagesNavbarComponent implements OnInit {
             .subscribe((pageArr) => {
                 this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
             });
+
+        this.googleSearch = `<script>
+              (function() {
+                var cx = '010781389649301804341:tuglqcuc3hc';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+              window.onload = function(){
+                document.getElementById('gsc-i-id1').placeholder = 'Search!';
+              };
+            </script>
+            <gcse:search></gcse:search>`;
     }
-
-
 
 
 }

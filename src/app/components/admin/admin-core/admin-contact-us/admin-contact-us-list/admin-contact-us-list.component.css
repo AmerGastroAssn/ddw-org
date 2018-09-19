@@ -1,0 +1,11 @@
+.viewed {
+    background-color: #FFF3CF !important;
+    color: #5C440F !important;
+    border: 1px solid #EDE1C1;
+    text-decoration: line-through;
+    /*opacity: 0.75;*/
+}
+
+a.viewed-text {
+    color: #5C440F !important;
+}

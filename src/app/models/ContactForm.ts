@@ -9,6 +9,7 @@ export class ContactForm {
       public body: string,
       public programType: string,
       public sentDate: number,
+      public viewed: boolean,
       public uid: string,
     ) {
     }

@@ -21,10 +21,26 @@ export class ContactFormService {
     ) {
     }
 
-    getAllContactForms(): Observable<ContactForm[]> {
+    getAllContactForms(sortValue): Observable<ContactForm[]> {
         // Ref, and order by title
+        console.log('sortValue', sortValue);
         this.contactFormCollection = this.afs.collection(`contactForm`,
-          ref => ref.orderBy('sentDate', 'asc')
+          ref => ref.orderBy(sortValue, 'asc')
+        );
+        // Gets array of pressReleases along with their uid.
+        return this.contactFormCollection.snapshotChanges()
+                   .map((changes) => {
+                       return changes.map((a) => {
+                           const data = a.payload.doc.data() as ContactForm;
+                           data.$key = a.payload.doc.id;
+                           return data;
+                       });
+                   });
+    }
+
+    getAllUnviewedContacts(): Observable<ContactForm[]> {
+        this.contactFormCollection = this.afs.collection(`contactForm`,
+          ref => ref.where('viewed', '==', false)
         );
         // Gets array of pressReleases along with their uid.
         return this.contactFormCollection.snapshotChanges()
@@ -69,6 +85,7 @@ export class ContactFormService {
             body: formData.body,
             sentDate: Date.now(),
             programType: formData.programType,
+            viewed: formData.viewed || false,
             uid: new$key,
         };
 
@@ -96,5 +113,47 @@ export class ContactFormService {
                     console.log(`ERROR~dC: `, error);
                 });
         }
+    }
+
+    setViewedContact(id) {
+        this.afs.doc(`contactForm/${id}`).set({
+            viewed: true
+        }, { merge: true })
+            .then(() => {
+                this.sbAlert.open('Contact marked as Viewed', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
+                });
+            })
+            .catch((error) => {
+                this.sbAlert.open('Something went wrong, Contact not updated', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-danger']
+                });
+                console.log('Error~sVC:', error);
+            });
+    }
+
+    setUnviewedContact(id) {
+        this.afs.doc(`contactForm/${id}`).set({
+            viewed: false
+        }, { merge: true })
+            .then(() => {
+                this.sbAlert.open('Contact Un-viewed', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
+                });
+            })
+            .catch((error) => {
+                this.sbAlert.open('Something went wrong, Contact not updated', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-danger']
+                });
+                console.log('Error~sVC:', error);
+            });
     }
 }

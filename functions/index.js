@@ -119,65 +119,6 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(SENDGRID_API_KEY);
 const cors = require('cors')({ origin: true });
 
-
-exports.httpEmail = functions.https.onRequest((req, res) => {
-
-    cors(req, res, () => {
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
-        const email = req.body.email;
-        const phoneNumber = req.body.phoneNumber;
-        const programType = req.body.programType;
-        const subject = req.body.subject;
-        const body = req.body.body;
-
-        const msg = {
-            to: [ 'gastro.org@gmail.com', 'cbstodd@hotmail.com' ],
-            from: 'contact@ddw.org',
-            subject: `New DDW® Contact!`,
-            text: `Program ${programType}`,
-            html: `<h4>From:</h4>
-                    <p>{{firstName}} {{lastName}}</p>
-                
-                    <h4>Phone Number:</h4>
-                    <p>{{phoneNumber}}</p>
-                
-                    <h4>Program:</h4>
-                    <p>{{programType}}</p>
-                
-                    <h4>Subject:</h4>
-                    <p>{{subject}}</p>
-                
-                    <h4>Body:</h4>
-                    <p>{{body}}</p>`,
-
-            // custom templates
-            templateId: process.env.SENDGRID_EMAIL_ID,
-            substitutionWrappers: [ '{{', '}}' ],
-            substitutions: {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                phoneNumber: phoneNumber,
-                programType: programType,
-                subject: subject,
-                body: body,
-
-            }
-        };
-
-        return sgMail.send(msg)
-          .then(() => res.status(200).send('email sent!'))
-          .catch(err => res.status(400).send(err))
-
-    });
-
-});
-
-
-/*------------------------------------------------
-     CONTACT FORM EMAIL W/ SENDGRID VERSION 2.0
-------------------------------------------------*/
 exports.firestoreEmail = functions.firestore
   .document('contactForm/{uid}')
   .onCreate((change, context) => {
@@ -193,27 +134,59 @@ exports.firestoreEmail = functions.firestore
         .then(doc => {
             // const contact = change.after.data(); // data after the write
             const contact = doc.data();
+            console.log('contact', contact);
 
             const msg = {
                 // to: contact.email,
-                to: 'cbstodd@me.com',
+                to: [
+                    'cstodd@gastro.org',
+                    'cstone@gastro.org',
+                    'awhite@gastro.org',
+                    'lhauver@gastro.org'
+                ],
                 from: 'contact@ddw.org',
-                subject: 'New Contact',
-                // text: `Hey ${toName}. You have a new follower!!! `,
-                // html: `<strong>Hey ${toName}. You have a new follower!!!</strong>`,
+                subject: 'New DDW.org Contact',
+                // text: `Hey ${contact.firstName}. You have a new follower!!! `,
+                html: `
+                <h4 style="line-height:1.5em;"><u>From</u>:</h4>
+                <p style="line-height:1.5em;">${contact.firstName} ${contact.lastName}</p>
+                
+                <h4 style="line-height:1.5em;"><u>Email</u>:</h4>
+                <p style="line-height:1.5em;">${contact.email}</p>
+                
+                <h4 style="line-height:1.5em;"><u>Phone Number</u>:</h4>
+                <p style="line-height:1.5em;">${contact.phoneNumber}</p>
+                
+                <h4 style="line-height:1.5em;"><u>Program</u>:</h4>
+                <p style="line-height:1.5em;">${contact.programType}</p>
+                
+                <h4 style="line-height:1.5em;"><u>Subject</u>:</h4>
+                <p>${contact.subject}</p>
+                
+                <h4 style="line-height:1.5em;"><u>Body</u>:</h4>
+                <p>${contact.body}</p>
+                `,
 
                 // custom templates
-                templateId: process.env.SENDGRID_EMAIL_ID,
+                templateId: process.env.SENDGRID_LEGACY_TEMPLATE_ID,
                 substitutionWrappers: [ '{{', '}}' ],
                 substitutions: {
-                    name: contact.firstName
+                    firstName: contact.firstName,
+                    lastName: contact.lastName,
+                    email: contact.email,
+                    phoneNumber: contact.phoneNumber,
+                    programType: contact.programType,
+                    subject: contact.subject,
+                    body: contact.body,
+
                     // and other custom properties here
                 }
             };
 
+
             return sgMail.send(msg)
         })
-        .then(() => console.log('email sent!'))
+        .then((msg) => console.log('email sent!: msg:', msg))
         .catch(err => console.log(err))
 
   });

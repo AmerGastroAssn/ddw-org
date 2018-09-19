@@ -149,6 +149,15 @@
             </button>
 
 
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="isLoggedIn"
+                    [routerLink]="['/admin/contacts']">
+                <i class="fa fa-address-book"></i>&nbsp;
+                <small>Contacts</small>
+            </button>
+
             <div class="divider"></div>
 
 

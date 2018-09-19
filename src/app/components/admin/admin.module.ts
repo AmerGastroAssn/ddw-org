@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatBottomSheetModule,
     MatButtonModule, MatDivider, MatDividerModule,
-    MatExpansionModule, MatIconModule,
-    MatMenuModule,
+    MatExpansionModule, MatFormFieldModule, MatIconModule,
+    MatMenuModule, MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
@@ -89,6 +89,8 @@ import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin
         MatBottomSheetModule,
         MatDividerModule,
         MatIconModule,
+        MatSelectModule,
+        MatFormFieldModule,
     ],
     exports: [
         MatButtonModule,

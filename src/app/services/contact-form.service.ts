@@ -69,6 +69,7 @@ export class ContactFormService {
             body: formData.body,
             sentDate: Date.now(),
             programType: formData.programType,
+            viewed: formData.viewed || false,
             uid: new$key,
         };
 
@@ -96,5 +97,47 @@ export class ContactFormService {
                     console.log(`ERROR~dC: `, error);
                 });
         }
+    }
+
+    setViewedContact(id) {
+        this.afs.doc(`contactForm/${id}`).set({
+            viewed: true
+        }, { merge: true })
+            .then(() => {
+                this.sbAlert.open('Contact marked as Viewed', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
+                });
+            })
+            .catch((error) => {
+                this.sbAlert.open('Something went wrong, Contact not updated', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-danger']
+                });
+                console.log('Error~sVC:', error);
+            });
+    }
+
+    setUnviewedContact(id) {
+        this.afs.doc(`contactForm/${id}`).set({
+            viewed: false
+        }, { merge: true })
+            .then(() => {
+                this.sbAlert.open('Contact Un-viewed', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-success']
+                });
+            })
+            .catch((error) => {
+                this.sbAlert.open('Something went wrong, Contact not updated', 'Dismiss', {
+                    duration: 3000,
+                    verticalPosition: 'bottom',
+                    panelClass: ['snackbar-danger']
+                });
+                console.log('Error~sVC:', error);
+            });
     }
 }

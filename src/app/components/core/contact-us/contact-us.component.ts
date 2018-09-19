@@ -81,7 +81,7 @@ export class ContactUsComponent implements OnInit {
     }
 
     sendEmail(formData) {
-        const endpoint = `https://us-central1-ddw-org.cloudfunctions.net/httpEmail`;
+        const endpoint = `https://us-central1-ddw-org.cloudfunctions.net/firestoreEmail`;
 
         const data = {
             firstName: formData.firstName,

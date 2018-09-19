@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContactForm } from '../../../../../models/ContactForm';
 import { ContactFormService } from '../../../../../services/contact-form.service';
@@ -29,29 +30,38 @@ import { ContactFormService } from '../../../../../services/contact-form.service
 })
 export class AdminContactUsListComponent implements OnInit {
     contacts$: Observable<ContactForm[]>;
-    // contact: ContactForm;
-    // id: string;
+    contact: ContactForm;
+    id: string;
     $key: string;
 
     constructor(
       private contactFormService: ContactFormService,
+      private route: ActivatedRoute,
     ) {
     }
 
     ngOnInit() {
         this.contacts$ = this.contactFormService.getAllContactForms();
         // // Get id from url
-        // this.id = this.route.snapshot.params['id'];
-        // // Get each contact's details
-        // this.contactFormService.getContact(this.id).subscribe((contactInfo) => {
-        //     if (contactInfo !== null) {
-        //         this.contact = contactInfo;
-        //         console.log('this.contact', this.contact);
-        //     }
-        // });
+        this.id = this.route.snapshot.params['id'];
+        // Get each contact's details
+        this.contactFormService.getContact(this.id).subscribe((contactInfo) => {
+            if (contactInfo !== null) {
+                this.contact = contactInfo;
+                console.log('this.contact', this.contact);
+            }
+        });
     }
 
-    onDeleteContact() {
-        this.contactFormService.deleteContact(this.$key);
+    onDeleteContact(id) {
+        this.contactFormService.deleteContact(id);
+    }
+
+    onMarkViewed(id) {
+        this.contactFormService.setViewedContact(id);
+    }
+
+    onUnmarkViewed(id) {
+        this.contactFormService.setUnviewedContact(id);
     }
 }

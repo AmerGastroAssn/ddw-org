@@ -38,7 +38,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let contact of contacts$ | async">
+                    <tr *ngFor="let contact of contacts$ | async" [class.viewed]="contact.viewed">
                         <td scope="col">
                             <a [routerLink]="['/admin/contacts/', contact.$key]">
                                 {{ contact.lastName }}, {{ contact.firstName }}
@@ -58,13 +58,27 @@
                         </td>
                         <td class="text-center">
                             <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip"
+                               matTooltip="View contact details"
                                [routerLink]="['/admin/contacts/', contact.$key]">
-                                <i class="fa fa-glasses"></i>&nbsp;
+                                <i class="fa fa-pencil-alt"></i>&nbsp;
                             </a>
-                            <!--<a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-3"-->
-                               <!--(click)="onDeleteContact(contact.$key)">-->
-                                <!--<i class="fal fa-trash text-white"></i>-->
-                            <!--</a>-->
+                            <a class="btn btn-warning btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                               *ngIf="!contact.viewed"
+                               matTooltip="Mark as viewed"
+                               (click)="onMarkViewed(contact.$key)">
+                                <i class="fal fa-glasses"></i>
+                            </a>
+                            <a class="btn btn-outline-warning btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                               *ngIf="contact.viewed"
+                               matTooltip="Un-Mark as viewed"
+                               (click)="onUnmarkViewed(contact.$key)">
+                                <i class="fal fa-times"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-3"
+                               matTooltip="Delete Contact"
+                               (click)="onDeleteContact(contact.$key)">
+                                <i class="fal fa-trash text-white"></i>
+                            </a>
                         </td>
                     </tr>
                     </tbody>

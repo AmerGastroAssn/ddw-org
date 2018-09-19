@@ -29,19 +29,28 @@ import { ContactFormService } from '../../../../../services/contact-form.service
     ]
 })
 export class AdminContactUsListComponent implements OnInit {
+    contacts: ContactForm[];
     contacts$: Observable<ContactForm[]>;
     contact: ContactForm;
     id: string;
     $key: string;
+    selectedContactFilter = 'sentDate';
+    sortOptions: any[];
 
     constructor(
       private contactFormService: ContactFormService,
       private route: ActivatedRoute,
     ) {
+        this.sortOptions = [
+            { value: 'sentDate', type: 'Default (Time Created - Ascending)' },
+            { value: 'lastName', type: 'Last Name' },
+            { value: 'viewed', type: 'Unread' },
+            { value: 'programType', type: 'Project Type' },
+        ];
     }
 
     ngOnInit() {
-        this.contacts$ = this.contactFormService.getAllContactForms();
+        this.sortBy(this.selectedContactFilter);
         // // Get id from url
         this.id = this.route.snapshot.params['id'];
         // Get each contact's details
@@ -63,5 +72,13 @@ export class AdminContactUsListComponent implements OnInit {
 
     onUnmarkViewed(id) {
         this.contactFormService.setUnviewedContact(id);
+    }
+
+    sortBy(selectedValue) {
+        if (selectedValue !== 'viewed') {
+            this.contacts$ = this.contactFormService.getAllContactForms(selectedValue);
+        } else {
+            this.contacts$ = this.contactFormService.getAllUnviewedContacts();
+        }
     }
 }

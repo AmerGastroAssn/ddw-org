@@ -21,10 +21,26 @@ export class ContactFormService {
     ) {
     }
 
-    getAllContactForms(): Observable<ContactForm[]> {
+    getAllContactForms(sortValue): Observable<ContactForm[]> {
         // Ref, and order by title
+        console.log('sortValue', sortValue);
         this.contactFormCollection = this.afs.collection(`contactForm`,
-          ref => ref.orderBy('sentDate', 'asc')
+          ref => ref.orderBy(sortValue, 'asc')
+        );
+        // Gets array of pressReleases along with their uid.
+        return this.contactFormCollection.snapshotChanges()
+                   .map((changes) => {
+                       return changes.map((a) => {
+                           const data = a.payload.doc.data() as ContactForm;
+                           data.$key = a.payload.doc.id;
+                           return data;
+                       });
+                   });
+    }
+
+    getAllUnviewedContacts(): Observable<ContactForm[]> {
+        this.contactFormCollection = this.afs.collection(`contactForm`,
+          ref => ref.where('viewed', '==', false)
         );
         // Gets array of pressReleases along with their uid.
         return this.contactFormCollection.snapshotChanges()

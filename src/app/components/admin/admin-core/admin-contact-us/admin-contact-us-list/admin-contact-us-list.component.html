@@ -48,7 +48,7 @@
                         <th scope="col" style="vertical-align: top;">Contact</th>
                         <th scope="col" style="vertical-align: top;">Email</th>
                         <th scope="col" style="vertical-align: top;">Phone Number</th>
-                        <th scope="col" style="vertical-align: top;">Program</th>
+                        <th scope="col" style="vertical-align: top;">Subject</th>
                         <th scope="col" style="vertical-align: top;">Date</th>
                         <th scope="col" style="vertical-align: top;">Options</th>
                     </tr>
@@ -69,7 +69,7 @@
                             <i class="fa fa-phone"></i> {{ contact.phoneNumber }}
                         </td>
                         <td scope="col">
-                            {{ contact.programType }}
+                            {{ contact.subject }}
                         </td>
                         <td scope="col" class="text-truncate">
                             {{ contact.sentDate | date:'medium' }}

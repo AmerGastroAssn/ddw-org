@@ -1,4 +1,4 @@
-h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, span, ul, ol, li {
+h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, ul, ol, li {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     line-height: 1.5;
 }
@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, span, ul, ol, li {
 }
 
 a.text-dark:hover {
-    color: #44484f!important;
+    color: #44484f !important;
 }
 
 .viewed {
@@ -22,4 +22,8 @@ a.text-dark:hover {
 
 a.viewed-text {
     color: #5C440F !important;
+}
+
+.text-mono {
+    font-family: 'SF Mono', 'Menlo', 'Roboto Mono', 'DejaVu Sans Mono', 'Consolas', monospace;
 }

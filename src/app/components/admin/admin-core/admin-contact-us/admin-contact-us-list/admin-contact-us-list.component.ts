@@ -45,7 +45,7 @@ export class AdminContactUsListComponent implements OnInit {
             { value: 'sentDate', type: 'Default (Time Created - Ascending)' },
             { value: 'lastName', type: 'Last Name' },
             { value: 'viewed', type: 'Unread' },
-            { value: 'programType', type: 'Project Type' },
+            { value: 'subject', type: 'Subject' },
         ];
     }
 

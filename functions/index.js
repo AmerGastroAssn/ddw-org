@@ -140,12 +140,12 @@ exports.firestoreEmail = functions.firestore
                 // to: contact.email,
                 to: [
                     'cstodd@gastro.org',
+                    'lhauver@gastro.org',
                     'cstone@gastro.org',
-                    'awhite@gastro.org',
-                    'lhauver@gastro.org'
+                    'awhite@gastro.org'
                 ],
-                from: 'contact@ddw.org',
-                subject: 'New DDW.org Contact',
+                from: contact.email,
+                subject: contact.subject,
                 // text: `Hey ${contact.firstName}. You have a new follower!!! `,
                 html: `
                 <h4 style="line-height:1.5em;"><u>From</u>:</h4>
@@ -156,9 +156,6 @@ exports.firestoreEmail = functions.firestore
                 
                 <h4 style="line-height:1.5em;"><u>Phone Number</u>:</h4>
                 <p style="line-height:1.5em;">${contact.phoneNumber}</p>
-                
-                <h4 style="line-height:1.5em;"><u>Program</u>:</h4>
-                <p style="line-height:1.5em;">${contact.programType}</p>
                 
                 <h4 style="line-height:1.5em;"><u>Subject</u>:</h4>
                 <p>${contact.subject}</p>
@@ -175,7 +172,6 @@ exports.firestoreEmail = functions.firestore
                     lastName: contact.lastName,
                     email: contact.email,
                     phoneNumber: contact.phoneNumber,
-                    programType: contact.programType,
                     subject: contact.subject,
                     body: contact.body,
 

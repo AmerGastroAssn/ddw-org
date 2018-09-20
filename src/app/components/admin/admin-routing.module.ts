@@ -109,7 +109,7 @@ const adminRoutes: Routes = [
             { path: 'featured-posts', component: AdminFeaturedBlogPostsEditComponent, canActivate: [AuthGuard] },
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
-            { path: 'home', component: AdminHomePageComponent, canActivate: [AdminGuard] },
+            { path: 'home', component: AdminHomePageComponent, canActivate: [AuthGuard] },
         ]
     },
 ];

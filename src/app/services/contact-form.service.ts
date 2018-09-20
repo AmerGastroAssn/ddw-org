@@ -84,7 +84,6 @@ export class ContactFormService {
             subject: formData.subject,
             body: formData.body,
             sentDate: Date.now(),
-            programType: formData.programType,
             viewed: formData.viewed || false,
             uid: new$key,
         };

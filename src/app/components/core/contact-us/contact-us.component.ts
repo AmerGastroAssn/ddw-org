@@ -20,7 +20,6 @@ export class ContactUsComponent implements OnInit {
     phoneNumber: string;
     subject: string;
     body: string;
-    programType: string;
     sentDate: number;
     uid: string;
     mainAccountEmailAddress: string;
@@ -45,7 +44,6 @@ export class ContactUsComponent implements OnInit {
             subject: ['' || this.subject, Validators.required],
             body: ['' || this.body, Validators.required],
             sentDate: ['' || this.sentDate],
-            programType: ['' || this.programType],
         });
 
         this.firstName = this.newContactForm.value.firstName;
@@ -55,7 +53,6 @@ export class ContactUsComponent implements OnInit {
         this.subject = this.newContactForm.value.subject;
         this.body = this.newContactForm.value.body;
         this.sentDate = this.newContactForm.value.sentDate;
-        this.programType = this.newContactForm.value.programType;
     }
 
     onNewContact(formData: FormGroup) {
@@ -88,7 +85,6 @@ export class ContactUsComponent implements OnInit {
             lastName: formData.lastName,
             email: formData.email,
             phoneNumber: formData.phoneNumber,
-            programType: formData.programType,
             subject: formData.subject,
             body: formData.body,
         };

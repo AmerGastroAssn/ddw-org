@@ -1,5 +1,5 @@
 <!-- * ADMIN-PRESS-RELEASES-NEW * -->
-<div class="row mb-4">
+<div class="row mb-4 mt-5 text-right">
     <div class="container">
         <div class="col-md-12">
             <a class="btn btn-default"
@@ -30,14 +30,13 @@
 
                     <div class="form-group">
                         <label>Title <br>
-                            <small>Cannot be Changed. If needed, you have to create a new page</small>
+                            <small>Cannot be Changed. If needed, you have to create a new Press Release</small>
                         </label>
                         <input type="text"
                                required
                                disabled
                                class="form-control"
                                [class.invalid]="!f.title.valid && f.title.touched"
-                               [(ngModel)]="pressRelease.title"
                                formControlName="title">
                     </div>
 
@@ -79,8 +78,6 @@
                                    bsDatepicker
                                    [bsConfig]="bsConfig"
                                    placement="top"
-                                   [class.invalid]="!f.publishOn.valid && f.publishOn.touched"
-                                   [(ngModel)]="pressRelease.publishOn"
                                    formControlName="publishOn">
                         </div>
                         <p class="help-block alert alert-warning text-center mt-1"
@@ -131,10 +128,10 @@
 
                     <!--* Debugging * -->
                     <!--<code>-->
-                        <!--<pre>Form value: {{ editPressReleaseForm.value | json }}</pre>-->
+                    <!--<pre>Form value: {{ editPressReleaseForm.value | json }}</pre>-->
                     <!--</code>-->
                     <!--<code>-->
-                        <!--<pre>Form value: {{ editPressReleaseForm.status | json }}</pre>-->
+                    <!--<pre>Form value: {{ editPressReleaseForm.status | json }}</pre>-->
                     <!--</code>-->
 
                 </form>

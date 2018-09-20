@@ -34,6 +34,11 @@ export class ContactUsComponent implements OnInit {
         this.mainAccountEmailAddress = 'cstodd@gastro.org';
     }
 
+    // For Form Validations
+    get f() {
+        return this.newContactForm.controls;
+    }
+
     ngOnInit() {
         // Form:
         this.newContactForm = this.fb.group({
@@ -57,8 +62,8 @@ export class ContactUsComponent implements OnInit {
 
     onNewContact(formData: FormGroup) {
         if (!this.newContactForm.valid) {
-            this.sbAlert.open('Missing at least one input, Form was NOT sent.', 'Dismiss', {
-                duration: 3000,
+            this.sbAlert.open('Required form values are missing or phone number is not in correct format, Form NOT sent.', 'Dismiss', {
+                duration: 4000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']
             });

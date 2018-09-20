@@ -29,8 +29,9 @@ ul > li > a {
 .row.top-footer {
     background-color: #003f5f;
     color: #ffffff;
-    padding: 2em 0.5em;
+    padding: 2em 0.5em 2em 1.5em;
     font-size: 14px;
+    margin-top: 50px;
 }
 
 p.apps {
@@ -91,6 +92,14 @@ a.app.google {
 
 a.app.apple:hover, a.app.google:hover {
     background-color: #2e6da4;
+}
+
+a.app.apple:hover {
+    background-image: url(https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/apple-hover.png);
+}
+
+a.app.google:hover {
+    background-image: url(https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/google-hover.png);
 }
 
 h5 {

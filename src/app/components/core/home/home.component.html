@@ -53,9 +53,6 @@
     <div class="container">
         <div class="col-md-7 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.cardsTitle }}</h2>
-            <div class="col-4 offset-4">
-                <div class="underline"></div>
-            </div>
         </div>
     </div>
 </div>
@@ -88,10 +85,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
-                <h2 class="blue-sec">{{ homePage.videoTitle }}</h2>
-                <div class="col-4 offset-4">
-                    <div class="underline"></div>
-                </div>
+                <h2 class="blue-sec card-sec-title">{{ homePage.videoTitle }}</h2>
             </div>
         </div>
         <div class="row">
@@ -117,10 +111,7 @@
 <div class="row featured" *ngIf="homePage && !homePage.postsHidden">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="card-sec-title" *ngIf="homePage">{{ homePage.postsTitle }}</h2>
-            <div class="col-4 offset-4">
-                <div class="underline"></div>
-            </div>
+            <h2 class="card-sec-title card-sec-title" *ngIf="homePage">{{ homePage.postsTitle }}</h2>
         </div>
     </div>
 </div>
@@ -151,9 +142,6 @@
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.calendarSectionTitle }}</h2>
-            <div class="col-4 offset-4">
-                <div class="underline"></div>
-            </div>
         </div>
     </div>
 </div>
@@ -172,9 +160,6 @@
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
             <h2 class="card-sec-title">{{ homePage.onDemandTitle }}</h2>
-            <div class="col-4 offset-4">
-                <div class="underline"></div>
-            </div>
         </div>
     </div>
 </div>
@@ -199,10 +184,7 @@
     <div class="row">
         <div class="container">
             <div class="col-md-6 offset-md-3 text-center">
-                <h2 class="by-nums-title">{{ homePage.byTheNumbersTitle }}</h2>
-                <div class="col-4 offset-4">
-                    <div class="underline"></div>
-                </div>
+                <h2 class="by-nums-title card-sec-title">{{ homePage.byTheNumbersTitle }}</h2>
             </div>
         </div>
     </div>
@@ -230,10 +212,7 @@
 <div class="row sponsors" *ngIf="homePage && !homePage.sponsorHidden">
     <div class="container">
         <div class="col-md-6 offset-md-3 text-center">
-            <h2 class="by-nums-title">{{ homePage.sponsorTitle }}</h2>
-            <div class="col-4 offset-4">
-                <div class="underline"></div>
-            </div>
+            <h2 class="by-nums-title card-sec-title">{{ homePage.sponsorTitle }}</h2>
         </div>
     </div>
 </div>

@@ -152,7 +152,7 @@ ul.level1 li a {
 
 #header .networking {
     float: right;
-    padding-top: 2px;
+    padding-top: 10px;
 }
 
 .auxnav {
@@ -252,9 +252,9 @@ button.text-secondary {
         border-bottom-right-radius: .25em;*/
     }
 
-    li.dropdown.show a {
-        background: #FFFFFF;
-    }
+    /*li.dropdown.show a {*/
+        /*background: #FFFFFF;*/
+    /*}*/
 
     .dropdown-item {
         white-space: normal;

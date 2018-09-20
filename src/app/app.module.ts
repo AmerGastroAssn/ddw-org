@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { MatSnackBarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -12,7 +11,14 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import * as firebase from 'firebase/app';
-import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
+import {
+    BsDatepickerModule,
+    ModalModule,
+    PopoverModule,
+    ProgressbarModule,
+    TabsModule,
+    TimepickerModule
+} from 'ngx-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,6 +29,7 @@ import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/a
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
 import { AdminPressReleaseItemComponent } from './components/admin/admin-press-release/admin-press-release-item/admin-press-release-item.component';
 import { AdminModule } from './components/admin/admin.module';
+import { AlertModalComponent } from './components/core/alert-modal/alert-modal.component';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { FooterComponent } from './components/core/footer/footer.component';
 import { HomeComponent } from './components/core/home/home.component';
@@ -61,6 +68,7 @@ import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { ContactFormService } from './services/contact-form.service';
 import { CountdownService } from './services/countdown.service';
+import { ModalService } from './services/modal.service';
 import { PageService } from './services/page.service';
 import { ScriptService } from './services/script.service';
 
@@ -94,6 +102,7 @@ firebase.initializeApp(environment.firebase);
         AdminPressReleaseItemComponent,
         PressReleasesDetailsComponent,
         PagesNavbarComponent,
+        AlertModalComponent,
     ],
     imports: [
         BrowserModule,
@@ -114,6 +123,7 @@ firebase.initializeApp(environment.firebase);
         TimepickerModule.forRoot(),
         AdminModule,
         HttpClientModule,
+        ModalModule.forRoot(),
     ],
     exports: [],
     providers: [
@@ -132,8 +142,12 @@ firebase.initializeApp(environment.firebase);
         AdminCalendarService,
         AdminHomePageService,
         ContactFormService,
+        ModalService,
     ],
-    entryComponents: [AdminBottomSheetNewComponent],
+    entryComponents: [
+        AdminBottomSheetNewComponent,
+        AlertModalComponent
+    ],
     bootstrap: [AppComponent],
 
 })

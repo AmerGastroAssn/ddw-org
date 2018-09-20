@@ -1,0 +1,22 @@
+.modal-body > p {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    line-height: 1.5;
+    font-size: 1em;
+}
+
+p > a:link, a {
+    color: #2e6da4 !important;
+}
+
+.btn.btn-primary {
+    border-color: #3276b1;
+    background-color: #3276b1;
+    color: #ffffff !important;
+    border-radius: 0;
+}
+
+.btn.btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #285e8e;
+    border-color: #285e8e;
+}

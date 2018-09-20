@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
@@ -13,12 +14,13 @@ import { AdminHomePageService } from '../../../services/admin-home-page.service'
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
-
+import { AlertModalComponent } from '../alert-modal/alert-modal.component';
 
 @Component({
     selector: 'ddw-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    styleUrls: ['./home.component.css'],
+
 })
 export class HomeComponent implements OnInit {
     title: string;
@@ -27,7 +29,6 @@ export class HomeComponent implements OnInit {
     subheaderLoc: string;
     subheaderDate: string;
     cards$: Observable<Card[]>;
-
     countdownTime: string;
     time1$: Observable<Time>;
     time2$: Observable<Time>;
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
     hasCalendar: boolean;
     calendarTitle: string;
     postsHidden: boolean;
+    bsModalRef: BsModalRef;
 
     constructor(
       private countdownService: CountdownService,
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
       private adminHomePageService: AdminHomePageService,
       private titleService: Title,
       private calendarService: AdminCalendarService,
+      private modalService: BsModalService,
     ) {
 
     }
@@ -112,6 +115,7 @@ export class HomeComponent implements OnInit {
         this.adsService.getAds()
             .subscribe((ads) => {
                 this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
             });
 
         // Page elements
@@ -132,6 +136,19 @@ export class HomeComponent implements OnInit {
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
 
+        this.openModalWithComponent();
+    }
+
+
+    openModalWithComponent() {
+        const initialState = {
+            title: '',
+            content: [
+                ``
+            ],
+        };
+        this.bsModalRef = this.modalService.show(AlertModalComponent, { initialState });
+        // this.bsModalRef.content.closeBtnName = 'OK';
     }
 
 

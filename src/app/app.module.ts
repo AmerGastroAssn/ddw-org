@@ -55,6 +55,7 @@ import { PressReleasesComponent } from './components/pages/press-releases/press-
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
+import { SafePipe } from './pipes/safe.pipe';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
@@ -103,6 +104,7 @@ firebase.initializeApp(environment.firebase);
         PressReleasesDetailsComponent,
         PagesNavbarComponent,
         AlertModalComponent,
+        SafePipe,
     ],
     imports: [
         BrowserModule,

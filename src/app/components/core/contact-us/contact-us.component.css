@@ -87,3 +87,11 @@ h2.send-msg {
 .row.ad {
     margin-top: 3em;
 }
+
+select.custom-select {
+    border-radius: 0;
+}
+
+sup, .text-muted {
+    font-size: 12px !important;
+}

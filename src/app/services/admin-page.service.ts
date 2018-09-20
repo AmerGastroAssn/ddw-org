@@ -67,7 +67,7 @@ export class AdminPageService {
             } else {
                 const data = action.payload.data() as Page;
                 data.uid = action.payload.id;
-                console.log('data in getPage()', data);
+                // console.log('data in getPage()', data);
                 return data;
             }
         });

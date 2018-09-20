@@ -78,7 +78,7 @@ export class AdminSettingsService {
             } else {
                 const data = action.payload.data() as Settings;
                 data.$key = action.payload.id;
-                console.log('data.key', data);
+                // console.log('data.key', data);
                 return data;
             }
         });

@@ -45,46 +45,71 @@
                               (ngSubmit)="onNewContact(newContactForm.value)">
 
                             <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <select class="custom-select custom-select-lg mb-3"
+                                <label for="subject">Subject<sup>*</sup></label>
+                                <select class="custom-select custom-select-md mb-3"
                                         id="subject"
+                                        required
                                         formControlName="subject">
                                     <option selected>Select A Subject</option>
                                     <option value="Test Subject One">Test Subject One</option>
                                     <option value="Test Subject Two">Test Subject Two</option>
                                     <option value="Test Subject Three">Test Subject Three</option>
                                 </select>
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.subject.valid && f.subject.touched">
+                                    <b>Subject</b> is required
+                                </p>
                             </div>
 
 
                             <div class="form-group">
-                                <label>Your First Name</label>
+                                <label>Your First Name<sup>*</sup></label>
                                 <input type="text"
                                        class="form-control"
+                                       required
                                        formControlName="firstName">
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.firstName.valid && f.firstName.touched">
+                                    <b>First Name</b> is required
+                                </p>
                             </div>
 
                             <div class="form-group">
-                                <label>Your Last Name</label>
+                                <label>Your Last Name<sup>*</sup></label>
                                 <input type="text"
                                        class="form-control"
+                                       required
                                        formControlName="lastName">
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.lastName.valid && f.lastName.touched">
+                                    <b>Last Name</b> is required
+                                </p>
                             </div>
 
                             <div class="form-group">
-                                <label>Your Email Address</label>
+                                <label>Your Email Address<sup>*</sup></label>
                                 <input type="email"
                                        class="form-control"
+                                       required
                                        formControlName="email">
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.email.valid && f.email.touched">
+                                    <b>Email</b> is required
+                                </p>
                             </div>
 
                             <div class="form-group col-md-3 phone-number">
                                 <label>Your Phone Number (optional)</label>
                                 <input type="text"
                                        class="form-control"
+                                       placeholder="Ex: 123-456-7890"
+                                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                        formControlName="phoneNumber">
                             </div>
-
+                            <p class="help-block alert alert-warning text-center mt-1"
+                               *ngIf="!f.phoneNumber.valid && f.phoneNumber.touched">
+                                <b>Phone Number</b> is not in the correct format: 123-456-7890
+                            </p>
                             <!--<div class="form-group">-->
                             <!--<label>Subject</label>-->
                             <!--<input type="text"-->
@@ -93,11 +118,16 @@
                             <!--</div>-->
 
                             <div class="form-group">
-                                <label>Body</label>
+                                <label>Body<sup>*</sup></label>
                                 <textarea class="form-control"
                                           rows="10"
+                                          required
                                           formControlName="body">
                                </textarea>
+                                <p class="help-block alert alert-warning text-center mt-1"
+                                   *ngIf="!f.body.valid && f.body.touched">
+                                    <b>Body</b> is required
+                                </p>
                             </div>
 
                             <div class="form-group">
@@ -106,6 +136,10 @@
                                     Send
                                 </button>
                             </div>
+
+                            <p>
+                                <small class="text-muted"><sup>*</sup> Required</small>
+                            </p>
 
                         </form>
                     </div>
@@ -122,3 +156,5 @@
         </div>
     </div>
 </div>
+
+<ddw-footer></ddw-footer>

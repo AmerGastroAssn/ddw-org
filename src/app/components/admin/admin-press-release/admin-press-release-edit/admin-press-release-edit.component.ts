@@ -66,7 +66,6 @@ export class AdminPressReleaseEditComponent implements OnInit {
             }
         });
 
-        this.placeholderDate = Date.now();
         this.user = this.authService.getProfile();
         this.currentDate = Date.now();
 
@@ -74,7 +73,8 @@ export class AdminPressReleaseEditComponent implements OnInit {
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY',
+              dateInputFormat: 'MMMM Do YYYY,h:mm',
+              placeholder: this.currentDate
           });
     }
 
@@ -93,14 +93,14 @@ export class AdminPressReleaseEditComponent implements OnInit {
 
                 // Form:
                 this.editPressReleaseForm = this.fb.group({
-                    author: ['' || pr.author],
+                    author: [pr.author],
                     createdAt: [this.currentDate],
-                    body: ['' || pr.body, Validators.required],
+                    body: [pr.body, Validators.required],
                     sortOrder: [''],
                     published: ['' || false],
-                    publishOn: ['' || pr.publishOn, Validators.required],
-                    summary: ['' || pr.summary],
-                    title: ['' || pr.title, Validators.required],
+                    publishOn: [pr.publishOn, Validators.required],
+                    summary: [pr.summary],
+                    title: [pr.title, Validators.required],
                 });
 
 

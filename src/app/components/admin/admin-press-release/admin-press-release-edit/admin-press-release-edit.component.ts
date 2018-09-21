@@ -35,6 +35,7 @@ export class AdminPressReleaseEditComponent implements OnInit {
     bsConfig: Partial<BsDatepickerConfig>;
     currentDate: number;
     placeholderDate: any;
+    metaDesc: string;
 
 
     CkeditorConfig = {
@@ -96,11 +97,12 @@ export class AdminPressReleaseEditComponent implements OnInit {
                     author: [pr.author],
                     createdAt: [this.currentDate],
                     body: [pr.body, Validators.required],
-                    sortOrder: [''],
-                    published: ['' || false],
+                    sortOrder: [pr.sortOrder],
+                    published: [pr.published || false],
                     publishOn: [pr.publishOn, Validators.required],
                     summary: [pr.summary],
                     title: [pr.title, Validators.required],
+                    metaDesc: [pr.metaDesc],
                 });
 
 
@@ -114,6 +116,7 @@ export class AdminPressReleaseEditComponent implements OnInit {
                 this.title = this.editPressReleaseForm.value.title;
                 this.uid = this.pressRelease.uid;
                 this.url = this.pressRelease.url;
+                this.metaDesc = this.pressRelease.metaDesc;
             }
         });
 

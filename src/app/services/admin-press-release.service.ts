@@ -95,6 +95,7 @@ export class AdminPressReleaseService {
             title: formData.title,
             uid: newURL,
             url: newURL,
+            metaDesc: formData.metaDesc,
         };
 
         return pressReleaseRef.set(data)
@@ -117,6 +118,7 @@ export class AdminPressReleaseService {
                 publishOn: formData.publishOn,
                 summary: formData.summary,
                 title: formData.title,
+                metaDesc: formData.metaDesc,
                 uid: url,
                 url: url,
             };
@@ -135,6 +137,7 @@ export class AdminPressReleaseService {
                 publishOn: pubOnStampToNum,
                 summary: formData.summary,
                 title: formData.title,
+                metaDesc: formData.metaDesc,
                 uid: url,
                 url: url,
             };

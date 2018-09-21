@@ -64,6 +64,7 @@ export class AdminPageEditComponent implements OnInit {
     calendars$: Observable<Calendar[]>;
     calendars: Calendar[];
     disableAdminOnEdit: boolean;
+    metaDesc: string;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -199,7 +200,8 @@ export class AdminPageEditComponent implements OnInit {
                     calendarTitle: [page.calendarTitle],
                     isGrandchildPage: ['' || page.isGrandchildPage],
                     grandchildURL: ['' || page.grandchildURL],
-                    hidden: ['' || false]
+                    hidden: ['' || false],
+                    metaDesc: ['' || page.metaDesc],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -221,6 +223,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.isGrandchildPage = this.editPageForm.value.isGrandchildPage;
                 this.grandchildURL = this.editPageForm.value.grandchildURL;
                 this.hidden = this.editPageForm.value.hidden;
+                this.metaDesc = this.editPageForm.value.metaDesc;
 
 
             }

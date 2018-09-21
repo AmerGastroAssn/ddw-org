@@ -19,8 +19,9 @@ export class Page {
       public isGrandchildPage: boolean,
       public grandchildURL: string,
       public hidden: boolean,
-      public extURL?: string,
-      public isExtURL?: boolean,
+      public extURL: string,
+      public isExtURL: boolean,
+      public metaDesc: string,
     ) {
     }
 }

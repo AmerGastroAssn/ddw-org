@@ -11,6 +11,7 @@ export class PressRelease {
       public title: string,
       public uid: string,
       public url: string,
+      public metaDesc: string,
     ) {
     }
 }

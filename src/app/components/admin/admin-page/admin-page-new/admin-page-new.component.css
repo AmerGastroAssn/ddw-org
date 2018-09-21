@@ -12,6 +12,14 @@ label.form-check-label {
     cursor: pointer;
 }
 
+input,
+textarea,
+select.form-control,
+option,
+.card.bg-lighter {
+    border-radius: 0;
+}
+
 p.alert {
     font-size: 14px;
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif;
@@ -30,7 +38,6 @@ input.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
-
 
 /* Display on anything 992px and larger */
 @media (min-width: 992px) {

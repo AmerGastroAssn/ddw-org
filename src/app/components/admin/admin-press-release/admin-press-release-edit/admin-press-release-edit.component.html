@@ -41,6 +41,19 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Meta Descripton <br>
+                            <small>If blank meta will use site default (Not recommended)</small>
+                        </label>
+                        <textarea type="text"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Should be a sentence or two that accurately describes this page"
+                                  [(ngModel)]="pressRelease.metaDesc"
+                                  formControlName="metaDesc">
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
                         <label>Summary</label>
                         <textarea type="text"
                                   rows="5"
@@ -107,7 +120,6 @@
                             <input type="checkbox"
                                    class="custom-control-input"
                                    id="published"
-                                   [checked]="pressRelease.published"
                                    formControlName="published">
                             <label class="custom-control-label"
                                    for="published">Publish?</label>

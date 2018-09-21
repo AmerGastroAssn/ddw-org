@@ -94,7 +94,6 @@ h2.card-sec-title {
     margin: 5em 0 8em 0;
 }
 
-
 .card-body {
     line-height: 2em;
 }
@@ -119,5 +118,14 @@ a.btn.btn-warning.btn-lg:hover {
     -moz-border-radius: 0;
     border-radius: 0;
     font-weight: bold;
+}
+
+input,
+textarea,
+select.form-control,
+option,
+pre.alert.slug,
+.card.bg-lighter {
+    border-radius: 0;
 }
 

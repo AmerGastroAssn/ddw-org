@@ -44,6 +44,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     calendarTitle: string;
     calendar$: Observable<Calendar[]>;
     disableAdminOnNew: boolean;
+    metaDesc: string;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -180,9 +181,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             calendarTitle: [''],
             isGrandchildPage: ['' || false],
             grandchildURL: [''],
-            hidden: ['' || false]
+            hidden: ['' || false],
+            metaDesc: ['']
         });
-        console.log('this.title', this.title);
 
         this.title = this.newPageForm.value.title;
         this.body = this.newPageForm.value.body;
@@ -201,6 +202,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.isGrandchildPage = this.newPageForm.value.isGrandchildPage;
         this.grandchildURL = this.newPageForm.value.grandchildURL;
         this.hidden = this.newPageForm.value.hidden;
+        this.metaDesc = this.newPageForm.value.metaDesc;
 
 
     }

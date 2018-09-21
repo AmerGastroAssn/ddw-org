@@ -33,6 +33,7 @@ export class AdminPressReleaseNewComponent implements OnInit {
     uid: string;
     url: string;
     bsConfig: Partial<BsDatepickerConfig>;
+    metaDesc: string;
     currentDate: number;
 
 
@@ -92,6 +93,7 @@ export class AdminPressReleaseNewComponent implements OnInit {
             publishOn: ['', Validators.required],
             summary: [''],
             title: ['', Validators.required],
+            metaDesc: ['', Validators.required],
         });
 
         this.author = this.newPressReleaseForm.value.author;
@@ -101,6 +103,7 @@ export class AdminPressReleaseNewComponent implements OnInit {
         this.published = this.newPressReleaseForm.value.published;
         this.publishOn = this.newPressReleaseForm.value.publishOn;
         this.title = this.newPressReleaseForm.value.title;
+        this.metaDesc = this.newPressReleaseForm.value.metaDesc;
 
 
     }

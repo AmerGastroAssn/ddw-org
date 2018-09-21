@@ -56,6 +56,11 @@
                                 <i class="fa fa-undo"></i>&nbsp;Cancel
                             </a>
                         </div>
+                        <div class="form-group" *ngIf="!page.isExtURL">
+                            <label>Slug</label>
+                            <pre class="alert bg-lighter text-secondary slug">{{ page.slug }}</pre>
+                        </div>
+
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text"
@@ -69,10 +74,20 @@
                             </p>
                         </div>
 
-                        <div class="form-group" *ngIf="!page.isExtURL">
-                            <label>Slug</label>
-                            <pre class="alert bg-light text-secondary slug">{{ page.slug }}</pre>
+
+                        <div class="form-group">
+                            <label>Meta Descripton <br>
+                                <small>If blank meta will use site default (Not recommended)</small>
+                            </label>
+                            <textarea type="text"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="Should be a sentence or two that accurately describes this page"
+                                      [(ngModel)]="page.metaDesc"
+                                      formControlName="metaDesc">
+                        </textarea>
                         </div>
+
 
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">

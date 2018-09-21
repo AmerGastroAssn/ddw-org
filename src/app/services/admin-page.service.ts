@@ -110,6 +110,7 @@ export class AdminPageService {
             isGrandchildPage: formData.isGrandchildPage,
             grandchildURL: formData.grandchildURL,
             hidden: formData.hidden,
+            metaDesc: formData.metaDesc,
         };
 
         return pageRef.set(data)
@@ -151,6 +152,7 @@ export class AdminPageService {
                 isGrandchildPage: formData.isGrandchildPage,
                 grandchildURL: formData.grandchildURL,
                 hidden: formData.hidden,
+                metaDesc: formData.metaDesc,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))
@@ -179,6 +181,7 @@ export class AdminPageService {
                 isGrandchildPage: formData.isGrandchildPage,
                 grandchildURL: formData.grandchildURL,
                 hidden: formData.hidden,
+                metaDesc: formData.metaDesc,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))

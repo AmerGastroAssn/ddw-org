@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <p class="address">
-                            <b>DDW Administration</b><br>
+                            DDW Administration<br>
                             4930 Del Ray Avenue <br>
                             Bethesda MD 20814 <br>
                             United States <br>
@@ -51,13 +51,23 @@
                                         required
                                         formControlName="subject">
                                     <option selected>Select A Subject</option>
-                                    <option value="Test Subject One">Test Subject One</option>
-                                    <option value="Test Subject Two">Test Subject Two</option>
-                                    <option value="Test Subject Three">Test Subject Three</option>
+                                    <option value="Abstract Submission">Abstract Submission</option>
+                                    <option value="Registration">Registration</option>
+                                    <option value="Housing">Housing</option>
+                                    <option value="Program/Scientific Sessions">Program/Scientific Sessions</option>
+                                    <option value="Exhibits, Sponsorships and Marketing Opportunities">Exhibits,
+                                        Sponsorships and Marketing Opportunities
+                                    </option>
+                                    <option value="DDW Newsroom and Media Inquiries">DDW Newsroom and Media Inquiries
+                                    </option>
+                                    <option value="Marketing and Promotions">Marketing and Promotions</option>
+                                    <option value="Mobile App">Mobile App</option>
+                                    <option value="Travel Awards">Travel Awards</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 <p class="help-block alert alert-warning text-center mt-1"
                                    *ngIf="!f.subject.valid && f.subject.touched">
-                                    <b>Subject</b> is required
+                                    Subject is required
                                 </p>
                             </div>
 
@@ -70,7 +80,7 @@
                                        formControlName="firstName">
                                 <p class="help-block alert alert-warning text-center mt-1"
                                    *ngIf="!f.firstName.valid && f.firstName.touched">
-                                    <b>First Name</b> is required
+                                    First Name is required
                                 </p>
                             </div>
 
@@ -82,7 +92,7 @@
                                        formControlName="lastName">
                                 <p class="help-block alert alert-warning text-center mt-1"
                                    *ngIf="!f.lastName.valid && f.lastName.touched">
-                                    <b>Last Name</b> is required
+                                    Last Name is required
                                 </p>
                             </div>
 
@@ -94,7 +104,7 @@
                                        formControlName="email">
                                 <p class="help-block alert alert-warning text-center mt-1"
                                    *ngIf="!f.email.valid && f.email.touched">
-                                    <b>Email</b> is required
+                                    Email is required
                                 </p>
                             </div>
 
@@ -108,7 +118,7 @@
                             </div>
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.phoneNumber.valid && f.phoneNumber.touched">
-                                <b>Phone Number</b> is not in the correct format: 123-456-7890
+                                Phone Number is not in the correct format: 123-456-7890
                             </p>
                             <!--<div class="form-group">-->
                             <!--<label>Subject</label>-->
@@ -126,7 +136,7 @@
                                </textarea>
                                 <p class="help-block alert alert-warning text-center mt-1"
                                    *ngIf="!f.body.valid && f.body.touched">
-                                    <b>Body</b> is required
+                                    Body is required
                                 </p>
                             </div>
 

@@ -139,10 +139,7 @@ exports.firestoreEmail = functions.firestore
             const msg = {
                 // to: contact.email,
                 to: [
-                    'cstodd@gastro.org',
-                    'lhauver@gastro.org',
-                    'cstone@gastro.org',
-                    'awhite@gastro.org'
+                    'cstodd@gastro.org'
                 ],
                 from: contact.email,
                 subject: contact.subject,

@@ -60,7 +60,7 @@ h1.title {
 }
 
 ol.breadcrumb, li.breadcrumb-item {
-    background-color: #fff;
+    background-color: transparent;
     font-size: 18px;
 }
 

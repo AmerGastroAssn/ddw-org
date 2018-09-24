@@ -204,6 +204,12 @@
         </a>
     </li>
 
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/image-uploader']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-images"></i>&nbsp;<span class="helv">Image Uploader</span></div>
+        </a>
+    </li>
 
     <li class="sidenav-item">
         <a class="sidenav-link" [routerLink]="['/']" target="_blank">

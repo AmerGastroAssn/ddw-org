@@ -4,9 +4,9 @@
         <div class="card">
             <div class="card-body">
                 <h1 class="text-center pb-4 pt-3 admin-badge">
-               <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
-                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
-                        <i class="fa fa-calendar"></i>&nbsp;Admin
+                    <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
+                         alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                    <i class="fa fa-calendar"></i>&nbsp;Admin
                     New Calendar
                 </h1>
             </div>
@@ -46,7 +46,7 @@
                     loading...
                 </div>
             </ng-template>
-            <div class="card bg-lighter">
+            <div class="card">
                 <div class="card-body">
                     <form (ngSubmit)="onCalendarCreate(newCalForm.value)"
                           [formGroup]="newCalForm"
@@ -73,7 +73,7 @@
                                    formControlName="displayName"/>
                         </div>
                         <!-- * Date 1 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <i class="fa fa-calendar-plus"></i>
@@ -85,7 +85,7 @@
                             <div class="form-group">
                                 <label class="sr-only"
                                        for="date1">Select Date 1</label>
-                                <div class="input-group mb-2">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -114,7 +114,7 @@
 
 
                         <!-- * Date 2 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <i class="fa fa-calendar-plus"></i>
@@ -126,7 +126,7 @@
                             <div class="form-group">
                                 <label class="sr-only"
                                        for="date2">Select Date 2</label>
-                                <div class="input-group mb-2">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -155,7 +155,7 @@
 
 
                         <!-- * Date 3 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <i class="fa fa-calendar-plus"></i>
@@ -167,7 +167,7 @@
                             <div class="form-group">
                                 <label class="sr-only"
                                        for="date3">Select Date 3</label>
-                                <div class="input-group mb-2">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -196,7 +196,7 @@
 
 
                         <!-- * Date 4 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <i class="fa fa-calendar-plus"></i>
@@ -209,7 +209,7 @@
                             <div class="form-group">
                                 <label class="sr-only"
                                        for="date4">Select Date 4</label>
-                                <div class="input-group mb-2">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -237,7 +237,7 @@
                         </mat-expansion-panel>
 
 
-                        <button type="submit" class="btn btn-primary mb-5 mt-5">
+                        <button type="submit" class="btn btn-secondary mb-5 mt-5">
                             <i class="fa fa-calendar"></i>&nbsp;Save Event
                         </button>
                     </form>

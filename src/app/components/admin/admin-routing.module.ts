@@ -14,6 +14,7 @@ import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/ad
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
+import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
@@ -110,6 +111,7 @@ const adminRoutes: Routes = [
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
             { path: 'home', component: AdminHomePageComponent, canActivate: [AuthGuard] },
+            { path: 'image-uploader', component: AdminImageUploaderComponent, canActivate: [AuthGuard] }
         ]
     },
 ];

@@ -49,7 +49,7 @@
                     loading...
                 </div>
             </ng-template>
-            <div class="card bg-lighter">
+            <div class="card bg-default">
                 <div class="card-body">
                     <form (ngSubmit)="onCalendarUpdate(updateCalForm.value)"
                           [formGroup]="updateCalForm"
@@ -79,7 +79,7 @@
                         </div>
 
                         <!-- * Date 1 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <div class="fa fa-calendar-edit"></div>
@@ -95,7 +95,7 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <div class="input-group mb-2">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -123,7 +123,7 @@
 
 
                         <!-- * Date 2 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <div class="fa fa-calendar-edit"></div>
@@ -137,8 +137,9 @@
                                     </span>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
+
                             <div class="form-group">
-                                <div class="input-group mb-2">
+                                <div class="form-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -166,7 +167,7 @@
 
 
                         <!-- * Date 3 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <div class="fa fa-calendar-edit"></div>
@@ -182,7 +183,7 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <div class="input-group mb-2">
+                                <div class="form-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -210,7 +211,7 @@
 
 
                         <!-- * Date 4 * -->
-                        <mat-expansion-panel>
+                        <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <div class="fa fa-calendar-edit"></div>
@@ -226,7 +227,7 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <div class="input-group mb-2">
+                                <div class="form-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fa fa-calendar-alt"></i>
@@ -253,7 +254,7 @@
                         </mat-expansion-panel>
 
 
-                        <button type="submit" class="btn btn-primary mb-5 mt-5">
+                        <button type="submit" class="btn btn-secondary mb-5 mt-5">
                             <i class="fa fa-calendar"></i>&nbsp;Update Calendar
                         </button>
                     </form>

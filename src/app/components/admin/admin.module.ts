@@ -40,6 +40,7 @@ import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-ne
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
+import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 
 @NgModule({
     declarations: [
@@ -66,6 +67,7 @@ import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin
         AdminContactUsComponent,
         AdminContactUsDetailsComponent,
         AdminContactUsListComponent,
+        AdminImageUploaderComponent,
     ],
     imports: [
         CommonModule,

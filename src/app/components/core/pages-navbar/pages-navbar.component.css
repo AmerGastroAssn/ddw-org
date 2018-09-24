@@ -324,3 +324,26 @@ button.text-secondary {
         float: none;
     }
 }
+
+
+.gsc-input-box {
+    border: 1px solid #333333 !important;
+    background: none !important;
+    border-radius: 2px !important;
+}
+
+.gsc-search-button-v2 {
+    font-size: 0px;
+    padding: 6px 27px;
+    width: auto;
+    vertical-align: middle;
+    border: 1px solid #333333 !important;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin-top: 2px;
+    border-color: #333333;
+    background-color: transparent !important;
+    background-image: none !important;
+
+}

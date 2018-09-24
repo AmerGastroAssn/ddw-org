@@ -21,7 +21,7 @@ img.bannerPhotoURL {
     left: 0;
     position: relative;
     max-height: 350px;
-    /*width: 100%;*/
+    width: 100%;
     /*z-index: 0;*/
 }
 

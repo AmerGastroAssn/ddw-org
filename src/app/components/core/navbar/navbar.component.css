@@ -351,5 +351,6 @@ button.text-secondary {
 
 .navbar.bg-light .navbar-nav .show>.nav-link {
     color: #4E5155 !important;
+    background-color: #FFFFFF;
 }
 

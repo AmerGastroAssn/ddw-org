@@ -102,6 +102,10 @@ h2.card-sec-title {
     padding: 2em;
 }
 
+.card.bg-transparent {
+    border-radius: 0;
+}
+
 a.btn.btn-warning.btn-lg {
     background-color: #F47700;
     color: #fff;

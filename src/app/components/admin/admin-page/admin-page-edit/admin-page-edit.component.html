@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-lg-8"></div>
         <div class="col-lg-4">
-            <div class="card bg-light text-light text-center">
+            <div class="card bg-transparent text-light text-center">
                 <div class="card-body p-3">
                     <label class="switcher switcher-md">
                         <input type="checkbox" class="switcher-input">
@@ -439,7 +439,7 @@
         </div>
 
 
-        <div class="col-md-6" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
+        <div class="col-md-7" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
             <div class="card">
                 <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
 

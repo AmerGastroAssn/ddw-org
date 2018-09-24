@@ -86,13 +86,12 @@ export class AdminCalendarEditComponent implements OnInit {
             if (calendar !== null) {
                 this.calendar = calendar;
 
-
                 this.updateCalForm = this.fb.group({
                     $key: [calendar.$key],
                     body1: [calendar.body1, Validators.required],
-                    body2: [calendar.body1, Validators.required],
-                    body3: [calendar.body1],
-                    body4: [calendar.body1],
+                    body2: [calendar.body2, Validators.required],
+                    body3: [calendar.body3],
+                    body4: [calendar.body4],
                     date1: [calendar.date1],
                     date2: [calendar.date2],
                     date3: [calendar.date3],

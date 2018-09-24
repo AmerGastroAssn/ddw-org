@@ -63,13 +63,13 @@
                             </a>
                         </td>
                         <td scope="col">
-                            <i class="fa fa-envelope"></i> {{ contact.email }}
+                            <i class="fa fa-envelope"></i> {{ contact.email | slice:0:25 }}
                         </td>
                         <td scope="col">
                             <i class="fa fa-phone"></i> {{ contact.phoneNumber }}
                         </td>
                         <td scope="col">
-                            <i class="fa fa-code-branch"></i>&nbsp;{{ contact.subject }}
+                            <i class="fa fa-code-branch"></i>&nbsp;{{ contact.subject | slice:0:30 }}
                         </td>
                         <td scope="col" class="text-truncate">
                             {{ contact.sentDate | date:'medium' }}

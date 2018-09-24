@@ -64,8 +64,6 @@ p, p.contact-us {
     font-weight: 500;
 }
 
-
-
 .bg-light {
     background-color: #ebebeb;
 }
@@ -94,4 +92,13 @@ select.custom-select {
 
 sup, .text-muted {
     font-size: 12px !important;
+}
+
+p.alert.alert-warning {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 1em;
+    line-height: 1.5em;
+    background-color: #FFF3CF;
+    color: #5C440F;
+    border: 1px solid #EDE1C1;
 }

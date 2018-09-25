@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "ddw-org"
+    "default": "ddw-org",
+    "staging": "ddw-org-dev"
   }
 }

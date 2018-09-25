@@ -56,7 +56,8 @@
             <div class="tab-pane fade show active"
                  id="date1"
                  role="tabpanel"
-                 aria-labelledby="date1-tab">
+                 aria-labelledby="date1-tab"
+                 *ngIf="calendar.date1">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date1 && calendar.body1">
                     <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
@@ -69,7 +70,8 @@
             <div class="tab-pane fade"
                  id="date2"
                  role="tabpanel"
-                 aria-labelledby="date2-tab">
+                 aria-labelledby="date2-tab"
+                 *ngIf="calendar.date2">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date2 && calendar.body2">
                     <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
@@ -82,7 +84,8 @@
             <div class="tab-pane fade"
                  id="date3"
                  role="tabpanel"
-                 aria-labelledby="date3-tab">
+                 aria-labelledby="date3-tab"
+                 *ngIf="calendar.date3">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date3 && calendar.body3">
                     <strong>{{ calendar.date3.toDate() | date:'EEEE' }}</strong>,
@@ -95,7 +98,8 @@
             <div class="tab-pane fade"
                  id="date4"
                  role="tabpanel"
-                 aria-labelledby="date4-tab">
+                 aria-labelledby="date4-tab"
+                 *ngIf="calendar.date4">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date4 && calendar.body4">
                     <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,

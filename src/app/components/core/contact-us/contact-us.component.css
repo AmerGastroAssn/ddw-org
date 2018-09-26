@@ -3,7 +3,7 @@ img.bannerPhotoURL {
     left: 0;
     position: relative;
     max-height: 350px;
-    /*width: 100%;*/
+    width: 100%;
     /*z-index: 0;*/
 }
 
@@ -13,6 +13,7 @@ h1.title {
     color: #ffffff;
     font-weight: bold;
 }
+
 
 .btn.btn-primary {
     border-color: #3276b1;

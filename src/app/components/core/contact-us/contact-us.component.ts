@@ -23,6 +23,7 @@ export class ContactUsComponent implements OnInit {
     sentDate: number;
     uid: string;
     mainAccountEmailAddress: string;
+    bannerImage: string;
 
     constructor(
       private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class ContactUsComponent implements OnInit {
     ) {
         this.sentDate = Date.now();
         this.mainAccountEmailAddress = 'cstodd@gastro.org';
+        this.bannerImage = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
     }
 
     // For Form Validations

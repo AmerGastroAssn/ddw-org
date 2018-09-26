@@ -3,11 +3,16 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatBottomSheetModule,
-    MatButtonModule, MatDivider, MatDividerModule,
-    MatExpansionModule, MatFormFieldModule, MatIconModule,
-    MatMenuModule, MatSelectModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSelectModule,
     MatSidenavModule,
-    MatSnackBarModule, MatTooltipModule
+    MatSnackBarModule,
+    MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CKEditorModule } from 'ng2-ckeditor';
@@ -19,8 +24,13 @@ import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list
 import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
+import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
+import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
+import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
+import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
+import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
@@ -29,18 +39,16 @@ import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/a
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSidenavComponent } from './admin-core/admin-sidenav/admin-sidenav.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
+import { AdminCustomNavLinkEditComponent } from './admin-custom-nav-link/admin-custom-nav-link-edit/admin-custom-nav-link-edit.component';
+import { AdminCustomNavLinkListComponent } from './admin-custom-nav-link/admin-custom-nav-link-list/admin-custom-nav-link-list.component';
+import { AdminCustomNavLinkComponent } from './admin-custom-nav-link/admin-custom-nav-link.component';
+import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
-import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
-import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
-import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
-import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
-import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 
 @NgModule({
     declarations: [
@@ -68,6 +76,9 @@ import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/a
         AdminContactUsDetailsComponent,
         AdminContactUsListComponent,
         AdminImageUploaderComponent,
+        AdminCustomNavLinkComponent,
+        AdminCustomNavLinkEditComponent,
+        AdminCustomNavLinkListComponent,
     ],
     imports: [
         CommonModule,

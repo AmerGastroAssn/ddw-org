@@ -59,6 +59,7 @@ import { SafePipe } from './pipes/safe.pipe';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
 import { AdminCardService } from './services/admin-card.service';
+import { AdminCustomNavLinkService } from './services/admin-custom-nav-link.service';
 import { AdminFeaturedPostService } from './services/admin-featured-post.service';
 import { AdminHomePageService } from './services/admin-home-page.service';
 import { AdminMetaService } from './services/admin-meta.service';
@@ -145,6 +146,7 @@ firebase.initializeApp(environment.firebase);
         AdminHomePageService,
         ContactFormService,
         ModalService,
+        AdminCustomNavLinkService,
     ],
     entryComponents: [
         AdminBottomSheetNewComponent,

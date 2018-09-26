@@ -137,6 +137,14 @@
         </a>
     </li>
 
+    <!-- * Custom Links * -->
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/custom-nav-links']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-link"></i>&nbsp;<span class="helv">Nav Links</span></div>
+        </a>
+    </li>
+
     <!-- * Cards * -->
     <!--<li class="sidenav-item" *ngIf="isLoggedIn">-->
     <!--<a [routerLink]="['/admin/cards']" class="sidenav-link">-->

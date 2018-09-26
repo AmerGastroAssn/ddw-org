@@ -20,6 +20,9 @@ import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
+import { AdminCustomNavLinkEditComponent } from './admin-custom-nav-link/admin-custom-nav-link-edit/admin-custom-nav-link-edit.component';
+import { AdminCustomNavLinkListComponent } from './admin-custom-nav-link/admin-custom-nav-link-list/admin-custom-nav-link-list.component';
+import { AdminCustomNavLinkComponent } from './admin-custom-nav-link/admin-custom-nav-link.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { AdminPageAttendeePlanningListComponent } from './admin-page/admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';
 import { AdminPageDetailsComponent } from './admin-page/admin-page-details/admin-page-details.component';
@@ -90,6 +93,13 @@ const adminRoutes: Routes = [
                 children: [
                     { path: '', component: AdminContactUsListComponent, canActivate: [AuthGuard] },
                     { path: ':id', component: AdminContactUsDetailsComponent, canActivate: [AuthGuard] },
+                ]
+            },
+            {
+                path: 'custom-nav-links', component: AdminCustomNavLinkComponent,
+                children: [
+                    { path: '', component: AdminCustomNavLinkEditComponent, canActivate: [AuthGuard] },
+                    { path: 'all', component: AdminCustomNavLinkListComponent, canActivate: [AuthGuard] },
                 ]
             },
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },

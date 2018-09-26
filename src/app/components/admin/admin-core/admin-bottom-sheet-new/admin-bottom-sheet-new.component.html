@@ -38,6 +38,15 @@
         </a>
     </li>
 
+
+    <li class="list-group-item">
+        <mat-divider></mat-divider>
+        <a [routerLink]="['/admin/custom-nav-links']"
+           (click)="openLink($event)">
+            <i class="fal fa-link"></i> Navbar Links
+        </a>
+    </li>
+
     <li class="list-group-item" *ngIf="isAdmin">
         <mat-divider></mat-divider>
         <a [routerLink]="['/admin/users/new']"

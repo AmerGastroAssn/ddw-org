@@ -125,21 +125,95 @@
                                     <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: right;">
                                         <ul class="level1 static" tabindex="0" role="menubar"
                                             style="position: relative; width: auto; float: left;">
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
-                                                <a title="How to get in contact with us"
-                                                   class="level1 MPAuxNav static"
-                                                   [routerLink]="['/contactus']" tabindex="-1">Contact Us</a></li>
+                                            <!-- * Custom Link 1 * -->
                                             <li role="menuitem" class="static" style="position: relative; float: left;">
                                                 <a class="level1 MPAuxNav static"
-                                                   [routerLink]="['/careercenter']"
-                                                   target="_blank"
-                                                   tabindex="-1">Career Center</a>
+                                                   [routerLink]="[customLinks.url1]"
+                                                   tabindex="-1"
+                                                   *ngIf="customLinks.url1 && !customLinks.isExtURL1">
+                                                    {{ customLinks.text1 }}
+                                                </a>
                                             </li>
                                             <li role="menuitem" class="static" style="position: relative; float: left;">
-                                                <a class="level1 MPAuxNav static" href="http://blog.ddw.org"
+                                                <a class="level1 MPAuxNav static"
+                                                   [href]="customLinks.url1"
+                                                   tabindex="-1"
                                                    target="_blank"
-                                                   tabindex="-1">DDW
-                                                    Blog</a>
+                                                   *ngIf="customLinks.url1 && customLinks.isExtURL1">
+                                                    {{ customLinks.text1 }}
+                                                </a>
+                                            </li>
+                                            <!-- * Custom Link 2 * -->
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [routerLink]="[customLinks.url2]"
+                                                   tabindex="-1"
+                                                   *ngIf="customLinks.url2 && !customLinks.isExtURL2">
+                                                    {{ customLinks.text2 }}
+                                                </a>
+                                            </li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [href]="customLinks.url2"
+                                                   tabindex="-1"
+                                                   target="_blank"
+                                                   *ngIf="customLinks.url2 && customLinks.isExtURL2">
+                                                    {{ customLinks.text2 }}
+                                                </a>
+                                            </li>
+                                            <!-- * Custom Link 3 * -->
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [routerLink]="[customLinks.url3]"
+                                                   tabindex="-1"
+                                                   *ngIf="customLinks.url3 && !customLinks.isExtURL3">
+                                                    {{ customLinks.text3 }}
+                                                </a>
+                                            </li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [href]="customLinks.url3"
+                                                   tabindex="-1"
+                                                   target="_blank"
+                                                   *ngIf="customLinks.url3 && customLinks.isExtURL3">
+                                                    {{ customLinks.text3 }}
+                                                </a>
+                                            </li>
+                                            <!-- * Custom Link 4 * -->
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [routerLink]="[customLinks.url4]"
+                                                   tabindex="-1"
+                                                   *ngIf="customLinks.url4 && !customLinks.isExtURL4">
+                                                    {{ customLinks.text4 }}
+                                                </a>
+                                            </li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [href]="customLinks.url4"
+                                                   tabindex="-1"
+                                                   target="_blank"
+                                                   *ngIf="customLinks.url4 && customLinks.isExtURL4">
+                                                    {{ customLinks.text4 }}
+                                                </a>
+                                            </li>
+                                            <!-- * Custom Link 5 * -->
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [routerLink]="[customLinks.url5]"
+                                                   tabindex="-1"
+                                                   *ngIf="customLinks.url5 && !customLinks.isExtURL5">
+                                                    {{ customLinks.text5 }}
+                                                </a>
+                                            </li>
+                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                                <a class="level1 MPAuxNav static"
+                                                   [href]="customLinks.url5"
+                                                   tabindex="-1"
+                                                   target="_blank"
+                                                   *ngIf="customLinks.url5 && customLinks.isExtURL5">
+                                                    {{ customLinks.text5 }}
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>

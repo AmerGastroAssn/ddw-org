@@ -18,6 +18,11 @@ h1, h2, h3 {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
 }
 
+::placeholder {
+    color: #cdcdcd !important;
+}
+
+
 .layout-container {
     background-color: #FAFAFA !important;
 }

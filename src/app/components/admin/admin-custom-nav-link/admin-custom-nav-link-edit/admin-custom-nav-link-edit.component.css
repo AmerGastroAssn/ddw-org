@@ -1,3 +1,7 @@
+p.card-text {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 1em;
+}
 
 hr.inset-hr {
     border: 0;

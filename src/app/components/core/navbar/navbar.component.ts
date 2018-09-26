@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as _ from 'lodash';
+import { CustomLink } from '../../../models/CustomLink';
 import { Page } from '../../../models/Page';
+import { AdminCustomNavLinkService } from '../../../services/admin-custom-nav-link.service';
 import { PageService } from '../../../services/page.service';
 // For jQuery
 declare var $: any;
@@ -20,9 +22,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     presentersPages$: Page[];
     isExtURL: boolean;
     googleSearch: string;
+    customLinks: CustomLink;
 
 
-    constructor(private pageService: PageService, private sanitizer: DomSanitizer) {
+    constructor(
+      private pageService: PageService,
+      private sanitizer: DomSanitizer,
+      private customLinkService: AdminCustomNavLinkService,
+    ) {
 
 
         $(document).scroll(function () {
@@ -46,7 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
                 $('.gsc-control-cse').css({ border: '1px solid #333333 !important' });
                 $('.gsc-search-button-v2').css({ border: '1px solid #333333 !important' });
-                $('.gsc-input-box').css({ border: '1px solid #fff', background: 'transparent'});
+                $('.gsc-input-box').css({ border: '1px solid #fff', background: 'transparent' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
             }
         });
@@ -55,6 +62,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        // Navbar Custom Links:
+        this.customLinkService.getCustomLinks()
+            .subscribe((links) => {
+                this.customLinks = links;
+            });
+
 
         $(document).ready(function () {
             if ($(this).scrollTop() <= 20) {

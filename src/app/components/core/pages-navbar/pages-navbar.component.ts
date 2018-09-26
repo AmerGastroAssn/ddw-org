@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { CustomLink } from '../../../models/CustomLink';
 import { Page } from '../../../models/Page';
+import { AdminCustomNavLinkService } from '../../../services/admin-custom-nav-link.service';
 import { PageService } from '../../../services/page.service';
 // For jQuery
 declare var $: any;
@@ -19,8 +21,12 @@ export class PagesNavbarComponent implements OnInit {
     presentersPages$: Page[];
     isExtURL: boolean;
     googleSearch: string;
+    customLinks: CustomLink;
 
-    constructor(private pageService: PageService) {
+    constructor(
+      private pageService: PageService,
+      private customLinkService: AdminCustomNavLinkService,
+    ) {
         // $(document).ready(function () {
         //     $(window).scroll(function () {
         //         const scrollPos   = $(window).scrollTop(),
@@ -42,6 +48,12 @@ export class PagesNavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Navbar Custom Links:
+        this.customLinkService.getCustomLinks()
+            .subscribe((links) => {
+                this.customLinks = links;
+            });
+
         /*------------------------------------------------
          Pages use _.Lodash to set order. Pages are ordered
          by their 'sortOrder' value.

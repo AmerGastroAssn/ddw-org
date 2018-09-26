@@ -194,8 +194,9 @@ const appRoutes: Routes = [
                 redirectTo: '/news/press-releases/ddw-2018-offers-reporters-access-to-leading-research-in-digestive-health',
                 pathMatch: 'full'
             },
-            {
+            {  // tslint:disable-next-line:max-line-length
                 path: 'aimee-frank/2017/06/26/digestive-disease-week-2017-was-the-largest-international-meeting-in-gastroenterology-and-hepatology',
+                // tslint:disable-next-line:max-line-length
                 redirectTo: '/news/press-releases/digestive-disease-week-2017-was-the-largest-international-meeting-in-gastroenterology-and-hepatology',
                 pathMatch: 'full'
             },
@@ -215,7 +216,9 @@ const appRoutes: Routes = [
                 pathMatch: 'full'
             },
             {
+                // tslint:disable-next-line:max-line-length
                 path: 'aimee-frank/2017/05/06/study-identifies-genetic-markers-that-predict-which-patients-with-hepatitis-c-and-cirrhosis-will-improve-with-treatment',
+                // tslint:disable-next-line:max-line-length
                 redirectTo: '/news/press-releases/study-identifies-genetic-markers-that-predict-which-patients-with-hepatitis-c-and-cirrhosis-will-improve-with-treatment',
                 pathMatch: 'full'
             },
@@ -235,7 +238,9 @@ const appRoutes: Routes = [
                 pathMatch: 'full'
             },
             {
+                // tslint:disable-next-line:max-line-length
                 path: 'aimee-frank/2017/02/02/digestive-disease-week-responds-to-executive-order-banning-travel-of-nationals-from-seven-countries',
+                // tslint:disable-next-line:max-line-length
                 redirectTo: '/news/press-releases/digestive-disease-week-responds-to-executive-order-banning-travel-of-nationals-from-seven-countries',
                 pathMatch: 'full'
             },

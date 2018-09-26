@@ -22,6 +22,10 @@ export class Page {
       public extURL: string,
       public isExtURL: boolean,
       public metaDesc: string,
+      public hasCards: boolean,
+      public cardOption1: string,
+      public cardOption2: string,
+      public cardOption3: string,
     ) {
     }
 }

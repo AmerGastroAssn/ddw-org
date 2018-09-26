@@ -26,6 +26,7 @@ export class AdminSidenavComponent implements OnInit {
     showUsersToggle: boolean;
     showCalendarToggle: boolean;
     showPressReleaseToggle: boolean;
+    showPageCardToggle: boolean;
     user: User;
     user$: Observable<User>;
     isAdmin: boolean;
@@ -91,6 +92,10 @@ export class AdminSidenavComponent implements OnInit {
 
     onShowPressReleaseToggle() {
         this.showPressReleaseToggle = !this.showPressReleaseToggle;
+    }
+
+    onShowPageCardToggle() {
+        this.showPageCardToggle = !this.showPageCardToggle;
     }
 
     onLogout() {

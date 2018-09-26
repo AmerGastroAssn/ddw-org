@@ -1,0 +1,187 @@
+<!-- * PAGES-CARD-EDIT * -->
+
+<!-- * Image Uploader * -->
+<div class="row mb-5 mt-5" [@simpleFadeAnimation]="'in'">
+    <div class="container">
+        <div class="col">
+            <div class="card image-uploader">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Image Uploader
+                    </h5>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="custom-file">
+                                <label class="custom-file-label" *ngIf="!downloadURL">
+                                    Click To Select
+                                </label>
+                                <label class="custom-file-label text-truncate" *ngIf="downloadURL">
+                                    {{ downloadURL | async }}
+                                </label>
+                                <input type="file"
+                                       ddwDropZone
+                                       class="custom-file-input"
+                                       accept=".png, .jpg, jpeg"
+                                       (change)="uploadImage($event)">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div *ngIf="downloadURL | async as url; else loadingURL">
+                                <p class="pb-2">
+                                    <b>Copy and paste url into the Image URL input below:</b>
+                                </p>
+                                <p>
+                                    <a [href]="url">
+                                        {{ url }}
+                                    </a>
+                                </p>
+                                <p><img [src]="url" style="max-width:100px;"></p>
+                            </div>
+                            <ng-template #loadingURL>
+                                <p class="text-center text-light">
+                                    Upload Image, Then a URL will appear here. Copy and paste that link
+                                    into any Image URL to use throughout the site (cards below).
+                                </p>
+                            </ng-template>
+                        </div>
+                    </div>
+
+
+                    <div class="mt-4 mb-3" *ngIf="percentage | async as pct">
+                        <progressbar class="progress-striped active"
+                                     [value]="pct"
+                                     type="primary"><i>Image Upload {{ pct | number }}%</i>
+                        </progressbar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mb-4">
+    <div class="container">
+        <div class="offset-md-10">
+            <a [routerLink]="['/admin/page-cards']"
+               class="btn btn-default">&nbsp; <i class="fa fa-window-restore"></i>
+                All Page Cards
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" [@simpleFadeAnimation]="'in'">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card bg-lighter inner-card">
+                        <div class="card-body">
+                            <div class="card-header-title">
+                                <h4 *ngIf="card && card.title">Edit ({{ card.title }}) Page Card
+                                    <small class="text-secondary"></small>
+                                </h4>
+                                <hr class="inset-hr">
+                            </div>
+                            <form [formGroup]="editPageCardForm"
+                                  (ngSubmit)="onUpdatePageCard(editPageCardForm.value)"
+                                  *ngIf="card">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           [class.invalid]="!f.title.valid && f.title.touched"
+                                           [(ngModel)]="card.title"
+                                           formControlName="title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Body</label>
+                                    <textarea type="text"
+                                              rows="5"
+                                              class="form-control"
+                                              [class.invalid]="!f.body.valid && f.body.touched"
+                                              [(ngModel)]="card.body"
+                                              formControlName="body">
+                                </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Button Text</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           [class.invalid]="!f.buttonString.valid && f.buttonString.touched"
+                                           [(ngModel)]="card.buttonString"
+                                           formControlName="buttonString">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Button Link</label>
+                                    <input type="url"
+                                           class="form-control"
+                                           [class.invalid]="!f.url.valid && f.url.touched"
+                                           [(ngModel)]="card.url"
+                                           formControlName="url">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Image URL
+                                        <small>(Image at the top of card)</small>
+                                    </label>
+                                    <input type="url"
+                                           class="form-control"
+                                           [class.invalid]="!f.photoURL.valid && f.photoURL.touched"
+                                           [(ngModel)]="card.photoURL"
+                                           formControlName="photoURL">
+                                </div>
+
+                                <button type="submit"
+                                        [disabled]="!editPageCardForm.valid"
+                                        class="btn btn-secondary full-width mb-3 mt-2">
+                                    <i class="fa fa-window-restore"></i>&nbsp;Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!-- * Page Card Item * -->
+            <div class="card card-inner bg-lighter">
+                <div class="card-body">
+                    <h4 class="card-header-title">Card Preview</h4>
+                    <hr class="inset-hr">
+                </div>
+
+                <div class="card inner-card ml-4 mr-4 mb-4 mt-0"
+                     *ngIf="card">
+                    <div class="card-body">
+                        <img class="card-img-top"
+                             [src]="card.photoURL"
+                             [alt]="card.title"
+                             *ngIf="card.photoURL">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"
+                                *ngIf="card.title">{{ card.title }}</h5>
+                            <p class="card-text"
+                               *ngIf="card.body">{{ card.body }}</p>
+                            <p class="text-center"
+                               *ngIf="card.url && card.buttonString">
+                                <a [href]="card.url"
+                                   class="btn btn-warning btn-lg">
+                                    {{ card.buttonString }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

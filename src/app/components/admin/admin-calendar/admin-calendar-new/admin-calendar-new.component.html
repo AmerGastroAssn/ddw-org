@@ -50,7 +50,7 @@
                 <div class="card-body">
                     <form (ngSubmit)="onCalendarCreate(newCalForm.value)"
                           [formGroup]="newCalForm"
-                          *ngIf="calColumnValues; else loading">
+                          *ngIf="newCalForm; else loading">
 
                         <div class="form-group">
                             <label>Title <br>

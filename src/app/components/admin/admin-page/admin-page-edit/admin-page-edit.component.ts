@@ -187,7 +187,7 @@ export class AdminPageEditComponent implements OnInit {
                     body: ['' || page.body],
                     author: ['' || this.author],
                     date: ['' || page.date],
-                    bannerPhotoURL: ['' || page.bannerPhotoURL || 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg'],
+                    bannerPhotoURL: [page.bannerPhotoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
                     photoURL: ['' || page.photoURL],
                     category: ['' || page.category, Validators.required],
                     published: ['' || page.published || false],

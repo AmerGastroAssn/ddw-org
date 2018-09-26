@@ -29,6 +29,7 @@ import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-ed
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
+// tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -43,12 +44,18 @@ import { AdminCustomNavLinkEditComponent } from './admin-custom-nav-link/admin-c
 import { AdminCustomNavLinkListComponent } from './admin-custom-nav-link/admin-custom-nav-link-list/admin-custom-nav-link-list.component';
 import { AdminCustomNavLinkComponent } from './admin-custom-nav-link/admin-custom-nav-link.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
+import { AdminPageCardEditComponent } from './admin-page-card/admin-page-card-edit/admin-page-card-edit.component';
+import { AdminPageCardItemComponent } from './admin-page-card/admin-page-card-item/admin-page-card-item.component';
+import { AdminPageCardListComponent } from './admin-page-card/admin-page-card-list/admin-page-card-list.component';
+import { AdminPageCardComponent } from './admin-page-card/admin-page-card.component';
+// tslint:disable-next-line:max-line-length
 import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminPageCardNewComponent } from './admin-page-card/admin-page-card-new/admin-page-card-new.component';
 
 @NgModule({
     declarations: [
@@ -79,6 +86,11 @@ import { AdminComponent } from './admin.component';
         AdminCustomNavLinkComponent,
         AdminCustomNavLinkEditComponent,
         AdminCustomNavLinkListComponent,
+        AdminPageCardComponent,
+        AdminPageCardEditComponent,
+        AdminPageCardListComponent,
+        AdminPageCardItemComponent,
+        AdminPageCardNewComponent,
     ],
     imports: [
         CommonModule,

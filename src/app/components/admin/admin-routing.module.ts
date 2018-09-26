@@ -13,6 +13,7 @@ import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-ed
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
+// tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -24,10 +25,17 @@ import { AdminCustomNavLinkEditComponent } from './admin-custom-nav-link/admin-c
 import { AdminCustomNavLinkListComponent } from './admin-custom-nav-link/admin-custom-nav-link-list/admin-custom-nav-link-list.component';
 import { AdminCustomNavLinkComponent } from './admin-custom-nav-link/admin-custom-nav-link.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
+import { AdminPageCardEditComponent } from './admin-page-card/admin-page-card-edit/admin-page-card-edit.component';
+import { AdminPageCardItemComponent } from './admin-page-card/admin-page-card-item/admin-page-card-item.component';
+import { AdminPageCardListComponent } from './admin-page-card/admin-page-card-list/admin-page-card-list.component';
+import { AdminPageCardNewComponent } from './admin-page-card/admin-page-card-new/admin-page-card-new.component';
+import { AdminPageCardComponent } from './admin-page-card/admin-page-card.component';
+// tslint:disable-next-line:max-line-length
 import { AdminPageAttendeePlanningListComponent } from './admin-page/admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';
 import { AdminPageDetailsComponent } from './admin-page/admin-page-details/admin-page-details.component';
 import { AdminPageEditComponent } from './admin-page/admin-page-edit/admin-page-edit.component';
 import { AdminPageEducationListComponent } from './admin-page/admin-page-education-list/admin-page-education-list.component';
+// tslint:disable-next-line:max-line-length
 import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
 import { AdminPageListComponent } from './admin-page/admin-page-list/admin-page-list.component';
 import { AdminPageNewComponent } from './admin-page/admin-page-new/admin-page-new.component';
@@ -93,6 +101,15 @@ const adminRoutes: Routes = [
                 children: [
                     { path: '', component: AdminContactUsListComponent, canActivate: [AuthGuard] },
                     { path: ':id', component: AdminContactUsDetailsComponent, canActivate: [AuthGuard] },
+                ]
+            },
+            {
+                path: 'page-cards', component: AdminPageCardComponent,
+                children: [
+                    { path: '', component: AdminPageCardListComponent, canActivate: [AuthGuard] },
+                    { path: ':new', component: AdminPageCardNewComponent, canActivate: [AuthGuard] },
+                    { path: ':id', component: AdminPageCardItemComponent, canActivate: [AuthGuard] },
+                    { path: ':id/edit', component: AdminPageCardEditComponent, canActivate: [AuthGuard] },
                 ]
             },
             {

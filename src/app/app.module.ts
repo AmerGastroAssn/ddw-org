@@ -26,7 +26,9 @@ import { AppComponent } from './app.component';
 import { AdminCalendarItemComponent } from './components/admin/admin-calendar/admin-calendar-item/admin-calendar-item.component';
 import { AdminBottomSheetNewComponent } from './components/admin/admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 import { AdminCardsComponent } from './components/admin/admin-core/admin-cards/admin-cards.component';
+// tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsComponent } from './components/admin/admin-core/admin-featured-blog-posts/admin-featured-blog-posts.component';
+// tslint:disable-next-line:max-line-length
 import { AdminPressReleaseItemComponent } from './components/admin/admin-press-release/admin-press-release-item/admin-press-release-item.component';
 import { AdminModule } from './components/admin/admin.module';
 import { AlertModalComponent } from './components/core/alert-modal/alert-modal.component';
@@ -72,6 +74,7 @@ import { ContactFormService } from './services/contact-form.service';
 import { CountdownService } from './services/countdown.service';
 import { ModalService } from './services/modal.service';
 import { PageService } from './services/page.service';
+import { PagesCardService } from './services/pages-card.service';
 import { ScriptService } from './services/script.service';
 
 
@@ -147,6 +150,7 @@ firebase.initializeApp(environment.firebase);
         ContactFormService,
         ModalService,
         AdminCustomNavLinkService,
+        PagesCardService,
     ],
     entryComponents: [
         AdminBottomSheetNewComponent,

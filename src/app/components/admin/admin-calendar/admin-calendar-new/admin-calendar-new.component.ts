@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
-import { CalColumnValues } from '../../../../models/CalColumnValues';
 import { Calendar } from '../../../../models/Calendar';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 
@@ -34,7 +33,7 @@ import { AdminCalendarService } from '../../../../services/admin-calendar.servic
 export class AdminCalendarNewComponent implements OnInit {
     newCalForm: FormGroup;
     calendar: Calendar;
-    calColumnValues: CalColumnValues;
+    // calColumnValues: CalColumnValues;
 
     $key: string;
     body1: string;
@@ -102,11 +101,11 @@ export class AdminCalendarNewComponent implements OnInit {
 
 
     ngOnInit() {
-        // Get Column Values
-        this.calendarService.getCalColumnValues()
-            .subscribe((values) => {
-                this.calColumnValues = values;
-            });
+        // // Get Column Values
+        // this.calendarService.getCalColumnValues()
+        //     .subscribe((values) => {
+        //         this.calColumnValues = values;
+        //     });
     }
 
     // Reactive Form

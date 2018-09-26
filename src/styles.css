@@ -22,7 +22,6 @@ h1, h2, h3 {
     color: #cdcdcd !important;
 }
 
-
 .layout-container {
     background-color: #FAFAFA !important;
 }
@@ -96,6 +95,7 @@ input[type=email],
 input[type=date],
 input[type=file],
 input[type=password],
+textarea[type=text],
 select[value="value"] {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -223,6 +223,18 @@ h2.card-sec-title {
     margin-top: 1em;
 }
 
+hr.inset-hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #fff;
+    margin: 2.5em 0;
+}
+
+.inner-card {
+    border-radius: 0;
+}
+
 /* Buttons */
 
 .btn,
@@ -239,7 +251,7 @@ h2.card-sec-title {
 
 /* Featured Blog Posts */
 
-a.btn.btn-warning.btn-lg {
+a.btn.btn-warning, a.btn.btn-warning.btn-lg {
     background-color: #F47700;
     color: #fff;
     -webkit-border-radius: 0;
@@ -251,7 +263,7 @@ a.btn.btn-warning.btn-lg {
     font-size: 18px;
 }
 
-a.btn.btn-warning.btn-lg:hover {
+a.btn.btn-warning:hover, a.btn.btn-warning.btn-lg:hover {
     background-color: #FEB512;
     color: #004060;
     -webkit-border-radius: 0;
@@ -347,7 +359,6 @@ h5.card-title[_ngcontent-c3] {
     color: #fff;
     margin-bottom: 1em;
 }
-
 
 .bg-blue-inner {
     background-color: #003F5F;
@@ -449,98 +460,92 @@ table.ddw1 td {
 
 /* Colin's Searchbar updates */
 /*.cse .gsc-control-cse, .gsc-control-cse {*/
-    /*font-family: Arial, sans-serif;*/
-    /*background-color: transparent !important;*/
-    /*border: transparent !important;*/
+/*font-family: Arial, sans-serif;*/
+/*background-color: transparent !important;*/
+/*border: transparent !important;*/
 /*}*/
 
 /*button.gsc-search-button.gsc-search-button-v2 {*/
-    /*font-size: 0px;*/
-    /*padding: 6px 27px;*/
-    /*width: auto;*/
-    /*vertical-align: middle;*/
-    /*border: transparent;*/
-    /*border-radius: 2px;*/
-    /*-moz-border-radius: 2px;*/
-    /*-webkit-border-radius: 2px;*/
-    /*margin-top: 2px;*/
-    /*!* border-color: #000; *!*/
-    /*background-color: transparent;*/
-    /*!* background-image: -webkit-gradient(linear,left top,left bottom,from(#333333),to(#333333)); *!*/
-    /*background-image: none;*/
+/*font-size: 0px;*/
+/*padding: 6px 27px;*/
+/*width: auto;*/
+/*vertical-align: middle;*/
+/*border: transparent;*/
+/*border-radius: 2px;*/
+/*-moz-border-radius: 2px;*/
+/*-webkit-border-radius: 2px;*/
+/*margin-top: 2px;*/
+/*!* border-color: #000; *!*/
+/*background-color: transparent;*/
+/*!* background-image: -webkit-gradient(linear,left top,left bottom,from(#333333),to(#333333)); *!*/
+/*background-image: none;*/
 /*}*/
 
 /*!* Use a different font family for search results *!*/
 /*.gs-title, .gs-snippet {*/
-    /*font-family: "Helvetica Neue", sans-serif;*/
+/*font-family: "Helvetica Neue", sans-serif;*/
 /*}*/
 
 /*!* Add a border between individual search results *!*/
 /*.gs-webResult {*/
-    /*border: transparent;*/
-    /*padding: 1em;*/
+/*border: transparent;*/
+/*padding: 1em;*/
 /*}*/
 
 /*!* Do no display the count of search results *!*/
 /*.gsc-result-info {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*!* Hide the Google branding in search results *!*/
 /*.gcsc-branding {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*!* Hide the thumbnail images in search results *!*/
 /*.gsc-thumbnail {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*!* Hide the snippets in Google search results *!*/
 /*.gs-snippet {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*!* Change the font size of the title of search results *!*/
 /*.gs-title a {*/
-    /*font-size: 16px;*/
+/*font-size: 16px;*/
 /*}*/
 
 /*!* Change the font size of snippets inside search results *!*/
 /*.gs-snippet {*/
-    /*font-size: 14px;*/
+/*font-size: 14px;*/
 /*}*/
 
 /*!* Google Custom Search highlights matching words in bold, toggle that *!*/
 /*.gs-title b, .gs-snippet b {*/
-    /*font-weight: normal;*/
+/*font-weight: normal;*/
 /*}*/
 
 /*!* Do no display the URL of web pages in search results *!*/
 /*.gsc-url-top, .gsc-url-bottom {*/
-    /*display: none;*/
+/*display: none;*/
 /*}*/
 
 /*!* Highlight the pagination buttons at the bottom of search results *!*/
 /*.gsc-cursor-page {*/
-    /*font-size: 1.5em;*/
-    /*padding: 4px 8px;*/
-    /*border: 2px solid #ccc;*/
+/*font-size: 1.5em;*/
+/*padding: 4px 8px;*/
+/*border: 2px solid #ccc;*/
 /*}*/
 
-
 /* Cavin's Custom */
-
-
-
-
 
 .gsc-control-cse {
     font-family: Arial, sans-serif;
     background-color: transparent;
     border: none;
 }
-
 
 .gsc-search-button-v2, .gsc-search-button-v2:hover {
     font-size: 0px;
@@ -584,9 +589,7 @@ input#gsc-i-id1.gsc-input {
     margin-top: 2px;
 }
 
-
 /*ADDITIONAL STYLES*/
-
 
 .header-content h1 {
     color: white;
@@ -596,7 +599,6 @@ li.nav-item > a {
     font-size: 18px;
     text-decoration: none;
 }
-
 
 .bg-blue a.btn:hover {
     background-color: #FEBD00;
@@ -609,28 +611,24 @@ li.nav-item > a {
     padding-left: 20px;
 }
 
-
 .middle-footer li a {
     color: #fff;
     text-decoration: none;
-    font-size: 14px!important;
+    font-size: 14px !important;
     font-weight: normal;
 }
 
-
 a.app.google:hover {
-    background-image:url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/google-hover.png');
+    background-image: url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/google-hover.png');
 }
 
 a.app.apple:hover {
     background-image: url('https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/apple-hover.png');
 }
 
-
 .row-blocks img {
     width: 100%;
 }
-
 
 a.btn.btn-warning.btn-lg {
     background-color: #f47700;
@@ -642,8 +640,8 @@ a.btn.btn-warning.btn-lg {
     font-size: 18px;
 }
 
-.cta-right>blockquote {
-    font-family: 'Open Sans',Roboto,'Helvetica Neue',sans-serif;
+.cta-right > blockquote {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
     font-size: 18px;
     line-height: 1.5;
     font-weight: normal !important;
@@ -693,18 +691,6 @@ h2.card-sec-title::after {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .cse .gsc-control-cse, .gsc-control-cse {
     font-family: Arial, sans-serif;
     background-color: transparent !important;
@@ -731,11 +717,9 @@ h2.card-sec-title::after {
     background-image: none;
 }
 
-
 .cse .gsc-search-button-v2:hover, .gsc-search-button-v2:hover {
     cursor: pointer;
 }
-
 
 .btn.cta:hover {
     background-color: #FEBD00;
@@ -745,7 +729,6 @@ h2.card-sec-title::after {
 .block.cta {
     color: #000000;
 }
-
 
 .dropdown-item:not(.disabled).active, .dropdown-item:not(.disabled):active {
     /*background-color: #C4C7C8;*/

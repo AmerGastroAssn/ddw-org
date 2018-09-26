@@ -22,7 +22,6 @@ export class ContactUsComponent implements OnInit {
     body: string;
     sentDate: number;
     uid: string;
-    mainAccountEmailAddress: string;
     bannerImage: string;
 
     constructor(
@@ -32,8 +31,7 @@ export class ContactUsComponent implements OnInit {
       private httpClient: HttpClient,
     ) {
         this.sentDate = Date.now();
-        this.mainAccountEmailAddress = 'cstodd@gastro.org';
-        this.bannerImage = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
+        this.bannerImage = 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg';
     }
 
     // For Form Validations
@@ -44,13 +42,13 @@ export class ContactUsComponent implements OnInit {
     ngOnInit() {
         // Form:
         this.newContactForm = this.fb.group({
-            firstName: ['' || this.firstName, Validators.required],
-            lastName: ['' || this.lastName, Validators.required],
-            email: ['' || this.email, Validators.required],
+            firstName: [this.firstName, Validators.required],
+            lastName: [this.lastName, Validators.required],
+            email: [this.email, Validators.required],
             phoneNumber: ['' || this.phoneNumber],
-            subject: ['' || this.subject, Validators.required],
-            body: ['' || this.body, Validators.required],
-            sentDate: ['' || this.sentDate],
+            subject: [this.subject, Validators.required],
+            body: [this.body, Validators.required],
+            sentDate: [this.sentDate],
         });
 
         this.firstName = this.newContactForm.value.firstName;
@@ -86,7 +84,6 @@ export class ContactUsComponent implements OnInit {
 
     sendEmail(formData) {
         const endpoint = `https://us-central1-ddw-org.cloudfunctions.net/firestoreEmail`;
-
         const data = {
             firstName: formData.firstName,
             lastName: formData.lastName,

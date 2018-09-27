@@ -24,6 +24,14 @@
 
     <li class="list-group-item">
         <mat-divider></mat-divider>
+        <a [routerLink]="['/admin/page-cards/new']"
+           (click)="openLink($event)">
+            <i class="fal fa-window-restore"></i> New Page Card
+        </a>
+    </li>
+
+    <li class="list-group-item">
+        <mat-divider></mat-divider>
         <a [routerLink]="['/admin/press-releases/new']"
            (click)="openLink($event)">
             <i class="fal fa-newspaper"></i> New Press Release

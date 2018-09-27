@@ -59,6 +59,18 @@
     </div>
 </div>
 
+
+<div class="row mb-4">
+    <div class="container">
+        <div class="offset-md-10">
+            <a [routerLink]="['/admin/page-cards']"
+               class="btn btn-default">&nbsp; <i class="fa fa-window-restore"></i>
+                All Page Cards
+            </a>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -143,9 +155,16 @@
                     <h4 class="card-header-title">Card Preview</h4>
                     <hr class="inset-hr">
                 </div>
-
+                <ng-template #cardPreview>
+                    <div class="text-center p-4">
+                        <i class="fal fa-spinner-third fa-spin"></i>
+                        <p class="card-preview">
+                            Card will appear here...
+                        </p>
+                    </div>
+                </ng-template>
                 <div class="card inner-card ml-4 mr-4 mb-4 mt-0"
-                     *ngIf="card.title || card.body || card.photoURL || card.buttonString || card.url">
+                     *ngIf="card.title || card.body || card.photoURL; else cardPreview">
                     <div class="card-body">
                         <img class="card-img-top"
                              [src]="card.photoURL"

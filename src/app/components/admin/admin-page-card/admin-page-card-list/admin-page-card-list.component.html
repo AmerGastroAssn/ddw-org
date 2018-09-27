@@ -61,19 +61,27 @@
                         <th scope="col" style="vertical-align: top;">Image</th>
                         <th scope="col" style="vertical-align: top;">Title</th>
                         <th scope="col" style="vertical-align: top;">Button Text</th>
-                        <th scope="col" style="vertical-align: top;">Options</th>
+                        <th scope="col" style="vertical-align: top;" class="text-center">Options</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let card of pageCards$ | async">
                         <td scope="col">
-                            <img [src]="card.photoURL" [alt]="card.title" style="max-width:50px;">
+                            <a [routerLink]="['/admin/page-cards/', card.$key, 'edit']">
+                                <img [src]="card.photoURL" [alt]="card.title" style="max-width:50px;">
+                            </a>
                         </td>
                         <td scope="col">
-                            {{ card.title }}
+                            <a [routerLink]="['/admin/page-cards/', card.$key, 'edit']"
+                               class="text-dark text-decoration-none">
+                                {{ card.title }}
+                            </a>
                         </td>
                         <td scope="col">
-                            {{ card.buttonString }}
+                            <a [routerLink]="['/admin/page-cards/', card.$key, 'edit']"
+                               class="text-dark text-decoration-none">
+                                {{ card.buttonString }}
+                            </a>
                         </td>
                         <td class="text-center">
                             <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip"

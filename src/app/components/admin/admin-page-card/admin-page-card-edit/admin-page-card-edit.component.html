@@ -83,7 +83,7 @@
                                 <h4 *ngIf="card && card.title">Edit ({{ card.title }}) Page Card
                                     <small class="text-secondary"></small>
                                 </h4>
-                                <hr class="inset-hr">
+                                <hr class="inset-hr mt-3 mb-3">
                             </div>
                             <form [formGroup]="editPageCardForm"
                                   (ngSubmit)="onUpdatePageCard(editPageCardForm.value)"

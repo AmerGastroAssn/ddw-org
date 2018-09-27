@@ -11,10 +11,22 @@ input.invalid, textarea.invalid {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
+
 hr.inset-hr {
     border: 0;
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #fff;
     margin: 0;
+}
+
+i.fa-spinner-third {
+    font-size: 10em;
+    color: #444444;
+}
+
+p.card-preview {
+    color: #444444;
+    font-size: 1em;
+    padding: 2em;
 }

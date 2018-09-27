@@ -251,7 +251,7 @@ hr.inset-hr {
 
 /* Featured Blog Posts */
 
-a.btn.btn-warning, a.btn.btn-warning.btn-lg {
+a.btn.btn-warning.btn-lg {
     background-color: #F47700;
     color: #fff;
     -webkit-border-radius: 0;
@@ -263,7 +263,7 @@ a.btn.btn-warning, a.btn.btn-warning.btn-lg {
     font-size: 18px;
 }
 
-a.btn.btn-warning:hover, a.btn.btn-warning.btn-lg:hover {
+a.btn.btn-warning.btn-lg:hover {
     background-color: #FEB512;
     color: #004060;
     -webkit-border-radius: 0;

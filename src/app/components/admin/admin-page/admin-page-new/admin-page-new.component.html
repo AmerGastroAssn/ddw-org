@@ -273,6 +273,67 @@
                         </div>
                     </div>
 
+                    <!-- * Page Cards * -->
+                    <div class="card bg-lighter mt-3 mb-3" *ngIf="!isExtURL">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="hasCards"
+                                           formControlName="hasCards"
+                                           (click)="toggleHasCards()">
+                                    <label class="custom-control-label"
+                                           for="hasCards">Does the page have Cards?</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group" *ngIf="hasCards && !isExtURL">
+                                <a [routerLink]="['/admin/page-cards/new']"
+                                   class="btn btn-sm btn-default mb-2">
+                                    <i class="fa fa-window-restore"></i> Create New
+                                </a>
+                                <br>
+                                <label for="cardOption1">Select Card 1</label>
+                                <select class="form-control"
+                                        id="cardOption1"
+                                        [(ngModel)]="cardOption1"
+                                        formControlName="cardOption1">
+                                    <option *ngFor="let card of pageCards$ | async"
+                                            [value]="card.title">
+                                        {{ card.title }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" *ngIf="hasCards && !isExtURL">
+                                <label for="cardOption2">Select Card 2</label>
+                                <select class="form-control"
+                                        id="cardOption2"
+                                        [(ngModel)]="cardOption2"
+                                        formControlName="cardOption2">
+                                    <option *ngFor="let card of pageCards$ | async"
+                                            [value]="card.title">
+                                        {{ card.title }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" *ngIf="hasCards && !isExtURL">
+                                <label for="cardOption3">Select Card 3</label>
+                                <select class="form-control"
+                                        id="cardOption3"
+                                        [(ngModel)]="cardOption3"
+                                        formControlName="cardOption3">
+                                    <option *ngFor="let card of pageCards$ | async"
+                                            [value]="card.title">
+                                        {{ card.title }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group" *ngIf="!isExtURL">
                         <label>Body</label>
                         <ckeditor [formControl]="newPageForm.controls['body']"

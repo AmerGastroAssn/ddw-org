@@ -10,11 +10,13 @@ import { BsDatepickerConfig, BsDatepickerDirective } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Calendar } from '../../../../models/Calendar';
+import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
+import { PagesCardService } from '../../../../services/pages-card.service';
 
 @Component({
     selector: 'ddw-admin-page-edit',
@@ -65,6 +67,11 @@ export class AdminPageEditComponent implements OnInit {
     calendars: Calendar[];
     disableAdminOnEdit: boolean;
     metaDesc: string;
+    hasCards: boolean;
+    cardOption1: string;
+    cardOption2: string;
+    cardOption3: string;
+    pageCards$: Observable<Card[]>;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -104,6 +111,7 @@ export class AdminPageEditComponent implements OnInit {
       private sanitizer: DomSanitizer,
       private authService: AuthService,
       private adminCalendarService: AdminCalendarService,
+      private pagesCardService: PagesCardService
     ) {
 
 
@@ -161,6 +169,7 @@ export class AdminPageEditComponent implements OnInit {
     ngOnInit() {
         // Settings
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
+        this.pageCards$ = this.pagesCardService.getAllPageCards();
         // Get Calendar Titles
         this.calendars$ = this.adminCalendarService.getAllCalendars();
         // this.adminCalendarService.getAllCalendars()
@@ -202,6 +211,10 @@ export class AdminPageEditComponent implements OnInit {
                     grandchildURL: ['' || page.grandchildURL],
                     hidden: ['' || false],
                     metaDesc: ['' || page.metaDesc],
+                    hasCards: [page.hasCards || false],
+                    cardOption1: ['' || page.cardOption1],
+                    cardOption2: ['' || page.cardOption2],
+                    cardOption3: ['' || page.cardOption3],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -224,6 +237,10 @@ export class AdminPageEditComponent implements OnInit {
                 this.grandchildURL = this.editPageForm.value.grandchildURL;
                 this.hidden = this.editPageForm.value.hidden;
                 this.metaDesc = this.editPageForm.value.metaDesc;
+                this.hasCards = this.editPageForm.value.hasCards;
+                this.cardOption1 = this.editPageForm.value.cardOption1;
+                this.cardOption2 = this.editPageForm.value.cardOption2;
+                this.cardOption3 = this.editPageForm.value.cardOption3;
 
 
             }
@@ -294,6 +311,10 @@ export class AdminPageEditComponent implements OnInit {
 
     toggleHasCalendar() {
         this.page.hasCalendar = !this.page.hasCalendar;
+    }
+
+    toggleHasCards() {
+        this.page.hasCards = !this.page.hasCards;
     }
 
 

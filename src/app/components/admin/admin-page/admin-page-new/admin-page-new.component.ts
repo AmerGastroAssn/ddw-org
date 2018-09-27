@@ -9,12 +9,14 @@ import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Calendar } from '../../../../models/Calendar';
+import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
+import { PagesCardService } from '../../../../services/pages-card.service';
 
 @Component({
     selector: 'ddw-admin-page-new',
@@ -45,6 +47,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     calendar$: Observable<Calendar[]>;
     disableAdminOnNew: boolean;
     metaDesc: string;
+    hasCards: boolean;
+    cardOption1: string;
+    cardOption2: string;
+    cardOption3: string;
+    pageCards$: Observable<Card[]>;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -90,6 +97,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
       private adminCalendarService: AdminCalendarService,
+      private pagesCardService: PagesCardService
     ) {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
@@ -97,8 +105,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {
                 this.author = auth.email;
-            } else {
-
             }
         });
 
@@ -148,7 +154,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-
         // Gets Page Categories for Grandchild page selection.
         this.registerPages$ = this.adminPageService.getAllRegisterPages();
         this.newsPages$ = this.adminPageService.getAllNewsPages();
@@ -159,6 +164,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
         // Get Calendar Titles
         this.calendar$ = this.adminCalendarService.getAllCalendars();
+        // Page Cards:
+        this.pageCards$ = this.pagesCardService.getAllPageCards();
         this.pages$ = this.adminPageService.getAllPages();
 
         // Form:
@@ -182,7 +189,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             isGrandchildPage: ['' || false],
             grandchildURL: [''],
             hidden: ['' || false],
-            metaDesc: ['']
+            metaDesc: [''],
+            hasCards: ['' || false],
+            cardOption1: [''],
+            cardOption2: [''],
+            cardOption3: [''],
         });
 
         this.title = this.newPageForm.value.title;
@@ -203,6 +214,10 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.grandchildURL = this.newPageForm.value.grandchildURL;
         this.hidden = this.newPageForm.value.hidden;
         this.metaDesc = this.newPageForm.value.metaDesc;
+        this.hasCards = this.newPageForm.value.hasCards;
+        this.cardOption1 = this.newPageForm.value.cardOption1;
+        this.cardOption2 = this.newPageForm.value.cardOption2;
+        this.cardOption3 = this.newPageForm.value.cardOption3;
 
 
     }
@@ -240,6 +255,10 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     toggleIsGrandchildPage() {
         this.isGrandchildPage = !this.isGrandchildPage;
+    }
+
+    toggleHasCards() {
+        this.hasCards = !this.hasCards;
     }
 
     duplicatePage(control) {

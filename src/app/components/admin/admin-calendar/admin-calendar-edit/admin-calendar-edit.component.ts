@@ -89,15 +89,15 @@ export class AdminCalendarEditComponent implements OnInit {
                 this.updateCalForm = this.fb.group({
                     $key: [calendar.$key],
                     body1: [calendar.body1, Validators.required],
-                    body2: [calendar.body2, Validators.required],
-                    body3: [calendar.body3],
-                    body4: [calendar.body4],
-                    date1: [calendar.date1],
-                    date2: [calendar.date2],
-                    date3: [calendar.date3],
-                    date4: [calendar.date4],
+                    body2: [calendar.body2 || ''],
+                    body3: [calendar.body3 || ''],
+                    body4: [calendar.body4 || ''],
+                    date1: [calendar.date1, Validators.required],
+                    date2: [calendar.date2 || ''],
+                    date3: [calendar.date3 || ''],
+                    date4: [calendar.date4 || ''],
                     title: [calendar.title, Validators.required],
-                    displayName: [calendar.displayName, Validators.required],
+                    displayName: [calendar.displayName || ''],
                     uid: [calendar.uid],
                 });
 
@@ -137,7 +137,7 @@ export class AdminCalendarEditComponent implements OnInit {
     // Reactive Form
     onCalendarUpdate(calendarData) {
         if (!this.updateCalForm.valid) {
-            this.sbAlert.open('Missing at least one input, Calendar was NOT created.', 'Dismiss', {
+            this.sbAlert.open('The Title, Date 1 and Body 1 must be filled out, Event was NOT created.', 'Dismiss', {
                 duration: 3000,
                 verticalPosition: 'bottom',
                 panelClass: ['snackbar-danger']

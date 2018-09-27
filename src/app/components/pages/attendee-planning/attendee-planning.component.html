@@ -50,17 +50,60 @@
         <!--</div>-->
     <!--</div>-->
 
-    <!--<div class="row cards">-->
-        <!--<div class="container">-->
-            <!--<div class="card-deck">-->
-                <!--<div class="row">-->
-                    <!--<ddw-admin-cards-->
-                            <!--class="col-md-4"-->
-                            <!--*ngFor="let cardEl of cards$ | async"-->
-                            <!--[card]="cardEl">-->
-                    <!--</ddw-admin-cards>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div class="row cards" *ngIf="page.hasCards">
+        <div class="container">
+            <div class="card-deck">
+                <div class="row">
+                    <!-- * Card 1 * -->
+                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard1">
+                        <img class="card-img-top"
+                             [src]="pageCard1.photoURL"
+                             [alt]="pageCard1.title">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pageCard1.title }}</h5>
+                            <p class="card-text">{{ pageCard1.body }}</p>
+                            <p class="text-center">
+                                <a [href]="pageCard1.url"
+                                   class="btn btn-warning btn-lg">
+                                    {{ pageCard1.buttonString }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- * Card 2 * -->
+                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard2">
+                        <img class="card-img-top"
+                             [src]="pageCard2.photoURL"
+                             [alt]="pageCard2.title">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pageCard2.title }}</h5>
+                            <p class="card-text">{{ pageCard2.body }}</p>
+                            <p class="text-center">
+                                <a [href]="pageCard2.url"
+                                   class="btn btn-warning btn-lg">
+                                    {{ pageCard2.buttonString }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- * Card 3 * -->
+                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard3">
+                        <img class="card-img-top"
+                             [src]="pageCard3.photoURL"
+                             [alt]="pageCard3.title">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pageCard3.title }}</h5>
+                            <p class="card-text">{{ pageCard3.body }}</p>
+                            <p class="text-center">
+                                <a [href]="pageCard3.url"
+                                   class="btn btn-warning btn-lg">
+                                    {{ pageCard3.buttonString }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

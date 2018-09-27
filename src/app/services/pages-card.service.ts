@@ -30,7 +30,7 @@ export class PagesCardService {
         this.pageCardCollection = this.afs.collection<Card>('pageCards', ref => {
             return ref.where('title', '==', `${title}`);
         });
-        return this.pageCards$ = this.pageCardCollection.valueChanges();
+        return this.pageCardCollection.valueChanges();
     }
 
     getPageCard(key: string): Observable<Card> {

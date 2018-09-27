@@ -302,39 +302,47 @@
                                         <i class="fa fa-window-restore"></i> Create New
                                     </a>
                                     <br>
-                                    <label for="cardOption1">Select Card 1</label>
+                                    <label for="cardOption1">Select Card
+                                        &nbsp;&nbsp;<i class="fa fa-align-left"></i> Left
+                                    </label>
                                     <select class="form-control"
                                             id="cardOption1"
                                             [(ngModel)]="cardOption1"
                                             formControlName="cardOption1">
                                         <option *ngFor="let card of pageCards$ | async"
-                                                [value]="card.title">
+                                                [value]="card.$key">
                                             {{ card.title }}
                                         </option>
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="cardOption2">Select Card 2</label>
+                                <div class="form-group" *ngIf="page.hasCards && !page.isExtURL">
+                                    <label for="cardOption2">Select Card
+                                        &nbsp;&nbsp;<i class="fa fa-align-center"></i>
+                                        Middle
+                                    </label>
                                     <select class="form-control"
                                             id="cardOption2"
                                             [(ngModel)]="cardOption2"
                                             formControlName="cardOption2">
                                         <option *ngFor="let card of pageCards$ | async"
-                                                [value]="card.title">
+                                                [value]="card.$key">
                                             {{ card.title }}
                                         </option>
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="cardOption3">Select Card 3</label>
+                                <div class="form-group" *ngIf="page.hasCards && !page.isExtURL">
+                                    <label for="cardOption3">Select Card
+                                        &nbsp;&nbsp;<i class="fa fa-align-right"></i>
+                                        Right
+                                    </label>
                                     <select class="form-control"
                                             id="cardOption3"
                                             [(ngModel)]="cardOption3"
                                             formControlName="cardOption3">
                                         <option *ngFor="let card of pageCards$ | async"
-                                                [value]="card.title">
+                                                [value]="card.$key">
                                             {{ card.title }}
                                         </option>
                                     </select>

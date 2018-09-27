@@ -7,10 +7,10 @@ import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
-import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
+import { PagesCardService } from '../../../services/pages-card.service';
 
 declare var $: any;
 
@@ -22,19 +22,21 @@ declare var $: any;
 export class RegisterComponent implements OnInit {
     page: Page;
     url: string;
-    cards$: Observable<Card[]>;
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
+    pageCard1: Card;
+    pageCard2: Card;
+    pageCard3: Card;
 
     constructor(
       private pageService: PageService,
       private adminPageService: AdminPageService,
       private route: ActivatedRoute,
-      private cardService: AdminCardService,
       private adminCalendarService: AdminCalendarService,
       private meta: Meta,
       private metaService: AdminMetaService,
-      private titleService: Title
+      private titleService: Title,
+      private pagesCardService: PagesCardService,
     ) {
         // Removes Navbar styling
         // $(document).ready(function () {
@@ -53,8 +55,6 @@ export class RegisterComponent implements OnInit {
 
 
     ngOnInit() {
-        this.cards$ = this.cardService.getAllCards();
-
         // Gets $key which is a Slug
         this.route.params.switchMap((params: Params) => {
             this.url = params['id'];
@@ -79,20 +79,29 @@ export class RegisterComponent implements OnInit {
                             });
                             this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
                             this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
-                            this.meta.updateTag({ property: 'og:description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                property: 'og:description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 property: 'og:image',
                                 content: this.page.photoURL || meta.metaImageURL
                             });
                             this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/${this.page.slug}` });
-                            this.meta.updateTag({ itemprop: 'description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                itemprop: 'description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({ itemprop: 'image', content: this.page.photoURL });
                             this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
                             this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
                             this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` });
                             this.meta.updateTag({ name: 'twitter:title', content: this.page.title });
                             this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
-                            this.meta.updateTag({ name: 'twitter:description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 name: 'twitter:image',
                                 content: this.page.photoURL || meta.metaImageURL
@@ -105,6 +114,23 @@ export class RegisterComponent implements OnInit {
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
                 }
+
+                // Page Cards:
+                if (this.page.hasCards) {
+                    this.pagesCardService.getPageCard(this.page.cardOption1)
+                        .subscribe((card) => {
+                            this.pageCard1 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption2)
+                        .subscribe((card) => {
+                            this.pageCard2 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption3)
+                        .subscribe((card) => {
+                            this.pageCard3 = card;
+                        });
+                }
+
             });
     }
 

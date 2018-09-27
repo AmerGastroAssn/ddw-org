@@ -171,14 +171,17 @@
                     <div class="col-md-10">
 
 
-                        <div class="row">
+                        <div class="row" *ngIf="customLinks">
                             <div class="col inline">
                                 <div id="MPAuxNav" class="inline auxnav">
                                     <div cssselectorclass="MPAuxNav" id="AuxMenu" style="float: right;">
                                         <ul class="level1 static" tabindex="0" role="menubar"
                                             style="position: relative; width: auto; float: left;">
                                             <!-- * Custom Link 1 * -->
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url1">
                                                 <a class="level1 MPAuxNav static"
                                                    [routerLink]="[customLinks.url1]"
                                                    tabindex="-1"
@@ -186,7 +189,10 @@
                                                     {{ customLinks.text1 }}
                                                 </a>
                                             </li>
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url1">
                                                 <a class="level1 MPAuxNav static"
                                                    [href]="customLinks.url1"
                                                    tabindex="-1"
@@ -196,7 +202,10 @@
                                                 </a>
                                             </li>
                                             <!-- * Custom Link 2 * -->
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url2">
                                                 <a class="level1 MPAuxNav static"
                                                    [routerLink]="[customLinks.url2]"
                                                    tabindex="-1"
@@ -204,7 +213,10 @@
                                                     {{ customLinks.text2 }}
                                                 </a>
                                             </li>
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url2">
                                                 <a class="level1 MPAuxNav static"
                                                    [href]="customLinks.url2"
                                                    tabindex="-1"
@@ -214,7 +226,10 @@
                                                 </a>
                                             </li>
                                             <!-- * Custom Link 3 * -->
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url3">
                                                 <a class="level1 MPAuxNav static"
                                                    [routerLink]="[customLinks.url3]"
                                                    tabindex="-1"
@@ -222,7 +237,10 @@
                                                     {{ customLinks.text3 }}
                                                 </a>
                                             </li>
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url3">
                                                 <a class="level1 MPAuxNav static"
                                                    [href]="customLinks.url3"
                                                    tabindex="-1"
@@ -232,7 +250,10 @@
                                                 </a>
                                             </li>
                                             <!-- * Custom Link 4 * -->
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url4">
                                                 <a class="level1 MPAuxNav static"
                                                    [routerLink]="[customLinks.url4]"
                                                    tabindex="-1"
@@ -240,7 +261,10 @@
                                                     {{ customLinks.text4 }}
                                                 </a>
                                             </li>
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url4">
                                                 <a class="level1 MPAuxNav static"
                                                    [href]="customLinks.url4"
                                                    tabindex="-1"
@@ -250,7 +274,10 @@
                                                 </a>
                                             </li>
                                             <!-- * Custom Link 5 * -->
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url5">
                                                 <a class="level1 MPAuxNav static"
                                                    [routerLink]="[customLinks.url5]"
                                                    tabindex="-1"
@@ -258,7 +285,10 @@
                                                     {{ customLinks.text5 }}
                                                 </a>
                                             </li>
-                                            <li role="menuitem" class="static" style="position: relative; float: left;">
+                                            <li role="menuitem"
+                                                class="static"
+                                                style="position: relative; float: left;"
+                                                *ngIf="customLinks.url5">
                                                 <a class="level1 MPAuxNav static"
                                                    [href]="customLinks.url5"
                                                    tabindex="-1"

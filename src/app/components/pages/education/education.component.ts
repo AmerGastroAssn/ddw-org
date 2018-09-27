@@ -10,6 +10,7 @@ import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
+import { PagesCardService } from '../../../services/pages-card.service';
 
 @Component({
   selector: 'ddw-education',
@@ -22,6 +23,10 @@ export class EducationComponent implements OnInit {
     cards$: Observable<Card[]>;
     calendar$: Observable<Calendar[]>;
     calendarTitle: string;
+    pageCard1: Card;
+    pageCard2: Card;
+    pageCard3: Card;
+
 
     constructor(
       private pageService: PageService,
@@ -31,7 +36,8 @@ export class EducationComponent implements OnInit {
       private adminCalendarService: AdminCalendarService,
       private meta: Meta,
       private metaService: AdminMetaService,
-      private titleService: Title
+      private titleService: Title,
+      private pagesCardService: PagesCardService,
     ) {
     }
 
@@ -86,6 +92,23 @@ export class EducationComponent implements OnInit {
                 // Calendar
                 if (this.page.hasCalendar) {
                     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                }
+
+
+                // Page Cards:
+                if (this.page.hasCards) {
+                    this.pagesCardService.getPageCard(this.page.cardOption1)
+                        .subscribe((card) => {
+                            this.pageCard1 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption2)
+                        .subscribe((card) => {
+                            this.pageCard2 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption3)
+                        .subscribe((card) => {
+                            this.pageCard3 = card;
+                        });
                 }
             });
     }

@@ -93,6 +93,7 @@ const appRoutes: Routes = [
         path: 'news', component: PagesComponent,
         children: [
             { path: ':id', component: NewsAndMediaComponent },
+            { path: ':id/:id', component: NewsAndMediaComponent },
             {
                 path: '', component: PressReleasesComponent,
                 children: [

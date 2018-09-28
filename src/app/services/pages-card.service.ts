@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Card } from '../models/Card';
-import { ContactForm } from '../models/ContactForm';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -14,12 +14,23 @@ export class PagesCardService {
     pageCardDoc: AngularFirestoreDocument<Card>;
     pageCard$: Observable<Card>;
     pageCards$: Observable<Card[]>;
+    loggedInUser: string;
+    uid: string;
 
     constructor(
       private afs: AngularFirestore,
       private router: Router,
       public sbAlert: MatSnackBar,
+      private authService: AuthService,
     ) {
+        this.authService.getAuth().subscribe((auth) => {
+            if (auth) {
+                this.loggedInUser = auth.email;
+                this.uid = auth.uid;
+            } else {
+                return of(null);
+            }
+        });
     }
 
     getAllPageCards(): Observable<Card[]> {
@@ -63,6 +74,8 @@ export class PagesCardService {
             buttonString: formData.buttonString,
             url: formData.url,
             uid: id,
+            updatedAt: Date.now(),
+            author: this.loggedInUser,
         };
 
         console.log('data', data);
@@ -92,6 +105,8 @@ export class PagesCardService {
             buttonString: formData.buttonString,
             url: formData.url,
             uid: new$key,
+            updatedAt: Date.now(),
+            author: this.loggedInUser,
         };
 
         console.log('data', data);

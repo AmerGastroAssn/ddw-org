@@ -51,6 +51,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     cardOption1: string;
     cardOption2: string;
     cardOption3: string;
+    cardSectionTitle: string;
     pageCards$: Observable<Card[]>;
     // Image upload
     task: AngularFireUploadTask;
@@ -194,6 +195,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
             cardOption1: [''],
             cardOption2: [''],
             cardOption3: [''],
+            cardSectionTitle: [''],
         });
 
         this.title = this.newPageForm.value.title;
@@ -218,6 +220,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.cardOption1 = this.newPageForm.value.cardOption1;
         this.cardOption2 = this.newPageForm.value.cardOption2;
         this.cardOption3 = this.newPageForm.value.cardOption3;
+        this.cardSectionTitle = this.newPageForm.value.cardSectionTitle;
 
 
     }
@@ -234,14 +237,17 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.adminPageService.setPage(formData);
-            console.log(formData);
-            this.newPageForm.reset();
-            this.sbAlert.open('New Page created!', 'Dismiss', {
-                duration: 3000,
-                verticalPosition: 'bottom',
-                panelClass: ['snackbar-success']
-            });
+            this.adminPageService.setPage(formData)
+                .then(() => {
+                    console.log(formData);
+                    this.newPageForm.reset();
+                    this.sbAlert.open('New Page created!', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
+                    });
+                })
+                .catch((error) => console.log(error));
         }
     }
 

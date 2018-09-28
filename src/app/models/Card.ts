@@ -7,7 +7,9 @@ export class Card {
       public body: string,
       public photoURL: string,
       public buttonString: string,
-      public url: string
+      public url: string,
+      public updatedAt: any,
+      public author: string,
     ) {
     }
 }

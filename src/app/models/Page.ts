@@ -26,6 +26,7 @@ export class Page {
       public cardOption1: string,
       public cardOption2: string,
       public cardOption3: string,
+      public cardSectionTitle: string,
     ) {
     }
 }

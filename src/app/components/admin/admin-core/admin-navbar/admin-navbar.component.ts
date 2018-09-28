@@ -51,6 +51,7 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
                 this.uid = auth.uid;
             } else {
                 this.isLoggedIn = false;
+                return of(null);
             }
         });
     }

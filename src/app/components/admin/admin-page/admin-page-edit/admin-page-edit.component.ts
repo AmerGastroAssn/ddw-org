@@ -71,6 +71,7 @@ export class AdminPageEditComponent implements OnInit {
     cardOption1: string;
     cardOption2: string;
     cardOption3: string;
+    cardSectionTitle: string;
     pageCards$: Observable<Card[]>;
     // Image upload
     task: AngularFireUploadTask;
@@ -215,6 +216,7 @@ export class AdminPageEditComponent implements OnInit {
                     cardOption1: [this.page.cardOption1],
                     cardOption2: [this.page.cardOption2],
                     cardOption3: [this.page.cardOption3],
+                    cardSectionTitle: [this.page.cardSectionTitle],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -241,6 +243,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.cardOption1 = this.editPageForm.value.cardOption1;
                 this.cardOption2 = this.editPageForm.value.cardOption2;
                 this.cardOption3 = this.editPageForm.value.cardOption3;
+                this.cardSectionTitle = this.editPageForm.value.cardSectionTitle;
 
 
             }

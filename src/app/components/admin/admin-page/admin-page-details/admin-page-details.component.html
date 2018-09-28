@@ -7,7 +7,8 @@
     <div class="container">
         <!-- * Edit Navbar Panel * -->
         <div class="col-sm-12">
-            <nav class="navbar navbar-expand-lg fixed-bottom text-light" style="background-color: #1C202B;" *ngIf="page">
+            <nav class="navbar navbar-expand-lg fixed-bottom text-light" style="background-color: #1C202B;"
+                 *ngIf="page">
                 <a class="navbar-brand" href="#">
                     <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/gray-ddw-150.png" width="100"
                          class="d-inline-block align-top" alt="DDW">
@@ -22,7 +23,7 @@
                             <i class="fa fa-h1"></i> {{ page.title }}
                         </li>
                         <!--<li class="nav-item">-->
-                            <!--<i class="fa fa-user"></i> {{ page.author }}-->
+                        <!--<i class="fa fa-user"></i> {{ page.author }}-->
                         <!--</li>-->
                         <li class="nav-item text-capitalize">
                             <i class="fa fa-project-diagram"></i> {{ page.category }}
@@ -72,10 +73,12 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <div class="text-capitalize text-decoration-none">{{ page.category }}</div>
+                    <div class="text-capitalize text-decoration-none text-dark">{{ page.category }}</div>
                 </li>
-                <li class="breadcrumb-item text-capitalize" *ngIf="page.isGrandchildPage">{{page.grandchildURL}}</li>
-                <li class="breadcrumb-item active text-capitalize">{{page.title}}</li>
+                <li class="breadcrumb-item text-capitalize text-dark" *ngIf="page.isGrandchildPage">
+                    {{page.grandchildURL}}
+                </li>
+                <li class="breadcrumb-item active text-capitalize text-dark">{{page.title}}</li>
             </ol>
         </div>
     </div>
@@ -84,7 +87,74 @@
         <div class="container">
             <img [src]="page.photoURL"
                  class="photoURL">
+            <!-- * Body * -->
             <div [innerHTML]="page.body | safeHtml" class="details-body"></div>
+
+            <!--&lt;!&ndash; * Calendar * &ndash;&gt;-->
+            <!--<div class="row" *ngIf="page.hasCalendar">-->
+            <!--<div class="container-fluid">-->
+            <!--<ddw-admin-calendar-item-->
+            <!--*ngFor="let calEl of calendar$ | async"-->
+            <!--[calendar]="calEl">-->
+            <!--</ddw-admin-calendar-item>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!-- * Page Cards * -->
+            <div class="row cards" *ngIf="page.hasCards">
+                <div class="card-deck">
+                    <div class="row">
+                        <!-- * Card 1 * -->
+                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard1">
+                            <img class="card-img-top"
+                                 [src]="pageCard1.photoURL"
+                                 [alt]="pageCard1.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pageCard1.title }}</h5>
+                                <p class="card-text">{{ pageCard1.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="pageCard1.url"
+                                       class="btn btn-warning btn-lg">
+                                        {{ pageCard1.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- * Card 2 * -->
+                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard2">
+                            <img class="card-img-top"
+                                 [src]="pageCard2.photoURL"
+                                 [alt]="pageCard2.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pageCard2.title }}</h5>
+                                <p class="card-text">{{ pageCard2.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="pageCard2.url"
+                                       class="btn btn-warning btn-lg">
+                                        {{ pageCard2.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- * Card 3 * -->
+                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard3">
+                            <img class="card-img-top"
+                                 [src]="pageCard3.photoURL"
+                                 [alt]="pageCard3.title">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pageCard3.title }}</h5>
+                                <p class="card-text">{{ pageCard3.body }}</p>
+                                <p class="text-center">
+                                    <a [href]="pageCard3.url"
+                                       class="btn btn-warning btn-lg">
+                                        {{ pageCard3.buttonString }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

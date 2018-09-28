@@ -5,19 +5,21 @@
 
     <div class="row">
         <div class="container-fluid" style="max-width:1200px;">
-            <h1 class="title">{{ pageTitle }}</h1>
+            <h1 class="title">{{ pressReleaseTitle }}</h1>
         </div>
     </div>
 
     <div class="row crumbs">
         <div class="container-fluid" style="max-width:1200px;">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
+                <li class="breadcrumb-item text-dark">
                     News /
                     <a [routerLink]="['/news/press-releases']"
-                       class="text-capitalize bread">Press Releases</a>
+                       class="text-capitalize bread text-decoration-none text-dark">
+                        Press Releases
+                    </a>
                 </li>
-                <li class="breadcrumb-item active">{{pressRelease.title}}</li>
+                <li class="breadcrumb-item active text-dark">{{pressRelease.title}}</li>
             </ol>
         </div>
     </div>

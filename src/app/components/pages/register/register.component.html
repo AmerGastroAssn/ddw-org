@@ -11,10 +11,16 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <div class="text-capitalize text-decoration-none">{{ page.category }}</div>
+                    <div class="text-capitalize text-decoration-none text-dark">
+                        {{ page.category }}
+                    </div>
                 </li>
-                <li class="breadcrumb-item text-capitalize" *ngIf="page.isGrandchildPage">{{page.grandchildURL}}</li>
-                <li class="breadcrumb-item active">{{page.title}}</li>
+                <li class="breadcrumb-item text-capitalize text-dark" *ngIf="page.isGrandchildPage">
+                    {{page.grandchildURL}}
+                </li>
+                <li class="breadcrumb-item active text-dark">
+                    {{page.title}}
+                </li>
             </ol>
         </div>
     </div>

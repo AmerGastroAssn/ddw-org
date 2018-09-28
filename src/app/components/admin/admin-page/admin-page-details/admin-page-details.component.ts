@@ -2,10 +2,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Calendar } from '../../../../models/Calendar';
 import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
+import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../../services/admin-card.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
+import { PagesCardService } from '../../../../services/pages-card.service';
 
 @Component({
     selector: 'ddw-admin-page-details',
@@ -34,13 +37,19 @@ export class AdminPageDetailsComponent implements OnInit {
     id: string;
     page: Page;
     uid: string;
-    cards$: Observable<Card[]>;
+    calendar$: Observable<Calendar[]>;
+    calendarTitle: string;
+    pageCard1: Card;
+    pageCard2: Card;
+    pageCard3: Card;
 
     constructor(
       private adminPageService: AdminPageService,
       private router: Router,
       private route: ActivatedRoute,
-      private cardService: AdminCardService
+      private cardService: AdminCardService,
+      private adminCalendarService: AdminCalendarService,
+      private pagesCardService: PagesCardService,
     ) {
     }
 
@@ -51,10 +60,31 @@ export class AdminPageDetailsComponent implements OnInit {
         this.adminPageService.getPage(this.id).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
+
+                // Calendar
+                // if (this.page.hasCalendar) {
+                //     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                // }
+
+                // Page Cards:
+                if (this.page.hasCards) {
+                    this.pagesCardService.getPageCard(this.page.cardOption1)
+                        .subscribe((card) => {
+                            this.pageCard1 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption2)
+                        .subscribe((card) => {
+                            this.pageCard2 = card;
+                        });
+                    this.pagesCardService.getPageCard(this.page.cardOption3)
+                        .subscribe((card) => {
+                            this.pageCard3 = card;
+                        });
+                }
             }
         });
 
-        this.cards$ = this.cardService.getAllCards();
+        // this.cards$ = this.cardService.getAllCards();
 
     }
 

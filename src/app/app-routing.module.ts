@@ -93,12 +93,12 @@ const appRoutes: Routes = [
         path: 'news', component: PagesComponent,
         children: [
             { path: ':id', component: NewsAndMediaComponent },
-            { path: ':id/:id', component: NewsAndMediaComponent },
             {
                 path: '', component: PressReleasesComponent,
                 children: [
                     { path: 'press-releases', component: PressReleasesComponent },
                     { path: 'press-releases/:id', component: PressReleasesDetailsComponent },
+                    { path: ':id/:id', component: NewsAndMediaComponent },
                     { path: '**', redirectTo: '/news/press-releases', pathMatch: 'full' },
                 ]
             },

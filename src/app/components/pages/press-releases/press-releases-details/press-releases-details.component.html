@@ -9,6 +9,15 @@
         </div>
     </div>
 
+    <!-- * AD Headerbar * -->
+    <div class="row" *ngIf="headerbar">
+        <div class="container">
+            <div class="text-center">
+                <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="row crumbs">
         <div class="container-fluid" style="max-width:1200px;">
             <ol class="breadcrumb">
@@ -28,11 +37,21 @@
 
     <div class="row">
         <div class="container-fluid" style="max-width:1200px;">
+
             <h3 class="press-title">{{ pressRelease.title}}</h3>
             <p class="text-light">
                 <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>
             </p>
             <p [innerHTML]="pressRelease.body | safeHtml"></p>
+
+            <!-- * AD Footerbar * -->
+            <div class="row" *ngIf="footerbar">
+                <div class="container">
+                    <div class="text-center">
+                        <div [innerHTML]="footerbar | safeHtml" runScripts id="myAdSpace"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

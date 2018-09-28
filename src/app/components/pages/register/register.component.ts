@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminPageService } from '../../../services/admin-page.service';
@@ -27,6 +28,8 @@ export class RegisterComponent implements OnInit {
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
+    headerbar: any;
+    footerbar: any;
 
     constructor(
       private pageService: PageService,
@@ -37,6 +40,7 @@ export class RegisterComponent implements OnInit {
       private metaService: AdminMetaService,
       private titleService: Title,
       private pagesCardService: PagesCardService,
+      private adsService: AdminAdsService,
     ) {
         // Removes Navbar styling
         // $(document).ready(function () {
@@ -55,6 +59,13 @@ export class RegisterComponent implements OnInit {
 
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
         // Gets $key which is a Slug
         this.route.params.switchMap((params: Params) => {
             this.url = params['id'];

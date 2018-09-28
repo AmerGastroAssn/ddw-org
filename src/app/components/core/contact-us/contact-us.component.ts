@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ContactForm } from '../../../models/ContactForm';
+import { AdminAdsService } from '../../../services/admin-ads.service';
 import { ContactFormService } from '../../../services/contact-form.service';
 
 @Component({
@@ -23,12 +24,16 @@ export class ContactUsComponent implements OnInit {
     sentDate: number;
     uid: string;
     bannerImage: string;
+    headerbar: any;
+    footerbar: any;
+
 
     constructor(
       private fb: FormBuilder,
       private contactFormService: ContactFormService,
       private sbAlert: MatSnackBar,
       private httpClient: HttpClient,
+      private adsService: AdminAdsService,
     ) {
         this.sentDate = Date.now();
         this.bannerImage = 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg';
@@ -40,6 +45,14 @@ export class ContactUsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
+
         // Form:
         this.newContactForm = this.fb.group({
             firstName: [this.firstName, Validators.required],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PressRelease } from '../../../../models/PressRelease';
+import { AdminAdsService } from '../../../../services/admin-ads.service';
 import { AdminMetaService } from '../../../../services/admin-meta.service';
 import { AdminPressReleaseService } from '../../../../services/admin-press-release.service';
 
@@ -21,6 +22,9 @@ export class PressReleasesDetailsComponent implements OnInit {
     banner: string;
     pressReleaseTitle: string;
     newsTitle: string;
+    headerbar: any;
+    footerbar: any;
+
 
     constructor(
       private adminPressReleaseService: AdminPressReleaseService,
@@ -29,7 +33,8 @@ export class PressReleasesDetailsComponent implements OnInit {
       private sanitizer: DomSanitizer,
       private meta: Meta,
       private metaService: AdminMetaService,
-      private titleService: Title
+      private titleService: Title,
+      private adsService: AdminAdsService,
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pressReleaseTitle = 'Press Releases';
@@ -37,6 +42,13 @@ export class PressReleasesDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
         // Get url/id
         this.url = this.route.snapshot.params['id'];
         // Get each user's details
@@ -51,7 +63,10 @@ export class PressReleasesDetailsComponent implements OnInit {
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.pressRelease && meta) {
-                            this.meta.updateTag({ name: 'description', content: this.pressRelease.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'description',
+                                content: this.pressRelease.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({ name: 'author', content: this.pressRelease.author });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
                             this.meta.updateTag({
@@ -64,7 +79,10 @@ export class PressReleasesDetailsComponent implements OnInit {
                             });
                             this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
                             this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
-                            this.meta.updateTag({ property: 'og:description', content: this.pressRelease.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                property: 'og:description',
+                                content: this.pressRelease.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 property: 'og:image',
                                 content: meta.metaImageURL
@@ -73,7 +91,10 @@ export class PressReleasesDetailsComponent implements OnInit {
                                 itemprop: 'name',
                                 content: `http://ddw.org/${this.pressRelease.url}`
                             });
-                            this.meta.updateTag({ itemprop: 'description', content: this.pressRelease.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                itemprop: 'description',
+                                content: this.pressRelease.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({ itemprop: 'image', content: meta.metaImageURL });
                             this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
                             this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
@@ -83,7 +104,10 @@ export class PressReleasesDetailsComponent implements OnInit {
                             });
                             this.meta.updateTag({ name: 'twitter:title', content: this.pressRelease.title });
                             this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
-                            this.meta.updateTag({ name: 'twitter:description', content: this.pressRelease.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:description',
+                                content: this.pressRelease.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 name: 'twitter:image',
                                 content: meta.metaImageURL

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
@@ -13,9 +14,9 @@ import { PageService } from '../../../services/page.service';
 import { PagesCardService } from '../../../services/pages-card.service';
 
 @Component({
-  selector: 'ddw-education',
-  templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+    selector: 'ddw-education',
+    templateUrl: './education.component.html',
+    styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
     page: Page;
@@ -26,6 +27,8 @@ export class EducationComponent implements OnInit {
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
+    headerbar: any;
+    footerbar: any;
 
 
     constructor(
@@ -38,10 +41,18 @@ export class EducationComponent implements OnInit {
       private metaService: AdminMetaService,
       private titleService: Title,
       private pagesCardService: PagesCardService,
+      private adsService: AdminAdsService,
     ) {
     }
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
         this.cards$ = this.cardService.getAllCards();
 
         // Gets $key which is a Slug
@@ -68,20 +79,29 @@ export class EducationComponent implements OnInit {
                             });
                             this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
                             this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
-                            this.meta.updateTag({ property: 'og:description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                property: 'og:description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 property: 'og:image',
                                 content: this.page.photoURL || meta.metaImageURL
                             });
                             this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/${this.page.slug}` });
-                            this.meta.updateTag({ itemprop: 'description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                itemprop: 'description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({ itemprop: 'image', content: this.page.photoURL });
                             this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
                             this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
                             this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` });
                             this.meta.updateTag({ name: 'twitter:title', content: this.page.title });
                             this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
-                            this.meta.updateTag({ name: 'twitter:description', content: this.page.metaDesc || meta.metaDesc });
+                            this.meta.updateTag({
+                                name: 'twitter:description',
+                                content: this.page.metaDesc || meta.metaDesc
+                            });
                             this.meta.updateTag({
                                 name: 'twitter:image',
                                 content: this.page.photoURL || meta.metaImageURL

@@ -7,6 +7,15 @@
         <h1 class="title">{{ page.title }}</h1>
     </div>
 
+    <!-- * AD Headerbar * -->
+    <div class="row" *ngIf="headerbar">
+        <div class="container">
+            <div class="text-center">
+                <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="row crumbs">
         <div class="container">
             <ol class="breadcrumb">
@@ -24,6 +33,7 @@
             </ol>
         </div>
     </div>
+
 
     <div class="row" *ngIf="page.hasCalendar">
         <div class="container-fluid">
@@ -106,6 +116,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- * AD Footerbar * -->
+    <div class="row" *ngIf="footerbar">
+        <div class="container">
+            <div class="text-center">
+                <div [innerHTML]="footerbar | safeHtml" runScripts id="myAdSpace"></div>
             </div>
         </div>
     </div>

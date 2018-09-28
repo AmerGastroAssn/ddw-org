@@ -7,6 +7,7 @@ import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
 import { PressRelease } from '../../../models/PressRelease';
+import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
@@ -36,6 +37,9 @@ export class NewsAndMediaComponent implements OnInit {
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
+    headerbar: any;
+    footerbar: any;
+
 
     constructor(
       private pageService: PageService,
@@ -48,6 +52,7 @@ export class NewsAndMediaComponent implements OnInit {
       private metaService: AdminMetaService,
       private titleService: Title,
       private pagesCardService: PagesCardService,
+      private adsService: AdminAdsService,
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
@@ -55,6 +60,13 @@ export class NewsAndMediaComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
         this.cards$ = this.cardService.getAllCards();
 
 

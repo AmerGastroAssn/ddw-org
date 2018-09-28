@@ -6,10 +6,11 @@
 </div>
 
 
-<div class="row ad">
+<!-- * AD Headerbar * -->
+<div class="row" *ngIf="headerbar">
     <div class="container">
-        <div class="col-md-8 offset-md-2">
-            <img src="http://placehold.it/700x100" alt="">
+        <div class="text-center">
+            <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
         </div>
     </div>
 </div>
@@ -159,10 +160,11 @@
     </div>
 </div>
 
-<div class="row ad">
+<!-- * AD Footerbar * -->
+<div class="row" *ngIf="footerbar">
     <div class="container">
-        <div class="col-md-8 offset-md-2">
-            <img src="http://placehold.it/700x100" alt="">
+        <div class="text-center">
+            <div [innerHTML]="footerbar | safeHtml" runScripts id="myAdSpace"></div>
         </div>
     </div>
 </div>

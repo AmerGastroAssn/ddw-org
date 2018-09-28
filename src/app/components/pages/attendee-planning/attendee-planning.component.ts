@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
+import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
@@ -26,6 +27,8 @@ export class AttendeePlanningComponent implements OnInit {
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
+    headerbar: any;
+    footerbar: any;
 
 
     constructor(
@@ -38,10 +41,18 @@ export class AttendeePlanningComponent implements OnInit {
       private metaService: AdminMetaService,
       private titleService: Title,
       private pagesCardService: PagesCardService,
+      private adsService: AdminAdsService,
     ) {
     }
 
     ngOnInit() {
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
         this.cards$ = this.cardService.getAllCards();
 
         // Gets $key which is a Slug

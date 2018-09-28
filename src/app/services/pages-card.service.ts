@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Card } from '../models/Card';
+import { ContactForm } from '../models/ContactForm';
 
 @Injectable({
     providedIn: 'root'
@@ -105,6 +106,29 @@ export class PagesCardService {
                          console.log('Page Card Created!', data);
                      })
                      .catch((error) => console.log(`ERROR~sPC: `, error));
+    }
+
+    deletePageCard(id: string, title: string): void {
+        this.pageCardDoc = this.afs.doc<Card>(`pageCards/${id}`);
+        if (confirm(`Are you sure you want to delete (${title})? This is irreversible.`)) {
+            this.pageCardDoc.delete()
+                .then(() => {
+                    this.sbAlert.open('Card Deleted', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-success']
+                    });
+                    this.router.navigate([`/admin/page-cards`]);
+                })
+                .catch((error) => {
+                    this.sbAlert.open('Something went wrong, Card not Deleted', 'Dismiss', {
+                        duration: 3000,
+                        verticalPosition: 'bottom',
+                        panelClass: ['snackbar-danger']
+                    });
+                    console.log(`ERROR~dPC: `, error);
+                });
+        }
     }
 
 

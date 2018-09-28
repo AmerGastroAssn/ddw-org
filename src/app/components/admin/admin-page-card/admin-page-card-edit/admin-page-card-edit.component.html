@@ -154,6 +154,12 @@
             <!-- * Page Card Item * -->
             <div class="card card-inner bg-lighter">
                 <div class="card-body">
+                    <p class="text-right">
+                        <a class="btn btn-danger text-white"
+                           (click)="onDeletePageCard(card.$key, card.title)">
+                            <i class="fa fa-trash-alt"></i>&nbsp;Delete
+                        </a>
+                    </p>
                     <h4 class="card-header-title">Card Preview</h4>
                     <hr class="inset-hr">
                 </div>

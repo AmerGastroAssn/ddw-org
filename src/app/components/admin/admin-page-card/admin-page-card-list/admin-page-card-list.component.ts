@@ -40,4 +40,8 @@ export class AdminPageCardListComponent implements OnInit {
         this.pageCards$ = this.pageCardService.getAllPageCards();
     }
 
+    onDeletePageCard(id: string, title: string) {
+        this.pageCardService.deletePageCard(id, title);
+    }
+
 }

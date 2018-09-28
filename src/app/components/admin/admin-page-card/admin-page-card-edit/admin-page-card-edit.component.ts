@@ -141,4 +141,8 @@ export class AdminPageCardEditComponent implements OnInit {
         this.pageCardService.updatePageCard(formData, this.uid);
         this.editPageCardForm.reset();
     }
+
+    onDeletePageCard(id, title) {
+        this.pageCardService.deletePageCard(id, title);
+    }
 }

@@ -62,9 +62,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Title
+                                <span #tooltip="matTooltip"
+                                      matTooltip="Title cannot be changed. If needed, you'll need to create a new page and notify the dev team to create a redirect for the old page."
+                                      matTooltipPosition="right"
+                                      aria-tooltip="Title cannot be Changed">
+                                    <i class="fa fa-info-circle"></i>
+                                </span>
+                            </label>
                             <input type="text"
                                    class="form-control"
+                                   disabled
                                    [class.invalid]="!f.title.valid && f.title.touched"
                                    [(ngModel)]="page.title"
                                    formControlName="title">

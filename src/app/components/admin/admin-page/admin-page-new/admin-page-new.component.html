@@ -20,7 +20,9 @@
                 <form [formGroup]="newPageForm"
                       (ngSubmit)="onAddNewPage(newPageForm.value)">
                     <div class="form-group">
-                        <label>Title</label>
+                        <label>Title <br>
+                            <small>Once created, it cannot be changed</small>
+                        </label>
                         <input type="text"
                                class="form-control"
                                [(ngModel)]="title"

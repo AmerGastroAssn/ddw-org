@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatProgressBarModule, MatSlideToggleModule } from '@angular/material';
+import { MatProgressBarModule, MatSlideToggleModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
@@ -30,6 +30,7 @@ import { AdminPageRegisterListComponent } from './admin-page-register-list/admin
         ProgressbarModule,
         MatSlideToggleModule,
         CKEditorModule,
+        MatTooltipModule,
     ],
     declarations: [
         AdminPageNewComponent,

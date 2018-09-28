@@ -22,7 +22,9 @@ export class PagesCardService {
     }
 
     getAllPageCards(): Observable<Card[]> {
-        this.pageCardCollection = this.afs.collection<Card>('pageCards');
+        this.pageCardCollection = this.afs.collection<Card>('pageCards', (ref) => {
+            return ref.orderBy('title', 'asc');
+        });
         return this.pageCardCollection.valueChanges();
     }
 

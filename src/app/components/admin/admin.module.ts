@@ -47,6 +47,7 @@ import { AdminHomePageComponent } from './admin-home-page/admin-home-page.compon
 import { AdminPageCardEditComponent } from './admin-page-card/admin-page-card-edit/admin-page-card-edit.component';
 import { AdminPageCardItemComponent } from './admin-page-card/admin-page-card-item/admin-page-card-item.component';
 import { AdminPageCardListComponent } from './admin-page-card/admin-page-card-list/admin-page-card-list.component';
+import { AdminPageCardNewComponent } from './admin-page-card/admin-page-card-new/admin-page-card-new.component';
 import { AdminPageCardComponent } from './admin-page-card/admin-page-card.component';
 // tslint:disable-next-line:max-line-length
 import { AdminPageExhibitorInformationListComponent } from './admin-page/admin-page-exhibitor-information-list/admin-page-exhibitor-information-list.component';
@@ -55,7 +56,6 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminPageCardNewComponent } from './admin-page-card/admin-page-card-new/admin-page-card-new.component';
 
 @NgModule({
     declarations: [

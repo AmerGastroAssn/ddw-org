@@ -176,7 +176,7 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
                 this.postForm3 = this.fb.group({
                     $key: [this.post3.$key],
                     uid: [this.post3.uid],
-                    orderNumber: [this.post2.orderNumber],
+                    orderNumber: [this.post3.orderNumber],
                     body: [this.post3.body,
                            Validators.compose([
                                Validators.required, Validators.minLength(20)

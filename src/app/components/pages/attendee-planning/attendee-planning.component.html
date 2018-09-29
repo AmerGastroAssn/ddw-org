@@ -53,17 +53,13 @@
         </div>
     </div>
 
-
-    <!--<div class="row">-->
-    <!--<div class="container">-->
-    <!--<div class="col-md-4 offset-md-4 text-center">-->
-    <!--<h2 class="card-sec-title">Additional Details</h2>-->
-    <!--<div class="col-4 offset-4">-->
-    <!--<div class="underline"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div class="row" *ngIf="page.hasCards && page.cardSectionTitle">
+        <div class="container">
+            <div class="col-md-12 text-center">
+                <h2 class="card-sec-title">{{ page.cardSectionTitle }}</h2>
+            </div>
+        </div>
+    </div>
 
     <div class="row cards" *ngIf="page.hasCards">
         <div class="container">
@@ -74,7 +70,7 @@
                         <img class="card-img-top"
                              [src]="pageCard1.photoURL"
                              [alt]="pageCard1.title">
-                        <div class="card-body">
+                        <div class="card-body d-flex">
                             <h5 class="card-title">{{ pageCard1.title }}</h5>
                             <p class="card-text">{{ pageCard1.body }}</p>
                             <p class="text-center">
@@ -97,7 +93,7 @@
                         <img class="card-img-top"
                              [src]="pageCard2.photoURL"
                              [alt]="pageCard2.title">
-                        <div class="card-body">
+                        <div class="card-body d-flex">
                             <h5 class="card-title">{{ pageCard2.title }}</h5>
                             <p class="card-text">{{ pageCard2.body }}</p>
                             <p class="text-center">
@@ -120,7 +116,7 @@
                         <img class="card-img-top"
                              [src]="pageCard3.photoURL"
                              [alt]="pageCard3.title">
-                        <div class="card-body">
+                        <div class="card-body d-flex">
                             <h5 class="card-title">{{ pageCard3.title }}</h5>
                             <p class="card-text">{{ pageCard3.body }}</p>
                             <p class="text-center">

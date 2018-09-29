@@ -1,17 +1,21 @@
 <!-- * REGISTER-PAGE * -->
 <ddw-pages-navbar></ddw-pages-navbar>
 <div *ngIf="page">
-    <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
+    <img [src]="page.bannerPhotoURL"
+         class="bannerPhotoURL">
 
     <div class="container">
         <h1 class="title">{{ page.title }}</h1>
     </div>
 
     <!-- * AD Headerbar * -->
-    <div class="row" *ngIf="headerbar">
+    <div class="row"
+         *ngIf="headerbar">
         <div class="container">
             <div class="text-center">
-                <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
+                <div [innerHTML]="headerbar | safeHtml"
+                     runScripts
+                     id="AdSpace"></div>
             </div>
         </div>
     </div>
@@ -24,7 +28,8 @@
                         {{ page.category }}
                     </div>
                 </li>
-                <li class="breadcrumb-item text-capitalize text-dark" *ngIf="page.isGrandchildPage">
+                <li class="breadcrumb-item text-capitalize text-dark"
+                    *ngIf="page.isGrandchildPage">
                     {{page.grandchildURL}}
                 </li>
                 <li class="breadcrumb-item active text-dark">
@@ -35,11 +40,11 @@
     </div>
 
 
-    <div class="row" *ngIf="page.hasCalendar">
+    <div class="row"
+         *ngIf="page.hasCalendar">
         <div class="container-fluid">
-            <ddw-admin-calendar-item
-                    *ngFor="let calEl of calendar$ | async"
-                    [calendar]="calEl">
+            <ddw-admin-calendar-item *ngFor="let calEl of calendar$ | async"
+                                     [calendar]="calEl">
             </ddw-admin-calendar-item>
         </div>
     </div>
@@ -52,17 +57,14 @@
         </div>
     </div>
 
-    <!--<div class="row">-->
-    <!--<div class="container">-->
-    <!--<div class="col-md-4 offset-md-4 text-center">-->
-    <!--<h2 class="card-sec-title">Additional Details</h2>-->
-    <!--<div class="col-4 offset-4">-->
-    <!--<div class="underline"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--/register/guide-->
+    <div class="row" *ngIf="page.hasCards && page.cardSectionTitle">
+        <div class="container">
+            <div class="col-md-12 text-center">
+                <h2 class="card-sec-title">{{ page.cardSectionTitle }}</h2>
+            </div>
+        </div>
+    </div>
+
     <div class="row cards" *ngIf="page.hasCards">
         <div class="container">
             <div class="card-deck">
@@ -142,10 +144,13 @@
     </div>
 
     <!-- * AD Footerbar * -->
-    <div class="row" *ngIf="footerbar">
+    <div class="row"
+         *ngIf="footerbar">
         <div class="container">
             <div class="text-center">
-                <div [innerHTML]="footerbar | safeHtml" runScripts id="myAdSpace"></div>
+                <div [innerHTML]="footerbar | safeHtml"
+                     runScripts
+                     id="myAdSpace"></div>
             </div>
         </div>
     </div>

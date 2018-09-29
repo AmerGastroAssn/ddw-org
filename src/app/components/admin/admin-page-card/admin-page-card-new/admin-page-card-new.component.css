@@ -30,3 +30,7 @@ p.card-preview {
     font-size: 1em;
     padding: 2em;
 }
+
+.ext-url {
+    cursor: pointer;
+}

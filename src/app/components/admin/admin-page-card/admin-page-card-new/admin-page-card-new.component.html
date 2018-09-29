@@ -137,6 +137,20 @@
                                            formControlName="photoURL">
                                 </div>
 
+                                <!-- * ExtURL  * -->
+                                <div class="form-group mt-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox"
+                                               class="custom-control-input ext-url"
+                                               id="isExtURL"
+                                               [(ngModel)]="card.isExtURL"
+                                               formControlName="isExtURL">
+                                        <label class="custom-control-label ext-url"
+                                               for="isExtURL">External URL?
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <button type="submit"
                                         [disabled]="!newPageCardForm.valid"
                                         class="btn btn-secondary full-width mb-3 mt-2">
@@ -152,6 +166,14 @@
             <!-- * Page Card Item * -->
             <div class="card card-inner bg-lighter">
                 <div class="card-body">
+                    <h6 class="alert alert-dark-dark text-center"
+                        *ngIf="card && card.isExtURL">
+                        <i class="fa fa-check-square"></i> &nbsp;External URL
+                    </h6>
+                    <h6 class="alert alert-dark text-center"
+                        *ngIf="card && !card.isExtURL">
+                        <i class="fa fa-times"></i> &nbsp;External URL
+                    </h6>
                     <h4 class="card-header-title">Card Preview</h4>
                     <hr class="inset-hr">
                 </div>

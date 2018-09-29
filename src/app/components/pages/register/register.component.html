@@ -62,7 +62,7 @@
     <!--</div>-->
     <!--</div>-->
     <!--</div>-->
-
+    <!--/register/guide-->
     <div class="row cards" *ngIf="page.hasCards">
         <div class="container">
             <div class="card-deck">
@@ -76,8 +76,15 @@
                             <h5 class="card-title">{{ pageCard1.title }}</h5>
                             <p class="card-text">{{ pageCard1.body }}</p>
                             <p class="text-center">
+                                <a [routerLink]="pageCard1.url"
+                                   class="btn btn-warning btn-lg"
+                                   *ngIf="!pageCard1.isExtURL">
+                                    {{ pageCard1.buttonString }}
+                                </a>
                                 <a [href]="pageCard1.url"
-                                   class="btn btn-warning btn-lg">
+                                   class="btn btn-warning btn-lg"
+                                   target="_blank"
+                                   *ngIf="pageCard1.isExtURL">
                                     {{ pageCard1.buttonString }}
                                 </a>
                             </p>
@@ -92,8 +99,15 @@
                             <h5 class="card-title">{{ pageCard2.title }}</h5>
                             <p class="card-text">{{ pageCard2.body }}</p>
                             <p class="text-center">
+                                <a [routerLink]="pageCard2.url"
+                                   class="btn btn-warning btn-lg"
+                                   *ngIf="!pageCard2.isExtURL">
+                                    {{ pageCard2.buttonString }}
+                                </a>
                                 <a [href]="pageCard2.url"
-                                   class="btn btn-warning btn-lg">
+                                   class="btn btn-warning btn-lg"
+                                   target="_blank"
+                                   *ngIf="pageCard2.isExtURL">
                                     {{ pageCard2.buttonString }}
                                 </a>
                             </p>
@@ -108,8 +122,15 @@
                             <h5 class="card-title">{{ pageCard3.title }}</h5>
                             <p class="card-text">{{ pageCard3.body }}</p>
                             <p class="text-center">
+                                <a [routerLink]="pageCard3.url"
+                                   class="btn btn-warning btn-lg"
+                                   *ngIf="!pageCard3.isExtURL">
+                                    {{ pageCard3.buttonString }}
+                                </a>
                                 <a [href]="pageCard3.url"
-                                   class="btn btn-warning btn-lg">
+                                   class="btn btn-warning btn-lg"
+                                   target="_blank"
+                                   *ngIf="pageCard3.isExtURL">
                                     {{ pageCard3.buttonString }}
                                 </a>
                             </p>

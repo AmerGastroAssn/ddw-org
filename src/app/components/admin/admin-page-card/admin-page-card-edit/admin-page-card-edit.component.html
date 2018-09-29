@@ -139,6 +139,21 @@
                                            formControlName="photoURL">
                                 </div>
 
+
+                                <!-- * ExtURL  * -->
+                                <div class="form-group mt-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox"
+                                               class="custom-control-input"
+                                               id="isExtURL"
+                                               [(ngModel)]="card.isExtURL"
+                                               formControlName="isExtURL">
+                                        <label class="custom-control-label"
+                                               for="isExtURL">External URL?
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <button type="submit"
                                         [disabled]="!editPageCardForm.valid"
                                         class="btn btn-secondary full-width mb-3 mt-2">
@@ -155,11 +170,19 @@
             <div class="card card-inner bg-lighter">
                 <div class="card-body">
                     <p class="text-right">
-                        <a class="btn btn-danger text-white"
+                        <a class="btn btn-danger btn-sm text-white"
                            (click)="onDeletePageCard(card.$key, card.title)">
                             <i class="fa fa-trash-alt"></i>&nbsp;Delete
                         </a>
                     </p>
+                    <h6 class="alert alert-dark-dark text-center"
+                       *ngIf="card && card.isExtURL">
+                        <i class="fa fa-check-square"></i> &nbsp;External URL
+                    </h6>
+                    <h6 class="alert alert-dark text-center"
+                        *ngIf="card && !card.isExtURL">
+                        <i class="fa fa-times"></i> &nbsp;External URL
+                    </h6>
                     <h4 class="card-header-title">Card Preview</h4>
                     <hr class="inset-hr">
                 </div>

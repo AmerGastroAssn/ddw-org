@@ -10,6 +10,7 @@ export class Card {
       public url: string,
       public updatedAt: any,
       public author: string,
+      public isExtURL: boolean,
     ) {
     }
 }

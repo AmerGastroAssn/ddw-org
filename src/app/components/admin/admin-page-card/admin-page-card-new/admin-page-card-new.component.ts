@@ -25,6 +25,9 @@ export class AdminPageCardNewComponent implements OnInit {
     orderNumber: number;
     uid: string;
     $key: string;
+    author: string;
+    updatedAt: any;
+    isExtURL: boolean;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -46,6 +49,9 @@ export class AdminPageCardNewComponent implements OnInit {
         photoURL: this.photoURL,
         buttonString: this.buttonString,
         url: this.url,
+        updatedAt: Date.now(),
+        author: this.pageCardService.loggedInUser,
+        isExtURL: this.isExtURL,
     };
 
     constructor(
@@ -110,6 +116,7 @@ export class AdminPageCardNewComponent implements OnInit {
             photoURL: [this.photoURL, Validators.required],
             buttonString: [this.buttonString, Validators.required],
             url: [this.url],
+            isExtURL: [this.isExtURL],
         });
 
         this.orderNumber = this.newPageCardForm.value.orderNumber;
@@ -118,6 +125,7 @@ export class AdminPageCardNewComponent implements OnInit {
         this.photoURL = this.newPageCardForm.value.photoURL;
         this.buttonString = this.newPageCardForm.value.buttonString;
         this.url = this.newPageCardForm.value.url;
+        this.isExtURL = this.newPageCardForm.value.isExtURL;
 
     }
 

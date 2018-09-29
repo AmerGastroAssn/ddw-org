@@ -9,3 +9,7 @@ hr.inset-hr {
 .inner-card {
     border-radius: 0;
 }
+
+.ext-url {
+    cursor: pointer;
+}

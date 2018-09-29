@@ -45,6 +45,7 @@ export class AdminPageCardEditComponent implements OnInit {
     orderNumber: number;
     uid: string;
     $key: string;
+    isExtURL: boolean;
     // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
@@ -125,6 +126,7 @@ export class AdminPageCardEditComponent implements OnInit {
                 photoURL: [this.card.photoURL, Validators.required],
                 buttonString: [this.card.buttonString, Validators.required],
                 url: [this.card.url],
+                isExtURL: [this.card.isExtURL || false],
             });
 
             this.orderNumber = this.editPageCardForm.value.orderNumber;
@@ -133,6 +135,7 @@ export class AdminPageCardEditComponent implements OnInit {
             this.photoURL = this.editPageCardForm.value.photoURL;
             this.buttonString = this.editPageCardForm.value.buttonString;
             this.url = this.editPageCardForm.value.url;
+            this.isExtURL = this.editPageCardForm.value.isExtURL;
         });
 
     }

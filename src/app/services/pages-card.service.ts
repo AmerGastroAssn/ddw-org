@@ -76,6 +76,7 @@ export class PagesCardService {
             uid: id,
             updatedAt: Date.now(),
             author: this.loggedInUser,
+            isExtURL: formData.isExtURL
         };
 
         console.log('data', data);
@@ -107,6 +108,7 @@ export class PagesCardService {
             uid: new$key,
             updatedAt: Date.now(),
             author: this.loggedInUser,
+            isExtURL: formData.isExtURL
         };
 
         console.log('data', data);

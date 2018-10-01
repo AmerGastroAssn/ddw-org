@@ -38,10 +38,15 @@ export class AdminPageDetailsComponent implements OnInit {
     page: Page;
     uid: string;
     calendar$: Observable<Calendar[]>;
+    calendar: Calendar;
     calendarTitle: string;
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
+    month: string;
+    month2: string;
+    month3: string;
+    month4: string;
 
     constructor(
       private adminPageService: AdminPageService,
@@ -62,9 +67,9 @@ export class AdminPageDetailsComponent implements OnInit {
                 this.page = page;
 
                 // Calendar
-                // if (this.page.hasCalendar) {
-                //     this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
-                // }
+                if (this.page.hasCalendar) {
+                    this.calendar$ = this.adminCalendarService.getCalendarByTitle(this.page.calendarTitle);
+                }
 
                 // Page Cards:
                 if (this.page.hasCards) {

@@ -51,7 +51,7 @@ export class AdminPageCardNewComponent implements OnInit {
         url: this.url,
         updatedAt: Date.now(),
         author: this.pageCardService.loggedInUser,
-        isExtURL: this.isExtURL,
+        isExtURL: this.isExtURL || false,
     };
 
     constructor(
@@ -100,7 +100,6 @@ export class AdminPageCardNewComponent implements OnInit {
 
 
     ngOnInit() {
-        // Card1 Form:
         this.newPageCardForm = this.fb.group({
             orderNumber: [this.orderNumber || ''],
             title: [this.title,
@@ -116,7 +115,7 @@ export class AdminPageCardNewComponent implements OnInit {
             photoURL: [this.photoURL, Validators.required],
             buttonString: [this.buttonString, Validators.required],
             url: [this.url],
-            isExtURL: [this.isExtURL],
+            isExtURL: [this.isExtURL || false],
         });
 
         this.orderNumber = this.newPageCardForm.value.orderNumber;
@@ -130,6 +129,7 @@ export class AdminPageCardNewComponent implements OnInit {
     }
 
     onCreateCard(formData: FormGroup) {
+        console.log('formDataCard', formData);
         this.pageCardService.setPageCard(formData);
         this.newPageCardForm.reset();
     }

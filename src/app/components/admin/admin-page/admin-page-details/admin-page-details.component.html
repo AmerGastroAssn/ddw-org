@@ -1,66 +1,6 @@
 <!-- * ADMIN-PAGE-DETAILS (PREVIEW) * -->
-<!-- * FontAwesome 5.1 * -->
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
-<!-- * Edit Options Sub-Navbar * -->
-<div class="row">
-    <div class="container">
-        <!-- * Edit Navbar Panel * -->
-        <div class="col-sm-12">
-            <nav class="navbar navbar-expand-lg fixed-bottom text-light" style="background-color: #1C202B;"
-                 *ngIf="page">
-                <a class="navbar-brand" href="#">
-                    <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/gray-ddw-150.png" width="100"
-                         class="d-inline-block align-top" alt="DDW">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa fa-caret-square-down"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item text-capitalize">
-                            <i class="fa fa-h1"></i> {{ page.title }}
-                        </li>
-                        <!--<li class="nav-item">-->
-                        <!--<i class="fa fa-user"></i> {{ page.author }}-->
-                        <!--</li>-->
-                        <li class="nav-item text-capitalize">
-                            <i class="fa fa-project-diagram"></i> {{ page.category }}
-                        </li>
-                    </ul>
-                    <form class="form-inline mx-auto">
-                        <div class="btn-group btn-group-sm float-right"
-                             role="group"
-                             aria-label="Basic example">
-                            <a class="btn btn-primary"
-                               [routerLink]="['/admin/pages']">
-                                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
-                            </a>
-                            <a class="btn btn-secondary"
-                               [routerLink]="['edit']">
-                                <i class="fa fa-pencil"></i>&nbsp;Edit
-                            </a>
-                            <a class="btn btn-warning"
-                               [routerLink]="['/admin/pages']">
-                                <i class="fa fa-undo"></i>&nbsp;Cancel
-                            </a>
-                            <button class="btn btn-danger"
-                                    (click)="onDeletePage()">
-                                <i class="fa fa-trash"></i>&nbsp;Delete
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </nav>
-        </div>
-
-    </div>
-</div>
-
-
 <!-- * If Regular Page * -->
-<div *ngIf="page && !page.isExtURL" [@simpleFadeAnimation]="'in'">
+<div *ngIf="page && !page.isExtURL" class="page-container" [@simpleFadeAnimation]="'in'">
 
     <div class="row">
         <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
@@ -90,15 +30,131 @@
             <!-- * Body * -->
             <div [innerHTML]="page.body | safeHtml" class="details-body"></div>
 
-            <!--&lt;!&ndash; * Calendar * &ndash;&gt;-->
-            <!--<div class="row" *ngIf="page.hasCalendar">-->
-            <!--<div class="container-fluid">-->
-            <!--<ddw-admin-calendar-item-->
-            <!--*ngFor="let calEl of calendar$ | async"-->
-            <!--[calendar]="calEl">-->
-            <!--</ddw-admin-calendar-item>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div *ngIf="page.hasCalendar">
+                <div *ngFor="let calendar of calendar$ | async">
+                    <!-- * ADMIN-CALENDAR-ITEM * -->
+                    <div class="row">
+                        <div class="col-md-12" style="padding-left:0;">
+                            <h2 style="margin-left:0;">{{ calendar.displayName }}</h2>
+                        </div>
+                    </div>
+
+                    <!-- * Tabs * -->
+                    <div class="row">
+                        <div style="max-width:1200px;">
+                            <ul class="nav nav-tabs nav-fill" id="calTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active"
+                                       id="date1-tab"
+                                       data-toggle="tab"
+                                       href="#date1"
+                                       role="tab"
+                                       aria-controls="date1"
+                                       aria-selected="true"
+                                       *ngIf="calendar.date1">{{ calendar.date1.toDate() | date:'LLLL dd' }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="date2-tab"
+                                       data-toggle="tab"
+                                       href="#date2"
+                                       role="tab"
+                                       aria-controls="date2"
+                                       aria-selected="false"
+                                       *ngIf="calendar.date2">{{ calendar.date2.toDate() | date:'LLLL dd' }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="date3-tab"
+                                       data-toggle="tab"
+                                       href="#date3"
+                                       role="tab"
+                                       aria-controls="date3"
+                                       aria-selected="false"
+                                       *ngIf="calendar.date3">{{ calendar.date3.toDate() | date:'LLLL dd' }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       id="date4-tab"
+                                       data-toggle="tab"
+                                       href="#date4"
+                                       role="tab"
+                                       aria-controls="date4"
+                                       aria-selected="false"
+                                       *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active"
+                                     id="date1"
+                                     role="tabpanel"
+                                     aria-labelledby="date1-tab"
+                                     *ngIf="calendar.date1">
+                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                                        *ngIf="calendar.date1 && calendar.body1">
+                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                                        {{ month }}
+                                        {{ calendar.date1.toDate() | date:"dd" }},
+                                        {{ calendar.date1.toDate() | date:"yyyy" }}
+                                    </h4>
+                                    <div [innerHTML]="calendar.body1 | safeHtml" class="cal-content"></div>
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="date2"
+                                     role="tabpanel"
+                                     aria-labelledby="date2-tab"
+                                     *ngIf="calendar.date2">
+                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                                        *ngIf="calendar.date2 && calendar.body2">
+                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                                        {{ month2 }}
+                                        {{ calendar.date2.toDate() | date:"dd" }},
+                                        {{ calendar.date2.toDate() | date:"yyyy" }}
+                                    </h4>
+                                    <div [innerHTML]="calendar.body2 | safeHtml" class="cal-content"></div>
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="date3"
+                                     role="tabpanel"
+                                     aria-labelledby="date3-tab"
+                                     *ngIf="calendar.date3">
+                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                                        *ngIf="calendar.date3 && calendar.body3">
+                                        <strong>{{ calendar.date3.toDate() | date:'EEEE' }}</strong>,
+                                        {{ month3 }}
+                                        {{ calendar.date3.toDate() | date:"dd" }},
+                                        {{ calendar.date3.toDate() | date:"yyyy" }}
+                                    </h4>
+                                    <div [innerHTML]="calendar.body3 | safeHtml" class="cal-content"></div>
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="date4"
+                                     role="tabpanel"
+                                     aria-labelledby="date4-tab"
+                                     *ngIf="calendar.date4">
+                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                                        *ngIf="calendar.date4 && calendar.body4">
+                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                                        {{ month4 }}
+                                        {{ calendar.date4.toDate() | date:"dd" }},
+                                        {{ calendar.date4.toDate() | date:"yyyy" }}
+                                    </h4>
+                                    <div [innerHTML]="calendar.body4 | safeHtml" class="cal-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- * Page Cards Section Title * -->
+            <div class="row" *ngIf="page.cardSectionTitle">
+                <div class="container">
+                    <div class="col-md-12 text-center">
+                        <h2 class="card-sec-title">{{ page.cardSectionTitle }}</h2>
+                    </div>
+                </div>
+            </div>
 
             <!-- * Page Cards * -->
             <div class="row cards" *ngIf="page.hasCards">
@@ -180,5 +236,62 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+
+<!-- * Edit Options Sub-Navbar * -->
+<div class="row">
+    <div class="container">
+        <!-- * Edit Navbar Panel * -->
+        <div class="col-sm-12">
+            <nav class="navbar navbar-expand-lg fixed-bottom text-light" style="background-color: #1C202B;"
+                 *ngIf="page">
+                <a class="navbar-brand" href="#">
+                    <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/gray-ddw-150.png" width="100"
+                         class="d-inline-block align-top" alt="DDW">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-caret-square-down"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item text-capitalize">
+                            <i class="fa fa-h1"></i> {{ page.title | slice:0:40 }}
+                        </li>
+                        <!--<li class="nav-item">-->
+                        <!--<i class="fa fa-user"></i> {{ page.author }}-->
+                        <!--</li>-->
+                        <li class="nav-item text-capitalize">
+                            <i class="fa fa-project-diagram"></i> {{ page.category }}
+                        </li>
+                    </ul>
+                    <form class="form-inline mx-auto">
+                        <div class="btn-group btn-group-sm float-right"
+                             role="group"
+                             aria-label="Basic example">
+                            <a class="btn btn-primary"
+                               [routerLink]="['/admin/pages']">
+                                <i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
+                            </a>
+                            <a class="btn btn-secondary"
+                               [routerLink]="['edit']">
+                                <i class="fa fa-pencil"></i>&nbsp;Edit
+                            </a>
+                            <a class="btn btn-warning"
+                               [routerLink]="['/admin/pages']">
+                                <i class="fa fa-undo"></i>&nbsp;Cancel
+                            </a>
+                            <button class="btn btn-danger"
+                                    (click)="onDeletePage()">
+                                <i class="fa fa-trash"></i>&nbsp;Delete
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
     </div>
 </div>

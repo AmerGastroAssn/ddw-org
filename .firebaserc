@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "ddw-org",
+    "prod": "ddw-org",
+    "staging": "ddw-org-dev"
+  }
+}

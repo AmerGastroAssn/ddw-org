@@ -16,6 +16,7 @@ const appUrl = process.env.appUrl;
 const renderUrl = process.env.renderUrl;
 const renderFullRendertronUrl = process.env.renderFullRendertronUrl;
 const currentDate = new Date();
+
 // Deploy your own instance of Rendertron for production
 // const renderUrl = 'your-rendertron-url';
 
@@ -27,7 +28,6 @@ function generateUrl(request) {
         pathname: request.originalUrl
     });
 }
-
 
 // List of bots to target, add more if you'd like
 function detectBot(userAgent) {
@@ -63,13 +63,12 @@ function detectBot(userAgent) {
         }
     }
 
-    console.log('no bots found');
+    console.log('no bots found', currentDate);
     return false
 
 }
 
 app.get('*', (req, res) => {
-
     const isBot = detectBot(req.headers[ 'user-agent' ]);
 
     if (isBot) {
@@ -99,7 +98,7 @@ app.get('*', (req, res) => {
         fetch(`https://${appUrl}`)
           .then(res => res.text())
           .then(body => {
-              console.log('Page hit at: ', currentDate);
+              console.log('Page hit at', currentDate);
               return res.send(body.toString());
           })
           .catch((error) => console.log(error));
@@ -139,32 +138,38 @@ exports.firestoreEmail = functions.firestore
             const msg = {
                 // to: contact.email,
                 to: [
+                    'gastro.org@gmail.com',
                     'cstodd@gastro.org'
                 ],
                 from: contact.email,
                 subject: contact.subject,
                 // text: `Hey ${contact.firstName}. You have a new follower!!! `,
                 html: `
-                <h4 style="line-height:1.5em;"><u>From</u>:</h4>
-                <p style="line-height:1.5em;">${contact.firstName} ${contact.lastName}</p>
+                <h4 style="line-height:1.5em; color:#444;"><u>CMS Ticket ID</u>:
+                    <span style="font-family: 'SF Mono', 'Roboto Mono', Menlo, monospace;">${contact.uid}</span>
+                </h4>                
                 
-                <h4 style="line-height:1.5em;"><u>Email</u>:</h4>
-                <p style="line-height:1.5em;">${contact.email}</p>
+                <h4 style="line-height:1.5em; color:#444;"><u>From</u>:</h4>
+                <p style="line-height:1.5em; color:#444;">${contact.firstName} ${contact.lastName}</p>
                 
-                <h4 style="line-height:1.5em;"><u>Phone Number</u>:</h4>
-                <p style="line-height:1.5em;">${contact.phoneNumber}</p>
+                <h4 style="line-height:1.5em; color:#444;"><u>Email</u>:</h4>
+                <p style="line-height:1.5em; color:#444;">${contact.email}</p>
                 
-                <h4 style="line-height:1.5em;"><u>Subject</u>:</h4>
+                <h4 style="line-height:1.5em; color:#444;"><u>Phone Number</u>:</h4>
+                <p style="line-height:1.5em; color:#444;">${contact.phoneNumber}</p>
+                
+                <h4 style="line-height:1.5em; color:#444;"><u>Subject</u>:</h4>
                 <p>${contact.subject}</p>
                 
-                <h4 style="line-height:1.5em;"><u>Body</u>:</h4>
-                <p>${contact.body}</p>
+                <h4 style="line-height:1.5em; color:#444;"><u>Body</u>:</h4>
+                <p style="line-height:1.5em; color:#444;">${contact.body}</p>
                 `,
 
                 // custom templates
                 templateId: process.env.SENDGRID_LEGACY_TEMPLATE_ID,
                 substitutionWrappers: [ '{{', '}}' ],
                 substitutions: {
+                    uid: contact.uid,
                     firstName: contact.firstName,
                     lastName: contact.lastName,
                     email: contact.email,

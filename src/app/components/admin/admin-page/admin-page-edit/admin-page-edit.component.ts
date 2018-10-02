@@ -98,7 +98,11 @@ export class AdminPageEditComponent implements OnInit {
         allowedContent: true,
         height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
+        extraPlugins: 'codesnippet',
+        codeSnippet_theme: 'monokai_sublime',
     };
+
+
 
     constructor(
       private adminPageService: AdminPageService,
@@ -114,7 +118,6 @@ export class AdminPageEditComponent implements OnInit {
       private adminCalendarService: AdminCalendarService,
       private pagesCardService: PagesCardService
     ) {
-
 
         // Datepicker Config
         this.bsConfig = Object.assign({},

@@ -87,6 +87,7 @@
                         <label>Author</label>
                         <input type="text"
                                class="form-control"
+                               disabled
                                [class.invalid]="!f.author.valid && f.author.touched"
                                formControlName="author">
                         <p class="help-block alert alert-warning text-center mt-1"
@@ -154,7 +155,7 @@
                         </p>
                     </div>
 
-                    <div class="card bg-lighter mb-3">
+                    <div class="card bg-lighter mb-3" *ngIf="!isExtURL">
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox">
@@ -486,17 +487,18 @@
                         </div>
                     </div>
 
-                    <div class="btn-group float-right" role="group" aria-label="Basic example">
+
+                    <button type="submit"
+                            class="btn btn-secondary btn-md mb-5 full-width">
+                        <i class="fa fa-file-plus"></i>&nbsp;Create Page
+                    </button>
+
+                    <div class="btn-group float-right mt-3" role="group" aria-label="Basic example">
                         <a class="btn btn-warning btn-sm"
                            [routerLink]="['/admin/pages']">
                             <i class="fa fa-undo"></i>&nbsp;Cancel
                         </a>
                     </div>
-
-                    <button type="submit"
-                            class="btn btn-primary btn-sm mb-5">
-                        <i class="fa fa-file-plus"></i>&nbsp;Create
-                    </button>
 
                     <!-- * Debugging * -->
                     <!--<code>-->

@@ -124,6 +124,7 @@
                         <div class="form-group" *ngIf="page.isExtURL">
                             <label>Author</label>
                             <input type="text"
+                                   disabled
                                    class="form-control"
                                    [class.invalid]="!f.author.valid && f.author.touched"
                                    [(ngModel)]="author"
@@ -384,6 +385,8 @@
                                       [(ngModel)]="page.body"
                                       [readonly]="false"
                                       [config]="CkeditorConfig"
+                                      id="body"
+                                      name="body"
                                       debounce="500">
                             </ckeditor>
                             <p class="help-block alert alert-warning text-center mt-1"
@@ -508,12 +511,12 @@
 
                         <button type="submit"
                                 [disabled]="!editPageForm.valid"
-                                class="btn btn-primary btn-sm mb-5">
-                            <i class="fa fa-save"></i>&nbsp;Update
+                                class="btn btn-secondary btn-md mb-5 full-width">
+                            <i class="fa fa-save"></i>&nbsp;Update Page
                         </button>
 
                         <div class="btn-group float-right" role="group" aria-label="Basic example">
-                            <a class="btn btn-warning btn-sm"
+                            <a class="btn btn-warning btn-sm mt-3"
                                [routerLink]="['/admin/pages']">
                                 <i class="fa fa-undo"></i>&nbsp;Cancel
                             </a>

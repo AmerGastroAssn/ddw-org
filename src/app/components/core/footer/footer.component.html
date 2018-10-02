@@ -1,190 +1,202 @@
 <div class="row top-footer">
-    <div class="col-md-3">
-        <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/DDW_50_Yrs_Stand-alone_logo_gold_on_dark_rgb.png"
-             alt="DDW 50 years logo"
-             class="img-fluid">
-    </div>
-    <div class="col-md-6">
-        <p class="apps">Plan Your Itinerary with the Free DDW Mobile App.</p>
-        <p class="apps">The free app helps you search scientific sessions, browse posters, and find everything you need
-            to know at
-            the event. It is now available to download.</p>
+    <div class="container-fluid" style="max-width:1200px;">
         <div class="row">
-            <div class="col-sm-4">
-                <a class="app apple" href="http://ativ.me/ev7"></a>
+            <div class="col-md-3">
+                <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/DDW_50_Yrs_Stand-alone_logo_gold_on_dark_rgb.png"
+                     alt="DDW 50 years logo"
+                     class="img-fluid">
             </div>
-            <div class="col-sm-6">
-                <a class="app google" href="http://ativ.me/ev8"></a>
+            <div class="col-md-6">
+                <p class="apps">Plan Your Itinerary with the Free DDW Mobile App.</p>
+                <p class="apps">The free app helps you search scientific sessions, browse posters, and find everything
+                    you need
+                    to know at
+                    the event. It is now available to download.</p>
+                <div class="row">
+                    <div class="col-sm-4 apps">
+                        <a class="app apple" href="http://ativ.me/ev7"></a>
+                    </div>
+                    <div class="col-sm-6 apps">
+                        <a class="app google" href="http://ativ.me/ev8"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 right-panel">
+                <p><img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-white.png"
+                        alt="DDW logo"
+                        class="img-fluid ddw-white"></p>
+                <p class="apps">Contact Us <br>
+                    301-272-0022 <br>
+                    administration@ddw.org</p>
+
+                <p class="apps">Digestive Disease Week <br>
+                    4930 Del Ray Avenue <br>
+                    Bethesda, MD 20814</p>
             </div>
         </div>
-    </div>
-    <div class="col-md-3 right-panel">
-        <p><img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-white.png"
-                alt="DDW logo"
-                class="img-fluid ddw-white"></p>
-        <p class="apps">Contact Us <br>
-            301-272-0022 <br>
-            administration@ddw.org</p>
-
-        <p class="apps">Digestive Disease Week <br>
-            4930 Del Ray Avenue <br>
-            Bethesda, MD 20814</p>
     </div>
 </div>
 
 <div class="row middle-footer text-left">
-    <div class="col-md-2 pl-5">
-        <h5>Register</h5>
-        <ul>
-            <li *ngFor="let regPage of registerPages">
-                <a [routerLink]="['/register/', regPage.url]"
-                   *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage">
-                    {{ regPage.title }}
-                </a>
-                <a [routerLink]="['/register/', regPage.grandchildURL ,regPage.url]"
-                   *ngIf="!regPage.isExtURL && regPage.isGrandchildPage">
-                    {{ regPage.title }}
-                </a>
-                <a [href]="regPage.extURL"
-                   target="_blank"
-                   *ngIf="regPage.isExtURL">
-                    {{ regPage.title }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-2">
-        <h5>Attendee Planning</h5>
-        <ul>
-            <li *ngFor="let attPage of attendeePlanningPages">
-                <a [routerLink]="['/attendee-planning/', attPage.url]"
-                   *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage">
-                    {{ attPage.title }}
-                </a>
-                <a [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]"
-                   *ngIf="!attPage.isExtURL && attPage.isGrandchildPage">
-                    {{ attPage.title }}
-                </a>
-                <a [href]="attPage.extURL"
-                   target="_blank"
-                   *ngIf="attPage.isExtURL">
-                    {{ attPage.title }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-2">
-        <h5>
-            Education
-        </h5>
-        <ul>
-            <li *ngFor="let edPage of educationPages">
-                <a [routerLink]="['/education/', edPage.url]"
-                   *ngIf="!edPage.isExtURL && !edPage.isGrandchildPage">
-                    {{ edPage.title }}
-                </a>
-                <a [routerLink]="['/education/', edPage.grandchildURL, edPage.url]"
-                   *ngIf="!edPage.isExtURL && edPage.isGrandchildPage">
-                    {{ edPage.title }}
-                </a>
-                <a [href]="edPage.extURL"
-                   target="_blank"
-                   *ngIf="edPage.isExtURL">
-                    {{ edPage.title }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-2">
-        <h5>Exhibitor Information</h5>
-        <ul>
-            <li *ngFor="let exhPage of exhibitorInfoPages">
-                <a [routerLink]="['/exhibitor-information/', exhPage.url]"
-                   *ngIf="!exhPage.isExtURL && !exhPage.isGrandchildPage">
-                    {{ exhPage.title }}
-                </a>
-                <a [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]"
-                   *ngIf="!exhPage.isExtURL && exhPage.isGrandchildPage">
-                    {{ exhPage.title }}
-                </a>
-                <a [href]="exhPage.extURL"
-                   target="_blank"
-                   *ngIf="exhPage.isExtURL">
-                    {{ exhPage.title }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-2">
-        <h5>News &amp; Media</h5>
-        <ul>
-            <li *ngFor="let newsPage of newsAndMediaPages">
-                <a [routerLink]="['/news/', newsPage.url]"
-                   *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage">
-                    {{ newsPage.title }}
-                </a>
-                <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]"
-                   *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage">
-                    {{ newsPage.title }}
-                </a>
-                <a [routerLink]="['/news/', newsPage.extURL]"
-                   *ngIf="newsPage.isExtURL">
-                    {{ newsPage.title }}
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- * TODO: Make external link pages * -->
-    <div class="col-md-2 pr-5">
-        <h5>Presenters</h5>
-        <ul>
-            <li *ngFor="let presPage of presentersPages">
-                <a [routerLink]="['/presenters/', presPage.url]"
-                   *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage">
-                    {{ presPage.title }}
-                </a>
-                <a [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]"
-                   *ngIf="!presPage.isExtURL && presPage.isGrandchildPage">
-                    {{ presPage.title }}
-                </a>
-                <a [href]="presPage.extURL"
-                   target="_blank"
-                   *ngIf="presPage.isExtURL">
-                    {{ presPage.title }}
-                </a>
-            </li>
-        </ul>
+    <div class="container-fluid" style="max-width:1200px;">
+        <div class="row">
+            <div class="col-md-2">
+                <h5>Register</h5>
+                <ul>
+                    <li *ngFor="let regPage of registerPages">
+                        <a [routerLink]="['/register/', regPage.url]"
+                           *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage">
+                            {{ regPage.title }}
+                        </a>
+                        <a [routerLink]="['/register/', regPage.grandchildURL ,regPage.url]"
+                           *ngIf="!regPage.isExtURL && regPage.isGrandchildPage">
+                            {{ regPage.title }}
+                        </a>
+                        <a [href]="regPage.extURL"
+                           target="_blank"
+                           *ngIf="regPage.isExtURL">
+                            {{ regPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Attendee Planning</h5>
+                <ul>
+                    <li *ngFor="let attPage of attendeePlanningPages">
+                        <a [routerLink]="['/attendee-planning/', attPage.url]"
+                           *ngIf="!attPage.isExtURL && !attPage.isGrandchildPage">
+                            {{ attPage.title }}
+                        </a>
+                        <a [routerLink]="['/attendee-planning/', attPage.grandchildURL, attPage.url]"
+                           *ngIf="!attPage.isExtURL && attPage.isGrandchildPage">
+                            {{ attPage.title }}
+                        </a>
+                        <a [href]="attPage.extURL"
+                           target="_blank"
+                           *ngIf="attPage.isExtURL">
+                            {{ attPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>
+                    Education
+                </h5>
+                <ul>
+                    <li *ngFor="let edPage of educationPages">
+                        <a [routerLink]="['/education/', edPage.url]"
+                           *ngIf="!edPage.isExtURL && !edPage.isGrandchildPage">
+                            {{ edPage.title }}
+                        </a>
+                        <a [routerLink]="['/education/', edPage.grandchildURL, edPage.url]"
+                           *ngIf="!edPage.isExtURL && edPage.isGrandchildPage">
+                            {{ edPage.title }}
+                        </a>
+                        <a [href]="edPage.extURL"
+                           target="_blank"
+                           *ngIf="edPage.isExtURL">
+                            {{ edPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Exhibitor Information</h5>
+                <ul>
+                    <li *ngFor="let exhPage of exhibitorInfoPages">
+                        <a [routerLink]="['/exhibitor-information/', exhPage.url]"
+                           *ngIf="!exhPage.isExtURL && !exhPage.isGrandchildPage">
+                            {{ exhPage.title }}
+                        </a>
+                        <a [routerLink]="['/exhibitor-information/', exhPage.grandchildURL, exhPage.url]"
+                           *ngIf="!exhPage.isExtURL && exhPage.isGrandchildPage">
+                            {{ exhPage.title }}
+                        </a>
+                        <a [href]="exhPage.extURL"
+                           target="_blank"
+                           *ngIf="exhPage.isExtURL">
+                            {{ exhPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>News &amp; Media</h5>
+                <ul>
+                    <li *ngFor="let newsPage of newsAndMediaPages">
+                        <a [routerLink]="['/news/', newsPage.url]"
+                           *ngIf="!newsPage.isExtURL && !newsPage.isGrandchildPage">
+                            {{ newsPage.title }}
+                        </a>
+                        <a [routerLink]="['/news/', newsPage.grandchildURL, newsPage.url]"
+                           *ngIf="!newsPage.isExtURL && newsPage.isGrandchildPage">
+                            {{ newsPage.title }}
+                        </a>
+                        <a [routerLink]="['/news/', newsPage.extURL]"
+                           *ngIf="newsPage.isExtURL">
+                            {{ newsPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Presenters</h5>
+                <ul>
+                    <li *ngFor="let presPage of presentersPages">
+                        <a [routerLink]="['/presenters/', presPage.url]"
+                           *ngIf="!presPage.isExtURL && !presPage.isGrandchildPage">
+                            {{ presPage.title }}
+                        </a>
+                        <a [routerLink]="['/presenters/', presPage.grandchildURL, presPage.url]"
+                           *ngIf="!presPage.isExtURL && presPage.isGrandchildPage">
+                            {{ presPage.title }}
+                        </a>
+                        <a [href]="presPage.extURL"
+                           target="_blank"
+                           *ngIf="presPage.isExtURL">
+                            {{ presPage.title }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="row middle-bottom">
     <div class="container text-center">
         <div class="offset-md-2 col-md-8">
-            <h5>Sponsoring Societies: <a href="http://www.aasld.org/">AASLD</a> | <a href="http://www.gastro.org/">AGA</a> | <a href="http://www.asge.org/">ASGE</a> | <a href="http://ssat.com/">SSAT</a></h5>
+            <h5>Sponsoring Societies: <a href="http://www.aasld.org/">AASLD</a> | <a
+                    href="http://www.gastro.org/">AGA</a> | <a href="http://www.asge.org/">ASGE</a> | <a
+                    href="http://ssat.com/">SSAT</a></h5>
         </div>
     </div>
 </div>
 
-<div class="container-fluid copyright">
-    <div class="row">
-        <div class="col-md-6 pl-5">
-            <p class="copy">
-                &nbsp;Privacy Policy | &copy; 2018 Digestive Disease Week. All Rights Reserved.
-            </p>
-        </div>
-        <div class="col text-right pr-5">
-            <p class="copy">
-                <!--Site Built by <a href="https://gastro.org" target="_blank" class="aga-copy">&copy; 2018 American-->
-                <!--Gastroenterological Association</a>.&nbsp;-->
-                <a href="https://www.facebook.com/DDWMeeting" target="_blank" class="social"><i
-                        class="fab fa-facebook"></i></a>
-                <a href="https://twitter.com/DDWMeeting" target="_blank" class="social"><i
-                        class="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/user/DDWMeeting" target="_blank" class="social"><i
-                        class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/ddwmeeting" target="_blank" class="social"><i
-                        class="fab fa-instagram"></i></a>
-            </p>
+<div class="row copyright">
+    <div class="container-fluid" style="max-width:1200px;">
+        <div class="row">
+            <div class="col-md-6 pl-5">
+                <p class="copy">
+                    &nbsp;Privacy Policy | &copy; 2018 Digestive Disease Week. All Rights Reserved.
+                </p>
+            </div>
+            <div class="col text-right pr-5">
+                <p class="copy">
+                    <!--Site Built by <a href="https://gastro.org" target="_blank" class="aga-copy">&copy; 2018 American-->
+                    <!--Gastroenterological Association</a>.&nbsp;-->
+                    <a href="https://www.facebook.com/DDWMeeting" target="_blank" class="social"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/DDWMeeting" target="_blank" class="social"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/user/DDWMeeting" target="_blank" class="social"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/ddwmeeting" target="_blank" class="social"><i
+                            class="fab fa-instagram"></i></a>
+                </p>
+            </div>
         </div>
     </div>
 </div>

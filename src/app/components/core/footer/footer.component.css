@@ -29,7 +29,7 @@ ul > li > a {
 .row.top-footer {
     background-color: #003f5f;
     color: #ffffff;
-    padding: 2em 0.5em 2em 1.5em;
+    padding: 2em 0.5em 0 1.5em;
     font-size: 14px;
     margin-top: 50px;
 }
@@ -46,6 +46,7 @@ img.ddw-white {
 
 .right-panel {
     border-left: 1px solid white;
+    padding-bottom: 3em;
 }
 
 .middle-footer {
@@ -64,6 +65,10 @@ img.apple {
     max-width: 160px;
 }
 
+apps {
+    margin: 0 1em;
+}
+
 a.app.apple {
     display: inline-block;
     background-size: cover;
@@ -71,9 +76,9 @@ a.app.apple {
     border: 2px solid #fff;
     background-color: #003f5f;
     /*max-width: 180px;*/
-    width: 200px;
-    height: 70px;
-    padding: 1em;
+    width: 180px;
+    height: 65px;
+    padding: 2em;
     background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/logos/apple-appstore-trans.png);
 }
 
@@ -84,9 +89,9 @@ a.app.google {
     border: 2px solid #fff;
     background-color: #003f5f;
     /*max-width: 180px;*/
-    width: 200px;
-    height: 70px;
-    padding: 1em;
+    width: 180px;
+    height: 65px;
+    padding: 2em;
     background-image: url(https://s3.amazonaws.com/DDW/ddw-org/images/logos/google-play-trans.png);
 }
 

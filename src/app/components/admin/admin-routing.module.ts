@@ -13,6 +13,7 @@ import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-ed
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
+import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
@@ -127,6 +128,7 @@ const adminRoutes: Routes = [
                 component: AdminPageExhibitorInformationListComponent,
                 canActivate: [AuthGuard]
             },
+            { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard] },
             { path: 'news', component: AdminPageNewsAndMediaListComponent, canActivate: [AuthGuard] },
             { path: 'presenters', component: AdminPagePresentersListComponent, canActivate: [AuthGuard] },
             { path: 'login', component: AdminLoginComponent },

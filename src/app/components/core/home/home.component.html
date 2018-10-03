@@ -190,18 +190,20 @@
     </div>
     <div class="numbers text-center reverse contain-inner">
         <div class="HtmlContent">
-            <div class="row">
-                <div class="col-sm-4">
-                    <p class="num"><b>{{ homePage.byTheNumbersOneNumber }}</b></p>
-                    <p class="num-def">{{ homePage.byTheNumbersOneSubtitle }}</p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="num"><b>{{ homePage.byTheNumbersTwoNumber }}</b></p>
-                    <p class="num-def">{{ homePage.byTheNumbersTwoSubtitle }}</p>
-                </div>
-                <div class="col-sm-4">
-                    <p class="num"><b>{{ homePage.byTheNumbersThreeNumber }}</b></p>
-                    <p class="num-def">{{ homePage.byTheNumbersThreeSubtitle }}</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="num"><b>{{ homePage.byTheNumbersOneNumber }}</b></p>
+                        <p class="num-def">{{ homePage.byTheNumbersOneSubtitle }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="num"><b>{{ homePage.byTheNumbersTwoNumber }}</b></p>
+                        <p class="num-def">{{ homePage.byTheNumbersTwoSubtitle }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="num"><b>{{ homePage.byTheNumbersThreeNumber }}</b></p>
+                        <p class="num-def">{{ homePage.byTheNumbersThreeSubtitle }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -211,39 +213,41 @@
 <!-- * Sponsoring Societies * -->
 <div class="row sponsors" *ngIf="homePage && !homePage.sponsorHidden">
     <div class="container">
-        <div class="col-md-6 offset-md-3 text-center">
+        <div class="text-center">
             <h2 class="by-nums-title card-sec-title">{{ homePage.sponsorTitle }}</h2>
         </div>
     </div>
 </div>
-<div class="row text-center sponsor-images" *ngIf="homePage && !homePage.sponsorHidden">
-    <div class="col-sm-3">
-        <a [href]="homePage.sponsorOneURL">
-            <img [src]="homePage.sponsorOneImg"
-                 [alt]="homePage.sponsorOneImg"
-                 class="sponsor-one img-fluid">
-        </a>
-    </div>
-    <div class="col-sm-3">
-        <a [href]="homePage.sponsorTwoURL">
-            <img [src]="homePage.sponsorTwoImg"
-                 [alt]="homePage.sponsorTwoImg"
-                 class="sponsor-two img-fluid">
-        </a>
-    </div>
-    <div class="col-sm-3">
-        <a [href]="homePage.sponsorThreeURL">
-            <img [src]="homePage.sponsorThreeImg"
-                 [alt]="homePage.sponsorThreeImg"
-                 class="sponsor-three img-fluid">
-        </a>
-    </div>
-    <div class="col-sm-3">
-        <a [href]="homePage.sponsorFourURL">
-            <img [src]="homePage.sponsorFourImg"
-                 [alt]="homePage.sponsorFourImg"
-                 class="sponsor-four img-fluid">
-        </a>
+<div class="container">
+    <div class="row text-center sponsor-images" *ngIf="homePage && !homePage.sponsorHidden">
+        <div class="col-sm-3">
+            <a [href]="homePage.sponsorOneURL">
+                <img [src]="homePage.sponsorOneImg"
+                     [alt]="homePage.sponsorOneImg"
+                     class="sponsor-one img-fluid">
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a [href]="homePage.sponsorTwoURL">
+                <img [src]="homePage.sponsorTwoImg"
+                     [alt]="homePage.sponsorTwoImg"
+                     class="sponsor-two img-fluid">
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a [href]="homePage.sponsorThreeURL">
+                <img [src]="homePage.sponsorThreeImg"
+                     [alt]="homePage.sponsorThreeImg"
+                     class="sponsor-three img-fluid">
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <a [href]="homePage.sponsorFourURL">
+                <img [src]="homePage.sponsorFourImg"
+                     [alt]="homePage.sponsorFourImg"
+                     class="sponsor-four img-fluid">
+            </a>
+        </div>
     </div>
 </div>
 

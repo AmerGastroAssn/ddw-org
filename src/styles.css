@@ -692,16 +692,6 @@ h2.card-sec-title::after {
     /*color: #0056b3;*/
 }
 
-/* MOBILE */
-@media only screen and (min-width: 992px) {
-    .col-quote {
-        padding-left: 3em;
-        padding-right: 3em;
-        padding-top: 1em;
-    }
-
-}
-
 .cse .gsc-control-cse, .gsc-control-cse {
     font-family: Arial, sans-serif;
     background-color: transparent !important;
@@ -771,5 +761,51 @@ h2.card-sec-title::after {
     border-color: #ffffff;
     background-color: transparent !important;
     background-image: none !important;
+
+}
+
+/*------------------------------------------------
+     CKeditor Attribute Styles
+------------------------------------------------*/
+
+input[type='button'] {
+    background-color: #F47700;
+    color: #fff;
+    font-size: 18px;
+    padding: .5em 3em;
+    margin: 1.5em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type='button']:hover {
+    background-color: #FEB512;
+    color: #004060;
+    font-size: 18px;
+    padding: .5em 3em;
+    margin: 1.5em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*------------------------------------------------
+     Mobile
+------------------------------------------------*/
+@media only screen and (min-width: 992px) {
+    .col-quote {
+        padding-left: 3em;
+        padding-right: 3em;
+        padding-top: 1em;
+    }
 
 }

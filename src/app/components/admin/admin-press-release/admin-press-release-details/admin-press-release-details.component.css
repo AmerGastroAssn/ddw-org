@@ -99,3 +99,8 @@ h2.card-sec-title {
 .card-text {
     padding: 2em;
 }
+
+.btn-group.btn-group-sm.float-right > a.btn,
+.btn-group.btn-group-sm.float-right > button.btn {
+    border-radius: 0;
+}

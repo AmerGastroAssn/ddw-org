@@ -1,4 +1,4 @@
-p, ul, ol, li  {
+p, ul, ol, li {
     font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
     line-height: 2;
     font-size: 18px;
@@ -36,7 +36,6 @@ h1, h2, h3 {
     color: #9d9fa1 !important;
 }
 
-
 li.nav-item {
     padding: 0 1em;
     font-size: 14px;
@@ -54,7 +53,7 @@ img.bannerPhotoURL {
 
 h1.title {
     position: absolute;
-    top: 30%;
+    top: 30% !important;
     color: #ffffff;
     font-weight: bold;
 }
@@ -129,6 +128,11 @@ a.btn.btn-warning.btn-lg:hover {
     font-size: 18px;
 }
 
+.btn-group.btn-group-sm.float-right > a.btn,
+.btn-group.btn-group-sm.float-right > button.btn {
+    border-radius: 0;
+}
+
 /*------------------------------------------------
      Calendar
 ------------------------------------------------*/
@@ -162,7 +166,7 @@ li.nav-item:hover {
 }
 
 .cal-content {
-    background-color: #fff;
+    background-color: #FAFAFA;
 }
 
 a:link, a:link:active {
@@ -178,11 +182,15 @@ h4, p, li {
     border: 1px solid #EBEBEB;
 }
 
+#calTab > li.nav-item {
+    padding: 0;
+}
+
 .tab-content {
     border: 1px solid #EBEBEB;
     border-top: #fff;
+    background-color: #FAFAFA;
 }
-
 
 @media (max-width: 575px) {
     form.form-inline {

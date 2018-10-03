@@ -84,6 +84,7 @@
                                        *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
                                 </li>
                             </ul>
+                            <!-- * Calendar Content * -->
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active"
                                      id="date1"
@@ -275,7 +276,7 @@
                                [routerLink]="['/admin/pages']">
                                 <i class="fal fa-arrow-circle-left"></i>&nbsp;All Pages
                             </a>
-                            <a class="btn btn-secondary"
+                            <a class="btn btn-secondary text-white"
                                [routerLink]="['edit']">
                                 <i class="fa fa-pencil"></i>&nbsp;Edit
                             </a>

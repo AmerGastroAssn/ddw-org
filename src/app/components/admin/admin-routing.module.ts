@@ -19,6 +19,7 @@ import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
+import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.component';
@@ -120,6 +121,7 @@ const adminRoutes: Routes = [
                     { path: 'all', component: AdminCustomNavLinkListComponent, canActivate: [AuthGuard] },
                 ]
             },
+            { path: 'privacy-policy', component: AdminPrivacyPolicyComponent, canActivate: [AuthGuard] },
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },
             { path: 'attendee-planning', component: AdminPageAttendeePlanningListComponent, canActivate: [AuthGuard] },
             { path: 'education', component: AdminPageEducationListComponent, canActivate: [AuthGuard] },

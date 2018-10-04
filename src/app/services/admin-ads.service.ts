@@ -55,9 +55,9 @@ export class AdminAdsService {
                 this.sbAlert.open('Ads were NOT Saved!', 'Dismiss', {
                     duration: 3000,
                     verticalPosition: 'bottom',
-                    panelClass: ['snackbar-success']
+                    panelClass: ['snackbar-danger']
                 });
-                console.log(`ERROR~uM: `, error);
+                console.log(`ERROR~uA: `, error);
             });
     }
 }

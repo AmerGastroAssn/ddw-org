@@ -57,6 +57,7 @@ import { AdminPressReleaseModule } from './admin-press-release/admin-press-relea
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
+import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
 
 @NgModule({
     declarations: [
@@ -93,6 +94,7 @@ import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dash
         AdminPageCardItemComponent,
         AdminPageCardNewComponent,
         AdminDashboardComponent,
+        AdminPrivacyPolicyComponent,
     ],
     imports: [
         CommonModule,

@@ -76,6 +76,7 @@ import { ModalService } from './services/modal.service';
 import { PageService } from './services/page.service';
 import { PagesCardService } from './services/pages-card.service';
 import { ScriptService } from './services/script.service';
+import { PrivacyPolicyComponent } from './components/core/privacy-policy/privacy-policy.component';
 
 
 // Inits the app (Fixes a bug).
@@ -109,6 +110,7 @@ firebase.initializeApp(environment.firebase);
         PagesNavbarComponent,
         AlertModalComponent,
         SafePipe,
+        PrivacyPolicyComponent,
     ],
     imports: [
         BrowserModule,

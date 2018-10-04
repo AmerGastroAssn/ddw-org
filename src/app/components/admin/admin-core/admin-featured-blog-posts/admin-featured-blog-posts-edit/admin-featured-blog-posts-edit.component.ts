@@ -160,6 +160,7 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
 
                 this.$key = this.postForm2.value.$key;
                 this.uid = this.postForm2.value.uid;
+                this.orderNumber = this.postForm2.value.orderNumber;
                 this.body = this.postForm2.value.body;
                 this.photoURL = this.postForm2.value.photoURL;
                 this.linkText = this.postForm2.value.linkText;

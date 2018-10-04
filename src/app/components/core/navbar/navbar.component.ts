@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .static a').css({ color: 'white' });
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
                 $('#HomeNavBar .nav-item > a').css({ color: 'white' });
+                $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
@@ -49,6 +50,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .networking > a').css({ color: '#2e6da4' });
                 $('#HomeNavBar .static a').css({ color: '#5F6A72' });
                 $('#HomeNavBar .nav-item > a').css({ color: '#5F6A72' });
+                $('a.level1.MPAuxNav.static').removeClass('light-link');
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
                 $('.gsc-control-cse').css({ border: '1px solid #333333 !important' });
@@ -76,6 +78,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .static a').css({ color: 'white' });
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
                 $('#HomeNavBar .nav-item > a').css({ color: 'white' });
+                $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
@@ -85,6 +88,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar').css({ background: 'rgba(255, 255, 255, 0.9)' });
                 $('#HomeNavBar .networking > a').css({ color: '#2e6da4' });
                 $('#HomeNavBar .static a').css({ color: '#5F6A72' });
+                $('a.level1.MPAuxNav.static').removeClass('light-link');
                 $('#HomeNavBar .nav-item > a').css({ color: '#5F6A72' });
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });

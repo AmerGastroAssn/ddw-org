@@ -23,6 +23,10 @@ li.dropdown-item a {
     font-size: 14px;
 }
 
+a.light-link {
+    color: #fff !important;
+}
+
 /* Colin's Addition */
 /*li.dropdown-item:hover, li.dropdown-item *:hover, li.dropdown-item *:active, li.dropdown-item > a:link:hover {*/
 /*background-color: #eeeeee !important;*/

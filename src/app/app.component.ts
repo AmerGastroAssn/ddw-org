@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { AdminSettingsService } from './services/admin-settings.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class AppComponent implements OnInit {
 
     constructor(
       private settingsService: AdminSettingsService,
+      private router: Router,
     ) {
         this.settingsService.getSettings()
             .subscribe((settings) => {
@@ -18,6 +20,12 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        // Makes pages scroll to top of page on routerLink navigation.
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            window.scrollTo(0, 0);
+        });
     }
 }

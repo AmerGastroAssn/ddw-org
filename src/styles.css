@@ -308,6 +308,22 @@ a.btn.btn-warning.btn-lg:hover {
     text-decoration: none;
 }
 
+#AdSpace {
+    margin: 2em 0 0 0;
+}
+
+#prAdSpace {
+    margin: 2em 0 0 0;
+}
+
+#prAdSpace {
+    /*margin: 2em 0 0 0;*/
+}
+
+#myAdSpace {
+    /*margin: 2em 0 0 0;*/
+}
+
 /* Cavin's Custom */
 
 .block {

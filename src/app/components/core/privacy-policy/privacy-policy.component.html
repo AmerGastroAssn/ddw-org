@@ -1,3 +1,52 @@
-<p>
-  privacy-policy works!
-</p>
+<ddw-pages-navbar></ddw-pages-navbar>
+<img [src]="bannerImage"
+     class="bannerPhotoURL">
+
+<div class="container">
+    <h1 class="title">Privacy Policy</h1>
+</div>
+
+<!-- * AD Headerbar * -->
+<div class="row"
+     *ngIf="headerbar">
+    <div class="container">
+        <div class="text-center">
+            <div [innerHTML]="headerbar | safeHtml"
+                 runScripts
+                 id="AdSpace"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row crumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <div class="text-capitalize text-decoration-none text-dark">
+                    Privacy Policy
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container-fluid body-container">
+        <div [innerHTML]="privacyPolicy.body | safeHtml"></div>
+    </div>
+</div>
+
+
+<!-- * AD Footerbar * -->
+<div class="row"
+     *ngIf="footerbar">
+    <div class="container">
+        <div class="text-center">
+            <div [innerHTML]="footerbar | safeHtml"
+                 runScripts
+                 id="myAdSpace"></div>
+        </div>
+    </div>
+</div>
+
+<ddw-footer></ddw-footer>

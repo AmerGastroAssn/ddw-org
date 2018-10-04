@@ -5,6 +5,7 @@ import { AdminModule } from './components/admin/admin.module';
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
+import { PrivacyPolicyComponent } from './components/core/privacy-policy/privacy-policy.component';
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
 import { EducationComponent } from './components/pages/education/education.component';
 import { ExhibitorInformationComponent } from './components/pages/exhibitor-information/exhibitor-information.component';
@@ -19,6 +20,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent, data: { title: 'Home' } },
     { path: 'contactus', component: ContactUsComponent, data: { title: 'Contact Us' } },
+    { path: 'privacy', component: PrivacyPolicyComponent, data: { title: 'Privacy Policy' } },
     { path: 'not-found', component: NotFoundComponent, data: { title: 'Page Not Found' } },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {

@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { Meta, Title } from '@angular/platform-browser';
 import { ContactForm } from '../../../models/ContactForm';
 import { AdminAdsService } from '../../../services/admin-ads.service';
+import { AdminMetaService } from '../../../services/admin-meta.service';
 import { ContactFormService } from '../../../services/contact-form.service';
 
 @Component({
@@ -34,6 +36,9 @@ export class ContactUsComponent implements OnInit {
       private sbAlert: MatSnackBar,
       private httpClient: HttpClient,
       private adsService: AdminAdsService,
+      private titleService: Title,
+      private meta: Meta,
+      private metaService: AdminMetaService,
     ) {
         this.sentDate = Date.now();
         this.bannerImage = 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg';
@@ -45,6 +50,59 @@ export class ContactUsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.titleService.setTitle(`Contact Us - DDW Website`);
+        // Ads
+        this.adsService.getAds()
+            .subscribe((ads) => {
+                this.footerbar = ads.footerbar;
+                this.headerbar = ads.headerbar;
+            });
+
+
+        this.metaService.getMeta()
+            .subscribe((meta) => {
+                if (meta) {
+                    this.meta.updateTag({ name: 'description', content: meta.metaDesc });
+                    this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
+                    this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
+                    this.meta.updateTag({ property: 'og:url', content: `http://ddw.org/contactus` });
+                    this.meta.updateTag({
+                        property: 'og:title',
+                        content: `Contact Us - Digestive Digest Week®`
+                    });
+                    this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
+                    this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/contactus` });
+                    this.meta.updateTag({
+                        property: 'og:description',
+                        content: meta.metaDesc
+                    });
+                    this.meta.updateTag({
+                        property: 'og:image',
+                        content: meta.metaImageURL
+                    });
+                    this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/contactus` });
+                    this.meta.updateTag({
+                        itemprop: 'description',
+                        content: meta.metaDesc
+                    });
+                    this.meta.updateTag({ itemprop: 'image', content: meta.metaImageURL });
+                    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+                    this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
+                    this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/contactus` });
+                    this.meta.updateTag({ name: 'twitter:title', content: 'Contact Us' });
+                    this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
+                    this.meta.updateTag({
+                        name: 'twitter:description',
+                        content: meta.metaDesc
+                    });
+                    this.meta.updateTag({
+                        name: 'twitter:image',
+                        content: meta.metaImageURL
+                    });
+                }
+            });
+
+
         // Ads
         this.adsService.getAds()
             .subscribe((ads) => {

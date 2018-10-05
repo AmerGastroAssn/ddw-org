@@ -16,10 +16,17 @@ h1, h2, h3 {
     max-width: 1200px;
 }
 
+.image-container {
+    float: right;
+    min-height: 305px;
+}
+
+
 img.bannerPhotoURL {
     top: 0;
     left: 0;
     position: relative;
+    min-height: 350px;
     max-height: 350px;
     width: 100%;
     /*z-index: 0;*/
@@ -32,10 +39,6 @@ h1.title {
     font-weight: bold;
 }
 
-p {
-
-}
-
 .row.crumbs {
     padding: 2em 0;
 }
@@ -44,6 +47,13 @@ ol.breadcrumb, li.breadcrumb-item {
     background-color: #fff;
 }
 
+.image-container {
+    float: right;
+    min-height: 305px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 img.photoURL {
     max-width: 450px;
     float: right;
@@ -66,10 +76,6 @@ h2.card-sec-title {
 
 .card-body {
     line-height: 2em;
-}
-
-.card-text {
-    padding: 2em;
 }
 
 a.btn.btn-warning.btn-lg {

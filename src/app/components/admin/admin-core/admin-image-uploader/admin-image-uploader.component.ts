@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { AdminImageService } from '../../../../services/admin-image.service';
 
 @Component({
     selector: 'ddw-admin-image-uploader',
@@ -22,6 +23,7 @@ export class AdminImageUploaderComponent implements OnInit {
     constructor(
       private storage: AngularFireStorage,
       private sbAlert: MatSnackBar,
+      private imageService: AdminImageService,
     ) {
     }
 
@@ -52,6 +54,19 @@ export class AdminImageUploaderComponent implements OnInit {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name)
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
+
+
           })
         )
             .subscribe();

@@ -17,6 +17,7 @@ import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dash
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
+import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
@@ -142,7 +143,8 @@ const adminRoutes: Routes = [
             { path: 'meta', component: AdminMetaComponent, canActivate: [AdminGuard] },
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
             { path: 'home', component: AdminHomePageComponent, canActivate: [AuthGuard] },
-            { path: 'image-uploader', component: AdminImageUploaderComponent, canActivate: [AuthGuard] }
+            { path: 'image-uploader', component: AdminImageUploaderComponent, canActivate: [AuthGuard] },
+            { path: 'images', component: AdminImagesComponent, canActivate: [AuthGuard] }
         ]
     },
 ];

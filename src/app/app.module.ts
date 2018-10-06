@@ -39,6 +39,7 @@ import { MetaTagsComponent } from './components/core/meta-tags/meta-tags.compone
 import { NavbarComponent } from './components/core/navbar/navbar.component';
 import { NotFoundComponent } from './components/core/not-found/not-found.component';
 import { PagesNavbarComponent } from './components/core/pages-navbar/pages-navbar.component';
+import { PrivacyPolicyComponent } from './components/core/privacy-policy/privacy-policy.component';
 import { SidebarComponent } from './components/core/sidebar/sidebar.component';
 
 import { AttendeePlanningComponent } from './components/pages/attendee-planning/attendee-planning.component';
@@ -64,6 +65,7 @@ import { AdminCardService } from './services/admin-card.service';
 import { AdminCustomNavLinkService } from './services/admin-custom-nav-link.service';
 import { AdminFeaturedPostService } from './services/admin-featured-post.service';
 import { AdminHomePageService } from './services/admin-home-page.service';
+import { AdminImageService } from './services/admin-image.service';
 import { AdminMetaService } from './services/admin-meta.service';
 import { AdminPageService } from './services/admin-page.service';
 import { AdminSettingsService } from './services/admin-settings.service';
@@ -76,7 +78,6 @@ import { ModalService } from './services/modal.service';
 import { PageService } from './services/page.service';
 import { PagesCardService } from './services/pages-card.service';
 import { ScriptService } from './services/script.service';
-import { PrivacyPolicyComponent } from './components/core/privacy-policy/privacy-policy.component';
 
 
 // Inits the app (Fixes a bug).
@@ -153,6 +154,7 @@ firebase.initializeApp(environment.firebase);
         ModalService,
         AdminCustomNavLinkService,
         PagesCardService,
+        AdminImageService,
     ],
     entryComponents: [
         AdminBottomSheetNewComponent,

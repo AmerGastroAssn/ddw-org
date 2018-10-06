@@ -7,6 +7,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Card } from '../../../../models/Card';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
 
@@ -63,6 +64,7 @@ export class AdminPageCardNewComponent implements OnInit {
       private storage: AngularFireStorage,
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
+      private imageService: AdminImageService,
     ) {
     }
 
@@ -93,6 +95,17 @@ export class AdminPageCardNewComponent implements OnInit {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name)
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
           })
         )
             .subscribe();

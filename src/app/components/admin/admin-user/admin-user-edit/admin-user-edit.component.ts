@@ -8,6 +8,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { User } from '../../../../models/User';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
 
@@ -51,6 +52,7 @@ export class AdminUserEditComponent implements OnInit {
       private afAuth: AngularFireAuth,
       private sbAlert: MatSnackBar,
       private storage: AngularFireStorage,
+      private imageService: AdminImageService,
     ) {
     }
 
@@ -81,6 +83,17 @@ export class AdminUserEditComponent implements OnInit {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name)
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
           })
         )
             .subscribe();

@@ -13,6 +13,7 @@ import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -100,7 +101,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
       private adminCalendarService: AdminCalendarService,
-      private pagesCardService: PagesCardService
+      private pagesCardService: PagesCardService,
+      private imageService: AdminImageService,
     ) {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
@@ -151,6 +153,17 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name)
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
           })
         )
             .subscribe();

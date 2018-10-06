@@ -1,11 +1,11 @@
 export class Image {
     constructor(
-      $key: string,
-      author: string,
-      createdAt: number,
-      imageName: string,
-      uid: string,
-      url: string,
+      public $key: string,
+      public author: string,
+      public createdAt: number,
+      public imageName: string,
+      public uid: string,
+      public url: string,
     ) {
     }
 }

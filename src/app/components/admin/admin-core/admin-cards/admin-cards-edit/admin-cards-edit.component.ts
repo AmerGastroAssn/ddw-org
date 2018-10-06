@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { Card } from '../../../../../models/Card';
 import { AdminCardService } from '../../../../../services/admin-card.service';
+import { AdminImageService } from '../../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../../services/admin-settings.service';
 import { AuthService } from '../../../../../services/auth.service';
@@ -60,6 +61,7 @@ export class AdminCardsEditComponent implements OnInit {
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
       private settingsService: AdminSettingsService,
+      private imageService: AdminImageService,
     ) {
 
     }
@@ -99,6 +101,17 @@ export class AdminCardsEditComponent implements OnInit {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name)
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
           })
         )
             .subscribe();

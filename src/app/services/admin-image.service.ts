@@ -24,9 +24,9 @@ export class AdminImageService {
 
     getImages(): Observable<Image[]> {
         this.imageCollection = this.afs.collection(`images`,
-          ref => ref.orderBy('createdAt', 'asc')
+          ref => ref.orderBy('createdAt', 'desc')
         );
-        return this.afs.collection(`images`).valueChanges();
+        return this.imageCollection.valueChanges();
     }
 
 

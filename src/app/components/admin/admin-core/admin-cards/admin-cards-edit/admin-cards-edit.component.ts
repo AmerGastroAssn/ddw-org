@@ -95,7 +95,7 @@ export class AdminCardsEditComponent implements OnInit {
             return;
         }
         // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name.replace(/\s/g, '_')}`;
+        const path = `pageImages/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
         const fileRef = this.storage.ref(path);
         // The main task
         this.task = this.storage.upload(path, file, { customMetadata });
@@ -107,7 +107,7 @@ export class AdminCardsEditComponent implements OnInit {
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
               this.downloadURL.subscribe((imageURL) => {
-                  this.imageService.setImage(imageURL, file.name.replace(/\s/g, '_'))
+                  this.imageService.setImage(imageURL, file.name.replace(/\s/g, '_').toLowerCase())
                       .then(() => {
                           this.sbAlert.open('Image has been added!', 'Dismiss', {
                               duration: 3000,

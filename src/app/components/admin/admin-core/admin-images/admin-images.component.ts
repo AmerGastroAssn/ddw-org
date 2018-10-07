@@ -1,29 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ngCopy } from 'angular-6-clipboard';
-import { Observable } from 'rxjs';
-import { Image } from '../../../../models/Image';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable, Subject } from 'rxjs-compat';
 import { AdminImageService } from '../../../../services/admin-image.service';
 
 @Component({
     selector: 'ddw-admin-images',
     templateUrl: './admin-images.component.html',
-    styleUrls: ['./admin-images.component.css']
+    styleUrls: ['./admin-images.component.css'],
 })
 export class AdminImagesComponent implements OnInit {
-    images$: Observable<Image[]>;
+    allImages: any;
+    images: any;
     showDetailsToggle = [];
     url: string;
+    searchTerm: string;
+    startAt = new Subject();
+    endAt = new Subject();
+    startObs = this.startAt.asObservable();
+    endObs = this.endAt.asObservable();
 
 
     constructor(
       private imageService: AdminImageService,
       private sbAlert: MatSnackBar,
+      private afs: AngularFirestore,
     ) {
     }
 
     ngOnInit() {
-        this.images$ = this.imageService.getImages();
+        this.imageService.getImageByCreatedAt()
+            .subscribe((images) => this.images = images);
+        Observable.combineLatest(this.startObs, this.endObs)
+                  .subscribe((value) => {
+                      this.imageService.getImages(value[0], value[1])
+                          .subscribe((images) => {
+                              this.images = images;
+                          });
+                  });
+
     }
 
     onToggleDetails(i) {
@@ -38,5 +54,21 @@ export class AdminImagesComponent implements OnInit {
             panelClass: ['snackbar-info']
         });
     }
+
+    search($event) {
+        const query = $event.target.value.toLowerCase();
+        if (query !== '') {
+            this.startAt.next(query);
+            this.endAt.next(`${query}\uf8ff`);
+            console.log('query', query);
+        } else {
+            this.imageService.getImageByCreatedAt()
+                .subscribe((images) => {
+                    this.images = images;
+                });
+
+        }
+    }
+
 
 }

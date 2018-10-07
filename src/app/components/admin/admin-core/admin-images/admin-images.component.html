@@ -1,5 +1,5 @@
 <!-- * IMAGES-LIST * -->
-<div class="row mb-5 mt-3">
+<div class="row mb-2 mt-3">
     <div class="col-md-6 mx-auto">
         <div class="card">
             <div class="card-body">
@@ -14,8 +14,7 @@
     </div>
 </div>
 
-
-<div class="row m-4 pl-5">
+<div class="row m-2 pl-5">
     <div class="container">
         <div class="offset-md-10">
             <a [routerLink]="['/admin/image-uploader']" class="btn btn-default">
@@ -25,53 +24,86 @@
     </div>
 </div>
 
-
-<ng-template #loading>
-    <div class="row">
-        <div class="container text-center">
-            <div class="text-center text-dark p-5">
-                <i class="far fa-spinner fa-pulse"></i>
-                <br><br>
-                loading...
+<div class="row">
+    <div class="container">
+        <div class="card mb-4">
+            <h6 class="card-header">
+                Search Images
+            </h6>
+            <div class="card-body demo-vertical-spacing-sm">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Search image titles..."
+                                       [(ngModel)]="searchTerm"
+                                       (keydown)="search($event)">
+                                <span class="input-group-append">
+                                  <button class="btn btn-secondary" type="button">
+                                      <i class="fa fa-search"></i>&nbsp;Search
+                                  </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</ng-template>
+</div>
 
-<div class="row" *ngIf="images$; else loading">
+
+<div class="row mb-5" *ngIf="images; else loading">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4 col-md-3 col-xl-2"
-                 *ngFor="let image of images$ | async; let i = index">
-                <div class="card mt-1">
-                    <img class="card-img-top img-fluid" [src]="image.url" [alt]="image.imageName">
-                    <div class="card-body text-center pt-1 pb-0">
-                        <div class="btn-group btn-group-sm pb-1" role="group" aria-label="Basic example">
-                            <button type="button"
-                                    class="btn btn-default btn-sm"
-                                    (click)="onToggleDetails(i)">
+        <div class="card">
+            <div class="card-body">
+                <ng-template #loading>
+                    <div class="row">
+                        <div class="container text-center">
+                            <div class="text-center text-dark p-5">
+                                <i class="far fa-spinner fa-pulse"></i>
+                                <br><br>
+                                loading...
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <div class="row">
+                    <div class="col-sm-4 col-md-3 col-xl-2"
+                         *ngFor="let image of images; let i = index">
+                        <div class="card mt-1">
+                            <img class="card-img-top img-fluid" [src]="image.url" [alt]="image.imageName">
+                            <div class="card-body text-center pt-1 pb-0">
+                                <div class="btn-group btn-group-xs pb-1" role="group" aria-label="Basic example">
+                                    <button type="button"
+                                            class="btn btn-default btn-xs"
+                                            (click)="onToggleDetails(i)">
                                 <span *ngIf="!showDetailsToggle[i]">
                                     <i class="fa fa-caret-circle-down"></i>&nbsp;Details
                                 </span>
-                                <span *ngIf="showDetailsToggle[i]">
+                                        <span *ngIf="showDetailsToggle[i]">
                                     <i class="fa fa-caret-circle-up"></i>&nbsp;Details
                                 </span>
-                            </button>
-                            <button type="button"
-                                    class="btn btn-default btn-sm"
-                                    (click)="onToggleCopy(image.url)">
-                                <i class="fa fa-clipboard"></i>&nbsp;Copy URL
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body pt-2 details"
-                         *ngIf="showDetailsToggle[i]">
-                        <code class="pb-2">{{ image.url }}</code>
-                        <hr>
-                        <div class="footer">
-                            <i class="fa fa-file"></i> {{ image.imageName }} <br>
-                            <i class="fa fa-user"></i> {{ image.author }} <br>
-                            <i class="fa fa-calendar"></i> {{ image.createdAt | date:'medium' }}
+                                    </button>
+                                    <button type="button"
+                                            class="btn btn-default btn-xs"
+                                            (click)="onToggleCopy(image.url)">
+                                        <i class="fa fa-clipboard"></i>&nbsp;Copy URL
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body pt-2 details"
+                                 *ngIf="showDetailsToggle[i]">
+                                <code class="pb-2">{{ image.url }}</code>
+                                <hr>
+                                <div class="footer">
+                                    <i class="fa fa-file"></i> {{ image.imageName }} <br>
+                                    <i class="fa fa-user"></i> {{ image.author }} <br>
+                                    <i class="fa fa-calendar"></i> {{ image.createdAt | date:'medium' }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

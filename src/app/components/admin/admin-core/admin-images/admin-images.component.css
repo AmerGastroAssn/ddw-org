@@ -26,6 +26,10 @@ code {
     line-height: 2em;
 }
 
+.btn-sm, .btn-xs {
+    border-radius: 0;
+}
+
 .btns {
     float: right;
 }

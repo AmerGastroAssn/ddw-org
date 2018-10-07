@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule, MatSlideToggleModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { NgAisModule } from 'angular-instantsearch';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';

@@ -13,6 +13,7 @@ export class AdminImageService {
     imageDoc: AngularFirestoreDocument<Image>;
     images$: Observable<Image[]>;
     currentUser: User;
+    category: string;
 
 
     constructor(
@@ -22,15 +23,23 @@ export class AdminImageService {
         this.currentUser = this.authService.getProfile();
     }
 
-    getImages(): Observable<Image[]> {
-        this.imageCollection = this.afs.collection(`images`,
+    getImages(start, end) {
+        return this.afs.collection('images',
+          (ref) => ref.limit(10)
+                      .orderBy('imageName')
+                      .startAt(start).endAt(end))
+                   .valueChanges();
+    }
+
+    getImageByCreatedAt(): Observable<Image[]> {
+        this.imageCollection = this.afs.collection('images',
           ref => ref.orderBy('createdAt', 'desc')
         );
         return this.imageCollection.valueChanges();
     }
 
 
-    setImage(downloadURL, imageName) {
+    setImage(downloadURL, fileName) {
         const new$key = this.afs.createId();
         const currentDate = Date.now();
 
@@ -39,7 +48,9 @@ export class AdminImageService {
             $key: new$key,
             uid: new$key,
             author: this.currentUser.email || '',
-            imageName: imageName,
+            category: '',
+            fileName: fileName,
+            imageName: fileName,
             createdAt: currentDate,
             url: downloadURL
         };

@@ -32,6 +32,8 @@ import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-con
 import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
+import { AdminImageUploaderItemComponent } from './admin-core/admin-image-uploader/admin-image-uploader-item/admin-image-uploader-item.component';
+// tslint:disable-next-line:max-line-length
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';

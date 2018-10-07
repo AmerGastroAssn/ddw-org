@@ -4,10 +4,9 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
-import { finalize } from 'rxjs/operators';
 import { Calendar } from '../../../../models/Calendar';
 import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
@@ -54,14 +53,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     cardOption3: string;
     cardSectionTitle: string;
     pageCards$: Observable<Card[]>;
-    // Image upload
-    task: AngularFireUploadTask;
-    // Progress monitoring
-    percentage: Observable<number>;
-    snapshot: Observable<any>;
-    // Download URL
-    downloadURL: Observable<string>;
-    // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
     value: any;
@@ -129,51 +120,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     // For Form Validations
     get f() {
         return this.newPageForm.controls;
-    }
-
-    uploadImage(event) {
-        const customMetadata = { app: 'DDW.org' };
-        // The File object
-        const file = event.target.files[0];
-        // Client-side validation example
-        if (file.type.split('/')[0] !== 'image') {
-            this.sbAlert.open('That file type is not supported :(', 'Dismiss', {
-                duration: 3000,
-                verticalPosition: 'bottom',
-                panelClass: ['snackbar-danger']
-            });
-            console.error('unsupported file type :( ');
-            this.isInvalid = true;
-            return;
-        }
-        // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
-        const fileRef = this.storage.ref(path);
-        // The main task
-        this.task = this.storage.upload(path, file, { customMetadata });
-        // Progress monitoring
-        this.percentage = this.task.percentageChanges();
-        this.snapshot = this.task.snapshotChanges();
-        // The file's download URL
-        this.task.snapshotChanges().pipe(
-          finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-              this.downloadURL.subscribe((imageURL) => {
-                  this.imageService.setImage(imageURL, file.name.replace(/\s/g, '_').toLowerCase())
-                      .then(() => {
-                          this.sbAlert.open('Image has been added!', 'Dismiss', {
-                              duration: 3000,
-                              verticalPosition: 'bottom',
-                              panelClass: ['snackbar-success']
-                          });
-                      })
-                      .catch((error) => console.log('Problem sending image to service', error));
-              });
-
-
-          })
-        )
-            .subscribe();
     }
 
     ngOnInit() {
@@ -287,22 +233,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     toggleHasCards() {
         this.hasCards = !this.hasCards;
-    }
-
-    duplicatePage(control) {
-        if (control) {
-            this.pages$.subscribe((pageArr) => {
-                console.log('pageArr', pageArr);
-                pageArr.forEach(page => {
-                    console.log('page', page);
-                    if (page.title === control) {
-                        return this.titleNotValid = true;
-                    } else {
-                        return this.titleNotValid = false;
-                    }
-                });
-            });
-        }
     }
 
 

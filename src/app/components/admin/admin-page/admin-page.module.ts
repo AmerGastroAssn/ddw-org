@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule, MatSlideToggleModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { NgAisModule } from 'angular-instantsearch';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../../pipes/trust-url.pipe';
+import { AdminImageUploaderItemComponent } from '../admin-core/admin-image-uploader/admin-image-uploader-item/admin-image-uploader-item.component';
+// tslint:disable-next-line:max-line-length
 import { AdminPageAttendeePlanningListComponent } from './admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';
 import { AdminPageDetailsComponent } from './admin-page-details/admin-page-details.component';
 import { AdminPageEditComponent } from './admin-page-edit/admin-page-edit.component';
@@ -47,10 +48,12 @@ import { AdminPageRegisterListComponent } from './admin-page-register-list/admin
         AdminPageEducationListComponent,
         SafeHtmlPipe,
         TrustUrlPipe,
+        AdminImageUploaderItemComponent,
     ],
     exports: [
         SafeHtmlPipe,
         TrustUrlPipe,
+        AdminImageUploaderItemComponent,
     ]
 })
 export class AdminPageModule {}

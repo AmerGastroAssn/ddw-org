@@ -15,8 +15,6 @@ import {
     MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgAisModule } from 'angular-instantsearch';
-import { NgAisHitsModule } from 'angular-instantsearch/hits/hits.module';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';

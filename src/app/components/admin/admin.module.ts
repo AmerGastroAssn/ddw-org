@@ -29,13 +29,18 @@ import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-ed
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
 import { AdminContactUsListComponent } from './admin-core/admin-contact-us/admin-contact-us-list/admin-contact-us-list.component';
 import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-contact-us.component';
+import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
+import { AdminImageUploaderItemComponent } from './admin-core/admin-image-uploader/admin-image-uploader-item/admin-image-uploader-item.component';
+// tslint:disable-next-line:max-line-length
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
+import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
+import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
 import { AdminSettingsComponent } from './admin-core/admin-settings/admin-settings.component';
 import { AdminSidenavComponent } from './admin-core/admin-sidenav/admin-sidenav.component';
@@ -56,8 +61,6 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
-import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
 
 @NgModule({
     declarations: [
@@ -95,6 +98,7 @@ import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/a
         AdminPageCardNewComponent,
         AdminDashboardComponent,
         AdminPrivacyPolicyComponent,
+        AdminImagesComponent,
     ],
     imports: [
         CommonModule,

@@ -4,15 +4,15 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Observable } from 'rxjs/Observable';
-import { finalize } from 'rxjs/operators';
 import { Calendar } from '../../../../models/Calendar';
 import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
@@ -53,14 +53,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     cardOption3: string;
     cardSectionTitle: string;
     pageCards$: Observable<Card[]>;
-    // Image upload
-    task: AngularFireUploadTask;
-    // Progress monitoring
-    percentage: Observable<number>;
-    snapshot: Observable<any>;
-    // Download URL
-    downloadURL: Observable<string>;
-    // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
     value: any;
@@ -100,7 +92,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
       private adminCalendarService: AdminCalendarService,
-      private pagesCardService: PagesCardService
+      private pagesCardService: PagesCardService,
+      private imageService: AdminImageService,
     ) {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
@@ -127,33 +120,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     // For Form Validations
     get f() {
         return this.newPageForm.controls;
-    }
-
-    uploadImage(event) {
-        const customMetadata = { app: 'DDW.org' };
-        // The File object
-        const file = event.target.files[0];
-        // Client-side validation example
-        if (file.type.split('/')[0] !== 'image') {
-            console.error('unsupported file type :( ');
-            this.isInvalid = true;
-            return;
-        }
-        // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name}`;
-        const fileRef = this.storage.ref(path);
-        // The main task
-        this.task = this.storage.upload(path, file, { customMetadata });
-        // Progress monitoring
-        this.percentage = this.task.percentageChanges();
-        this.snapshot = this.task.snapshotChanges();
-        // The file's download URL
-        this.task.snapshotChanges().pipe(
-          finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-          })
-        )
-            .subscribe();
     }
 
     ngOnInit() {
@@ -267,22 +233,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
     toggleHasCards() {
         this.hasCards = !this.hasCards;
-    }
-
-    duplicatePage(control) {
-        if (control) {
-            this.pages$.subscribe((pageArr) => {
-                console.log('pageArr', pageArr);
-                pageArr.forEach(page => {
-                    console.log('page', page);
-                    if (page.title === control) {
-                        return this.titleNotValid = true;
-                    } else {
-                        return this.titleNotValid = false;
-                    }
-                });
-            });
-        }
     }
 
 

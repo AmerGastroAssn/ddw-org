@@ -4,11 +4,10 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { Observable } from 'rxjs/Observable';
-import { finalize } from 'rxjs/operators';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { FeaturedPost } from '../../../../../models/FeaturedPost';
 import { AdminFeaturedPostService } from '../../../../../services/admin-featured-post.service';
+import { AdminImageService } from '../../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../../services/admin-settings.service';
 import { AuthService } from '../../../../../services/auth.service';
@@ -35,13 +34,6 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
     uid: string;
     $key: string;
     disableAdminOnNew: boolean;
-    // Image upload
-    task: AngularFireUploadTask;
-    // Progress monitoring
-    percentage: Observable<number>;
-    snapshot: Observable<any>;
-    // Download URL
-    downloadURL: Observable<string>;
     // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
@@ -59,6 +51,7 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
       private settingsService: AdminSettingsService,
+      private imageService: AdminImageService,
     ) {
 
     }
@@ -74,33 +67,6 @@ export class AdminFeaturedBlogPostsEditComponent implements OnInit {
 
     get f3() {
         return this.postForm3.controls;
-    }
-
-    uploadImage(event) {
-        const customMetadata = { app: 'DDW.org' };
-        // The File object
-        const file = event.target.files[0];
-        // Client-side validation example
-        if (file.type.split('/')[0] !== 'image') {
-            console.error('unsupported file type :( ');
-            this.isInvalid = true;
-            return;
-        }
-        // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name}`;
-        const fileRef = this.storage.ref(path);
-        // The main task
-        this.task = this.storage.upload(path, file, { customMetadata });
-        // Progress monitoring
-        this.percentage = this.task.percentageChanges();
-        this.snapshot = this.task.snapshotChanges();
-        // The file's download URL
-        this.task.snapshotChanges().pipe(
-          finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-          })
-        )
-            .subscribe();
     }
 
     ngOnInit() {

@@ -8,6 +8,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Card } from '../../../../models/Card';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
 
@@ -46,13 +47,6 @@ export class AdminPageCardEditComponent implements OnInit {
     uid: string;
     $key: string;
     isExtURL: boolean;
-    // Image upload
-    task: AngularFireUploadTask;
-    // Progress monitoring
-    percentage: Observable<number>;
-    snapshot: Observable<any>;
-    // Download URL
-    downloadURL: Observable<string>;
     // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
@@ -68,6 +62,7 @@ export class AdminPageCardEditComponent implements OnInit {
       private storage: AngularFireStorage,
       private afs: AngularFirestore,
       private sbAlert: MatSnackBar,
+      private imageService: AdminImageService,
     ) {
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
@@ -77,34 +72,6 @@ export class AdminPageCardEditComponent implements OnInit {
     get f() {
         return this.editPageCardForm.controls;
     }
-
-    uploadImage(event) {
-        const customMetadata = { app: 'DDW.org' };
-        // The File object
-        const file = event.target.files[0];
-        // Client-side validation example
-        if (file.type.split('/')[0] !== 'image') {
-            console.error('unsupported file type :( ');
-            this.isInvalid = true;
-            return;
-        }
-        // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name}`;
-        const fileRef = this.storage.ref(path);
-        // The main task
-        this.task = this.storage.upload(path, file, { customMetadata });
-        // Progress monitoring
-        this.percentage = this.task.percentageChanges();
-        this.snapshot = this.task.snapshotChanges();
-        // The file's download URL
-        this.task.snapshotChanges().pipe(
-          finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-          })
-        )
-            .subscribe();
-    }
-
 
     ngOnInit() {
         // Card1 Form:

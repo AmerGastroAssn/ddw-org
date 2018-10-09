@@ -8,6 +8,7 @@ import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage'
 import { Observable } from 'rxjs/Observable';
 import { finalize } from 'rxjs/operators';
 import { User } from '../../../../models/User';
+import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AdminUserService } from '../../../../services/admin-user.service';
 
@@ -51,6 +52,7 @@ export class AdminUserEditComponent implements OnInit {
       private afAuth: AngularFireAuth,
       private sbAlert: MatSnackBar,
       private storage: AngularFireStorage,
+      private imageService: AdminImageService,
     ) {
     }
 
@@ -60,17 +62,22 @@ export class AdminUserEditComponent implements OnInit {
     }
 
     uploadImage(event) {
-        const customMetadata = { app: this.user.displayName };
+        const customMetadata = { app: 'DDW.org' };
         // The File object
         const file = event.target.files[0];
         // Client-side validation example
         if (file.type.split('/')[0] !== 'image') {
+            this.sbAlert.open('That file type is not supported :(', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
+            });
             console.error('unsupported file type :( ');
             this.isInvalid = true;
             return;
         }
         // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name}`;
+        const path = `pageImages/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
         const fileRef = this.storage.ref(path);
         // The main task
         this.task = this.storage.upload(path, file, { customMetadata });
@@ -81,6 +88,19 @@ export class AdminUserEditComponent implements OnInit {
         this.task.snapshotChanges().pipe(
           finalize(() => {
               this.downloadURL = fileRef.getDownloadURL();
+              this.downloadURL.subscribe((imageURL) => {
+                  this.imageService.setImage(imageURL, file.name.replace(/\s/g, '_').toLowerCase())
+                      .then(() => {
+                          this.sbAlert.open('Image has been added!', 'Dismiss', {
+                              duration: 3000,
+                              verticalPosition: 'bottom',
+                              panelClass: ['snackbar-success']
+                          });
+                      })
+                      .catch((error) => console.log('Problem sending image to service', error));
+              });
+
+
           })
         )
             .subscribe();

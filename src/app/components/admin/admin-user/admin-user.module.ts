@@ -27,6 +27,8 @@ import { AdminUserComponent } from './admin-user.component';
         AdminUserDetailsComponent,
         AdminUserEditComponent,
         AdminUserHomeComponent,
-    ]
+
+    ],
+    exports: []
 })
 export class AdminUserModule {}

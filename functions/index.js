@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const url = require('url');
 const app = express();
 const admin = require('firebase-admin');
-const algoliasearch = require('algoliasearch');
+// const algoliasearch = require('algoliasearch');
 admin.initializeApp();
 /*------------------------------------------------
      ROBOTRON HTML SANITIZER FUNCTION
@@ -140,7 +140,7 @@ exports.firestoreEmail = functions.firestore
                 // to: contact.email,
                 to: [
                     'gastro.org@gmail.com',
-                    'cstodd@gastro.org'
+                    'administration@ddw.org'
                 ],
                 from: contact.email,
                 subject: contact.subject,
@@ -195,30 +195,30 @@ exports.firestoreEmail = functions.firestore
      ALGOLIA SEARCH
 ------------------------------------------------*/
 
-const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ONLY_API_KEY);
-const index = client.initIndex('pageImages');
-
-// Adds image to index on create
-exports.indexImages = functions.firestore
-  .document('images/{uid}')
-  .onCreate((snap, context) => {
-      const data = snap.data();
-      const objectId = snap.id;
-
-      // Add the data to the algolia index
-      return index.addObject({
-          objectId,
-          data
-      });
-  });
-
-// Removes image from index on delete
-exports.unindexedImage = functions.firestore
-  .document('images/{uid}')
-  .onDelete((snap, context) => {
-      const objectId = snap.id;
-
-      // Delete an ID from the index
-      return index.deleteObject(objectId);
-  });
+// const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_SEARCH_ONLY_API_KEY);
+// const index = client.initIndex('pageImages');
+//
+// // Adds image to index on create
+// exports.indexImages = functions.firestore
+//   .document('images/{uid}')
+//   .onCreate((snap, context) => {
+//       const data = snap.data();
+//       const objectId = snap.id;
+//
+//       // Add the data to the algolia index
+//       return index.addObject({
+//           objectId,
+//           data
+//       });
+//   });
+//
+// // Removes image from index on delete
+// exports.unindexedImage = functions.firestore
+//   .document('images/{uid}')
+//   .onDelete((snap, context) => {
+//       const objectId = snap.id;
+//
+//       // Delete an ID from the index
+//       return index.deleteObject(objectId);
+//   });
 

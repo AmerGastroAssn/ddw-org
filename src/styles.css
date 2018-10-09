@@ -702,7 +702,7 @@ h2.card-sec-title::after {
 }
 
 .block h3, .block p {
-    text-align: center;
+    text-align: left;
     padding: 0;
 }
 

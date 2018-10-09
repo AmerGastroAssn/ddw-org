@@ -27,7 +27,8 @@ export class AdminImageService {
         return this.afs.collection('images',
           (ref) => ref.limit(10)
                       .orderBy('imageName')
-                      .startAt(start).endAt(end))
+                      .startAt(start).endAt(end)
+        )
                    .valueChanges();
     }
 

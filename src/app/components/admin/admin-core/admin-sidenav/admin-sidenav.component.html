@@ -223,6 +223,20 @@
     </li>
 
     <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/images']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-images"></i>&nbsp;<span class="helv">Images</span></div>
+        </a>
+    </li>
+
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/image-uploader']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-cloud-upload-alt"></i>&nbsp;<span class="helv">Image Uploader</span></div>
+        </a>
+    </li>
+
+    <li class="sidenav-item" *ngIf="isLoggedIn">
         <a [routerLink]="['/admin/dashboard']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fal fa-chart-pie"></i>&nbsp;<span class="helv">Analytics</span></div>
@@ -247,20 +261,6 @@
         <a [routerLink]="['/admin/privacy-policy']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>
             <div><i class="fal fa-file-signature"></i>&nbsp;<span class="helv">Privacy Policy</span></div>
-        </a>
-    </li>
-
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/image-uploader']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-image"></i>&nbsp;<span class="helv">Image Uploader</span></div>
-        </a>
-    </li>
-
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/images']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-images"></i>&nbsp;<span class="helv">Images</span></div>
         </a>
     </li>
 

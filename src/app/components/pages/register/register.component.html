@@ -30,7 +30,9 @@
                 </li>
                 <li class="breadcrumb-item text-capitalize text-dark"
                     *ngIf="page.isGrandchildPage">
-                    {{page.grandchildURL}}
+                    <a [routerLink]="['/', page.category, page.grandchildURL]"
+                       style="color:#2e6da4;"
+                       class="child">{{page.grandchildURL}}</a>
                 </li>
                 <li class="breadcrumb-item active text-dark">
                     {{page.title}}
@@ -73,7 +75,7 @@
             <div class="card-deck">
                 <div class="row">
                     <!-- * Card 1 * -->
-                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard1">
+                    <div class="card text-center mb-3" *ngIf="pageCard1">
                         <img class="card-img-top"
                              [src]="pageCard1.photoURL"
                              [alt]="pageCard1.title">
@@ -96,7 +98,7 @@
                         </div>
                     </div>
                     <!-- * Card 2 * -->
-                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard2">
+                    <div class="card text-center mb-3" *ngIf="pageCard2">
                         <img class="card-img-top"
                              [src]="pageCard2.photoURL"
                              [alt]="pageCard2.title">
@@ -119,7 +121,7 @@
                         </div>
                     </div>
                     <!-- * Card 3 * -->
-                    <div class="card text-center mt-3 mb-3" *ngIf="pageCard3">
+                    <div class="card text-center mb-3" *ngIf="pageCard3">
                         <img class="card-img-top"
                              [src]="pageCard3.photoURL"
                              [alt]="pageCard3.title">

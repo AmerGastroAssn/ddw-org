@@ -68,14 +68,12 @@
 <!-- * Cards * -->
 <div class="row cards" *ngIf="homePage && !homePage.cardsHidden">
     <div class="container">
-        <div class="card-deck">
-            <div class="row">
-                <ddw-admin-cards
-                        class="col-md-4"
-                        *ngFor="let cardEl of cards$ | async"
-                        [card]="cardEl">
-                </ddw-admin-cards>
-            </div>
+        <div class="row">
+            <ddw-admin-cards
+                    class="col-md-4"
+                    *ngFor="let cardEl of cards$ | async"
+                    [card]="cardEl">
+            </ddw-admin-cards>
         </div>
     </div>
 </div>
@@ -118,15 +116,15 @@
 
 <div class="row blog-posts" *ngIf="homePage && !homePage.postsHidden">
     <div class="container">
-        <div class="card-deck">
-            <div class="row" *ngIf="featuredPosts$">
-                <ddw-admin-featured-blog-posts
-                        class="col-md-4"
-                        *ngFor="let postEl of featuredPosts$ | async"
-                        [post]="postEl">
-                </ddw-admin-featured-blog-posts>
-            </div>
+        <div class="row" *ngIf="featuredPosts$">
+            <ddw-admin-featured-blog-posts
+                    class="col-md-4"
+                    *ngFor="let postEl of featuredPosts$ | async"
+                    [post]="postEl">
+            </ddw-admin-featured-blog-posts>
         </div>
+    </div>
+    <div class="container">
         <div class="row mt-5" *ngIf="homePage">
             <div class="col-md-4 offset-md-4 text-center">
                 <a [href]="homePage.postsButtonURL" target="_blank" class="btn btn-warning btn-lg">

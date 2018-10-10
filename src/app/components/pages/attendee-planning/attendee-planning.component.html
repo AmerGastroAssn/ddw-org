@@ -69,9 +69,9 @@
 
     <div class="row cards" *ngIf="page.hasCards">
         <div class="container">
-            <div class="card-deck">
-                <div class="row">
-                    <!-- * Card 1 * -->
+            <div class="row">
+                <!-- * Card 1 * -->
+                <div class="col-md-4">
                     <div class="card text-center mb-3" *ngIf="pageCard1">
                         <img class="card-img-top"
                              [src]="pageCard1.photoURL"
@@ -94,7 +94,9 @@
                             </p>
                         </div>
                     </div>
-                    <!-- * Card 2 * -->
+                </div>
+                <!-- * Card 2 * -->
+                <div class="col-md-4">
                     <div class="card text-center mb-3" *ngIf="pageCard2">
                         <img class="card-img-top"
                              [src]="pageCard2.photoURL"
@@ -117,7 +119,9 @@
                             </p>
                         </div>
                     </div>
-                    <!-- * Card 3 * -->
+                </div>
+                <!-- * Card 3 * -->
+                <div class="col-md-4">
                     <div class="card text-center mb-3" *ngIf="pageCard3">
                         <img class="card-img-top"
                              [src]="pageCard3.photoURL"
@@ -142,6 +146,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 

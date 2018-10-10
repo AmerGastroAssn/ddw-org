@@ -1,8 +1,7 @@
 ### APP Files ###
 /src/environments/environment.prod.ts
 /src/environments/environment.ts
-/functions/node_modules
-
+/package-lock.json
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 # compiled output
@@ -101,5 +100,6 @@ fabric.properties
 ### FUNCTIONS ###
 
 /functions/node_modules/
+/functions/node_modules
 /functions/.env
-/package-lock.json
+/functions/package-lock.json

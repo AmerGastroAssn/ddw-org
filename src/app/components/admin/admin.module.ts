@@ -19,6 +19,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
+import { PagesNavbarComponent } from '../core/pages-navbar/pages-navbar.component';
 import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
 import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
 import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';

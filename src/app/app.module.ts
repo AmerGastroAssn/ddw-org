@@ -134,7 +134,8 @@ firebase.initializeApp(environment.firebase);
         HttpClientModule,
         ModalModule.forRoot(),
     ],
-    exports: [],
+    exports: [
+    ],
     providers: [
         AdminUserService,
         AdminPageService,

@@ -79,24 +79,22 @@
                                  *ngFor="let image of images; let i = index">
                                 <div class="card mt-1">
                                     <img class="card-img-top img-fluid" [src]="image.url" [alt]="image.imageName">
-                                    <div class="card-body text-center pt-1 pb-0">
-                                        <div class="btn-group btn-group-xs pb-1" role="group" aria-label="Basic example">
-                                            <button type="button"
-                                                    class="btn btn-default btn-xs"
-                                                    (click)="onToggleDetails(i)">
-                                <span *ngIf="!showDetailsToggle[i]">
-                                    <i class="fa fa-caret-circle-down"></i>&nbsp;Details
-                                </span>
-                                                <span *ngIf="showDetailsToggle[i]">
-                                    <i class="fa fa-caret-circle-up"></i>&nbsp;Details
-                                </span>
-                                            </button>
-                                            <button type="button"
-                                                    class="btn btn-default btn-xs"
-                                                    (click)="onToggleCopy(image.url)">
-                                                <i class="fa fa-clipboard"></i>&nbsp;Copy URL
-                                            </button>
-                                        </div>
+                                    <div class="card-body text-center pt-1 pb-1">
+                                        <button type="button"
+                                                class="btn btn-default btn-xs"
+                                                (click)="onToggleDetails(i)">
+                                            <span *ngIf="!showDetailsToggle[i]">
+                                                <i class="fa fa-caret-circle-down"></i>&nbsp;Details
+                                            </span>
+                                            <span *ngIf="showDetailsToggle[i]">
+                                                <i class="fa fa-caret-circle-up"></i>&nbsp;Details
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                                class="btn btn-default btn-xs"
+                                                (click)="onToggleCopy(image.url)">
+                                            <i class="fa fa-clipboard"></i>&nbsp;Copy URL
+                                        </button>
                                     </div>
                                     <div class="card-body pt-2 details"
                                          *ngIf="showDetailsToggle[i]">

@@ -1,6 +1,6 @@
-# DDW.org
+# DDW.org CMS
 
-New version of ddw.org
+Custom built CMS
 
 Built with Angular 6, Firebase (AngularFire 4), Bootstrap 4, ngx-bootstrap and Angular Material Design.
 
@@ -28,7 +28,12 @@ and
 `/src/environments/environment.ts`
 
 
-Add your firebase web-app variables:
+    touch src/environments/environment.prod.ts
+
+    touch src/environments/environment.ts
+
+
+Add your firebase web-app variables to those files:
 
 It should be something like this (with your own values):
 
@@ -48,7 +53,7 @@ export const environment = {
 
 **Setup/install Firebase Function dependencies**
 
-Install the Firebase command line tools. It will walk you through a handful of questions. (Follow instructions and/or search the web for more info to do that):
+Install the [Firebase command line tools](https://firebase.google.com/docs/cli/). It will walk you through a handful of questions. ([Follow instructions](https://firebase.google.com/docs/cli/) and/or search [youtube](https://www.youtube.com/watch?v=9kRgVxULbag) for more info to do that):
 
     npm install -g firebase-tools
 

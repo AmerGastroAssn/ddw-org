@@ -11,7 +11,7 @@ import { AdminImageService } from '../../../../../services/admin-image.service';
     styleUrls: ['./admin-image-uploader-item.component.css']
 })
 export class AdminImageUploaderItemComponent implements OnInit {
-// Image upload
+    // Image upload
     task: AngularFireUploadTask;
     // Progress monitoring
     percentage: Observable<number>;

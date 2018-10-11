@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatBottomSheetModule,
     MatButtonModule,
+    MatCardModule,
     MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
@@ -19,7 +20,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
-import { PagesNavbarComponent } from '../core/pages-navbar/pages-navbar.component';
 import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit/admin-calendar-edit.component';
 import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
 import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
@@ -33,7 +33,6 @@ import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-con
 import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
-import { AdminImageUploaderItemComponent } from './admin-core/admin-image-uploader/admin-image-uploader-item/admin-image-uploader-item.component';
 // tslint:disable-next-line:max-line-length
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
@@ -125,6 +124,7 @@ import { AdminComponent } from './admin.component';
         MatIconModule,
         MatSelectModule,
         MatFormFieldModule,
+        MatCardModule,
     ],
     exports: [
         MatButtonModule,

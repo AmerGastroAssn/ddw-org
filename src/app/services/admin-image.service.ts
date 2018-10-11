@@ -34,7 +34,14 @@ export class AdminImageService {
 
     getImageByCreatedAt(): Observable<Image[]> {
         this.imageCollection = this.afs.collection('images',
-          ref => ref.orderBy('createdAt', 'desc')
+          ref => ref.orderBy('createdAt', 'desc').limit(25)
+        );
+        return this.imageCollection.valueChanges();
+    }
+
+    getImageBySortAmount(amount): Observable<Image[]> {
+        this.imageCollection = this.afs.collection('images',
+          ref => ref.orderBy('createdAt', 'desc').limit(amount)
         );
         return this.imageCollection.valueChanges();
     }

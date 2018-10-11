@@ -21,6 +21,14 @@ export class AdminImagesComponent implements OnInit {
     startObs = this.startAt.asObservable();
     endObs = this.endAt.asObservable();
 
+    selectedViewNumber = 25;
+    viewNumber: any[] = [
+        { value: 25, type: 25 },
+        { value: 50, type: 50 },
+        { value: 100, type: 100 },
+        { value: 200, type: 200 },
+    ];
+
 
     constructor(
       private imageService: AdminImageService,
@@ -62,11 +70,17 @@ export class AdminImagesComponent implements OnInit {
             this.endAt.next(`${query}\uf8ff`);
             console.log('query', query);
         } else {
-            this.imageService.getImageByCreatedAt()
-                .subscribe((images) => {
-                    this.images = images;
-                });
+            this.sortBy(this.selectedViewNumber);
+        }
+    }
 
+    sortBy(selectedAmount) {
+        if (selectedAmount === 25) {
+            this.imageService.getImageByCreatedAt()
+                .subscribe((images) => this.images = images);
+        } else {
+            this.imageService.getImageBySortAmount(selectedAmount)
+                .subscribe((images) => this.images = images);
         }
     }
 

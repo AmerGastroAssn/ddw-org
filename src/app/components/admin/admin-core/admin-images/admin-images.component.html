@@ -61,6 +61,19 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
+                <p class="p-1 tip"><i class="fa fa-info-circle"></i> You can click any image to copy it's URL</p>
+                <div class="offset-md-9">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="selectedViewNumber"
+                                    placeholder="View Amount">
+                            <mat-option *ngFor="let amt of viewNumber"
+                                        [value]="amt.value"
+                                        (click)="sortBy(selectedViewNumber)">
+                                {{ amt.type }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
                 <div class="card inner-card bg-lighter">
                     <div class="card-body">
                         <ng-template #loading>
@@ -75,10 +88,15 @@
                             </div>
                         </ng-template>
                         <div class="row" *ngIf="images; else loading">
-                            <div class="col-sm-4 col-md-3 col-xl-2"
+                            <div class="col-sm-4 col-md-3 col-lg-2"
                                  *ngFor="let image of images; let i = index">
-                                <div class="card mt-1">
-                                    <img class="card-img-top img-fluid" [src]="image.url" [alt]="image.imageName">
+                                <div class="card image-card mt-1">
+                                    <img class="card-img-top img-fluid"
+                                         [src]="image.url"
+                                         [alt]="image.imageName"
+                                         [matTooltip]="image.imageName"
+                                         aria-label="Image URL"
+                                         (click)="onToggleCopy(image.url)">
                                     <div class="card-body text-center pt-1 pb-1">
                                         <button type="button"
                                                 class="btn btn-default btn-xs"

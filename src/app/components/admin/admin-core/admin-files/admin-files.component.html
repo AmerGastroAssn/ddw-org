@@ -1,4 +1,4 @@
-<!-- * IMAGES * -->
+<!-- * FILES * -->
 <div class="row mb-2 mt-3">
     <div class="col-md-6 mx-auto">
         <div class="card">
@@ -6,8 +6,8 @@
                 <h1 class="text-center pb-4 pt-3 admin-badge">
                     <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
                          alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
-                    <i class="fa fa-images"></i>&nbsp;Admin
-                    Images
+                    <i class="fa fa-file-alt"></i>&nbsp;Admin
+                    Files
                 </h1>
             </div>
         </div>
@@ -21,16 +21,16 @@
             <div class="btn-group btn-group-md float-right"
                  role="group"
                  aria-label="Basic example">
-                <a [routerLink]="['/admin/image-uploader']" class="btn btn-default">
-                    <i class="fa fa-cloud-upload-alt"></i>&nbsp;Upload Image
-                </a>
-                <a [routerLink]="['/admin/files']"
-                   class="btn btn-default">
-                    <i class="fa fa-file"></i>&nbsp;Files
-                </a>
-                <a [routerLink]="['/admin/file-uploader']"
-                   class="btn btn-default">
+                <a [routerLink]="['/admin/file-uploader']" class="btn btn-default">
                     <i class="fa fa-cloud-upload-alt"></i>&nbsp;Upload File
+                </a>
+                <a [routerLink]="['/admin/images']"
+                   class="btn btn-default">
+                    <i class="fa fa-image"></i>&nbsp;Images
+                </a>
+                <a [routerLink]="['/admin/image-uploader']"
+                   class="btn btn-default">
+                    <i class="fa fa-cloud-upload"></i>&nbsp;Upload Image
                 </a>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="col-md-10 offset-md-1">
             <div class="card mb-4">
                 <h6 class="card-header">
-                    Search Images
+                    Search Files
                 </h6>
                 <div class="card-body demo-vertical-spacing-sm">
                     <div class="row">
@@ -51,7 +51,7 @@
                                 <div class="input-group">
                                     <input type="text"
                                            class="form-control"
-                                           placeholder="Search image names..."
+                                           placeholder="Search file names..."
                                            [(ngModel)]="searchTerm"
                                            (keydown)="search($event)">
                                     <span class="input-group-append">
@@ -74,7 +74,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <p class="p-1 tip"><i class="fa fa-info-circle"></i> You can click any image to copy it's URL</p>
+                <p class="p-1 tip"><i class="fa fa-info-circle"></i> You can click any file to copy it's URL</p>
                 <div class="offset-md-9">
                     <mat-form-field>
                         <mat-select [(ngModel)]="selectedViewNumber"
@@ -100,17 +100,19 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <div class="row" *ngIf="images; else loading">
+                        <div class="row" *ngIf="files; else loading">
                             <div class="col-sm-4 col-md-3 col-lg-2"
-                                 *ngFor="let image of images; let i = index">
-                                <div class="card image-card mt-1">
-                                    <img class="card-img-top img-fluid"
-                                         [src]="image.url"
-                                         [alt]="image.imageName"
-                                         [matTooltip]="image.imageName"
-                                         aria-label="Image URL"
-                                         (click)="onToggleCopy(image.url)">
+                                 *ngFor="let file of files; let i = index">
+                                <div class="card file-card mt-1">
                                     <div class="card-body text-center pt-1 pb-1">
+                                        <p class="body-text">
+                                            <i class="fa fa-file-pdf"
+                                               [matTooltip]="file.fileName"
+                                               (click)="onToggleCopy(file.url)"></i>
+                                        </p>
+                                        <p class="body-text file-name">
+                                            {{ file.fileName }}
+                                        </p>
                                         <button type="button"
                                                 class="btn btn-default btn-xs"
                                                 (click)="onToggleDetails(i)">
@@ -123,18 +125,16 @@
                                         </button>
                                         <button type="button"
                                                 class="btn btn-default btn-xs"
-                                                (click)="onToggleCopy(image.url)">
+                                                (click)="onToggleCopy(file.url)">
                                             <i class="fa fa-clipboard"></i>&nbsp;Copy URL
                                         </button>
                                     </div>
                                     <div class="card-body pt-2 details"
                                          *ngIf="showDetailsToggle[i]">
-                                        <code class="pb-2">{{ image.url }}</code>
                                         <hr>
                                         <div class="footer">
-                                            <i class="fa fa-file"></i> {{ image.imageName }} <br>
-                                            <i class="fa fa-user"></i> {{ image.author }} <br>
-                                            <i class="fa fa-calendar"></i> {{ image.createdAt | date:'medium' }}
+                                            <i class="fa fa-user"></i> {{ file.author }} <br>
+                                            <i class="fa fa-calendar"></i> {{ file.createdAt | date:'medium' }}
                                         </div>
                                     </div>
                                 </div>

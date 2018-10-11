@@ -61,6 +61,10 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminFileUploaderComponent } from './admin-core/admin-file-uploader/admin-file-uploader.component';
+// tslint:disable-next-line:max-line-length
+import { AdminFileUploaderItemComponent } from './admin-core/admin-file-uploader/admin-file-uploader-item/admin-file-uploader-item.component';
+import { AdminFilesComponent } from './admin-core/admin-files/admin-files.component';
 
 @NgModule({
     declarations: [
@@ -99,6 +103,9 @@ import { AdminComponent } from './admin.component';
         AdminDashboardComponent,
         AdminPrivacyPolicyComponent,
         AdminImagesComponent,
+        AdminFileUploaderComponent,
+        AdminFileUploaderItemComponent,
+        AdminFilesComponent,
     ],
     imports: [
         CommonModule,

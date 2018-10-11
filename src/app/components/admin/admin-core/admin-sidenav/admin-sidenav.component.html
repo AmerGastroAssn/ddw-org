@@ -236,6 +236,22 @@
         </a>
     </li>
 
+
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/files']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-file-alt"></i>&nbsp;<span class="helv">Files</span></div>
+        </a>
+    </li>
+
+
+    <li class="sidenav-item" *ngIf="isLoggedIn">
+        <a [routerLink]="['/admin/file-uploader']" class="sidenav-link">
+            <i class="sidenav-icon ion ion-md-quote"></i>
+            <div><i class="fal fa-cloud-upload"></i>&nbsp;<span class="helv">File Uploader</span></div>
+        </a>
+    </li>
+
     <li class="sidenav-item" *ngIf="isLoggedIn">
         <a [routerLink]="['/admin/dashboard']" class="sidenav-link">
             <i class="sidenav-icon ion ion-md-quote"></i>

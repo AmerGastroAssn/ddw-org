@@ -1,0 +1,55 @@
+.card {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.file-card:hover {
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    -moz-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.card-body {
+    color: #444444;
+    cursor: pointer;
+}
+
+code {
+    color: #444444;
+}
+
+.footer {
+    color: #777777;
+    font-size: 12px;
+    line-height: 2em;
+}
+
+.btn-sm, .btn-xs {
+    border-radius: 0;
+}
+
+.btns {
+    float: right;
+}
+
+.details {
+    z-index: 1000;
+}
+
+.tip {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+p > i.fa-file-pdf {
+    font-size: 4em;
+    color: #b53232;
+}
+
+p.file-name {
+    font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
+    font-size: 10px;
+    line-height: 1.3;
+}

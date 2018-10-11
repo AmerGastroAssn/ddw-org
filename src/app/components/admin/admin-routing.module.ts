@@ -16,6 +16,7 @@ import { AdminContactUsComponent } from './admin-core/admin-contact-us/admin-con
 import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dashboard.component';
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
+import { AdminFileUploaderComponent } from './admin-core/admin-file-uploader/admin-file-uploader.component';
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
@@ -27,6 +28,7 @@ import { AdminSignupComponent } from './admin-core/admin-signup/admin-signup.com
 import { AdminCustomNavLinkEditComponent } from './admin-custom-nav-link/admin-custom-nav-link-edit/admin-custom-nav-link-edit.component';
 import { AdminCustomNavLinkListComponent } from './admin-custom-nav-link/admin-custom-nav-link-list/admin-custom-nav-link-list.component';
 import { AdminCustomNavLinkComponent } from './admin-custom-nav-link/admin-custom-nav-link.component';
+import { AdminFilesComponent } from './admin-core/admin-files/admin-files.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
 import { AdminPageCardEditComponent } from './admin-page-card/admin-page-card-edit/admin-page-card-edit.component';
 import { AdminPageCardItemComponent } from './admin-page-card/admin-page-card-item/admin-page-card-item.component';
@@ -144,7 +146,9 @@ const adminRoutes: Routes = [
             { path: 'ads', component: AdminAdsComponent, canActivate: [AdminGuard] },
             { path: 'home', component: AdminHomePageComponent, canActivate: [AuthGuard] },
             { path: 'image-uploader', component: AdminImageUploaderComponent, canActivate: [AuthGuard] },
-            { path: 'images', component: AdminImagesComponent, canActivate: [AuthGuard] }
+            { path: 'images', component: AdminImagesComponent, canActivate: [AuthGuard] },
+            { path: 'files', component: AdminFilesComponent, canActivate: [AuthGuard] },
+            { path: 'file-uploader', component: AdminFileUploaderComponent, canActivate: [AuthGuard] },
         ]
     },
 ];

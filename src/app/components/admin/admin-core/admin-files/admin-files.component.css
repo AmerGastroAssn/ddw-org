@@ -43,9 +43,24 @@ code {
     line-height: 1.5;
 }
 
-p > i.fa-file-pdf {
+p > span > i.fa-file-pdf {
     font-size: 4em;
     color: #b53232;
+}
+
+p > span > i.fa-file-excel {
+    font-size: 4em;
+    color: #468747;
+}
+
+p > span > i.fa-file-powerpoint {
+    font-size: 4em;
+    color: #7B501E;
+}
+
+p > span > i.fa-file-word {
+    font-size: 4em;
+    color: #21437B;
 }
 
 p.file-name {

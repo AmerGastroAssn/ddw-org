@@ -7,6 +7,11 @@
                     <h4 class="card-title mt-0">
                         File Uploader
                     </h4>
+                    <p>
+                        <small class="text-secondary">
+                            Permitted File Types: .pdf, .xls, .xlsx, .doc, .docx, .pptx, .ppt
+                        </small>
+                    </p>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="custom-file">
@@ -19,7 +24,7 @@
                                 <input type="file"
                                        ddwDropZone
                                        class="custom-file-input"
-                                       accept=".pdf"
+                                       accept=".pdf, .xls, .xlsx, .doc, .docx, .pptx, .ppt"
                                        (change)="uploadFile($event)">
                             </div>
                         </div>
@@ -35,10 +40,17 @@
                                 </p>
                                 <br>
                                 <br>
-                                <a [href]="url" target="_blank">
-                                    <i class="fa fa-file-pdf"></i>
-                                </a>
+                                <i class="fa fa-file-pdf"
+                                   *ngIf="fileType === 'pdf'"></i>
 
+                                <i class="fa fa-file-excel"
+                                   *ngIf="fileType === 'xls' || fileType === 'xlsx'"></i>
+
+                                <i class="fa fa-file-powerpoint"
+                                   *ngIf="fileType === 'pptx' || fileType === 'ppt'"></i>
+
+                                <i class="fa fa-file-word"
+                                   *ngIf="fileType === 'doc' || fileType === 'docx'"></i>
                             </div>
                             <ng-template #loadingURL>
                                 <p class="text-center text-light">

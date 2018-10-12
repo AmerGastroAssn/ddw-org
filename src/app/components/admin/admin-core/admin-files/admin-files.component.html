@@ -106,9 +106,26 @@
                                 <div class="card file-card mt-1">
                                     <div class="card-body text-center pt-1 pb-1">
                                         <p class="body-text">
-                                            <i class="fa fa-file-pdf"
-                                               [matTooltip]="file.fileName"
-                                               (click)="onToggleCopy(file.url)"></i>
+                                            <span *ngIf="file.fileType === 'pdf'">
+                                                <i class="fa fa-file-pdf"
+                                                   [matTooltip]="file.fileName"
+                                                   (click)="onToggleCopy(file.url)"></i>
+                                            </span>
+                                            <span *ngIf="file.fileType === 'xls' || file.fileType === 'xlsx'">
+                                                <i class="fa fa-file-excel"
+                                                   [matTooltip]="file.fileName"
+                                                   (click)="onToggleCopy(file.url)"></i>
+                                            </span>
+                                            <span *ngIf="file.fileType === 'pptx' || file.fileType === 'ppt'">
+                                                <i class="fa fa-file-powerpoint"
+                                                   [matTooltip]="file.fileName"
+                                                   (click)="onToggleCopy(file.url)"></i>
+                                            </span>
+                                            <span *ngIf="file.fileType === 'doc' || file.fileType === 'docx'">
+                                                <i class="fa fa-file-word"
+                                                   [matTooltip]="file.fileName"
+                                                   (click)="onToggleCopy(file.url)"></i>
+                                            </span>
                                         </p>
                                         <p class="body-text file-name">
                                             {{ file.fileName }}

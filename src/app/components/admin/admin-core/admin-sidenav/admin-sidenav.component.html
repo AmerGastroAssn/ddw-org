@@ -222,34 +222,51 @@
         </a>
     </li>
 
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/images']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
+    <!-- * Images * -->
+    <li class="sidenav-item"
+        [ngClass]="{'active open':showImagesToggle, '':!showImagesToggle}"
+        *ngIf="isLoggedIn">
+        <a class="sidenav-link sidenav-toggle" (click)="onShowImagesToggle()">
+            <i class="sidenav-icon ion ion-md-speedometer"></i>
             <div><i class="fal fa-images"></i>&nbsp;<span class="helv">Images</span></div>
         </a>
+
+        <ul class="sidenav-menu">
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/images']" class="sidenav-link">
+                    <div><i class="fal fa-grip-horizontal"></i>&nbsp;<span class="helv">Image Gallery</span></div>
+                </a>
+            </li>
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/image-uploader']" class="sidenav-link">
+                    <div><i class="fal fa-cloud-upload-alt"></i>&nbsp;<span class="helv">Upload Image</span></div>
+                </a>
+            </li>
+        </ul>
     </li>
 
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/image-uploader']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-cloud-upload-alt"></i>&nbsp;<span class="helv">Image Uploader</span></div>
-        </a>
-    </li>
 
-
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/files']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
+    <!-- * Files * -->
+    <li class="sidenav-item"
+        [ngClass]="{'active open':showFilesToggle, '':!showFilesToggle}"
+        *ngIf="isLoggedIn">
+        <a class="sidenav-link sidenav-toggle" (click)="onShowFilesToggle()">
+            <i class="sidenav-icon ion ion-md-speedometer"></i>
             <div><i class="fal fa-file-alt"></i>&nbsp;<span class="helv">Files</span></div>
         </a>
-    </li>
 
-
-    <li class="sidenav-item" *ngIf="isLoggedIn">
-        <a [routerLink]="['/admin/file-uploader']" class="sidenav-link">
-            <i class="sidenav-icon ion ion-md-quote"></i>
-            <div><i class="fal fa-cloud-upload"></i>&nbsp;<span class="helv">File Uploader</span></div>
-        </a>
+        <ul class="sidenav-menu">
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/files']" class="sidenav-link">
+                    <div><i class="fal fa-th"></i>&nbsp;<span class="helv">File Gallery</span></div>
+                </a>
+            </li>
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/file-uploader']" class="sidenav-link">
+                    <div><i class="fal fa-cloud-upload"></i>&nbsp;<span class="helv">Upload File</span></div>
+                </a>
+            </li>
+        </ul>
     </li>
 
     <li class="sidenav-item" *ngIf="isLoggedIn">

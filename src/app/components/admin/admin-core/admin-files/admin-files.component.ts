@@ -20,6 +20,7 @@ export class AdminFilesComponent implements OnInit {
     endAt = new Subject();
     startObs = this.startAt.asObservable();
     endObs = this.endAt.asObservable();
+    fileType: string;
 
     selectedViewNumber = 25;
     viewNumber: any[] = [

@@ -45,7 +45,7 @@ export class AdminFileService {
     }
 
 
-    setFile(downloadURL, fileName) {
+    setFile(downloadURL, fileName, fileType) {
         const new$key = this.afs.createId();
         const currentDate = Date.now();
 
@@ -56,6 +56,7 @@ export class AdminFileService {
             author: this.currentUser.email || '',
             category: '',
             fileName: fileName,
+            fileType: fileType,
             createdAt: currentDate,
             url: downloadURL
         };

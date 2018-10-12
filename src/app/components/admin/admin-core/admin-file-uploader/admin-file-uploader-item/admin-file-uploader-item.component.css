@@ -1,4 +1,20 @@
 i.fa-file-pdf {
     font-size: 4em;
     color: #b53232;
+    font: none;
+}
+
+i.fa-file-excel {
+    font-size: 4em;
+    color: #468747;
+}
+
+i.fa-file-powerpoint {
+    font-size: 4em;
+    color: #7B501E;
+}
+
+i.fa-file-word {
+    font-size: 4em;
+    color: #21437B;
 }

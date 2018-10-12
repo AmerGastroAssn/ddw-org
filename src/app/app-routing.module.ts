@@ -255,7 +255,7 @@ const appRoutes: Routes = [
             { path: '**', redirectTo: '/news/press-releases' },
         ]
     },
-    { path: 'abstracts', redirectTo: '/education/abstracts', pathMatch: 'full' },
+    { path: 'abstracts', redirectTo: '/presenters/submit-an-abstract', pathMatch: 'full' },
     { path: 'ddwwebsite/:id/:id', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },
 

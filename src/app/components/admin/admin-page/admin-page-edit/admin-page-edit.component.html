@@ -36,7 +36,7 @@
 
 <div class="container-fluid mb-5" [@simpleFadeAnimation]="'in'">
     <div class="row">
-        <div class="col" *ngIf="page">
+        <div class="col" *ngIf="page" [ngClass]="{'col-md-5':page && togglePagePreview && !isExtURL}">
             <div class="card mb-5">
                 <div class="card-body">
                     <div class="card inner-card bg-lighter">

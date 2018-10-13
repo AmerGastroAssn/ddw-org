@@ -5,7 +5,7 @@
         <div id="layout-sidenav"
              class="layout-sidenav sidenav sidenav-vertical bg-dark" style="background-color:#282E3E;"
              *ngIf="toggleSidenav">
-            <ddw-admin-sidenav></ddw-admin-sidenav>
+            <ddw-admin-sidenav [@simpleFadeAnimation]="'in'"></ddw-admin-sidenav>
         </div>
 
         <div class="layout-container">

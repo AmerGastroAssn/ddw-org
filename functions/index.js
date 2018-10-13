@@ -37,20 +37,10 @@ function detectBot(userAgent) {
     const bots = [
         'googlebot',
         'bingbot',
-        'yandexbot',
-        'duckduckbot',
-        'slurp',
         'twitterbot',
         'facebookexternalhit',
         'linkedinbot',
-        'embedly',
-        'baiduspider',
-        'pinterest',
-        'slackbot',
-        'vkshare',
-        'facebot',
-        'outbrain',
-        'w3c_validator'
+        'facebot'
     ];
 
 
@@ -99,7 +89,7 @@ app.get('*', (req, res) => {
         fetch(`https://${appUrl}`)
           .then(res => res.text())
           .then(body => {
-              console.log('Page hit at', currentDate);
+              console.log(`Page (https://${appUrl}) hit at: `, currentDate);
               return res.send(body.toString());
           })
           .catch((error) => console.log(error));

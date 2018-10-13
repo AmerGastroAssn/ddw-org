@@ -6,6 +6,18 @@ p, div, tr, th, tr, td, span, ul, ol, li, input.form-control, input[text], input
 
 }
 
+#layout-sidenav {
+    /*transition: ease-in-out 0.9s;*/
+}
+
+ddw-admin-sidenav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: scroll;
+
+}
+
 .image-uploader * {
     font-size: 14px;
 }

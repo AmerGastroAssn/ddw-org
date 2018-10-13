@@ -105,7 +105,7 @@
                                  *ngFor="let file of files; let i = index">
                                 <div class="card file-card mt-1">
                                     <div class="card-body text-center pt-1 pb-1">
-                                        <p class="body-text">
+                                        <p class="body-text file-types">
                                             <span *ngIf="file.fileType === 'pdf'">
                                                 <i class="fa fa-file-pdf"
                                                    [matTooltip]="file.fileName"

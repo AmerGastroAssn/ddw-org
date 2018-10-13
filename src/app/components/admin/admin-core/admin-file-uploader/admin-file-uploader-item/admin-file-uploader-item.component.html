@@ -4,14 +4,26 @@
         <div class="form-group">
             <div class="card image-uploader">
                 <div class="card-body">
-                    <h4 class="card-title mt-0">
-                        File Uploader
-                    </h4>
-                    <p>
-                        <small class="text-secondary">
-                            Permitted File Types: .pdf, .xls, .xlsx, .doc, .docx, .pptx, .ppt
-                        </small>
-                    </p>
+                    <div class="row">
+                        <div class="container">
+                            <h4 class="card-title mt-0">
+                                File Uploader
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container">
+                            <p>
+                                <i class="fa fa-info-circle"></i> Make sure file is named to something you'll easily
+                                search
+                            </p>
+                            <p class="text-secondary">
+                                <small>
+                                    Permitted File Types: .pdf, .xls, .xlsx, .doc, .docx, .pptx, .ppt
+                                </small>
+                            </p>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="custom-file">
@@ -23,7 +35,7 @@
                                 </label>
                                 <input type="file"
                                        ddwDropZone
-                                       class="custom-file-input"
+                                       class="custom-file-input mt-3"
                                        accept=".pdf, .xls, .xlsx, .doc, .docx, .pptx, .ppt"
                                        (change)="uploadFile($event)">
                             </div>

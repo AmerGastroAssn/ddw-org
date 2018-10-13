@@ -61,7 +61,6 @@
                 <table id="user-list" class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th scope="col" style="vertical-align: top;">Banner Image</th>
                         <th scope="col" style="vertical-align: top;">Body Image</th>
                         <th scope="col" style="vertical-align: top;">Title</th>
                         <th scope="col" style="vertical-align: top;">Category/Sort #</th>
@@ -71,17 +70,12 @@
                         <th scope="col" style="vertical-align: top;">Calendar</th>
                         <th scope="col" style="vertical-align: top;">Author</th>
                         <th scope="col" style="vertical-align: top;">Cards</th>
+                        <th scope="col" style="vertical-align: top;">Grand-<br>child</th>
                         <th scope="col" style="vertical-align: top;">Options</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let page of pageList | async;">
-                        <td scope="col">
-                            <a [routerLink]="['/admin/pages/', page.url]">
-                                <img [src]="page.bannerPhotoURL"
-                                     class="page-image">
-                            </a>
-                        </td>
                         <td scope="col">
                             <a [routerLink]="['/admin/pages/', page.url]">
                                 <img [src]="page.photoURL"
@@ -136,6 +130,14 @@
                         </span>
                             <span class="badge badge-outline-danger" *ngIf="!page.hasCards">
                             <i class="fa fa-times-circle"></i>
+                        </span>
+                        </td>
+                        <td scope="col" class="text-center">
+                            <span class="badge badge-outline-success" *ngIf="page.isGrandchildPage">
+                            <i class="fa fa-check-square"></i>
+                        </span>
+                            <span class="badge badge-outline-danger" *ngIf="!page.isGrandchildPage">
+                            <i class="fa fa-times-square"></i>
                         </span>
                         </td>
                         <td style="text-align:center;">

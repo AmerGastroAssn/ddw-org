@@ -3,6 +3,14 @@
 /src/environments/environment.ts
 /package-lock.json
 
+### Firebase ###
+/.firebase
+/.firebaserc
+/firestore.rules
+/database.rules.json
+/firestore.indexes.json
+
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 # compiled output
 /dist

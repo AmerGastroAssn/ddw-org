@@ -5,8 +5,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
-import { Observable, pipe } from 'rxjs';
-import { first, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { User } from '../models/User';
 import { AdminUserService } from './admin-user.service';
 
@@ -268,7 +268,7 @@ export class AuthService {
                       .catch((error) => console.log(error));
     }
 
-    private setUserToOnline(user) {
+    setUserToOnline(user) {
         // Sets user data to firestore on login
         console.log('user', user);
         const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -285,12 +285,8 @@ export class AuthService {
             displayName: user.displayName,
         };
 
-        console.log('setOnlineData', data);
         userRef.set(data, { merge: true })
-               .then(() => {
-                   pipe(shareReplay(1));
-                   console.log('setUserToOnline updated');
-               })
+               .then()
                .catch((error) => console.log(error));
     }
 

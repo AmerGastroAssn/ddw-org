@@ -76,6 +76,13 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
               }
           }));
 
+        // Sets users login date.
+        this.user$.take(1).subscribe((userInfo) => {
+            this.authService.setUserToOnline(userInfo);
+        });
+
+
+        // Sets user to admin and logs user in local storage.
         this.user$.subscribe((currentUserInfo) => {
             if (currentUserInfo && this.afAuth.auth.currentUser) {
                 this.user = currentUserInfo;
@@ -86,9 +93,11 @@ export class AdminNavbarComponent implements OnInit, OnDestroy {
             }
         });
 
+
     }
 
     ngOnDestroy() {
+
     }
 
     onLogout() {

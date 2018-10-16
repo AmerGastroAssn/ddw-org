@@ -94,6 +94,10 @@ const appRoutes: Routes = [
     {
         path: 'news', component: PagesComponent,
         children: [
+            { path: 'onsite-news', redirectTo: 'ddw-news', pathMatch: 'full' },
+            { path: 'press', redirectTo: 'press-room', pathMatch: 'full' },
+            { path: 'releases', redirectTo: 'press-releases', pathMatch: 'full' },
+            { path: 'guidelines', redirectTo: 'guidelines-license-for-use-of-ddw-content', pathMatch: 'full' },
             { path: ':id', component: NewsAndMediaComponent },
             {
                 path: '', component: PressReleasesComponent,
@@ -104,13 +108,7 @@ const appRoutes: Routes = [
                     { path: '**', redirectTo: '/news/press-releases', pathMatch: 'full' },
                 ]
             },
-            { path: '**', redirectTo: 'press-releases', pathMatch: 'full' },
-            { path: 'onsite-news', redirectTo: '/ddw-daily-news', pathMatch: 'full' },
-            { path: 'press', redirectTo: '/press-room', pathMatch: 'full' },
-            { path: 'releases', redirectTo: '/press-releases', pathMatch: 'full' },
-            { path: 'guidelines', redirectTo: '/guidelines-license-for-use-of-ddw-content', pathMatch: 'full' },
-
-
+            { path: '**', redirectTo: '/news/press-releases', pathMatch: 'full' },
         ]
     },
     {
@@ -256,6 +254,10 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'abstracts', redirectTo: '/presenters/submit-an-abstract', pathMatch: 'full' },
+    { path: 'ddwwebsite/education/abstracts', redirectTo: '/education/abstracts', pathMatch: 'full' },
+    { path: 'ddwwebsite/register/registration', redirectTo: '/register/registration', pathMatch: 'full' },
+    { path: 'ddwwebsite/attendee-planning/tracks', redirectTo: '/attendee-planning/ddw-tracks', pathMatch: 'full' },
+    { path: 'ddwwebsite/attendee-planning/mobile-app', redirectTo: '/attendee-planning/mobile-app', pathMatch: 'full' },
     { path: 'ddwwebsite/:id/:id', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },
 

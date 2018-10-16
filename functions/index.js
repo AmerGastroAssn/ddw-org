@@ -83,13 +83,13 @@ app.get('*', (req, res) => {
           .catch((error) => console.log(error));
 
     } else {
-
+        const botUrl = generateUrl(req);
         // Not a bot, fetch the regular Angular app
         // This is not an infinite loop because Firebase Hosting Priorities dictate index.html will be loaded first
         fetch(`https://${appUrl}`)
           .then(res => res.text())
           .then(body => {
-              console.log(`Page (https://${appUrl}) hit at: `, currentDate);
+              console.log(`Page (${botUrl}) hit at: `, currentDate);
               return res.send(body.toString());
           })
           .catch((error) => console.log(error));

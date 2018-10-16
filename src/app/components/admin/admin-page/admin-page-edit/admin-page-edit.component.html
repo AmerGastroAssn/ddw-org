@@ -399,7 +399,7 @@
                                 </div>
 
 
-                                <ddw-admin-image-uploader-item></ddw-admin-image-uploader-item>
+                                <ddw-admin-image-uploader-item *ngIf="!isExtURL"></ddw-admin-image-uploader-item>
 
 
                                 <div class="form-group" *ngIf="!page.isExtURL">

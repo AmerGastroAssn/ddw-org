@@ -47,12 +47,23 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Card 1
-                                <small class="text-secondary">(left)</small>
+                                <small class="text-secondary"><i class="fa fa-align-left"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="cardForm1"
                               (ngSubmit)="onUpdateCard1(cardForm1.value)"
                               *ngIf="card1; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card1.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text"
@@ -88,16 +99,6 @@
                                        formControlName="url">
                             </div>
 
-
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of card)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="card1.photoURL"
-                                       formControlName="photoURL">
-                            </div>
 
                             <button type="submit"
                                     [disabled]="!cardForm1.valid"
@@ -147,12 +148,23 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Card 2
-                                <small class="text-secondary">(Middle)</small>
+                                <small class="text-secondary"><i class="fa fa-align-center"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="cardForm2"
                               (ngSubmit)="onUpdateCard2(cardForm2.value)"
                               *ngIf="card2; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card2.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text"
@@ -186,17 +198,6 @@
                                        class="form-control"
                                        [(ngModel)]="card2.url"
                                        formControlName="url">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of card)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="card2.photoURL"
-                                       formControlName="photoURL">
                             </div>
 
 
@@ -248,12 +249,23 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Card 3
-                                <small class="text-secondary">(Right)</small>
+                                <small class="text-secondary"><i class="fa fa-align-right"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="cardForm3"
                               (ngSubmit)="onUpdateCard3(cardForm3.value)"
                               *ngIf="card3; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of card)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="card3.photoURL"
+                                       formControlName="photoURL">
+                            </div>
+
                             <div class="form-group">
                                 <label>Title</label>
                                 <input type="text"
@@ -289,18 +301,6 @@
                                        [(ngModel)]="card3.url"
                                        formControlName="url">
                             </div>
-
-
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of card)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="card3.photoURL"
-                                       formControlName="photoURL">
-                            </div>
-
 
                             <button type="submit"
                                     [disabled]="!cardForm3.valid"

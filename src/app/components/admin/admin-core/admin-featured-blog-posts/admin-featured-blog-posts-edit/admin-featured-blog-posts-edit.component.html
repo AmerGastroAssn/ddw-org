@@ -37,12 +37,22 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Post 1
-                                <small class="text-secondary">(left)</small>
+                                <small class="text-secondary"><i class="fa fa-align-left"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="postForm1"
                               (ngSubmit)="onUpdatePost1(postForm1.value)"
                               *ngIf="post1; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of post)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="post1.photoURL"
+                                       formControlName="photoURL">
+                            </div>
 
                             <div class="form-group">
                                 <label>Body</label>
@@ -72,15 +82,6 @@
                             </div>
 
 
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of post)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="post1.photoURL"
-                                       formControlName="photoURL">
-                            </div>
 
                             <button type="submit"
                                     [disabled]="!postForm1.valid"
@@ -128,12 +129,22 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Post 2
-                                <small class="text-secondary">(Middle)</small>
+                                <small class="text-secondary"><i class="fa fa-align-center"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="postForm2"
                               (ngSubmit)="onUpdatePost2(postForm2.value)"
                               *ngIf="post2; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of post)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="post2.photoURL"
+                                       formControlName="photoURL">
+                            </div>
 
                             <div class="form-group">
                                 <label>Body</label>
@@ -161,18 +172,6 @@
                                        [(ngModel)]="post2.url"
                                        formControlName="url">
                             </div>
-
-
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of post)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="post2.photoURL"
-                                       formControlName="photoURL">
-                            </div>
-
 
                             <button type="submit"
                                     [disabled]="!postForm2.valid"
@@ -220,12 +219,22 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h4>Post 3
-                                <small class="text-secondary">(Right)</small>
+                                <small class="text-secondary"><i class="fa fa-align-right"></i></small>
                             </h4>
                         </div>
                         <form [formGroup]="postForm3"
                               (ngSubmit)="onUpdatePost3(postForm3.value)"
                               *ngIf="post3; else loading">
+
+                            <div class="form-group">
+                                <label>Image URL
+                                    <small>(Image at the top of post)</small>
+                                </label>
+                                <input type="text"
+                                       class="form-control"
+                                       [(ngModel)]="post3.photoURL"
+                                       formControlName="photoURL">
+                            </div>
 
                             <div class="form-group">
                                 <label>Body</label>
@@ -253,17 +262,6 @@
                                        class="form-control"
                                        [(ngModel)]="post3.url"
                                        formControlName="url">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label>Image URL
-                                    <small>(Image at the top of post)</small>
-                                </label>
-                                <input type="text"
-                                       class="form-control"
-                                       [(ngModel)]="post3.photoURL"
-                                       formControlName="photoURL">
                             </div>
 
 

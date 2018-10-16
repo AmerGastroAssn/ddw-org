@@ -66,14 +66,7 @@
                         <tr>
                             <th scope="col">Online</th>
                             <td>
-                            <span class="badge badge-outline-success"
-                                  *ngIf="user.isOnline">
-                               Yes
-                            </span>
-                                <span class="badge badge-outline-danger"
-                                      *ngIf="!user.isOnline">
-                                No
-                            </span>
+                                {{ user.loginDate | date }}
                             </td>
 
                         </tr>
@@ -83,7 +76,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Last time online: {{ user.loginDate | date:'fullDate' }}</small>
+                    <small class="text-muted">Last time online: {{ user.loginDate | date:'medium' }}</small>
                 </div>
             </div>
         </div>

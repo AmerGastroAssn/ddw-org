@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Observable } from 'rxjs';
@@ -22,7 +22,7 @@ import { AlertModalComponent } from '../alert-modal/alert-modal.component';
     styleUrls: ['./home.component.css'],
 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
     title: string;
     subtitle: string;
     forTime: string;
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
                         { name: 'author', content: meta.metaAuthor },
                         { name: 'keywords', content: meta.metaKeywords },
                         { property: 'canonical', href: 'https://ddw.org/home' },
-                        { property: 'og:url', content: 'https://ddw.org' },
+                        { property: 'og:url', content: 'https://ddw.org/home' },
                         { property: 'og:title', content: `Digestive Digest Week®` },
                         { property: 'og:site_name', content: `Digestive Digest Week®` },
                         { property: 'og:see_also', content: `http://ddw.org/home` },
@@ -136,6 +136,10 @@ export class HomeComponent implements OnInit {
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
 
+
+    }
+
+    ngAfterViewInit() {
         this.openModalWithComponent();
     }
 

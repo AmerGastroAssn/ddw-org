@@ -249,7 +249,7 @@ export class AuthService {
 
     setUserToOffline(user) {
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {
             uid: user.uid,
@@ -271,7 +271,7 @@ export class AuthService {
     setUserToOnline(user) {
         // Sets user data to firestore on login
         console.log('user', user);
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+        const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {
             $key: user.uid,

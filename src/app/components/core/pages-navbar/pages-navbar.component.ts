@@ -27,6 +27,12 @@ export class PagesNavbarComponent implements OnInit {
       private pageService: PageService,
       private customLinkService: AdminCustomNavLinkService,
     ) {
+        $(document).ready(function () {
+                $('#HomeNavBar .gsc-input-box').css({ 'border-color': '1px solid #333333 !important' });
+
+        });
+
+
         // $(document).ready(function () {
         //     $(window).scroll(function () {
         //         const scrollPos   = $(window).scrollTop(),
@@ -90,7 +96,7 @@ export class PagesNavbarComponent implements OnInit {
 
         this.googleSearch = `<script>
               (function() {
-                var cx = '010781389649301804341:tuglqcuc3hc';
+                var cx = '015284641207443309559:h9oekyknvia';
                 var gcse = document.createElement('script');
                 gcse.type = 'text/javascript';
                 gcse.async = true;
@@ -98,9 +104,6 @@ export class PagesNavbarComponent implements OnInit {
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(gcse, s);
               })();
-              window.onload = function(){
-                document.getElementById('gsc-i-id1').placeholder = 'Search!';
-              };
             </script>
             <gcse:search></gcse:search>`;
     }

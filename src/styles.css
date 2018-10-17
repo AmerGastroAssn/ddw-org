@@ -587,7 +587,7 @@ table.ddw1 td {
 
 .gsc-search-button-v2, .gsc-search-button-v2:hover {
     font-size: 0px;
-    padding: 6px 27px;
+    padding: 0px;
     width: auto;
     vertical-align: middle;
     border-radius: 2px;
@@ -726,17 +726,15 @@ h2.card-sec-title::after {
     border: none !important;
 }
 
-.gsc-input-box {
-    border: 1px solid #ffffff;
-    background: none;
-}
+
 
 .cse .gsc-search-button-v2, .gsc-search-button-v2, .cse .gsc-search-button-v2:hover, .gsc-search-button-v2:hover {
     font-size: 0px;
-    padding: 6px 27px;
+    padding: 0px !important;
     width: auto;
     vertical-align: middle;
-    border: 1px solid #fff;
+    /*border: 1px solid #fff;*/
+    border: none !important;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -770,18 +768,13 @@ h2.card-sec-title::after {
     color: #FFFFFF;
 }
 
-.gsc-input-box {
-    border: 1px solid #FFFFFF !important;
-    background: none !important;
-    border-radius: 2px !important;
-}
 
 .gsc-search-button-v2 {
     font-size: 0px;
-    padding: 6px 27px;
+    padding: 0;
     width: auto;
     vertical-align: middle;
-    border: 1px solid #FFFFFF !important;
+    border: none !important;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -791,6 +784,12 @@ h2.card-sec-title::after {
     background-image: none !important;
 
 }
+
+.gsc-search-button-v2 svg {
+    display: none;
+}
+
+
 
 /*------------------------------------------------
      CKeditor Attribute Styles

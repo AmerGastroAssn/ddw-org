@@ -105,7 +105,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
             });
 
         // Home Page Sections
-        this.adminHomePageService.getHomeForm()
+        this.adminHomePageService.getHomePage()
             .subscribe((homePage) => {
                 this.homePage = homePage;
                 this.calendars$ = this.calendarService.getCalendarByTitle(this.homePage.calendarTitle);

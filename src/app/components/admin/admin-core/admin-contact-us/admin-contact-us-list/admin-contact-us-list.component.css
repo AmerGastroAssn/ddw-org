@@ -1,11 +1,27 @@
 .viewed {
-    background-color: #FFF3CF !important;
-    color: #5C440F !important;
-    border: 1px solid #EDE1C1;
+    background-color: #D0CAC8 !important;
+    color: #6D686E !important;
+    border: 1px solid #D0CAC8;
     text-decoration: line-through;
-    /*opacity: 0.75;*/
+
+}
+
+tr.viewed, tr.viewed > * {
+    border-color: #E1DBD9 !important;
+}
+
+a.btn.btn-default {
+    border-color: #6D686E !important;
+    background-color: #6D686E;
+    color: #D0CAC8;
+}
+
+tr.viewed > td > a.btn-default.btn-sm {
+    border-color: #6D686E !important;
+    background-color: #6D686E;
+    color: #D0CAC8;
 }
 
 a.viewed-text {
-    color: #5C440F !important;
+    color: #6D686E !important;
 }

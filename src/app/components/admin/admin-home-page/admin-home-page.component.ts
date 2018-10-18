@@ -133,7 +133,7 @@ export class AdminHomePageComponent implements OnInit {
         });
 
         // Home Form:
-        this.adminHomePageService.getHomeForm().subscribe((values) => {
+        this.adminHomePageService.getHomePage().subscribe((values) => {
             if (values !== null) {
                 this.homePage = values;
                 // Form:

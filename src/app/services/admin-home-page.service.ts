@@ -42,7 +42,7 @@ export class AdminHomePageService {
     }
 
 
-    getHomeForm(): Observable<HomePage> {
+    getHomePage(): Observable<HomePage> {
         this.homeDoc = this.afs.doc<HomePage>(`homePage/${this.home$key}`);
         this.home$ = this.homeDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {

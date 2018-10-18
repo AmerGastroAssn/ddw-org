@@ -47,7 +47,7 @@
                     <tr>
                         <th scope="col" style="vertical-align: top;">Contact</th>
                         <th scope="col" style="vertical-align: top;">Email</th>
-                        <th scope="col" style="vertical-align: top;">Phone Number</th>
+                        <!--<th scope="col" style="vertical-align: top;">Phone Number</th>-->
                         <th scope="col" style="vertical-align: top;">Subject</th>
                         <th scope="col" style="vertical-align: top;">Date</th>
                         <th scope="col" style="vertical-align: top; text-align:center;">Options</th>
@@ -65,9 +65,9 @@
                         <td scope="col">
                             <i class="fa fa-envelope"></i> {{ contact.email | slice:0:25 }}
                         </td>
-                        <td scope="col">
-                            <i class="fa fa-phone"></i> {{ contact.phoneNumber }}
-                        </td>
+                        <!--<td scope="col">-->
+                            <!--<i class="fa fa-phone"></i> {{ contact.phoneNumber }}-->
+                        <!--</td>-->
                         <td scope="col">
                             <i class="fa fa-code-branch"></i>&nbsp;{{ contact.subject | slice:0:30 }}
                         </td>
@@ -75,22 +75,22 @@
                             {{ contact.sentDate | date:'medium' }}
                         </td>
                         <td class="text-center">
+                            <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
+                               *ngIf="!contact.viewed"
+                               matTooltip="Mark as viewed"
+                               (click)="onMarkViewed(contact.$key)">
+                                <i class="fal fa-square"></i>
+                            </a>
+                            <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
+                               *ngIf="contact.viewed"
+                               matTooltip="Un-Mark as viewed"
+                               (click)="onUnmarkViewed(contact.$key)">
+                                <i class="fa fa-check-square"></i>
+                            </a>
                             <a class="btn btn-secondary btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
                                matTooltip="View contact details"
                                [routerLink]="['/admin/contacts/', contact.$key]">
                                 <i class="fa fa-address-book"></i>&nbsp;
-                            </a>
-                            <a class="btn btn-warning btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
-                               *ngIf="!contact.viewed"
-                               matTooltip="Mark as viewed"
-                               (click)="onMarkViewed(contact.$key)">
-                                <i class="fa fa-check"></i>
-                            </a>
-                            <a class="btn btn-outline-warning btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
-                               *ngIf="contact.viewed"
-                               matTooltip="Un-Mark as viewed"
-                               (click)="onUnmarkViewed(contact.$key)">
-                                <i class="fa fa-times"></i>
                             </a>
                             <a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
                                matTooltip="Delete Contact"

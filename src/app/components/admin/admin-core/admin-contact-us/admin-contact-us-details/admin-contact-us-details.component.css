@@ -15,15 +15,41 @@ a.text-dark:hover {
 }
 
 .viewed {
-    background-color: #FFF3CF !important;
-    color: #5C440F !important;
-    border: 1px solid #EDE1C1;
+    background-color: #D0CAC8 !important;
+    color: #6D686E !important;
+    border: 1px solid #D0CAC8;
 }
 
 a.viewed-text {
-    color: #5C440F !important;
+    color: #898992 !important;
 }
+
+.card.viewed > div > div > div > table > tbody > tr * {
+    border-color: #E1DBD9 !important;
+}
+
+tr.viewed, tr.viewed > *, tr.viewed > td > a.btn-default.btn-sm {
+    border-color: #E1DBD9 !important;
+}
+
 
 .text-mono {
     font-family: 'SF Mono', 'Menlo', 'Roboto Mono', 'DejaVu Sans Mono', 'Consolas', monospace;
+}
+
+h3.alert.alert-light {
+    background-color: #6D686E;
+    color: #D1D1D2;
+    border: 1px solid #787279;
+}
+
+a.viewed-link {
+    color: #6D686E;
+    font-weight: bold;
+}
+
+a.btn.btn-default.btn-sm.viewed-btn {
+    border-color: #6D686E !important;
+    background-color: #6D686E;
+    color: #D0CAC8;
 }

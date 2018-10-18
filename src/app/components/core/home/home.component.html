@@ -43,10 +43,16 @@
                         </div>
                     </div>
 
-                    <div class="row m-3">
+                    <div class="row m-3" *ngIf="homePage.hasBannerButton">
                         <div class="container">
                             <div class="text-center">
-                                <a href="#" class="btn btn-warning btn-lg">Submit Abstract</a>
+                                <a [routerLink]="[homePage.bannerButtonURL]"
+                                   class="btn btn-warning btn-lg"
+                                   *ngIf="!homePage.bannerButtonIsExtUrl">{{ homePage.bannerButtonText }}</a>
+                                <a [href]="homePage.bannerButtonURL"
+                                   class="btn btn-warning btn-lg"
+                                   *ngIf="homePage.bannerButtonIsExtUrl"
+                                   target="_blank">{{ homePage.bannerButtonText }}</a>
                             </div>
                         </div>
                     </div>

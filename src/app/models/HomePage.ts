@@ -43,6 +43,10 @@ export class HomePage {
       public hasCalendar: boolean,
       public calendarTitle: string,
       public calendarSectionTitle: string,
+      public bannerButtonText: string,
+      public bannerButtonURL: string,
+      public hasBannerButton: boolean,
+      public bannerButtonIsExtUrl: boolean,
       public uid: string,
     ) {
     }

@@ -90,6 +90,66 @@
                                                        formControlName="subheaderDate">
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <!-- * Banner Button * -->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h6>Banner Button</h6>
+                                            <div class="card bg-lighter">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox"
+                                                                   class="custom-control-input"
+                                                                   id="hasBannerButton"
+                                                                   formControlName="hasBannerButton"
+                                                                   (click)="toggleHasBannerButton()">
+                                                            <label class="custom-control-label"
+                                                                   for="hasBannerButton">Add Banner Button?</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" *ngIf="homePage.hasBannerButton">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="bannerButtonText">Banner Button Text</label>
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       id="bannerButtonText"
+                                                                       [(ngModel)]="homePage.bannerButtonText"
+                                                                       formControlName="bannerButtonText">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="bannerButtonURL">Banner Button URL</label>
+                                                                <input type="text"
+                                                                       class="form-control"
+                                                                       id="bannerButtonURL"
+                                                                       placeholder="/register/registration (or if ExtURL) https://"
+                                                                       [(ngModel)]="homePage.bannerButtonURL"
+                                                                       formControlName="bannerButtonURL">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" *ngIf="homePage.hasBannerButton">
+                                                        <div class="container">
+                                                            <div class="form-group">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox"
+                                                                           class="custom-control-input"
+                                                                           id="bannerButtonIsExtUrl"
+                                                                           formControlName="bannerButtonIsExtUrl"
+                                                                           (click)="toggleBannerButtonIsExtURL()">
+                                                                    <label class="custom-control-label"
+                                                                           for="bannerButtonIsExtUrl">External URL?</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <hr class="inset-hr"/>
                                     </div>
 

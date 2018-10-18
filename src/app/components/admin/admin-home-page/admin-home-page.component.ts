@@ -75,7 +75,10 @@ export class AdminHomePageComponent implements OnInit {
     hasCalendar: boolean;
     calendarTitle: string;
     calendarSectionTitle: string;
-
+    bannerButtonText: string;
+    bannerButtonURL: string;
+    hasBannerButton: boolean;
+    bannerButtonIsExtUrl: boolean;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -182,6 +185,10 @@ export class AdminHomePageComponent implements OnInit {
                     hasCalendar: [this.homePage.hasCalendar || false],
                     calendarTitle: [this.homePage.calendarTitle],
                     calendarSectionTitle: [this.homePage.calendarSectionTitle],
+                    bannerButtonText: [this.homePage.bannerButtonText],
+                    bannerButtonURL: [this.homePage.bannerButtonURL],
+                    hasBannerButton: [this.homePage.hasBannerButton],
+                    bannerButtonIsExtUrl: [this.homePage.bannerButtonIsExtUrl],
                 });
 
                 this.$key = this.homePageForm.value.$key;
@@ -228,6 +235,10 @@ export class AdminHomePageComponent implements OnInit {
                 this.hasCalendar = this.homePageForm.value.hasCalendar;
                 this.calendarTitle = this.homePageForm.value.calendarTitle;
                 this.calendarSectionTitle = this.homePageForm.value.calendarSectionTitle;
+                this.bannerButtonText = this.homePageForm.value.bannerButtonText;
+                this.bannerButtonURL = this.homePageForm.value.bannerButtonURL;
+                this.hasBannerButton = this.homePageForm.value.hasBannerButton;
+                this.bannerButtonIsExtUrl = this.homePageForm.value.bannerButtonIsExtUrl;
             }
         });
     }
@@ -275,6 +286,14 @@ export class AdminHomePageComponent implements OnInit {
 
     toggleSponsorHidden() {
         this.homePage.sponsorHidden = !this.homePage.sponsorHidden;
+    }
+
+    toggleHasBannerButton() {
+        this.homePage.hasBannerButton = !this.homePage.hasBannerButton;
+    }
+
+    toggleBannerButtonIsExtURL () {
+        this.homePage.bannerButtonIsExtUrl = !this.homePage.bannerButtonIsExtUrl;
     }
 
 }

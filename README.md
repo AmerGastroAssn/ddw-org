@@ -38,7 +38,7 @@ Add your firebase web-app variables to those files:
 
 It should be something like this (with your own values):
 
-```javascript
+```typescript
 export const environment = {
     production: false,
     firebase: {

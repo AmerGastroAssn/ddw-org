@@ -94,3 +94,14 @@ a.btn.btn-warning.btn-lg:hover {
     padding: 0.5em 2em;
     font-size: 18px;
 }
+
+
+/*------------------------------------------------
+     Mobile
+------------------------------------------------*/
+
+@media only screen and (max-width: 991px) {
+    h1.title {
+        visibility: hidden;
+    }
+}

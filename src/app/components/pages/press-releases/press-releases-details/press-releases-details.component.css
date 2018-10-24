@@ -20,12 +20,13 @@ h3.press-title {
     max-width: 1200px;
 }
 
+
 img.bannerPhotoURL {
     top: 0;
     left: 0;
     position: relative;
     max-height: 350px;
-    /*width: 100%;*/
+    width: 100%;
     /*z-index: 0;*/
 }
 
@@ -105,4 +106,15 @@ a.btn.btn-warning.btn-lg:hover {
     text-decoration: none;
     padding: 0.5em 2em;
     font-size: 18px;
+}
+
+
+/*------------------------------------------------
+     Mobile
+------------------------------------------------*/
+
+@media only screen and (max-width: 991px) {
+    h1.title {
+        visibility: hidden;
+    }
 }

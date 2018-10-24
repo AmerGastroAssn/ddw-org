@@ -147,3 +147,19 @@ a.social {
     text-decoration: none;
     font-size: 14px;
 }
+
+/*------------------------------------------------
+     Mobile
+------------------------------------------------*/
+
+@media only screen and (max-width: 991px) {
+    a.app.apple {
+        margin: 0 0.5em;
+    }
+
+    a.app.google {
+        margin: 0 0.5em;
+    }
+
+}
+

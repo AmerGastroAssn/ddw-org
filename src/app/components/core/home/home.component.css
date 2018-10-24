@@ -69,6 +69,14 @@ h1.time {
     font-weight: 900;
 }
 
+h6.time-mes {
+    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+
 .time {
     font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
     padding-top: 0.1em;
@@ -119,7 +127,7 @@ h1.time {
 
 /* Post-Meeting Resources */
 h2.card-sec-title {
-    padding-top: 2em;
+    padding-top: 1em;
     font-size: 42px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     font-weight: 600;

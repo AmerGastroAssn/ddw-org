@@ -1,9 +1,10 @@
 <!-- * PRESS-RELEASE-DETAILS * -->
 <div *ngIf="pressRelease">
-    <img [src]="banner" class="bannerPhotoURL">
+    <img [src]="banner"
+         class="bannerPhotoURL">
 
     <div class="row">
-        <div class="container-fluid" style="max-width:1200px;">
+        <div class="container">
             <h1 class="title">{{ pressReleaseTitle }}</h1>
         </div>
     </div>
@@ -18,7 +19,7 @@
     </div>
 
     <div class="row crumbs">
-        <div class="container-fluid pl-0" style="max-width:1200px;">
+        <div class="container-fluid body-container" style="max-width:1200px;">
             <ol class="breadcrumb pl-0">
                 <li class="breadcrumb-item text-dark">
                     News /
@@ -32,11 +33,11 @@
         </div>
     </div>
 
-    <hr>
+
 
     <div class="row">
-        <div class="container-fluid" style="max-width:1200px;">
-
+        <div class="container-fluid body-container" style="max-width:1200px;">
+            <hr>
             <h3 class="press-title">{{ pressRelease.title}}</h3>
             <p class="text-light">
                 <small>{{ pressRelease.publishOn | date:'fullDate' }}</small>

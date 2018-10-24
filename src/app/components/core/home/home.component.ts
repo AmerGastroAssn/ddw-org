@@ -75,8 +75,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
                         { name: 'keywords', content: meta.metaKeywords },
                         { property: 'canonical', href: 'https://ddw.org/home' },
                         { property: 'og:url', content: 'https://ddw.org/home' },
-                        { property: 'og:title', content: `Digestive Digest Week®` },
-                        { property: 'og:site_name', content: `Digestive Digest Week®` },
+                        { property: 'og:title', content: `Digestive Disease Week®` },
+                        { property: 'og:site_name', content: `Digestive Disease Week®` },
                         { property: 'og:see_also', content: `http://ddw.org/home` },
                         { property: 'og:description', content: meta.metaDesc },
                         {
@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                         { name: 'twitter:creator', content: '@DDWMeeting' },
                         { name: 'twitter:url', content: 'https://ddw.org/home' },
                         { name: 'twitter:site', content: '@DDWMeeting' },
-                        { name: 'twitter:title', content: `Digestive Digest Week®` },
+                        { name: 'twitter:title', content: `Digestive Disease Week®` },
                         { name: 'twitter:description', content: meta.metaDesc },
                         {
                             name: 'twitter:image',

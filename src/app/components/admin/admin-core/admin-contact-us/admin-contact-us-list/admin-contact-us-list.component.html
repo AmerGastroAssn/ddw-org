@@ -74,7 +74,7 @@
                         <td scope="col" class="text-truncate">
                             {{ contact.sentDate | date:'medium' }}
                         </td>
-                        <td class="text-center">
+                        <td scope="col" class="text-center">
                             <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1"
                                *ngIf="!contact.viewed"
                                matTooltip="Mark as viewed"

@@ -28,10 +28,10 @@ and
 
 `/src/environments/environment.ts`
 
+By running:
 
-    touch src/environments/environment.prod.ts
 
-    touch src/environments/environment.ts
+    mkdir src/environments && touch src/environments/environment.prod.ts && touch src/environments/environment.ts
 
 
 Add your firebase web-app variables to those files:

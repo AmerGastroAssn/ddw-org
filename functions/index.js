@@ -49,12 +49,12 @@ function detectBot(userAgent) {
 
     for (const bot of bots) {
         if (agent.indexOf(bot) > -1) {
-            console.log('bot detected', bot, agent);
+            // console.log('bot detected', bot, agent);
             return true
         }
     }
 
-    console.log('no bots found', currentDate);
+    // console.log('no bots found', currentDate);
     return false
 
 }
@@ -71,7 +71,7 @@ app.get('*', (req, res) => {
         fetch(`${renderUrl}/${botUrl}`)
           .then(res => res.text())
           .then(body => {
-              console.log('Bot hit at: ', currentDate);
+              // console.log('Bot hit at: ', currentDate);
               // Set the Vary header to cache the user agent, based on code from:
               // https://github.com/justinribeiro/pwa-firebase-functions-botrender
               res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
@@ -89,7 +89,7 @@ app.get('*', (req, res) => {
         fetch(`https://${appUrl}`)
           .then(res => res.text())
           .then(body => {
-              console.log(`Page (${botUrl}) hit at: `, currentDate);
+              // console.log(`Page (${botUrl}) hit at: `, currentDate);
               return res.send(body.toString());
           })
           .catch((error) => console.log(error));

@@ -74,7 +74,7 @@
                  *ngIf="calendar.date2">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date2 && calendar.body2">
-                    <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                    <strong>{{ calendar.date2.toDate() | date:'EEEE' }}</strong>,
                     {{ month2 }}
                     {{ calendar.date2.toDate() | date:"dd" }},
                     {{ calendar.date2.toDate() | date:"yyyy" }}
@@ -102,7 +102,7 @@
                  *ngIf="calendar.date4">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date4 && calendar.body4">
-                    <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                    <strong>{{ calendar.date4.toDate() | date:'EEEE' }}</strong>,
                     {{ month4 }}
                     {{ calendar.date4.toDate() | date:"dd" }},
                     {{ calendar.date4.toDate() | date:"yyyy" }}

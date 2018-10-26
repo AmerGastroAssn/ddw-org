@@ -77,13 +77,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
                         { property: 'og:url', content: 'https://ddw.org/home' },
                         { property: 'og:title', content: `Digestive Disease Week®` },
                         { property: 'og:site_name', content: `Digestive Disease Week®` },
-                        { property: 'og:see_also', content: `http://ddw.org/home` },
+                        { property: 'og:see_also', content: `https://ddw.org/home` },
                         { property: 'og:description', content: meta.metaDesc },
                         {
                             property: 'og:image',
                             content: meta.metaImageURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png'
                         },
-                        { itemprop: 'name', content: 'http://ddw.org/home' },
+                        { itemprop: 'name', content: 'https://ddw.org/home' },
                         { itemprop: 'description', content: meta.metaDesc },
                         {
                             itemprop: 'image',

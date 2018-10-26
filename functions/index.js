@@ -40,7 +40,8 @@ function detectBot(userAgent) {
         'twitterbot',
         'facebookexternalhit',
         'linkedinbot',
-        'facebot'
+        'facebot',
+        'slurp',
     ];
 
 
@@ -49,7 +50,7 @@ function detectBot(userAgent) {
 
     for (const bot of bots) {
         if (agent.indexOf(bot) > -1) {
-            // console.log('bot detected', bot, agent);
+            console.log('bot detected', bot, agent);
             return true
         }
     }
@@ -80,7 +81,7 @@ app.get('*', (req, res) => {
               return res.send(body.toString());
 
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.error(error));
 
     } else {
         const botUrl = generateUrl(req);
@@ -89,10 +90,9 @@ app.get('*', (req, res) => {
         fetch(`https://${appUrl}`)
           .then(res => res.text())
           .then(body => {
-              // console.log(`Page (${botUrl}) hit at: `, currentDate);
               return res.send(body.toString());
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.error(error));
     }
 
 });
@@ -176,7 +176,7 @@ exports.firestoreEmail = functions.firestore
             return sgMail.send(msg)
         })
         .then((msg) => console.log('email sent!: msg:', msg))
-        .catch(err => console.log(err))
+        .catch(err => console.error(err))
 
   });
 

@@ -67,18 +67,18 @@ export class PressReleasesDetailsComponent implements OnInit {
                                 name: 'description',
                                 content: this.pressRelease.metaDesc || meta.metaDesc
                             });
-                            this.meta.updateTag({ name: 'author', content: this.pressRelease.author });
+                            this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
                             this.meta.updateTag({
                                 property: 'og:url',
-                                content: `http://ddw.org/${this.pressRelease.url}`
+                                content: `https://ddw.org/${this.pressRelease.url}`
                             });
                             this.meta.updateTag({
                                 property: 'og:title',
-                                content: `${this.pressRelease.title} - Digestive Digest Week®`
+                                content: `${this.pressRelease.title} - Digestive Disease Week®`
                             });
-                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
-                            this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
+                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Disease Week®` });
+                            this.meta.updateTag({ property: 'og:see_also', content: `https://ddw.org/home` });
                             this.meta.updateTag({
                                 property: 'og:description',
                                 content: this.pressRelease.metaDesc || meta.metaDesc
@@ -89,7 +89,7 @@ export class PressReleasesDetailsComponent implements OnInit {
                             });
                             this.meta.updateTag({
                                 itemprop: 'name',
-                                content: `http://ddw.org/${this.pressRelease.url}`
+                                content: `https://ddw.org/${this.pressRelease.url}`
                             });
                             this.meta.updateTag({
                                 itemprop: 'description',
@@ -100,7 +100,7 @@ export class PressReleasesDetailsComponent implements OnInit {
                             this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
                             this.meta.updateTag({
                                 name: 'twitter:url',
-                                content: `http://ddw.org/${this.pressRelease.url}`
+                                content: `https://ddw.org/${this.pressRelease.url}`
                             });
                             this.meta.updateTag({ name: 'twitter:title', content: this.pressRelease.title });
                             this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });

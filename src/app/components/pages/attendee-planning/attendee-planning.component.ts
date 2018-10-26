@@ -70,15 +70,15 @@ export class AttendeePlanningComponent implements OnInit {
                     .subscribe((meta) => {
                         if (this.page && meta) {
                             this.meta.updateTag({ name: 'description', content: this.page.metaDesc || meta.metaDesc });
-                            this.meta.updateTag({ name: 'author', content: this.page.author });
+                            this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });
-                            this.meta.updateTag({ property: 'og:url', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({ property: 'og:url', content: `https://ddw.org${this.page.slug}` });
                             this.meta.updateTag({
                                 property: 'og:title',
-                                content: `${this.page.title} - Digestive Digest Week®`
+                                content: `${this.page.title} - Digestive Disease Week®`
                             });
-                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Digest Week®` });
-                            this.meta.updateTag({ property: 'og:see_also', content: `http://ddw.org/home` });
+                            this.meta.updateTag({ property: 'og:site_name', content: `Digestive Disease Week®` });
+                            this.meta.updateTag({ property: 'og:see_also', content: `https://ddw.org/home` });
                             this.meta.updateTag({
                                 property: 'og:description',
                                 content: this.page.metaDesc || meta.metaDesc
@@ -87,7 +87,7 @@ export class AttendeePlanningComponent implements OnInit {
                                 property: 'og:image',
                                 content: this.page.photoURL || meta.metaImageURL
                             });
-                            this.meta.updateTag({ itemprop: 'name', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({ itemprop: 'name', content: `https://ddw.org${this.page.slug}` });
                             this.meta.updateTag({
                                 itemprop: 'description',
                                 content: this.page.metaDesc || meta.metaDesc
@@ -98,7 +98,7 @@ export class AttendeePlanningComponent implements OnInit {
                             });
                             this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
                             this.meta.updateTag({ name: 'twitter:creator', content: '@DDWMeeting' });
-                            this.meta.updateTag({ name: 'twitter:url', content: `http://ddw.org/${this.page.slug}` });
+                            this.meta.updateTag({ name: 'twitter:url', content: `https://ddw.org${this.page.slug}` });
                             this.meta.updateTag({ name: 'twitter:site', content: '@DDWMeeting' });
                             this.meta.updateTag({ name: 'twitter:title', content: this.page.title });
                             this.meta.updateTag({

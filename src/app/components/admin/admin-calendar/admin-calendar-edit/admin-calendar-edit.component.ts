@@ -78,7 +78,8 @@ export class AdminCalendarEditComponent implements OnInit {
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY'
+              dateInputFormat: 'MMMM Do YYYY',
+              placeholder: ''
           });
 
         // Edit Calendar:

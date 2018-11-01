@@ -30,6 +30,7 @@
             <!-- * Body * -->
             <div [innerHTML]="page.body | safeHtml" class="details-body"></div>
 
+            <!-- * Calendar * -->
             <div *ngIf="page.hasCalendar">
                 <div *ngFor="let calendar of calendar$ | async">
                     <!-- * ADMIN-CALENDAR-ITEM * -->
@@ -84,7 +85,6 @@
                                        *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
                                 </li>
                             </ul>
-                            <!-- * Calendar Content * -->
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active"
                                      id="date1"
@@ -107,7 +107,7 @@
                                      *ngIf="calendar.date2">
                                     <h4 class="pt-5 pb-5 mb-3 pl-3"
                                         *ngIf="calendar.date2 && calendar.body2">
-                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                                        <strong>{{ calendar.date2.toDate() | date:'EEEE' }}</strong>,
                                         {{ month2 }}
                                         {{ calendar.date2.toDate() | date:"dd" }},
                                         {{ calendar.date2.toDate() | date:"yyyy" }}
@@ -135,7 +135,7 @@
                                      *ngIf="calendar.date4">
                                     <h4 class="pt-5 pb-5 mb-3 pl-3"
                                         *ngIf="calendar.date4 && calendar.body4">
-                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
+                                        <strong>{{ calendar.date4.toDate() | date:'EEEE' }}</strong>,
                                         {{ month4 }}
                                         {{ calendar.date4.toDate() | date:"dd" }},
                                         {{ calendar.date4.toDate() | date:"yyyy" }}

@@ -88,7 +88,7 @@ export class AdminCalendarService {
                              verticalPosition: 'bottom',
                              panelClass: ['snackbar-success']
                          });
-                         console.log('Calendar Event updated', data);
+                         console.log('Calendar Updated!', data);
                      })
                      .catch((error) => console.log(`ERROR~uC: `, error));
     }
@@ -121,7 +121,7 @@ export class AdminCalendarService {
                              verticalPosition: 'bottom',
                              panelClass: ['snackbar-success']
                          });
-                         console.log('Calendar Event updated', data);
+                         console.log('Calendar Saved!', data);
                      })
                      .catch((error) => console.log(`ERROR~uC: `, error));
     }

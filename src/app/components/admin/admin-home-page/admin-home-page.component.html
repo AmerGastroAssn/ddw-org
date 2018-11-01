@@ -736,6 +736,7 @@
                                        [bsConfig]="bsConfig"
                                        placement="top"
                                        [(ngModel)]="date"
+                                       [value]="date.toDate() | date:'medium'"
                                        formControlName="date">
                                 <br>
                                 <br>

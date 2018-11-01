@@ -42,7 +42,7 @@ export class AdminImagesComponent implements OnInit {
             .subscribe((images) => this.images = images);
         Observable.combineLatest(this.startObs, this.endObs)
                   .subscribe((value) => {
-                      this.imageService.getImages(value[0], value[1])
+                      this.imageService.getSearchedImages(value[0], value[1])
                           .subscribe((images) => {
                               this.images = images;
                           });

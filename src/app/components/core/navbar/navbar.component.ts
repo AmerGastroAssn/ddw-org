@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .nav-item > a').css({ color: 'white' });
                 $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
+                $('#gsc-iw-id1').css({ border: '1px solid #FFFFFF' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
                 $('#HomeNavBar .show > a').css({ color: 'gray' });
@@ -52,8 +53,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('a.level1.MPAuxNav.static').removeClass('light-link');
                 $('#HomeNavBar .nav-item > a').css({ color: '#5F6A72' });
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
+                $('#gsc-iw-id1').css({ border: '1px solid #5f6a72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
-                $('#HomeNavBar .gsc-control-cse').css({ border: '1px solid #333333' });
+                $('.gsc-control-cse').css({ border: '1px solid #333333 !important' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
             }
         });
@@ -68,6 +70,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .nav-item > a').css({ color: 'white' });
                 $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
+                $('#gsc-iw-id1').css({ border: '1px solid #FFFFFF' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
                 $('#HomeNavBar .show > a').css({ color: 'gray' });
@@ -81,9 +84,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .nav-item > a').css({ color: '#5F6A72' });
                 $('a.level1.MPAuxNav.static').removeClass('light-link');
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
+                $('#gsc-iw-id1').css({ border: '1px solid #5f6a72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
-                $('.gsc-control-cse').css({ border: '1px solid #333333 !important' });
-            $('.gsc-input-box').css({ border: '1px solid #333 !important', background: 'transparent' });
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
                 $('#HomeNavBar .fab').css({ color: '#2e6da4' });
                 $('#HomeNavBar .gsc-input-box').css({ border: '1px solid #333333 !important' });

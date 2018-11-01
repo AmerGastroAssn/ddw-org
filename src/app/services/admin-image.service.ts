@@ -23,7 +23,7 @@ export class AdminImageService {
         this.currentUser = this.authService.getProfile();
     }
 
-    getImages(start, end) {
+    getSearchedImages(start, end) {
         return this.afs.collection('images',
           (ref) => ref.limit(10)
                       .orderBy('imageName')
@@ -34,14 +34,14 @@ export class AdminImageService {
 
     getImageByCreatedAt(): Observable<Image[]> {
         this.imageCollection = this.afs.collection('images',
-          ref => ref.orderBy('createdAt', 'desc').limit(25)
+          ref => ref.orderBy(`createdAt`, 'desc').limit(25)
         );
         return this.imageCollection.valueChanges();
     }
 
     getImageBySortAmount(amount): Observable<Image[]> {
         this.imageCollection = this.afs.collection('images',
-          ref => ref.orderBy('createdAt', 'desc').limit(amount)
+          ref => ref.orderBy(`createdAt`, 'desc').limit(amount)
         );
         return this.imageCollection.valueChanges();
     }

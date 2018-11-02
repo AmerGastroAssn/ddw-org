@@ -58,6 +58,10 @@ export class AdminCalendarEditComponent implements OnInit {
     column3: string;
     column4: string;
     currentDate = new Date();
+    date1Value: any;
+    date2Value: any;
+    date3Value: any;
+    date4Value: any;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -78,8 +82,7 @@ export class AdminCalendarEditComponent implements OnInit {
         this.bsConfig = Object.assign({},
           {
               containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY',
-              placeholder: ''
+              dateInputFormat: 'MMMM Do YYYY'
           });
 
         // Edit Calendar:
@@ -114,6 +117,7 @@ export class AdminCalendarEditComponent implements OnInit {
                 this.date4 = this.updateCalForm.value.date4;
                 this.displayName = this.updateCalForm.value.displayName;
                 this.uid = this.updateCalForm.value.uid;
+
             }
         });
 

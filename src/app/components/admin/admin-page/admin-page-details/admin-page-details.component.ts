@@ -232,12 +232,5 @@ export class AdminPageDetailsComponent implements OnInit {
         this.adminPageService.deletePage(this.page.uid);
     }
 
-    isAbbrvDate() {
-
-
-
-
-
-    }
 
 }

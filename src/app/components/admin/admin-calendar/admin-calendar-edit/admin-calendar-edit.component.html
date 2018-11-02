@@ -105,7 +105,7 @@
                                            bsDatepicker
                                            placement="top"
                                            formControlName="date1"
-                                           [value]="date1.toDate() | date"
+                                           [value]="date1 ? (date1.toDate() | date) : 'Select Date'"
                                            [bsConfig]="bsConfig">
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                            bsDatepicker
                                            placement="top"
                                            formControlName="date2"
-                                           [value]="date2.toDate() | date"
+                                           [value]="date2 ? (date2.toDate() | date) : 'Select Date'"
                                            [bsConfig]="bsConfig">
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                                            bsDatepicker
                                            placement="top"
                                            formControlName="date3"
-                                           [value]="date3.toDate() | date"
+                                           [value]="date3 ? (date3.toDate() | date) : 'Select Date'"
                                            [bsConfig]="bsConfig">
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                            bsDatepicker
                                            placement="top"
                                            formControlName="date4"
-                                           [value]="date4.toDate() | date"
+                                           [value]="date4 ? (date4.toDate() | date) : 'Select Date'"
                                            [bsConfig]="bsConfig">
                                 </div>
                             </div>

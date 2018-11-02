@@ -44,7 +44,7 @@ export class AdminFileUploaderItemComponent implements OnInit {
           this.fileType === 'ppt'
         ) {
             // The storage path
-            const path = `pageFiles/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
+            const path = `files/${(new Date()).getFullYear()}/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
             const fileRef = this.storage.ref(path);
             // The main task
             this.task = this.storage.upload(path, file, { customMetadata });

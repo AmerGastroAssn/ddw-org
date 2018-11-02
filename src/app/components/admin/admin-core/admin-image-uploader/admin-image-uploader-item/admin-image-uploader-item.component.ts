@@ -43,7 +43,7 @@ export class AdminImageUploaderItemComponent implements OnInit {
             return;
         }
         // The storage path
-        const path = `pageImages/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
+        const path = `images/${(new Date()).getFullYear()}/${new Date().getTime()}_${file.name.replace(/\s/g, '_').toLowerCase()}`;
         const fileRef = this.storage.ref(path);
         // The main task
         this.task = this.storage.upload(path, file, { customMetadata });

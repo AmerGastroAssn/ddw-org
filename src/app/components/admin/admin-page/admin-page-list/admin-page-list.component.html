@@ -13,9 +13,10 @@
         </div>
     </div>
 </div>
-<div class="container mt-2">
+
+<div class="container mt-2 mb-3">
     <div class="row">
-        <div class="col-md-3 offset-md-9">
+        <div class="col-md-4 offset-md-4">
             <div class="card bg-transparent text-light text-center">
                 <div class="card-body p-3">
                     <label class="switcher switcher-md">
@@ -47,8 +48,42 @@
     </div>
 </div>
 
+
 <!-- Layout content -->
 <div class="layout-content mb-5" *ngIf="showListToggle" [@simpleFadeAnimation]="'in'">
+    <!-- * Search * -->
+    <div class="row" *ngIf="showListToggle" [@simpleFadeAnimation]="'in'">
+        <div class="container">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <h6 class="card-header">
+                        Search All Pages
+                    </h6>
+                    <div class="card-body demo-vertical-spacing-sm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text"
+                                               class="form-control"
+                                               placeholder="Search Page Titles..."
+                                               [(ngModel)]="searchTerm"
+                                               (keydown)="search($event)">
+                                        <span class="input-group-append">
+                                          <button class="btn btn-default search"
+                                                  type="button">
+                                              <i class="fa fa-search"></i>&nbsp;Search
+                                          </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Content -->
     <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -75,7 +110,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let page of pageList | async;">
+                    <tr *ngFor="let page of pageList">
                         <td scope="col">
                             <a [routerLink]="['/admin/pages/', page.url]">
                                 <img [src]="page.photoURL"

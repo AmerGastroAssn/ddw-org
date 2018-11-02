@@ -220,6 +220,14 @@ export class AdminPageService {
         }
     }
 
+    getSearchedPages(start, end) {
+        return this.afs.collection('pages',
+          (ref) => ref.orderBy('url')
+                      .startAt(start).endAt(end)
+        )
+                   .valueChanges();
+    }
+
     getAllRegisterPages(): Observable<Page[]> {
         this.pageCollection = this.afs.collection('pages', ref => {
             return ref.where('category', '==', 'register');

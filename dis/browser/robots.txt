@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin
+Disallow: /register/registration-test
+Disallow: https://staging.ddw.org

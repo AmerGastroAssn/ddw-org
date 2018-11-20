@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { WINDOW } from '@ng-toolkit/universal';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AdminSettingsService } from '../services/admin-settings.service';
@@ -8,11 +9,11 @@ import { AdminSettingsService } from '../services/admin-settings.service';
     providedIn: 'root'
 })
 export class RegisterGuard implements CanActivate {
-    constructor(
-      private afAuth: AngularFireAuth,
-      private router: Router,
-      private flashMessage: FlashMessagesService,
-      private settingsService: AdminSettingsService
+    constructor(@Inject(WINDOW) private window: Window,
+                private afAuth: AngularFireAuth,
+                private router: Router,
+                private flashMessage: FlashMessagesService,
+                private settingsService: AdminSettingsService
     ) {
     }
 
@@ -29,7 +30,7 @@ export class RegisterGuard implements CanActivate {
                 return false;
             }
         } else {
-            window.location.reload();
+            this.window.location.reload();
             this.router.navigate(['home']);
             this.flashMessage.show(`Sorry, you do not have sufficient privileges. Please contact the Web team for help.`, {
                 cssClass: 'alert-warning',

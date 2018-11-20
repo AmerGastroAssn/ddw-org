@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit , Inject} from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
     headerbar: any;
     footerbar: any;
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
       private pageService: PageService,
       private adminPageService: AdminPageService,
       private route: ActivatedRoute,

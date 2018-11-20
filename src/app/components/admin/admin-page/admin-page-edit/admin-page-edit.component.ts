@@ -1,5 +1,6 @@
+import { WINDOW } from '@ng-toolkit/universal';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild , Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -96,7 +97,7 @@ export class AdminPageEditComponent implements OnInit {
     };
 
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
       private adminPageService: AdminPageService,
       private router: Router,
       private route: ActivatedRoute,

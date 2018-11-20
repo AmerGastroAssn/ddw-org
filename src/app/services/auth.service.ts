@@ -1,6 +1,7 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -36,14 +37,14 @@ export class AuthService {
     isAdmin: boolean;
 
 
-    constructor(
-      private afAuth: AngularFireAuth,
-      private flashMessage: FlashMessagesService,
-      private router: Router,
-      private route: ActivatedRoute,
-      private afs: AngularFirestore,
-      private adminUserService: AdminUserService,
-      public sbAlert: MatSnackBar,
+    constructor(@Inject(LOCAL_STORAGE) private localStorage: any,
+                private afAuth: AngularFireAuth,
+                private flashMessage: FlashMessagesService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private afs: AngularFirestore,
+                private adminUserService: AdminUserService,
+                public sbAlert: MatSnackBar,
     ) {
         this.usersCollection = afs.collection<User>('users');
         this.usersList$ = this.usersCollection.snapshotChanges()
@@ -89,7 +90,7 @@ export class AuthService {
 
     // Used to get userData in browser memory.
     getProfile() {
-        const user = localStorage.getItem('user');
+        const user = this.localStorage.getItem('user');
         return JSON.parse(user);
     }
 
@@ -121,7 +122,7 @@ export class AuthService {
     currentUserToken(): any {
         return this.afAuth.auth.currentUser.getIdToken(false)
                    .then(idToken => {
-                       return localStorage.setItem('userToken', idToken);
+                       return this.localStorage.setItem('userToken', idToken);
                    })
                    .catch(error => {
                        return error;
@@ -132,12 +133,12 @@ export class AuthService {
     // Sets the databaseUsers's info.
     setUserInLocalStorage(userData) {
         this.statusChange.emit(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
+        this.localStorage.setItem('user', JSON.stringify(userData));
     }
 
     removeUserFromLocalStorage() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('userToken');
+        this.localStorage.removeItem('user');
+        this.localStorage.removeItem('userToken');
     }
 
     login(data) {

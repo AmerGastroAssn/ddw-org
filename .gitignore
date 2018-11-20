@@ -111,3 +111,5 @@ fabric.properties
 /functions/node_modules
 /functions/.env
 /functions/package-lock.json
+
+/functions/node_modules/

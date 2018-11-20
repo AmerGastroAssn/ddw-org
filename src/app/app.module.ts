@@ -1,8 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -115,7 +116,8 @@ firebase.initializeApp(environment.firebase);
         PrivacyPolicyComponent,
     ],
     imports: [
-        BrowserModule,
+        CommonModule,
+        NgtUniversalModule,
         FormsModule,
         ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebase),
@@ -162,7 +164,6 @@ firebase.initializeApp(environment.firebase);
         AdminBottomSheetNewComponent,
         AlertModalComponent
     ],
-    bootstrap: [AppComponent],
 
 })
 export class AppModule {

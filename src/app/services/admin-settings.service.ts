@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
@@ -24,10 +25,10 @@ export class AdminSettingsService {
     user$: Observable<User>;
 
 
-    constructor(
-      private sbAlert: MatSnackBar,
-      private afs: AngularFirestore,
-      private afAuth: AngularFireAuth,
+    constructor(@Inject(LOCAL_STORAGE) private localStorage: any,
+                private sbAlert: MatSnackBar,
+                private afs: AngularFirestore,
+                private afAuth: AngularFireAuth,
     ) {
 
         this.settings$key = 'YgCYgsItfFPq4DkNCHZq';
@@ -48,8 +49,8 @@ export class AdminSettingsService {
     /* If settings not in local storage, then
      get settings from Firestore and save in local storage to use */
     getAdminSettings(): Settings {
-        if (localStorage.getItem('settings') && this.user$) {
-            const local = localStorage.getItem('settings');
+        if (this.localStorage.getItem('settings') && this.user$) {
+            const local = this.localStorage.getItem('settings');
             return this.localSettings = JSON.parse(local);
         } else {
             this.getSettings()
@@ -57,7 +58,7 @@ export class AdminSettingsService {
                     this.saveLocalSettings(settings);
                 });
 
-            const local = localStorage.getItem('settings');
+            const local = this.localStorage.getItem('settings');
             return this.localSettings = JSON.parse(local);
 
 
@@ -65,7 +66,7 @@ export class AdminSettingsService {
     }
 
     saveLocalSettings(settings) {
-        localStorage.setItem('settings', JSON.stringify(settings));
+        this.localStorage.setItem('settings', JSON.stringify(settings));
         this.settingsAdded.emit(settings);
     }
 

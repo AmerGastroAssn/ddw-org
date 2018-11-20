@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit , Inject} from '@angular/core';
 import * as _ from 'lodash';
 import { CustomLink } from '../../../models/CustomLink';
 import { Page } from '../../../models/Page';
@@ -23,7 +24,7 @@ export class PagesNavbarComponent implements OnInit {
     googleSearch: string;
     customLinks: CustomLink;
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
       private pageService: PageService,
       private customLinkService: AdminCustomNavLinkService,
     ) {

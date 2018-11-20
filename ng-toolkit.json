@@ -1,0 +1,17 @@
+{
+  "universal": {
+    "skipInstall": false,
+    "directory": ".",
+    "project": "ddw-org"
+  },
+  "serverless": {
+    "directory": ".",
+    "skipInstall": true,
+    "provider": "firebase",
+    "project": "ddw-org",
+    "serverless": {
+      "aws": {},
+      "gcloud": {}
+    }
+  }
+}

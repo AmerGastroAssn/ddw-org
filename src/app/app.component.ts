@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit , Inject} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AdminSettingsService } from './services/admin-settings.service';
 
@@ -9,7 +10,7 @@ import { AdminSettingsService } from './services/admin-settings.service';
 })
 export class AppComponent implements OnInit {
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
       private settingsService: AdminSettingsService,
       private router: Router,
     ) {
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
             if (!(evt instanceof NavigationEnd)) {
                 return;
             }
-            window.scrollTo(0, 0);
+            this.window.scrollTo(0, 0);
         });
     }
 }

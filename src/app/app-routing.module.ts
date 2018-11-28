@@ -76,6 +76,11 @@ const appRoutes: Routes = [
             { path: 'policies', redirectTo: 'exhibitor-policies', pathMatch: 'full' },
             { path: 'onsite-meeting', redirectTo: 'host-an-on-site-meeting', pathMatch: 'full' },
             {
+                path: 'floor-plan',
+                redirectTo: '/home',
+                pathMatch: 'full'
+            },
+            {
                 path: 'onsite-meeting/product-theater',
                 redirectTo: 'host-an-on-site-meeting/product-theater',
                 pathMatch: 'full'

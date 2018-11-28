@@ -15,6 +15,7 @@ import { PresentersComponent } from './components/pages/presenters/presenters.co
 import { PressReleasesDetailsComponent } from './components/pages/press-releases/press-releases-details/press-releases-details.component';
 import { PressReleasesComponent } from './components/pages/press-releases/press-releases.component';
 import { RegisterComponent } from './components/pages/register/register.component';
+import { RedirectGuard } from './guards/redirect.guard';
 
 
 const appRoutes: Routes = [
@@ -77,8 +78,15 @@ const appRoutes: Routes = [
             { path: 'onsite-meeting', redirectTo: 'host-an-on-site-meeting', pathMatch: 'full' },
             {
                 path: 'floor-plan',
-                redirectTo: '/home',
-                pathMatch: 'full'
+                canActivate: [RedirectGuard],
+                component: RedirectGuard,
+                data: { externalUrl: 'http://s23.a2zinc.net/clients/DDW/DDW19/Public/EventMap.aspx?shavailable=1' }
+            },
+            {
+                path: 'exhibitor-portal',
+                canActivate: [RedirectGuard],
+                component: RedirectGuard,
+                data: { externalUrl: 'http://s23.a2zinc.net/clients/DDW/DDW19/Public/Enter.aspx' }
             },
             {
                 path: 'onsite-meeting/product-theater',

@@ -58,6 +58,7 @@ import { PressReleasesComponent } from './components/pages/press-releases/press-
 import { RegisterComponent } from './components/pages/register/register.component';
 import { DropZoneDirective } from './directives/drop-zone.directive';
 import { RunScriptsDirective } from './directives/run-scripts.directive';
+import { RedirectGuard } from './guards/redirect.guard';
 import { SafePipe } from './pipes/safe.pipe';
 import { AdminAdsService } from './services/admin-ads.service';
 import { AdminCalendarService } from './services/admin-calendar.service';
@@ -155,6 +156,7 @@ firebase.initializeApp(environment.firebase);
         PagesCardService,
         AdminImageService,
         AdminFileService,
+        RedirectGuard,
     ],
     entryComponents: [
         AdminBottomSheetNewComponent,

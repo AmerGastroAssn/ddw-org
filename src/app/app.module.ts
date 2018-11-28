@@ -75,7 +75,6 @@ import { AdminService } from './services/admin.service';
 import { AuthService } from './services/auth.service';
 import { ContactFormService } from './services/contact-form.service';
 import { CountdownService } from './services/countdown.service';
-import { ModalService } from './services/modal.service';
 import { PageService } from './services/page.service';
 import { PagesCardService } from './services/pages-card.service';
 import { ScriptService } from './services/script.service';
@@ -152,7 +151,6 @@ firebase.initializeApp(environment.firebase);
         AdminCalendarService,
         AdminHomePageService,
         ContactFormService,
-        ModalService,
         AdminCustomNavLinkService,
         PagesCardService,
         AdminImageService,
@@ -160,7 +158,7 @@ firebase.initializeApp(environment.firebase);
     ],
     entryComponents: [
         AdminBottomSheetNewComponent,
-        AlertModalComponent
+        AlertModalComponent,
     ],
     bootstrap: [AppComponent],
 

@@ -1,8 +1,9 @@
-.modal-body > p {
+.modal-body > div > p {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     line-height: 1.5;
-    font-size: 1em;
+    font-size: 14px;
 }
+
 
 p > a:link, a {
     color: #2e6da4 !important;

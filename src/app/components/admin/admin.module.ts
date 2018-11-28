@@ -34,11 +34,16 @@ import { AdminDashboardComponent } from './admin-core/admin-dashboard/admin-dash
 // tslint:disable-next-line:max-line-length
 import { AdminFeaturedBlogPostsEditComponent } from './admin-core/admin-featured-blog-posts/admin-featured-blog-posts-edit/admin-featured-blog-posts-edit.component';
 // tslint:disable-next-line:max-line-length
+import { AdminFileUploaderItemComponent } from './admin-core/admin-file-uploader/admin-file-uploader-item/admin-file-uploader-item.component';
+import { AdminFileUploaderComponent } from './admin-core/admin-file-uploader/admin-file-uploader.component';
+import { AdminFilesComponent } from './admin-core/admin-files/admin-files.component';
+// tslint:disable-next-line:max-line-length
 import { AdminImageUploaderComponent } from './admin-core/admin-image-uploader/admin-image-uploader.component';
 import { AdminImagesComponent } from './admin-core/admin-images/admin-images.component';
 import { AdminLoginComponent } from './admin-core/admin-login/admin-login.component';
 import { AdminMetaComponent } from './admin-core/admin-meta/admin-meta.component';
 import { AdminMobileFooternavComponent } from './admin-core/admin-mobile-footernav/admin-mobile-footernav.component';
+import { AdminModalComponent } from './admin-core/admin-modal/admin-modal.component';
 import { AdminNavbarComponent } from './admin-core/admin-navbar/admin-navbar.component';
 import { AdminPrivacyPolicyComponent } from './admin-core/admin-privacy-policy/admin-privacy-policy.component';
 import { AdminResetPasswordComponent } from './admin-core/admin-reset-password/admin-reset-password.component';
@@ -61,10 +66,6 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
-import { AdminFileUploaderComponent } from './admin-core/admin-file-uploader/admin-file-uploader.component';
-// tslint:disable-next-line:max-line-length
-import { AdminFileUploaderItemComponent } from './admin-core/admin-file-uploader/admin-file-uploader-item/admin-file-uploader-item.component';
-import { AdminFilesComponent } from './admin-core/admin-files/admin-files.component';
 
 @NgModule({
     declarations: [
@@ -106,6 +107,7 @@ import { AdminFilesComponent } from './admin-core/admin-files/admin-files.compon
         AdminFileUploaderComponent,
         AdminFileUploaderItemComponent,
         AdminFilesComponent,
+        AdminModalComponent,
     ],
     imports: [
         CommonModule,
@@ -132,6 +134,9 @@ import { AdminFilesComponent } from './admin-core/admin-files/admin-files.compon
         MatSelectModule,
         MatFormFieldModule,
         MatCardModule,
+    ],
+    providers: [
+
     ],
     exports: [
         MatButtonModule,

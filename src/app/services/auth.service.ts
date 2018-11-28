@@ -177,7 +177,7 @@ export class AuthService {
     emailSignup(userData) {
         return this.afAuth.auth.createUserWithEmailAndPassword(userData.email, userData.password)
                    .then(user => {
-                       console.log('user', user);
+                       // console.log('user', user);
                        return this.setUserData(userData, user); // create initial user document
                    })
                    .catch(error => {
@@ -270,7 +270,7 @@ export class AuthService {
 
     setUserToOnline(user) {
         // Sets user data to firestore on login
-        console.log('user', user);
+        // console.log('user', user);
         const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
         const data: User = {

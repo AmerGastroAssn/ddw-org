@@ -6,12 +6,14 @@ import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { FeaturedPost } from '../../../models/FeaturedPost';
 import { HomePage } from '../../../models/HomePage';
+import { Modal } from '../../../models/Modal';
 import { AdminAdsService } from '../../../services/admin-ads.service';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../services/admin-card.service';
 import { AdminFeaturedPostService } from '../../../services/admin-featured-post.service';
 import { AdminHomePageService } from '../../../services/admin-home-page.service';
 import { AdminMetaService } from '../../../services/admin-meta.service';
+import { AdminModalService } from '../../../services/admin-modal.service';
 import { AdminSettingsService } from '../../../services/admin-settings.service';
 import { CountdownService, Time } from '../../../services/countdown.service';
 import { AlertModalComponent } from '../alert-modal/alert-modal.component';
@@ -44,6 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     calendarTitle: string;
     postsHidden: boolean;
     bsModalRef: BsModalRef;
+    modal: Modal;
 
     constructor(
       private countdownService: CountdownService,
@@ -58,11 +61,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
       private titleService: Title,
       private calendarService: AdminCalendarService,
       private modalService: BsModalService,
+      private adminModalService: AdminModalService,
     ) {
 
     }
 
     ngOnInit() {
+
         // For page title
         this.titleService.setTitle('Home - DDW Website');
         // Meta tags
@@ -136,11 +141,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 // this.time1$ = this.countdownService.timer(new Date('May 18, 2019 00:00:00'));
             });
 
-
+        // Modal
+        this.adminModalService.getModal()
+            .subscribe((modal) => {
+                if (modal.show) {
+                    this.openModalWithComponent();
+                } else {
+                    return null;
+                }
+            });
     }
 
     ngAfterViewInit() {
-        this.openModalWithComponent();
+
     }
 
 

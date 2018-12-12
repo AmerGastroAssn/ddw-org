@@ -75,6 +75,31 @@
     </li>
 
 
+
+    <!-- * Content Sections * -->
+    <li class="sidenav-item"
+        [ngClass]="{'active open':showContentSectionToggle, '':!showContentSectionToggle}"
+        *ngIf="isLoggedIn">
+        <a class="sidenav-link sidenav-toggle" (click)="onShowContentSectionToggle()">
+            <i class="sidenav-icon ion ion-md-speedometer"></i>
+            <div><i class="fal fa-file-alt"></i>&nbsp;<span class="helv">Content Sections</span></div>
+        </a>
+
+        <ul class="sidenav-menu">
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/text-section']" class="sidenav-link">
+                    <div><i class="fal fa-file-alt"></i>&nbsp;<span class="helv">Text Sections</span></div>
+                </a>
+            </li>
+            <li class="sidenav-item sub-item">
+                <a [routerLink]="['/admin/call-to-action']" class="sidenav-link">
+                    <div><i class="fal fa-text-width"></i>&nbsp;<span class="helv">CTA's Sections</span></div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+
     <!-- * Press Releases * -->
     <li class="sidenav-item"
         [ngClass]="{'active open':showPressReleaseToggle, '':!showPressReleaseToggle}"

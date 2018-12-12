@@ -8,6 +8,22 @@ import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit
 import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
 import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
+// tslint:disable-next-line:max-line-length
+import { CallToActionDetailComponent } from './admin-content-section/components/call-to-action/call-to-action-detail/call-to-action-detail.component';
+// tslint:disable-next-line:max-line-length
+import { CallToActionEditComponent } from './admin-content-section/components/call-to-action/call-to-action-edit/call-to-action-edit.component';
+// tslint:disable-next-line:max-line-length
+import { CallToActionListComponent } from './admin-content-section/components/call-to-action/call-to-action-list/call-to-action-list.component';
+// tslint:disable-next-line:max-line-length
+import { CallToActionNewComponent } from './admin-content-section/components/call-to-action/call-to-action-new/call-to-action-new.component';
+import { CallToActionComponent } from './admin-content-section/components/call-to-action/call-to-action.component';
+// tslint:disable-next-line:max-line-length
+import { TextSectionDetailComponent } from './admin-content-section/components/text-section/text-section-detail/text-section-detail.component';
+import { TextSectionEditComponent } from './admin-content-section/components/text-section/text-section-edit/text-section-edit.component';
+import { TextSectionListComponent } from './admin-content-section/components/text-section/text-section-list/text-section-list.component';
+import { TextSectionNewComponent } from './admin-content-section/components/text-section/text-section-new/text-section-new.component';
+import { TextSectionComponent } from './admin-content-section/components/text-section/text-section.component';
+import { ContentSectionModule } from './admin-content-section/content-section.module';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
 import { AdminContactUsDetailsComponent } from './admin-core/admin-contact-us/admin-contact-us-details/admin-contact-us-details.component';
@@ -125,6 +141,24 @@ const adminRoutes: Routes = [
                     { path: 'all', component: AdminCustomNavLinkListComponent, canActivate: [AuthGuard] },
                 ]
             },
+            {
+                path: 'call-to-action', component: CallToActionComponent,
+                children: [
+                    { path: '', component: CallToActionListComponent, canActivate: [AuthGuard] },
+                    { path: 'new', component: CallToActionNewComponent, canActivate: [AuthGuard] },
+                    { path: ':id', component: CallToActionDetailComponent, canActivate: [AuthGuard] },
+                    { path: ':id/edit', component: CallToActionEditComponent, canActivate: [AuthGuard] },
+                ]
+            },
+            {
+                path: 'text-section', component: TextSectionComponent,
+                children: [
+                    { path: '', component: TextSectionListComponent, canActivate: [AuthGuard] },
+                    { path: 'new', component: TextSectionNewComponent, canActivate: [AuthGuard] },
+                    { path: ':id', component: TextSectionDetailComponent, canActivate: [AuthGuard] },
+                    { path: ':id/edit', component: TextSectionEditComponent, canActivate: [AuthGuard] },
+                ]
+            },
             { path: 'privacy-policy', component: AdminPrivacyPolicyComponent, canActivate: [AuthGuard] },
             { path: 'register', component: AdminPageRegisterListComponent, canActivate: [AuthGuard] },
             { path: 'attendee-planning', component: AdminPageAttendeePlanningListComponent, canActivate: [AuthGuard] },
@@ -151,6 +185,7 @@ const adminRoutes: Routes = [
             { path: 'files', component: AdminFilesComponent, canActivate: [AuthGuard] },
             { path: 'modal', component: AdminModalComponent, canActivate: [AuthGuard] },
             { path: 'file-uploader', component: AdminFileUploaderComponent, canActivate: [AuthGuard] },
+
         ]
     },
 ];
@@ -158,14 +193,15 @@ const adminRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(adminRoutes,
+        RouterModule.forChild(adminRoutes
           // {enableTracing: true}  // For route debugging.
         ),
         AdminUserModule,
         AdminPageModule,
+        ContentSectionModule,
     ],
     exports: [
-        RouterModule
+        RouterModule,
     ],
     declarations: []
 })

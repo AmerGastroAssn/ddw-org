@@ -7,6 +7,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../../pipes/trust-url.pipe';
+// tslint:disable-next-line:max-line-length
 import { AdminImageUploaderItemComponent } from '../admin-core/admin-image-uploader/admin-image-uploader-item/admin-image-uploader-item.component';
 // tslint:disable-next-line:max-line-length
 import { AdminPageAttendeePlanningListComponent } from './admin-page-attendee-planning-list/admin-page-attendee-planning-list.component';

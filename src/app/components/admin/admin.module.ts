@@ -24,6 +24,9 @@ import { AdminCalendarEditComponent } from './admin-calendar/admin-calendar-edit
 import { AdminCalendarListComponent } from './admin-calendar/admin-calendar-list/admin-calendar-list.component';
 import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/admin-calendar-new.component';
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
+import { CallToActionComponent } from './admin-content-section/components/call-to-action/call-to-action.component';
+import { TextSectionComponent } from './admin-content-section/components/text-section/text-section.component';
+import { ContentSectionModule } from './admin-content-section/content-section.module';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
@@ -108,6 +111,8 @@ import { AdminComponent } from './admin.component';
         AdminFileUploaderItemComponent,
         AdminFilesComponent,
         AdminModalComponent,
+        CallToActionComponent,
+        TextSectionComponent,
     ],
     imports: [
         CommonModule,

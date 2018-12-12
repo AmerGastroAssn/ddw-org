@@ -23,6 +23,7 @@ export class AdminSidenavComponent implements OnInit {
     uid: string;
     id: string;
     showPagesToggle: boolean;
+    showContentSectionToggle: boolean;
     showUsersToggle: boolean;
     showCalendarToggle: boolean;
     showPressReleaseToggle: boolean;
@@ -82,6 +83,10 @@ export class AdminSidenavComponent implements OnInit {
 
     onShowPagesToggle() {
         this.showPagesToggle = !this.showPagesToggle;
+    }
+
+    onShowContentSectionToggle() {
+        this.showContentSectionToggle = !this.showContentSectionToggle;
     }
 
     onShowUsersToggle() {

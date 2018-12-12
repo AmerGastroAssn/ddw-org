@@ -93,7 +93,7 @@ export class PagesCardService {
                       .catch((error) => console.log(`ERROR~uPC: `, error));
     }
 
-    setPageCard(formData): object {
+    setPageCard(formData): Promise<void> {
         const new$key = this.afs.createId();
         const calRef: AngularFirestoreDocument<Card> = this.afs.doc(`pageCards/${new$key}`);
 

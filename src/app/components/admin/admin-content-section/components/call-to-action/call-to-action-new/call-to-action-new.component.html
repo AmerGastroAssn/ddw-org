@@ -76,22 +76,6 @@
                                            formControlName="imageUrl">
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="helv">Button Text</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           [class.invalid]="!f.buttonText.valid && f.buttonText.touched"
-                                           formControlName="buttonText">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="helv">Button URL</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           [class.invalid]="!f.buttonUrl.valid && f.buttonUrl.touched"
-                                           formControlName="buttonUrl">
-                                </div>
-
 
                                 <div class="form-group">
                                     <label class="helv">Video URL
@@ -104,19 +88,42 @@
                                            formControlName="videoUrl">
                                 </div>
 
+                                <!-- * Button * -->
+                                <div class="card bg-light mb-4">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label class="helv">Button Text</label>
+                                            <input type="text"
+                                                   placeholder="Ex: Learn More"
+                                                   class="form-control"
+                                                   [class.invalid]="!f.buttonText.valid && f.buttonText.touched"
+                                                   formControlName="buttonText">
+                                        </div>
 
-                                <!-- * ExtURL  * -->
-                                <div class="form-group mt-3">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox"
-                                               class="custom-control-input ext-url"
-                                               id="isExtUrl"
-                                               formControlName="isExtUrl">
-                                        <label class="custom-control-label ext-url helv"
-                                               for="isExtUrl">Is button an external URL?
-                                        </label>
+                                        <div class="form-group">
+                                            <label class="helv">Button URL</label>
+                                            <input type="text"
+                                                   placeholder="https://"
+                                                   class="form-control"
+                                                   [class.invalid]="!f.buttonUrl.valid && f.buttonUrl.touched"
+                                                   formControlName="buttonUrl">
+                                        </div>
+
+                                        <!-- * ExtURL  * -->
+                                        <div class="form-group mt-3">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox"
+                                                       class="custom-control-input ext-url"
+                                                       id="isExtUrl"
+                                                       formControlName="isExtUrl">
+                                                <label class="custom-control-label ext-url helv"
+                                                       for="isExtUrl">Is the button an external URL?
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
 
                                 <button type="submit"
                                         [disabled]="!newCTAForm.valid"

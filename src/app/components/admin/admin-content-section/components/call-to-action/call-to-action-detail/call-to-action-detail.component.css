@@ -5,6 +5,10 @@ li.nav-item {
     font-size: 1rem;
 }
 
+.btn.cta {
+    margin-bottom: 0;
+}
+
 .btn {
     border-radius: 0;
 }

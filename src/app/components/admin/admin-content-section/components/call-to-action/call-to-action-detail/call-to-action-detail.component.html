@@ -1,9 +1,14 @@
 <!-- * CALL-TO-ACTION-DETAILS * -->
 <div class="row mt-3 mb-3">
     <div class="col-md-6 mx-auto text-center">
-        <a [routerLink]="['/admin/call-to-action']" class="btn btn-default">
-            <i class="fa fa-text-width"></i> All CTA
-        </a>
+        <div class="btn-group">
+            <a [routerLink]="['/admin/call-to-action']" class="btn btn-default">
+                <i class="fa fa-text-width"></i> All CTA
+            </a>
+            <a [routerLink]="['/admin/call-to-action/new']" class="btn btn-default">
+                <i class="fa fa-plus"></i> New CTA
+            </a>
+        </div>
     </div>
 </div>
 
@@ -29,18 +34,22 @@
 
         <div class="col-md-7 col-quote">
             <span [innerHTML]="body"></span>
-            <br>
-            <a *ngIf="cta.buttonText && cta.buttonUrl && cta.isExtUrl"
-               target="_blank"
-               [href]="cta.buttonUrl"
-               class="btn cta">
-                {{ cta.buttonText }}
-            </a>
-            <a *ngIf="cta.buttonText && cta.buttonUrl && !cta.isExtUrl"
-               [href]="cta.buttonUrl"
-               class="btn cta">
-                {{ cta.buttonText }}
-            </a>
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <a *ngIf="cta.buttonText && cta.buttonUrl && cta.isExtUrl"
+                       target="_blank"
+                       [href]="cta.buttonUrl"
+                       class="btn cta">
+                        {{ cta.buttonText }}
+                    </a>
+                    <a *ngIf="cta.buttonText && cta.buttonUrl && !cta.isExtUrl"
+                       [href]="cta.buttonUrl"
+                       class="btn cta">
+                        {{ cta.buttonText }}
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

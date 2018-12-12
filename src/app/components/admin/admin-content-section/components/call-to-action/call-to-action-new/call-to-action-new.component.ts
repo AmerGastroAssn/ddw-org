@@ -92,8 +92,16 @@ export class CallToActionNewComponent implements OnInit {
     }
 
     onCreateCTA(formData: FormGroup) {
-        console.log('formData-CTA', formData);
-        this.ctaService.setCTA(formData);
-        // this.newCTAForm.reset();
+        if (!this.newCTAForm.valid) {
+            this.sbAlert.open('Form not valid', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
+            });
+        } else {
+            this.ctaService.setCTA(formData)
+                .then(() => console.log('valid CTA Form'))
+                .catch((error) => console.log(error));
+        }
     }
 }

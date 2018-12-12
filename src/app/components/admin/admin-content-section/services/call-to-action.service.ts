@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { User } from '../../../../models/User';
 import { AuthService } from '../../../../services/auth.service';
 import { CallToAction } from '../models/call-to-action';
 
@@ -14,6 +15,7 @@ export class CallToActionService {
     ctaDoc: AngularFirestoreDocument<CallToAction>;
     cta$: Observable<CallToAction>;
     ctas$: Observable<CallToAction[]>;
+    currentUser: User;
     currentDate: number = Date.now();
 
     constructor(
@@ -22,6 +24,7 @@ export class CallToActionService {
       private sbAlert: MatSnackBar,
       private authService: AuthService,
     ) {
+        this.currentUser = this.authService.getProfile();
         this.currentDate = Date.now();
     }
 
@@ -98,7 +101,7 @@ export class CallToActionService {
         const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${newId}`);
 
         const data: CallToAction = {
-            author: formData.author,
+            author: this.currentUser,
             body: formData.body,
             buttonUrl: formData.buttonUrl,
             buttonText: formData.buttonText,
@@ -115,17 +118,52 @@ export class CallToActionService {
         };
 
         console.log('data', data);
-        return ctaRef.set(data)
+        return ctaRef.set(data, { merge: true })
                      .then(() => {
                          this.router.navigate(['/admin/call-to-action']);
-                         this.sbAlert.open('Call To Action Created!', 'Dismiss', {
+                         this.sbAlert.open('Call To Action created', 'Dismiss', {
                              duration: 3000,
                              verticalPosition: 'bottom',
                              panelClass: ['snackbar-success']
                          });
-                         console.log('Call To Action Created!', data);
+                         console.log('Call To Action created', data);
                      })
                      .catch((error) => console.log(`ERROR~sCTA: `, error));
     }
 
+    updateCTA(formData): Promise<void> {
+        const nameToUrl = this.stringToSlug(formData.name);
+        const newId = this.afs.createId();
+        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${formData.id}`);
+
+        const data: CallToAction = {
+            author: this.currentUser,
+            body: formData.body,
+            buttonUrl: formData.buttonUrl,
+            buttonText: formData.buttonText,
+            createdAt: formData.createdAt,
+            id: formData.id,
+            imageUrl: formData.imageUrl,
+            isExtUrl: formData.isExtUrl || false,
+            name: formData.name,
+            subtitle: formData.subtitle,
+            updatedAt: Date.now(),
+            title: formData.title,
+            value: nameToUrl || formData.value,
+            videoUrl: formData.videoUrl,
+        };
+
+        console.log('data', data);
+        return ctaRef.set(data)
+                     .then(() => {
+                         this.router.navigate(['/admin/call-to-action']);
+                         this.sbAlert.open('Call To Action updated', 'Dismiss', {
+                             duration: 3000,
+                             verticalPosition: 'bottom',
+                             panelClass: ['snackbar-success']
+                         });
+                         console.log('Call To Action updated', data);
+                     })
+                     .catch((error) => console.log(`ERROR~uCTA: `, error));
+    }
 }

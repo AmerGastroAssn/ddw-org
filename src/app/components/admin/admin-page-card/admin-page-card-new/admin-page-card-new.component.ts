@@ -95,9 +95,19 @@ export class AdminPageCardNewComponent implements OnInit {
     }
 
     onCreateCard(formData: FormGroup) {
-        console.log('formDataCard', formData);
-        this.pageCardService.setPageCard(formData);
-        this.newPageCardForm.reset();
+        if (!this.newPageCardForm.valid) {
+            this.sbAlert.open('Form not valid', 'Dismiss', {
+                duration: 3000,
+                verticalPosition: 'bottom',
+                panelClass: ['snackbar-danger']
+            });
+        } else {
+            this.pageCardService.setPageCard(formData)
+                .then(() => this.newPageCardForm.reset())
+                .catch((error) => console.log(error));
+        }
+
+
     }
 
 

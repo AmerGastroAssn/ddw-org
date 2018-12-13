@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
@@ -23,6 +24,7 @@ import { TextSectionNewComponent } from './components/text-section/text-section-
         ReactiveFormsModule,
         CKEditorModule,
         RouterModule,
+        MatTooltipModule,
     ],
     declarations: [
         CallToActionNewComponent,

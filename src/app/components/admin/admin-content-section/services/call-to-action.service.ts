@@ -133,7 +133,6 @@ export class CallToActionService {
 
     updateCTA(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
-        const newId = this.afs.createId();
         const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${formData.id}`);
 
         const data: CallToAction = {
@@ -149,7 +148,7 @@ export class CallToActionService {
             subtitle: formData.subtitle,
             updatedAt: Date.now(),
             title: formData.title,
-            value: nameToUrl || formData.value,
+            value: nameToUrl,
             videoUrl: formData.videoUrl,
         };
 

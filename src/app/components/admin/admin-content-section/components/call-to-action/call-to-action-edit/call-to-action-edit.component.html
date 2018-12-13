@@ -1,17 +1,23 @@
 <!-- * CALL-TO-ACTION-EDIT * -->
-<!-- * CALL-TO-ACTION-NEW * -->
-<div class="row mb-4 mt-4">
-    <div class="container">
-        <div class="offset-md-10">
+<div class="row mt-5">
+    <div class="container text-right">
+        <div class="btn-group">
             <a [routerLink]="['/admin/call-to-action']"
-               class="btn btn-default">&nbsp; <i class="fa fa-text-width"></i>
+               class="btn btn-default"><i class="fa fa-arrow-alt-circle-left"></i>&nbsp;
                 All CTA's
+            </a>
+            <a [routerLink]="['/admin/call-to-action/', id]"
+               class="btn btn-default">&nbsp; <i class="fa fa-eye"></i>
+                Preview CTA
+            </a>
+            <a [routerLink]="['/admin/call-to-action/new']" class="btn btn-default">
+                <i class="fa fa-plus"></i>&nbsp;New CTA
             </a>
         </div>
     </div>
 </div>
 
-<div class="container mb-5">
+<div class="container mb-5 mt-3">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -39,25 +45,25 @@
                                            formControlName="name">
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="helv">Section Title <br>
-                                        <small>At the top of the section</small>
-                                    </label>
-                                    <input type="text"
-                                           class="form-control"
-                                           [class.invalid]="!f.title.valid && f.title.touched"
-                                           formControlName="title">
-                                </div>
+                                <!--<div class="form-group">-->
+                                    <!--<label class="helv">Section Title <br>-->
+                                        <!--<small>At the top of the section</small>-->
+                                    <!--</label>-->
+                                    <!--<input type="text"-->
+                                           <!--class="form-control"-->
+                                           <!--[class.invalid]="!f.title.valid && f.title.touched"-->
+                                           <!--formControlName="title">-->
+                                <!--</div>-->
 
-                                <div class="form-group">
-                                    <label class="helv">Subtitle <br>
-                                        <small>Line of copy under title</small>
-                                    </label>
-                                    <input type="text"
-                                           class="form-control"
-                                           [class.invalid]="!f.subtitle.valid && f.subtitle.touched"
-                                           formControlName="subtitle">
-                                </div>
+                                <!--<div class="form-group">-->
+                                    <!--<label class="helv">Subtitle <br>-->
+                                        <!--<small>Line of copy under title</small>-->
+                                    <!--</label>-->
+                                    <!--<input type="text"-->
+                                           <!--class="form-control"-->
+                                           <!--[class.invalid]="!f.subtitle.valid && f.subtitle.touched"-->
+                                           <!--formControlName="subtitle">-->
+                                <!--</div>-->
 
                                 <div class="form-group">
                                     <label class="helv">Body</label>

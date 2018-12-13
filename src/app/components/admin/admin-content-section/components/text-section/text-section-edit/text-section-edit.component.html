@@ -1,17 +1,20 @@
 <!-- * TEXT-SECTION-EDIT * -->
-<!-- * TEXT-SECTION-NEW * -->
-<div class="row mb-4 mt-4">
-    <div class="container">
-        <div class="offset-md-10">
-            <a [routerLink]="['/admin/call-to-action']"
-               class="btn btn-default">&nbsp; <i class="fa fa-text-width"></i>
-                All CTA's
+<div class="row mt-5">
+    <div class="container text-right">
+        <div class="btn-group">
+            <a [routerLink]="['/admin/text-section']"
+               class="btn btn-default">&nbsp; <i class="fa fa-file-alt"></i>
+                All Text Sections
+            </a>
+            <a [routerLink]="['/admin/text-section/', id]"
+               class="btn btn-default">&nbsp; <i class="fa fa-eye"></i>
+                Preview Text Section
             </a>
         </div>
     </div>
 </div>
 
-<div class="container mb-5">
+<div class="container mb-5 mt-3">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -19,7 +22,7 @@
                     <div class="card bg-lighter inner-card">
                         <div class="card-body">
                             <div class="card-header-title">
-                                <h4 class="pb-2">New Call To Action
+                                <h4 class="pb-2">Edit Text Section
                                     <small class="text-secondary"></small>
                                 </h4>
                                 <hr class="inset-hr mb-3">

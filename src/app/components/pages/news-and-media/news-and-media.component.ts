@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
@@ -15,6 +15,9 @@ import { AdminPageService } from '../../../services/admin-page.service';
 import { AdminPressReleaseService } from '../../../services/admin-press-release.service';
 import { PageService } from '../../../services/page.service';
 import { PagesCardService } from '../../../services/pages-card.service';
+import { CallToAction } from '../../admin/admin-content-section/models/call-to-action';
+import { CallToActionService } from '../../admin/admin-content-section/services/call-to-action.service';
+import { TextSectionService } from '../../admin/admin-content-section/services/text-section.service';
 
 
 @Component({
@@ -39,6 +42,13 @@ export class NewsAndMediaComponent implements OnInit {
     pageCard3: Card;
     headerbar: any;
     footerbar: any;
+    // Content Sections
+    cta: CallToAction;
+    videoUrl: any;
+    imageUrl: any;
+    ctaBody: any;
+    tsTopBody: any;
+    tsBottomBody: any;
 
 
     constructor(
@@ -53,6 +63,9 @@ export class NewsAndMediaComponent implements OnInit {
       private titleService: Title,
       private pagesCardService: PagesCardService,
       private adsService: AdminAdsService,
+      private ctaService: CallToActionService,
+      private tsService: TextSectionService,
+      private sanitizer: DomSanitizer
     ) {
         this.banner = 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/interior-bg.jpg';
         this.pageTitle = 'Press Releases';
@@ -171,6 +184,46 @@ export class NewsAndMediaComponent implements OnInit {
                             });
                     }
                 }
-            });
+
+                // Content Sections
+                if (this.page.callToAction) {
+                    this.ctaService.getCta(this.page.callToAction)
+                        .subscribe((cta) => {
+                            this.cta = cta;
+                            if (cta.imageUrl) {
+                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                            }
+                            if (cta.videoUrl) {
+                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                            }
+                            if (cta.body) {
+                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+                if (this.page.contentSectionTop) {
+                    this.tsService.getTextSection(this.page.contentSectionTop)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+                if (this.page.contentSectionBottom) {
+                    this.tsService.getTextSection(this.page.contentSectionBottom)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+
+            });// END
     }
 }

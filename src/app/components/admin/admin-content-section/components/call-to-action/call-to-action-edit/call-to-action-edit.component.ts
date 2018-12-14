@@ -25,6 +25,7 @@ export class CallToActionEditComponent implements OnInit {
     imageUrl: string;
     isExtUrl: boolean;
     name: string;
+    published: boolean;
     subtitle: string;
     title: string;
     value: string;
@@ -76,6 +77,7 @@ export class CallToActionEditComponent implements OnInit {
                     imageUrl: [this.cta.imageUrl || ''],
                     isExtUrl: [this.cta.isExtUrl || false],
                     name: [this.cta.name, Validators.required],
+                    published: [this.cta.published || false],
                     subtitle: [this.cta.subtitle || ''],
                     title: [this.cta.title || ''],
                     value: [this.cta.value],
@@ -90,6 +92,7 @@ export class CallToActionEditComponent implements OnInit {
                 this.imageUrl = this.editCTAForm.value.imageUrl;
                 this.isExtUrl = this.editCTAForm.value.isExtUrl;
                 this.name = this.editCTAForm.value.name;
+                this.published = this.editCTAForm.value.published;
                 this.subtitle = this.editCTAForm.value.subtitle;
                 this.title = this.editCTAForm.value.title;
                 this.value = this.editCTAForm.value.value;

@@ -22,6 +22,7 @@ export class CallToActionNewComponent implements OnInit {
     buttonText: string;
     imageUrl: string;
     isExtUrl: boolean;
+    published: boolean;
     name: string;
     subtitle: string;
     title: string;
@@ -48,6 +49,14 @@ export class CallToActionNewComponent implements OnInit {
     ) {
         this.author = this.authService.getProfile();
         this.currentDate = Date.now();
+        this.body = `
+                <blockquote>
+            ## Quoted text here. The pound signs are styling placeholders, to hold
+            the styling. After you add your text, you should remove them. Please only backspace once over each pound-sign to remove. That way it will hold its styled tag. </blockquote>
+        
+        <p class="quoteby">
+            <span> ## Yellow text goes here,</span> ## Non-Yellow text here.
+        </p>`;
     }
 
 
@@ -70,6 +79,7 @@ export class CallToActionNewComponent implements OnInit {
             buttonText: [this.buttonText || ''],
             imageUrl: [this.imageUrl || ''],
             isExtUrl: [this.isExtUrl || false],
+            published: [this.published || false],
             name: [this.name, Validators.required],
             subtitle: [this.subtitle || ''],
             title: [this.title || ''],
@@ -84,6 +94,7 @@ export class CallToActionNewComponent implements OnInit {
         this.imageUrl = this.newCTAForm.value.imageUrl;
         this.isExtUrl = this.newCTAForm.value.isExtUrl;
         this.name = this.newCTAForm.value.name;
+        this.published = this.newCTAForm.value.published;
         this.subtitle = this.newCTAForm.value.subtitle;
         this.title = this.newCTAForm.value.title;
         this.videoUrl = this.newCTAForm.value.videoUrl;

@@ -17,6 +17,10 @@ import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
+import { CallToAction } from '../../admin-content-section/models/call-to-action';
+import { TextSection } from '../../admin-content-section/models/text-section';
+import { CallToActionService } from '../../admin-content-section/services/call-to-action.service';
+import { TextSectionService } from '../../admin-content-section/services/text-section.service';
 
 @Component({
     selector: 'ddw-admin-page-edit',
@@ -73,6 +77,11 @@ export class AdminPageEditComponent implements OnInit {
     cardOption3: string;
     cardSectionTitle: string;
     pageCards$: Observable<Card[]>;
+    textSections$: Observable<TextSection[]>;
+    cta$: Observable<CallToAction[]>;
+    contentSectionTop: string;
+    contentSectionBottom: string;
+    callToAction: string;
     // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
@@ -110,6 +119,8 @@ export class AdminPageEditComponent implements OnInit {
       private adminCalendarService: AdminCalendarService,
       private pagesCardService: PagesCardService,
       private imageService: AdminImageService,
+      private textSectionService: TextSectionService,
+      private ctaService: CallToActionService,
     ) {
 
         // Datepicker Config
@@ -145,6 +156,10 @@ export class AdminPageEditComponent implements OnInit {
         //     .subscribe((calArr) => {
         //         this.calendars = _.orderBy(calArr, ['title'], ['asc']);
         //     });
+
+        // Content Sections:
+        this.textSections$ = this.textSectionService.getAllTextSections();
+        this.cta$ = this.ctaService.getAllCtas();
 
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
@@ -185,6 +200,9 @@ export class AdminPageEditComponent implements OnInit {
                     cardOption2: [this.page.cardOption2],
                     cardOption3: [this.page.cardOption3],
                     cardSectionTitle: [this.page.cardSectionTitle],
+                    contentSectionTop: [this.page.contentSectionTop || '', Validators.required],
+                    contentSectionBottom: [this.page.contentSectionBottom || ''],
+                    callToAction: [this.page.callToAction || ''],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -212,6 +230,9 @@ export class AdminPageEditComponent implements OnInit {
                 this.cardOption2 = this.editPageForm.value.cardOption2;
                 this.cardOption3 = this.editPageForm.value.cardOption3;
                 this.cardSectionTitle = this.editPageForm.value.cardSectionTitle;
+                this.contentSectionTop = this.editPageForm.value.contentSectionTop;
+                this.contentSectionBottom = this.editPageForm.value.contentSectionBottom;
+                this.callToAction = this.editPageForm.value.callToAction;
 
 
             }

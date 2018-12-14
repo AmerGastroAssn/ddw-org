@@ -116,6 +116,9 @@ export class AdminPageService {
             cardOption2: formData.cardOption2,
             cardOption3: formData.cardOption3,
             cardSectionTitle: formData.cardSectionTitle,
+            contentSectionTop: formData.contentSectionTop,
+            contentSectionBottom: formData.contentSectionBottom,
+            callToAction: formData.callToAction,
         };
 
         return pageRef.set(data)
@@ -163,6 +166,9 @@ export class AdminPageService {
                 cardOption2: formData.cardOption2,
                 cardOption3: formData.cardOption3,
                 cardSectionTitle: formData.cardSectionTitle,
+                contentSectionTop: formData.contentSectionTop,
+                contentSectionBottom: formData.contentSectionBottom,
+                callToAction: formData.callToAction,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))
@@ -197,6 +203,9 @@ export class AdminPageService {
                 cardOption2: formData.cardOption2,
                 cardOption3: formData.cardOption3,
                 cardSectionTitle: formData.cardSectionTitle,
+                contentSectionTop: formData.contentSectionTop,
+                contentSectionBottom: formData.contentSectionBottom,
+                callToAction: formData.callToAction,
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))

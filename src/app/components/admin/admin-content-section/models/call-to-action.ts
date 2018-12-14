@@ -11,6 +11,7 @@ export class CallToAction {
       public imageUrl: string,
       public isExtUrl: boolean,
       public name: string,
+      public published: boolean,
       public subtitle: string,
       public updatedAt: number,
       public title: string,

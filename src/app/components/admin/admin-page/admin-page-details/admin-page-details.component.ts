@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Calendar } from '../../../../models/Calendar';
@@ -9,6 +10,9 @@ import { AdminCalendarService } from '../../../../services/admin-calendar.servic
 import { AdminCardService } from '../../../../services/admin-card.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
+import { CallToAction } from '../../admin-content-section/models/call-to-action';
+import { CallToActionService } from '../../admin-content-section/services/call-to-action.service';
+import { TextSectionService } from '../../admin-content-section/services/text-section.service';
 
 @Component({
     selector: 'ddw-admin-page-details',
@@ -47,6 +51,13 @@ export class AdminPageDetailsComponent implements OnInit {
     month2: string;
     month3: string;
     month4: string;
+    // Content Sections
+    cta: CallToAction;
+    videoUrl: any;
+    imageUrl: any;
+    ctaBody: any;
+    tsTopBody: any;
+    tsBottomBody: any;
 
     constructor(
       private adminPageService: AdminPageService,
@@ -55,6 +66,9 @@ export class AdminPageDetailsComponent implements OnInit {
       private cardService: AdminCardService,
       private adminCalendarService: AdminCalendarService,
       private pagesCardService: PagesCardService,
+      private ctaService: CallToActionService,
+      private tsService: TextSectionService,
+      private sanitizer: DomSanitizer,
     ) {
     }
 
@@ -222,9 +236,50 @@ export class AdminPageDetailsComponent implements OnInit {
                         });
                 }
             }
-        });
 
-        // this.cards$ = this.cardService.getAllCards();
+            // Content Sections
+            if (this.page.callToAction) {
+                this.ctaService.getCta(this.page.callToAction)
+                    .subscribe((cta) => {
+                        this.cta = cta;
+                        if (cta.imageUrl) {
+                            this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                        }
+                        if (cta.videoUrl) {
+                            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                        }
+                        if (cta.body) {
+                            this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                        }
+                    });
+            } else {
+                return of(null);
+            }
+
+            if (this.page.contentSectionTop) {
+                this.tsService.getTextSection(this.page.contentSectionTop)
+                    .subscribe((section) => {
+                        if (section.body) {
+                            this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                        }
+                    });
+            } else {
+                return of(null);
+            }
+            if (this.page.contentSectionBottom) {
+                this.tsService.getTextSection(this.page.contentSectionBottom)
+                    .subscribe((section) => {
+                        if (section.body) {
+                            this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                        }
+                    });
+            } else {
+                return of(null);
+            }
+
+
+        }); // END
+
 
     }
 

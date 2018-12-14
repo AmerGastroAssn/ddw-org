@@ -8,6 +8,22 @@
 
     <li class="list-group-item">
         <mat-divider></mat-divider>
+        <a [routerLink]="['/admin/text-section/new']"
+           (click)="openLink($event)">
+            <i class="fal fa-align-justify"></i> New Page Text Section
+        </a>
+    </li>
+
+    <li class="list-group-item">
+        <mat-divider></mat-divider>
+        <a [routerLink]="['/admin/call-to-action/new']"
+           (click)="openLink($event)">
+            <i class="fal fa-text-width"></i> New Page Call To Action
+        </a>
+    </li>
+
+    <li class="list-group-item">
+        <mat-divider></mat-divider>
         <a [routerLink]="['/admin/home']"
            (click)="openLink($event)">
             <i class="fal fa-home"></i> Home Page
@@ -43,23 +59,6 @@
         <a [routerLink]="['/admin/image-uploader']"
            (click)="openLink($event)">
             <i class="fal fa-images"></i> New Image
-        </a>
-    </li>
-
-
-    <li class="list-group-item">
-        <mat-divider></mat-divider>
-        <a [routerLink]="['/admin/custom-nav-links']"
-           (click)="openLink($event)">
-            <i class="fal fa-link"></i> Navbar Links
-        </a>
-    </li>
-
-    <li class="list-group-item" *ngIf="isAdmin">
-        <mat-divider></mat-divider>
-        <a [routerLink]="['/admin/users/new']"
-           (click)="openLink($event)">
-            <i class="fal fa-user-plus"></i> New User
         </a>
     </li>
 </ul>

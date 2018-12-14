@@ -107,6 +107,7 @@ export class TextSectionService {
             id: newId,
             name: formData.name,
             updatedAt: this.currentDate,
+            published: formData.published || false,
             value: nameToUrl,
         };
 
@@ -135,6 +136,7 @@ export class TextSectionService {
             id: formData.id,
             name: formData.name,
             updatedAt: Date.now(),
+            published: formData.published || false,
             value: nameToUrl,
         };
 

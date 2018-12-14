@@ -19,6 +19,7 @@ export class TextSectionEditComponent implements OnInit {
     createdAt: number;
     id: string;
     name: string;
+    published: boolean;
     CkeditorConfig = {
         allowedContent: true,
         height: 200,
@@ -60,12 +61,14 @@ export class TextSectionEditComponent implements OnInit {
                     createdAt: [this.textSection.createdAt],
                     id: [this.id],
                     name: [this.textSection.name, Validators.required],
+                    published: [this.published || false],
                 });
 
                 this.body = this.editTextSectionForm.value.body;
                 this.createdAt = this.editTextSectionForm.value.createdAt;
                 this.id = this.editTextSectionForm.value.id;
                 this.name = this.editTextSectionForm.value.name;
+                this.published = this.editTextSectionForm.value.published;
             }
         });
     }

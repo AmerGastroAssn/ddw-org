@@ -383,6 +383,70 @@
                                 </div>
 
 
+                                <!-- * Content Sections * -->
+                                <div class="card bg-lighter mt-3 mb-3">
+                                    <div class="card-body">
+                                        <label>Content Sections</label>
+                                        <div class="form-group">
+                                            <div class="btn-group">
+                                                <a [routerLink]="['/admin/text-section/new']"
+                                                   class="btn btn-sm btn-default mb-2">
+                                                    <i class="fa fa-align-justify"></i> Create New Text Section
+                                                </a>
+                                                <a [routerLink]="['/admin/call-to-action/new']"
+                                                   class="btn btn-sm btn-default mb-2">
+                                                    <i class="fa fa-text-width"></i> Create New CTA
+                                                </a>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group" *ngIf="textSections$">
+                                            <label for="contentSectionTop">Select Text Section
+                                                &nbsp;&nbsp;<i class="fa fa-align-justify"></i> Top <span class="badge badge-warning">*Required</span>
+                                            </label>
+                                            <select class="form-control"
+                                                    id="contentSectionTop"
+                                                    formControlName="contentSectionTop">
+                                                <option *ngFor="let text of textSections$ | async"
+                                                        [value]="text.id">
+                                                    {{ text.value }}
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group" *ngIf="cta$">
+                                            <label for="callToAction">Select Call To Action
+                                                &nbsp;&nbsp;<i class="fa fa-text-width"></i>
+                                                Middle
+                                            </label>
+                                            <select class="form-control"
+                                                    id="callToAction"
+                                                    formControlName="callToAction">
+                                                <option *ngFor="let cta of cta$ | async"
+                                                        [value]="cta.id">
+                                                    {{ cta.value }}
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group" *ngIf="textSections$">
+                                            <label for="contentSectionBottom">Select Text Section
+                                                &nbsp;&nbsp;<i class="fa fa-align-justify"></i>
+                                                Bottom
+                                            </label>
+                                            <select class="form-control"
+                                                    id="contentSectionBottom"
+                                                    formControlName="contentSectionBottom">
+                                                <option *ngFor="let text of textSections$ | async"
+                                                        [value]="text.id">
+                                                    {{ text.value }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group" *ngIf="!page.isExtURL">
                                     <label>Body</label>
                                     <ckeditor [formControl]="editPageForm.controls['body']"

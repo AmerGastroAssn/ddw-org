@@ -3,7 +3,6 @@ export class Page {
       public $key: string,
       public uid: string,
       public title: string,
-      public body: string,
       public author: string,
       public date: number,
       public photoURL: string,
@@ -27,6 +26,10 @@ export class Page {
       public cardOption2: string,
       public cardOption3: string,
       public cardSectionTitle: string,
+      public contentSectionTop: string,
+      public contentSectionBottom: string,
+      public callToAction: string,
+      public body?: string,
     ) {
     }
 }

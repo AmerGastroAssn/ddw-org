@@ -39,6 +39,7 @@
     </div>
 
 
+    <!-- * TEXT SECTIONS * -->
     <div class="row">
         <div class="container-fluid body-container">
             <div class="image-container">
@@ -46,7 +47,58 @@
                      class="photoURL">
             </div>
 
-            <div [innerHTML]="page.body | safeHtml"></div>
+            <span [innerHTML]="page.body"
+                  *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
+            </span>
+            <!-- * Text Section Top * -->
+            <span [innerHTML]="tsTopBody" *ngIf="tsTopBody && !page.body"></span>
+
+
+            <!-- * Call To Action * -->
+            <div class="row cta" *ngIf="cta && !page.body">
+                <div class="row pt-3" *ngIf="cta.title || cta.subtitle">
+                    <div class="col-md-10 text-center mx-auto">
+                        <h2>{{ cta.title }}</h2>
+                        <p>{{ cta.subtitle }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 cta-left col-media">
+                        <iframe *ngIf="videoUrl"
+                                allowfullscreen="allowfullscreen"
+                                frameborder="0"
+                                height="315"
+                                width="446"
+                                [src]="videoUrl">
+                        </iframe>
+                        <img [src]="imageUrl" *ngIf="imageUrl">
+
+                    </div>
+
+                    <div class="col-md-7 col-quote">
+                        <span [innerHTML]="ctaBody"></span>
+
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <a *ngIf="cta.buttonText && cta.buttonUrl && cta.isExtUrl"
+                                   target="_blank"
+                                   [href]="cta.buttonUrl"
+                                   class="btn cta">
+                                    {{ cta.buttonText }}
+                                </a>
+                                <a *ngIf="cta.buttonText && cta.buttonUrl && !cta.isExtUrl"
+                                   [href]="cta.buttonUrl"
+                                   class="btn cta">
+                                    {{ cta.buttonText }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- * Text Section Bottom * -->
+            <div [innerHTML]="tsBottomBody" *ngIf="tsBottomBody && !page.body"></div>
         </div>
     </div>
 

@@ -12,11 +12,14 @@ import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { User } from '../../../../models/User';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
-import { AdminImageService } from '../../../../services/admin-image.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { AdminSettingsService } from '../../../../services/admin-settings.service';
 import { AuthService } from '../../../../services/auth.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
+import { CallToAction } from '../../admin-content-section/models/call-to-action';
+import { TextSection } from '../../admin-content-section/models/text-section';
+import { CallToActionService } from '../../admin-content-section/services/call-to-action.service';
+import { TextSectionService } from '../../admin-content-section/services/text-section.service';
 
 @Component({
     selector: 'ddw-admin-page-new',
@@ -52,6 +55,11 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     cardOption2: string;
     cardOption3: string;
     cardSectionTitle: string;
+    textSections$: Observable<TextSection[]>;
+    cta$: Observable<CallToAction[]>;
+    contentSectionTop: string;
+    contentSectionBottom: string;
+    callToAction: string;
     pageCards$: Observable<Card[]>;
     isHovering: boolean;
     isInvalid: boolean;
@@ -93,7 +101,8 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
       private sbAlert: MatSnackBar,
       private adminCalendarService: AdminCalendarService,
       private pagesCardService: PagesCardService,
-      private imageService: AdminImageService,
+      private textSectionService: TextSectionService,
+      private ctaService: CallToActionService,
     ) {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
@@ -137,34 +146,41 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.pageCards$ = this.pagesCardService.getAllPageCards();
         this.pages$ = this.adminPageService.getAllPages();
 
-        // Form:
-        this.newPageForm = this.fb.group({
+        // Content Sections:
+        this.textSections$ = this.textSectionService.getAllTextSections();
+        this.cta$ = this.ctaService.getAllCtas();
 
-            title: ['', Validators.required],
-            body: [''],
-            author: ['' || this.user.email],
-            date: ['' || this.currentDate, Validators.required],
-            photoURL: [''],
-            bannerPhotoURL: ['' || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
-            category: ['', Validators.required],
-            published: ['' || false],
-            template: ['' || 'Full Width'],
-            url: [''],
-            extURL: [''],
-            isExtURL: ['' || false],
-            sortOrder: ['' || 1],
-            hasCalendar: [''],
-            calendarTitle: [''],
-            isGrandchildPage: ['' || false],
-            grandchildURL: [''],
-            hidden: ['' || false],
-            metaDesc: [''],
-            hasCards: ['' || false],
-            cardOption1: [''],
-            cardOption2: [''],
-            cardOption3: [''],
-            cardSectionTitle: [''],
-        });
+          // Form:
+          this.newPageForm = this.fb.group({
+
+              title: ['', Validators.required],
+              body: [''],
+              author: ['' || this.user.email],
+              date: ['' || this.currentDate, Validators.required],
+              photoURL: [''],
+              bannerPhotoURL: ['' || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
+              category: ['', Validators.required],
+              published: ['' || false],
+              template: ['' || 'Full Width'],
+              url: [''],
+              extURL: [''],
+              isExtURL: ['' || false],
+              sortOrder: ['' || 1],
+              hasCalendar: [''],
+              calendarTitle: [''],
+              isGrandchildPage: ['' || false],
+              grandchildURL: [''],
+              hidden: ['' || false],
+              metaDesc: [''],
+              hasCards: ['' || false],
+              cardOption1: [''],
+              cardOption2: [''],
+              cardOption3: [''],
+              cardSectionTitle: [''],
+              contentSectionTop: ['', Validators.required],
+              contentSectionBottom: [''],
+              callToAction: [''],
+          });
 
         this.title = this.newPageForm.value.title;
         this.body = this.newPageForm.value.body;
@@ -189,8 +205,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.cardOption2 = this.newPageForm.value.cardOption2;
         this.cardOption3 = this.newPageForm.value.cardOption3;
         this.cardSectionTitle = this.newPageForm.value.cardSectionTitle;
-
-
+        this.contentSectionTop = this.newPageForm.value.contentSectionTop;
+        this.contentSectionBottom = this.newPageForm.value.contentSectionBottom;
+        this.callToAction = this.newPageForm.value.callToAction;
     }
 
     ngOnDestroy() {

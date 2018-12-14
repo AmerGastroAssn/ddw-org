@@ -133,6 +133,12 @@ a.btn.btn-warning.btn-lg:hover {
     border-radius: 0;
 }
 
+/* Call To Action */
+.btn.cta {
+    margin-bottom: 0;
+}
+
+
 /*------------------------------------------------
      Calendar
 ------------------------------------------------*/

@@ -15,6 +15,7 @@ export class TextSectionNewComponent implements OnInit {
     newTextSectionForm: FormGroup;
     body: string;
     name: string;
+    published: boolean;
     CkeditorConfig = {
         allowedContent: true,
         height: 200,
@@ -51,10 +52,12 @@ export class TextSectionNewComponent implements OnInit {
                    ])
             ],
             name: [this.name, Validators.required],
+            published: [this.published || false]
         });
 
         this.body = this.newTextSectionForm.value.body;
         this.name = this.newTextSectionForm.value.name;
+        this.published = this.newTextSectionForm.value.published;
     }
 
     onCreateTextSection(formData: FormGroup) {

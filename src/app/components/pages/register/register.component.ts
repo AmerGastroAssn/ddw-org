@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import 'rxjs/add/operator/switchMap';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
@@ -12,6 +12,9 @@ import { AdminMetaService } from '../../../services/admin-meta.service';
 import { AdminPageService } from '../../../services/admin-page.service';
 import { PageService } from '../../../services/page.service';
 import { PagesCardService } from '../../../services/pages-card.service';
+import { CallToAction } from '../../admin/admin-content-section/models/call-to-action';
+import { CallToActionService } from '../../admin/admin-content-section/services/call-to-action.service';
+import { TextSectionService } from '../../admin/admin-content-section/services/text-section.service';
 
 declare var $: any;
 
@@ -30,6 +33,13 @@ export class RegisterComponent implements OnInit {
     pageCard3: Card;
     headerbar: any;
     footerbar: any;
+    // Content Sections
+    cta: CallToAction;
+    videoUrl: any;
+    imageUrl: any;
+    ctaBody: any;
+    tsTopBody: any;
+    tsBottomBody: any;
 
     constructor(
       private pageService: PageService,
@@ -41,20 +51,10 @@ export class RegisterComponent implements OnInit {
       private titleService: Title,
       private pagesCardService: PagesCardService,
       private adsService: AdminAdsService,
+      private ctaService: CallToActionService,
+      private tsService: TextSectionService,
+      private sanitizer: DomSanitizer,
     ) {
-        // Removes Navbar styling
-        // $(document).ready(function () {
-        //     $(window).scroll(function () {
-        //           const navLinks    = $('li.nav-item > a'),
-        //                 navDropdown = $('a.dropdown-item'),
-        //                 navbar      = $('.navbar');
-        //
-        //           navbar.removeClass('navbarWhite');
-        //           navLinks.removeClass('linksDark');
-        //           navDropdown.removeClass('linksDark');
-        //       }
-        //     )
-        // };
     }
 
 
@@ -142,7 +142,48 @@ export class RegisterComponent implements OnInit {
                         });
                 }
 
-            });
+                // Content Sections
+                if (this.page.callToAction) {
+                    this.ctaService.getCta(this.page.callToAction)
+                        .subscribe((cta) => {
+                            this.cta = cta;
+                            if (cta.imageUrl) {
+                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                            }
+                            if (cta.videoUrl) {
+                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                            }
+                            if (cta.body) {
+                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+
+                if (this.page.contentSectionTop) {
+                    this.tsService.getTextSection(this.page.contentSectionTop)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+                if (this.page.contentSectionBottom) {
+                    this.tsService.getTextSection(this.page.contentSectionBottom)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                } else {
+                    return of(null);
+                }
+
+
+            }); // End
     }
 
 }

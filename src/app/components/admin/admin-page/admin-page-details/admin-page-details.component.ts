@@ -238,43 +238,42 @@ export class AdminPageDetailsComponent implements OnInit {
             }
 
             // Content Sections
+            if (this.page.contentSectionTop !== '') {
+                this.tsService.getTextSection(this.page.contentSectionTop)
+                    .subscribe((section) => {
+                        if (section) {
+                            this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                        } else {
+                            return of(null);
+                        }
+                    });
+            }
+
+            if (this.page.contentSectionBottom) {
+                this.tsService.getTextSection(this.page.contentSectionBottom)
+                    .subscribe((section) => {
+                        if (section) {
+                            this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                        } else {
+                            return of(null);
+                        }
+                    });
+            }
+
             if (this.page.callToAction) {
                 this.ctaService.getCta(this.page.callToAction)
                     .subscribe((cta) => {
                         this.cta = cta;
-                        if (cta.imageUrl) {
+                        if (this.cta.imageUrl !== null) {
                             this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
-                        }
-                        if (cta.videoUrl) {
+                        } else if (this.cta.videoUrl !== null) {
                             this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
-                        }
-                        if (cta.body) {
+                        } else if (this.cta.body !== null) {
                             this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                        } else {
+                            return of(null);
                         }
                     });
-            } else {
-                return of(null);
-            }
-
-            if (this.page.contentSectionTop) {
-                this.tsService.getTextSection(this.page.contentSectionTop)
-                    .subscribe((section) => {
-                        if (section.body) {
-                            this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                        }
-                    });
-            } else {
-                return of(null);
-            }
-            if (this.page.contentSectionBottom) {
-                this.tsService.getTextSection(this.page.contentSectionBottom)
-                    .subscribe((section) => {
-                        if (section.body) {
-                            this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                        }
-                    });
-            } else {
-                return of(null);
             }
 
 

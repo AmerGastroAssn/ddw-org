@@ -95,6 +95,17 @@ export class AdminPageEditComponent implements OnInit {
     grandchildURL: string;
     hidden: boolean;
     pages$: Observable<Page[]>;
+    // Content Sections
+    cta: CallToAction;
+    videoUrl: any;
+    imageUrl: any;
+    ctaBody: any;
+    tsTopBody: any;
+    tsBottomBody: any;
+    // Cards:
+    pageCard1: Card;
+    pageCard2: Card;
+    pageCard3: Card;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -121,6 +132,7 @@ export class AdminPageEditComponent implements OnInit {
       private imageService: AdminImageService,
       private textSectionService: TextSectionService,
       private ctaService: CallToActionService,
+      private tsService: TextSectionService,
     ) {
 
         // Datepicker Config
@@ -149,15 +161,9 @@ export class AdminPageEditComponent implements OnInit {
     ngOnInit() {
         // Settings
         this.disableAdminOnEdit = this.settingsService.getAdminSettings().disableAdmin;
-        this.pageCards$ = this.pagesCardService.getAllPageCards();
-        // Get Calendar Titles
-        this.calendars$ = this.adminCalendarService.getAllCalendars();
-        // this.adminCalendarService.getAllCalendars()
-        //     .subscribe((calArr) => {
-        //         this.calendars = _.orderBy(calArr, ['title'], ['asc']);
-        //     });
 
-        // Content Sections:
+        this.pageCards$ = this.pagesCardService.getAllPageCards();
+        this.calendars$ = this.adminCalendarService.getAllCalendars();
         this.textSections$ = this.textSectionService.getAllTextSections();
         this.cta$ = this.ctaService.getAllCtas();
 
@@ -171,7 +177,7 @@ export class AdminPageEditComponent implements OnInit {
 
                 // Form:
                 this.editPageForm = this.fb.group({
-                    uid: [page.uid],
+                    uid: [this.page.uid],
                     title: [this.page.title,
                             Validators.compose([
                                 Validators.required, Validators.minLength(5)
@@ -179,8 +185,8 @@ export class AdminPageEditComponent implements OnInit {
                     ],
                     body: [this.page.body],
                     author: [this.page.author],
-                    date: [page.date || ''],
-                    bannerPhotoURL: [page.bannerPhotoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
+                    date: [this.page.date || ''],
+                    bannerPhotoURL: [this.page.bannerPhotoURL || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
                     photoURL: [this.page.photoURL || ''],
                     category: [this.page.category, Validators.required],
                     published: [this.page.published || false],
@@ -190,12 +196,12 @@ export class AdminPageEditComponent implements OnInit {
                     isExtURL: [this.page.isExtURL],
                     sortOrder: [this.page.sortOrder],
                     hasCalendar: [this.page.hasCalendar],
-                    calendarTitle: [page.calendarTitle],
+                    calendarTitle: [this.page.calendarTitle],
                     isGrandchildPage: [this.page.isGrandchildPage],
                     grandchildURL: [this.page.grandchildURL],
                     hidden: [this.page.hidden || false],
                     metaDesc: [this.page.metaDesc || ''],
-                    hasCards: [page.hasCards || false],
+                    hasCards: [this.page.hasCards || false],
                     cardOption1: [this.page.cardOption1],
                     cardOption2: [this.page.cardOption2],
                     cardOption3: [this.page.cardOption3],
@@ -235,7 +241,63 @@ export class AdminPageEditComponent implements OnInit {
                 this.callToAction = this.editPageForm.value.callToAction;
 
 
-            }
+                // Content Sections
+                if (this.page.contentSectionTop !== '') {
+                    this.tsService.getTextSection(this.page.contentSectionTop)
+                        .subscribe((section) => {
+                            if (section) {
+                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                }
+
+                if (this.page.contentSectionBottom) {
+                    this.tsService.getTextSection(this.page.contentSectionBottom)
+                        .subscribe((section) => {
+                            if (section) {
+                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                }
+
+                if (this.page.callToAction) {
+                    this.ctaService.getCta(this.page.callToAction)
+                        .subscribe((cta) => {
+                            this.cta = cta;
+                            if (cta.imageUrl) {
+                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                            }
+                            if (cta.videoUrl) {
+                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                            }
+                            if (cta.body) {
+                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                            }
+                        });
+                }
+
+
+                // Page Cards (Preview):
+                // console.log('something');
+                // if (this.page.hasCards) {
+                //     console.log('hascards');
+                //     this.pagesCardService.getPageCard(this.page.cardOption1)
+                //         .subscribe((card) => {
+                //             console.log('card1', card);
+                //             this.pageCard1 = card;
+                //         });
+                //     this.pagesCardService.getPageCard(this.page.cardOption2)
+                //         .subscribe((card) => {
+                //             this.pageCard2 = card;
+                //         });
+                //     this.pagesCardService.getPageCard(this.page.cardOption3)
+                //         .subscribe((card) => {
+                //             this.pageCard3 = card;
+                //         });
+                // }
+
+
+            } // END this.page
 
             // Shows only the grandchildren of that section versus all (saves on read/writes).
             switch (page.category) {
@@ -286,7 +348,9 @@ export class AdminPageEditComponent implements OnInit {
 
     @HostListener('window:scroll')
     onScrollEvent() {
-        this.datepicker.hide();
+        if ('window:scroll') {
+            this.datepicker.hide();
+        }
     }
 
     onFileSelection(event) {
@@ -313,4 +377,6 @@ export class AdminPageEditComponent implements OnInit {
     toggleIsGrandchildPage() {
         this.page.isGrandchildPage = !this.page.isGrandchildPage;
     }
+
+
 }

@@ -31,9 +31,10 @@
             </div>
 
             <!-- * TEXT SECTIONS * -->
-            <span [innerHTML]="page.body"
-                  *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
-             </span>
+            <div *ngIf="page.body && !page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
+                <span [innerHTML]="page.body"></span>
+            </div>
+
             <!-- * Text Section Top * -->
             <span [innerHTML]="tsTopBody" *ngIf="tsTopBody && !page.body"></span>
 

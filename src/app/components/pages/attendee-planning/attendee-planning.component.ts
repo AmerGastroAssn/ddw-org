@@ -149,6 +149,23 @@ export class AttendeePlanningComponent implements OnInit {
 
 
                 // Content Sections
+                if (this.page.contentSectionTop) {
+                    this.tsService.getTextSection(this.page.contentSectionTop)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                }
+                if (this.page.contentSectionBottom) {
+                    this.tsService.getTextSection(this.page.contentSectionBottom)
+                        .subscribe((section) => {
+                            if (section.body) {
+                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                            }
+                        });
+                }
+
                 if (this.page.callToAction) {
                     this.ctaService.getCta(this.page.callToAction)
                         .subscribe((cta) => {
@@ -163,31 +180,9 @@ export class AttendeePlanningComponent implements OnInit {
                                 this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
                             }
                         });
-                } else {
-                    return of(null);
-                }
-                if (this.page.contentSectionTop) {
-                    this.tsService.getTextSection(this.page.contentSectionTop)
-                        .subscribe((section) => {
-                            if (section.body) {
-                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                            }
-                        });
-                } else {
-                    return of(null);
-                }
-                if (this.page.contentSectionBottom) {
-                    this.tsService.getTextSection(this.page.contentSectionBottom)
-                        .subscribe((section) => {
-                            if (section.body) {
-                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                            }
-                        });
-                } else {
-                    return of(null);
                 }
 
 
-            });// END
+            }); // END
     }
 }

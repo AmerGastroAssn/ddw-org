@@ -157,10 +157,7 @@ export class RegisterComponent implements OnInit {
                                 this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
                             }
                         });
-                } else {
-                    return of(null);
                 }
-
                 if (this.page.contentSectionTop) {
                     this.tsService.getTextSection(this.page.contentSectionTop)
                         .subscribe((section) => {
@@ -168,8 +165,6 @@ export class RegisterComponent implements OnInit {
                                 this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
                             }
                         });
-                } else {
-                    return of(null);
                 }
                 if (this.page.contentSectionBottom) {
                     this.tsService.getTextSection(this.page.contentSectionBottom)
@@ -178,8 +173,6 @@ export class RegisterComponent implements OnInit {
                                 this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
                             }
                         });
-                } else {
-                    return of(null);
                 }
 
 

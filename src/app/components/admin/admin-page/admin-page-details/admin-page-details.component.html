@@ -56,7 +56,9 @@
                                 width="446"
                                 [src]="videoUrl">
                         </iframe>
-                        <img [src]="imageUrl" *ngIf="imageUrl">
+                        <img [src]="imageUrl"
+                             *ngIf="imageUrl"
+                             style="max-width:446px;">
 
                     </div>
 
@@ -68,12 +70,12 @@
                                 <a *ngIf="cta.buttonText && cta.buttonUrl && cta.isExtUrl"
                                    target="_blank"
                                    [href]="cta.buttonUrl"
-                                   class="btn cta">
+                                   class="btn cta mb-5">
                                     {{ cta.buttonText }}
                                 </a>
                                 <a *ngIf="cta.buttonText && cta.buttonUrl && !cta.isExtUrl"
                                    [href]="cta.buttonUrl"
-                                   class="btn cta">
+                                   class="btn cta mb-5">
                                     {{ cta.buttonText }}
                                 </a>
                             </div>

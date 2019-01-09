@@ -33,7 +33,9 @@
                             width="446"
                             [src]="videoUrl">
                     </iframe>
-                    <img [src]="imageUrl" *ngIf="imageUrl">
+                    <img [src]="imageUrl"
+                         *ngIf="imageUrl"
+                         style="max-width:446px;">
 
                 </div>
 
@@ -103,8 +105,8 @@
                                 <i class="fa fa-undo"></i>&nbsp;Cancel
                             </a>
                             <!--<button class="btn btn-danger"-->
-                                    <!--(click)="onDeletePressRelease()">-->
-                                <!--<i class="fa fa-trash"></i>&nbsp;Delete-->
+                            <!--(click)="onDeletePressRelease()">-->
+                            <!--<i class="fa fa-trash"></i>&nbsp;Delete-->
                             <!--</button>-->
                         </div>
                     </form>

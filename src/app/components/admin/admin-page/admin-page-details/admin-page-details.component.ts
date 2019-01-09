@@ -238,43 +238,38 @@ export class AdminPageDetailsComponent implements OnInit {
             }
 
             // Content Sections
-            if (this.page.contentSectionTop !== '') {
+            if (this.page.contentSectionTop) {
                 this.tsService.getTextSection(this.page.contentSectionTop)
                     .subscribe((section) => {
-                        if (section) {
+                        if (section.body) {
                             this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                        } else {
-                            return of(null);
                         }
                     });
             }
-
             if (this.page.contentSectionBottom) {
                 this.tsService.getTextSection(this.page.contentSectionBottom)
                     .subscribe((section) => {
-                        if (section) {
+                        if (section.body) {
                             this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                        } else {
-                            return of(null);
                         }
                     });
             }
-
             if (this.page.callToAction) {
                 this.ctaService.getCta(this.page.callToAction)
                     .subscribe((cta) => {
                         this.cta = cta;
-                        if (this.cta.imageUrl !== null) {
+                        if (cta.imageUrl) {
                             this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
-                        } else if (this.cta.videoUrl !== null) {
+                        }
+                        if (cta.videoUrl) {
                             this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
-                        } else if (this.cta.body !== null) {
+                        }
+                        if (cta.body) {
                             this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
-                        } else {
-                            return of(null);
                         }
                     });
             }
+
 
 
         }); // END

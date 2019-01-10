@@ -16,9 +16,16 @@
 
 <div class="row mt-3 mb-3">
     <div class="col-md-6 mx-auto text-center">
-        <a [routerLink]="['/admin/text-section/new']" class="btn btn-default">
-            <i class="fa fa-plus"></i> New Text Section
-        </a>
+        <div class="btn btn-group">
+            <a [routerLink]="['/admin/text-section/new']" class="btn btn-default">
+                <i class="fa fa-plus"></i> New Text Section
+            </a>
+
+            <a class="btn btn-default"
+               [routerLink]="['/admin/call-to-action']">
+                <i class="fa fa-text-width"></i>&nbsp;Call To Actions
+            </a>
+        </div>
     </div>
 </div>
 
@@ -39,7 +46,7 @@
                                     <div class="input-group">
                                         <input type="text"
                                                class="form-control"
-                                               placeholder="Search Call To Action titles..."
+                                               placeholder="Search Text Section titles..."
                                                [(ngModel)]="searchTerm"
                                                (keydown)="search($event)">
                                         <span class="input-group-append">

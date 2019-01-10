@@ -29,6 +29,7 @@ export class Page {
       public contentSectionTop: string,
       public contentSectionBottom: string,
       public callToAction: string,
+      public updatedAt: number,
       public body?: string,
     ) {
     }

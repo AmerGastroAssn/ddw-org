@@ -119,6 +119,7 @@ export class AdminPageService {
             contentSectionTop: formData.contentSectionTop,
             contentSectionBottom: formData.contentSectionBottom,
             callToAction: formData.callToAction,
+            updatedAt: Date.now(),
         };
 
         return pageRef.set(data)
@@ -169,6 +170,7 @@ export class AdminPageService {
                 contentSectionTop: formData.contentSectionTop,
                 contentSectionBottom: formData.contentSectionBottom,
                 callToAction: formData.callToAction,
+                updatedAt: Date.now(),
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))
@@ -206,6 +208,7 @@ export class AdminPageService {
                 contentSectionTop: formData.contentSectionTop,
                 contentSectionBottom: formData.contentSectionBottom,
                 callToAction: formData.callToAction,
+                updatedAt: Date.now(),
             };
             return pageRef.set(data, { merge: true })
                           .then(() => this.router.navigate([`/admin/${data.category}`]))

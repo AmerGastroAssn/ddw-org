@@ -224,7 +224,6 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         } else {
             this.adminPageService.setPage(formData)
                 .then(() => {
-                    console.log(formData);
                     this.newPageForm.reset();
                     this.sbAlert.open('New Page created!', 'Dismiss', {
                         duration: 3000,

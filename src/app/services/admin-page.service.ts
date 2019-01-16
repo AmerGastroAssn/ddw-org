@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { Page } from '../models/Page';
+import { User } from '../models/User';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +15,7 @@ export class AdminPageService {
     page: Observable<Page>;
     pages$: Observable<Page[]>;
     newSlug: string;
+    author: User;
 
     string_to_slug = (str) => {
         str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -36,7 +39,9 @@ export class AdminPageService {
     constructor(
       private readonly afs: AngularFirestore,
       private readonly router: Router,
+      private authService: AuthService,
     ) {
+        this.author = this.authService.getProfile();
     }
 
     getAllPages(): Observable<Page[]> {
@@ -144,7 +149,7 @@ export class AdminPageService {
                 uid: new$key,
                 title: formData.title,
                 body: formData.body,
-                author: formData.author,
+                author: this.author.displayName || formData.author,
                 date: timestampToNum,
                 photoURL: formData.photoURL,
                 bannerPhotoURL: formData.bannerPhotoURL,
@@ -182,7 +187,7 @@ export class AdminPageService {
                 uid: new$key,
                 title: formData.title,
                 body: formData.body,
-                author: formData.author,
+                author: this.author.displayName || formData.author,
                 date: timestampToNum,
                 photoURL: formData.photoURL,
                 bannerPhotoURL: formData.bannerPhotoURL,

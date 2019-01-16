@@ -156,6 +156,7 @@ export class ExhibitorInformationComponent implements OnInit {
                             }
                         });
                 }
+
                 if (this.page.contentSectionBottom) {
                     this.tsService.getTextSection(this.page.contentSectionBottom)
                         .subscribe((section) => {
@@ -169,14 +170,16 @@ export class ExhibitorInformationComponent implements OnInit {
                     this.ctaService.getCta(this.page.callToAction)
                         .subscribe((cta) => {
                             this.cta = cta;
-                            if (cta.imageUrl) {
-                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
-                            }
-                            if (cta.videoUrl) {
-                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
-                            }
-                            if (cta.body) {
-                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                            if (cta) {
+                                if (cta.imageUrl) {
+                                    this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                                }
+                                if (cta.videoUrl) {
+                                    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                                }
+                                if (cta.body) {
+                                    this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                                }
                             }
                         });
                 }

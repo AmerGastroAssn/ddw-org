@@ -16,12 +16,14 @@
 
 <div class="row mt-3 mb-3">
     <div class="col-md-6 mx-auto text-center">
-        <a [routerLink]="['/admin/call-to-action/new']" class="btn btn-default">
-            <i class="fa fa-plus"></i> New CTA
-        </a>
-        <a [routerLink]="['/admin/text-section']" class="btn btn-default">
-            <i class="fa fa-align-justify"></i> Text Sections
-        </a>
+        <div class="btn-group">
+            <a [routerLink]="['/admin/call-to-action/new']" class="btn btn-default">
+                <i class="fa fa-plus"></i> New CTA
+            </a>
+            <a [routerLink]="['/admin/text-section']" class="btn btn-default">
+                <i class="fa fa-align-justify"></i> Text Sections
+            </a>
+        </div>
     </div>
 </div>
 
@@ -82,7 +84,7 @@
                     <tr *ngFor="let cta of ctaList">
                         <td scope="col">
                             <a [routerLink]="['/admin/call-to-action/', cta.id]" class="text-truncate">
-                                {{ cta.name | slice:0:20 }}
+                                {{ cta.name }}
                             </a>
                         </td>
 

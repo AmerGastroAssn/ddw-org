@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
@@ -165,14 +165,16 @@ export class PresentersComponent implements OnInit, OnDestroy {
                     this.ctaService.getCta(this.page.callToAction)
                         .subscribe((cta) => {
                             this.cta = cta;
-                            if (cta.imageUrl) {
-                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
-                            }
-                            if (cta.videoUrl) {
-                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
-                            }
-                            if (cta.body) {
-                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                            if (cta) {
+                                if (cta.imageUrl) {
+                                    this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                                }
+                                if (cta.videoUrl) {
+                                    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                                }
+                                if (cta.body) {
+                                    this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                                }
                             }
                         });
                 }

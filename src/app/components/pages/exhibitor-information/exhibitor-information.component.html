@@ -50,11 +50,13 @@
                   *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
             </span>
             <!-- * Text Section Top * -->
-            <span [innerHTML]="tsTopBody" *ngIf="tsTopBody && !page.body"></span>
+            <span [innerHTML]="tsTopBody"
+                  *ngIf="tsTopBody && page.contentSectionTop && !page.body">
+            </span>
 
 
             <!-- * Call To Action * -->
-            <div class="row cta" *ngIf="cta && !page.body">
+            <div class="row cta" *ngIf="page.callToAction && cta && !page.body">
                 <div class="row pt-3" *ngIf="cta.title || cta.subtitle">
                     <div class="col-md-10 text-center mx-auto">
                         <h2>{{ cta.title }}</h2>
@@ -63,7 +65,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 cta-left col-media">
-                        <iframe *ngIf="videoUrl"
+                        <iframe *ngIf="cta.videoUrl"
                                 allowfullscreen="allowfullscreen"
                                 frameborder="0"
                                 height="315"
@@ -71,7 +73,7 @@
                                 [src]="videoUrl">
                         </iframe>
                         <img [src]="imageUrl"
-                             *ngIf="imageUrl"
+                             *ngIf="cta.imageUrl"
                              style="max-width:446px;">
 
                     </div>
@@ -99,7 +101,10 @@
             </div>
 
             <!-- * Text Section Bottom * -->
-            <div [innerHTML]="tsBottomBody" *ngIf="tsBottomBody && !page.body"></div>
+            <div [innerHTML]="tsBottomBody"
+                 *ngIf="tsBottomBody && page.contentSectionBottom && !page.body">
+            </div>
+
         </div>
     </div>
 

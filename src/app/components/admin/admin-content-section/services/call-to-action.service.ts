@@ -98,7 +98,7 @@ export class CallToActionService {
     setCTA(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
         const newId = this.afs.createId();
-        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${newId}`);
+        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`callToActions/${newId}`);
 
         const data: CallToAction = {
             author: this.currentUser,
@@ -134,7 +134,7 @@ export class CallToActionService {
 
     updateCTA(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
-        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${formData.id}`);
+        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`callToActions/${formData.id}`);
 
         const data: CallToAction = {
             author: this.currentUser,

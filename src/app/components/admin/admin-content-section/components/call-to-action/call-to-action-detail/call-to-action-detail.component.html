@@ -11,6 +11,13 @@
             <a [routerLink]="['/admin/call-to-action/new']" class="btn btn-default">
                 <i class="fa fa-plus"></i>&nbsp;New CTA
             </a>
+            <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
+            <a class="btn btn-default"
+               *ngIf="cta"
+               matTooltip="Send For Review"
+               href="mailto: ?subject=For review: {{cta.name}}&body=Please review this Call To Action from DDW.org: https://staging.ddw.org/admin/call-to-action/{{cta.id}}">
+                <i class="fa fa-envelope"></i>&nbsp;Send For Review
+            </a>
         </div>
     </div>
 </div>
@@ -104,10 +111,12 @@
                                [routerLink]="['/admin/call-to-action']">
                                 <i class="fa fa-undo"></i>&nbsp;Cancel
                             </a>
-                            <!--<button class="btn btn-danger"-->
-                            <!--(click)="onDeletePressRelease()">-->
-                            <!--<i class="fa fa-trash"></i>&nbsp;Delete-->
-                            <!--</button>-->
+                            <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
+                            <a class="btn btn-success"
+                               matTooltip="Send For Review"
+                               href="mailto: ?subject=For review: {{cta.name}}&body=Please review this Call To Action from DDW.org: https://staging.ddw.org/admin/call-to-action/{{cta.id}}">
+                                <i class="fa fa-envelope"></i>&nbsp;Send For Review
+                            </a>
                         </div>
                     </form>
                 </div>

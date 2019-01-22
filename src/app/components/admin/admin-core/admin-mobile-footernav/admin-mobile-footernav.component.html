@@ -125,6 +125,25 @@
                     class="menu-icon"
                     routerLinkActive="active"
                     *ngIf="isLoggedIn"
+                    [routerLink]="['/admin/text-section']">
+                <i class="fa fa-align-justify"></i>&nbsp;
+                <small>Text Sections</small>
+            </button>
+
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="isLoggedIn"
+                    [routerLink]="['/admin/call-to-action']">
+                <i class="fa fa-text-width"></i>&nbsp;
+                <small>Call To Actions</small>
+            </button>
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="isLoggedIn"
                     [routerLink]="['/admin/cards']">
                 <i class="fa fa-passport"></i>&nbsp;
                 <small>Home Page Cards</small>
@@ -186,6 +205,15 @@
                     [routerLink]="['/admin/contacts']">
                 <i class="fa fa-address-book"></i>&nbsp;
                 <small>Contacts</small>
+            </button>
+
+            <button mat-menu-item
+                    class="menu-icon"
+                    routerLinkActive="active"
+                    *ngIf="isLoggedIn"
+                    [routerLink]="['/admin/calendar']">
+                <i class="fa fa-calendar-alt"></i>&nbsp;
+                <small>Calendars</small>
             </button>
 
             <div class="divider"></div>

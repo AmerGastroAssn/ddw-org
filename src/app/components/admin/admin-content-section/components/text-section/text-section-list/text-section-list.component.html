@@ -102,11 +102,18 @@
                             <a class="btn btn-default btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
                                mat-tooltip="Edit"
                                [routerLink]="['/admin/text-section/', textSection.id, 'edit']">
-                                <i class="fa fa-pencil"></i>&nbsp;
+                                <i class="fa fa-pencil"></i>
                             </a>
                             <a class="btn btn-secondary btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
+                               matTooltip="Preview"
                                [routerLink]="['/admin/text-section/', textSection.id]">
-                                <i class="fa fa-eye"></i>&nbsp;
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
+                            <a class="btn btn-success btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
+                               matTooltip="Send For Review"
+                               href="mailto: ?subject=For review: {{textSection.name}}&body=Please review this Content Section from DDW.org: https://staging.ddw.org/admin/text-section/{{textSection.id}}">
+                                <i class="fa fa-envelope"></i>
                             </a>
                         </td>
                     </tr>

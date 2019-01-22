@@ -1,27 +1,18 @@
 .viewed {
-    background-color: #D0CAC8 !important;
-    color: #6D686E !important;
-    border: 1px solid #D0CAC8;
-    text-decoration: line-through;
-
+    background-color: #FFF9DF !important;
+    color: #53462C !important;
+    border: 1px solid #FFF9DF;
+    font-style: italic;
 }
 
 tr.viewed, tr.viewed > * {
-    border-color: #E1DBD9 !important;
-}
-
-a.btn.btn-default {
-    border-color: #6D686E !important;
-    background-color: #6D686E;
-    color: #D0CAC8;
-}
-
-tr.viewed > td > a.btn-default.btn-sm {
-    border-color: #6D686E !important;
-    background-color: #6D686E;
-    color: #D0CAC8;
+    border-color: #F3E4CB !important;
 }
 
 a.viewed-text {
-    color: #6D686E !important;
+    color: #53462C !important;
+}
+
+tr > td {
+    vertical-align: middle;
 }

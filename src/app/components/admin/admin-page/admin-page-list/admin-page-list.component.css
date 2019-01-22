@@ -9,6 +9,11 @@ th {
     line-height: 1.5;
 }
 
+tr > td, thead > tr > th {
+    /*text-align: center;*/
+    vertical-align: middle;
+}
+
 td.date {
     line-height: 1.5;
 }

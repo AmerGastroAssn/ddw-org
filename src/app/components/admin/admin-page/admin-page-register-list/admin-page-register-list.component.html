@@ -20,15 +20,15 @@
                         <th scope="col" style="vertical-align: top;">Published</th>
                         <th scope="col" style="vertical-align: top;">Publish <br> Date</th>
                         <th scope="col" style="vertical-align: top;">Calendar</th>
-                        <th scope="col" style="vertical-align: top;">Author</th>
+                        <th scope="col" style="vertical-align:top; text-align:center;">Author</th>
                         <th scope="col" style="vertical-align: top;">Cards</th>
-                        <th scope="col" style="vertical-align: top;">Grand-<br> child</th>
-                        <th scope="col" style="vertical-align: top;">Options</th>
+                        <th scope="col" style="vertical-align: top;">Grand-<br>child</th>
+                        <th scope="col" style="vertical-align:top; text-align:center;">Options</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let page of regPage$ | async;">
-                        <td scope="col">
+                        <td scope="col" style="text-align:center;">
                             <a [routerLink]="['/admin/pages/', page.url]">
                                 <img [src]="page.photoURL"
                                      class="page-image">
@@ -93,13 +93,13 @@
                         </span>
                         </td>
                         <td style="text-align:center;">
-                            <a class="btn btn-secondary btn-sm icon-btn md-btn-flat user-tooltip ml-1"
-                               [routerLink]="['/admin/pages/', page.url]">
-                                <i class="fa fa-eye"></i>&nbsp;
-                            </a>
                             <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip ml-1"
                                [routerLink]="['/admin/pages/', page.url, 'edit']">
-                                <i class="fa fa-pencil"></i>&nbsp;
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-default text-secondary btn-sm icon-btn md-btn-flat user-tooltip ml-1"
+                               [routerLink]="['/admin/pages/', page.url]">
+                                <i class="fa fa-eye"></i>
                             </a>
                         </td>
                     </tr>

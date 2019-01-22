@@ -101,15 +101,15 @@
                             </span>
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-secondary btn-sm icon-btn md-btn-flat user-tooltip mt-1 ml-2"
+                            <a class="btn btn-default btn-sm icon-btn md-btn-flat user-tooltip mt-1 ml-2"
                                matTooltip="View card details"
                                [routerLink]="['/admin/page-cards/', card.$key, 'edit']">
-                                <i class="fa fa-pencil-alt"></i>&nbsp;
+                                <i class="fa fa-pencil-alt"></i>
                             </a>
-                            <a class="btn btn-danger btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1 text-white"
+                            <a class="btn btn-default text-danger btn-sm icon-btn md-btn-flat user-tooltip ml-2 mt-1 text-white"
                                matTooltip="Delete Card?"
                                (click)="onDeletePageCard(card.$key, card.title)">
-                                <i class="fa fa-trash-alt"></i>&nbsp;
+                                <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>

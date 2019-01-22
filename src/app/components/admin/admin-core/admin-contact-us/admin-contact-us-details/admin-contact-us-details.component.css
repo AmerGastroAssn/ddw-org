@@ -11,25 +11,25 @@ h1, h2, h3, h4, h5, h6, p, div, tr, th, tr, td, ul, ol, li {
 }
 
 a.text-dark:hover {
-    color: #44484f !important;
+    color: #53462C !important;
 }
 
 .viewed {
-    background-color: #D0CAC8 !important;
-    color: #6D686E !important;
-    border: 1px solid #D0CAC8;
+    background-color: #FFF9DF !important;
+    color: #53462C !important;
+    border: 1px solid #FFF9DF;
 }
 
 a.viewed-text {
-    color: #898992 !important;
+    color: #53462C !important;
 }
 
 .card.viewed > div > div > div > table > tbody > tr * {
-    border-color: #E1DBD9 !important;
+    border-color: #FFF9DF !important;
 }
 
 tr.viewed, tr.viewed > *, tr.viewed > td > a.btn-default.btn-sm {
-    border-color: #E1DBD9 !important;
+    border-color: #FFF9DF !important;
 }
 
 
@@ -38,18 +38,18 @@ tr.viewed, tr.viewed > *, tr.viewed > td > a.btn-default.btn-sm {
 }
 
 h3.alert.alert-light {
-    background-color: #6D686E;
-    color: #D1D1D2;
-    border: 1px solid #787279;
+    background-color: #534C3E;
+    color: #FFF9DF;
+    border: 1px solid #53462C;
 }
 
 a.viewed-link {
-    color: #6D686E;
+    color: #53462C;
     font-weight: bold;
 }
 
 a.btn.btn-default.btn-sm.viewed-btn {
-    border-color: #6D686E !important;
-    background-color: #6D686E;
-    color: #D0CAC8;
+    border-color: #53462C !important;
+    background-color: #534C3E;
+    color: #FFF9DF;
 }

@@ -101,14 +101,14 @@
                                [routerLink]="['/admin/call-to-action/', cta.id, 'edit']">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a class="btn btn-secondary btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
+                            <a class="btn btn-default text-secondary btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
                                [routerLink]="['/admin/call-to-action/', cta.id]">
                                 <i class="fa fa-eye"></i>
                             </a>
                             <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
-                            <a class="btn btn-success btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
+                            <a class="btn btn-default text-success btn-sm icon-btn sm-btn-flat user-tooltip ml-1"
                                matTooltip="Send For Review"
-                               href="mailto: ?subject=For review: {{cta.name}}&body=Please review this Call To Action from DDW.org: https://staging.ddw.org/admin/call-to-action/{{cta.id}}">
+                               href="mailto: ?subject=For review on DDW: {{cta.name}}&body=Please review this Call To Action from DDW.org: https://staging.ddw.org/admin/call-to-action/{{cta.id}}">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         </td>

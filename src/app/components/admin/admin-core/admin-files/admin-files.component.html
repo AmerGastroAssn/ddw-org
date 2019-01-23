@@ -100,9 +100,8 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <div class="row" *ngIf="files; else loading">
-                            <div class="col-sm-4 col-md-3 col-lg-2"
-                                 *ngFor="let file of files; let i = index">
+                        <div class="row file-gallery" *ngIf="files; else loading">
+                            <div *ngFor="let file of files; let i = index">
                                 <div class="card file-card mt-1">
                                     <div class="card-body text-center pt-1 pb-1">
                                         <p class="body-text file-types">

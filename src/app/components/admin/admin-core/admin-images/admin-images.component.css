@@ -1,3 +1,10 @@
+.image-gallery {
+    display: grid;
+    grid-gap: 1em;
+    grid-auto-rows: 12rem;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}
+
 .card {
     font-family: 'Helvetica Neue', Roboto, Arial, sans-serif !important;
     font-size: 14px;
@@ -5,15 +12,15 @@
 }
 
 .image-card:hover {
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .1),
-    0 2px 2px 0 rgba(0, 0, 0, .1),
-    0 1px 3px 0 rgba(0, 0, 0, .1);
-    -moz-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .1),
-    0 2px 2px 0 rgba(0, 0, 0, .1),
-    0 1px 3px 0 rgba(0, 0, 0, .1);
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .1),
-    0 2px 2px 0 rgba(0, 0, 0, .1),
-    0 1px 3px 0 rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 3px 1px -5px rgba(0, 0, 0, .08),
+    0 2px 2px 0 rgba(0, 0, 0, .08),
+    0 1px 3px 0 rgba(0, 0, 0, .08);
+    -moz-box-shadow: 0 3px 1px -5px rgba(0, 0, 0, .08),
+    0 2px 2px 0 rgba(0, 0, 0, .08),
+    0 1px 3px 0 rgba(0, 0, 0, .08);
+    box-shadow: 0 3px 1px -5px rgba(0, 0, 0, .08),
+    0 2px 2px 0 rgba(0, 0, 0, .08),
+    0 1px 3px 0 rgba(0, 0, 0, .08);
 }
 
 img.card-img-top {
@@ -50,6 +57,7 @@ button.btn.search {
 
 .details {
     z-index: 1000;
+    background-color: #fff;
 }
 
 .tip {

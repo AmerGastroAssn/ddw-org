@@ -100,9 +100,8 @@
                                 </div>
                             </div>
                         </ng-template>
-                        <div class="row" *ngIf="images; else loading">
-                            <div class="col-sm-4 col-md-3 col-lg-2"
-                                 *ngFor="let image of images; let i = index">
+                        <div class="row image-gallery" *ngIf="images; else loading">
+                            <div *ngFor="let image of images; let i = index">
                                 <div class="card image-card mt-1">
                                     <img class="card-img-top img-fluid"
                                          [src]="image.url"

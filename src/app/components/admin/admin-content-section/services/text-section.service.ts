@@ -88,7 +88,7 @@ export class TextSectionService {
 
 
     getSearchedTextSections(start, end) {
-        return this.afs.collection('text-sections',
+        return this.afs.collection('textSections',
           (ref) => ref.orderBy('value')
                       .startAt(start).endAt(end)
         )
@@ -98,7 +98,7 @@ export class TextSectionService {
     setTextSection(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
         const newId = this.afs.createId();
-        const textSectionRef: AngularFirestoreDocument<TextSection> = this.afs.doc(`textSections/${newId}`);
+        const textSectionRef: AngularFirestoreDocument<TextSection> = this.afs.doc(`text-sections/${newId}`);
 
         const data: TextSection = {
             author: this.currentUser,
@@ -127,7 +127,7 @@ export class TextSectionService {
 
     updateTextSection(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
-        const textSectionRef: AngularFirestoreDocument<TextSection> = this.afs.doc(`textSections/${formData.id}`);
+        const textSectionRef: AngularFirestoreDocument<TextSection> = this.afs.doc(`text-sections/${formData.id}`);
 
         const data: TextSection = {
             author: this.currentUser,

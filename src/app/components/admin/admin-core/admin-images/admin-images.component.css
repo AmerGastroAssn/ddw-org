@@ -1,6 +1,7 @@
 .image-gallery {
     display: grid;
     grid-gap: 1em;
+    /* autoprefixer: off */
     grid-auto-rows: 12rem;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }

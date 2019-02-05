@@ -82,6 +82,7 @@ export class AdminPageEditComponent implements OnInit {
     contentSectionTop: string;
     contentSectionBottom: string;
     callToAction: string;
+    showWidgetSnippet: boolean;
     // State for dropzone CSS toggling
     isHovering: boolean;
     isInvalid: boolean;
@@ -209,6 +210,7 @@ export class AdminPageEditComponent implements OnInit {
                     contentSectionTop: [this.page.contentSectionTop || '', Validators.required],
                     contentSectionBottom: [this.page.contentSectionBottom || ''],
                     callToAction: [this.page.callToAction || ''],
+                    showWidgetSnippet: [this.page.showWidgetSnippet || false],
                 });
 
                 this.uid = this.editPageForm.value.uid;
@@ -239,6 +241,7 @@ export class AdminPageEditComponent implements OnInit {
                 this.contentSectionTop = this.editPageForm.value.contentSectionTop;
                 this.contentSectionBottom = this.editPageForm.value.contentSectionBottom;
                 this.callToAction = this.editPageForm.value.callToAction;
+                this.showWidgetSnippet = this.editPageForm.value.showWidgetSnippet;
 
 
                 // Content Sections

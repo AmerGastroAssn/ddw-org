@@ -1,6 +1,7 @@
 <!-- * ADMIN-PAGE-DETAILS (PREVIEW) * -->
+
 <!-- * If Regular Page * -->
-<div *ngIf="page && !page.isExtURL" class="page-container" [@simpleFadeAnimation]="'in'">
+<div *ngIf="page && !page.isExtURL" class="page-container">
 
     <div class="row">
         <img [src]="page.bannerPhotoURL" class="bannerPhotoURL">
@@ -9,38 +10,59 @@
         </div>
     </div>
 
+    <!-- * Breadcrumbs * -->
     <div class="row crumbs">
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <div class="text-capitalize text-decoration-none text-dark">{{ page.category }}</div>
+                    <div class="text-capitalize text-decoration-none text-dark">
+                        {{ page.category }}
+                    </div>
                 </li>
-                <li class="breadcrumb-item text-capitalize text-dark" *ngIf="page.isGrandchildPage">
-                    {{page.grandchildURL}}
+                <li class="breadcrumb-item text-capitalize text-dark"
+                    *ngIf="page.isGrandchildPage">
+                    <a [routerLink]="['/', page.category, page.grandchildURL]"
+                       style="color:#2e6da4;"
+                       class="child">{{page.grandchildURL}}</a>
                 </li>
-                <li class="breadcrumb-item active text-capitalize text-dark">{{page.title}}</li>
+                <li class="breadcrumb-item active text-dark">
+                    {{page.title}}
+                </li>
             </ol>
+        </div>
+    </div>
+
+    <!-- * Content Sections * -->
+    <div class="row">
+        <div class="container">
+            <div class="image-container">
+                <img [src]="page.photoURL"
+                     *ngIf="page.photoURL && !page.showWidgetSnippet"
+                     class="photoURL">
+                <div [innerHTML]="widgetSnippet | safeHtml"
+                     *ngIf="widgetSnippet && page.showWidgetSnippet"
+                     runScripts
+                     class="widgetSnippet"
+                     id="widgetSnippet">
+                </div>
+            </div>
+
+            <!-- * TEXT SECTIONS * -->
+            <span [innerHTML]="page.body"
+                  *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
+            </span>
+            <!-- * Text Section Top * -->
+            <span [innerHTML]="tsTopBody"
+                  *ngIf="tsTopBody && page.contentSectionTop && !page.body">
+            </span>
         </div>
     </div>
 
     <div class="row">
         <div class="container">
-            <div class="image-container">
-                <img [src]="page.photoURL"
-                     class="photoURL">
-            </div>
-
-            <!-- * TEXT SECTIONS * -->
-            <div *ngIf="page.body && !page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
-                <span [innerHTML]="page.body"></span>
-            </div>
-
-            <!-- * Text Section Top * -->
-            <span [innerHTML]="tsTopBody" *ngIf="tsTopBody && !page.body"></span>
-
 
             <!-- * Call To Action * -->
-            <div class="row cta" *ngIf="cta && !page.body">
+            <div class="row cta" *ngIf="page.callToAction && cta && !page.body">
                 <div class="row pt-3" *ngIf="cta.title || cta.subtitle">
                     <div class="col-md-10 text-center mx-auto">
                         <h2>{{ cta.title }}</h2>
@@ -49,7 +71,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 cta-left col-media">
-                        <iframe *ngIf="videoUrl"
+                        <iframe *ngIf="cta.videoUrl"
                                 allowfullscreen="allowfullscreen"
                                 frameborder="0"
                                 height="315"
@@ -57,7 +79,7 @@
                                 [src]="videoUrl">
                         </iframe>
                         <img [src]="imageUrl"
-                             *ngIf="imageUrl"
+                             *ngIf="cta.imageUrl"
                              style="max-width:446px;">
 
                     </div>
@@ -70,12 +92,12 @@
                                 <a *ngIf="cta.buttonText && cta.buttonUrl && cta.isExtUrl"
                                    target="_blank"
                                    [href]="cta.buttonUrl"
-                                   class="btn cta mb-5">
+                                   class="btn cta">
                                     {{ cta.buttonText }}
                                 </a>
                                 <a *ngIf="cta.buttonText && cta.buttonUrl && !cta.isExtUrl"
                                    [href]="cta.buttonUrl"
-                                   class="btn cta mb-5">
+                                   class="btn cta">
                                     {{ cta.buttonText }}
                                 </a>
                             </div>
@@ -84,10 +106,22 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
             <!-- * Text Section Bottom * -->
-            <div [innerHTML]="tsBottomBody" *ngIf="tsBottomBody && !page.body"></div>
+            <div [innerHTML]="tsBottomBody"
+                 *ngIf="tsBottomBody && page.contentSectionBottom && !page.body">
+            </div>
+
+        </div>
+    </div>
 
 
+    <div class="row">
+        <div class="container">
             <!-- * Calendar * -->
             <div *ngIf="page.hasCalendar">
                 <div *ngFor="let calendar of calendar$ | async">
@@ -317,7 +351,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item text-capitalize">
-                            <i class="fa fa-h1"></i> {{ page.title | slice:0:40 }}
+                            <i class="fa fa-chevron-circle-right"></i> {{ page.title | slice:0:40 }}
                         </li>
                         <!--<li class="nav-item">-->
                         <!--<i class="fa fa-user"></i> {{ page.author }}-->

@@ -3,9 +3,9 @@
         <div class="card admin-badge-card">
             <div class="card-body">
                 <h1 class="text-center pb-4 pt-3 admin-badge">
-               <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
-                    alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
-                        <i class="fa fa-chart-line"></i>&nbsp;Admin
+                    <img src="https://s3.amazonaws.com/DDW/ddw-org/images/logos/ddw-color.png"
+                         alt="ddw logo" class="ddw-logo" style="max-width:200px;"> <br>
+                    <i class="fa fa-chart-line"></i>&nbsp;Admin
                     Meta Settings
                 </h1>
             </div>
@@ -46,7 +46,6 @@
                                            rows="4"
                                            class="form-control"
                                            placeholder="Enter description of site here"
-                                           [(ngModel)]="meta.metaDesc"
                                            formControlName="metaDesc">
                                 </textarea>
                              </pre>
@@ -61,7 +60,6 @@
                                            rows="3"
                                            class="form-control"
                                            placeholder="Enter author here..."
-                                           [(ngModel)]="meta.metaAuthor"
                                            formControlName="metaAuthor">
                                 </textarea>
                              </pre>
@@ -77,7 +75,6 @@
                                            rows="4"
                                            class="form-control"
                                            placeholder="Enter keywords here..."
-                                           [(ngModel)]="meta.metaKeywords"
                                            formControlName="metaKeywords">
                                 </textarea>
                              </pre>
@@ -93,7 +90,6 @@
                                            rows="3"
                                            class="form-control"
                                            placeholder="Enter keywords here..."
-                                           [(ngModel)]="meta.metaImageURL"
                                            formControlName="metaImageURL">
                                 </textarea>
                              </pre>
@@ -101,47 +97,46 @@
 
 
                         <!--<div class="form-group">-->
-                            <!--<label>Header Meta Scripts Tags <br>-->
-                                <!--<small>(Between header tags)</small>-->
-                            <!--</label>-->
+                        <!--<label>Header Meta Scripts Tags <br>-->
+                        <!--<small>(Between header tags)</small>-->
+                        <!--</label>-->
 
-                            <!--<pre>-->
-                                 <!--<textarea type="text"-->
-                                           <!--rows="13"-->
-                                           <!--class="form-control"-->
-                                           <!--placeholder="Enter header scripts here..."-->
-                                           <!--[(ngModel)]="meta.headerArea"-->
-                                           <!--formControlName="headerArea">-->
-                                <!--</textarea>-->
-                             <!--</pre>-->
+                        <!--<pre>-->
+                        <!--<textarea type="text"-->
+                        <!--rows="13"-->
+                        <!--class="form-control"-->
+                        <!--placeholder="Enter header scripts here..."-->
+                        <!--[(ngModel)]="meta.headerArea"-->
+                        <!--formControlName="headerArea">-->
+                        <!--</textarea>-->
+                        <!--</pre>-->
                         <!--</div>-->
 
                         <!--<div class="form-group">-->
-                            <!--<label>SEO Meta Tags <br>-->
-                                <!--<small>(Bottom of header tags)</small>-->
-                            <!--</label>-->
-                            <!--<pre>-->
-                                <!--<textarea type="text"-->
-                                          <!--rows="13"-->
-                                          <!--class="form-control"-->
-                                          <!--placeholder="Insert your meta tags here..."-->
-                                          <!--[(ngModel)]="meta.seo"-->
-                                          <!--formControlName="seo">-->
-                                <!--</textarea>-->
-                            <!--</pre>-->
+                        <!--<label>SEO Meta Tags <br>-->
+                        <!--<small>(Bottom of header tags)</small>-->
+                        <!--</label>-->
+                        <!--<pre>-->
+                        <!--<textarea type="text"-->
+                        <!--rows="13"-->
+                        <!--class="form-control"-->
+                        <!--placeholder="Insert your meta tags here..."-->
+                        <!--[(ngModel)]="meta.seo"-->
+                        <!--formControlName="seo">-->
+                        <!--</textarea>-->
+                        <!--</pre>-->
                         <!--</div>-->
 
                         <div class="form-group">
-                            <label>Footer Scripts Tags <br>
-                                <small>(Before close of body tags)</small>
+                            <label>Page Widget Snippet <br>
+                                <small>(Widget code that replaces image on Pages)</small>
                             </label>
                             <pre>
                                 <textarea type="text"
-                                          rows="13"
+                                          rows="10"
                                           class="form-control"
-                                          placeholder="Enter footer scripts here..."
-                                          [(ngModel)]="meta.footerArea"
-                                          formControlName="footerArea">
+                                          placeholder="Enter widget snippet script here..."
+                                          formControlName="widgetSnippet">
                                 </textarea>
                             </pre>
                         </div>

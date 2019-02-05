@@ -245,6 +245,35 @@ h2.card-sec-title {
     margin-top: 1em;
 }
 
+.ingo_social_widget {
+    background-color: #fff;
+    width: 450px !important;
+    height: 305px !important;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    letter-spacing: normal;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid #4da3c6;
+    color: #777;
+}
+
+.widgetSnippet, #widgetSnippet {
+    width: 450px;
+    height: auto;
+    float: right;
+    margin: 0 0 1rem 1rem;
+}
+
 .inner-card {
     border-radius: 0;
 }
@@ -499,7 +528,6 @@ table.ddw1 td {
     display: inline-block;
     line-height: 24px;
 }
-
 
 
 /* Cavin's Custom */

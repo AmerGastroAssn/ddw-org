@@ -20,8 +20,9 @@
         </div>
     </div>
 
+    <!-- * Breadcrumbs * -->
     <div class="row crumbs">
-        <div class="container-fluid body-container" style="max-width:1200px;">
+        <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <div class="text-capitalize text-decoration-none text-dark">
@@ -41,12 +42,19 @@
         </div>
     </div>
 
-
+    <!-- * Content Sections * -->
     <div class="row">
         <div class="container">
             <div class="image-container">
                 <img [src]="page.photoURL"
+                     *ngIf="page.photoURL && !page.showWidgetSnippet"
                      class="photoURL">
+                <div [innerHTML]="widgetSnippet | safeHtml"
+                     *ngIf="widgetSnippet && page.showWidgetSnippet"
+                     runScripts
+                     class="widgetSnippet"
+                     id="widgetSnippet">
+                </div>
             </div>
 
             <!-- * TEXT SECTIONS * -->
@@ -57,7 +65,11 @@
             <span [innerHTML]="tsTopBody"
                   *ngIf="tsTopBody && page.contentSectionTop && !page.body">
             </span>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="container">
 
             <!-- * Call To Action * -->
             <div class="row cta" *ngIf="page.callToAction && cta && !page.body">
@@ -104,6 +116,11 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
             <!-- * Text Section Bottom * -->
             <div [innerHTML]="tsBottomBody"
                  *ngIf="tsBottomBody && page.contentSectionBottom && !page.body">

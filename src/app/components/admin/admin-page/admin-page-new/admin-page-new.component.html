@@ -471,7 +471,7 @@
                                 </p>
                             </div>
 
-                            <div class="form-group" *ngIf="!isExtURL">
+                            <div class="form-group" *ngIf="!isExtURL && !showWidgetSnippet">
                                 <label>Image URL
                                     <small>(Image on the page)</small>
                                 </label>
@@ -484,6 +484,27 @@
                                    *ngIf="!f.photoURL.valid && f.photoURL.touched">
                                     <b>Image URL</b> May be required, depending on the template.
                                 </p>
+                            </div>
+
+
+                            <div class="form-group" *ngIf="!isExtURL">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           class="custom-control-input"
+                                           id="showWidgetSnippet"
+                                           [(ngModel)]="showWidgetSnippet"
+                                           formControlName="showWidgetSnippet">
+                                    <label class="custom-control-label"
+                                           for="showWidgetSnippet">
+                                        Show Widget Snippet? <span #tooltip="matTooltip"
+                                                                   matTooltip="Check this if you want to show the widget snippet in place of the page's Image URL."
+                                                                   matTooltipPosition="right"
+                                                                   aria-tooltip="Widget Snippet">
+                                                                <i class="fa fa-info-circle"></i>
+                                    </span>
+
+                                    </label>
+                                </div>
                             </div>
 
 

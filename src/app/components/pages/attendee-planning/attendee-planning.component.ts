@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Calendar } from '../../../models/Calendar';
 import { Card } from '../../../models/Card';
 import { Page } from '../../../models/Page';
@@ -39,6 +39,7 @@ export class AttendeePlanningComponent implements OnInit {
     ctaBody: any;
     tsTopBody: any;
     tsBottomBody: any;
+    widgetSnippet: string;
 
 
     constructor(
@@ -82,6 +83,9 @@ export class AttendeePlanningComponent implements OnInit {
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.page && meta) {
+                            // Widget Snippet
+                            this.widgetSnippet = meta.widgetSnippet;
+                            // Meta
                             this.meta.updateTag({ name: 'description', content: this.page.metaDesc || meta.metaDesc });
                             this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });

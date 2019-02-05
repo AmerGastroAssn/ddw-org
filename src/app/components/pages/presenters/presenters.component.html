@@ -17,9 +17,10 @@
         </div>
     </div>
 
+    <!-- * Breadcrumbs * -->
     <div class="row crumbs">
-        <div class="container-fluid body-container" style="max-width:1200px;">
-            <ol class="breadcrumb pl-0">
+        <div class="container">
+            <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <div class="text-capitalize text-decoration-none text-dark">
                         {{ page.category }}
@@ -38,15 +39,22 @@
         </div>
     </div>
 
-
-    <!-- * TEXT SECTIONS * -->
+    <!-- * Content Sections * -->
     <div class="row">
-        <div class="container-fluid body-container">
+        <div class="container">
             <div class="image-container">
                 <img [src]="page.photoURL"
+                     *ngIf="page.photoURL && !page.showWidgetSnippet"
                      class="photoURL">
+                <div [innerHTML]="widgetSnippet | safeHtml"
+                     *ngIf="widgetSnippet && page.showWidgetSnippet"
+                     runScripts
+                     class="widgetSnippet"
+                     id="widgetSnippet">
+                </div>
             </div>
 
+            <!-- * TEXT SECTIONS * -->
             <span [innerHTML]="page.body"
                   *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
             </span>
@@ -54,7 +62,11 @@
             <span [innerHTML]="tsTopBody"
                   *ngIf="tsTopBody && page.contentSectionTop && !page.body">
             </span>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="container">
 
             <!-- * Call To Action * -->
             <div class="row cta" *ngIf="page.callToAction && cta && !page.body">
@@ -76,6 +88,7 @@
                         <img [src]="imageUrl"
                              *ngIf="cta.imageUrl"
                              style="max-width:446px;">
+
                     </div>
 
                     <div class="col-md-7 col-quote">
@@ -100,6 +113,11 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
             <!-- * Text Section Bottom * -->
             <div [innerHTML]="tsBottomBody"
                  *ngIf="tsBottomBody && page.contentSectionBottom && !page.body">
@@ -108,7 +126,7 @@
         </div>
     </div>
 
-
+    <!-- * Calendar * -->
     <div class="row" *ngIf="page.hasCalendar">
         <div class="container-fluid">
             <ddw-admin-calendar-item

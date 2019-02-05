@@ -20,7 +20,7 @@ export class AdminMetaService {
       private afs: AngularFirestore,
       private router: Router,
       private flashMessage: FlashMessagesService,
-      public sbAlert: MatSnackBar,
+      private sbAlert: MatSnackBar,
     ) {
         this.$key = 'UJYRE64jy6mFVeay7mHL';
     }
@@ -48,7 +48,7 @@ export class AdminMetaService {
     updateMeta(updatedMeta): void {
         this.metaDoc = this.afs.doc<Meta>(`meta/${this.$key}`);
 
-        this.metaDoc.update(updatedMeta)
+        this.metaDoc.set(updatedMeta, { merge: true })
             .then(() => {
                 this.sbAlert.open('Meta was Saved!', 'Dismiss', {
                     duration: 3000,

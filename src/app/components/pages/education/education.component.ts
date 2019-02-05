@@ -39,6 +39,7 @@ export class EducationComponent implements OnInit {
     ctaBody: any;
     tsTopBody: any;
     tsBottomBody: any;
+    widgetSnippet: string;
 
 
     constructor(
@@ -82,6 +83,9 @@ export class EducationComponent implements OnInit {
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.page && meta) {
+                            // Widget Snippet
+                            this.widgetSnippet = meta.widgetSnippet;
+                            // Meta
                             this.meta.updateTag({ name: 'description', content: this.page.metaDesc || meta.metaDesc });
                             this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });

@@ -7,7 +7,7 @@ export class Meta {
       public metaImageURL?: string,
       public headerArea?: string,
       public seo?: string,
-      public footerArea?: string,
+      public widgetSnippet?: string,
     ) {
     }
 }

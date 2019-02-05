@@ -8,6 +8,7 @@ import { Card } from '../../../../models/Card';
 import { Page } from '../../../../models/Page';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 import { AdminCardService } from '../../../../services/admin-card.service';
+import { AdminMetaService } from '../../../../services/admin-meta.service';
 import { AdminPageService } from '../../../../services/admin-page.service';
 import { PagesCardService } from '../../../../services/pages-card.service';
 import { CallToAction } from '../../admin-content-section/models/call-to-action';
@@ -58,6 +59,7 @@ export class AdminPageDetailsComponent implements OnInit {
     ctaBody: any;
     tsTopBody: any;
     tsBottomBody: any;
+    widgetSnippet: string;
 
     constructor(
       private adminPageService: AdminPageService,
@@ -69,12 +71,19 @@ export class AdminPageDetailsComponent implements OnInit {
       private ctaService: CallToActionService,
       private tsService: TextSectionService,
       private sanitizer: DomSanitizer,
+      private metaService: AdminMetaService,
     ) {
     }
 
     ngOnInit() {
         // Get id from url
         this.id = this.route.snapshot.params['id'];
+        // Meta for Widget Snippet:
+        this.metaService.getMeta().subscribe((meta) => {
+            if (meta) {
+                this.widgetSnippet = meta.widgetSnippet;
+            }
+        });
         // Get each user's details
         this.adminPageService.getPage(this.id).subscribe((page) => {
             if (page !== null) {
@@ -86,7 +95,7 @@ export class AdminPageDetailsComponent implements OnInit {
 
                     this.calendar$.subscribe((calendar) => {
                         this.calendar = calendar[0];
-                        console.log(`this.calendar`, this.calendar);
+                        // console.log(`this.calendar`, this.calendar);
                         // Date 1
                         if (this.calendar.date1) {
                             const date1AsString = this.calendar.date1.toDate().toDateString();
@@ -269,7 +278,6 @@ export class AdminPageDetailsComponent implements OnInit {
                         }
                     });
             }
-
 
 
         }); // END

@@ -67,7 +67,8 @@ export class CallToActionEditComponent implements OnInit {
                     body: [this.cta.body,
                            Validators.compose([
                                Validators.required,
-                               Validators.minLength(10)
+                               Validators.minLength(10),
+                               Validators.maxLength(550)
                            ])
                     ],
                     buttonUrl: [this.cta.buttonUrl || ''],

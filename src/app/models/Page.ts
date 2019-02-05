@@ -30,6 +30,7 @@ export class Page {
       public contentSectionBottom: string,
       public callToAction: string,
       public updatedAt: number,
+      public showWidgetSnippet: boolean,
       public body?: string,
     ) {
     }

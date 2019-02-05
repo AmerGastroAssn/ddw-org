@@ -67,6 +67,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     bsConfig: Partial<BsDatepickerConfig>;
     isExtURLPage: boolean;
     currentDate: Date;
+    showWidgetSnippet: boolean;
     // Form Grandchildren pages
     isGrandchildPage: boolean;
     grandchildURL: string;
@@ -155,7 +156,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
 
               title: ['', Validators.required],
               body: [''],
-              author: ['' || this.user.email],
+              author: ['' || this.author],
               date: ['' || this.currentDate, Validators.required],
               photoURL: [''],
               bannerPhotoURL: ['' || 'https://s3.amazonaws.com/DDW/ddw-org/images/banners/interior-bg.jpg'],
@@ -171,7 +172,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
               isGrandchildPage: ['' || false],
               grandchildURL: [''],
               hidden: ['' || false],
-              metaDesc: [''],
+              metaDesc: ['', Validators.required],
               hasCards: ['' || false],
               cardOption1: [''],
               cardOption2: [''],
@@ -180,6 +181,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
               contentSectionTop: ['', Validators.required],
               contentSectionBottom: [''],
               callToAction: [''],
+              showWidgetSnippet: ['' || false],
           });
 
         this.title = this.newPageForm.value.title;
@@ -208,6 +210,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
         this.contentSectionTop = this.newPageForm.value.contentSectionTop;
         this.contentSectionBottom = this.newPageForm.value.contentSectionBottom;
         this.callToAction = this.newPageForm.value.callToAction;
+        this.showWidgetSnippet = this.newPageForm.value.showWidgetSnippet;
     }
 
     ngOnDestroy() {

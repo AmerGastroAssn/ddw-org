@@ -36,32 +36,34 @@
 
                                 <div class="form-group">
                                     <label class="helv">Name <br>
-                                        <small>How you'll find it in Page Builder. <span class="badge badge-warning">*Required</span></small>
+                                        <small>How you'll find it in Page Builder. <span class="badge badge-warning">*Required</span>
+                                        </small>
                                     </label>
                                     <input type="text"
                                            class="form-control"
+                                           required
                                            [class.invalid]="!f.name.valid && f.name.touched"
                                            formControlName="name">
                                 </div>
 
                                 <!--<div class="form-group">-->
-                                    <!--<label class="helv">Section Title <br>-->
-                                        <!--<small>At the top of the section</small>-->
-                                    <!--</label>-->
-                                    <!--<input type="text"-->
-                                           <!--class="form-control"-->
-                                           <!--[class.invalid]="!f.title.valid && f.title.touched"-->
-                                           <!--formControlName="title">-->
+                                <!--<label class="helv">Section Title <br>-->
+                                <!--<small>At the top of the section</small>-->
+                                <!--</label>-->
+                                <!--<input type="text"-->
+                                <!--class="form-control"-->
+                                <!--[class.invalid]="!f.title.valid && f.title.touched"-->
+                                <!--formControlName="title">-->
                                 <!--</div>-->
 
                                 <!--<div class="form-group">-->
-                                    <!--<label class="helv">Subtitle <br>-->
-                                        <!--<small>Line of copy under title</small>-->
-                                    <!--</label>-->
-                                    <!--<input type="text"-->
-                                           <!--class="form-control"-->
-                                           <!--[class.invalid]="!f.subtitle.valid && f.subtitle.touched"-->
-                                           <!--formControlName="subtitle">-->
+                                <!--<label class="helv">Subtitle <br>-->
+                                <!--<small>Line of copy under title</small>-->
+                                <!--</label>-->
+                                <!--<input type="text"-->
+                                <!--class="form-control"-->
+                                <!--[class.invalid]="!f.subtitle.valid && f.subtitle.touched"-->
+                                <!--formControlName="subtitle">-->
                                 <!--</div>-->
 
                                 <div class="form-group">
@@ -69,9 +71,17 @@
                                     <ckeditor [formControl]="editCTAForm.controls['body']"
                                               [config]="CkeditorConfig"
                                               [class.invalid]="!f.body.valid && f.body.touched"
+                                              maxlength="550"
+                                              required
                                               [readonly]="false"
+                                              [(ngModel)]="body"
                                               debounce="500">
                                     </ckeditor>
+                                    <p class="help-block alert alert-danger text-center"
+                                       [hidden]="f.body.valid">
+                                        Body is required and cannot have more than <b>550</b> characters. There are currently
+                                        <b>{{ body.length }}</b> characters
+                                    </p>
                                 </div>
 
                                 <div class="form-group">

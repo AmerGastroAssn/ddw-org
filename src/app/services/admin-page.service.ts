@@ -17,6 +17,14 @@ export class AdminPageService {
     newSlug: string;
     author: User;
 
+    constructor(
+      private readonly afs: AngularFirestore,
+      private readonly router: Router,
+      private authService: AuthService,
+    ) {
+
+    }
+
     string_to_slug = (str) => {
         str = str.replace(/^\s+|\s+$/g, ''); // trim
         str = str.toLowerCase();
@@ -33,15 +41,6 @@ export class AdminPageService {
                  .replace(/-+/g, '-'); // collapse dashes
 
         return str;
-    }
-
-
-    constructor(
-      private readonly afs: AngularFirestore,
-      private readonly router: Router,
-      private authService: AuthService,
-    ) {
-        this.author = this.authService.getProfile();
     }
 
     getAllPages(): Observable<Page[]> {
@@ -81,6 +80,8 @@ export class AdminPageService {
     }
 
     setPage(formData) {
+        this.author = this.authService.getProfile();
+
         const new$key = this.afs.createId();
         const newURL: string = this.string_to_slug(formData.title);
         const timestampToNum = formData.date.getTime();
@@ -98,7 +99,7 @@ export class AdminPageService {
             uid: new$key,
             title: formData.title,
             body: formData.body,
-            author: formData.author,
+            author: this.author.displayName || formData.author,
             date: timestampToNum,
             photoURL: formData.photoURL,
             bannerPhotoURL: formData.bannerPhotoURL,
@@ -125,6 +126,7 @@ export class AdminPageService {
             contentSectionBottom: formData.contentSectionBottom,
             callToAction: formData.callToAction,
             updatedAt: Date.now(),
+            showWidgetSnippet: formData.showWidgetSnippet || false
         };
 
         return pageRef.set(data)
@@ -134,6 +136,7 @@ export class AdminPageService {
 
 
     updatePage(formData, uid: string) {
+        this.author = this.authService.getProfile();
         const new$key = this.afs.createId();
         const titleToSlug: string = this.string_to_slug(formData.title);
         if (formData.isGrandchildPage) {
@@ -149,7 +152,7 @@ export class AdminPageService {
                 uid: new$key,
                 title: formData.title,
                 body: formData.body,
-                author: this.author.displayName || formData.author,
+                author: this.author.displayName,
                 date: timestampToNum,
                 photoURL: formData.photoURL,
                 bannerPhotoURL: formData.bannerPhotoURL,
@@ -176,10 +179,11 @@ export class AdminPageService {
                 contentSectionBottom: formData.contentSectionBottom,
                 callToAction: formData.callToAction,
                 updatedAt: Date.now(),
+                showWidgetSnippet: formData.showWidgetSnippet || false
             };
-            return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate([`/admin/${data.category}`]))
-                          .catch((error) => console.log(`ERROR~aP: `, error));
+            pageRef.set(data, { merge: true })
+                   .then(() => this.router.navigate([`/admin/${data.category}`]))
+                   .catch((error) => console.log(`ERROR~aP: `, error));
         } else {
             const timestampToNum = formData.date.getTime();
             const data: Page = {
@@ -187,7 +191,7 @@ export class AdminPageService {
                 uid: new$key,
                 title: formData.title,
                 body: formData.body,
-                author: this.author.displayName || formData.author,
+                author: this.author.displayName,
                 date: timestampToNum,
                 photoURL: formData.photoURL,
                 bannerPhotoURL: formData.bannerPhotoURL,
@@ -214,10 +218,11 @@ export class AdminPageService {
                 contentSectionBottom: formData.contentSectionBottom,
                 callToAction: formData.callToAction,
                 updatedAt: Date.now(),
+                showWidgetSnippet: formData.showWidgetSnippet || false
             };
-            return pageRef.set(data, { merge: true })
-                          .then(() => this.router.navigate([`/admin/${data.category}`]))
-                          .catch((error) => console.log(`ERROR~aP: `, error));
+            pageRef.set(data, { merge: true })
+                   .then(() => this.router.navigate([`/admin/${data.category}`]))
+                   .catch((error) => console.log(`ERROR~aP: `, error));
         }
     }
 

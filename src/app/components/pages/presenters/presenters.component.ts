@@ -39,6 +39,7 @@ export class PresentersComponent implements OnInit, OnDestroy {
     ctaBody: any;
     tsTopBody: any;
     tsBottomBody: any;
+    widgetSnippet: string;
 
     constructor(
       private pageService: PageService,
@@ -78,10 +79,12 @@ export class PresentersComponent implements OnInit, OnDestroy {
                 // For page title
                 this.titleService.setTitle(`${this.page.title} - DDW Website`);
                 // Meta tags
-                // Meta tags
                 this.metaService.getMeta()
                     .subscribe((meta) => {
                         if (this.page && meta) {
+                            // Widget Snippet
+                            this.widgetSnippet = meta.widgetSnippet;
+                            // Meta
                             this.meta.updateTag({ name: 'description', content: this.page.metaDesc || meta.metaDesc });
                             this.meta.updateTag({ name: 'author', content: meta.metaAuthor });
                             this.meta.updateTag({ name: 'keywords', content: meta.metaKeywords });

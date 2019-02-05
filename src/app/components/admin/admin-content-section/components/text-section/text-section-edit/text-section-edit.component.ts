@@ -23,7 +23,7 @@ export class TextSectionEditComponent implements OnInit {
     CkeditorConfig = {
         allowedContent: true,
         height: 200,
-        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
+        extraAllowedContent: 'script;span;ul;li;table;td;style;*[id];*(*);*{*}',
         extraPlugins: 'codesnippet',
         codeSnippet_theme: 'monokai_sublime',
     };

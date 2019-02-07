@@ -39,12 +39,16 @@
                 <img [src]="page.photoURL"
                      *ngIf="page.photoURL && !page.showWidgetSnippet"
                      class="photoURL">
-                <div [innerHTML]="widgetSnippet | safeHtml"
+                <img [src]="ingoImage"
                      *ngIf="widgetSnippet && page.showWidgetSnippet"
-                     runScripts
                      class="widgetSnippet"
                      id="widgetSnippet">
-                </div>
+                <!--<span [innerHTML]="(widgetSnippet | safeHtml) || ingoImage"-->
+                <!--*ngIf="widgetSnippet && page.showWidgetSnippet"-->
+                <!--ddwRunScripts-->
+                <!--class="widgetSnippet"-->
+                <!--id="widgetSnippet">-->
+                <!--</span>-->
             </div>
 
             <!-- * TEXT SECTIONS * -->
@@ -310,7 +314,7 @@
 
 
 <!-- * If External Link * -->
-<div *ngIf="page && page.isExtURL" [@simpleFadeAnimation]="'in'">
+<div *ngIf="page && page.isExtURL">
     <div class="row">
         <div class="container text-center">
             <div class="card mb-4 mt-5">
@@ -388,3 +392,4 @@
 
     </div>
 </div>
+

@@ -207,7 +207,7 @@ export class AdminPageEditComponent implements OnInit {
                     cardOption2: [this.page.cardOption2],
                     cardOption3: [this.page.cardOption3],
                     cardSectionTitle: [this.page.cardSectionTitle],
-                    contentSectionTop: [this.page.contentSectionTop || '', Validators.required],
+                    contentSectionTop: [this.page.contentSectionTop || ''],
                     contentSectionBottom: [this.page.contentSectionBottom || ''],
                     callToAction: [this.page.callToAction || ''],
                     showWidgetSnippet: [this.page.showWidgetSnippet || false],

@@ -10,7 +10,7 @@
 <div class="row" *ngIf="headerbar">
     <div class="container">
         <div class="text-center">
-            <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
+            <div [innerHTML]="headerbar | safeHtml" ddwRunScripts id="AdSpace"></div>
         </div>
     </div>
 </div>
@@ -181,7 +181,7 @@
 <div class="row" *ngIf="footerbar">
     <div class="container">
         <div class="text-center">
-            <div [innerHTML]="footerbar | safeHtml" runScripts id="myAdSpace"></div>
+            <div [innerHTML]="footerbar | safeHtml" ddwRunScripts id="myAdSpace"></div>
         </div>
     </div>
 </div>

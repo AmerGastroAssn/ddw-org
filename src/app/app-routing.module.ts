@@ -97,6 +97,10 @@ const appRoutes: Routes = [
                 path: 'onsite-meeting/satellite-symposia',
                 redirectTo: 'host-an-on-site-meeting/satellite-symposia',
                 pathMatch: 'full'
+            },            {
+                path: 'reserve-your-space',
+                redirectTo: 'book-your-exhibit-space',
+                pathMatch: 'full'
             },
             { path: ':id', component: ExhibitorInformationComponent },
             { path: ':id/:id', component: ExhibitorInformationComponent },
@@ -265,6 +269,7 @@ const appRoutes: Routes = [
             { path: '**', redirectTo: '/news/press-releases' },
         ]
     },
+    { path: 'resources', redirectTo: '/attendee-planning/program-planning-resources', pathMatch: 'full' },
     { path: 'abstracts', redirectTo: '/presenters/submit-an-abstract', pathMatch: 'full' },
     { path: 'ddwwebsite/education/abstracts', redirectTo: '/education/abstracts', pathMatch: 'full' },
     { path: 'ddwwebsite/register/registration', redirectTo: '/register/registration', pathMatch: 'full' },

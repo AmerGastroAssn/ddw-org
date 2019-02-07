@@ -178,7 +178,7 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
               cardOption2: [''],
               cardOption3: [''],
               cardSectionTitle: [''],
-              contentSectionTop: ['', Validators.required],
+              contentSectionTop: [''],
               contentSectionBottom: [''],
               callToAction: [''],
               showWidgetSnippet: ['' || false],

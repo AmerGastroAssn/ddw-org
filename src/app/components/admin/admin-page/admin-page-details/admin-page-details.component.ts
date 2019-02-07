@@ -1,5 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -19,26 +18,8 @@ import { TextSectionService } from '../../admin-content-section/services/text-se
     selector: 'ddw-admin-page-details',
     templateUrl: './admin-page-details.component.html',
     styleUrls: ['./admin-page-details.component.css'],
-    animations: [
-        // the fade-in/fade-out animation.
-        trigger('simpleFadeAnimation', [
-
-            // the "in" style determines the "resting" state of the element when it is visible.
-            state('in', style({ opacity: 1 })),
-
-            // fade in when created. this could also be written as transition('void => *')
-            transition(':enter', [
-                style({ opacity: 0 }),
-                animate(600)
-            ]),
-
-            // fade out when destroyed. this could also be written as transition('void => *')
-            transition(':leave',
-              animate(600, style({ opacity: 0 })))
-        ])
-    ]
 })
-export class AdminPageDetailsComponent implements OnInit {
+export class AdminPageDetailsComponent implements OnInit, AfterContentInit {
     id: string;
     page: Page;
     uid: string;
@@ -59,7 +40,8 @@ export class AdminPageDetailsComponent implements OnInit {
     ctaBody: any;
     tsTopBody: any;
     tsBottomBody: any;
-    widgetSnippet: string;
+    widgetSnippet: any;
+    ingoImage = `https://firebasestorage.googleapis.com/v0/b/ddw-org-dev.appspot.com/o/images%2F2019%2F1549405081565_ingo_image.png?alt=media&token=7032f2c2-d1c2-4dc5-922d-851a74baeb3a`;
 
     constructor(
       private adminPageService: AdminPageService,
@@ -78,16 +60,21 @@ export class AdminPageDetailsComponent implements OnInit {
     ngOnInit() {
         // Get id from url
         this.id = this.route.snapshot.params['id'];
-        // Meta for Widget Snippet:
-        this.metaService.getMeta().subscribe((meta) => {
-            if (meta) {
-                this.widgetSnippet = meta.widgetSnippet;
-            }
-        });
+
+
         // Get each user's details
         this.adminPageService.getPage(this.id).subscribe((page) => {
             if (page !== null) {
                 this.page = page;
+
+                this.metaService.getMeta()
+                    .subscribe((meta) => {
+                        if (this.page && meta) {
+                            // Widget Snippet
+                            this.widgetSnippet = meta.widgetSnippet;
+                            console.log('this.widgetsnippet', this.widgetSnippet);
+                        }
+                    });
 
                 // Calendar
                 if (this.page.hasCalendar) {
@@ -281,8 +268,9 @@ export class AdminPageDetailsComponent implements OnInit {
 
 
         }); // END
+    }
 
-
+    ngAfterContentInit(): void {
     }
 
     onDeletePage() {

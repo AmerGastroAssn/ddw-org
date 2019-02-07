@@ -12,7 +12,7 @@
     <div class="row" *ngIf="headerbar">
         <div class="container">
             <div class="text-center">
-                <div [innerHTML]="headerbar | safeHtml" runScripts id="AdSpace"></div>
+                <div [innerHTML]="headerbar | safeHtml" ddwRunScripts id="AdSpace"></div>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                      class="photoURL">
                 <div [innerHTML]="widgetSnippet | safeHtml"
                      *ngIf="widgetSnippet && page.showWidgetSnippet"
-                     runScripts
+                     ddwRunScripts
                      class="widgetSnippet"
                      id="widgetSnippet">
                 </div>
@@ -231,7 +231,7 @@
     <div class="row" *ngIf="footerbar">
         <div class="container">
             <div class="text-center">
-                <div [innerHTML]="footerbar | safeHtml" runScripts id="prmyAdSpace"></div>
+                <div [innerHTML]="footerbar | safeHtml" ddwRunScripts id="prmyAdSpace"></div>
             </div>
         </div>
     </div>

@@ -13,7 +13,6 @@ import { TextSectionService } from '../../../services/text-section.service';
 })
 export class TextSectionNewComponent implements OnInit {
     newTextSectionForm: FormGroup;
-    body: string;
     name: string;
     published: boolean;
     CkeditorConfig = {
@@ -23,6 +22,7 @@ export class TextSectionNewComponent implements OnInit {
         extraPlugins: 'codesnippet',
         codeSnippet_theme: 'monokai_sublime',
     };
+    body = `<h1>##H1 Header</h1> <h2>##H2 Header</h2> <h3>##H3 Header</h3>  <p>##This is some body Paragraph Copy Please remember to delete the pound signs before saving.</p><p>##This is some body Paragraph Copy Please remember to delete the pound signs before saving.</p> <ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul> <ol><li>Item One</li><li>Item Two</li><li>Item Three</li></ol><h1>##H1 Header</h1> <h2>##H2 Header</h2> <h3>##H3 Header</h3> <p>##This is some body Paragraph Copy Please remember to delete the pound signs before saving.</p><p>##This is some body Paragraph Copy Please remember to delete the pound signs before saving.</p> <ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul> <ol><li>Item One</li><li>Item Two</li><li>Item Three</li></ol>`;
 
     constructor(
       private router: Router,

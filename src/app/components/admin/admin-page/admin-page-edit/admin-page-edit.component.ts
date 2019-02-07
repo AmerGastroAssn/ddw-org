@@ -99,10 +99,19 @@ export class AdminPageEditComponent implements OnInit {
     // Content Sections
     cta: CallToAction;
     videoUrl: any;
+    previewVideoUrl: any;
     imageUrl: any;
+    previewImageUrl: any;
     ctaBody: any;
+    previewCtaBody: any;
     tsTopBody: any;
+    tsTopValue: string;
     tsBottomBody: any;
+    tsBottomValue: string;
+    textSectionPreviews$: Observable<TextSection[]>;
+    textSectionPreview: TextSection;
+    ctaPreview: CallToAction;
+    ctaPreviews$: Observable<CallToAction[]>;
     // Cards:
     pageCard1: Card;
     pageCard2: Card;
@@ -166,7 +175,9 @@ export class AdminPageEditComponent implements OnInit {
         this.pageCards$ = this.pagesCardService.getAllPageCards();
         this.calendars$ = this.adminCalendarService.getAllCalendars();
         this.textSections$ = this.textSectionService.getAllTextSections();
+        this.textSectionPreviews$ = this.textSectionService.getAllTextSections();
         this.cta$ = this.ctaService.getAllCtas();
+        this.ctaPreviews$ = this.ctaService.getAllCtas();
 
         // Get id from url
         this.uid = this.route.snapshot.params['id'];
@@ -250,6 +261,7 @@ export class AdminPageEditComponent implements OnInit {
                         .subscribe((section) => {
                             if (section) {
                                 this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                                this.tsTopValue = section.value;
                             }
                         });
                 }
@@ -259,6 +271,7 @@ export class AdminPageEditComponent implements OnInit {
                         .subscribe((section) => {
                             if (section) {
                                 this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                                this.tsBottomValue = section.value;
                             }
                         });
                 }
@@ -376,9 +389,34 @@ export class AdminPageEditComponent implements OnInit {
         this.page.hasCards = !this.page.hasCards;
     }
 
-
     toggleIsGrandchildPage() {
         this.page.isGrandchildPage = !this.page.isGrandchildPage;
+    }
+
+    onTsPreview(id: string): void {
+        this.textSectionService.getTextSection(id).subscribe((ts) => {
+            this.textSectionPreview = ts;
+        });
+    }
+
+    onCTAPreview(id: string): void {
+        this.ctaService.getCta(id).subscribe((cta) => {
+            if (cta) {
+                this.ctaPreview = cta;
+
+                if (cta.imageUrl) {
+                    this.previewImageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                }
+                if (cta.videoUrl) {
+                    this.previewVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                }
+                if (cta.body) {
+                    this.previewCtaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                }
+            }
+
+
+        });
     }
 
 

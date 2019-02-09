@@ -47,7 +47,7 @@ export class CallToActionService {
     }
 
     getAllCtas(): Observable<CallToAction[]> {
-        this.ctaCollection = this.afs.collection<CallToAction>('call-to-actions', (ref) => {
+        this.ctaCollection = this.afs.collection<CallToAction>('callToActions', (ref) => {
             return ref.orderBy('value', 'asc');
         });
         return this.ctaCollection.valueChanges();
@@ -56,7 +56,7 @@ export class CallToActionService {
 
     getCtas(): Observable<CallToAction[]> {
         // Ref, and order by title
-        this.ctaCollection = this.afs.collection(`call-to-actions`,
+        this.ctaCollection = this.afs.collection(`callToActions`,
           ref => ref.orderBy('value', 'asc')
         );
         // Gets array of ctas along with their uid.
@@ -71,7 +71,7 @@ export class CallToActionService {
     }
 
     getCta(id: string): Observable<CallToAction> {
-        this.ctaDoc = this.afs.doc<CallToAction>(`call-to-actions/${id}`);
+        this.ctaDoc = this.afs.doc<CallToAction>(`callToActions/${id}`);
         this.cta$ = this.ctaDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;
@@ -88,7 +88,7 @@ export class CallToActionService {
 
 
     getSearchedCtas(start, end) {
-        return this.afs.collection('call-to-actions',
+        return this.afs.collection('callToActions',
           (ref) => ref.orderBy('value')
                       .startAt(start).endAt(end)
         )
@@ -98,7 +98,7 @@ export class CallToActionService {
     setCTA(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
         const newId = this.afs.createId();
-        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${newId}`);
+        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`callToActions/${newId}`);
 
         const data: CallToAction = {
             author: this.currentUser,
@@ -134,7 +134,7 @@ export class CallToActionService {
 
     updateCTA(formData): Promise<void> {
         const nameToUrl = this.stringToSlug(formData.name);
-        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`call-to-actions/${formData.id}`);
+        const ctaRef: AngularFirestoreDocument<CallToAction> = this.afs.doc(`callToActions/${formData.id}`);
 
         const data: CallToAction = {
             author: this.currentUser,

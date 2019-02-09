@@ -343,7 +343,7 @@
                                                     id="contentSectionTop"
                                                     formControlName="contentSectionTop">
                                                 <option value="">
-                                                    --- Select Top Text Section (Required) ---
+                                                    --- Select Top Text Section or select this to be blank ---
                                                 </option>
                                                 <option *ngFor="let text of textSections$ | async"
                                                         [value]="text.id">
@@ -603,112 +603,109 @@
         <div class="col-md-8" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
             <div class="card">
                 <div class="card-body">
-                    <div class="card inner-card bg-lighter">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="text-section-preview" *ngIf="textSections$">
-                                        <div class="card mt-1">
-                                            <div class="card-body">
-                                                <mat-form-field>
-                                                    <mat-select placeholder="Preview Text Section">
-                                                        <mat-option value=""
-                                                                    (click)="onHideTSPreview()">
-                                                            <i class="fal fa-eye-slash"></i> None
-                                                        </mat-option>
-                                                        <mat-option *ngFor="let text of textSectionPreviews$ | async"
-                                                                    [value]="text.value"
-                                                                    (click)="onTsPreview(text.id)">
-                                                            {{ text.value }}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                        </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-section-preview" *ngIf="textSections$">
+                                <div class="card bg-light mt-1">
+                                    <div class="card-body">
+                                        <mat-form-field>
+                                            <mat-select placeholder="Preview Text Sections">
+                                                <mat-option value=""
+                                                            (click)="onHideTSPreview()">
+                                                    <i class="fal fa-eye-slash"></i> None
+                                                </mat-option>
+                                                <mat-option *ngFor="let text of textSectionPreviews$ | async"
+                                                            [value]="text.value"
+                                                            (click)="onTsPreview(text.id)">
+                                                    {{ text.value }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <section [innerHTML]="textSectionPreview.body"
-                                             *ngIf="textSectionPreview && !hideTSPreview">
-                                    </section>
-                                </div>
-                            </div>
-
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <section [innerHTML]="textSectionPreview.body"
+                                     *ngIf="textSectionPreview && !hideTSPreview">
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
 
 
-                        <hr class="inset-hr">
+                <hr class="inset-hr">
 
 
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="cta-preview" *ngIf="ctaPreviews$">
-                                        <div class="card">
-                                            <div class="card-body m-1">
-                                                <mat-form-field>
-                                                    <mat-select placeholder="Preview Call To Action">
-                                                        <mat-option value=""
-                                                                    (click)="onHideCTAPreview()">
-                                                            <i class="fal fa-eye-slash"></i> None
-                                                        </mat-option>
-                                                        <mat-option *ngFor="let text of ctaPreviews$ | async"
-                                                                    (click)="onCTAPreview(text.id)">
-                                                            {{ text.value }}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                        </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="cta-preview" *ngIf="ctaPreviews$">
+                                <div class="card bg-light m-1">
+                                    <div class="card-body m-1">
+                                        <mat-form-field>
+                                            <mat-select placeholder="Preview Call To Actions">
+                                                <mat-option value=""
+                                                            (click)="onHideCTAPreview()">
+                                                    <i class="fal fa-eye-slash"></i> None
+                                                </mat-option>
+                                                <mat-option *ngFor="let text of ctaPreviews$ | async"
+                                                            [value]="text.value"
+                                                            (click)="onCTAPreview(text.id)">
+                                                    {{ text.value }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div class="row" *ngIf="ctaPreview && !hideCTAPreview">
-                                <div class="container">
-                                    <div class="row cta">
-                                        <div class="row pt-3 pb-4" *ngIf="ctaPreview.title || ctaPreview.subtitle">
-                                            <div class="col-md-10 text-center mx-auto">
-                                                <h2>{{ ctaPreview.title }}</h2>
-                                                <p>{{ ctaPreview.subtitle }}</p>
-                                            </div>
-                                        </div>
+                    <div class="row" *ngIf="ctaPreview && !hideCTAPreview">
+                        <div class="container">
+                            <div class="row cta">
+                                <div class="row pt-3 pb-4" *ngIf="ctaPreview.title || ctaPreview.subtitle">
+                                    <div class="col-md-10 text-center mx-auto">
+                                        <h2>{{ ctaPreview.title }}</h2>
+                                        <p>{{ ctaPreview.subtitle }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 col-media">
+                                        <iframe *ngIf="previewVideoUrl && !ctaPreview.imageUrl"
+                                                allowfullscreen="allowfullscreen"
+                                                frameborder="0"
+                                                height="315"
+                                                width="446"
+                                                [src]="previewVideoUrl">
+                                        </iframe>
+                                        <img *ngIf="ctaPreview.imageUrl && !ctaPreview.videoUrl"
+                                             [src]="previewImageUrl"
+                                             style="max-width:446px;">
+
+                                    </div>
+
+                                    <div class="col-md-7 col-quote">
+                                        <span [innerHTML]="previewCtaBody"></span>
+
                                         <div class="row">
-                                            <div class="col-md-5 col-media">
-                                                <iframe *ngIf="previewVideoUrl && !ctaPreview.imageUrl"
-                                                        allowfullscreen="allowfullscreen"
-                                                        frameborder="0"
-                                                        height="315"
-                                                        width="446"
-                                                        [src]="previewVideoUrl">
-                                                </iframe>
-                                                <img *ngIf="ctaPreview.imageUrl && !ctaPreview.videoUrl"
-                                                     [src]="previewImageUrl"
-                                                     style="max-width:446px;">
-
-                                            </div>
-
-                                            <div class="col-md-7 col-quote">
-                                                <span [innerHTML]="previewCtaBody"></span>
-
-                                                <div class="row">
-                                                    <div class="col-md-6 offset-md-3">
-                                                        <a *ngIf="ctaPreview.buttonText && ctaPreview.buttonUrl && ctaPreview.isExtUrl"
-                                                           target="_blank"
-                                                           [href]="ctaPreview.buttonUrl"
-                                                           class="btn cta">
-                                                            {{ ctaPreview.buttonText }}
-                                                        </a>
-                                                        <a *ngIf="ctaPreview.buttonText && ctaPreview.buttonUrl && !ctaPreview.isExtUrl"
-                                                           [href]="ctaPreview.buttonUrl"
-                                                           class="btn cta">
-                                                            {{ ctaPreview.buttonText }}
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-6 offset-md-3">
+                                                <a *ngIf="ctaPreview.buttonText && ctaPreview.buttonUrl && ctaPreview.isExtUrl"
+                                                   target="_blank"
+                                                   [href]="ctaPreview.buttonUrl"
+                                                   class="btn cta">
+                                                    {{ ctaPreview.buttonText }}
+                                                </a>
+                                                <a *ngIf="ctaPreview.buttonText && ctaPreview.buttonUrl && !ctaPreview.isExtUrl"
+                                                   [href]="ctaPreview.buttonUrl"
+                                                   class="btn cta">
+                                                    {{ ctaPreview.buttonText }}
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -717,9 +714,9 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
+
+
     </div>
 </div>

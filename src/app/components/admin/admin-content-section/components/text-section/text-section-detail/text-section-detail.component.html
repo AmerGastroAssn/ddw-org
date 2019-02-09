@@ -11,11 +11,10 @@
             <a [routerLink]="['/admin/text-section/new']" class="btn btn-default">
                 <i class="fa fa-plus"></i>&nbsp;New Text Section
             </a>
-            <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
             <a class="btn btn-default"
                *ngIf="textSection"
                matTooltip="Send For Review"
-               href="mailto: ?subject=For review on DDW: {{textSection.name}}&body=Please review this Text/Content Section from DDW.org: https://staging.ddw.org/admin/text-section/{{textSection.id}}">
+               href="mailto: ?subject=For review on DDW: {{textSection.name}}&body=Please review this Text/Content Section from DDW.org: https://ddw.org/admin/text-section/{{textSection.id}}">
                 <i class="fa fa-envelope"></i>&nbsp;Send For Review
             </a>
         </div>
@@ -69,10 +68,10 @@
                                [routerLink]="['/admin/text-section']">
                                 <i class="fa fa-undo"></i>&nbsp;Cancel
                             </a>
-                            <!-- * TODO: Change from staging.ddw.org to ddw.org  * -->
+
                             <a class="btn btn-success"
                                matTooltip="Send For Review"
-                               href="mailto: ?subject=For review on DDW: {{textSection.name}}&body=Please review this Text/Content Section from DDW.org: https://staging.ddw.org/admin/text-section/{{textSection.id}}">
+                               href="mailto: ?subject=For review on DDW: {{textSection.name}}&body=Please review this Text/Content Section from DDW.org: https://ddw.org/admin/text-section/{{textSection.id}}">
                                 <i class="fa fa-envelope"></i>&nbsp;Send For Review
                             </a>
                         </div>

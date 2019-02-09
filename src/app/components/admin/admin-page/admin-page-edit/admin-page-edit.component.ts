@@ -108,6 +108,8 @@ export class AdminPageEditComponent implements OnInit {
     tsTopValue: string;
     tsBottomBody: any;
     tsBottomValue: string;
+    hideTSPreview: boolean;
+    hideCTAPreview: boolean;
     textSectionPreviews$: Observable<TextSection[]>;
     textSectionPreview: TextSection;
     ctaPreview: CallToAction;
@@ -395,7 +397,10 @@ export class AdminPageEditComponent implements OnInit {
 
     onTsPreview(id: string): void {
         this.textSectionService.getTextSection(id).subscribe((ts) => {
-            this.textSectionPreview = ts;
+            if (ts) {
+                this.textSectionPreview = ts;
+                this.hideTSPreview = false;
+            }
         });
     }
 
@@ -403,6 +408,7 @@ export class AdminPageEditComponent implements OnInit {
         this.ctaService.getCta(id).subscribe((cta) => {
             if (cta) {
                 this.ctaPreview = cta;
+                this.hideCTAPreview = false;
 
                 if (cta.imageUrl) {
                     this.previewImageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
@@ -414,9 +420,15 @@ export class AdminPageEditComponent implements OnInit {
                     this.previewCtaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
                 }
             }
-
-
         });
+    }
+
+    onHideTSPreview(): void {
+        this.hideTSPreview = true;
+    }
+
+    onHideCTAPreview(): void {
+        this.hideCTAPreview = true;
     }
 
 

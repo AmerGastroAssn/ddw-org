@@ -10,7 +10,7 @@ import {
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
+import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../../pipes/trust-url.pipe';
 // tslint:disable-next-line:max-line-length
@@ -41,6 +41,7 @@ import { AdminPageRegisterListComponent } from './admin-page-register-list/admin
         CKEditorModule,
         MatTooltipModule,
         MatSelectModule,
+        PopoverModule.forRoot()
     ],
     declarations: [
         AdminPageNewComponent,

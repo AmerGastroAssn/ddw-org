@@ -133,3 +133,10 @@ pre.alert.slug,
     border-radius: 0;
 }
 
+.text-section-preview {
+    float: right;
+}
+
+.cta-preview {
+    float: right;
+}

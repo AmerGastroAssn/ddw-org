@@ -19,12 +19,12 @@
                     <label class="switcher switcher-md">
                         <input type="checkbox" class="switcher-input">
                         <span class="switcher-indicator" (click)="onTogglePagePreview()">
-                            <span class="switcher-yes">
-                                <i class="fa fa-check"></i>
-                            </span>
-                            <span class="switcher-no">
-                                <i class="fa fa-times"></i>
-                            </span>
+                        <span class="switcher-yes">
+                            <!--<i class="fa fa-check"></i>-->
+                        </span>
+                        <span class="switcher-no">
+                            <!--<i class="fa fa-times"></i>-->
+                        </span>
                         </span>
                         <span class="switcher-label">Preview Text/CTA Sections</span>
                     </label>
@@ -34,9 +34,9 @@
     </div>
 </div>
 
-<div class="container-fluid mb-6" [@simpleFadeAnimation]="'in'">
+<div class="container-fluid mb-4" [@simpleFadeAnimation]="'in'">
     <div class="row">
-        <div class="col" *ngIf="page" [ngClass]="{'col-md-5':page && togglePagePreview && !isExtURL}">
+        <div class="col" *ngIf="page" [ngClass]="{'col-md-4':page && togglePagePreview && !isExtURL}">
             <div class="card mb-5">
                 <div class="card-body">
                     <div class="card inner-card bg-lighter">
@@ -282,6 +282,22 @@
                                 <div class="card bg-lighter mt-3 mb-3">
                                     <div class="card-body">
                                         <label>Content Sections</label>
+                                        <div class="card bg-transparent text-light float-right">
+                                            <div class="card-body p-3">
+                                                <label class="switcher switcher-md">
+                                                    <input type="checkbox" class="switcher-input">
+                                                    <span class="switcher-indicator" (click)="onTogglePagePreview()">
+                                                        <span class="switcher-yes">
+                                                            <i class="fa fa-check"></i>
+                                                        </span>
+                                                        <span class="switcher-no">
+                                                            <i class="fa fa-times"></i>
+                                                        </span>
+                                                    </span>
+                                                    <span class="switcher-label">Preview Text/CTA Sections</span>
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <div class="btn-group">
                                                 <a [routerLink]="['/admin/text-section/new']"
@@ -295,47 +311,61 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group" *ngIf="textSections$">
-                                            <mat-form-field>
-                                                <mat-select formControlName="contentSectionTop"
-                                                            placeholder="Currently: {{tsTopValue}}">
-                                                    <mat-option>--- Select Top Text Section ---</mat-option>
-                                                    <mat-option *ngFor="let text of textSections$ | async"
-                                                                [value]="text.id">
-                                                        {{ text.value }}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <mat-hint>
-                                                    <a [routerLink]="['/admin/text-section/', contentSectionTop]"
-                                                       class="">
-                                                        <i class="fal fa-pencil-alt"></i>&nbsp;{{tsTopValue}}
-                                                    </a>
-                                                </mat-hint>
-                                            </mat-form-field>
-                                        </div>
-
-
                                         <!--<div class="form-group" *ngIf="textSections$">-->
-                                        <!--<label for="contentSectionTop">Text Section-->
-                                        <!--&nbsp;&nbsp;<i class="fa fa-align-justify"></i> Top-->
-                                        <!--</label>-->
-                                        <!--<select class="form-control"-->
-                                        <!--id="contentSectionTop"-->
-                                        <!--formControlName="contentSectionTop">-->
-                                        <!--<option value="">-->
-                                        <!-- -&#45;&#45; Select Top Text Section (Required) -&#45;&#45;-->
-                                        <!--</option>-->
-                                        <!--<option *ngFor="let text of textSections$ | async"-->
+                                        <!--<mat-form-field>-->
+                                        <!--<mat-select formControlName="contentSectionTop"-->
+                                        <!--placeholder="Currently: {{tsTopValue}}">-->
+                                        <!--<mat-option>-&#45;&#45; Select Top Text Section -&#45;&#45;</mat-option>-->
+                                        <!--<mat-option *ngFor="let text of textSections$ | async"-->
                                         <!--[value]="text.id">-->
                                         <!--{{ text.value }}-->
-                                        <!--</option>-->
-                                        <!--</select>-->
+                                        <!--</mat-option>-->
+                                        <!--</mat-select>-->
+                                        <!--<mat-hint>-->
+                                        <!--<a [routerLink]="['/admin/text-section/', contentSectionTop]"-->
+                                        <!--class="">-->
+                                        <!--<i class="fal fa-pencil-alt"></i>&nbsp;{{tsTopValue}}-->
+                                        <!--</a>-->
+                                        <!--</mat-hint>-->
+                                        <!--</mat-form-field>-->
                                         <!--</div>-->
+
+
+                                        <div class="form-group" *ngIf="textSections$">
+                                            <label for="contentSectionTop">Text Section
+                                                &nbsp;&nbsp;<i class="fa fa-align-justify"></i> Top &nbsp;
+                                                <a [routerLink]="['/admin/text-section/', contentSectionTop]"
+                                                   class="btn btn-default btn-sm">
+                                                    <i class="fal fa-pencil-alt"></i>&nbsp;{{tsTopValue}}
+                                                </a>
+                                            </label>
+                                            <select class="form-control"
+                                                    id="contentSectionTop"
+                                                    formControlName="contentSectionTop">
+                                                <option value="">
+                                                    --- Select Top Text Section (Required) ---
+                                                </option>
+                                                <option *ngFor="let text of textSections$ | async"
+                                                        [value]="text.id">
+                                                    {{ text.value }}
+                                                </option>
+                                            </select>
+                                        </div>
 
                                         <div class="form-group" *ngIf="cta$">
                                             <label for="callToAction">Call To Action
                                                 &nbsp;&nbsp;<i class="fa fa-text-width"></i>
-                                                Middle
+                                                Middle &nbsp;
+                                                <a [routerLink]="['/admin/call-to-action/', cta.id]"
+                                                   class="btn btn-default btn-sm"
+                                                   *ngIf="cta; else noCTAValue">
+                                                    <i class="fal fa-pencil-alt"></i>&nbsp;{{cta.value}}
+                                                </a>
+                                                <ng-template #noCTAValue>
+                                                    <span class="badge badge-warning">
+                                                        <i class="fa fa-empty-set"></i>&nbsp;Selected
+                                                    </span>
+                                                </ng-template>
                                             </label>
                                             <select class="form-control"
                                                     id="callToAction"
@@ -353,7 +383,17 @@
                                         <div class="form-group" *ngIf="textSections$">
                                             <label for="contentSectionBottom">Text Section
                                                 &nbsp;&nbsp;<i class="fa fa-align-justify"></i>
-                                                Bottom
+                                                Bottom &nbsp;
+                                                <a [routerLink]="['/admin/text-section/', contentSectionBottom]"
+                                                   class="btn btn-default btn-sm"
+                                                   *ngIf="tsBottomValue; else noTsBottomValue">
+                                                    <i class="fal fa-pencil-alt"></i>&nbsp;{{tsBottomValue}}
+                                                </a>
+                                                <ng-template #noTsBottomValue>
+                                                    <span class="badge badge-warning">
+                                                        <i class="fa fa-empty-set"></i>&nbsp;Selected
+                                                    </span>
+                                                </ng-template>
                                             </label>
                                             <select class="form-control"
                                                     id="contentSectionBottom"
@@ -560,30 +600,43 @@
         </div>
 
 
-        <div class="col-md-6" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
+        <div class="col-md-8" *ngIf="page && togglePagePreview && !isExtURL" [@simpleFadeAnimation]="'in'">
             <div class="card">
                 <div class="card-body">
                     <div class="card inner-card bg-lighter">
                         <div class="card-body">
-                            <h3>Preview Text Section</h3>
-                            <div class="form-group" *ngIf="textSections$">
-                                <mat-form-field>
-                                    <mat-select placeholder="Select Text Section">
-                                        <mat-option value="">
-                                            <i class="fa fa-eye-slash"></i> Select To Hide Text Sections <i
-                                                class="fa fa-eye-slash"></i>
-                                        </mat-option>
-                                        <mat-option *ngFor="let text of textSectionPreviews$ | async"
-                                                    (click)="onTsPreview(text.id)">
-                                            {{ text.value }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-section-preview" *ngIf="textSections$">
+                                        <div class="card mt-1">
+                                            <div class="card-body">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Preview Text Section">
+                                                        <mat-option value=""
+                                                                    (click)="onHideTSPreview()">
+                                                            <i class="fal fa-eye-slash"></i> None
+                                                        </mat-option>
+                                                        <mat-option *ngFor="let text of textSectionPreviews$ | async"
+                                                                    [value]="text.value"
+                                                                    (click)="onTsPreview(text.id)">
+                                                            {{ text.value }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <section [innerHTML]="textSectionPreview.body"
-                                     *ngIf="textSectionPreview">
-                            </section>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <section [innerHTML]="textSectionPreview.body"
+                                             *ngIf="textSectionPreview && !hideTSPreview">
+                                    </section>
+                                </div>
+                            </div>
+
                         </div>
 
 
@@ -591,23 +644,30 @@
 
 
                         <div class="card-body">
-                            <h3>Preview CTA's</h3>
-                            <div class="form-group" *ngIf="ctaPreviews$">
-                                <mat-form-field>
-                                    <mat-select placeholder="Select Text Section">
-                                        <mat-option value="">
-                                            <i class="fa fa-eye-slash"></i> Select To Hide Text Sections <i
-                                                class="fa fa-eye-slash"></i>
-                                        </mat-option>
-                                        <mat-option *ngFor="let text of ctaPreviews$ | async"
-                                                    (click)="onCTAPreview(text.id)">
-                                            {{ text.value }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="cta-preview" *ngIf="ctaPreviews$">
+                                        <div class="card">
+                                            <div class="card-body m-1">
+                                                <mat-form-field>
+                                                    <mat-select placeholder="Preview Call To Action">
+                                                        <mat-option value=""
+                                                                    (click)="onHideCTAPreview()">
+                                                            <i class="fal fa-eye-slash"></i> None
+                                                        </mat-option>
+                                                        <mat-option *ngFor="let text of ctaPreviews$ | async"
+                                                                    (click)="onCTAPreview(text.id)">
+                                                            {{ text.value }}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="row" *ngIf="ctaPreview">
+                            <div class="row" *ngIf="ctaPreview && !hideCTAPreview">
                                 <div class="container">
                                     <div class="row cta">
                                         <div class="row pt-3 pb-4" *ngIf="ctaPreview.title || ctaPreview.subtitle">

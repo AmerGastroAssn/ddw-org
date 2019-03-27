@@ -5,3 +5,7 @@ a:link {
 a.dates {
     line-height: 1.5;
 }
+
+.date-body > p {
+    font-size: 14px;
+}

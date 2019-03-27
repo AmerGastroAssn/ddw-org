@@ -19,7 +19,7 @@
                    role="tab"
                    aria-controls="date1"
                    aria-selected="true"
-                   *ngIf="calendar.date1">{{ calendar.date1.toDate() | date:'LLLL dd' }}</a>
+                   *ngIf="calendar.date1">{{ calendar.tab1Date || calendar.date1 }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -29,7 +29,7 @@
                    role="tab"
                    aria-controls="date2"
                    aria-selected="false"
-                   *ngIf="calendar.date2">{{ calendar.date2.toDate() | date:'LLLL dd' }}</a>
+                   *ngIf="calendar.date2">{{ calendar.tab2Date || calendar.date2 }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -39,7 +39,7 @@
                    role="tab"
                    aria-controls="date3"
                    aria-selected="false"
-                   *ngIf="calendar.date3">{{ calendar.date3.toDate() | date:'LLLL dd' }}</a>
+                   *ngIf="calendar.date3">{{ calendar.tab3Date || calendar.date3 }}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link"
@@ -49,7 +49,7 @@
                    role="tab"
                    aria-controls="date4"
                    aria-selected="false"
-                   *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
+                   *ngIf="calendar.date4">{{ calendar.tab4Date || calendar.date4 }}</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -60,10 +60,7 @@
                  *ngIf="calendar.date1">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date1 && calendar.body1">
-                    <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
-                    {{ month }}
-                    {{ calendar.date1.toDate() | date:"dd" }},
-                    {{ calendar.date1.toDate() | date:"yyyy" }}
+                    <strong>{{ calendar.date1 }}</strong>
                 </h4>
                 <div [innerHTML]="calendar.body1 | safeHtml" class="cal-content"></div>
             </div>
@@ -74,10 +71,7 @@
                  *ngIf="calendar.date2">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date2 && calendar.body2">
-                    <strong>{{ calendar.date2.toDate() | date:'EEEE' }}</strong>,
-                    {{ month2 }}
-                    {{ calendar.date2.toDate() | date:"dd" }},
-                    {{ calendar.date2.toDate() | date:"yyyy" }}
+                    <strong>{{ calendar.date2 }}</strong>
                 </h4>
                 <div [innerHTML]="calendar.body2 | safeHtml" class="cal-content"></div>
             </div>
@@ -88,10 +82,7 @@
                  *ngIf="calendar.date3">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date3 && calendar.body3">
-                    <strong>{{ calendar.date3.toDate() | date:'EEEE' }}</strong>,
-                    {{ month3 }}
-                    {{ calendar.date3.toDate() | date:"dd" }},
-                    {{ calendar.date3.toDate() | date:"yyyy" }}
+                    <strong>{{ calendar.date3 }}</strong>
                 </h4>
                 <div [innerHTML]="calendar.body3 | safeHtml" class="cal-content"></div>
             </div>
@@ -102,10 +93,7 @@
                  *ngIf="calendar.date4">
                 <h4 class="pt-5 pb-5 mb-3 pl-3"
                     *ngIf="calendar.date4 && calendar.body4">
-                    <strong>{{ calendar.date4.toDate() | date:'EEEE' }}</strong>,
-                    {{ month4 }}
-                    {{ calendar.date4.toDate() | date:"dd" }},
-                    {{ calendar.date4.toDate() | date:"yyyy" }}
+                    <strong>{{ calendar.date4 }}</strong>
                 </h4>
                 <div [innerHTML]="calendar.body4 | safeHtml" class="cal-content"></div>
             </div>

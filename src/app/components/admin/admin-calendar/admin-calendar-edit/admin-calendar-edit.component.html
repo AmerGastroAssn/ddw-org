@@ -81,32 +81,43 @@
                         <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    <div class="fa fa-calendar-edit"></div>
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    <span *ngIf="calendar.date1">
-                                        {{ calendar.date1.toDate() | date:'fullDate' }}
-                                    </span>
-                                    <span *ngIf="!calendar.date1">
-                                        Day One
-                                    </span>
+                                    Day One
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-
                             <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab1Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab1Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date1"
-                                           [value]="date1 ? (date1.toDate() | date) : 'Select Date'"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date1"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -115,7 +126,6 @@
                                 <ckeditor [config]="CkeditorConfig"
                                           [readonly]="false"
                                           debounce="500"
-                                          [(ngModel)]="calendar.body1"
                                           [formControl]="updateCalForm.controls['body1']">
                                 </ckeditor>
                             </div>
@@ -126,41 +136,51 @@
                         <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    <div class="fa fa-calendar-edit"></div>
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                   <span *ngIf="calendar.date2">
-                                        {{ calendar.date2.toDate() | date:'fullDate' }}
-                                    </span>
-                                    <span *ngIf="!calendar.date2">
-                                        Day Two
-                                    </span>
+                                    Day Two
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-
                             <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab2Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab2Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date2"
-                                           [value]="date2 ? (date2.toDate() | date) : 'Select Date'"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date2"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date2">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mt-2">
                                 <label>Body Date 2</label>
                                 <ckeditor [config]="CkeditorConfig"
                                           [readonly]="false"
                                           debounce="500"
-                                          [(ngModel)]="calendar.body2"
                                           [formControl]="updateCalForm.controls['body2']">
                                 </ckeditor>
                             </div>
@@ -171,32 +191,43 @@
                         <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    <div class="fa fa-calendar-edit"></div>
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    <span *ngIf="calendar.date3">
-                                        {{ calendar.date3.toDate() | date:'fullDate' }}
-                                    </span>
-                                    <span *ngIf="!calendar.date3">
-                                        Day Three
-                                    </span>
+                                    Day Three
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-
                             <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab3Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab3Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date3"
-                                           [value]="date3 ? (date3.toDate() | date) : 'Select Date'"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date3"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date3">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -205,7 +236,6 @@
                                 <ckeditor [config]="CkeditorConfig"
                                           [readonly]="false"
                                           debounce="500"
-                                          [(ngModel)]="calendar.body3"
                                           [formControl]="updateCalForm.controls['body3']">
                                 </ckeditor>
                             </div>
@@ -216,32 +246,44 @@
                         <mat-expansion-panel class="bg-lighter">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                    <div class="fa fa-calendar-edit"></div>
+                                    <i class="fa fa-calendar-plus"></i>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    <span *ngIf="calendar.date4">
-                                        {{ calendar.date4.toDate() | date:'fullDate' }}
-                                    </span>
-                                    <span *ngIf="!calendar.date4">
-                                        Day Four
-                                    </span>
+                                    Day Four
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab4Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab4Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date4"
-                                           [value]="date4 ? (date4.toDate() | date) : 'Select Date'"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date4"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date4">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -250,7 +292,6 @@
                                 <ckeditor [config]="CkeditorConfig"
                                           [readonly]="false"
                                           debounce="500"
-                                          [(ngModel)]="calendar.body4"
                                           [formControl]="updateCalForm.controls['body4']">
                                 </ckeditor>
                             </div>

@@ -52,12 +52,9 @@
             </div>
 
             <!-- * TEXT SECTIONS * -->
-            <span [innerHTML]="page.body"
-                  *ngIf="!page.contentSectionTop || !page.contentSectionBottom || !page.callToAction">
-            </span>
             <!-- * Text Section Top * -->
             <span [innerHTML]="tsTopBody"
-                  *ngIf="tsTopBody && page.contentSectionTop && !page.body">
+                  *ngIf="tsTopBody && page.contentSectionTop">
             </span>
         </div>
     </div>
@@ -66,7 +63,7 @@
         <div class="container">
 
             <!-- * Call To Action * -->
-            <div class="row cta" *ngIf="page.callToAction && cta && !page.body">
+            <div class="row cta" *ngIf="page.callToAction && cta">
                 <div class="row pt-3" *ngIf="cta.title || cta.subtitle">
                     <div class="col-md-10 text-center mx-auto">
                         <h2>{{ cta.title }}</h2>
@@ -117,195 +114,100 @@
         <div class="container">
             <!-- * Text Section Bottom * -->
             <div [innerHTML]="tsBottomBody"
-                 *ngIf="tsBottomBody && page.contentSectionBottom && !page.body">
+                 *ngIf="tsBottomBody && page.contentSectionBottom">
             </div>
-
         </div>
     </div>
 
 
-    <div class="row">
-        <div class="container">
-            <!-- * Calendar * -->
-            <div *ngIf="page.hasCalendar">
-                <div *ngFor="let calendar of calendar$ | async">
-                    <!-- * ADMIN-CALENDAR-ITEM * -->
-                    <div class="row">
-                        <div class="col-md-12" style="padding-left:0;">
-                            <h2 style="margin-left:0;">{{ calendar.displayName }}</h2>
-                        </div>
-                    </div>
-
-                    <!-- * Tabs * -->
-                    <div class="row">
-                        <div style="max-width:1200px;">
-                            <ul class="nav nav-tabs nav-fill" id="calTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active"
-                                       id="date1-tab"
-                                       data-toggle="tab"
-                                       href="#date1"
-                                       role="tab"
-                                       aria-controls="date1"
-                                       aria-selected="true"
-                                       *ngIf="calendar.date1">{{ calendar.date1.toDate() | date:'LLLL dd' }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       id="date2-tab"
-                                       data-toggle="tab"
-                                       href="#date2"
-                                       role="tab"
-                                       aria-controls="date2"
-                                       aria-selected="false"
-                                       *ngIf="calendar.date2">{{ calendar.date2.toDate() | date:'LLLL dd' }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       id="date3-tab"
-                                       data-toggle="tab"
-                                       href="#date3"
-                                       role="tab"
-                                       aria-controls="date3"
-                                       aria-selected="false"
-                                       *ngIf="calendar.date3">{{ calendar.date3.toDate() | date:'LLLL dd' }}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       id="date4-tab"
-                                       data-toggle="tab"
-                                       href="#date4"
-                                       role="tab"
-                                       aria-controls="date4"
-                                       aria-selected="false"
-                                       *ngIf="calendar.date4">{{ calendar.date4.toDate() | date:'LLLL dd' }}</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active"
-                                     id="date1"
-                                     role="tabpanel"
-                                     aria-labelledby="date1-tab"
-                                     *ngIf="calendar.date1">
-                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
-                                        *ngIf="calendar.date1 && calendar.body1">
-                                        <strong>{{ calendar.date1.toDate() | date:'EEEE' }}</strong>,
-                                        {{ month }}
-                                        {{ calendar.date1.toDate() | date:"dd" }},
-                                        {{ calendar.date1.toDate() | date:"yyyy" }}
-                                    </h4>
-                                    <div [innerHTML]="calendar.body1 | safeHtml" class="cal-content"></div>
-                                </div>
-                                <div class="tab-pane fade"
-                                     id="date2"
-                                     role="tabpanel"
-                                     aria-labelledby="date2-tab"
-                                     *ngIf="calendar.date2">
-                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
-                                        *ngIf="calendar.date2 && calendar.body2">
-                                        <strong>{{ calendar.date2.toDate() | date:'EEEE' }}</strong>,
-                                        {{ month2 }}
-                                        {{ calendar.date2.toDate() | date:"dd" }},
-                                        {{ calendar.date2.toDate() | date:"yyyy" }}
-                                    </h4>
-                                    <div [innerHTML]="calendar.body2 | safeHtml" class="cal-content"></div>
-                                </div>
-                                <div class="tab-pane fade"
-                                     id="date3"
-                                     role="tabpanel"
-                                     aria-labelledby="date3-tab"
-                                     *ngIf="calendar.date3">
-                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
-                                        *ngIf="calendar.date3 && calendar.body3">
-                                        <strong>{{ calendar.date3.toDate() | date:'EEEE' }}</strong>,
-                                        {{ month3 }}
-                                        {{ calendar.date3.toDate() | date:"dd" }},
-                                        {{ calendar.date3.toDate() | date:"yyyy" }}
-                                    </h4>
-                                    <div [innerHTML]="calendar.body3 | safeHtml" class="cal-content"></div>
-                                </div>
-                                <div class="tab-pane fade"
-                                     id="date4"
-                                     role="tabpanel"
-                                     aria-labelledby="date4-tab"
-                                     *ngIf="calendar.date4">
-                                    <h4 class="pt-5 pb-5 mb-3 pl-3"
-                                        *ngIf="calendar.date4 && calendar.body4">
-                                        <strong>{{ calendar.date4.toDate() | date:'EEEE' }}</strong>,
-                                        {{ month4 }}
-                                        {{ calendar.date4.toDate() | date:"dd" }},
-                                        {{ calendar.date4.toDate() | date:"yyyy" }}
-                                    </h4>
-                                    <div [innerHTML]="calendar.body4 | safeHtml" class="cal-content"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+    <div class="row" *ngIf="calendar">
+        <div class="container-fluid" style="max-width:1200px;">
+            <ul class="nav nav-tabs nav-fill" id="calTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       id="date1-tab"
+                       data-toggle="tab"
+                       href="#date1"
+                       role="tab"
+                       aria-controls="date1"
+                       aria-selected="true"
+                       *ngIf="calendar && calendar.tab1Date">{{ calendar.tab1Date }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="date2-tab"
+                       data-toggle="tab"
+                       href="#date2"
+                       role="tab"
+                       aria-controls="date2"
+                       aria-selected="false"
+                       *ngIf="calendar && calendar.tab2Date">{{ calendar.tab2Date }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="date3-tab"
+                       data-toggle="tab"
+                       href="#date3"
+                       role="tab"
+                       aria-controls="date3"
+                       aria-selected="false"
+                       *ngIf="calendar && calendar.tab3Date">{{ calendar.tab3Date }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       id="date4-tab"
+                       data-toggle="tab"
+                       href="#date4"
+                       role="tab"
+                       aria-controls="date4"
+                       aria-selected="false"
+                       *ngIf="calendar && calendar.tab4Date">{{ calendar.tab4Date }}</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active"
+                     id="date1"
+                     role="tabpanel"
+                     aria-labelledby="date1-tab"
+                     *ngIf="calendar && calendar.date1">
+                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                        *ngIf="calendar && calendar.date1 && calendar.body1">
+                        <strong>{{ calendar.date1 }}</strong>
+                    </h4>
+                    <div [innerHTML]="calendar.body1 | safeHtml" class="cal-content"></div>
                 </div>
-            </div>
-            <!-- * Page Cards Section Title * -->
-            <div class="row" *ngIf="page.cardSectionTitle">
-                <div class="container">
-                    <div class="col-md-12 text-center">
-                        <h2 class="card-sec-title">{{ page.cardSectionTitle }}</h2>
-                    </div>
+                <div class="tab-pane fade"
+                     id="date2"
+                     role="tabpanel"
+                     aria-labelledby="date2-tab"
+                     *ngIf="calendar && calendar.date2">
+                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                        *ngIf="calendar && calendar.date2 && calendar.body2">
+                        <strong>{{ calendar.date2 }}</strong>
+                    </h4>
+                    <div [innerHTML]="calendar.body2 | safeHtml" class="cal-content"></div>
                 </div>
-            </div>
-
-            <!-- * Page Cards * -->
-            <div class="row cards" *ngIf="page.hasCards">
-                <div class="card-deck">
-                    <div class="row">
-                        <!-- * Card 1 * -->
-                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard1">
-                            <img class="card-img-top"
-                                 [src]="pageCard1.photoURL"
-                                 [alt]="pageCard1.title">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ pageCard1.title }}</h5>
-                                <p class="card-text">{{ pageCard1.body }}</p>
-                                <p class="text-center">
-                                    <a [href]="pageCard1.url"
-                                       class="btn btn-warning btn-lg">
-                                        {{ pageCard1.buttonString }}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- * Card 2 * -->
-                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard2">
-                            <img class="card-img-top"
-                                 [src]="pageCard2.photoURL"
-                                 [alt]="pageCard2.title">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ pageCard2.title }}</h5>
-                                <p class="card-text">{{ pageCard2.body }}</p>
-                                <p class="text-center">
-                                    <a [href]="pageCard2.url"
-                                       class="btn btn-warning btn-lg">
-                                        {{ pageCard2.buttonString }}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- * Card 3 * -->
-                        <div class="card text-center mt-3 mb-3" *ngIf="pageCard3">
-                            <img class="card-img-top"
-                                 [src]="pageCard3.photoURL"
-                                 [alt]="pageCard3.title">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ pageCard3.title }}</h5>
-                                <p class="card-text">{{ pageCard3.body }}</p>
-                                <p class="text-center">
-                                    <a [href]="pageCard3.url"
-                                       class="btn btn-warning btn-lg">
-                                        {{ pageCard3.buttonString }}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tab-pane fade"
+                     id="date3"
+                     role="tabpanel"
+                     aria-labelledby="date3-tab"
+                     *ngIf="calendar && calendar.date3">
+                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                        *ngIf="calendar && calendar.date3 && calendar.body3">
+                        <strong>{{ calendar.date3 }}</strong>
+                    </h4>
+                    <div [innerHTML]="calendar.body3 | safeHtml" class="cal-content"></div>
+                </div>
+                <div class="tab-pane fade"
+                     id="date4"
+                     role="tabpanel"
+                     aria-labelledby="date4-tab"
+                     *ngIf="calendar && calendar.date4">
+                    <h4 class="pt-5 pb-5 mb-3 pl-3"
+                        *ngIf="calendar && calendar.date4 && calendar.body4">
+                        <strong>{{ calendar.date4 }}</strong>
+                    </h4>
+                    <div [innerHTML]="calendar.body4 | safeHtml" class="cal-content"></div>
                 </div>
             </div>
         </div>

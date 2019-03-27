@@ -46,14 +46,14 @@ export class AdminCalendarService {
         return this.calendars$ = this.calendarCollection.valueChanges();
     }
 
-    getCalendar(key: string): Observable<Calendar> {
-        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${key}`);
+    getCalendar(id: string): Observable<Calendar> {
+        this.calendarDoc = this.afs.doc<Calendar>(`calendar/${id}`);
         this.calendar$ = this.calendarDoc.snapshotChanges().map((action) => {
             if (action.payload.exists === false) {
                 return null;
             } else {
                 const data = action.payload.data() as Calendar;
-                data.$key = action.payload.id;
+                data.id = action.payload.id;
                 return data;
             }
         });
@@ -61,11 +61,10 @@ export class AdminCalendarService {
     }
 
 
-    updateCalendar(formData, id): object {
+    updateCalendar(formData, id): Promise<void> {
         const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${id}`);
 
         const data: Calendar = {
-            $key: id,
             body1: formData.body1,
             body2: formData.body2,
             body3: formData.body3,
@@ -74,31 +73,32 @@ export class AdminCalendarService {
             date2: formData.date2,
             date3: formData.date3,
             date4: formData.date4,
+            tab1Date: formData.tab1Date,
+            tab2Date: formData.tab2Date,
+            tab3Date: formData.tab3Date,
+            tab4Date: formData.tab4Date,
             title: formData.title,
             displayName: formData.displayName,
-            uid: id,
+            id: id,
         };
 
-        console.log('data', data);
         return calRef.set(data, { merge: true })
-                     .then(() => {
-                         this.router.navigate(['/admin/calendar']);
-                         this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
-                             duration: 3000,
-                             verticalPosition: 'bottom',
-                             panelClass: ['snackbar-success']
-                         });
-                         console.log('Calendar Updated!', data);
-                     })
-                     .catch((error) => console.log(`ERROR~uC: `, error));
+          .then(() => {
+              this.router.navigate(['/admin/calendar']);
+              this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
+                  duration: 3000,
+                  verticalPosition: 'bottom',
+                  panelClass: ['snackbar-success']
+              });
+          })
+          .catch((error) => console.log(`ERROR~uC: `, error));
     }
 
-    saveCalendar(formData): object {
-        const new$key = this.afs.createId();
-        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${new$key}`);
+    saveCalendar(formData): Promise<void> {
+        const newId = this.afs.createId();
+        const calRef: AngularFirestoreDocument<Calendar> = this.afs.doc(`calendar/${newId}`);
 
         const data: Calendar = {
-            $key: new$key,
             body1: formData.body1,
             body2: formData.body2,
             body3: formData.body3,
@@ -107,23 +107,25 @@ export class AdminCalendarService {
             date2: formData.date2,
             date3: formData.date3,
             date4: formData.date4,
+            tab1Date: formData.tab1Date,
+            tab2Date: formData.tab2Date,
+            tab3Date: formData.tab3Date,
+            tab4Date: formData.tab4Date,
             title: formData.title,
             displayName: formData.displayName,
-            uid: new$key,
+            id: newId,
         };
 
-        console.log('data', data);
         return calRef.set(data)
-                     .then(() => {
-                         this.router.navigate(['/admin/calendar']);
-                         this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
-                             duration: 3000,
-                             verticalPosition: 'bottom',
-                             panelClass: ['snackbar-success']
-                         });
-                         console.log('Calendar Saved!', data);
-                     })
-                     .catch((error) => console.log(`ERROR~uC: `, error));
+          .then(() => {
+              this.router.navigate(['/admin/calendar']);
+              this.sbAlert.open('Calendar Event was Updated!', 'Dismiss', {
+                  duration: 3000,
+                  verticalPosition: 'bottom',
+                  panelClass: ['snackbar-success']
+              });
+          })
+          .catch((error) => console.log(`ERROR~uC: `, error));
     }
 
 

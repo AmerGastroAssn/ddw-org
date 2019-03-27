@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { Calendar } from '../../../../models/Calendar';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
 
@@ -35,20 +34,23 @@ export class AdminCalendarNewComponent implements OnInit {
     calendar: Calendar;
     // calColumnValues: CalColumnValues;
 
-    $key: string;
     body1: string;
     body2: string;
     body3: string;
     body4: string;
-    date1: any;
-    date2: any;
-    date3: any;
-    date4: any;
+    date1: string;
+    date2: string;
+    date3: string;
+    date4: string;
+    tab1Date: string;
+    tab2Date: string;
+    tab3Date: string;
+    tab4Date: string;
     title: string;
     displayName: string;
-    uid: string;
+    id: string;
     color = 'primary';
-    bsConfig: Partial<BsDatepickerConfig>;
+    // bsConfig: Partial<BsDatepickerConfig>;
 
     CkeditorConfig = {
         allowedContent: true,
@@ -63,15 +65,14 @@ export class AdminCalendarNewComponent implements OnInit {
       private sbAlert: MatSnackBar,
     ) {
         // Datepicker Config
-        this.bsConfig = Object.assign({},
-          {
-              containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY'
-          });
+        // this.bsConfig = Object.assign({},
+        //   {
+        //       containerClass: 'theme-default',
+        //       dateInputFormat: 'MMMM Do YYYY'
+        //   });
 
         // New Calendar:
         this.newCalForm = this.fb.group({
-            $key: [''],
             body1: ['', Validators.required],
             body2: [''],
             body3: [''],
@@ -80,12 +81,15 @@ export class AdminCalendarNewComponent implements OnInit {
             date2: [''],
             date3: [''],
             date4: [''],
+            tab1Date: [''],
+            tab2Date: [''],
+            tab3Date: [''],
+            tab4Date: [''],
             title: ['', Validators.required],
             displayName: [''],
-            uid: [''],
+            id: [''],
         });
 
-        this.$key = this.newCalForm.value.$key;
         this.title = this.newCalForm.value.title;
         this.body1 = this.newCalForm.value.body1;
         this.body2 = this.newCalForm.value.body2;
@@ -95,8 +99,12 @@ export class AdminCalendarNewComponent implements OnInit {
         this.date2 = this.newCalForm.value.date2;
         this.date3 = this.newCalForm.value.date3;
         this.date4 = this.newCalForm.value.date4;
+        this.tab1Date = this.newCalForm.value.tab1Date;
+        this.tab2Date = this.newCalForm.value.tab2Date;
+        this.tab3Date = this.newCalForm.value.tab3Date;
+        this.tab4Date = this.newCalForm.value.tab4Date;
         this.displayName = this.newCalForm.value.displayName;
-        this.uid = this.newCalForm.value.uid;
+        this.id = this.newCalForm.value.id;
     }
 
 
@@ -118,7 +126,6 @@ export class AdminCalendarNewComponent implements OnInit {
             });
         } else {
             this.calendarService.saveCalendar(calendarData);
-            console.log(calendarData);
             this.newCalForm.reset();
             this.sbAlert.open('New Calendar created!', 'Dismiss', {
                 duration: 3000,

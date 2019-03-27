@@ -82,22 +82,36 @@
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
-                                <label class="sr-only"
-                                       for="date1">Select Date 1</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab1Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab1Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="date1"
-                                           placeholder="Select Date 1"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date1"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date1"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -123,26 +137,40 @@
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
-                                <label class="sr-only"
-                                       for="date2">Select Date 2</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab2Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab2Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="date2"
-                                           placeholder="Select Date 2"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date2"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date2"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date2">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mt-2">
                                 <label>Body Date 2</label>
                                 <ckeditor [config]="CkeditorConfig"
                                           [readonly]="false"
@@ -164,22 +192,36 @@
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
                             <div class="form-group">
-                                <label class="sr-only"
-                                       for="date3">Select Date 3</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab3Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab3Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="date3"
-                                           placeholder="Select Date 3"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date3"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date3"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date3">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -206,22 +248,36 @@
                             </mat-expansion-panel-header>
 
                             <div class="form-group">
-                                <label class="sr-only"
-                                       for="date4">Select Date 4</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fa fa-calendar-alt"></i>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-folder-tree"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="tab4Date"
+                                                   placeholder="Tab Date - Ex: May 18"
+                                                   formControlName="tab4Date">
                                         </div>
                                     </div>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="date4"
-                                           placeholder="Select Date 4"
-                                           bsDatepicker
-                                           placement="top"
-                                           formControlName="date4"
-                                           [bsConfig]="bsConfig">
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fa fa-calendar-alt"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   id="date4"
+                                                   placeholder="Body Date - Ex: Saturday, May 18, 2019"
+                                                   formControlName="date4">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

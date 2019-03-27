@@ -38,7 +38,6 @@ export class AdminCalendarEditComponent implements OnInit {
     calendar: Calendar;
     calColumnValues: CalColumnValues;
 
-    $key: string;
     body1: string;
     body2: string;
     body3: string;
@@ -47,11 +46,15 @@ export class AdminCalendarEditComponent implements OnInit {
     date2: any;
     date3: any;
     date4: any;
+    tab1Date: string;
+    tab2Date: string;
+    tab3Date: string;
+    tab4Date: string;
     title: string;
     displayName: string;
-    uid: string;
+    id: string;
     color = 'primary';
-    bsConfig: Partial<BsDatepickerConfig>;
+    // bsConfig: Partial<BsDatepickerConfig>;
 
     column1: string;
     column2: string;
@@ -77,21 +80,20 @@ export class AdminCalendarEditComponent implements OnInit {
       private sbAlert: MatSnackBar,
     ) {
         // Get id from url
-        this.$key = this.route.snapshot.params['id'];
+        this.id = this.route.snapshot.params['id'];
         // Datepicker Config
-        this.bsConfig = Object.assign({},
-          {
-              containerClass: 'theme-default',
-              dateInputFormat: 'MMMM Do YYYY'
-          });
+        // this.bsConfig = Object.assign({},
+        //   {
+        //       containerClass: 'theme-default',
+        //       dateInputFormat: 'MMMM Do YYYY'
+        //   });
 
         // Edit Calendar:
-        this.calendarService.getCalendar(this.$key).subscribe((calendar) => {
+        this.calendarService.getCalendar(this.id).subscribe((calendar) => {
             if (calendar !== null) {
                 this.calendar = calendar;
 
                 this.updateCalForm = this.fb.group({
-                    $key: [calendar.$key],
                     body1: [calendar.body1, Validators.required],
                     body2: [calendar.body2 || ''],
                     body3: [calendar.body3 || ''],
@@ -100,12 +102,15 @@ export class AdminCalendarEditComponent implements OnInit {
                     date2: [calendar.date2 || ''],
                     date3: [calendar.date3 || ''],
                     date4: [calendar.date4 || ''],
+                    tab1Date: [calendar.tab1Date || ''],
+                    tab2Date: [calendar.tab2Date || ''],
+                    tab3Date: [calendar.tab3Date || ''],
+                    tab4Date: [calendar.tab4Date || ''],
                     title: [calendar.title, Validators.required],
                     displayName: [calendar.displayName || ''],
-                    uid: [calendar.uid],
+                    id: [calendar.id],
                 });
 
-                this.$key = this.updateCalForm.value.$key;
                 this.title = this.updateCalForm.value.title;
                 this.body1 = this.updateCalForm.value.body1;
                 this.body2 = this.updateCalForm.value.body2;
@@ -115,8 +120,12 @@ export class AdminCalendarEditComponent implements OnInit {
                 this.date2 = this.updateCalForm.value.date2;
                 this.date3 = this.updateCalForm.value.date3;
                 this.date4 = this.updateCalForm.value.date4;
+                this.tab1Date = this.updateCalForm.value.tab1Date;
+                this.tab2Date = this.updateCalForm.value.tab2Date;
+                this.tab3Date = this.updateCalForm.value.tab3Date;
+                this.tab4Date = this.updateCalForm.value.tab4Date;
                 this.displayName = this.updateCalForm.value.displayName;
-                this.uid = this.updateCalForm.value.uid;
+                this.id = this.updateCalForm.value.id;
 
             }
         });
@@ -127,10 +136,10 @@ export class AdminCalendarEditComponent implements OnInit {
     ngOnInit() {
 
         // Get Event 1
-        this.calendarService.getCalendar(this.$key)
-            .subscribe((calInfo) => {
-                this.calendar = calInfo;
-            });
+        this.calendarService.getCalendar(this.id)
+          .subscribe((calInfo) => {
+              this.calendar = calInfo;
+          });
         // // Get Column Values
         // this.calendarService.getCalColumnValues()
         //     .subscribe((values) => {
@@ -148,8 +157,7 @@ export class AdminCalendarEditComponent implements OnInit {
                 panelClass: ['snackbar-danger']
             });
         } else {
-            this.calendarService.updateCalendar(calendarData, this.$key);
-            console.log(calendarData);
+            this.calendarService.updateCalendar(calendarData, this.id);
             this.updateCalForm.reset();
             this.sbAlert.open('Calendar Updated!', 'Dismiss', {
                 duration: 3000,

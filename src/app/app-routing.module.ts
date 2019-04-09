@@ -290,6 +290,7 @@ const appRoutes: Routes = [
     { path: 'posters', redirectTo: '/education/poster-hall', pathMatch: 'full' },
     { path: 'guide', redirectTo: '/register/first-time-attendee-guide', pathMatch: 'full' },
     { path: 'networking', redirectTo: '/attendee-planning/networking-events', pathMatch: 'full' },
+    { path: 'exhibithall', redirectTo: '/attendee-planning/scope-out-the-exhibit-hall', pathMatch: 'full' },
     { path: 'ddwwebsite/:id/:id', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent },
 

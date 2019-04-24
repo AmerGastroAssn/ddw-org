@@ -128,7 +128,7 @@ select[value="value"] {
 .cta {
     background-color: #003f5f;
     color: #ffffff;
-    margin: 5em 0;
+    margin: 4.5rem 0;
 }
 
 .cta-left {
@@ -424,12 +424,26 @@ p.text-center > a.btn-warning {
     bottom: 0;
 }
 
+.col-quote {
+    padding: 2rem 1rem;
+}
+
 .col-quote blockquote {
     background-color: transparent;
     border-left: 0;
     color: #fff;
-    margin-bottom: 1em;
+    /*margin-bottom: 1em;*/
 }
+
+iframe.video-url {
+    min-width: 100%;
+    min-height: 300px;
+}
+
+/*.cta-button {*/
+/*    margin-bottom: 1em;*/
+/*}*/
+
 
 .bg-blue-inner {
     background-color: #003F5F;
@@ -487,7 +501,7 @@ blockquote::after {
 
 blockquote:before {
     color: #ccc;
-    font-size: 4em;
+    /*font-size: 4em;*/
     line-height: .1em;
     vertical-align: -.3em;
     margin-right: 5px;
@@ -495,7 +509,7 @@ blockquote:before {
 
 blockquote:after {
     color: #ccc;
-    font-size: 4em;
+    /*font-size: 4em;*/
     line-height: .1em;
     vertical-align: -.1em;
     margin-right: 5px;

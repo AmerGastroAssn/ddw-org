@@ -5,6 +5,7 @@ import { CustomLink } from '../../../models/CustomLink';
 import { Page } from '../../../models/Page';
 import { AdminCustomNavLinkService } from '../../../services/admin-custom-nav-link.service';
 import { PageService } from '../../../services/page.service';
+import { Router } from '@angular/router';
 // For jQuery
 declare var $: any;
 
@@ -98,10 +99,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // Navbar Custom Links:
         this.customLinkService.getCustomLinks()
-            .subscribe((links) => {
-                this.customLinks = links;
-            });
-
+          .subscribe((links) => {
+              this.customLinks = links;
+          });
 
 
         /*------------------------------------------------
@@ -109,34 +109,34 @@ export class NavbarComponent implements OnInit, OnDestroy {
          by their 'sortOrder' value.
          ------------------------------------------------*/
         this.pageService.getRegisterPages()
-            .subscribe((pageArr) => {
-                this.registerPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.registerPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.pageService.getAttendeePlanningPages()
-            .subscribe((pageArr) => {
-                this.attendeePlanningPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.attendeePlanningPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.pageService.getEducationPages()
-            .subscribe((pageArr) => {
-                this.educationPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.educationPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.pageService.getExhibitorInfoPages()
-            .subscribe((pageArr) => {
-                this.exhibitorInfoPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.exhibitorInfoPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.pageService.getNewsAndMediaPages()
-            .subscribe((pageArr) => {
-                this.newsAndMediaPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.newsAndMediaPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.pageService.getPresenterPages()
-            .subscribe((pageArr) => {
-                this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
-            });
+          .subscribe((pageArr) => {
+              this.presentersPages$ = _.orderBy(pageArr, ['sortOrder'], ['asc']);
+          });
 
         this.googleSearch = `<script>
           (function() {

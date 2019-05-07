@@ -120,7 +120,7 @@
                                 </a>
                             </li>
                             <li *ngIf="newsPage.isExtURL">
-                                <a [href]="newsPage.extURL">
+                                <a [href]="newsPage.extURL" target="_blank">
                                     {{ newsPage.title }}
                                 </a>
                             </li>
@@ -476,7 +476,7 @@
                                         </li>
                                         <li class="dropdown-item"
                                             *ngIf="newsPage.isExtURL">
-                                            <a [routerLink]="['/news/', newsPage.url]">
+                                            <a [href]="[newsPage.extURL]" target="_blank">
                                                 {{ newsPage.title }}
                                             </a>
                                         </li>

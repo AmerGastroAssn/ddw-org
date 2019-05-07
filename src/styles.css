@@ -347,6 +347,11 @@ a.btn.btn-warning.btn-lg:hover {
     text-decoration: none;
 }
 
+/* Ads */
+#AdSpace > iframe, #myAdSpace > iframe, #prAdSpace > iframe, #prmyAdSpace > iframe {
+    max-width: 728px !important;
+}
+
 #AdSpace {
     margin: 2em 0 0 0;
 }
@@ -792,6 +797,12 @@ ol.breadcrumb {
 /*------------------------------------------------
      Mobile
 ------------------------------------------------*/
+@media (max-width: 767px) {
+   #AdSpace > iframe, #myAdSpace > iframe, #prAdSpace > iframe, #prmyAdSpace > iframe {
+        max-width: 350px !important;
+    }
+}
+
 @media (max-width: 991px) {
     .body-container * {
         text-align: left;

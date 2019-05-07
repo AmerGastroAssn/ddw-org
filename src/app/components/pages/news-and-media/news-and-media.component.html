@@ -11,8 +11,10 @@
     <!-- * AD Headerbar * -->
     <div class="row" *ngIf="headerbar">
         <div class="container">
-            <div class="text-center">
-                <div [innerHTML]="headerbar | safeHtml" ddwRunScripts id="AdSpace"></div>
+            <div class="col-md-8 offset-md-2">
+                <div class="text-center">
+                    <div [innerHTML]="headerbar | safeHtml" ddwRunScripts id="AdSpace"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -280,8 +282,10 @@
     <!-- * AD Footerbar * -->
     <div class="row" *ngIf="footerbar">
         <div class="container">
-            <div class="text-center">
-                <div [innerHTML]="footerbar | safeHtml" ddwRunScripts id="prmyAdSpace"></div>
+            <div class="col-md-8 offset-md-2">
+                <div class="text-center">
+                    <div [innerHTML]="footerbar | safeHtml" ddwRunScripts id="prmyAdSpace"></div>
+                </div>
             </div>
         </div>
     </div>

@@ -63,14 +63,14 @@ td {
 }
 
 h1.time {
-    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    font-family: 'Muli', 'Century Gothic', Arial, sans-serif !important;
     color: #fff;
     font-size: 45px;
     font-weight: 900;
 }
 
 h6.time-mes {
-    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    font-family: 'Muli', 'Century Gothic', Arial, sans-serif !important;
     color: #fff;
     font-weight: 900;
     text-transform: uppercase;
@@ -78,7 +78,7 @@ h6.time-mes {
 }
 
 .time {
-    font-family: 'Century Gothic', 'Muli', Arial, sans-serif;
+    font-family: 'Muli', 'Century Gothic', Arial, sans-serif !important;
     padding-top: 0.1em;
     color: #fff;
     text-transform: uppercase;
@@ -262,6 +262,11 @@ img.sponsor-four {
     vertical-align: middle;
 }
 
+/* Ads */
+/*#myAdSpace > iframe {*/
+/*    max-width: 728px !important;*/
+/*}*/
+
 @media (max-width: 767px) {
     .hero[_ngcontent-c1] {
         background-position: top center;
@@ -278,6 +283,10 @@ img.sponsor-four {
         width: 23%;
         padding: 0;
     }
+
+    /*#myAdSpace > iframe {*/
+    /*    max-width: 350px !important;*/
+    /*}*/
 }
 
 /* Mobile Media Queries */

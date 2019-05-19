@@ -85,10 +85,17 @@ export class CountdownService {
         const distance = date.getTime() - now;
 
         const time: Time = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        time.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        time.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        time.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        time.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (distance < 0) {
+            time.days = 0;
+            time.hours = 0;
+            time.minutes = 0;
+            time.seconds = 0;
+        } else {
+            time.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            time.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            time.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            time.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        }
         return time;
     }
 }

@@ -284,6 +284,11 @@ img.sponsor-four {
         padding: 0;
     }
 
+    iframe.daily-news {
+        width: 300px;
+        height: 169px;
+    }
+
     /*#myAdSpace > iframe {*/
     /*    max-width: 350px !important;*/
     /*}*/

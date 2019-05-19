@@ -104,22 +104,18 @@
 <!--END MOBILE MENU-->
 
 <div class="fixed-top d-none d-sm-none d-md-none d-lg-block d-xl-block" id="TopHeader">
-    <div class="container">
+    <div class="container-fluid custom-nav">
         <div class="col-md-12">
             <div id="header">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <a class="navbar-brand" [routerLink]="['/']">
                             <img class="img-responsive ddw-logo"
                                  src="https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png"
                                  alt="DDW Website">
                         </a>
                     </div>
-                    <div class="col-md-9">
-
-
-                        <!--BEGIN SEARCH-->
-
+                    <div class="col-md-10">
                         <div class="row" *ngIf="customLinks">
                             <div class="col inline">
                                 <div id="MPAuxNav" class="inline auxnav">
@@ -251,7 +247,7 @@
                                     <div style="clear: left;"></div>
                                 </div>
                             </div>
-                            <div class="col-2 inline networking">
+                            <div class="col-2 inline networking pl-0 pr-0 mr-0">
                                 <a href="https://www.facebook.com/DDWMeeting"
                                    target="_blank"
                                    rel="noopener">
@@ -271,7 +267,7 @@
                                    target="_blank" rel="noopener"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3 pl-0">
                                 <div [innerHTML]="googleSearch | safeHtml" ddwRunScripts>
                                 </div>
                             </div>

@@ -5,7 +5,6 @@ import { CustomLink } from '../../../models/CustomLink';
 import { Page } from '../../../models/Page';
 import { AdminCustomNavLinkService } from '../../../services/admin-custom-nav-link.service';
 import { PageService } from '../../../services/page.service';
-import { Router } from '@angular/router';
 // For jQuery
 declare var $: any;
 

@@ -6,6 +6,10 @@
 }
 
 /*BEGIN NAV STYLES*/
+.container-fluid.custom-nav {
+    max-width: 1200px;
+}
+
 .dropdown-menu.show {
     display: block;
 }

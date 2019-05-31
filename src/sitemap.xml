@@ -1,201 +1,243 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://ddw.org/home</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/registration
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/registration/registration-fees
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/housing
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/registration/international
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/first-time-attendee-guide/steps-three-and-four
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/host-city-travel-arrangements
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/international-attendees
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/international-attendees/request-invitation-letter
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/register/first-time-attendee-guide
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/program-planning-resources
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/scope-out-the-exhibit-hall
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/networking-events
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/mobile-app
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/online-planner
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/attendee-planning/ddw-tracks
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/education/scientific-sessions
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/education/abstracts
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/education/poster-hall
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/education/cme-credit-certificate-of-attendance
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/education/session-recordings
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/exhibitor-information/reserve-your-space
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/exhibitor-information/exhibitor-policies
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/exhibitor-information/marketing-opportunities
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/exhibitor-information/host-an-on-site-meeting
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/news/ddw-news
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/news/press-releases
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://ddw.org/news/press-room</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/news/social-media
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/news/media-policy
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/news/guidelines-license-for-use-of-ddw-content
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/submit-an-abstract
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/travel-awards
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/presenter-resources
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/presenter-resources/moderator-guidelines
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/presenter-resources/lecture-presenter-guidelines
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/presenter-resources/poster-presenter-guidelines
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>
             https://ddw.org/presenters/submit-an-abstract/submit-an-abstract-faq
         </loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://ddw.org/contactus</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://ddw.org/careercenter</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://blog.ddw.org/</loc>
+        <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://gastro.org/</loc>
+        <changefreq>daily</changefreq>
     </url>
 
     <url>
@@ -203,6 +245,7 @@
             https://ddw.org/news/press-releases/listening-to-gut-noises-could-improve-diagnosis-of-irritable-bowel-syndrome
         </loc>
         <lastmod>2018-06-05</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -210,6 +253,7 @@
             https://ddw.org/news/press-releases/ddw-monumental-research-alerts
         </loc>
         <lastmod>2018-06-05</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -217,6 +261,7 @@
             https://ddw.org/news/press-releases/money-or-altruism-what-motivates-people-to-donate-their-poop-to-medicine
         </loc>
         <lastmod>2018-06-05</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -225,6 +270,7 @@
             https://ddw.org/news/press-releases/blue-dye-tablet-helps-identify-polyps-during-colonoscopy
         </loc>
         <lastmod>2018-05-24</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -233,6 +279,7 @@
             https://ddw.org/news/press-releases/dna-based-vaccine-treatment-for-colorectal-cancer-to-undergo-first-human-study
         </loc>
         <lastmod>2018-05-24</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -240,6 +287,7 @@
             https://ddw.org/news/press-releases/experimental-drug-eases-effects-of-gluten-for-celiac-patients-on-gluten-free-diet
         </loc>
         <lastmod>2018-05-24</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -248,6 +296,7 @@
             https://ddw.org/news/press-releases/more-patients-with-severe-alcoholic-hepatitis-receiving-liver-transplants
         </loc>
         <lastmod>2018-05-24</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -255,6 +304,7 @@
             https://ddw.org/news/press-releases/digestive-disease-week-2018-media-briefing-previewing-the-latest-research-hot-topics
         </loc>
         <lastmod>2018-05-15</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -263,6 +313,7 @@
             https://ddw.org/news/press-releases/ddw-2018-offers-reporters-access-to-leading-research-in-digestive-health
         </loc>
         <lastmod>2018-02-13</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -270,6 +321,7 @@
             https://ddw.org/news/press-releases/digestive-disease-week-2017-was-the-largest-international-meeting-in-gastroenterology-and-hepatology
         </loc>
         <lastmod>2017-06-26</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -278,6 +330,7 @@
             https://ddw.org/news/press-releases/first-ever-autonomously-controlled-capsule-robot-explores-colon
         </loc>
         <lastmod>2017-05-09</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -286,6 +339,7 @@
             https://ddw.org/news/press-releases/a-unique-enzyme-could-be-a-game-changer-for-gluten-sensitive-patients
         </loc>
         <lastmod>2017-05-07</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -293,6 +347,7 @@
             https://ddw.org/news/press-releases/non-surgical-weight-loss-treatment-found-safe-effective-for-those-with-limited-options
         </loc>
         <lastmod>2017-05-07</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
 
@@ -301,6 +356,7 @@
             https://ddw.org/news/press-releases/study-identifies-genetic-markers-that-predict-which-patients-with-hepatitis-c-and-cirrhosis-will-improve-with-treatment
         </loc>
         <lastmod>2017-05-06</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -308,6 +364,7 @@
             https://ddw.org/news/press-releases/ddw-2017-telebriefing-to-preview-the-latest-research-hot-topics
         </loc>
         <lastmod>2017-04-20</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -315,6 +372,7 @@
             https://ddw.org/news/press-releases/ddw-2017-offers-reporters-access-to-leading-research-in-digestive-health
         </loc>
         <lastmod>2017-03-20</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -322,6 +380,7 @@
             https://ddw.org/news/press-releases/ddw-website-receives-honorable-mention-for-ava-digital-award
         </loc>
         <lastmod>2017-03-01</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -329,6 +388,7 @@
             https://ddw.org/news/press-releases/digestive-disease-week-responds-to-executive-order-banning-travel-of-nationals-from-seven-countries
         </loc>
         <lastmod>2017-02-02</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -336,6 +396,74 @@
             https://ddw.org/news/press-releases/ddw-tv-returns-to-digestive-disease-week-2017
         </loc>
         <lastmod>2017-01-09</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/new-connection-found-between-non-alcoholic-fatty-liver-disease-and-rare-pregnancy-complication
+        </loc>
+        <lastmod>2019-05-09</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/minimally-invasive-procedure-shows-promise-in-combating-obesity
+        </loc>
+        <lastmod>2019-05-09</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/first-randomized-controlled-trial-of-fecal-transplants-for-obesity-shows-potential-progress
+        </loc>
+        <lastmod>2019-05-09</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/appendix-removal-associated-with-development-of-parkinsons-disease
+        </loc>
+        <lastmod>2019-05-09</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/walking-and-strength-training-may-decrease-the-risk-of-dying-from-liver-disease
+        </loc>
+        <lastmod>2019-05-19</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/researchers-document-impact-of-coffee-on-bowels
+        </loc>
+        <lastmod>2019-05-19</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/button-batteries-can-rapidly-damage-stomach-lining-before-symptoms-appear
+        </loc>
+        <lastmod>2019-05-18</lastmod>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <url>
+        <loc>
+            https://ddw.org/news/press-releases/dawn-to-sunset-fasting-suggests-potential-new-treatment-for-obesity-related-conditions
+        </loc>
+        <lastmod>2019-05-21</lastmod>
+        <changefreq>weekly</changefreq>
     </url>
 
     <url>
@@ -343,6 +471,7 @@
             https://ddw.org/privacy
         </loc>
         <lastmod>2018-05-22</lastmod>
+        <changefreq>monthly</changefreq>
     </url>
 
 

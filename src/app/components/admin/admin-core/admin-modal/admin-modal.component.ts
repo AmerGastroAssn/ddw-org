@@ -37,7 +37,7 @@ export class AdminModalComponent implements OnInit {
         this.mceApiKey = environment.mceApiKey;
         this.mceConfig = {
             height: 700,
-            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, fullscreen, advcode',
             codesample_languages: [
                 { text: 'HTML/XML', value: 'markup' },
                 { text: 'JavaScript', value: 'javascript' },
@@ -47,12 +47,12 @@ export class AdminModalComponent implements OnInit {
                 { text: 'TypeScript', value: 'typescript' },
             ],
             // tslint:disable-next-line:max-line-length
-            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
-            selector: 'textarea',
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent fullscreen code preview',
             body_id: 'tiny-mce-textarea',
             // tslint:disable-next-line:max-line-length
             content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
-            `,
+                `,
+            content_css: `https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css`
         };
         this.updatedAt = Date.now();
         this.currentUser = this.authService.getProfile().email;

@@ -147,6 +147,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
         SafeHtmlPipe,
         TrustUrlPipe,
         TabsModule,
+        EditorModule,
     ]
 })
 export class AdminModule {}

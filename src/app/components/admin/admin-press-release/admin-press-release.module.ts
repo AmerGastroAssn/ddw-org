@@ -9,6 +9,7 @@ import { AdminPressReleaseEditComponent } from './admin-press-release-edit/admin
 import { AdminPressReleaseListComponent } from './admin-press-release-list/admin-press-release-list.component';
 import { AdminPressReleaseNewComponent } from './admin-press-release-new/admin-press-release-new.component';
 import { AdminPressReleaseComponent } from './admin-press-release.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { AdminPressReleaseComponent } from './admin-press-release.component';
         MatProgressBarModule,
         ProgressbarModule,
         MatSlideToggleModule,
+        EditorModule,
     ],
     declarations: [
         AdminPressReleaseNewComponent,

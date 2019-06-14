@@ -62,7 +62,6 @@
                             <input type="text"
                                    class="form-control"
                                    required
-                                   [(ngModel)]="title"
                                    formControlName="title"/>
                         </div>
 
@@ -73,7 +72,6 @@
                             </label>
                             <input type="text"
                                    class="form-control"
-                                   [(ngModel)]="displayName"
                                    formControlName="displayName"/>
                         </div>
 
@@ -125,8 +123,8 @@
                                 <label>Body Date 1</label>
                                 <editor [apiKey]="mceApiKey"
                                         [init]="mceConfig"
-                                        id="body"
-                                        [formControl]="updateCalForm.controls['body']">
+                                        id="body1"
+                                        [formControl]="updateCalForm.controls['body1']">
                                 </editor>
                             </div>
                         </mat-expansion-panel>

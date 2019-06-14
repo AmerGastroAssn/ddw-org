@@ -118,12 +118,9 @@ export class AdminPageEditComponent implements OnInit {
     pageCard1: Card;
     pageCard2: Card;
     pageCard3: Card;
-
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 500,
-        extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
-    };
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
 
 
     constructor(
@@ -144,7 +141,25 @@ export class AdminPageEditComponent implements OnInit {
       private ctaService: CallToActionService,
       private tsService: TextSectionService,
     ) {
-
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+                    `,
+        };
         // Datepicker Config
         this.bsConfig = Object.assign({},
           {
@@ -191,9 +206,9 @@ export class AdminPageEditComponent implements OnInit {
                 this.editPageForm = this.fb.group({
                     uid: [this.page.uid],
                     title: [this.page.title,
-                            Validators.compose([
-                                Validators.required, Validators.minLength(5)
-                            ])
+                        Validators.compose([
+                            Validators.required, Validators.minLength(5)
+                        ])
                     ],
                     body: [this.page.body],
                     author: [this.page.author],
@@ -258,38 +273,38 @@ export class AdminPageEditComponent implements OnInit {
                 // Content Sections
                 if (this.page.contentSectionTop !== '') {
                     this.tsService.getTextSection(this.page.contentSectionTop)
-                        .subscribe((section) => {
-                            if (section) {
-                                this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                                this.tsTopValue = section.value;
-                            }
-                        });
+                      .subscribe((section) => {
+                          if (section) {
+                              this.tsTopBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                              this.tsTopValue = section.value;
+                          }
+                      });
                 }
 
                 if (this.page.contentSectionBottom) {
                     this.tsService.getTextSection(this.page.contentSectionBottom)
-                        .subscribe((section) => {
-                            if (section) {
-                                this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
-                                this.tsBottomValue = section.value;
-                            }
-                        });
+                      .subscribe((section) => {
+                          if (section) {
+                              this.tsBottomBody = this.sanitizer.bypassSecurityTrustHtml(section.body);
+                              this.tsBottomValue = section.value;
+                          }
+                      });
                 }
 
                 if (this.page.callToAction) {
                     this.ctaService.getCta(this.page.callToAction)
-                        .subscribe((cta) => {
-                            this.cta = cta;
-                            if (cta.imageUrl) {
-                                this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
-                            }
-                            if (cta.videoUrl) {
-                                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
-                            }
-                            if (cta.body) {
-                                this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
-                            }
-                        });
+                      .subscribe((cta) => {
+                          this.cta = cta;
+                          if (cta.imageUrl) {
+                              this.imageUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.imageUrl);
+                          }
+                          if (cta.videoUrl) {
+                              this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(cta.videoUrl);
+                          }
+                          if (cta.body) {
+                              this.ctaBody = this.sanitizer.bypassSecurityTrustHtml(cta.body);
+                          }
+                      });
                 }
 
 

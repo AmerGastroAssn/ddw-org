@@ -68,15 +68,14 @@
 
                                 <div class="form-group">
                                     <label class="helv">Body</label>
-                                    <ckeditor [formControl]="editCTAForm.controls['body']"
-                                              [config]="CkeditorConfig"
-                                              [class.invalid]="!f.body.valid && f.body.touched"
-                                              maxlength="550"
-                                              required
-                                              [readonly]="false"
-                                              [(ngModel)]="body"
-                                              debounce="500">
-                                    </ckeditor>
+                                    <editor [apiKey]="mceApiKey"
+                                            [init]="mceConfig"
+                                            id="body"
+                                            maxlength="550"
+                                            required
+                                            [(ngModel)]="body"
+                                            [formControl]="editCTAForm.controls['body']">
+                                    </editor>
                                     <p class="help-block alert alert-danger text-center"
                                        [hidden]="f.body.valid">
                                         Body is required and cannot have more than <b>550</b> characters. There are currently

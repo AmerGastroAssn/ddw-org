@@ -47,14 +47,11 @@
                                 privacyPolicy.updatedAt | date:'medium' }} <br>
                                 <i class="fa fa-user"></i>&nbsp;{{ privacyPolicy.author }}
                             </p>
-                            <ckeditor [formControl]="privacyPolicyForm.controls['body']"
-                                      [(ngModel)]="privacyPolicy.body"
-                                      [readonly]="false"
-                                      [config]="CkeditorConfig"
-                                      id="body"
-                                      name="body"
-                                      debounce="500">
-                            </ckeditor>
+                            <editor [apiKey]="mceApiKey"
+                                    [init]="mceConfig"
+                                    id="body"
+                                    [formControl]="privacyPolicyForm.controls['body']">
+                            </editor>
                             <p class="help-block alert alert-warning text-center mt-1"
                                *ngIf="!f.body.valid && f.body.touched">
                                 The <b>Body</b> with at least 100 characters is required!

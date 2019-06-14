@@ -20,6 +20,7 @@ import { CallToAction } from '../../admin-content-section/models/call-to-action'
 import { TextSection } from '../../admin-content-section/models/text-section';
 import { CallToActionService } from '../../admin-content-section/services/call-to-action.service';
 import { TextSectionService } from '../../admin-content-section/services/text-section.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'ddw-admin-page-new',
@@ -80,12 +81,9 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     presPages$: Observable<Page[]>;
     invalidTitle: EventEmitter<boolean> = new EventEmitter();
     titleNotValid: boolean;
-
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 500,
-        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
-    };
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
 
     constructor(
       private adminPageService: AdminPageService,
@@ -105,6 +103,27 @@ export class AdminPageNewComponent implements OnInit, OnDestroy {
     ) {
         // Settings
         this.disableAdminOnNew = this.settingsService.getAdminSettings().disableAdmin;
+
+        this.mceApiKey = environment.mceApiKey;
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+            `,
+        };
 
         this.authService.getAuth().subscribe((auth) => {
             if (auth) {

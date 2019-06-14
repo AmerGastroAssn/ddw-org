@@ -9,7 +9,6 @@ import {
     MatTooltipModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../../pipes/trust-url.pipe';
@@ -38,7 +37,6 @@ import { AdminPageRegisterListComponent } from './admin-page-register-list/admin
         MatProgressBarModule,
         ProgressbarModule,
         MatSlideToggleModule,
-        CKEditorModule,
         MatTooltipModule,
         MatSelectModule,
         PopoverModule.forRoot()

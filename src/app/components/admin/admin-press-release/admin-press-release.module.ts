@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule, MatSlideToggleModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, ProgressbarModule } from 'ngx-bootstrap';
 import { AdminPressReleaseDetailsComponent } from './admin-press-release-details/admin-press-release-details.component';
 import { AdminPressReleaseEditComponent } from './admin-press-release-edit/admin-press-release-edit.component';
@@ -21,7 +20,6 @@ import { AdminPressReleaseComponent } from './admin-press-release.component';
         MatProgressBarModule,
         ProgressbarModule,
         MatSlideToggleModule,
-        CKEditorModule,
     ],
     declarations: [
         AdminPressReleaseNewComponent,

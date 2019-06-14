@@ -16,7 +16,6 @@ import {
     MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CKEditorModule } from 'ng2-ckeditor';
 import { BsDatepickerModule, PopoverModule, ProgressbarModule, TabsModule, TimepickerModule } from 'ngx-bootstrap';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { TrustUrlPipe } from '../../pipes/trust-url.pipe';
@@ -26,7 +25,6 @@ import { AdminCalendarNewComponent } from './admin-calendar/admin-calendar-new/a
 import { AdminCalendarComponent } from './admin-calendar/admin-calendar.component';
 import { CallToActionComponent } from './admin-content-section/components/call-to-action/call-to-action.component';
 import { TextSectionComponent } from './admin-content-section/components/text-section/text-section.component';
-import { ContentSectionModule } from './admin-content-section/content-section.module';
 import { AdminAdsComponent } from './admin-core/admin-ads/admin-ads.component';
 import { AdminBottomSheetNewComponent } from './admin-core/admin-bottom-sheet-new/admin-bottom-sheet-new.component';
 import { AdminCardsEditComponent } from './admin-core/admin-cards/admin-cards-edit/admin-cards-edit.component';
@@ -69,6 +67,7 @@ import { AdminPageModule } from './admin-page/admin-page.module';
 import { AdminPressReleaseModule } from './admin-press-release/admin-press-release.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
     declarations: [
@@ -129,7 +128,7 @@ import { AdminComponent } from './admin.component';
         AdminPageModule,
         TabsModule,
         TimepickerModule,
-        CKEditorModule,
+        EditorModule,
         MatExpansionModule,
         AdminPressReleaseModule,
         MatTooltipModule,
@@ -140,9 +139,7 @@ import { AdminComponent } from './admin.component';
         MatFormFieldModule,
         MatCardModule,
     ],
-    providers: [
-
-    ],
+    providers: [],
     exports: [
         MatButtonModule,
         MatMenuModule,

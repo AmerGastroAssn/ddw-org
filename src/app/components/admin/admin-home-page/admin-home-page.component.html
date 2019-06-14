@@ -243,13 +243,12 @@
 
                                             <div class="form-group" *ngIf="!homePage.videoHidden">
                                                 <label for="videoSubtitle">Video Subtitle</label>
-                                                <ckeditor [formControl]="homePageForm.controls['videoSubtitle']"
-                                                          [(ngModel)]="homePage.videoSubtitle"
-                                                          id="videoSubtitle"
-                                                          [readonly]="false"
-                                                          debounce="200"
-                                                          [config]="CkeditorConfig">
-                                                </ckeditor>
+                                                <editor [apiKey]="mceApiKey"
+                                                        [init]="mceConfig"
+                                                        id="videoSubtitle"
+                                                        [(ngModel)]="homePage.videoSubtitle"
+                                                        [formControl]="homePageForm.controls['videoSubtitle']">
+                                                </editor>
                                             </div>
                                         </div>
                                     </div>
@@ -363,12 +362,12 @@
                                             </div>
                                             <div class="form-group" *ngIf="!homePage.onDemandHidden">
                                                 <label>On Demand Text</label>
-                                                <ckeditor [formControl]="homePageForm.controls['onDemandText']"
-                                                          [(ngModel)]="homePage.onDemandText"
-                                                          [readonly]="false"
-                                                          [config]="CkeditorConfig"
-                                                          debounce="500">
-                                                </ckeditor>
+                                                <editor [apiKey]="mceApiKey"
+                                                        [init]="mceConfig"
+                                                        id="body"
+                                                        [(ngModel)]="homePage.onDemandText"
+                                                        [formControl]="homePageForm.controls['onDemandText']">
+                                                </editor>
                                             </div>
                                         </div>
                                     </div>

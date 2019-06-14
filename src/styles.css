@@ -757,7 +757,7 @@ h2.card-sec-title::after {
 }
 
 /*------------------------------------------------
-     CKeditor Attribute Styles
+     WYSIWYG Attribute Styles
 ------------------------------------------------*/
 
 input[type='button'] {
@@ -792,6 +792,12 @@ input[type='button']:hover {
 
 ol.breadcrumb {
     padding-left: 0;
+}
+
+#tiny-mce-textarea .mce-content-body {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif !important;
+    line-height: 2rem !important;
+    font-size: 1.2rem !important;
 }
 
 /*------------------------------------------------

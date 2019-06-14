@@ -117,11 +117,11 @@
 
                             <div class="form-group">
                                 <label>Body Date 1</label>
-                                <ckeditor [config]="CkeditorConfig"
-                                          [readonly]="false"
-                                          debounce="500"
-                                          [formControl]="newCalForm.controls['body1']">
-                                </ckeditor>
+                                <editor [apiKey]="mceApiKey"
+                                        [init]="mceConfig"
+                                        id="body"
+                                        [formControl]="newCalForm.controls['body']">
+                                </editor>
                             </div>
                         </mat-expansion-panel>
 
@@ -172,11 +172,11 @@
 
                             <div class="form-group mt-2">
                                 <label>Body Date 2</label>
-                                <ckeditor [config]="CkeditorConfig"
-                                          [readonly]="false"
-                                          debounce="500"
-                                          [formControl]="newCalForm.controls['body2']">
-                                </ckeditor>
+                                <editor [apiKey]="mceApiKey"
+                                        [init]="mceConfig"
+                                        id="body"
+                                        [formControl]="newCalForm.controls['body2']">
+                                </editor>
                             </div>
                         </mat-expansion-panel>
 
@@ -227,11 +227,11 @@
 
                             <div class="form-group">
                                 <label>Body Date 3</label>
-                                <ckeditor [config]="CkeditorConfig"
-                                          [readonly]="false"
-                                          debounce="500"
-                                          [formControl]="newCalForm.controls['body3']">
-                                </ckeditor>
+                                <editor [apiKey]="mceApiKey"
+                                        [init]="mceConfig"
+                                        id="body"
+                                        [formControl]="newCalForm.controls['body3']">
+                                </editor>
                             </div>
                         </mat-expansion-panel>
 
@@ -283,11 +283,11 @@
 
                             <div class="form-group">
                                 <label>Body Date 4</label>
-                                <ckeditor [config]="CkeditorConfig"
-                                          [readonly]="false"
-                                          debounce="500"
-                                          [formControl]="newCalForm.controls['body4']">
-                                </ckeditor>
+                                <editor [apiKey]="mceApiKey"
+                                        [init]="mceConfig"
+                                        id="body"
+                                        [formControl]="newCalForm.controls['body4']">
+                                </editor>
                             </div>
                         </mat-expansion-panel>
 

@@ -5,6 +5,7 @@ import { PrivacyPolicy } from '../../../../models/PrivacyPolicy';
 import { User } from '../../../../models/User';
 import { AdminPrivacyPolicyService } from '../../../../services/admin-privacy-policy.service';
 import { AuthService } from '../../../../services/auth.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
     selector: 'ddw-admin-privacy-policy',
@@ -20,12 +21,10 @@ export class AdminPrivacyPolicyComponent implements OnInit {
     uid: string;
     author: string;
     currentUser: User;
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
 
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 700,
-        extraAllowedContent: 'div;span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
-    };
 
     constructor(
       private privacyPolicyService: AdminPrivacyPolicyService,
@@ -33,6 +32,27 @@ export class AdminPrivacyPolicyComponent implements OnInit {
       private sbAlert: MatSnackBar,
       private authService: AuthService,
     ) {
+        this.mceApiKey = environment.mceApiKey;
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+            `,
+        };
+
         this.updatedAt = Date.now();
         this.currentUser = this.authService.getProfile().email;
     }

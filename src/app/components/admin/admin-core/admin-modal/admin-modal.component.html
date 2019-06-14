@@ -60,12 +60,11 @@
 
                         <!-- * Body  * -->
                         <div class="form-group">
-                            <ckeditor [formControl]="modalForm.controls['body']"
-                                      [readonly]="false"
-                                      [config]="CkeditorConfig"
-                                      id="body"
-                                      debounce="500">
-                            </ckeditor>
+                            <editor [apiKey]="mceApiKey"
+                                    [init]="mceConfig"
+                                    id="body"
+                                    [formControl]="modalForm.controls['body']">
+                            </editor>
                         </div>
 
                         <!-- * Button Text * -->

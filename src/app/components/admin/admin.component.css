@@ -6,6 +6,12 @@ p, div, tr, th, tr, td, span, ul, ol, li, input.form-control, input[text], input
 
 }
 
+.tiny-mce-textarea {
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 2;
+    font-size: 18px;
+}
+
 #layout-sidenav {
     /*transition: ease-in-out 0.9s;*/
 }

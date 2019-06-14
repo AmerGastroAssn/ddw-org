@@ -6,6 +6,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { TextSection } from '../../../models/text-section';
 import { TextSectionService } from '../../../services/text-section.service';
+import { environment } from '../../../../../../../environments/environment';
 
 @Component({
     selector: 'ddw-text-section-edit',
@@ -20,11 +21,10 @@ export class TextSectionEditComponent implements OnInit {
     id: string;
     name: string;
     published: boolean;
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 200,
-        extraAllowedContent: 'script;span;ul;li;table;td;style;*[id];*(*);*{*}',
-    };
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
+
 
     constructor(
       private router: Router,
@@ -36,6 +36,25 @@ export class TextSectionEditComponent implements OnInit {
       private sbAlert: MatSnackBar,
     ) {
         this.id = route.snapshot.params['id'];
+        this.mceApiKey = environment.mceApiKey;
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            content_style: `
+            body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+            `,
+        };
     }
 
 
@@ -51,10 +70,10 @@ export class TextSectionEditComponent implements OnInit {
             if (this.textSection !== null) {
                 this.editTextSectionForm = this.fb.group({
                     body: [this.textSection.body,
-                           Validators.compose([
-                               Validators.required,
-                               Validators.minLength(10)
-                           ])
+                        Validators.compose([
+                            Validators.required,
+                            Validators.minLength(10)
+                        ])
                     ],
                     createdAt: [this.textSection.createdAt],
                     id: [this.id],
@@ -80,15 +99,15 @@ export class TextSectionEditComponent implements OnInit {
             });
         } else {
             this.textSectionService.updateTextSection(formData)
-                .then(() => console.log('valid Text Section Form'))
-                .catch((error) => {
-                    console.log(error);
-                    this.sbAlert.open('Something went wrong. Please try refreshing the page.', 'Dismiss', {
-                        duration: 3000,
-                        verticalPosition: 'bottom',
-                        panelClass: ['snackbar-danger']
-                    });
-                });
+              .then(() => console.log('valid Text Section Form'))
+              .catch((error) => {
+                  console.log(error);
+                  this.sbAlert.open('Something went wrong. Please try refreshing the page.', 'Dismiss', {
+                      duration: 3000,
+                      verticalPosition: 'bottom',
+                      panelClass: ['snackbar-danger']
+                  });
+              });
         }
     }
 }

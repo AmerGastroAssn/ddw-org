@@ -11,6 +11,7 @@ import { HomePage } from '../../../models/HomePage';
 import { AdminCalendarService } from '../../../services/admin-calendar.service';
 import { AdminHomePageService } from '../../../services/admin-home-page.service';
 import { CountdownService } from '../../../services/countdown.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'ddw-admin-home-page',
@@ -79,12 +80,10 @@ export class AdminHomePageComponent implements OnInit {
     bannerButtonURL: string;
     hasBannerButton: boolean;
     bannerButtonIsExtUrl: boolean;
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
 
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 200,
-        extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
-    };
 
     constructor(
       private flashMessage: FlashMessagesService,
@@ -94,6 +93,26 @@ export class AdminHomePageComponent implements OnInit {
       private adminHomePageService: AdminHomePageService,
       private calendarService: AdminCalendarService
     ) {
+        this.mceApiKey = environment.mceApiKey;
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+            `,
+        };
         // Get Countdown
         this.countdownService.getCountdown().subscribe((countdown) => {
             if (countdown !== null) {

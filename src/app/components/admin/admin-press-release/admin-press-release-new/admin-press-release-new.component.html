@@ -109,11 +109,11 @@
 
                     <div class="form-group">
                         <label>Body</label>
-                        <ckeditor [formControl]="newPressReleaseForm.controls['body']"
-                                  [config]="CkeditorConfig"
-                                  [readonly]="false"
-                                  debounce="500">
-                        </ckeditor>
+                        <editor [apiKey]="mceApiKey"
+                                [init]="mceConfig"
+                                id="body"
+                                [formControl]="newPressReleaseForm.controls['body']">
+                        </editor>
                         <p class="help-block alert alert-warning text-center mt-1"
                            *ngIf="!f.body.valid && f.body.touched">
                             <b>Body</b> is required!

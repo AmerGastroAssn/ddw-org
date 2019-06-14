@@ -7,6 +7,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { CalColumnValues } from '../../../../models/CalColumnValues';
 import { Calendar } from '../../../../models/Calendar';
 import { AdminCalendarService } from '../../../../services/admin-calendar.service';
+import { environment } from '../../../../../environments/environment';
 
 
 @Component({
@@ -65,13 +66,9 @@ export class AdminCalendarEditComponent implements OnInit {
     date2Value: any;
     date3Value: any;
     date4Value: any;
-
-    CkeditorConfig = {
-        allowedContent: true,
-        height: 500,
-        extraAllowedContent: 'span;ul;li;table;td;style;*[id];*(*);*{*}',
-    };
-
+    // Tiny MCE Editor
+    mceApiKey: string;
+    mceConfig: object;
 
     constructor(
       private calendarService: AdminCalendarService,
@@ -81,12 +78,26 @@ export class AdminCalendarEditComponent implements OnInit {
     ) {
         // Get id from url
         this.id = this.route.snapshot.params['id'];
-        // Datepicker Config
-        // this.bsConfig = Object.assign({},
-        //   {
-        //       containerClass: 'theme-default',
-        //       dateInputFormat: 'MMMM Do YYYY'
-        //   });
+        this.mceApiKey = environment.mceApiKey;
+        this.mceConfig = {
+            height: 700,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent codesample code preview',
+            selector: 'textarea',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.2rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}
+                `,
+        };
 
         // Edit Calendar:
         this.calendarService.getCalendar(this.id).subscribe((calendar) => {

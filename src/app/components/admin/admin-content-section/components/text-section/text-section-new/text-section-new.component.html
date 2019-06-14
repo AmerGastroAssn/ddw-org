@@ -39,12 +39,11 @@
 
                                 <div class="form-group">
                                     <label class="helv">Body</label>
-                                    <ckeditor [formControl]="newTextSectionForm.controls['body']"
-                                              [config]="CkeditorConfig"
-                                              [class.invalid]="!f.body.valid && f.body.touched"
-                                              [readonly]="false"
-                                              debounce="500">
-                                    </ckeditor>
+                                    <editor [apiKey]="mceApiKey"
+                                            [init]="mceConfig"
+                                            id="body"
+                                            [formControl]="newTextSectionForm.controls['body']">
+                                    </editor>
                                 </div>
 
 

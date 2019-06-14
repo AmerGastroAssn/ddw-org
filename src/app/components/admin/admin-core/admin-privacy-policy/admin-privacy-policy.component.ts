@@ -25,8 +25,6 @@ export class AdminPrivacyPolicyComponent implements OnInit {
         allowedContent: true,
         height: 700,
         extraAllowedContent: 'div;span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
-        extraPlugins: ['codesnippet', 'divarea'],
-        codeSnippet_theme: 'monokai_sublime',
     };
 
     constructor(

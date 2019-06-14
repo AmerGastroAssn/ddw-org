@@ -123,8 +123,6 @@ export class AdminPageEditComponent implements OnInit {
         allowedContent: true,
         height: 500,
         extraAllowedContent: 'span;ul;li;table;td;style;*[id,rel];*(*);*{*}',
-        extraPlugins: 'codesnippet',
-        codeSnippet_theme: 'monokai_sublime',
     };
 
 

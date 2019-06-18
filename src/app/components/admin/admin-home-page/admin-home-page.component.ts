@@ -82,7 +82,8 @@ export class AdminHomePageComponent implements OnInit {
     bannerButtonIsExtUrl: boolean;
     // Tiny MCE Editor
     mceApiKey: string;
-    mceConfig: object;
+    mceConfigTop: object;
+    mceConfigBottom: object;
 
 
     constructor(
@@ -94,8 +95,8 @@ export class AdminHomePageComponent implements OnInit {
       private calendarService: AdminCalendarService
     ) {
         this.mceApiKey = environment.mceApiKey;
-        this.mceConfig = {
-            height: 700,
+        this.mceConfigTop = {
+            height: 300,
             plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, fullscreen, advcode',
             codesample_languages: [
                 { text: 'HTML/XML', value: 'markup' },
@@ -109,7 +110,26 @@ export class AdminHomePageComponent implements OnInit {
             toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent fullscreen code preview',
             body_id: 'tiny-mce-textarea',
             // tslint:disable-next-line:max-line-length
-            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.1rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}h1,h2,h3{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:600}
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.1rem!important;background-color:#003F5F!important;color:#ffffff!important;}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}h1,h2,h3{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:600}.btn.btn-clear{background:0 0;border:2px solid #fff;color:#fff;font-size:18px;padding:.6em 2em;margin:1.5em;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;text-decoration:none}.btn.btn-clear:hover{background-color:#f47700;border:2px solid #fff;color:#fff;font-size:18px;padding:.6em 2em;margin:1.5em;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;text-decoration:none}
+                `,
+            content_css: `https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css`
+        };
+        this.mceConfigBottom = {
+            height: 300,
+            plugins: 'code, codesample, lists, tinymcespellchecker, link, preview, fullscreen, advcode',
+            codesample_languages: [
+                { text: 'HTML/XML', value: 'markup' },
+                { text: 'JavaScript', value: 'javascript' },
+                { text: 'CSS', value: 'css' },
+                { text: 'SASS', value: 'sass' },
+                { text: 'SCSS', value: 'scss' },
+                { text: 'TypeScript', value: 'typescript' },
+            ],
+            // tslint:disable-next-line:max-line-length
+            toolbar: 'undo redo fontsizeselect styleselect bold italic link unlink openLink forecolor backcolor alignleft aligncenter alignright alignjustify bullist numlist outdent indent fullscreen code preview',
+            body_id: 'tiny-mce-textarea',
+            // tslint:disable-next-line:max-line-length
+            content_style: `body{font-family:'Open Sans',Roboto,'Helvetica Neue',sans-serif!important;line-height:2rem!important;font-size:1.1rem!important}a,a:link{color:#2e6da4}a.btn.btn-warning.btn-lg{background-color:#f47700;color:#fff;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:700;text-decoration:none;padding:.5em 2em;font-size:18px}a.btn.btn-warning.btn-lg:hover{background-color:#feb512;color:#004060;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;font-weight:400;text-decoration:none;padding:.5em 2em;font-size:18px}h1,h2,h3{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:600}.btn.btn-clear{background:0 0;border:2px solid #fff;color:#fff;font-size:18px;padding:.6em 2em;margin:1.5em;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;text-decoration:none}.btn.btn-clear:hover{background-color:#f47700;border:2px solid #fff;color:#fff;font-size:18px;padding:.6em 2em;margin:1.5em;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;text-decoration:none}
                 `,
             content_css: `https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css`
         };

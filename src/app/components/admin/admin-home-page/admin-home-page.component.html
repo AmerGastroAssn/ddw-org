@@ -244,7 +244,7 @@
                                             <div class="form-group" *ngIf="!homePage.videoHidden">
                                                 <label for="videoSubtitle">Video Subtitle</label>
                                                 <editor [apiKey]="mceApiKey"
-                                                        [init]="mceConfig"
+                                                        [init]="mceConfigTop"
                                                         id="videoSubtitle"
                                                         [(ngModel)]="homePage.videoSubtitle"
                                                         [formControl]="homePageForm.controls['videoSubtitle']">
@@ -363,7 +363,7 @@
                                             <div class="form-group" *ngIf="!homePage.onDemandHidden">
                                                 <label>On Demand Text</label>
                                                 <editor [apiKey]="mceApiKey"
-                                                        [init]="mceConfig"
+                                                        [init]="mceConfigBottom"
                                                         id="body"
                                                         [(ngModel)]="homePage.onDemandText"
                                                         [formControl]="homePageForm.controls['onDemandText']">

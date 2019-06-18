@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
                 $('#gsc-iw-id1').css({ border: '1px solid #FFFFFF' });
+                // tslint:disable-next-line:max-line-length
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
                 $('#HomeNavBar .show > a').css({ color: 'gray' });
@@ -56,6 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#gsc-iw-id1').css({ border: '1px solid #5f6a72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
                 $('.gsc-control-cse').css({ border: '1px solid #333333 !important' });
+                // tslint:disable-next-line:max-line-length
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
             }
         });
@@ -71,6 +73,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('a.level1.MPAuxNav.static').addClass('light-link');
                 $('#HomeNavBar i .fa-search').css({ color: 'white' });
                 $('#gsc-iw-id1').css({ border: '1px solid #FFFFFF' });
+                // tslint:disable-next-line:max-line-length
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-white.png');
                 $('#HomeNavBar .fa-search').css({ color: 'white' });
                 $('#HomeNavBar .show > a').css({ color: 'gray' });
@@ -86,6 +89,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
                 $('#HomeNavBar .dropdown a').css({ color: '#5F6A72' });
                 $('#gsc-iw-id1').css({ border: '1px solid #5f6a72' });
                 $('#HomeNavBar i .fa-search').css({ color: '#5F6A72' });
+                // tslint:disable-next-line:max-line-length
                 $('#HomeNavBar img.ddw-logo').attr('src', 'https://higherlogicdownload.s3.amazonaws.com/GASTRO/44b1f1fd-aaed-44c8-954f-b0eaea6b0462/UploadedImages/ddw-color.png');
                 $('#HomeNavBar .fab').css({ color: '#2e6da4' });
                 $('#HomeNavBar .gsc-input-box').css({ border: '1px solid #333333 !important' });

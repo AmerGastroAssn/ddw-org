@@ -88,11 +88,11 @@ export class CallToActionNewComponent implements OnInit {
         this.newCTAForm = this.fb.group({
             author: [this.author],
             body: [this.body,
-                   Validators.compose([
-                       Validators.required,
-                       Validators.minLength(10),
-                       Validators.maxLength(550)
-                   ])
+                Validators.compose([
+                    Validators.required,
+                    Validators.minLength(10),
+                    Validators.maxLength(550)
+                ])
             ],
             buttonUrl: [this.buttonUrl || ''],
             buttonText: [this.buttonText || ''],
@@ -130,8 +130,8 @@ export class CallToActionNewComponent implements OnInit {
             });
         } else {
             this.ctaService.setCTA(formData)
-                .then(() => console.log('valid CTA Form'))
-                .catch((error) => console.log(error));
+              .then(() => console.log('valid CTA Form'))
+              .catch((error) => console.log(error));
         }
     }
 }

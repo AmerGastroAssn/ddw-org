@@ -18,10 +18,10 @@
                         <strong class='caret'></strong></a>
                     <ul class='dropdown-menu'>
                         <span *ngFor="let regPage of registerPages$">
-                            <li *ngIf="!regPage.isExtURL  && !regPage.isGrandchildPage">
+                            <li *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage">
                                 <a [routerLink]="['/register/', regPage.url]">{{ regPage.title }}</a>
                             </li>
-                            <li *ngIf="!regPage.isExtURL  && regPage.isGrandchildPage">
+                            <li *ngIf="!regPage.isExtURL && regPage.isGrandchildPage">
                                 <a [routerLink]="['/register/', regPage.grandchildURL, regPage.url]">
                                     {{ regPage.title }}
                                 </a>

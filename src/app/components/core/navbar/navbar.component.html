@@ -345,14 +345,14 @@
                                    aria-expanded="false">
                                     Register
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <ul class="dropdown-menu multi-level" aria-labelledby="navbarDropdownMenuLink1">
                                     <span *ngFor="let regPage of registerPages$">
                                         <li class="dropdown-item"
-                                            *ngIf="!regPage.isExtURL  && !regPage.isGrandchildPage">
+                                            *ngIf="!regPage.isExtURL && !regPage.isGrandchildPage && !regPage.grandchildURL">
                                             <a [routerLink]="['/register/', regPage.url]">{{ regPage.title }}</a>
                                         </li>
                                         <li class="dropdown-item"
-                                            *ngIf="!regPage.isExtURL  && regPage.isGrandchildPage">
+                                            *ngIf="!regPage.isExtURL && regPage.isGrandchildPage">
                                             <a [routerLink]="['/register/', regPage.grandchildURL, regPage.url]">
                                                 {{ regPage.title }}
                                             </a>
@@ -362,6 +362,17 @@
                                             <a [href]="regPage.extURL"
                                                target="_blank">{{ regPage.title }}
                                             </a>
+                                        </li>
+                                        <li class="dropdown-submenu"
+                                            *ngIf="regPage.isGrandchildPage && regPage.grandchildURL">
+                                          <a class="dropdown-item"
+                                             tabindex="-1"
+                                             href="#">{{ regPage.grandchildURL }}</a>
+                                          <ul class="dropdown-menu">
+                                            <li class="dropdown-item">
+                                                <a tabindex="-1" href="#">{{ regPage.title }}</a>
+                                            </li>
+                                          </ul>
                                         </li>
                                     </span>
                                 </ul>

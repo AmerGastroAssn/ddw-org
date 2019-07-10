@@ -15,8 +15,10 @@ export class FooterComponent implements OnInit {
     exhibitorInfoPages: Page[];
     newsAndMediaPages: Page[];
     presentersPages: Page[];
+    logo: string;
 
     constructor(private pageService: PageService) {
+        this.logo = 'https://firebasestorage.googleapis.com/v0/b/ddw-org.appspot.com/o/images%2F2019%2F1562767758561_ddw2020_logo_rgb_r.png?alt=media&token=b79dc120-660a-4ab6-b659-50dfb4398d90';
     }
 
     ngOnInit() {

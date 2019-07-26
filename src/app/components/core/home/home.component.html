@@ -10,7 +10,9 @@
                     <h1 class="title">{{ homePage.title }}</h1>
                     <h2 class="subtitle">{{ homePage.subtitle }} <span class="forTime">{{ homePage.forTime }}</span>
                     </h2>
-                    <h3 class="loc-date">{{ homePage.subheaderLoc }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="forTime">
+                    <h3 class="loc-date">
+                        <span class="forTime"><i class="fa fa-map-marker-alt"></i></span>
+                        {{ homePage.subheaderLoc }}&nbsp;&nbsp;&nbsp;&nbsp;<span class="forTime">
                     <i class="fa fa-calendar"></i></span>&nbsp;&nbsp;{{ homePage.subheaderDate }}
                     </h3>
 
@@ -266,7 +268,7 @@
 <!-- * AD Footerbar * -->
 <div class="row" *ngIf="footerbar">
     <div class="container">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
             <div class="text-center">
                 <div [innerHTML]="footerbar | safeHtml"
                      ddwRunScripts

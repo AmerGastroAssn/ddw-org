@@ -803,8 +803,8 @@ ol.breadcrumb {
      Mobile
 ------------------------------------------------*/
 @media (max-width: 767px) {
-   #AdSpace > iframe, #myAdSpace > iframe, #prAdSpace > iframe, #prmyAdSpace > iframe {
-        max-width: 350px !important;
+    #AdSpace > iframe, #myAdSpace > iframe, #prAdSpace > iframe, #prmyAdSpace > iframe {
+        width: 350px !important;
     }
 }
 

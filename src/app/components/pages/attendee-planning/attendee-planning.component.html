@@ -11,7 +11,7 @@
     <!-- * AD Headerbar * -->
     <div class="row" *ngIf="headerbar">
         <div class="container">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-10 offset-md-1">
                 <div class="text-center">
                     <div [innerHTML]="headerbar | safeHtml" ddwRunScripts id="AdSpace"></div>
                 </div>
@@ -235,7 +235,7 @@
     <!-- * AD Footerbar * -->
     <div class="row" *ngIf="footerbar">
         <div class="container">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-10 offset-md-1">
                 <div class="text-center">
                     <div [innerHTML]="footerbar | safeHtml" ddwRunScripts id="myAdSpace"></div>
                 </div>
